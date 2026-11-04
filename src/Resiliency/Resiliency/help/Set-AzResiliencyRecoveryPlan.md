@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/set-azresiliencyrecoveryplan
 schema: 2.0.0
@@ -15,29 +15,32 @@ Update a RecoveryPlan
 ### UpdateExpanded (Default)
 ```
 Set-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> [-Description <String>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-GroupUniqueId <String>] [-OrderId <Int32>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-GroupUniqueId <String>] [-OrderId <Int32>]
  [-PlanDescription <String>] [-PlanType <String>] [-PostAction <IRecoveryGroupBaseAction[]>]
  [-PreAction <IRecoveryGroupBaseAction[]>] [-RecoveryGroupSettingAdditionalGroup <IRecoveryGroup[]>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> -Resource <IRecoveryPlan>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Set-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Set-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,27 +48,12 @@ Update a RecoveryPlan
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Replace a recovery plan
 ```powershell
-{{ Add code here }}
+Set-AzResiliencyRecoveryPlan -ServiceGroupName contoso-sg -Name contoso-recovery-plan -PlanType Zonal -PlanDescription "Zonal recovery for contoso" -UserAssignedIdentity "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/contoso-identity"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Replaces the recovery plan with the supplied definition (PUT).
 
 ## PARAMETERS
 
@@ -119,7 +107,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -386,4 +374,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

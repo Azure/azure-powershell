@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: List usage plans in the current subscription
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyUsagePlan
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists all resiliency usage plans in the current subscription.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List usage plans in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyUsagePlan -ResourceGroupName contoso-rg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Lists all resiliency usage plans in resource group `contoso-rg`.
+
+### Example 3: Get a usage plan
+```powershell
+Get-AzResiliencyUsagePlan -ResourceGroupName contoso-rg -Name contoso-usage-plan
 ```
 
-{{ Add description here }}
-
+Gets usage plan `contoso-usage-plan`.

@@ -83,6 +83,7 @@
           {
             "parameters": [
               "-Name <String>",
+              "-OperationId <String>",
               "-ServiceGroupName <String>"
             ]
           }
@@ -95,6 +96,10 @@
             {
               "name": "-Name",
               "value": "[Path.drillName]"
+            },
+            {
+              "name": "-OperationId",
+              "value": "(New-Guid).Guid"
             },
             {
               "name": "-ServiceGroupName",
@@ -116,6 +121,7 @@
           {
             "parameters": [
               "-DrillName <String>",
+              "-OperationId <String>",
               "-ServiceGroupName <String>"
             ]
           }
@@ -128,6 +134,10 @@
             {
               "name": "-DrillName",
               "value": "[Path.drillName]"
+            },
+            {
+              "name": "-OperationId",
+              "value": "(New-Guid).Guid"
             },
             {
               "name": "-ServiceGroupName",

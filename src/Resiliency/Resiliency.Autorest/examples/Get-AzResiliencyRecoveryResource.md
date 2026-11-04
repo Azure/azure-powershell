@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the resources of a recovery plan
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryResource -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the resources of recovery plan `contoso-recovery-plan`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a recovery resource
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryResource -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -Name contoso-recovery-resource
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets a single recovery resource.

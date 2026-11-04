@@ -77,27 +77,13 @@ This action checks if the recovery orchestration plan is eligible for failover o
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate a failover
 ```powershell
-{{ Add code here }}
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName contoso-recovery-plan -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid -FailoverRequestPropertySourceLocation eastus2-az2
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Validates a failover of the recovery plan away from zone 2 of East US 2.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

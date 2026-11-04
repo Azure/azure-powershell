@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/invoke-azresiliencyrecoveryplanfinalize
 schema: 2.0.0
@@ -15,21 +15,22 @@ This action finalizes the recovery orchestration plan, ensuring all necessary co
 ### Invoke (Default)
 ```
 Invoke-AzResiliencyRecoveryPlanFinalize -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### InvokeViaIdentity
-```
-Invoke-AzResiliencyRecoveryPlanFinalize -InputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentityServiceGroup
 ```
 Invoke-AzResiliencyRecoveryPlanFinalize -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentity
+```
+Invoke-AzResiliencyRecoveryPlanFinalize -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,27 +38,13 @@ This action finalizes the recovery orchestration plan, ensuring all necessary co
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Finalize a recovery plan
 ```powershell
-{{ Add code here }}
+Invoke-AzResiliencyRecoveryPlanFinalize -RecoveryPlanName contoso-recovery-plan -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Finalizes the recovery plan after failover and reprotect are complete.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 
@@ -227,4 +214,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

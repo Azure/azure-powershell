@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencygoalresource
 schema: 2.0.0
@@ -18,9 +18,22 @@ Get-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <Str
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyGoalResource -GoalAssignmentName <String> -Name <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzResiliencyGoalResource -GoalAssignmentName <String> -Name <String> -ServiceGroupName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityGoalAssignment
+```
+Get-AzResiliencyGoalResource -Name <String> -GoalAssignmentInputObject <IResiliencyIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,44 +43,24 @@ Get-AzResiliencyGoalResource -InputObject <IResiliencyIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
-### GetViaIdentityGoalAssignment
-```
-Get-AzResiliencyGoalResource -GoalAssignmentInputObject <IResiliencyIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyGoalResource -GoalAssignmentName <String> -Name <String>
- -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets a goal resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the resources of a goal assignment
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyGoalResource -ServiceGroupName contoso-sg -GoalAssignmentName contoso-zonal-goal
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the resources evaluated by goal assignment `contoso-zonal-goal`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a goal resource
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyGoalResource -ServiceGroupName contoso-sg -GoalAssignmentName contoso-zonal-goal -Name contoso-goal-resource
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a single goal resource.
 
 ## PARAMETERS
 
@@ -107,7 +100,7 @@ The name of the goal assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup, List
+Parameter Sets: List, GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -137,7 +130,7 @@ The name of the goal resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityGoalAssignment, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, Get, GetViaIdentityGoalAssignment
 Aliases: GoalResourceName
 
 Required: True
@@ -167,7 +160,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -221,4 +214,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/resume-azresiliencyrecoveryjob
 schema: 2.0.0
@@ -15,71 +15,73 @@ This action resumes the ongoing recovery orchestration job that was paused for r
 ### ResumeExpanded (Default)
 ```
 Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resume
+### ResumeViaJsonString
 ```
 Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResumeViaIdentity
+### ResumeViaJsonFilePath
 ```
-Resume-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ResumeViaIdentityExpanded
-```
-Resume-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> -OperationId <String>
- [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ResumeViaIdentityRecoveryPlan
-```
-Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
- -OperationId <String> -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResumeViaIdentityRecoveryPlanExpanded
-```
-Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
- -OperationId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ResumeViaIdentityServiceGroup
-```
-Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IRecoveryActionRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResumeViaIdentityServiceGroupExpanded
 ```
 Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-Description <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ResumeViaJsonFilePath
+### ResumeViaIdentityServiceGroup
 ```
-Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IRecoveryActionRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ResumeViaJsonString
+### ResumeViaIdentityRecoveryPlanExpanded
+```
+Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
+ -OperationId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResumeViaIdentityRecoveryPlan
+```
+Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
+ -OperationId <String> -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Resume
 ```
 Resume-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResumeViaIdentityExpanded
+```
+Resume-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> -OperationId <String> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ResumeViaIdentity
+```
+Resume-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,27 +89,13 @@ This action resumes the ongoing recovery orchestration job that was paused for r
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resume a recovery job
 ```powershell
-{{ Add code here }}
+Resume-AzResiliencyRecoveryJob -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -Name contoso-recovery-job -OperationId (New-Guid).Guid -Description "Manual step completed."
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Resumes a paused recovery job.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 
@@ -131,7 +119,7 @@ Request body for providing user input for a recovery action.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IRecoveryActionRequest
-Parameter Sets: Resume, ResumeViaIdentity, ResumeViaIdentityRecoveryPlan, ResumeViaIdentityServiceGroup
+Parameter Sets: ResumeViaIdentityServiceGroup, ResumeViaIdentityRecoveryPlan, Resume, ResumeViaIdentity
 Aliases:
 
 Required: True
@@ -162,7 +150,7 @@ User-provided input for the action.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResumeExpanded, ResumeViaIdentityExpanded, ResumeViaIdentityRecoveryPlanExpanded, ResumeViaIdentityServiceGroupExpanded
+Parameter Sets: ResumeExpanded, ResumeViaIdentityServiceGroupExpanded, ResumeViaIdentityRecoveryPlanExpanded, ResumeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -177,7 +165,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: ResumeViaIdentity, ResumeViaIdentityExpanded
+Parameter Sets: ResumeViaIdentityExpanded, ResumeViaIdentity
 Aliases:
 
 Required: True
@@ -222,7 +210,7 @@ The unique name (GUID) of the recovery job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Resume, ResumeExpanded, ResumeViaIdentityRecoveryPlan, ResumeViaIdentityRecoveryPlanExpanded, ResumeViaIdentityServiceGroup, ResumeViaIdentityServiceGroupExpanded, ResumeViaJsonFilePath, ResumeViaJsonString
+Parameter Sets: ResumeExpanded, ResumeViaJsonString, ResumeViaJsonFilePath, ResumeViaIdentityServiceGroupExpanded, ResumeViaIdentityServiceGroup, ResumeViaIdentityRecoveryPlanExpanded, ResumeViaIdentityRecoveryPlan, Resume
 Aliases: RecoveryJobName
 
 Required: True
@@ -267,7 +255,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: ResumeViaIdentityRecoveryPlan, ResumeViaIdentityRecoveryPlanExpanded
+Parameter Sets: ResumeViaIdentityRecoveryPlanExpanded, ResumeViaIdentityRecoveryPlan
 Aliases:
 
 Required: True
@@ -282,7 +270,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Resume, ResumeExpanded, ResumeViaIdentityServiceGroup, ResumeViaIdentityServiceGroupExpanded, ResumeViaJsonFilePath, ResumeViaJsonString
+Parameter Sets: ResumeExpanded, ResumeViaJsonString, ResumeViaJsonFilePath, ResumeViaIdentityServiceGroupExpanded, ResumeViaIdentityServiceGroup, Resume
 Aliases:
 
 Required: True
@@ -297,7 +285,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: ResumeViaIdentityServiceGroup, ResumeViaIdentityServiceGroupExpanded
+Parameter Sets: ResumeViaIdentityServiceGroupExpanded, ResumeViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -312,7 +300,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Resume, ResumeExpanded, ResumeViaJsonFilePath, ResumeViaJsonString
+Parameter Sets: ResumeExpanded, ResumeViaJsonString, ResumeViaJsonFilePath, Resume
 Aliases:
 
 Required: True
@@ -369,4 +357,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

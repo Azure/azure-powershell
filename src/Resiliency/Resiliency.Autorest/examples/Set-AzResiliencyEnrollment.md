@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Replace an enrollment
 ```powershell
-{{ Add code here }}
+Set-AzResiliencyEnrollment -ResourceGroupName contoso-rg -UsagePlanName contoso-usage-plan -Name contoso-enrollment -ServiceGroupId "/providers/Microsoft.Management/serviceGroups/contoso-sg"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Replaces the enrollment with the supplied definition (PUT).

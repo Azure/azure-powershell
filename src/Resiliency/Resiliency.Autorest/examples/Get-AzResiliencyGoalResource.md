@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the resources of a goal assignment
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyGoalResource -ServiceGroupName contoso-sg -GoalAssignmentName contoso-zonal-goal
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the resources evaluated by goal assignment `contoso-zonal-goal`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a goal resource
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyGoalResource -ServiceGroupName contoso-sg -GoalAssignmentName contoso-zonal-goal -Name contoso-goal-resource
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets a single goal resource.

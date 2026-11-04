@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the resilience items of a service group
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyUnifiedResilienceItem -ServiceGroupName contoso-sg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the unified resilience items of service group `contoso-sg`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a resilience item
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyUnifiedResilienceItem -ServiceGroupName contoso-sg -Name contoso-resilience-item
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets a single unified resilience item.

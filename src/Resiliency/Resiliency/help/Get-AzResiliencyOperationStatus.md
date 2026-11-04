@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencyoperationstatus
 schema: 2.0.0
@@ -18,16 +18,16 @@ Get-AzResiliencyOperationStatus -Location <String> -OperationId <String> [-Defau
  [<CommonParameters>]
 ```
 
+### GetViaIdentityLocation
+```
+Get-AzResiliencyOperationStatus -OperationId <String> -LocationInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzResiliencyOperationStatus -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityLocation
-```
-Get-AzResiliencyOperationStatus -LocationInputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,27 +35,12 @@ Returns the current status of an async operation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the status of an operation
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyOperationStatus -Location eastus2 -OperationId 11111111-1111-1111-1111-111111111111
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets the status of a long-running resiliency operation in East US 2.
 
 ## PARAMETERS
 
@@ -149,4 +134,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

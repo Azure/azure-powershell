@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resiliency", "Resiliency\Re
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resiliency.Autorest", "Resiliency.Autorest", "{F67D3E17-4344-B096-E2D0-E99B98B1A3D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Resiliency", "Resiliency.Autorest\Az.Resiliency.csproj", "{CC25904C-AA16-4DF8-90C9-6F0BC9F3E052}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Resiliency", "..\..\generated\Resiliency\Resiliency.Autorest\Az.Resiliency.csproj", "{CC25904C-AA16-4DF8-90C9-6F0BC9F3E052}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

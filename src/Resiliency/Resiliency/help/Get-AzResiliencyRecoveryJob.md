@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencyrecoveryjob
 schema: 2.0.0
@@ -18,6 +18,19 @@ Get-AzResiliencyRecoveryJob -RecoveryPlanName <String> -ServiceGroupName <String
  [<CommonParameters>]
 ```
 
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityRecoveryPlan
+```
+Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
@@ -30,44 +43,24 @@ Get-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> [-DefaultProfile 
  [<CommonParameters>]
 ```
 
-### GetViaIdentityRecoveryPlan
-```
-Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get a RecoveryJob
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the jobs of a recovery plan
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryJob -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the recovery jobs of recovery plan `contoso-recovery-plan`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a recovery job
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryJob -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -Name contoso-recovery-job
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets recovery job `contoso-recovery-job`.
 
 ## PARAMETERS
 
@@ -107,7 +100,7 @@ The unique name (GUID) of the recovery job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityRecoveryPlan, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, GetViaIdentityRecoveryPlan, Get
 Aliases: RecoveryJobName
 
 Required: True
@@ -137,7 +130,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup, List
+Parameter Sets: List, GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -167,7 +160,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -191,4 +184,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

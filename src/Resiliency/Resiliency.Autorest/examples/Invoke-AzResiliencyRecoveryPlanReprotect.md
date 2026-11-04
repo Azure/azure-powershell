@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Reprotect a recovery plan
 ```powershell
-{{ Add code here }}
+Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName contoso-recovery-plan -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Reprotects the failed-over resources of the recovery plan. `-OperationId` is a client-generated GUID that identifies this long-running operation.

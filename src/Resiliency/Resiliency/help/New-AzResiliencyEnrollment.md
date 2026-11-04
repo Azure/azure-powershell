@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/new-azresiliencyenrollment
 schema: 2.0.0
@@ -14,55 +14,58 @@ Create an Enrollment.
 
 ### CreateExpanded (Default)
 ```
-New-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> -UsagePlanName <String>
- [-SubscriptionId <String>] [-ServiceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -UsagePlanName <String> [-ServiceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaJsonString
 ```
-New-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> -UsagePlanName <String>
- -Resource <IEnrollment> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> -Resource <IEnrollment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -UsagePlanName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateViaJsonFilePath
 ```
-New-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> [-ServiceGroupId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityUsagePlan
-```
-New-AzResiliencyEnrollment -Name <String> -UsagePlanInputObject <IResiliencyIdentity> -Resource <IEnrollment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -UsagePlanName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityUsagePlanExpanded
 ```
 New-AzResiliencyEnrollment -Name <String> -UsagePlanInputObject <IResiliencyIdentity>
- [-ServiceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-ServiceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityUsagePlan
+```
+New-AzResiliencyEnrollment -Name <String> -UsagePlanInputObject <IResiliencyIdentity> -Resource <IEnrollment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### Create
 ```
-New-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> -UsagePlanName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -UsagePlanName <String> -Resource <IEnrollment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### CreateViaIdentityExpanded
 ```
-New-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> -UsagePlanName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> [-ServiceGroupId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> -Resource <IEnrollment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,27 +73,12 @@ Create an Enrollment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enroll a service group in a usage plan
 ```powershell
-{{ Add code here }}
+New-AzResiliencyEnrollment -ResourceGroupName contoso-rg -UsagePlanName contoso-usage-plan -Name contoso-enrollment -ServiceGroupId "/providers/Microsoft.Management/serviceGroups/contoso-sg"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Enrolls service group `contoso-sg` in usage plan `contoso-usage-plan`.
 
 ## PARAMETERS
 
@@ -130,7 +118,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -175,7 +163,7 @@ The name of the enrollment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityUsagePlan, CreateViaIdentityUsagePlanExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityUsagePlanExpanded, CreateViaIdentityUsagePlan, Create
 Aliases: EnrollmentName
 
 Required: True
@@ -205,7 +193,7 @@ An enrollment that links a usage plan to a service group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IEnrollment
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityUsagePlan
+Parameter Sets: CreateViaIdentityUsagePlan, Create, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -221,7 +209,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: True
@@ -236,7 +224,7 @@ ARM resource identifier of the service group associated with this usage plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityUsagePlanExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityUsagePlanExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -252,7 +240,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: False
@@ -267,7 +255,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CreateViaIdentityUsagePlan, CreateViaIdentityUsagePlanExpanded
+Parameter Sets: CreateViaIdentityUsagePlanExpanded, CreateViaIdentityUsagePlan
 Aliases:
 
 Required: True
@@ -282,7 +270,7 @@ The name of the usage plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: True
@@ -339,4 +327,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

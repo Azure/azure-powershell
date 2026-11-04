@@ -40,15 +40,15 @@ service-name: Resiliency
 subject-prefix: Resiliency
 
 directive:
-  # REQUIRED TO COMPILE - not a style choice. autorest.powershell 4.0.758 mis-generates
-  # the discriminated DrillProperties subtypes from the flattened errorDetails property,
-  # emitting colliding ErrorDetail / ErrorDetails members on RegionalDrillProperties and
-  # ZonalDrillProperties that fail to satisfy IDrillProperties (CS0738/CS0535/CS9333/CS0539).
-  # The property is readOnly; failure detail still surfaces via the operation error response.
+  # REQUIRED TO COMPILE. autorest.powershell 4.0.758 mis-generates the discriminated
+  # DrillProperties subtypes from the flattened errorDetails property, emitting colliding
+  # ErrorDetail / ErrorDetails members on RegionalDrillProperties and ZonalDrillProperties
+  # that fail to satisfy IDrillProperties (CS0738/CS0535/CS9333/CS0539). Renaming the
+  # client-side property avoids the collision while keeping the error details on Drill.
   - from: swagger-document
-    where: $.definitions.DrillProperties.properties
+    where: $.definitions.DrillProperties.properties.errorDetails
     transform: >-
-      delete $["errorDetails"];
+      $["x-ms-client-name"] = "DrillErrorDetail";
 
   # Action-style POSTs normalize onto a single subject per operation group, so their
   # differing request bodies collide on one -Body parameter and Export-ProxyCmdlet

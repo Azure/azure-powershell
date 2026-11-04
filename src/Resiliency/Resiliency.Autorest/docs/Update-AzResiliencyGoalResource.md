@@ -69,27 +69,12 @@ Update goal resources under a goal assignment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the resources of a goal assignment
 ```powershell
-{{ Add code here }}
+Update-AzResiliencyGoalResource -ServiceGroupName contoso-sg -GoalAssignmentName contoso-zonal-goal -Resource @(@{ ResourceArmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Compute/virtualMachines/contoso-vm" })
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the resources evaluated by the goal assignment.
 
 ## PARAMETERS
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencyrecoveryjobresource
 schema: 2.0.0
@@ -15,18 +15,21 @@ Get a RecoveryJobResource
 ### List (Default)
 ```
 Get-AzResiliencyRecoveryJobResource -RecoveryJobName <String> -RecoveryPlanName <String>
- -ServiceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ServiceGroupName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### Get
+### GetViaIdentityServiceGroup
 ```
 Get-AzResiliencyRecoveryJobResource -Name <String> -RecoveryJobName <String> -RecoveryPlanName <String>
- -ServiceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GetViaIdentityRecoveryPlan
 ```
-Get-AzResiliencyRecoveryJobResource -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+Get-AzResiliencyRecoveryJobResource -Name <String> -RecoveryJobName <String>
+ -RecoveryPlanInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -36,16 +39,17 @@ Get-AzResiliencyRecoveryJobResource -Name <String> -RecoveryJobInputObject <IRes
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityRecoveryPlan
-```
-Get-AzResiliencyRecoveryJobResource -Name <String> -RecoveryJobName <String>
- -RecoveryPlanInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityServiceGroup
+### Get
 ```
 Get-AzResiliencyRecoveryJobResource -Name <String> -RecoveryJobName <String> -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ServiceGroupName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzResiliencyRecoveryJobResource -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,27 +57,19 @@ Get a RecoveryJobResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the resources of a recovery job
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryJobResource -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -RecoveryJobName contoso-recovery-job
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the resources processed by recovery job `contoso-recovery-job`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a recovery job resource
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryJobResource -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -RecoveryJobName contoso-recovery-job -Name contoso-recovery-job-resource
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a single recovery job resource.
 
 ## PARAMETERS
 
@@ -113,7 +109,7 @@ The unique name (GUID) of the recovery job resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityRecoveryJob, GetViaIdentityRecoveryPlan, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, GetViaIdentityRecoveryPlan, GetViaIdentityRecoveryJob, Get
 Aliases: RecoveryJobResourceName
 
 Required: True
@@ -143,7 +139,7 @@ The unique name (GUID) of the recovery job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityRecoveryPlan, GetViaIdentityServiceGroup, List
+Parameter Sets: List, GetViaIdentityServiceGroup, GetViaIdentityRecoveryPlan, Get
 Aliases:
 
 Required: True
@@ -173,7 +169,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup, List
+Parameter Sets: List, GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -203,7 +199,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -227,4 +223,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

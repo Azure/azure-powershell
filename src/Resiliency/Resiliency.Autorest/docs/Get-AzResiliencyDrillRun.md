@@ -46,27 +46,19 @@ Get a DrillRun
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the runs of a drill
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrillRun -ServiceGroupName contoso-sg -DrillName contoso-zonal-drill
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists all runs of drill `contoso-zonal-drill`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a drill run
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrillRun -ServiceGroupName contoso-sg -DrillName contoso-zonal-drill -Name contoso-drill-run
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets drill run `contoso-drill-run`.
 
 ## PARAMETERS
 

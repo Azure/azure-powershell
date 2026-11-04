@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencydrillrun
 schema: 2.0.0
@@ -18,27 +18,28 @@ Get-AzResiliencyDrillRun -DrillName <String> -ServiceGroupName <String> [-Defaul
  [<CommonParameters>]
 ```
 
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzResiliencyDrillRun -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentityDrill
 ```
-Get-AzResiliencyDrillRun -DrillInputObject <IResiliencyIdentity> -Name <String> [-DefaultProfile <PSObject>]
+Get-AzResiliencyDrillRun -Name <String> -DrillInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetViaIdentityServiceGroup
+### GetViaIdentity
 ```
-Get-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResiliencyDrillRun -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,27 +47,19 @@ Get a DrillRun
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the runs of a drill
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrillRun -ServiceGroupName contoso-sg -DrillName contoso-zonal-drill
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists all runs of drill `contoso-zonal-drill`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a drill run
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrillRun -ServiceGroupName contoso-sg -DrillName contoso-zonal-drill -Name contoso-drill-run
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets drill run `contoso-drill-run`.
 
 ## PARAMETERS
 
@@ -106,7 +99,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup, List
+Parameter Sets: List, GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -136,7 +129,7 @@ The name of the DrillRun (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityDrill, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, Get, GetViaIdentityDrill
 Aliases: DrillRunName
 
 Required: True
@@ -166,7 +159,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -190,4 +183,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

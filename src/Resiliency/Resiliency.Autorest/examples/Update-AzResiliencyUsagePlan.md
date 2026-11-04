@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the tags of a usage plan
 ```powershell
-{{ Add code here }}
+Update-AzResiliencyUsagePlan -ResourceGroupName contoso-rg -Name contoso-usage-plan -Tag @{ env = "test"; owner = "sre" }
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Updates the tags of an existing usage plan.

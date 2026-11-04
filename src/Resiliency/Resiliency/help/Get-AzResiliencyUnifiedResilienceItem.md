@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencyunifiedresilienceitem
 schema: 2.0.0
@@ -18,6 +18,12 @@ Get-AzResiliencyUnifiedResilienceItem -ServiceGroupName <String> [-SkipToken <St
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyUnifiedResilienceItem -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzResiliencyUnifiedResilienceItem -Name <String> -ServiceGroupName <String> [-DefaultProfile <PSObject>]
@@ -30,38 +36,24 @@ Get-AzResiliencyUnifiedResilienceItem -InputObject <IResiliencyIdentity> [-Defau
  [<CommonParameters>]
 ```
 
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyUnifiedResilienceItem -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get a UnifiedResilienceItem
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the resilience items of a service group
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyUnifiedResilienceItem -ServiceGroupName contoso-sg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the unified resilience items of service group `contoso-sg`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a resilience item
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyUnifiedResilienceItem -ServiceGroupName contoso-sg -Name contoso-resilience-item
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a single unified resilience item.
 
 ## PARAMETERS
 
@@ -101,7 +93,7 @@ The name of the unified resilience item.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, Get
 Aliases: UnifiedResilienceItemName
 
 Required: True
@@ -131,7 +123,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -185,4 +177,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

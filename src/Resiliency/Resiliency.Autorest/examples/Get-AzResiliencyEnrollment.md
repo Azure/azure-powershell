@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: List enrollments of a usage plan
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyEnrollment -ResourceGroupName contoso-rg -UsagePlanName contoso-usage-plan
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists all service group enrollments under usage plan `contoso-usage-plan`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get an enrollment
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyEnrollment -ResourceGroupName contoso-rg -UsagePlanName contoso-usage-plan -Name contoso-enrollment
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets enrollment `contoso-enrollment`.

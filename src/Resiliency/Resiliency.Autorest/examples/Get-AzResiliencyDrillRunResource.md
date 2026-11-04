@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the resources of a drill run
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrillRunResource -ServiceGroupName contoso-sg -DrillName contoso-zonal-drill -DrillRunName contoso-drill-run
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the resources of drill run `contoso-drill-run`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a drill run resource
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrillRunResource -ServiceGroupName contoso-sg -DrillName contoso-zonal-drill -DrillRunName contoso-drill-run -Name contoso-drill-run-resource
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets a single drill run resource.

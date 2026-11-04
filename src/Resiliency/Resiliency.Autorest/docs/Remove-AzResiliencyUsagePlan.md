@@ -29,27 +29,12 @@ Delete a UsagePlan
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a usage plan
 ```powershell
-{{ Add code here }}
+Remove-AzResiliencyUsagePlan -ResourceGroupName contoso-rg -Name contoso-usage-plan
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes usage plan `contoso-usage-plan`.
 
 ## PARAMETERS
 

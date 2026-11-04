@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencydrillrunresource
 schema: 2.0.0
@@ -18,10 +18,30 @@ Get-AzResiliencyDrillRunResource -DrillName <String> -DrillRunName <String> -Ser
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyDrillRunResource -DrillName <String> -DrillRunName <String> -Name <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzResiliencyDrillRunResource -DrillName <String> -DrillRunName <String> -Name <String>
- -ServiceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ServiceGroupName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityDrill
+```
+Get-AzResiliencyDrillRunResource -DrillRunName <String> -Name <String> -DrillInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityDrillRun
+```
+Get-AzResiliencyDrillRunResource -Name <String> -DrillRunInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -30,50 +50,24 @@ Get-AzResiliencyDrillRunResource -InputObject <IResiliencyIdentity> [-DefaultPro
  [<CommonParameters>]
 ```
 
-### GetViaIdentityDrill
-```
-Get-AzResiliencyDrillRunResource -DrillInputObject <IResiliencyIdentity> -DrillRunName <String> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityDrillRun
-```
-Get-AzResiliencyDrillRunResource -DrillRunInputObject <IResiliencyIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyDrillRunResource -DrillName <String> -DrillRunName <String> -Name <String>
- -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get a DrillRunResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the resources of a drill run
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrillRunResource -ServiceGroupName contoso-sg -DrillName contoso-zonal-drill -DrillRunName contoso-drill-run
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the resources of drill run `contoso-drill-run`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a drill run resource
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrillRunResource -ServiceGroupName contoso-sg -DrillName contoso-zonal-drill -DrillRunName contoso-drill-run -Name contoso-drill-run-resource
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a single drill run resource.
 
 ## PARAMETERS
 
@@ -113,7 +107,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup, List
+Parameter Sets: List, GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -143,7 +137,7 @@ The name of the DrillRun (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityDrill, GetViaIdentityServiceGroup, List
+Parameter Sets: List, GetViaIdentityServiceGroup, Get, GetViaIdentityDrill
 Aliases:
 
 Required: True
@@ -173,7 +167,7 @@ The unique name (GUID) of the recovery job resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityDrill, GetViaIdentityDrillRun, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, Get, GetViaIdentityDrill, GetViaIdentityDrillRun
 Aliases: DrillRunResourceName
 
 Required: True
@@ -203,7 +197,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -227,4 +221,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

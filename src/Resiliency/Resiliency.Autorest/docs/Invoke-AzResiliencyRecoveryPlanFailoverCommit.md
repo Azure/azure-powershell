@@ -37,27 +37,13 @@ This action triggers the failover commit operation on the recovery orchestration
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Commit a failover
 ```powershell
-{{ Add code here }}
+Invoke-AzResiliencyRecoveryPlanFailoverCommit -RecoveryPlanName contoso-recovery-plan -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Commits the completed failover of the recovery plan.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/invoke-azresiliencyrecoveryjobretry
 schema: 2.0.0
@@ -15,28 +15,29 @@ This action retries the ongoing recovery orchestration job for resources that fa
 ### Retry (Default)
 ```
 Invoke-AzResiliencyRecoveryJobRetry -RecoveryJobName <String> -RecoveryPlanName <String>
- -ServiceGroupName <String> -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### RetryViaIdentity
-```
-Invoke-AzResiliencyRecoveryJobRetry -InputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RetryViaIdentityRecoveryPlan
-```
-Invoke-AzResiliencyRecoveryJobRetry -RecoveryJobName <String> -RecoveryPlanInputObject <IResiliencyIdentity>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ServiceGroupName <String> -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RetryViaIdentityServiceGroup
 ```
 Invoke-AzResiliencyRecoveryJobRetry -RecoveryJobName <String> -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RetryViaIdentityRecoveryPlan
+```
+Invoke-AzResiliencyRecoveryJobRetry -RecoveryJobName <String> -RecoveryPlanInputObject <IResiliencyIdentity>
+ -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RetryViaIdentity
+```
+Invoke-AzResiliencyRecoveryJobRetry -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,27 +45,13 @@ This action retries the ongoing recovery orchestration job for resources that fa
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Retry a failed recovery job
 ```powershell
-{{ Add code here }}
+Invoke-AzResiliencyRecoveryJobRetry -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -RecoveryJobName contoso-recovery-job -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Retries a failed recovery job.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 
@@ -149,7 +136,7 @@ The unique name (GUID) of the recovery job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Retry, RetryViaIdentityRecoveryPlan, RetryViaIdentityServiceGroup
+Parameter Sets: Retry, RetryViaIdentityServiceGroup, RetryViaIdentityRecoveryPlan
 Aliases:
 
 Required: True
@@ -264,4 +251,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

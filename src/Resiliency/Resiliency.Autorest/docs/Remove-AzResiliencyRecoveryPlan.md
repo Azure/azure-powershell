@@ -35,27 +35,12 @@ Delete a RecoveryPlan
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a recovery plan
 ```powershell
-{{ Add code here }}
+Remove-AzResiliencyRecoveryPlan -ServiceGroupName contoso-sg -Name contoso-recovery-plan
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes recovery plan `contoso-recovery-plan`.
 
 ## PARAMETERS
 

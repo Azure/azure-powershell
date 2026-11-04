@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/remove-azresiliencyusageplan
 schema: 2.0.0
@@ -15,13 +15,14 @@ Delete a UsagePlan
 ### Delete (Default)
 ```
 Remove-AzResiliencyUsagePlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzResiliencyUsagePlan -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzResiliencyUsagePlan -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,27 +30,12 @@ Delete a UsagePlan
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a usage plan
 ```powershell
-{{ Add code here }}
+Remove-AzResiliencyUsagePlan -ResourceGroupName contoso-rg -Name contoso-usage-plan
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes usage plan `contoso-usage-plan`.
 
 ## PARAMETERS
 
@@ -221,4 +207,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

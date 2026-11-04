@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: List drills of a service group
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrill -ServiceGroupName contoso-sg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists all drills of service group `contoso-sg`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a drill
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyDrill -ServiceGroupName contoso-sg -Name contoso-zonal-drill
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets drill `contoso-zonal-drill`.

@@ -86,27 +86,13 @@ This enables the user to mark this stage as complete, disabling further retries 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Mark a drill run stage as complete
 ```powershell
-{{ Add code here }}
+Complete-AzResiliencyDrillRun -DrillName contoso-zonal-drill -ServiceGroupName contoso-sg -Name contoso-drill-run -OperationId (New-Guid).Guid -DrillRunStage Failover
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Marks the failover stage of the drill run as complete, so it is not retried.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

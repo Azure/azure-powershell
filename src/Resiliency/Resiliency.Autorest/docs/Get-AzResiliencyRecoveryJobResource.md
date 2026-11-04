@@ -53,27 +53,19 @@ Get a RecoveryJobResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the resources of a recovery job
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryJobResource -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -RecoveryJobName contoso-recovery-job
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists the resources processed by recovery job `contoso-recovery-job`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a recovery job resource
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryJobResource -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -RecoveryJobName contoso-recovery-job -Name contoso-recovery-job-resource
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a single recovery job resource.
 
 ## PARAMETERS
 

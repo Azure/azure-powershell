@@ -54,6 +54,7 @@
         "parameterSets": [
           {
             "parameters": [
+              "-OperationId <String>",
               "-RecoveryJobName <String>",
               "-RecoveryPlanName <String>",
               "-ServiceGroupName <String>"
@@ -65,6 +66,10 @@
         {
           "description": "This action retries the ongoing recovery orchestration job for resources that failed in previous attempts.",
           "parameters": [
+            {
+              "name": "-OperationId",
+              "value": "(New-Guid).Guid"
+            },
             {
               "name": "-RecoveryJobName",
               "value": "[Path.recoveryJobName]"

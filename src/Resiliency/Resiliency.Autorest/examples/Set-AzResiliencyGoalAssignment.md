@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Replace a goal assignment
 ```powershell
-{{ Add code here }}
+Set-AzResiliencyGoalAssignment -ServiceGroupName contoso-sg -Name contoso-zonal-goal -RequireZonalResiliency
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Replaces the goal assignment with the supplied definition (PUT).

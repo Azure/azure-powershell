@@ -41,27 +41,19 @@ Get a RecoveryPlan
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List recovery plans of a service group
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryPlan -ServiceGroupName contoso-sg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists all recovery plans of service group `contoso-sg`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a recovery plan
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyRecoveryPlan -ServiceGroupName contoso-sg -Name contoso-recovery-plan
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets recovery plan `contoso-recovery-plan`.
 
 ## PARAMETERS
 

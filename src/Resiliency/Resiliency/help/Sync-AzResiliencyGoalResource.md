@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/sync-azresiliencygoalresource
 schema: 2.0.0
@@ -16,19 +16,21 @@ This operation scans for new resources under the scope of the assignment.
 ### Sync (Default)
 ```
 Sync-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SyncViaIdentity
-```
-Sync-AzResiliencyGoalResource -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SyncViaIdentityServiceGroup
 ```
 Sync-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupInputObject <IResiliencyIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SyncViaIdentity
+```
+Sync-AzResiliencyGoalResource -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,27 +39,12 @@ This operation scans for new resources under the scope of the assignment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Refresh the resources of a goal assignment
 ```powershell
-{{ Add code here }}
+Sync-AzResiliencyGoalResource -ServiceGroupName contoso-sg -GoalAssignmentName contoso-zonal-goal
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Re-evaluates the service group members and refreshes the resources of the goal assignment.
 
 ## PARAMETERS
 
@@ -212,4 +199,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

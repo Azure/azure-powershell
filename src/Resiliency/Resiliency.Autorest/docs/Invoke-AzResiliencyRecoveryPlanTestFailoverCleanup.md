@@ -72,27 +72,13 @@ This action triggers the test failover cleanup operation on the recovery orchest
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Clean up a test failover
 ```powershell
-{{ Add code here }}
+Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -RecoveryPlanName contoso-recovery-plan -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid -Comment "Test failover verified."
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Cleans up the resources created by the test failover.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

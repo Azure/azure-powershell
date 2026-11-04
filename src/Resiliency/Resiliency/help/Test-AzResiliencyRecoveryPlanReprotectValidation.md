@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/test-azresiliencyrecoveryplanreprotectvalidation
 schema: 2.0.0
@@ -16,35 +16,21 @@ This action checks if the recovery orchestration plan is eligible for reprotect 
 ```
 Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName <String> -ServiceGroupName <String>
  -OperationId <String> [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Test
+### TestViaJsonString
 ```
 Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -Body <IReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### TestViaIdentity
+### TestViaJsonFilePath
 ```
-Test-AzResiliencyRecoveryPlanReprotectValidation -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### TestViaIdentityExpanded
-```
-Test-AzResiliencyRecoveryPlanReprotectValidation -InputObject <IResiliencyIdentity> -OperationId <String>
- [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### TestViaIdentityServiceGroup
-```
-Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IReprotectRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TestViaIdentityServiceGroupExpanded
@@ -52,21 +38,36 @@ Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName <String>
 Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
  [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### TestViaJsonFilePath
+### TestViaIdentityServiceGroup
 ```
-Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IReprotectRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### TestViaJsonString
+### Test
 ```
 Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -Body <IReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentityExpanded
+```
+Test-AzResiliencyRecoveryPlanReprotectValidation -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentity
+```
+Test-AzResiliencyRecoveryPlanReprotectValidation -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,27 +75,13 @@ This action checks if the recovery orchestration plan is eligible for reprotect 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate a reprotect
 ```powershell
-{{ Add code here }}
+Test-AzResiliencyRecoveryPlanReprotectValidation -RecoveryPlanName contoso-recovery-plan -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Validates that the failed-over resources can be reprotected.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 
@@ -118,7 +105,7 @@ Reprotect post action request.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IReprotectRequest
-Parameter Sets: Test, TestViaIdentity, TestViaIdentityServiceGroup
+Parameter Sets: TestViaIdentityServiceGroup, Test, TestViaIdentity
 Aliases:
 
 Required: True
@@ -149,7 +136,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: TestViaIdentity, TestViaIdentityExpanded
+Parameter Sets: TestViaIdentityExpanded, TestViaIdentity
 Aliases:
 
 Required: True
@@ -224,7 +211,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded, TestViaIdentityServiceGroup, TestViaIdentityServiceGroupExpanded, TestViaJsonFilePath, TestViaJsonString
+Parameter Sets: TestExpanded, TestViaJsonString, TestViaJsonFilePath, TestViaIdentityServiceGroupExpanded, TestViaIdentityServiceGroup, Test
 Aliases:
 
 Required: True
@@ -240,7 +227,7 @@ If not provided, all qualified resources will be processed.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TestExpanded, TestViaIdentityExpanded, TestViaIdentityServiceGroupExpanded
+Parameter Sets: TestExpanded, TestViaIdentityServiceGroupExpanded, TestViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -255,7 +242,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: TestViaIdentityServiceGroup, TestViaIdentityServiceGroupExpanded
+Parameter Sets: TestViaIdentityServiceGroupExpanded, TestViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -270,7 +257,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded, TestViaJsonFilePath, TestViaJsonString
+Parameter Sets: TestExpanded, TestViaJsonString, TestViaJsonFilePath, Test
 Aliases:
 
 Required: True
@@ -327,4 +314,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

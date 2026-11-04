@@ -41,27 +41,19 @@ Gets a goal assignment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List goal assignments of a service group
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyGoalAssignment -ServiceGroupName contoso-sg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists all goal assignments of service group `contoso-sg`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a goal assignment
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyGoalAssignment -ServiceGroupName contoso-sg -Name contoso-zonal-goal
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets goal assignment `contoso-zonal-goal`.
 
 ## PARAMETERS
 

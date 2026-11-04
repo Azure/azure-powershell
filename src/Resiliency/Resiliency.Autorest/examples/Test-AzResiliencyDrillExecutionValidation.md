@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Validate that a drill can run
 ```powershell
-{{ Add code here }}
+Test-AzResiliencyDrillExecutionValidation -DrillName contoso-zonal-drill -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Checks that the drill and its resources are ready to run. `-OperationId` is a client-generated GUID that identifies this long-running operation.

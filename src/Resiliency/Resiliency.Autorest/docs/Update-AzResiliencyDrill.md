@@ -94,27 +94,12 @@ Update a Drill
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the identity of a drill
 ```powershell
-{{ Add code here }}
+Update-AzResiliencyDrill -ServiceGroupName contoso-sg -Name contoso-zonal-drill -EnableSystemAssignedIdentity $true
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Enables the system-assigned managed identity on an existing drill.
 
 ## PARAMETERS
 

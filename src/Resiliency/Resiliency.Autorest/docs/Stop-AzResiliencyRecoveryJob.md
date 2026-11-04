@@ -86,27 +86,13 @@ This action attempts to cancel the ongoing recovery orchestration job.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Cancel a recovery job
 ```powershell
-{{ Add code here }}
+Stop-AzResiliencyRecoveryJob -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -Name contoso-recovery-job -OperationId (New-Guid).Guid -Description "Cancelled by operator."
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Cancels a running recovery job.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

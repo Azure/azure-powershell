@@ -36,27 +36,13 @@ This triggers detection of any drifts from the desired state of Resources and RB
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resync drill readiness
 ```powershell
-{{ Add code here }}
+Sync-AzResiliencyDrillReadiness -DrillName contoso-zonal-drill -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Resyncs the drill resources and re-runs the readiness check.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

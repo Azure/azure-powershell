@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencygoalassignment
 schema: 2.0.0
@@ -18,6 +18,12 @@ Get-AzResiliencyGoalAssignment -ServiceGroupName <String> [-SkipToken <String>] 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> [-DefaultProfile <PSObject>]
@@ -30,38 +36,24 @@ Get-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> [-DefaultProfi
  [<CommonParameters>]
 ```
 
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets a goal assignment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List goal assignments of a service group
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyGoalAssignment -ServiceGroupName contoso-sg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists all goal assignments of service group `contoso-sg`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a goal assignment
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyGoalAssignment -ServiceGroupName contoso-sg -Name contoso-zonal-goal
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets goal assignment `contoso-zonal-goal`.
 
 ## PARAMETERS
 
@@ -101,7 +93,7 @@ The name of the goal assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, Get
 Aliases: GoalAssignmentName
 
 Required: True
@@ -131,7 +123,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -185,4 +177,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

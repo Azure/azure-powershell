@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a usage plan
 ```powershell
-{{ Add code here }}
+New-AzResiliencyUsagePlan -ResourceGroupName contoso-rg -Name contoso-usage-plan -Location eastus2 -PlanType Standard
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Creates a Standard resiliency usage plan in East US 2.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create a usage plan with tags
 ```powershell
-{{ Add code here }}
+New-AzResiliencyUsagePlan -ResourceGroupName contoso-rg -Name contoso-usage-plan -Location eastus2 -PlanType Standard -Tag @{ env = "prod" }
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Creates a usage plan and tags it.

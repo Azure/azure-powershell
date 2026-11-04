@@ -88,27 +88,13 @@ This initiates a new Reprotect operation on this Drill Run.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Reprotect a drill run
 ```powershell
-{{ Add code here }}
+Invoke-AzResiliencyDrillRunReprotect -DrillName contoso-zonal-drill -DrillRunName contoso-drill-run -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Starts the reprotect stage of the drill run.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

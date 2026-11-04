@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: End a drill with an attestation
 ```powershell
-{{ Add code here }}
+Stop-AzResiliencyDrill -ServiceGroupName contoso-sg -Name contoso-zonal-drill -OperationId (New-Guid).Guid -Attestation Success -AttestationNote "Workload stayed available during the zone outage."
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Ends the drill and records whether it succeeded. `-OperationId` is a client-generated GUID that identifies this long-running operation.

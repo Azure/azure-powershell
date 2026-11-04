@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Retry a failed recovery job
 ```powershell
-{{ Add code here }}
+Invoke-AzResiliencyRecoveryJobRetry -ServiceGroupName contoso-sg -RecoveryPlanName contoso-recovery-plan -RecoveryJobName contoso-recovery-job -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Retries a failed recovery job. `-OperationId` is a client-generated GUID that identifies this long-running operation.

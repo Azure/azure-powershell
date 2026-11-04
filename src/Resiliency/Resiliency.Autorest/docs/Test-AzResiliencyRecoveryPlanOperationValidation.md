@@ -73,27 +73,13 @@ This action checks if the recovery orchestration plan is eligible for operations
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate a recovery operation
 ```powershell
-{{ Add code here }}
+Test-AzResiliencyRecoveryPlanOperationValidation -RecoveryPlanName contoso-recovery-plan -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid -OperationName Failover
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Validates that the failover operation can run on the recovery plan.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

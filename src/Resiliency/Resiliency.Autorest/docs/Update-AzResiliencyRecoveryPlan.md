@@ -66,27 +66,12 @@ Update a RecoveryPlan
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the description of a recovery plan
 ```powershell
-{{ Add code here }}
+Update-AzResiliencyRecoveryPlan -ServiceGroupName contoso-sg -Name contoso-recovery-plan -PlanDescription "Zonal recovery for contoso production"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the description of an existing recovery plan.
 
 ## PARAMETERS
 

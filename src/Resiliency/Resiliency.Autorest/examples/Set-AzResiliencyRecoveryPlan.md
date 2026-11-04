@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Replace a recovery plan
 ```powershell
-{{ Add code here }}
+Set-AzResiliencyRecoveryPlan -ServiceGroupName contoso-sg -Name contoso-recovery-plan -PlanType Zonal -PlanDescription "Zonal recovery for contoso" -UserAssignedIdentity "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/contoso-identity"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Replaces the recovery plan with the supplied definition (PUT).

@@ -43,27 +43,13 @@ This unblocks a Failover workflow that is paused after the Fault stage, to proce
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resume a paused drill run
 ```powershell
-{{ Add code here }}
+Resume-AzResiliencyDrillRun -DrillName contoso-zonal-drill -ServiceGroupName contoso-sg -Name contoso-drill-run -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Resumes a failover workflow that is paused after the fault stage.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

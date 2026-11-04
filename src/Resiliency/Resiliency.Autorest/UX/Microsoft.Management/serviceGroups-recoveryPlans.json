@@ -49,6 +49,7 @@
         "parameterSets": [
           {
             "parameters": [
+              "-OperationId <String>",
               "-RecoveryPlanName <String>",
               "-ServiceGroupName <String>"
             ]
@@ -59,6 +60,10 @@
         {
           "description": "This action triggers the failover commit operation on the recovery orchestration plan for the qualified resources.",
           "parameters": [
+            {
+              "name": "-OperationId",
+              "value": "(New-Guid).Guid"
+            },
             {
               "name": "-RecoveryPlanName",
               "value": "[Path.recoveryPlanName]"
@@ -82,6 +87,7 @@
         "parameterSets": [
           {
             "parameters": [
+              "-OperationId <String>",
               "-RecoveryPlanName <String>",
               "-ServiceGroupName <String>"
             ]
@@ -92,6 +98,10 @@
         {
           "description": "This action finalizes the recovery orchestration plan, ensuring all necessary configurations are in place.",
           "parameters": [
+            {
+              "name": "-OperationId",
+              "value": "(New-Guid).Guid"
+            },
             {
               "name": "-RecoveryPlanName",
               "value": "[Path.recoveryPlanName]"
@@ -148,6 +158,7 @@
         "parameterSets": [
           {
             "parameters": [
+              "-OperationId <String>",
               "-RecoveryPlanName <String>",
               "-ServiceGroupName <String>"
             ]
@@ -158,6 +169,10 @@
         {
           "description": "This action checks if the recovery orchestration plan is eligible for failover commit operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.",
           "parameters": [
+            {
+              "name": "-OperationId",
+              "value": "(New-Guid).Guid"
+            },
             {
               "name": "-RecoveryPlanName",
               "value": "[Path.recoveryPlanName]"
@@ -181,6 +196,7 @@
         "parameterSets": [
           {
             "parameters": [
+              "-OperationId <String>",
               "-RecoveryPlanName <String>",
               "-ServiceGroupName <String>"
             ]
@@ -191,6 +207,10 @@
         {
           "description": "This action performs the necessary readiness check on the recovery orchestration plan to ensure it is in the desired state and eligible for all recovery actions, including all protected resources.",
           "parameters": [
+            {
+              "name": "-OperationId",
+              "value": "(New-Guid).Guid"
+            },
             {
               "name": "-RecoveryPlanName",
               "value": "[Path.recoveryPlanName]"
@@ -214,6 +234,7 @@
         "parameterSets": [
           {
             "parameters": [
+              "-OperationId <String>",
               "-RecoveryPlanName <String>",
               "-ServiceGroupName <String>"
             ]
@@ -224,6 +245,10 @@
         {
           "description": "This action checks if the recovery orchestration plan is eligible for test failover cleanup operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.",
           "parameters": [
+            {
+              "name": "-OperationId",
+              "value": "(New-Guid).Guid"
+            },
             {
               "name": "-RecoveryPlanName",
               "value": "[Path.recoveryPlanName]"

@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the status of an operation
 ```powershell
-{{ Add code here }}
+Get-AzResiliencyOperationStatus -Location eastus2 -OperationId 11111111-1111-1111-1111-111111111111
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets the status of a long-running resiliency operation in East US 2.

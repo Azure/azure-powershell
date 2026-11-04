@@ -45,27 +45,12 @@ Update a UsagePlan
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Replace a usage plan
 ```powershell
-{{ Add code here }}
+Set-AzResiliencyUsagePlan -ResourceGroupName contoso-rg -Name contoso-usage-plan -Location eastus2 -PlanType Standard -Tag @{ env = "prod" }
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Replaces the usage plan with the supplied definition (PUT).
 
 ## PARAMETERS
 

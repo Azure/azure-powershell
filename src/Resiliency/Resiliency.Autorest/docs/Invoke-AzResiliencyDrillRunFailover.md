@@ -92,27 +92,13 @@ This initiates a new Failover operation on this Drill Run.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Fail over a drill run
 ```powershell
-{{ Add code here }}
+Invoke-AzResiliencyDrillRunFailover -DrillName contoso-zonal-drill -DrillRunName contoso-drill-run -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid -AutoFailover Enable -ExecutionConfigurationUserConsent Allowed
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Starts the failover stage of the drill run.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/resume-azresiliencydrillrun
 schema: 2.0.0
@@ -14,27 +14,29 @@ This unblocks a Failover workflow that is paused after the Fault stage, to proce
 
 ### Resume (Default)
 ```
-Resume-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Resume-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ResumeViaIdentityServiceGroup
+```
+Resume-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResumeViaIdentityDrill
+```
+Resume-AzResiliencyDrillRun -Name <String> -DrillInputObject <IResiliencyIdentity> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResumeViaIdentity
 ```
 Resume-AzResiliencyDrillRun -InputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResumeViaIdentityDrill
-```
-Resume-AzResiliencyDrillRun -DrillInputObject <IResiliencyIdentity> -Name <String> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResumeViaIdentityServiceGroup
-```
-Resume-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -43,27 +45,13 @@ This unblocks a Failover workflow that is paused after the Fault stage, to proce
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resume a paused drill run
 ```powershell
-{{ Add code here }}
+Resume-AzResiliencyDrillRun -DrillName contoso-zonal-drill -ServiceGroupName contoso-sg -Name contoso-drill-run -OperationId (New-Guid).Guid
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Resumes a failover workflow that is paused after the fault stage.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 
@@ -148,7 +136,7 @@ The name of the DrillRun (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: Resume, ResumeViaIdentityDrill, ResumeViaIdentityServiceGroup
+Parameter Sets: Resume, ResumeViaIdentityServiceGroup, ResumeViaIdentityDrill
 Aliases: DrillRunName
 
 Required: True
@@ -263,4 +251,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

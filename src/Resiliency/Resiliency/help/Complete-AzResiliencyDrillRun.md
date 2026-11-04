@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/complete-azresiliencydrillrun
 schema: 2.0.0
@@ -15,70 +15,71 @@ This enables the user to mark this stage as complete, disabling further retries 
 ### CompleteExpanded (Default)
 ```
 Complete-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String>
- -OperationId <String> -DrillRunStage <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -DrillRunStage <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CompleteViaJsonString
+```
+Complete-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CompleteViaJsonFilePath
+```
+Complete-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CompleteViaIdentityServiceGroupExpanded
+```
+Complete-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -OperationId <String> -DrillRunStage <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CompleteViaIdentityServiceGroup
+```
+Complete-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -OperationId <String> -Body <IMarkAsCompleteRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Complete
 ```
 Complete-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String>
  -OperationId <String> -Body <IMarkAsCompleteRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CompleteViaIdentity
-```
-Complete-AzResiliencyDrillRun -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IMarkAsCompleteRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CompleteViaIdentityDrill
-```
-Complete-AzResiliencyDrillRun -DrillInputObject <IResiliencyIdentity> -Name <String> -OperationId <String>
- -Body <IMarkAsCompleteRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CompleteViaIdentityDrillExpanded
 ```
-Complete-AzResiliencyDrillRun -DrillInputObject <IResiliencyIdentity> -Name <String> -OperationId <String>
- -DrillRunStage <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Complete-AzResiliencyDrillRun -Name <String> -DrillInputObject <IResiliencyIdentity> -OperationId <String>
+ -DrillRunStage <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CompleteViaIdentityDrill
+```
+Complete-AzResiliencyDrillRun -Name <String> -DrillInputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IMarkAsCompleteRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CompleteViaIdentityExpanded
 ```
 Complete-AzResiliencyDrillRun -InputObject <IResiliencyIdentity> -OperationId <String> -DrillRunStage <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CompleteViaIdentityServiceGroup
+### CompleteViaIdentity
 ```
-Complete-AzResiliencyDrillRun -DrillName <String> -Name <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IMarkAsCompleteRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CompleteViaIdentityServiceGroupExpanded
-```
-Complete-AzResiliencyDrillRun -DrillName <String> -Name <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -DrillRunStage <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CompleteViaJsonFilePath
-```
-Complete-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CompleteViaJsonString
-```
-Complete-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Complete-AzResiliencyDrillRun -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IMarkAsCompleteRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,27 +87,13 @@ This enables the user to mark this stage as complete, disabling further retries 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Mark a drill run stage as complete
 ```powershell
-{{ Add code here }}
+Complete-AzResiliencyDrillRun -DrillName contoso-zonal-drill -ServiceGroupName contoso-sg -Name contoso-drill-run -OperationId (New-Guid).Guid -DrillRunStage Failover
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Marks the failover stage of the drill run as complete, so it is not retried.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
 
 ## PARAMETERS
 
@@ -130,7 +117,7 @@ Request body for MarkAsComplete API.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IMarkAsCompleteRequest
-Parameter Sets: Complete, CompleteViaIdentity, CompleteViaIdentityDrill, CompleteViaIdentityServiceGroup
+Parameter Sets: CompleteViaIdentityServiceGroup, Complete, CompleteViaIdentityDrill, CompleteViaIdentity
 Aliases:
 
 Required: True
@@ -161,7 +148,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CompleteViaIdentityDrill, CompleteViaIdentityDrillExpanded
+Parameter Sets: CompleteViaIdentityDrillExpanded, CompleteViaIdentityDrill
 Aliases:
 
 Required: True
@@ -176,7 +163,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Complete, CompleteExpanded, CompleteViaIdentityServiceGroup, CompleteViaIdentityServiceGroupExpanded, CompleteViaJsonFilePath, CompleteViaJsonString
+Parameter Sets: CompleteExpanded, CompleteViaJsonString, CompleteViaJsonFilePath, CompleteViaIdentityServiceGroupExpanded, CompleteViaIdentityServiceGroup, Complete
 Aliases:
 
 Required: True
@@ -191,7 +178,7 @@ State of the Drill Run.
 
 ```yaml
 Type: System.String
-Parameter Sets: CompleteExpanded, CompleteViaIdentityDrillExpanded, CompleteViaIdentityExpanded, CompleteViaIdentityServiceGroupExpanded
+Parameter Sets: CompleteExpanded, CompleteViaIdentityServiceGroupExpanded, CompleteViaIdentityDrillExpanded, CompleteViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -206,7 +193,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CompleteViaIdentity, CompleteViaIdentityExpanded
+Parameter Sets: CompleteViaIdentityExpanded, CompleteViaIdentity
 Aliases:
 
 Required: True
@@ -251,7 +238,7 @@ The name of the DrillRun (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: Complete, CompleteExpanded, CompleteViaIdentityDrill, CompleteViaIdentityDrillExpanded, CompleteViaIdentityServiceGroup, CompleteViaIdentityServiceGroupExpanded, CompleteViaJsonFilePath, CompleteViaJsonString
+Parameter Sets: CompleteExpanded, CompleteViaJsonString, CompleteViaJsonFilePath, CompleteViaIdentityServiceGroupExpanded, CompleteViaIdentityServiceGroup, Complete, CompleteViaIdentityDrillExpanded, CompleteViaIdentityDrill
 Aliases: DrillRunName
 
 Required: True
@@ -296,7 +283,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CompleteViaIdentityServiceGroup, CompleteViaIdentityServiceGroupExpanded
+Parameter Sets: CompleteViaIdentityServiceGroupExpanded, CompleteViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -311,7 +298,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Complete, CompleteExpanded, CompleteViaJsonFilePath, CompleteViaJsonString
+Parameter Sets: CompleteExpanded, CompleteViaJsonString, CompleteViaJsonFilePath, Complete
 Aliases:
 
 Required: True
@@ -368,4 +355,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
