@@ -12,6 +12,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deploy-AzEdgeActionVersionCod
       $currentPath = Split-Path -Path $currentPath -Parent
   }
   . ($mockingPath | Select-Object -First 1).FullName
+  $null = [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.PipelineMock]::Blacklist.Add('x-ms-policy-external-evaluations')
 }
 
 Describe 'Deploy-AzEdgeActionVersionCode' {
@@ -140,6 +141,27 @@ Describe 'Deploy-AzEdgeActionVersionCode' {
         
         # Clean up version
         Remove-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version
+    }
+
+    It 'DeployFromJavaScriptFile-AcquirePolicyToken' {
+        $version = 'vpolicy'
+        New-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup `
+            -EdgeActionName $script:EdgeActionName -Version $version `
+            -DeploymentType 'file' -IsDefaultVersion $false -Location 'global'
+        $observation = @{ Writes = 0 }
+        $observer = New-EdgeActionTestPolicyTokenObserver $observation
+        $result = Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup `
+            -EdgeActionName $script:EdgeActionName -Version $version `
+            -FilePath $script:TestFilePath -AcquirePolicyToken -HttpPipelineAppend $observer
+        $result.Name | Should -Be $version
+        $status = Get-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup `
+            -EdgeActionName $script:EdgeActionName -Version $version
+        $status.ProvisioningState | Should -Be 'Succeeded'
+        $status.ValidationStatus | Should -Be 'Succeeded'
+        if ($TestMode -ne 'playback') {
+            $observation.Writes | Should -BeGreaterThan 0
+        }
+        # The existing scenario teardown owns cleanup, including failed deployments.
     }
 
     It 'DeployViaJsonString' -skip {

@@ -12,6 +12,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Switch-AzEdgeActionVersionDef
       $currentPath = Split-Path -Path $currentPath -Parent
   }
   . ($mockingPath | Select-Object -First 1).FullName
+  $null = [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.PipelineMock]::Blacklist.Add('x-ms-policy-external-evaluations')
 }
 
 Describe 'Switch-AzEdgeActionVersionDefault' {
@@ -87,6 +88,23 @@ Describe 'Switch-AzEdgeActionVersionDefault' {
         
         $v1After.IsDefaultVersion | Should -Be "False"
         $v2After.IsDefaultVersion | Should -Be "True"
+    }
+
+    It 'Swap-AcquirePolicyToken' {
+        $observation = @{ Writes = 0 }
+        $observer = New-EdgeActionTestPolicyTokenObserver $observation
+        Switch-AzEdgeActionVersionDefault -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName -Version $script:version1 `
+            -AcquirePolicyToken -HttpPipelineAppend $observer
+        $v1 = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName -Version $script:version1
+        $v2 = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName -Version $script:version2
+        $v1.IsDefaultVersion | Should -Be 'True'
+        $v2.IsDefaultVersion | Should -Be 'False'
+        if ($TestMode -ne 'playback') {
+            $observation.Writes | Should -BeGreaterThan 0
+        }
     }
 
     It 'SwapViaIdentityEdgeAction' -skip {
