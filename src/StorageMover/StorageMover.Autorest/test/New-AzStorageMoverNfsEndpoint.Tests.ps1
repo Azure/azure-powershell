@@ -44,13 +44,32 @@ Describe 'New-AzStorageMoverNfsEndpoint' {
         $nfsEndpoint.Property.ProvisioningState | Should -Be "Succeeded"
     }
 
+}
+
+Describe 'New-AzStorageMoverNfsEndpoint RequestContract' -Tag @('PythonParity', 'Offline') {
     It 'CreateExpandedSourceTypeRequest' {
-        # The service does not return sourceType, so this checks the request offline.
-        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
-        $nfsEndpoint = New-AzStorageMoverNfsEndpoint -Name "nfsfsxo" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -Host "10.0.0.5" -Export "/export" -NfsVersion NFSv4_1 -SourceType FSX-EFS
-        $request = $nfsEndpoint.Property.ToJsonString() | ConvertFrom-Json
+        $capture = Invoke-StorageMoverTestRequest -Response @{ properties = @{ endpointType = 'NfsMount' } } -Command {
+            param($pipeline)
+            New-AzStorageMoverNfsEndpoint -Name 'nfsfsxo' -SubscriptionId $env.SubscriptionId -ResourceGroupName 'rg' -StorageMoverName 'mover' -Host '10.0.0.5' -Export '/export' -NfsVersion NFSv4_1 -SourceType FSX-EFS -HttpPipelinePrepend $pipeline
+        }
+        $capture.Requests[0].Method | Should -Be 'PUT'
+        $request = ($capture.Requests[0].Content | ConvertFrom-Json).properties
         $request.nfsVersion | Should -Be "NFSv4_1"
         $request.sourceType | Should -Be "FSX-EFS"
         $request.PSObject.Properties.Name | Should -Not -Contain "endpointKind"
+    }
+}
+
+Describe 'New-AzStorageMoverNfsEndpoint PythonParity' -Tag 'PythonParity' {
+    It 'RejectTargetEndpointKind' {
+        $context = $null
+        try {
+            $context = New-StorageMoverTestContext -Name 'sm-nfs-target-validation'
+            Invoke-StorageMoverTestFailure -Command {
+                New-AzStorageMoverNfsEndpoint @context -Name 'invalid' -Host '10.0.0.1' -Export '/' -EndpointKind Target -ErrorAction Stop
+            }
+        } finally {
+            Remove-StorageMoverTestContext -Context $context
+        }
     }
 }
