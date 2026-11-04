@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: Resiliency cmdlets
 
 ## Az.Resiliency Cmdlets
 
-## Onboarding: Usage Plans
+## Onboarding
 
 ### [Get-AzResiliencyUsagePlan](Get-AzResiliencyUsagePlan.md)
 Get a UsagePlan
@@ -29,8 +29,6 @@ Update a UsagePlan
 ### [Remove-AzResiliencyUsagePlan](Remove-AzResiliencyUsagePlan.md)
 Delete a UsagePlan
 
-## Onboarding: Enrollments
-
 ### [Get-AzResiliencyEnrollment](Get-AzResiliencyEnrollment.md)
 Get an Enrollment.
 
@@ -46,7 +44,7 @@ Update an Enrollment.
 ### [Remove-AzResiliencyEnrollment](Remove-AzResiliencyEnrollment.md)
 Delete an Enrollment.
 
-## Goal Assignments
+## Goal
 
 ### [Get-AzResiliencyGoalAssignment](Get-AzResiliencyGoalAssignment.md)
 Gets a goal assignment.
@@ -67,8 +65,6 @@ Deletes a goal assignment.
 Recommends capacity improvements for resources under the goal assignment's scope.
 Returns AI-powered capacity assessments and recommendations.
 
-## Goal Resources
-
 ### [Get-AzResiliencyGoalResource](Get-AzResiliencyGoalResource.md)
 Gets a goal resource.
 
@@ -79,7 +75,7 @@ Update goal resources under a goal assignment.
 Refreshes the goal resources under a goal assignment.
 This operation scans for new resources under the scope of the assignment.
 
-## Drills
+## Drill
 
 ### [Get-AzResiliencyDrill](Get-AzResiliencyDrill.md)
 Get a Drill
@@ -105,15 +101,11 @@ This returns eligible resource to be faulted or failed over.
 ### [Sync-AzResiliencyDrillReadiness](Sync-AzResiliencyDrillReadiness.md)
 This triggers detection of any drifts from the desired state of Resources and RBAC.
 
-## Drill Resources
-
 ### [Get-AzResiliencyDrillResource](Get-AzResiliencyDrillResource.md)
 Get a DrillResource
 
 ### [Update-AzResiliencyDrillResource](Update-AzResiliencyDrillResource.md)
 This enables the user to include, exclude or update resources from their Drill.
-
-## Drill Runs
 
 ### [Get-AzResiliencyDrillRun](Get-AzResiliencyDrillRun.md)
 Get a DrillRun
@@ -142,12 +134,10 @@ A report that has been finalized is never regenerated.
 This returns a short-lived, read-only URL to download the report for this Drill Run.
 The URL expires at the returned expiryTimestamp and grants access to that single report only.
 
-## Drill Run Resources
-
 ### [Get-AzResiliencyDrillRunResource](Get-AzResiliencyDrillRunResource.md)
 Get a DrillRunResource
 
-## Recovery Plans
+## Recovery Plan
 
 ### [Get-AzResiliencyRecoveryPlan](Get-AzResiliencyRecoveryPlan.md)
 Get a RecoveryPlan
@@ -173,8 +163,6 @@ This action checks if the recovery orchestration plan is eligible for operations
 ### [Update-AzResiliencyRecoveryPlanResource](Update-AzResiliencyRecoveryPlanResource.md)
 This action adds or update the resources to be included in the recovery orchestration plan.
 
-## Recovery Plan Failover
-
 ### [Test-AzResiliencyRecoveryPlanFailoverValidation](Test-AzResiliencyRecoveryPlanFailoverValidation.md)
 This action checks if the recovery orchestration plan is eligible for failover operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
 
@@ -196,8 +184,6 @@ This action triggers the reprotect operation on the recovery orchestration plan 
 ### [Invoke-AzResiliencyRecoveryPlanFinalize](Invoke-AzResiliencyRecoveryPlanFinalize.md)
 This action finalizes the recovery orchestration plan, ensuring all necessary configurations are in place.
 
-## Recovery Plan Test Failover
-
 ### [Test-AzResiliencyRecoveryPlanTestFailoverValidation](Test-AzResiliencyRecoveryPlanTestFailoverValidation.md)
 This action checks if the recovery orchestration plan is eligible for test failover operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
 
@@ -210,12 +196,8 @@ This action checks if the recovery orchestration plan is eligible for test failo
 ### [Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup](Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup.md)
 This action triggers the test failover cleanup operation on the recovery orchestration plan for the qualified resources.
 
-## Recovery Resources
-
 ### [Get-AzResiliencyRecoveryResource](Get-AzResiliencyRecoveryResource.md)
 Get a RecoveryResource
-
-## Recovery Jobs
 
 ### [Get-AzResiliencyRecoveryJob](Get-AzResiliencyRecoveryJob.md)
 Get a RecoveryJob
@@ -228,8 +210,6 @@ This action resumes the ongoing recovery orchestration job that was paused for r
 
 ### [Invoke-AzResiliencyRecoveryJobRetry](Invoke-AzResiliencyRecoveryJobRetry.md)
 This action retries the ongoing recovery orchestration job for resources that failed in previous attempts.
-
-## Recovery Job Resources
 
 ### [Get-AzResiliencyRecoveryJobResource](Get-AzResiliencyRecoveryJobResource.md)
 Get a RecoveryJobResource
