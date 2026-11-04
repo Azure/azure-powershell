@@ -18,23 +18,23 @@ Describe 'Update-AzCdnEndpoint' {
     BeforeAll {
         $script:endpointName = 'e-clipstest310-update'
         $script:origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
-        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
     }
 
     AfterAll {
-        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ErrorAction SilentlyContinue
     }
 
     It 'UpdateExpanded' {
-        Update-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag @{ Tag1 = 11; Tag2 = 22 }
-        $updated = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Update-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -Tag @{ Tag1 = 11; Tag2 = 22 }
+        $updated = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $updated.Tag['Tag1'] | Should -Be '11'
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $endpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         Update-AzCdnEndpoint -Tag @{ Tag1 = 33 } -InputObject $endpoint
-        $updated = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $updated = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $updated.Tag['Tag1'] | Should -Be '33'
     }
 

@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfileSupportedOpti
 
 Describe 'Get-AzCdnProfileSupportedOptimizationType'  {
     It 'List' {
-        Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.ClassicCdnProfileName
+        Get-AzCdnProfile -ResourceGroupName $env.ClassicCdnResourceGroupName -Name $env.ClassicCdnProfileName
 
-        $optimizationType = Get-AzCdnProfileSupportedOptimizationType -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $optimizationType = Get-AzCdnProfileSupportedOptimizationType -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $optimizationType
     }
 }

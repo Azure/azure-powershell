@@ -22,26 +22,26 @@ Describe 'Test-AzCdnEndpointCustomDomain'  {
         $script:customDomainInvalidHostName = 'ps2025-0601-test-domain-invalid.ps.cdne2e.azfdtest.xyz'
         $location = "westus"
         $origin = @{ Name = "origin1"; HostName = "host1.hello.com" }
-        $originId = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:classicCdnEndpointName/origins/$($origin.Name)"
+        $originId = "/subscriptions/$script:subId/resourcegroups/$($env.ClassicCdnResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:classicCdnEndpointName/origins/$($origin.Name)"
         $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET"
         $originGroup = @{ Name = "originGroup1"; healthProbeSetting = $healthProbeParametersObject; Origin = @(@{ Id = $originId }) }
-        $defaultOriginGroup = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:classicCdnEndpointName/origingroups/$($originGroup.Name)"
+        $defaultOriginGroup = "/subscriptions/$script:subId/resourcegroups/$($env.ClassicCdnResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:classicCdnEndpointName/origingroups/$($originGroup.Name)"
 
-        New-AzCdnEndpoint -Name $script:classicCdnEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
+        New-AzCdnEndpoint -Name $script:classicCdnEndpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
             -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup | Out-Null
     }
 
     AfterAll {
-        Remove-AzCdnEndpoint -Name $script:classicCdnEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        Remove-AzCdnEndpoint -Name $script:classicCdnEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ErrorAction SilentlyContinue
     }
 
     It 'ValidateExpanded - valid' {
-        $validateResult = Test-AzCdnEndpointCustomDomain -EndpointName $script:classicCdnEndpointName -HostName $script:customDomainHostName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $validateResult = Test-AzCdnEndpointCustomDomain -EndpointName $script:classicCdnEndpointName -HostName $script:customDomainHostName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $validateResult.CustomDomainValidated | Should -BeTrue
     }
 
     It 'ValidateExpanded - invalid' {
-        $validateResult = Test-AzCdnEndpointCustomDomain -EndpointName $script:classicCdnEndpointName -HostName $script:customDomainInvalidHostName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $validateResult = Test-AzCdnEndpointCustomDomain -EndpointName $script:classicCdnEndpointName -HostName $script:customDomainInvalidHostName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $validateResult.CustomDomainValidated | Should -BeFalse
     }
 

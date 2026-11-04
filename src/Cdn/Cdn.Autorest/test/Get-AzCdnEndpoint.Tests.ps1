@@ -18,25 +18,25 @@ Describe 'Get-AzCdnEndpoint' {
     BeforeAll {
         $script:endpointName = 'e-clipstest310-get'
         $script:origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
-        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
     }
 
     AfterAll {
-        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ErrorAction SilentlyContinue
     }
 
     It 'List' {
-        $endpoints = Get-AzCdnEndpoint -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpoints = Get-AzCdnEndpoint -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $endpoints.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $getEndpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $getEndpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $getEndpoint.Name | Should -Be $script:endpointName
     }
 
     It 'GetViaIdentity' {
-        $getEndpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $getEndpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $getEndpoint2 = Get-AzCdnEndpoint -InputObject $getEndpoint
         $getEndpoint2.Name | Should -Be $script:endpointName
     }

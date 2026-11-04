@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfileResourceUsage
 
 Describe 'Get-AzCdnProfileResourceUsage'  {
     It 'List' {
-        Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.ClassicCdnProfileName
-        $resourceUsage = Get-AzCdnProfileResourceUsage -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Get-AzCdnProfile -ResourceGroupName $env.ClassicCdnResourceGroupName -Name $env.ClassicCdnProfileName
+        $resourceUsage = Get-AzCdnProfileResourceUsage -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
     }
 }

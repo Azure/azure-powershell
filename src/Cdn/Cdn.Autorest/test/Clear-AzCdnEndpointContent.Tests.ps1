@@ -22,26 +22,26 @@ Describe 'Clear-AzCdnEndpointContent' {
         $origin = @{ Name = "origin1"; HostName = "host1.hello.com" }
         Write-Host -ForegroundColor Green "Create endpoint for purge test: $endpointName"
         try {
-            New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName -Location $env.location -Origin $origin | Out-Null
+            New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $profileName -Location $env.location -Origin $origin | Out-Null
 
             $contentPath = @("/movies/*","/pictures/pic1.jpg")
 
             # Purge content on endpoint should succeed
-            Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath
+            Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ContentPath $contentPath
 
             # Purge content on non-existing endpoint should fail
-            { Clear-AzCdnEndpointContent -EndpointName "fakeEndpoint" -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath -ErrorAction Stop } | Should -Throw
+            { Clear-AzCdnEndpointContent -EndpointName "fakeEndpoint" -ProfileName $profileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ContentPath $contentPath -ErrorAction Stop } | Should -Throw
 
             # Purge via ViaIdentity
-            $endpoint = Get-AzCdnEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName
+            $endpoint = Get-AzCdnEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $env.ClassicCdnResourceGroupName
             Clear-AzCdnEndpointContent -ContentPath $contentPath -InputObject $endpoint
 
             # Stop endpoint, purge should fail
-            Stop-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName
-            { Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath -ErrorAction Stop } | Should -Throw
+            Stop-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $profileName
+            { Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ContentPath $contentPath -ErrorAction Stop } | Should -Throw
         }
         finally {
-            Remove-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName -ErrorAction SilentlyContinue
+            Remove-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $profileName -ErrorAction SilentlyContinue
         }
     }
 }

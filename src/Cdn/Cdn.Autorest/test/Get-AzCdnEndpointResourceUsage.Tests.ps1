@@ -15,15 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEndpointResourceUsag
 }
 
 Describe 'Get-AzCdnEndpointResourceUsage'  {
-    It 'List' {
-        # Create endpoint for resource usage testing
-        $endpointName = 'e-resusage01'
-        $profileName = $env.ClassicCdnProfileName
+    BeforeAll {
+        $script:endpointName = 'e-resusage01'
+        $script:profileName = $env.ClassicCdnProfileName
         $origin = @{ Name = "origin1"; HostName = "host1.hello.com" }
         Write-Host -ForegroundColor Green "Create endpoint for resource usage test: $endpointName"
-        New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName -Location $env.location -Origin $origin | Out-Null
+        New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $profileName -Location $env.location -Origin $origin | Out-Null
+    }
 
-        $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName
+    AfterAll {
+        Remove-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $profileName -ErrorAction SilentlyContinue
+    }
+
+    It 'List' {
+        $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $geofilterUsage = $endpointResourceUsages | Where-Object -Property ResourceType -eq 'geofilter'
         
         $endpointResourceUsages.Count | Should -Be 8
@@ -36,15 +41,13 @@ Describe 'Get-AzCdnEndpointResourceUsage'  {
                 Action =  "Allow"
                 CountryCode = "AU"
             })
-        Update-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName -GeoFilter $geofilters
-        $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName
+        Update-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $profileName -GeoFilter $geofilters
+        $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $geofilterUsage = $endpointResourceUsages | Where-Object -Property ResourceType -eq 'geofilter'
 
         $endpointResourceUsages.Count | Should -Be 8
         $geofilterUsage.Limit | Should -Be 25
         $geofilterUsage.CurrentValue | Should -Be 1
 
-        # Cleanup
-        Remove-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName -ErrorAction SilentlyContinue
     }
 }

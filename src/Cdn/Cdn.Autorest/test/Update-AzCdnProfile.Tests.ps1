@@ -16,25 +16,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnProfile'))
 
 Describe 'Update-AzCdnProfile' {
     BeforeAll {
-        $script:profileName = 'cdnpps01-upd'
-        New-AzCdnProfile -SkuName 'Standard_Microsoft' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+        $script:profileName = $env.ClassicCdnProfileName
+        $script:originalTags = $null
+        $profile = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ClassicCdnResourceGroupName
+        $script:originalTags = @{}
+        foreach ($key in $profile.Tag.Keys) {
+            $script:originalTags[$key] = $profile.Tag[$key]
+        }
     }
 
     AfterAll {
-        Remove-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        if ($null -ne $script:originalTags) {
+            Update-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ClassicCdnResourceGroupName -Tag $script:originalTags | Out-Null
+        }
     }
 
     It 'UpdateExpanded' {
-        Update-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Tag @{ Tag1 = 11; Tag2 = 22 }
-        $u = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
-        $u.Tag['Tag1'] | Should -Be '11'
-        $u.Tag['Tag2'] | Should -Be '22'
+        $tags = $script:originalTags.Clone()
+        $tags['AzCdnTestTag'] = '11'
+        Update-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ClassicCdnResourceGroupName -Tag $tags
+        $u = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ClassicCdnResourceGroupName
+        $u.Tag['AzCdnTestTag'] | Should -Be '11'
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $p = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
-        Update-AzCdnProfile -Tag @{ Tag1 = 33 } -InputObject $p
-        $u = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
-        $u.Tag['Tag1'] | Should -Be '33'
+        $p = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ClassicCdnResourceGroupName
+        $tags = $script:originalTags.Clone()
+        $tags['AzCdnTestTag'] = '33'
+        Update-AzCdnProfile -Tag $tags -InputObject $p
+        $u = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ClassicCdnResourceGroupName
+        $u.Tag['AzCdnTestTag'] | Should -Be '33'
     }
 }
