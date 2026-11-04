@@ -1,6 +1,6 @@
 ### Example 1: Unlink an endpoint after deleting the source cache
 ```powershell
-Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1" -PassThru
+Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1" -PassThru
 ```
 
 ```output

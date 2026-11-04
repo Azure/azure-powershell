@@ -128,4 +128,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Undo-AzRedisEnterpriseCacheMigration](Undo-AzRedisEnterpriseCacheMigration.md)
 
-[Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint](Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint.md)
+[Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint](Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint.md)

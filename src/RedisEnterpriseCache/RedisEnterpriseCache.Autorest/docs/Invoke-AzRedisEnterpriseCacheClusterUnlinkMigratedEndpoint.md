@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheunlinkclustermigratedendpoint
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheclusterunlinkmigratedendpoint
 schema: 2.0.0
 ---
 
-# Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint
+# Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint
 
 ## SYNOPSIS
 Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migrated from Azure Cache for Redis Enterprise, removing the source cache endpoint that was redirected to this cluster during migration.
@@ -14,14 +14,14 @@ Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migra
 
 ### Unlink (Default)
 ```
-Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint -ClusterName <String> -ResourceGroupName <String>
+Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UnlinkViaIdentity
 ```
-Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint -InputObject <IRedisEnterpriseCacheIdentity>
+Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint -InputObject <IRedisEnterpriseCacheIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migra
 
 ### Example 1: Unlink an endpoint after an Azure Cache for Redis Enterprise migration
 ```powershell
-Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1" -PassThru
+Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1" -PassThru
 ```
 
 ```output

@@ -99,6 +99,16 @@ directive:
     set:
       subject: Key
   - where:
+      verb: Invoke
+      subject: UnlinkClusterMigratedEndpoint
+    set:
+      subject: ClusterUnlinkMigratedEndpoint
+  - where:
+      verb: Invoke
+      subject: UnlinkMigrationMigratedEndpoint
+    set:
+      subject: MigrationUnlinkMigratedEndpoint
+  - where:
       verb: New
       subject: Key
     set:

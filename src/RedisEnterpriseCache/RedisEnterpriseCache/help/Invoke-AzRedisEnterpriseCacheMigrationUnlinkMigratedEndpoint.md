@@ -1,11 +1,11 @@
 ---
 external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheunlinkmigrationmigratedendpoint
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecachemigrationunlinkmigratedendpoint
 schema: 2.0.0
 ---
 
-# Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint
+# Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint
 
 ## SYNOPSIS
 Unlinks the migrated endpoint from the Azure Managed Redis cluster that was migrated from Azure Cache for Redis, removing the source cache endpoint that was redirected to this cluster during migration.
@@ -14,14 +14,14 @@ Unlinks the migrated endpoint from the Azure Managed Redis cluster that was migr
 
 ### Unlink (Default)
 ```
-Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint -ClusterName <String> -ResourceGroupName <String>
+Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UnlinkViaIdentity
 ```
-Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint -InputObject <IRedisEnterpriseCacheIdentity>
+Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint -InputObject <IRedisEnterpriseCacheIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ Unlinks the migrated endpoint from the Azure Managed Redis cluster that was migr
 
 ### Example 1: Unlink an endpoint after deleting the source cache
 ```powershell
-Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1" -PassThru
+Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1" -PassThru
 ```
 
 ```output

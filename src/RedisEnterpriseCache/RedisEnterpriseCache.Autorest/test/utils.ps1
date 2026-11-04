@@ -109,6 +109,13 @@ $scenarioEnvironments = @{
         Recording = 'AzRedisEnterpriseCacheGeoReplication.Recording.json'
     }
 }
+$playbackEnvironment = Get-Content (Join-Path $PSScriptRoot 'env.json') -Raw | ConvertFrom-Json
+$migrationRecordings = @{
+    'Test-AzRedisEnterpriseCacheMigration' = 'Test-AzRedisEnterpriseCacheMigration.Recording.json'
+    'Start-AzRedisEnterpriseCacheMigration' = 'Start-AzRedisEnterpriseCacheMigration.Recording.json'
+    'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint' = 'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint.Recording.json'
+    'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint' = 'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint.Recording.json'
+}
 
 function Get-SelectedScenarioEnvironments {
     $selectedTestNames = @($TestName)
@@ -124,7 +131,6 @@ function Get-SelectedScenarioEnvironments {
 }
 
 function Invoke-ScenarioRecordingSanitizer {
-    $playbackEnvironment = Get-Content (Join-Path $PSScriptRoot 'env.json') -Raw | ConvertFrom-Json
     foreach ($scenarioEnvironment in Get-SelectedScenarioEnvironments) {
         $environmentPath = Join-Path $PSScriptRoot "env.$($scenarioEnvironment.Environment).json"
         $recordingPath = Join-Path $PSScriptRoot $scenarioEnvironment.Recording
@@ -136,6 +142,33 @@ function Invoke-ScenarioRecordingSanitizer {
             $content = $content.Replace($recordingEnvironment.Tenant, $playbackEnvironment.Tenant)
             $content = $content -replace '(\\?"(?:primaryKey|secondaryKey)\\?"\s*:\s*\\?")[^"\\]*(\\?")', '${1}[Sanitized]${2}'
             Set-Content -Path $path -Value $content -NoNewline
+        }
+    }
+
+    $selectedTestNames = @($TestName)
+    $selectedMigrationRecordings = if ($null -eq $TestName) {
+        @($migrationRecordings.Values)
+    } else {
+        @(
+            $migrationRecordings.Keys |
+                Where-Object { $selectedTestNames -contains $_ } |
+                ForEach-Object { $migrationRecordings[$_] }
+        )
+    }
+
+    if ($selectedMigrationRecordings.Count -gt 0) {
+        $recordingEnvironment = Get-Content (Join-Path $PSScriptRoot 'env.json') -Raw | ConvertFrom-Json
+        foreach ($recording in $selectedMigrationRecordings) {
+            $recordingPath = Join-Path $PSScriptRoot $recording
+            $content = Get-Content $recordingPath -Raw
+            foreach ($property in $playbackEnvironment.PSObject.Properties) {
+                $recordingValue = $recordingEnvironment.($property.Name)
+                if ($recordingValue) {
+                    $content = $content.Replace([string]$recordingValue, [string]$property.Value)
+                }
+            }
+            $content = $content -replace '(\\?"(?:primaryKey|secondaryKey)\\?"\s*:\s*\\?")[^"\\]*(\\?")', '${1}[Sanitized]${2}'
+            Set-Content -Path $recordingPath -Value $content -NoNewline
         }
     }
 }
@@ -165,8 +198,8 @@ function setupEnv() {
     $migrationTestNames = @(
         'Test-AzRedisEnterpriseCacheMigration'
         'Start-AzRedisEnterpriseCacheMigration'
-        'Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint'
-        'Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint'
+        'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint'
+        'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint'
     )
     $isMigrationTest = @($selectedTestNames | Where-Object { $migrationTestNames -contains $_ }).Count -gt 0
     if (($null -eq $TestName) -or $isMigrationTest) {
@@ -176,10 +209,10 @@ function setupEnv() {
     $ossMigrationTestNames = @(
         'Test-AzRedisEnterpriseCacheMigration'
         'Start-AzRedisEnterpriseCacheMigration'
-        'Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint'
+        'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint'
     )
     $isTargetedMigrationTest = @($selectedTestNames | Where-Object { $ossMigrationTestNames -contains $_ }).Count -gt 0
-    $isClusterUnlinkTest = $selectedTestNames -contains 'Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint'
+    $isClusterUnlinkTest = $selectedTestNames -contains 'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint'
     $needsOssCache = ($null -eq $TestName) -or $isTargetedMigrationTest
 
     if ($needsOssCache) {

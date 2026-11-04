@@ -20,7 +20,7 @@ Unlinks the migrated endpoint from the Azure Managed Redis cluster that was migr
 .Description
 Unlinks the migrated endpoint from the Azure Managed Redis cluster that was migrated from Azure Cache for Redis, removing the source cache endpoint that was redirected to this cluster during migration.
 .Example
-Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1"
+Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
@@ -42,9 +42,9 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheunlinkmigrationmigratedendpoint
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecachemigrationunlinkmigratedendpoint
 #>
-function Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint {
+function Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Unlink', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -179,8 +179,8 @@ begin {
         }
 
         $mapping = @{
-            Unlink = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint_Unlink';
-            UnlinkViaIdentity = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint_UnlinkViaIdentity';
+            Unlink = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint_Unlink';
+            UnlinkViaIdentity = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint_UnlinkViaIdentity';
         }
         if (('Unlink') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {

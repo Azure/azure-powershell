@@ -11,18 +11,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     using System;
 
     /// <summary>
-    /// Unlinks the migrated endpoint from the Azure Managed Redis cluster that was migrated from Azure Cache for Redis, removing
-    /// the source cache endpoint that was redirected to this cluster during migration.
+    /// Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migrated from Azure Cache for Redis Enterprise,
+    /// removing the source cache endpoint that was redirected to this cluster during migration.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] UnlinkMigratedEndpoint=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default/unlinkMigratedEndpoint"
+    /// [OpenAPI] UnlinkMigratedEndpoint=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/unlinkMigratedEndpoint"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint_UnlinkViaIdentity", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint_UnlinkViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"Unlinks the migrated endpoint from the Azure Managed Redis cluster that was migrated from Azure Cache for Redis, removing the source cache endpoint that was redirected to this cluster during migration.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migrated from Azure Cache for Redis Enterprise, removing the source cache endpoint that was redirected to this cluster during migration.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default/unlinkMigratedEndpoint", ApiVersion = "2026-09-01")]
-    public partial class InvokeAzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint_UnlinkViaIdentity : global::System.Management.Automation.PSCmdlet,
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/unlinkMigratedEndpoint", ApiVersion = "2026-09-01")]
+    public partial class InvokeAzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint_UnlinkViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IContext
     {
@@ -181,11 +181,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
         /// <returns>
-        /// a duplicate instance of InvokeAzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint_UnlinkViaIdentity
+        /// a duplicate instance of InvokeAzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint_UnlinkViaIdentity
         /// </returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets.InvokeAzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint_UnlinkViaIdentity Clone()
+        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets.InvokeAzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint_UnlinkViaIdentity Clone()
         {
-            var clone = new InvokeAzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint_UnlinkViaIdentity();
+            var clone = new InvokeAzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint_UnlinkViaIdentity();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -225,10 +225,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvokeAzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint_UnlinkViaIdentity"
+        /// Initializes a new instance of the <see cref="InvokeAzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint_UnlinkViaIdentity"
         /// /> cmdlet class.
         /// </summary>
-        public InvokeAzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint_UnlinkViaIdentity()
+        public InvokeAzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint_UnlinkViaIdentity()
         {
 
         }
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'MigrationsUnlinkMigratedEndpoint' operation"))
+                if (ShouldProcess($"Call remote 'ClustersUnlinkMigratedEndpoint' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.MigrationsUnlinkMigratedEndpointViaIdentity(InputObject.Id, onOk, onDefault, this, Pipeline);
+                        await this.Client.ClustersUnlinkMigratedEndpointViaIdentity(InputObject.Id, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ClusterName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.MigrationsUnlinkMigratedEndpoint(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ClusterName ?? null, onOk, onDefault, this, Pipeline);
+                        await this.Client.ClustersUnlinkMigratedEndpoint(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ClusterName ?? null, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

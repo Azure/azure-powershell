@@ -1,6 +1,6 @@
 ### Example 1: Unlink an endpoint after an Azure Cache for Redis Enterprise migration
 ```powershell
-Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1" -PassThru
+Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint -ClusterName "cache1" -ResourceGroupName "rg1" -PassThru
 ```
 
 ```output
