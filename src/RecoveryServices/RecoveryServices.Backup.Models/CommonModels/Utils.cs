@@ -313,6 +313,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return WorkloadType.MSSQL;
             }
+            else if (workloadType == ServiceClientModel.DataSourceType.SQLInstance)
+            {
+                return WorkloadType.MSSQL;
+            }
             else if (workloadType == ServiceClientModel.WorkloadType.SAPHanaDatabase)
             {
                 return WorkloadType.SAPHanaDatabase;
@@ -349,6 +353,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             else if (workloadType == WorkloadType.MSSQL.ToString())
             {
                 return ServiceClientModel.WorkloadType.SQLDataBase;
+            }
+            else if (workloadType == WorkloadType.MSSQLInstance.ToString())
+            {
+                return ServiceClientModel.WorkloadType.SQLInstance;
             }
             else
             {

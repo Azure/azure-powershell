@@ -104,9 +104,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         IBackupEnginesOperations BackupEngines { get; }
 
         /// <summary>
+        /// Gets the IRecoveryPointsOperations
+        /// </summary>
+        IRecoveryPointsOperations RecoveryPoints { get; }
+
+        /// <summary>
         /// Gets the IProtectionContainerRefreshOperationResultsOperations
         /// </summary>
         IProtectionContainerRefreshOperationResultsOperations ProtectionContainerRefreshOperationResults { get; }
+
+        /// <summary>
+        /// Gets the IProtectionContainerRefreshOperationStatusesOperations
+        /// </summary>
+        IProtectionContainerRefreshOperationStatusesOperations ProtectionContainerRefreshOperationStatuses { get; }
 
         /// <summary>
         /// Gets the IProtectableContainersOperations
@@ -152,11 +162,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Gets the IProtectedItemOperationStatusesOperations
         /// </summary>
         IProtectedItemOperationStatusesOperations ProtectedItemOperationStatuses { get; }
-
-        /// <summary>
-        /// Gets the IRecoveryPointsOperations
-        /// </summary>
-        IRecoveryPointsOperations RecoveryPoints { get; }
 
         /// <summary>
         /// Gets the IItemLevelRecoveryConnectionsOperations

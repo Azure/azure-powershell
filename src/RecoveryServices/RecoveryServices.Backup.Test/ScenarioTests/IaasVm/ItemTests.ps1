@@ -184,6 +184,10 @@ function Test-AzureVMSourceScan
 	Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Enabled" }
 	Start-TestSleep -Seconds 10
 
+	$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+	$targetItem = $item | Where-Object { $_.Name -eq $targetItem.Name } | Select-Object -First 1
+	Assert-NotNull $targetItem
+
 	# If source scan is already configured on the selected item, disable first so the test can
 	# validate both disable and enable transitions deterministically.
 	if ($targetItem.SourceSideScanStatus -eq "Configured")
@@ -230,31 +234,38 @@ function Test-AzureVMSourceScan
 
 function Test-AzureVMSourceScanRecoveryPoints
 {
-	$resourceGroupName = "swbela-ransom-rg"
-	$vaultName = "swbela-mdc-vault-1"
-	$targetVmFriendlyName = "Sample-VM"
-	$recoveryPointId = "1128466362346786"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-adhoc-vault"
+	$targetVmFriendlyName = "pstest-ccy-vm"
 
 	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
 	# Vault is expected to have Source Scan already enabled in the test environment.
 	Assert-True { $vault.Properties.SourceScanConfiguration.State -eq "Enabled" }
 
-	$namedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -FriendlyName $targetVmFriendlyName -VaultId $vault.ID
-	$namedContainer = @($namedContainer) | Select-Object -First 1
-	Assert-NotNull $namedContainer
+	$namedContainers = @(Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -FriendlyName $targetVmFriendlyName -VaultId $vault.ID)
+	Assert-AreEqual $namedContainers.Count 1
+	$namedContainer = $namedContainers[0]
 	Write-Host ("namedContainer Name: {0}; FriendlyName: {1}; ContainerType: {2}" -f $namedContainer.Name, $namedContainer.FriendlyName, $namedContainer.ContainerType)
 
-	$targetItem = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -VaultId $vault.ID
-	$targetItem = @($targetItem) | Select-Object -First 1
-	Assert-NotNull $targetItem
+	$targetItems = @(Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -VaultId $vault.ID -DeleteState NotDeleted)
+	Assert-AreEqual $targetItems.Count 1
+	$targetItem = $targetItems[0]
 	Write-Host ("targetItem Name: {0}; FriendlyName: {1}; WorkloadType: {2}; SourceSideScanStatus: {3}" -f $targetItem.Name, $targetItem.FriendlyName, $targetItem.WorkloadType, $targetItem.SourceSideScanStatus)
 
 	Assert-True { $targetItem.SourceSideScanStatus -eq "Configured" }
+	Assert-NotNull $targetItem.LastBackupTime
+	$anchor = $targetItem.LastBackupTime.ToUniversalTime()
+	$selectedRecoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint -Item $targetItem -VaultId $vault.ID `
+		-StartDate $anchor.AddDays(-30) -EndDate $anchor.AddDays(1) |
+		Sort-Object RecoveryPointTime -Descending |
+		Select-Object -First 1
+	Assert-NotNull $selectedRecoveryPoint
+
 	$recoveryPoints = @(Get-AzRecoveryServicesBackupRecoveryPoint `
 		-Item $targetItem `
 		-VaultId $vault.ID `
-		-RecoveryPointId $recoveryPointId)
+		-RecoveryPointId $selectedRecoveryPoint.RecoveryPointId)
 	Assert-True { $recoveryPoints.Count -gt 0 }
 	Assert-NotNull $recoveryPoints[0].PSObject.Properties["ThreatStatus"]
 	Assert-NotNull $recoveryPoints[0].PSObject.Properties["ThreatInfo"]
@@ -1232,16 +1243,17 @@ function Test-AzureVMRPMountScript
 		-WorkloadType AzureVM `
 		-Name $vmFriendlyName
 
-	# Use a fixed recovery-point query window (not the cmdlet's default now-30d..now) so the
-	# recorded request URL is deterministic and matches on playback. On re-record, widen this
-	# window if needed so it still contains a recovery point for the pre-provisioned VM.
-	$startDate = (Get-Date -Date "2026-08-15T00:00:00Z").ToUniversalTime()
-	$endDate = (Get-Date -Date "2026-09-17T00:00:00Z").ToUniversalTime()
+	Assert-NotNull $item.LastBackupTime
+	$anchor = $item.LastBackupTime.ToUniversalTime()
+	$startDate = $anchor.AddDays(-30)
+	$endDate = $anchor.AddDays(1)
 	$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
 		-VaultId $vault.ID `
 		-Item $item `
 		-StartDate $startDate `
 		-EndDate $endDate | Select-Object -First 1
+
+	Assert-NotNull $rp
 
 	try
 	{
@@ -1546,7 +1558,6 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 	$targetSubnetName = "default"
 	$owner = "sgholap"
 	$subscriptionId = "5288acd1-ba79-4377-9205-9f220331a44a"
-	$recoveryPointId = "805440465632125"
 	$cVMOSDiskEncryptionSetId = "/subscriptions/5288acd1-ba79-4377-9205-9f220331a44a/resourceGroups/sgholap-rg/providers/Microsoft.Compute/diskEncryptionSets/CVMPSRestoreDES"
 	try
 	{	
@@ -1554,7 +1565,15 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -FriendlyName $vmName -VaultId $vault.ID
 		$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
-		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -VaultId $vault.ID -RecoveryPointId $recoveryPointId
+		Assert-NotNull $backupitem.LastBackupTime
+		# Anchor the query to the recorded item so the request replays deterministically.
+		$anchor = $backupitem.LastBackupTime.ToUniversalTime()
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -VaultId $vault.ID `
+			-StartDate $anchor.AddDays(-30) -EndDate $anchor.AddDays(1) |
+			Where-Object { $_.RecoveryPointTier -eq "SnapshotAndVaultStandard" } |
+			Sort-Object RecoveryPointTime -Descending |
+			Select-Object -First 1
+		Assert-NotNull $rp
 
 		# Test command by passing CVMOSDiskEncryptionSetId as non-empty string
 		$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `

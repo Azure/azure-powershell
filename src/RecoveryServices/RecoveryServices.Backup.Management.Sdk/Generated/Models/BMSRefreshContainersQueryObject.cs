@@ -28,10 +28,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Possible values include: &#39;Invalid&#39;, &#39;AzureIaasVM&#39;, &#39;MAB&#39;, &#39;DPM&#39;,
         /// &#39;AzureBackupServer&#39;, &#39;AzureSql&#39;, &#39;AzureStorage&#39;, &#39;AzureWorkload&#39;,
         /// &#39;DefaultBackup&#39;</param>
-        public BMSRefreshContainersQueryObject(string backupManagementType = default(string))
+
+        /// <param name="containerSubscriptionId">Subscription containing the containers to discover.
+        /// </param>
+        public BMSRefreshContainersQueryObject(string backupManagementType = default(string), string containerSubscriptionId = default(string))
 
         {
             this.BackupManagementType = backupManagementType;
+            this.ContainerSubscriptionId = containerSubscriptionId;
             CustomInit();
         }
 
@@ -46,5 +50,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupManagementType")]
         public string BackupManagementType {get; set; }
+
+        /// <summary>
+        /// Gets or sets subscription containing the containers to discover.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "containerSubscriptionId")]
+        public string ContainerSubscriptionId {get; set; }
     }
 }

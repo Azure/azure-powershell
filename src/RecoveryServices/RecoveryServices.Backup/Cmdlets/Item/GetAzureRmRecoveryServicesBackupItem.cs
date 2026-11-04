@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL, FileFolder, SAPHanaDatabase";
+        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL, MSSQLInstance, FileFolder, SAPHanaDatabase";
 
         /// <summary>
         /// When this option is specified, only those items which belong to this container will be returned.
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ParameterSetName = GetItemsForVaultParamSet)]
         [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType + validWorkloadTypes,
             ParameterSetName = GetItemsForContainerParamSet)]
-        [ValidateSet("AzureVM", "AzureFiles", "MSSQL", "FileFolder", "SAPHanaDatabase", "AzureSQLDatabase")]
+        [ValidateSet("AzureVM", "AzureFiles", "MSSQL", "MSSQLInstance", "FileFolder", "SAPHanaDatabase", "AzureSQLDatabase")]
         public WorkloadType WorkloadType { get; set; }
 
         /// <summary>
