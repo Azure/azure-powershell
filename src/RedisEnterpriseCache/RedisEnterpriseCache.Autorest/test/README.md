@@ -14,4 +14,18 @@ We allow three testing modes: *live*, *record*, and *playback*. These can be sel
 Custom cmdlets generally encompass additional functionality not described in the REST specification, or combines functionality generated from the REST spec. To validate this functionality continues to operate as intended, creating tests that can be ran and re-ran against custom cmdlets is part of the framework.
 
 ## Usage
+`ChangeSafety.Tests.ps1` adds creation, update and deletion `-AcquirePolicyToken`
+cases with their own `ChangeSafety.Recording.json` and `ChangeSafety.env.json`.
+They use the resource group owned by the unchanged module setup/cleanup.
+Record/Live assert a nonempty policy header on outgoing writes; the existing
+recorder blacklist filters its value. Playback does not acquire a token or run
+that transport assertion. GET-header isolation is not asserted.
+
+Record this suite with `-Record -TestName RedisEnterpriseCache-ChangeSafety`.
+Preserve the original `env.json` and legacy scenario recording when recording
+only this suite; commit only the new recording and matching fixture metadata.
+The existing harness initializes recording files even for unselected scenarios,
+so restore untouched legacy inputs before full Playback. Do not record access
+keys or grant access to the legacy scenario's hardcoded user.
+
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.

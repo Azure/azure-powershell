@@ -31,6 +31,26 @@ function Start-TestSleep {
 }
 
 $env = @{}
+function New-RedisEnterpriseCacheTestPolicyTokenObserver {
+    param([hashtable]$Observation)
+    {
+        param($request, $eventListener, $next)
+        if ($request.Method.Method -in 'POST', 'PUT', 'PATCH', 'DELETE') {
+            $header = 'x-ms-policy-external-evaluations'
+            if (-not $request.Headers.Contains($header)) {
+                throw 'The tested write has no Change Safety policy header.'
+            }
+            foreach ($value in $request.Headers.GetValues($header)) {
+                if ([string]::IsNullOrWhiteSpace($value) -or $value -eq '[Filtered]') {
+                    throw 'The tested write has an empty or filtered Change Safety policy header.'
+                }
+            }
+            $Observation.Writes++
+        }
+        $next.SendAsync($request, $eventListener)
+    }.GetNewClosure()
+}
+
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
@@ -55,4 +75,3 @@ function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.ResourceGroupName | Out-Null
 }
-
