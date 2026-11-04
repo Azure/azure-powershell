@@ -24,7 +24,7 @@
 * Added `Start-AzRedisEnterpriseCacheMigration` cmdlet to start a new migration
 * Added `Undo-AzRedisEnterpriseCacheMigration` cmdlet to cancel or rollback a migration operation in a Redis Enterprise cluster
 * Added `Test-AzRedisEnterpriseCacheMigration` cmdlet to validate if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource
-* Added cmdlets to unlink endpoints after a migration
+* Added `Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint` and `Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint` cmdlets to unlink endpoints after migrations from Azure Cache for Redis Enterprise and Azure Cache for Redis, respectively
 * Added `MaintenanceConfigurationMaintenanceWindow` parameter to `New-AzRedisEnterpriseCache` and `Update-AzRedisEnterpriseCache` for configuring maintenance windows
 * Added `NotifyKeyspaceEvents` parameter to `New-AzRedisEnterpriseCache`, `New-AzRedisEnterpriseCacheDatabase`, and `Update-AzRedisEnterpriseCacheDatabase` for configuring keyspace notifications
 

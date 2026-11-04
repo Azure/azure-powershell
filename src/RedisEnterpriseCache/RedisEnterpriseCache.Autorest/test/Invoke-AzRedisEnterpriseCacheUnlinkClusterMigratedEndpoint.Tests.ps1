@@ -20,7 +20,8 @@ Describe 'Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint' {
 
         $cache.SkuName | Should -Be "Balanced_B1"
         $cache.ProvisioningState | Should -Be "Succeeded"
-        $cache.MigratedEndpoint | Should -Not -BeNullOrEmpty
+        $cache.HostName | Should -Match '\.redis\.azure\.net$'
+        $cache.MigratedEndpoint | Should -Match '\.redisenterprise\.cache\.azure\.net:10000$'
 
         $result = Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName -PassThru -Confirm:$false
         $result | Should -Be $true
