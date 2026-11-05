@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 4.1.1
 * Fixed module load conflict by aligning `Microsoft.ApplicationInsights` to the common 2.18.0 dependency version, resolving "Assembly with same name is already loaded" error.
