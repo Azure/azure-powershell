@@ -1,8 +1,8 @@
 if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnCustomDomain'))
 {
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadCdnEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadCdnEnv.ps1'
   }
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzCdnCustomDomain.Recording.json'

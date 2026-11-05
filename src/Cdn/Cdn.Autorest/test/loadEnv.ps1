@@ -25,17 +25,5 @@ if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
 $env = @{}
 if (Test-Path -Path $envFilePath) {
     $env = Get-Content (Join-Path $PSScriptRoot $envFile) | ConvertFrom-Json
-    $classicResourceGroupName = $env.ResourceGroupName
-    if ($env.ClassicCdnProfileResourceId) {
-        if ($env.ClassicCdnProfileResourceId -notmatch '^/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/Microsoft\.Cdn/profiles/([^/]+)$') {
-            throw 'ClassicCdnProfileResourceId must identify an existing Microsoft.Cdn/profiles resource.'
-        }
-        if ($Matches[1] -ne $env.SubscriptionId) {
-            throw 'ClassicCdnProfileResourceId must belong to the configured test subscription.'
-        }
-        $classicResourceGroupName = $Matches[2]
-        $env.ClassicCdnProfileName = $Matches[3]
-    }
-    $env | Add-Member -NotePropertyName ClassicCdnResourceGroupName -NotePropertyValue $classicResourceGroupName -Force
     $PSDefaultParameterValues=@{"*:Tenant"=$env.Tenant}
 }

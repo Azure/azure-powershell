@@ -1,4 +1,11 @@
 Describe 'TestEnvironment.Unit' {
+    function Remove-AzResourceGroup {
+        [CmdletBinding()]
+        param([string]$Name, [switch]$Force)
+
+        throw 'Remove-AzResourceGroup must be mocked in environment unit tests.'
+    }
+
     BeforeEach {
         $script:savedDefaults = $PSDefaultParameterValues
         $TestMode = 'record'
@@ -15,7 +22,7 @@ Describe 'TestEnvironment.Unit' {
         Mock Get-Content {
             '{"SubscriptionId":"offline","ResourceGroupName":"afd-tests","ClassicCdnProfileName":"old","ClassicCdnProfileResourceId":"/subscriptions/offline/resourceGroups/classic-existing/providers/Microsoft.Cdn/profiles/existing","EdgeActionResourceId":"/subscriptions/offline/resourceGroups/edge-existing/providers/Microsoft.Cdn/edgeActions/existing"}'
         }
-        . (Join-Path $PSScriptRoot 'loadEnv.ps1')
+        . (Join-Path $PSScriptRoot 'loadCdnEnv.ps1')
         $env.ClassicCdnProfileName | Should -Be 'existing'
         $env.ClassicCdnResourceGroupName | Should -Be 'classic-existing'
         $env.ResourceGroupName | Should -Be 'afd-tests'
@@ -26,7 +33,23 @@ Describe 'TestEnvironment.Unit' {
         Mock Get-Content {
             '{"SubscriptionId":"offline","ResourceGroupName":"afd-tests","ClassicCdnProfileResourceId":"/subscriptions/other/resourceGroups/classic-existing/providers/Microsoft.Cdn/profiles/existing"}'
         }
-        { . (Join-Path $PSScriptRoot 'loadEnv.ps1') } | Should -Throw 'ClassicCdnProfileResourceId must belong to the configured test subscription.'
+        { . (Join-Path $PSScriptRoot 'loadCdnEnv.ps1') } | Should -Throw 'ClassicCdnProfileResourceId must belong to the configured test subscription.'
+    }
+
+    It 'Rejects a resource ID that does not identify a CDN profile' {
+        Mock Get-Content {
+            '{"SubscriptionId":"offline","ResourceGroupName":"afd-tests","ClassicCdnProfileResourceId":"/subscriptions/offline/resourceGroups/classic-existing/providers/Microsoft.Cdn/edgeActions/existing"}'
+        }
+        { . (Join-Path $PSScriptRoot 'loadCdnEnv.ps1') } | Should -Throw 'ClassicCdnProfileResourceId must identify an existing Microsoft.Cdn/profiles resource.'
+    }
+
+    It 'Uses the configured resource group when no existing Classic profile ID is provided' {
+        Mock Get-Content {
+            '{"SubscriptionId":"offline","ResourceGroupName":"shared-tests","ClassicCdnProfileName":"classic-tests"}'
+        }
+        . (Join-Path $PSScriptRoot 'loadCdnEnv.ps1')
+        $env.ClassicCdnResourceGroupName | Should -Be 'shared-tests'
+        $env.ClassicCdnProfileName | Should -Be 'classic-tests'
     }
 
     It 'Preserves a resource group reused by setup' {
