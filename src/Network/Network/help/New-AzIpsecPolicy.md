@@ -166,7 +166,7 @@ The DH Groups used in IKE Phase 2 for new child SA
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, PFS1, PFS2, PFS2048, PFS24, ECP256, ECP384
+Accepted values: None, PFS1, PFS2, PFS2048, PFS14, PFS24, ECP256, ECP384
 
 Required: True
 Position: Named
