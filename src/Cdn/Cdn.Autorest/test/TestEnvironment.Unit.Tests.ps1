@@ -76,3 +76,40 @@ Describe 'TestEnvironment.Unit' {
         }
     }
 }
+
+Describe 'TestEnvironmentConfiguration.Unit' {
+    It 'Selects <ExpectedConfigurationFile> for <Scenario>' -TestCases @(
+        @{ Scenario = 'fresh Live'; InitialTestMode = $null; LiveSwitch = $true; RecordSwitch = $false; UsePreviousConfigForRecord = $false; ExpectedConfigurationFile = 'localEnv.json' }
+        @{ Scenario = 'fresh Record'; InitialTestMode = $null; LiveSwitch = $false; RecordSwitch = $true; UsePreviousConfigForRecord = $false; ExpectedConfigurationFile = 'env.json' }
+        @{ Scenario = 'default Playback'; InitialTestMode = $null; LiveSwitch = $false; RecordSwitch = $false; UsePreviousConfigForRecord = $false; ExpectedConfigurationFile = 'env.json' }
+        @{ Scenario = 'Record overriding Live'; InitialTestMode = $null; LiveSwitch = $true; RecordSwitch = $true; UsePreviousConfigForRecord = $false; ExpectedConfigurationFile = 'env.json' }
+        @{ Scenario = 'initialized Live mode'; InitialTestMode = 'live'; LiveSwitch = $false; RecordSwitch = $false; UsePreviousConfigForRecord = $false; ExpectedConfigurationFile = 'localEnv.json' }
+        @{ Scenario = 'Live reusing configuration'; InitialTestMode = $null; LiveSwitch = $true; RecordSwitch = $false; UsePreviousConfigForRecord = $true; ExpectedConfigurationFile = 'localEnv.json' }
+    ) {
+        param($InitialTestMode, $LiveSwitch, $RecordSwitch, $UsePreviousConfigForRecord, $ExpectedConfigurationFile)
+
+        # The dot-sourced utility inherits the runner's mode and switches.
+        Set-Variable -Name TestMode -Value $InitialTestMode
+        Set-Variable -Name Live -Value ([switch]$LiveSwitch)
+        Set-Variable -Name Record -Value ([switch]$RecordSwitch)
+        Mock Test-Path { $true } -ParameterFilter {
+            [System.IO.Path]::GetFileName($Path) -in @('env.json', 'localEnv.json')
+        }
+        Mock Get-Content {
+            $fileName = [System.IO.Path]::GetFileName($Path)
+            @{
+                ClassicCdnProfileResourceId = 'classic-' + $fileName
+                EdgeActionResourceId = 'edge-' + $fileName
+                ResourceGroupName = 'previous-tests'
+            } | ConvertTo-Json
+        } -ParameterFilter {
+            [System.IO.Path]::GetFileName($Path) -in @('env.json', 'localEnv.json')
+        }
+
+        . (Join-Path $PSScriptRoot 'utils.ps1')
+
+        $env.ClassicCdnProfileResourceId | Should -Be ('classic-' + $ExpectedConfigurationFile)
+        $env.EdgeActionResourceId | Should -Be ('edge-' + $ExpectedConfigurationFile)
+        $env.ContainsKey('ResourceGroupName') | Should -Be $UsePreviousConfigForRecord
+    }
+}

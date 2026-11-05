@@ -33,7 +33,7 @@ function Start-TestSleep {
 $env = @{}
 $script:cdnTestResourceGroupCreated = $false
 $configurationFile = 'env.json'
-if ($TestMode -eq 'live') {
+if (($Live -or $TestMode -eq 'live') -and -not $Record) {
     $configurationFile = 'localEnv.json'
 }
 if (Test-Path (Join-Path $PSScriptRoot $configurationFile)) {
