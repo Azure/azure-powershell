@@ -22,6 +22,8 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
+    using PowerShell = System.Management.Automation.PowerShell;
+
     [Cmdlet("Connect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistry", DefaultParameterSetName = WithoutNameAndPasswordParameterSet)]
     [OutputType(typeof(bool))]
     public class ConnectAzureContainerRegistry : ContainerRegistryCmdletBase
