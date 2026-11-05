@@ -20,10 +20,8 @@
 
 -->
 ## Upcoming Release
-* Updated deterministic role assignment IDs used by Azure Enhanced Monitoring test recordings to use SHA-256.
-* Updated managed disk upload lock names to use SHA-256 instead of MD5 in `Add-AzVhd`.
+* Removed unused MD5 calculations from disk and blob uploads and switched managed disk upload lock names and deterministic Azure Enhanced Monitoring test IDs to SHA-256.
 * Added a preview message to `New-AzCapacityReservationGroup` indicating that the Open Capacity Reservation feature is in preview.
-* Removed an unused MD5 checksum calculation during managed disk uploads with `Add-AzVhd`.
 
 ## Version 11.11.0
 * Added preview FlexProfile support with `PreferredVMSize` for virtual machine creation and updates, and FlexProfile details in `Get-AzVM` model output. Requires feature registration and regional availability.
