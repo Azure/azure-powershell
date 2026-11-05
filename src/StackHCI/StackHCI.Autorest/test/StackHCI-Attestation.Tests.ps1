@@ -158,6 +158,42 @@ Describe 'StackHCI Attestation Functions' {
             $cmd.Parameters.Keys | Should -Contain 'AddVM'
             $cmd.Parameters.Keys | Should -Contain 'Force'
         }
+
+        It 'Should avoid a new session for local invocation' {
+            Mock Get-SetupLoggingDetails {
+                return @($null, $false, $null, @{})
+            }
+            Mock Confirm-UserAcknowledgmentToUpgradeOS { }
+            Mock Write-Progress { }
+            Mock IsAttestationV2Supported { return $false }
+            Mock Invoke-Command {
+                return [PSCustomObject]@{ RegistrationStatus = 'NotYet' }
+            }
+
+            try { Enable-AzStackHCIAttestation -Force -ErrorAction SilentlyContinue } catch { }
+            Assert-MockCalled Get-SetupLoggingDetails -Times 1 -Exactly -Scope It
+            Assert-MockCalled Get-SetupLoggingDetails -Times 1 -Exactly -Scope It -ParameterFilter {
+                $isManagementNode -eq $false -and $newSession -eq $false
+            }
+        }
+
+        It 'Should preserve a new session for management-node invocation' {
+            Mock Get-SetupLoggingDetails {
+                return @($null, $false, $null, @{})
+            }
+            Mock Confirm-UserAcknowledgmentToUpgradeOS { }
+            Mock Write-Progress { }
+            Mock IsAttestationV2Supported { return $false }
+            Mock Invoke-Command {
+                return [PSCustomObject]@{ RegistrationStatus = 'NotYet' }
+            }
+
+            try { Enable-AzStackHCIAttestation -ComputerName 'node1' -Force -ErrorAction SilentlyContinue } catch { }
+            Assert-MockCalled Get-SetupLoggingDetails -Times 1 -Exactly -Scope It
+            Assert-MockCalled Get-SetupLoggingDetails -Times 1 -Exactly -Scope It -ParameterFilter {
+                $isManagementNode -eq $true -and $newSession -eq $true
+            }
+        }
     }
 
     Context 'Disable-AzStackHCIAttestation' {
@@ -175,7 +211,7 @@ Describe 'StackHCI Attestation Functions' {
             $cmd.Parameters.Keys | Should -Contain 'Force'
         }
 
-        It 'Should call Get-SetupLoggingDetails on invocation' {
+        It 'Should avoid a new session for local invocation' {
             Mock Get-SetupLoggingDetails {
                 return @($null, $false, $null, @{})
             }
@@ -189,9 +225,30 @@ Describe 'StackHCI Attestation Functions' {
                 return @([PSCustomObject]@{ Name = 'Node1'; State = 'Up' })
             }
 
-            # Should complete the begin block at least (we're just verifying it calls the setup)
             try { Disable-AzStackHCIAttestation -Force -ErrorAction SilentlyContinue } catch { }
-            Assert-MockCalled Get-SetupLoggingDetails -Times 1
+            Assert-MockCalled Get-SetupLoggingDetails -Times 1 -Scope It -ParameterFilter {
+                $isManagementNode -eq $false -and $newSession -eq $false
+            }
+        }
+
+        It 'Should preserve a new session for management-node invocation' {
+            Mock Get-SetupLoggingDetails {
+                return @($null, $false, $null, @{})
+            }
+            Mock Confirm-UserAcknowledgmentToUpgradeOS { }
+            Mock Write-Progress { }
+            Mock IsAttestationV2Supported { return $false }
+            Mock Invoke-Command {
+                return [PSCustomObject]@{ Name = 'TestCluster' }
+            } -ParameterFilter { $ScriptBlock -ne $null }
+            Mock Invoke-Command {
+                return @([PSCustomObject]@{ Name = 'Node1'; State = 'Up' })
+            }
+
+            try { Disable-AzStackHCIAttestation -ComputerName 'node1' -Force -ErrorAction SilentlyContinue } catch { }
+            Assert-MockCalled Get-SetupLoggingDetails -Times 1 -Scope It -ParameterFilter {
+                $isManagementNode -eq $true -and $newSession -eq $true
+            }
         }
     }
 
