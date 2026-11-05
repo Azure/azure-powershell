@@ -24,12 +24,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
+        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
+        private string _resourceGroupName;
+
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Owned)]
+        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
         /// <summary>Backing field for <see cref="ResourceUri" /> property.</summary>
         private string _resourceUri;
 
         /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Owned)]
         public string ResourceUri { get => this._resourceUri; set => this._resourceUri = value; }
+
+        /// <summary>Backing field for <see cref="ServiceGroupName" /> property.</summary>
+        private string _serviceGroupName;
+
+        /// <summary>The name of the service group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Owned)]
+        public string ServiceGroupName { get => this._serviceGroupName; set => this._serviceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
+        private string _subscriptionId;
+
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Owned)]
+        public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>Creates an new <see cref="RelationshipsIdentity" /> instance.</summary>
         public RelationshipsIdentity()
@@ -62,6 +83,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the resource group. The name is case insensitive.",
+        SerializedName = @"resourceGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceGroupName { get; set; }
         /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
         Required = false,
@@ -73,6 +105,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         SerializedName = @"resourceUri",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceUri { get; set; }
+        /// <summary>The name of the service group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the service group.",
+        SerializedName = @"serviceGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ServiceGroupName { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The ID of the target subscription. The value must be an UUID.",
+        SerializedName = @"subscriptionId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SubscriptionId { get; set; }
 
     }
     internal partial interface IRelationshipsIdentityInternal
@@ -82,8 +136,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         string Id { get; set; }
         /// <summary>Name of dependencyOf relationship.</summary>
         string Name { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        string ResourceGroupName { get; set; }
         /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
         string ResourceUri { get; set; }
+        /// <summary>The name of the service group.</summary>
+        string ServiceGroupName { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        string SubscriptionId { get; set; }
 
     }
 }

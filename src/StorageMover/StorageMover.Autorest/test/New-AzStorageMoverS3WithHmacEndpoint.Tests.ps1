@@ -47,4 +47,10 @@ Describe 'New-AzStorageMoverS3WithHmacEndpoint' {
         $s3endpoint.Property.OtherSourceTypeDescription | Should -Be "Custom S3 provider"
         $s3endpoint.Property.Description | Should -Be "s3 other source"
     }
+
+    It 'CreateExpandedWithEndpointKindRequest' {
+        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
+        $endpoint = New-AzStorageMoverS3WithHmacEndpoint -Name "s3kind" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -SourceUri "https://s3.example.com/bucket" -SourceType "MINIO" -EndpointKind Source
+        ($endpoint.Property.ToJsonString() | ConvertFrom-Json).endpointKind | Should -Be "Source"
+    }
 }

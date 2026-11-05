@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceUrl
-Resource url for that you're requesting token, e.g. 'https://graph.microsoft.com/'.
+Resource URL for which you're requesting a token, e.g. 'https://graph.microsoft.com/'.
 
 ```yaml
 Type: System.String

@@ -38,7 +38,7 @@ input-file:
 # Normally, title is the service name
 root-module-name: $(prefix).Mission
 title: Mission
-module-version: 1.0.0
+module-version: 0.1.0
 subject-prefix: Mission
 identity-correction-for-post: true
 

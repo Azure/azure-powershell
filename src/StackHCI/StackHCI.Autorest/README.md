@@ -67,6 +67,33 @@ subject-prefix: $(service-name)
 inlining-threshold: 50
 
 directive:
+  # Keep node-local cmdlets usable without an Azure context while retaining login checks for ARM cmdlets.
+  # Target this file by name because README.md is also emitted as source-file-other.
+  - from: PsProxyOutputs.cs
+    where: $
+    transform: |
+      const localCmdlets = [
+        'Enable-AzStackHCIRemoteSupport',
+        'Disable-AzStackHCIRemoteSupport',
+        'Install-AzStackHCIRemoteSupport',
+        'Remove-AzStackHCIRemoteSupport',
+        'Get-AzStackHCIRemoteSupportAccess',
+        'Get-AzStackHCIRemoteSupportSessionHistory',
+        'Get-AzStackHCIVMAttestation',
+        'Add-AzStackHCIVMAttestation',
+        'Remove-AzStackHCIVMAttestation',
+        'Enable-AzStackHCIAttestation',
+        'Disable-AzStackHCIAttestation',
+        'Get-AzStackHCILogsDirectory',
+      ];
+      const condition = 'if (!VariantGroup.IsInternal && IsAzure && !VariantGroup.IsModelCmdlet)';
+      if (!$.includes(condition)) {
+        throw new Error('Az.StackHCI login-guard directive: condition not found in PsProxyOutputs.cs');
+      }
+      const names = localCmdlets.map(name => `"${name}"`).join(', ');
+      $ = $.replace(
+        condition,
+        `if (!VariantGroup.IsInternal && IsAzure && !VariantGroup.IsModelCmdlet && !new[] { ${names} }.Contains(VariantGroup.CmdletName))`);
   # Rename function
   - where:
       verb: Invoke

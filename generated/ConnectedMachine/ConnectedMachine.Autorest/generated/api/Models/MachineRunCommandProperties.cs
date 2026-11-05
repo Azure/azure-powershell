@@ -65,41 +65,65 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>Script end time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public global::System.DateTime? InstanceViewEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? InstanceViewEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime; }
 
         /// <summary>Script error stream.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string InstanceViewError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error = value ?? null; }
+        public string InstanceViewError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error; }
 
         /// <summary>Communicate script configuration errors or execution messages.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string InstanceViewExecutionMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage = value ?? null; }
+        public string InstanceViewExecutionMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage; }
 
         /// <summary>Script execution status.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string InstanceViewExecutionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState = value ?? null; }
+        public string InstanceViewExecutionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState; }
 
         /// <summary>Exit code returned from script execution.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public int? InstanceViewExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode = value ?? default(int); }
+        public int? InstanceViewExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode; }
 
         /// <summary>Script output stream.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string InstanceViewOutput { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output = value ?? null; }
+        public string InstanceViewOutput { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output; }
 
         /// <summary>Script start time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public global::System.DateTime? InstanceViewStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? InstanceViewStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime; }
 
         /// <summary>The status information.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionsResourceStatus> InstanceViewStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionsResourceStatus> InstanceViewStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses; }
 
         /// <summary>Internal Acessors for ErrorBlobManagedIdentity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.ErrorBlobManagedIdentity { get => (this._errorBlobManagedIdentity = this._errorBlobManagedIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.RunCommandManagedIdentity()); set { {_errorBlobManagedIdentity = value;} } }
 
         /// <summary>Internal Acessors for InstanceView</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceView Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.InstanceView { get => (this._instanceView = this._instanceView ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachineRunCommandInstanceView()); set { {_instanceView = value;} } }
+
+        /// <summary>Internal Acessors for InstanceViewEndTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.InstanceViewEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for InstanceViewError</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.InstanceViewError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewExecutionMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.InstanceViewExecutionMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewExecutionState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.InstanceViewExecutionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewExitCode</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.InstanceViewExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode = value ?? default(int); }
+
+        /// <summary>Internal Acessors for InstanceViewOutput</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.InstanceViewOutput { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewStartTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.InstanceViewStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for InstanceViewStatuses</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionsResourceStatus> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.InstanceViewStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for OutputBlobManagedIdentity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.OutputBlobManagedIdentity { get => (this._outputBlobManagedIdentity = this._outputBlobManagedIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.RunCommandManagedIdentity()); set { {_outputBlobManagedIdentity = value;} } }
@@ -111,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandScriptSource Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.Source { get => (this._source = this._source ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachineRunCommandScriptSource()); set { {_source = value;} } }
 
         /// <summary>Internal Acessors for SourceScriptUriManagedIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.SourceScriptUriManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandScriptSourceInternal)Source).ScriptUriManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandScriptSourceInternal)Source).ScriptUriManagedIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal.SourceScriptUriManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandScriptSourceInternal)Source).ScriptUriManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandScriptSourceInternal)Source).ScriptUriManagedIdentity = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="OutputBlobManagedIdentity" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandManagedIdentity _outputBlobManagedIdentity;
@@ -169,13 +193,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="RunAsPassword" /> property.</summary>
-        private string _runAsPassword;
+        private System.Security.SecureString _runAsPassword;
 
         /// <summary>
         /// Specifies the user account password on the machine when executing the run command.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string RunAsPassword { get => this._runAsPassword; set => this._runAsPassword = value; }
+        public System.Security.SecureString RunAsPassword { get => this._runAsPassword; set => this._runAsPassword = value; }
 
         /// <summary>Backing field for <see cref="RunAsUser" /> property.</summary>
         private string _runAsUser;
@@ -412,7 +436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. ",
+        Description = @"Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.",
         SerializedName = @"outputBlobUri",
         PossibleTypes = new [] { typeof(string) })]
         string OutputBlobUri { get; set; }
@@ -460,8 +484,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Update = true,
         Description = @"Specifies the user account password on the machine when executing the run command.",
         SerializedName = @"runAsPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string RunAsPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString RunAsPassword { get; set; }
         /// <summary>Specifies the user account on the machine when executing the run command.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -623,7 +647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>
         /// Specifies the user account password on the machine when executing the run command.
         /// </summary>
-        string RunAsPassword { get; set; }
+        System.Security.SecureString RunAsPassword { get; set; }
         /// <summary>Specifies the user account on the machine when executing the run command.</summary>
         string RunAsUser { get; set; }
         /// <summary>

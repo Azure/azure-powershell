@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Extensions;
 
-    /// <summary>List of Cloud HSM Clusters</summary>
+    /// <summary>The response of a CloudHsmCluster list operation.</summary>
     public partial class CloudHsmClusterListResult
     {
 

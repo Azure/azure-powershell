@@ -18,7 +18,7 @@ Get-AzDdosCustomPolicy -ResourceGroupName <String> -Name <String> [-DefaultProfi
 ```
 
 ## DESCRIPTION
-The **Get-AzDdosCustomPolicy** cmdlet retrieves a DDoS custom policy by its resource group name and policy name.
+The **Get-AzDdosCustomPolicy** cmdlet retrieves a DDoS custom policy by its resource group name and policy name, including its detection and mitigation rules.
 
 ## EXAMPLES
 
@@ -36,6 +36,14 @@ $policy.DetectionRules | Format-Table TrafficType, PacketsPerSecond
 ```
 
 This example gets the DDoS custom policy and displays its detection rules in a table format.
+
+### Example 3: Get a policy and inspect its mitigation rules
+```powershell
+$policy = Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy"
+$policy.MitigationRules | Format-Table Name, @{Name="TrafficScope"; Expression={$_.Properties.TrafficScope}}
+```
+
+This example gets the DDoS custom policy and displays each mitigation rule name and traffic scope.
 
 ### Example 3: Get a DDoS custom policy and display all properties
 ```powershell
@@ -109,3 +117,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzDdosCustomPolicy](./Remove-AzDdosCustomPolicy.md)
 
 [New-AzDdosCustomPolicyDetectionRule](./New-AzDdosCustomPolicyDetectionRule.md)
+
+[Get-AzDdosCustomPolicyMitigationRule](./Get-AzDdosCustomPolicyMitigationRule.md)

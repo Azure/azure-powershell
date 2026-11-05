@@ -14,9 +14,9 @@ The operation to create a license.
 
 ### CreateExpanded (Default)
 ```
-New-AzConnectedLicense -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>] [-LicenseDetailState <String>]
- [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
+New-AzConnectedLicense -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>]
+ [-LicenseDetailState <String>] [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
  [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>] [-LicenseType <String>] [-Tag <Hashtable>]
  [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -49,8 +49,8 @@ New-AzConnectedLicense -InputObject <IConnectedMachineIdentity> -Location <Strin
  [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>] [-LicenseDetailState <String>]
  [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
  [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>] [-LicenseType <String>] [-Tag <Hashtable>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -362,6 +362,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

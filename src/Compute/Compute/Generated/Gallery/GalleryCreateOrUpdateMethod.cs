@@ -49,6 +49,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     gallery.Location = this.Location;
                     CommunityGalleryInfo communityGalleryInfo = new CommunityGalleryInfo();
 
+                    if ((this.IsParameterBound(c => c.SoftDeleteRetentionPeriodInDays)
+                            || this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays))
+                        && !this.EnableSoftDelete.IsPresent)
+                    {
+                        throw new ArgumentException("Parameters '-SoftDeleteRetentionPeriodInDays' and '-SoftDeleteGracePeriodInDays' require '-EnableSoftDelete'.");
+                    }
+
+                    if (this.EnableSoftDelete.IsPresent)
+                    {
+                        gallery.SoftDeletePolicy = new SoftDeletePolicy(isSoftDeleteEnabled: true);
+                        if (this.IsParameterBound(c => c.SoftDeleteRetentionPeriodInDays))
+                        {
+                            gallery.SoftDeletePolicy.RetentionPeriodInDays = this.SoftDeleteRetentionPeriodInDays;
+                        }
+                        if (this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays))
+                        {
+                            gallery.SoftDeletePolicy.GracePeriodInDays = this.SoftDeleteGracePeriodInDays;
+                        }
+                    }
 
                     if (this.IsParameterBound(c => c.Description))
                     {
@@ -216,6 +235,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
         public string[] UserAssignedIdentity { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enables soft delete for gallery image versions.")]
+        public SwitchParameter EnableSoftDelete { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The number of days a soft-deleted gallery image version is retained.")]
+        public int SoftDeleteRetentionPeriodInDays { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The number of days a simulated hard-deleted gallery image version remains recoverable.")]
+        public int SoftDeleteGracePeriodInDays { get; set; }
+
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Gallery", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -250,6 +278,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Gallery gallery = new Gallery();
                     GalleryUpdate galleryUpdate = new GalleryUpdate();
                     CommunityGalleryInfo communityGalleryInfo = new CommunityGalleryInfo();
+                    bool softDeletePolicyBound = this.EnableSoftDelete.IsPresent
+                        || this.DisableSoftDelete.IsPresent
+                        || this.IsParameterBound(c => c.SoftDeleteRetentionPeriodInDays)
+                        || this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays);
+
+                    if (this.EnableSoftDelete.IsPresent && this.DisableSoftDelete.IsPresent)
+                    {
+                        throw new ArgumentException("Parameters '-EnableSoftDelete' and '-DisableSoftDelete' cannot be used together.");
+                    }
 
                     if (this.ParameterSetName == "ObjectParameter")
                     {
@@ -259,6 +296,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     else
                     {
                         gallery = GalleriesClient.Get(resourceGroupName, galleryName);
+                    }
+
+                    if (softDeletePolicyBound)
+                    {
+                        if (this.ParameterSetName == "ObjectParameter")
+                        {
+                            gallery.SoftDeletePolicy = GalleriesClient.Get(resourceGroupName, galleryName).SoftDeletePolicy;
+                        }
+
+                        galleryUpdate.SoftDeletePolicy = new SoftDeletePolicy(
+                            isSoftDeleteEnabled: this.EnableSoftDelete.IsPresent
+                                ? true
+                                : this.DisableSoftDelete.IsPresent
+                                    ? false
+                                    : gallery.SoftDeletePolicy?.IsSoftDeleteEnabled,
+                            retentionPeriodInDays: this.IsParameterBound(c => c.SoftDeleteRetentionPeriodInDays)
+                                ? (int?)this.SoftDeleteRetentionPeriodInDays
+                                : gallery.SoftDeletePolicy?.RetentionPeriodInDays,
+                            gracePeriodInDays: this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays)
+                                ? (int?)this.SoftDeleteGracePeriodInDays
+                                : gallery.SoftDeletePolicy?.GracePeriodInDays);
+                    }
+                    else
+                    {
+                        galleryUpdate.SoftDeletePolicy = null;
                     }
 
                     if (this.IsParameterBound(c => c.Description))
@@ -410,13 +472,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         // so reject parameters that would be silently discarded.
                         bool hasNonSharingParams = this.IsParameterBound(c => c.Description)
                             || this.IsParameterBound(c => c.Tag)
-                            || hasSystemAssigned || hasUserAssigned || disableSystem || removeUserBound;
+                            || hasSystemAssigned || hasUserAssigned || disableSystem || removeUserBound
+                            || softDeletePolicyBound;
 
                         if (hasNonSharingParams)
                         {
                             throw new ArgumentException(
                                 "Parameters '-Description', '-Tag', '-EnableSystemAssignedIdentity', '-DisableSystemAssignedIdentity', "
-                                + "'-UserAssignedIdentity', and '-RemoveUserAssignedIdentity' cannot be combined with '-Share', '-Community', or '-Reset'. "
+                                + "'-UserAssignedIdentity', '-RemoveUserAssignedIdentity', '-EnableSoftDelete', '-DisableSoftDelete', "
+                                + "'-SoftDeleteRetentionPeriodInDays', and '-SoftDeleteGracePeriodInDays' cannot be combined with '-Share', '-Community', or '-Reset'. "
                                 + "Please run the sharing update and property update as separate commands.");
                         }
                     }
@@ -681,5 +745,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of user-assigned managed identity resource IDs to remove from the gallery, or 'All' to remove all user-assigned identities.")]
         public string[] RemoveUserAssignedIdentity { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enables soft delete for gallery image versions.")]
+        public SwitchParameter EnableSoftDelete { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Disables soft delete for future gallery image version deletions.")]
+        public SwitchParameter DisableSoftDelete { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The number of days a soft-deleted gallery image version is retained.")]
+        public int SoftDeleteRetentionPeriodInDays { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The number of days a simulated hard-deleted gallery image version remains recoverable.")]
+        public int SoftDeleteGracePeriodInDays { get; set; }
     }
 }

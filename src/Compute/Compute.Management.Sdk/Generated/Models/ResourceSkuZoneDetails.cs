@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets the set of zones that the SKU is available in with the specified
         /// capabilities.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Name")]
         public System.Collections.Generic.IList<string> Name {get; private set; }
 
         /// <summary>

@@ -837,7 +837,7 @@ function Test-ProfileChangeRecordTypeShouldFail
 
 	$createdProfile.RecordType = "AAAA"
 
-	Assert-ThrowsContains { Set-AzTrafficManagerProfile -TrafficManagerProfile $createdProfile } "The RecordType of a Traffic Manager profile cannot be changed after creation."
+	Assert-ThrowsContains { Set-AzTrafficManagerProfile -TrafficManagerProfile $createdProfile } "Record type cannot be modified once set."
 
 	Assert-True { Remove-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force }
 	}

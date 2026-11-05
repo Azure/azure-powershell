@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 8.1.0
 * Added Change Safety support for data collection rule cmdlets.
 
 ## Version 8.0.0

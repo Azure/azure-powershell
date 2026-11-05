@@ -16,17 +16,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzRelationshipsService
 
 Describe 'Update-AzRelationshipsServiceGroupMemberRelationship' {
     It 'UpdateExpanded' {
-        $relationship = Update-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameToUpdate -TargetId $env.SgmTargetId
+        $relationship = Update-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameToUpdate -SourceId $env.SgmSourceId
         $relationship | Should -Not -BeNullOrEmpty
         $relationship.Name | Should -Be $env.SgmRelNameToUpdate
     }
 
     It 'UpdateViaIdentityExpanded' {
         $identity = @{
-            ResourceUri = $env.SgmResourceGroupResourceUri
+            ResourceUri = $env.SgmTargetResourceUri
             Name = $env.SgmRelNameToUpdate
         }
-        $relationship = Update-AzRelationshipsServiceGroupMemberRelationship -InputObject $identity -TargetId $env.SgmTargetId
+        $relationship = Update-AzRelationshipsServiceGroupMemberRelationship -InputObject $identity -SourceId $env.SgmSourceId
         $relationship | Should -Not -BeNullOrEmpty
         $relationship.Name | Should -Be $env.SgmRelNameToUpdate
     }

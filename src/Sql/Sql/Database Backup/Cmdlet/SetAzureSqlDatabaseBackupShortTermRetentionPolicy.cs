@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     OutputType(typeof(AzureSqlDatabaseBackupShortTermRetentionPolicyModel))]
     public class SetAzureRmSqlDatabaseBackupShortTermRetentionPolicy : AzureSqlDatabaseBackupShortTermRetentionPolicyCmdletBase
     {
+        private bool _operationCancelled;
+
         /// <summary>
         /// Gets or sets backup retention days.
         /// </summary>
@@ -41,6 +43,20 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "Differential backup frequency in hours.")]
         [PSArgumentCompleter("12", "24")]			
         public int DiffBackupIntervalInHours { get; set; }	
+
+        /// <summary>
+        /// Gets or sets whether to lock backup immutability.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether to lock the immutability of backups governed by this policy.")]
+        public bool? LockImmutability { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to skip confirmation when locking backup immutability.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Skip confirmation when locking backup immutability.")]
+        public SwitchParameter Force { get; set; }
 			
         /// <summary>
         /// Get the entities from the service
@@ -66,6 +82,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> model)
         {
+            _operationCancelled = false;
+
             return new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>()
             {
                 new AzureSqlDatabaseBackupShortTermRetentionPolicyModel(
@@ -74,7 +92,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     DatabaseName,
                     new Management.Sql.Models.BackupShortTermRetentionPolicy(
                         retentionDays: this.IsParameterBound(c => c.RetentionDays) ? RetentionDays : null as int?, 
-                        diffBackupIntervalInHours: this.IsParameterBound(c => c.DiffBackupIntervalInHours) ? DiffBackupIntervalInHours : null as int?)
+                        diffBackupIntervalInHours: this.IsParameterBound(c => c.DiffBackupIntervalInHours) ? DiffBackupIntervalInHours : null as int?,
+                        lockImmutability: this.IsParameterBound(c => c.LockImmutability) ? LockImmutability : null)
                 )
             };
         }
@@ -88,10 +107,25 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         {
             if (!ShouldProcess(DatabaseName)) return null;
 
+            if (LockImmutability == true && !Force.IsPresent && !ShouldContinue(
+                "Locking backup immutability cannot be reverted.",
+                "Confirm locking backup immutability"))
+            {
+                _operationCancelled = true;
+                return null;
+            }
+
             return new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>() {
                 ModelAdapter.SetDatabaseBackupShortTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
             };
         }
+
+        /// <summary>
+        /// Returns whether the updated policy should be written to the pipeline.
+        /// </summary>
+        protected override bool WriteResult()
+        {
+            return base.WriteResult() && !_operationCancelled;
+        }
     }
 }
-

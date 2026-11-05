@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* Upgraded from API 2026-04-01-preview to stable 2026-08-01.
+* [Breaking change] Removed `ZoneAllocationPolicyDistributionStrategy` and `ZoneAllocationPolicyZonePreference` from `New-AzComputeFleet`, `Set-AzComputeFleet` and `Update-AzComputeFleet`. Update scripts before upgrading; `Zone` remains but is not a replacement.
+* Fixed newer TypeSpec support without changing the generation toolchain.
+* Updated Launch mode, identity and partial-update examples.
+
 ## Version 0.2.0
 
 * Added support for 'Launch' mode in ComputeFleet.
@@ -35,4 +41,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.ComputeFleet
-

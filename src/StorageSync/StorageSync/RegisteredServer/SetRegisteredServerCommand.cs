@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public PSRegisteredServer InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating the policy to use for regular download sync sessions.
+        /// Gets or sets a value indicating whether to configure the registered server to use a managed identity.
         /// </summary>
-        /// <value>The local cache mode.</value>
+        /// <value>Whether to configure the registered server to use a managed identity.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
@@ -203,13 +203,35 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 };
 
                 LocalServerType serverTypeFromRegistry = StorageSyncClientWrapper.StorageSyncResourceManager.GetServerTypeFromRegistry();
-                ServerApplicationIdentity serverApplicationIdentity = serverManagedIdentityProvider.GetServerApplicationIdentityAsync(serverTypeFromRegistry, throwIfNotFound: false).GetAwaiter().GetResult();
+                ServerApplicationIdentity serverApplicationIdentity;
+                try
+                {
+                    serverApplicationIdentity = serverManagedIdentityProvider
+                        .GetServerApplicationIdentityAsync(serverTypeFromRegistry, throwIfNotFound: true)
+                        .GetAwaiter()
+                        .GetResult();
+                }
+                catch (Exception ex)
+                {
+                    string guidance = serverTypeFromRegistry == LocalServerType.HybridServer
+                        ? "This server is not registered as Azure Arc-enabled. Run 'azcmagent show' to confirm Agent Status is Connected, then restart FileSyncSvc so the agent re-detects the Azure Arc registration."
+                        : "Failed to acquire a managed identity token. Run this cmdlet from an elevated PowerShell session on the registered server. Azure Arc's local identity endpoint only issues tokens to local Administrators or members of 'Hybrid agent extension applications'.";
+
+                    throw new PSArgumentException(
+                        $"Not able to set the server's identity. Server type from registry is '{serverTypeFromRegistry}'. {guidance} Underlying error: {ex.Message}",
+                        ex);
+                }
+
                 Guid applicationId = serverApplicationIdentity?.ApplicationId ?? Guid.Empty;
 
                 if (applicationId == Guid.Empty)
                 {
                     StorageSyncClientWrapper.VerboseLogger.Invoke($"Unable to retrieve a managed identity to patch this server.");
-                    throw new PSArgumentException("Not able to set the server's identity. Please ensure this server has Azure Arc installed and connected or Azure VM has a system assigned managed identity enabled.");
+                    throw new PSArgumentException(
+                        $"Not able to set the server's identity. Server type from registry is '{serverTypeFromRegistry}'. " +
+                        (serverTypeFromRegistry == LocalServerType.HybridServer
+                            ? "This server is not registered as Azure Arc-enabled. Run 'azcmagent show' to confirm Agent Status is Connected, then restart FileSyncSvc so the agent re-detects the Azure Arc registration."
+                            : "No managed identity was returned. Run this cmdlet from an elevated PowerShell session on the registered server and confirm that the server has a system-assigned managed identity."));
                 }
                 else
                 {

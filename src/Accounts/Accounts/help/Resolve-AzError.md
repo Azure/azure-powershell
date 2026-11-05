@@ -39,7 +39,7 @@ Resolve-AzError -Last
 HistoryId: 3
 
 
-Message        : Run Connect-AzAccount to login.
+Message        : Run Connect-AzAccount to log in.
 StackTrace     :    at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.get_DefaultContext() in AzureRmCmdlet.cs:line 85
                     at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.LogCmdletStartInvocationInfo() in AzureRmCmdlet.cs:line 269
                     at Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet.BeginProcessing() inAzurePSCmdlet.cs:line 299
@@ -102,7 +102,7 @@ HistoryId      : 8
    HistoryId: 5
 
 
-Message        : Run Connect-AzAccount to login.
+Message        : Run Connect-AzAccount to log in.
 StackTrace     :    at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.get_DefaultContext() in C:\zd\azur
                  e-powershell\src\ResourceManager\Common\Commands.ResourceManager.Common\AzureRmCmdlet.cs:line 85
                     at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.LogCmdletStartInvocationInfo() in

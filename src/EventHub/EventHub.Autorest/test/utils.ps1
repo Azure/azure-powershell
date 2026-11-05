@@ -45,8 +45,8 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
         $this[$key] = $val; return $val 
     } } -Name 'AddWithCache'
 function setupEnv(
-    $location = 'eastus',
-    $secondaryLocation = 'southcentralus',
+    $location = 'australiaeast',
+    $secondaryLocation = 'chilecentral',
     $useZoneRedundancy = $true,
     $verbose = $false) {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -279,4 +279,3 @@ function cleanupEnv(
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.resourceGroup -Confirm:$false -Verbose:$verbose
 }
-

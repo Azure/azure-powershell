@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* Made Az.Marketplace generally available.
+
 ## Version 0.6.0
 * Added ChangeSafety Support
 

@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The default context can no longer be found; please run &apos;Get-AzContext -ListAvailable&apos; to see all available contexts, &apos;Select-AzContext&apos; to select a new default context, or &apos;Connect-AzAccount&apos; to login with a new account..
+        ///   Looks up a localized string similar to The default context can no longer be found; please run &apos;Get-AzContext -ListAvailable&apos; to see all available contexts, &apos;Select-AzContext&apos; to select a new default context, or &apos;Connect-AzAccount&apos; to log in with a new account..
         /// </summary>
         internal static string DefaultContextMissing {
             get {
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to get token for account &apos;{0}&apos;, please run Connect-AzAccount to login for {0} if you need to use this account..
+        ///   Looks up a localized string similar to Failed to get token for account &apos;{0}&apos;, please run Connect-AzAccount to log in for {0} if you need to use this account..
         /// </summary>
         internal static string NoTokenFoundWarning {
             get {

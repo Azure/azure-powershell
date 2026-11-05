@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.3.0
+* Added `LockImmutability`/`ImmutabilityStatus` to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`. Locking requires live Managed Instance databases and irreversible-action confirmation (`-Force` skips).
+* Added Managed Instance long-term immutability to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy` and policy/backup output.
+* Added `Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` for time-based immutability.
+* Added legal holds via `Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold`.
+
+## Version 7.2.0
 * Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
 * Fixed `Restore-AzSqlDatabase` to omit the high availability (HA) replica count when the parameter is not specified.
 * Added selective-fields support to Azure SQL auditing

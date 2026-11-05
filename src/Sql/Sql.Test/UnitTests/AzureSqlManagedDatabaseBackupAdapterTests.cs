@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Reflection;
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet;
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -23,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBackupModelMapsBackupStorageRedundancy()
+        public void GetBackupModelMapsBackupProperties()
         {
             const string resourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/locations/westcentralus/longTermRetentionManagedInstances/test-mi/longTermRetentionDatabases/test-db/longTermRetentionManagedInstanceBackups/test-backup";
             var backup = new ManagedInstanceLongTermRetentionBackup(
@@ -31,12 +34,72 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
                 name: "test-backup",
                 managedInstanceName: "test-mi",
                 databaseName: "test-db",
-                backupStorageRedundancy: "Geo");
+                backupStorageRedundancy: "Geo",
+                isBackupImmutable: true,
+                timeBasedImmutability: "Enabled",
+                timeBasedImmutabilityMode: "Locked",
+                legalHoldImmutability: "Enabled");
 
             var result = AzureSqlManagedDatabaseBackupAdapter.GetBackupModel(backup, "westcentralus");
 
             Assert.Equal("Geo", result.BackupStorageRedundancy);
+            Assert.True(result.IsBackupImmutable.Value);
+            Assert.Equal("Enabled", result.TimeBasedImmutability);
+            Assert.Equal("Locked", result.TimeBasedImmutabilityMode);
+            Assert.Equal("Enabled", result.LegalHoldImmutability);
             Assert.Equal("test-rg", result.ResourceGroupName);
+        }
+
+        [Theory]
+        [InlineData(
+            "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Sql/locations/westcentralus/longTermRetentionManagedInstances/test-mi/longTermRetentionDatabases/test-db/longTermRetentionManagedInstanceBackups/test-backup",
+            null)]
+        [InlineData(
+            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/locations/westcentralus/longTermRetentionManagedInstances/test-mi/longTermRetentionDatabases/test-db/longTermRetentionManagedInstanceBackups/test-backup",
+            "test-rg")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BackupActionResolvesSupportedResourceIds(string resourceId, string expectedResourceGroupName)
+        {
+            var cmdlet = new LockAzureSqlManagedDatabaseLongTermRetentionBackupImmutability
+            {
+                ResourceId = resourceId
+            };
+
+            typeof(AzureSqlManagedDatabaseLongTermRetentionBackupActionCmdletBase)
+                .GetMethod("ResolveBackupIdentity", BindingFlags.Instance | BindingFlags.NonPublic)
+                .Invoke(cmdlet, null);
+
+            Assert.Equal("westcentralus", cmdlet.Location);
+            Assert.Equal("test-mi", cmdlet.InstanceName);
+            Assert.Equal("test-db", cmdlet.DatabaseName);
+            Assert.Equal("test-backup", cmdlet.BackupName);
+            Assert.Equal(expectedResourceGroupName, cmdlet.ResourceGroupName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BackupActionResolvesLocationScopedInputObject()
+        {
+            var cmdlet = new LockAzureSqlManagedDatabaseLongTermRetentionBackupImmutability
+            {
+                InputObject = new AzureSqlManagedDatabaseLongTermRetentionBackupModel
+                {
+                    Location = "westcentralus",
+                    ManagedInstanceName = "test-mi",
+                    DatabaseName = "test-db",
+                    BackupName = "test-backup"
+                }
+            };
+
+            typeof(AzureSqlManagedDatabaseLongTermRetentionBackupActionCmdletBase)
+                .GetMethod("ResolveBackupIdentity", BindingFlags.Instance | BindingFlags.NonPublic)
+                .Invoke(cmdlet, null);
+
+            Assert.Equal("westcentralus", cmdlet.Location);
+            Assert.Equal("test-mi", cmdlet.InstanceName);
+            Assert.Equal("test-db", cmdlet.DatabaseName);
+            Assert.Equal("test-backup", cmdlet.BackupName);
+            Assert.Null(cmdlet.ResourceGroupName);
         }
     }
 }

@@ -82,6 +82,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
         public string ShareName { get => this._shareName; set => this._shareName = value; }
 
+        /// <summary>Backing field for <see cref="SourceType" /> property.</summary>
+        private string _sourceType;
+
+        /// <summary>
+        /// Source type to differentiate SMBMount and FSX-SMB endpoints. Default is SMBMount.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public string SourceType { get => this._sourceType; set => this._sourceType = value; }
+
         /// <summary>Creates an new <see cref="SmbMountEndpointProperties" /> instance.</summary>
         public SmbMountEndpointProperties()
         {
@@ -165,6 +174,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         SerializedName = @"shareName",
         PossibleTypes = new [] { typeof(string) })]
         string ShareName { get; set; }
+        /// <summary>
+        /// Source type to differentiate SMBMount and FSX-SMB endpoints. Default is SMBMount.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Source type to differentiate SMBMount and FSX-SMB endpoints. Default is SMBMount.",
+        SerializedName = @"sourceType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SmbMount", "FSX-SMB")]
+        string SourceType { get; set; }
 
     }
     /// The properties of SMB share endpoint.
@@ -190,6 +213,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         string Host { get; set; }
         /// <summary>The name of the SMB share being exported from the server.</summary>
         string ShareName { get; set; }
+        /// <summary>
+        /// Source type to differentiate SMBMount and FSX-SMB endpoints. Default is SMBMount.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SmbMount", "FSX-SMB")]
+        string SourceType { get; set; }
 
     }
 }

@@ -92,6 +92,23 @@ param(
     ${OsType},
 
     [Parameter()]
+    [ArgumentCompleter({ "Standard", "TrustedLaunch" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the security type of the target VM.
+    # 'TrustedLaunch' enables Secure Boot and vTPM, implies -EnableSecureBoot 'true', and requires a Generation 2 target VM.
+    # 'Standard' is accepted for either generation and keeps Secure Boot on a Generation 2 target.
+    ${TargetVMSecurityOption},
+
+    [Parameter()]
+    [ArgumentCompleter({ "true" , "false" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies whether Secure Boot is enabled on the target VM.
+    # Enabling it requires a Generation 2 target VM; 'false' is accepted for either generation.
+    ${EnableSecureBoot},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]

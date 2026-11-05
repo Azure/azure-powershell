@@ -16,13 +16,15 @@ Properties not specified in the request body will be unchanged.
 ### UpdateExpanded (Default)
 ```
 Update-AzStorageMoverAzSmbFileShareEndpoint -Name <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -StorageMoverName <String> [-SubscriptionId <String>] [-AllowedStorageAccount <String[]>]
+ [-Description <String>] [-EnableCrossTenantTransfer] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStorageMoverAzSmbFileShareEndpoint -InputObject <IStorageMoverIdentity> [-Description <String>]
+Update-AzStorageMoverAzSmbFileShareEndpoint -InputObject <IStorageMoverIdentity>
+ [-AllowedStorageAccount <String[]>] [-Description <String>] [-EnableCrossTenantTransfer]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -86,6 +88,22 @@ This command updates an Azure Storage SMB file share endpoint's description by p
 
 ## PARAMETERS
 
+### -AllowedStorageAccount
+The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+The specified list replaces the existing list; specify an empty array to clear it.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -106,6 +124,22 @@ A description for the endpoint.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableCrossTenantTransfer
+Enables or disables using this endpoint as one side of a cross-tenant data transfer.
+To disable, set this switch to false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

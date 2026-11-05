@@ -785,7 +785,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
 
         $params = @{
-            contributorRoleDefId                = [System.Guid]::parse($RoleDefinitionIds.ContributorId);
+            storageAccountContributorRoleDefId  = [System.Guid]::parse($RoleDefinitionIds.StorageAccountContributorId);
             storageBlobDataContributorRoleDefId = [System.Guid]::parse($RoleDefinitionIds.StorageBlobDataContributorId);
             sourceAppAadId                      = $sourceDra.Property.ResourceAccessIdentity.ObjectId;
             targetAppAadId                      = $targetDra.Property.ResourceAccessIdentity.ObjectId;
@@ -796,17 +796,17 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         {
             $params.vaultIdentityAadId = $replicationVault.IdentityPrincipalId
 
-            # Grant vault Identity Aad access to Cache Storage Account as "Contributor"
+            # Grant vault Identity Aad access to Cache Storage Account as "Storage Account Contributor"
             $hasAadAppAccess = Get-AzRoleAssignment `
                 -ObjectId $params.vaultIdentityAadId `
-                -RoleDefinitionId $params.contributorRoleDefId `
+                -RoleDefinitionId $params.storageAccountContributorRoleDefId `
                 -Scope $cacheStorageAccount.Id `
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue
             if ($null -eq $hasAadAppAccess) {
                 New-AzRoleAssignment `
                     -ObjectId $params.vaultIdentityAadId `
-                    -RoleDefinitionId $params.contributorRoleDefId `
+                    -RoleDefinitionId $params.storageAccountContributorRoleDefId `
                     -Scope $cacheStorageAccount.Id | Out-Null
             }
     
@@ -825,17 +825,17 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
         }
 
-        # Grant Source Dra AAD App access to Cache Storage Account as "Contributor"
+        # Grant Source Dra AAD App access to Cache Storage Account as "Storage Account Contributor"
         $hasAadAppAccess = Get-AzRoleAssignment `
             -ObjectId $params.sourceAppAadId `
-            -RoleDefinitionId $params.contributorRoleDefId `
+            -RoleDefinitionId $params.storageAccountContributorRoleDefId `
             -Scope $cacheStorageAccount.Id `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
             New-AzRoleAssignment `
                 -ObjectId $params.sourceAppAadId `
-                -RoleDefinitionId $params.contributorRoleDefId `
+                -RoleDefinitionId $params.storageAccountContributorRoleDefId `
                 -Scope $cacheStorageAccount.Id | Out-Null
         }
 
@@ -853,17 +853,17 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 -Scope $cacheStorageAccount.Id | Out-Null
         }
 
-        # Grant Target Dra AAD App access to Cache Storage Account as "Contributor"
+        # Grant Target Dra AAD App access to Cache Storage Account as "Storage Account Contributor"
         $hasAadAppAccess = Get-AzRoleAssignment `
             -ObjectId $params.targetAppAadId `
-            -RoleDefinitionId $params.contributorRoleDefId `
+            -RoleDefinitionId $params.storageAccountContributorRoleDefId `
             -Scope $cacheStorageAccount.Id `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
             New-AzRoleAssignment `
                 -ObjectId $params.targetAppAadId `
-                -RoleDefinitionId $params.contributorRoleDefId `
+                -RoleDefinitionId $params.storageAccountContributorRoleDefId `
                 -Scope $cacheStorageAccount.Id | Out-Null
         }
 
@@ -884,10 +884,10 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         # Give time for role assignments to be created. Times out after 2min
         $rsaPermissionGranted = $false
         for ($i = 0; $i -lt 3; $i++) {
-            # Check Source Dra AAD App access to Cache Storage Account as "Contributor"
+            # Check Source Dra AAD App access to Cache Storage Account as "Storage Account Contributor"
             $hasAadAppAccess = Get-AzRoleAssignment `
                 -ObjectId $params.sourceAppAadId `
-                -RoleDefinitionId $params.contributorRoleDefId `
+                -RoleDefinitionId $params.storageAccountContributorRoleDefId `
                 -Scope $cacheStorageAccount.Id `
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue
@@ -902,10 +902,10 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 -ErrorAction SilentlyContinue
             $rsaPermissionGranted = $rsaPermissionGranted -and ($null -ne $hasAadAppAccess)
 
-            # Check Target Dra AAD App access to Cache Storage Account as "Contributor"
+            # Check Target Dra AAD App access to Cache Storage Account as "Storage Account Contributor"
             $hasAadAppAccess = Get-AzRoleAssignment `
                 -ObjectId $params.targetAppAadId `
-                -RoleDefinitionId $params.contributorRoleDefId `
+                -RoleDefinitionId $params.storageAccountContributorRoleDefId `
                 -Scope $cacheStorageAccount.Id `
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue

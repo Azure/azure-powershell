@@ -147,6 +147,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterMaxPatchPublishDate = (global::System.DateTime?) content.GetValueForProperty("WindowParameterMaxPatchPublishDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterMaxPatchPublishDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
+            if (content.Contains("WindowParameterPatchNameMasksToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterPatchNameMasksToInclude = (System.Collections.Generic.List<string>) content.GetValueForProperty("WindowParameterPatchNameMasksToInclude",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterPatchNameMasksToInclude, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("WindowParameterPatchNameMasksToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterPatchNameMasksToExclude = (System.Collections.Generic.List<string>) content.GetValueForProperty("WindowParameterPatchNameMasksToExclude",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterPatchNameMasksToExclude, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("LinuxParameterClassificationsToInclude"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).LinuxParameterClassificationsToInclude = (System.Collections.Generic.List<string>) content.GetValueForProperty("LinuxParameterClassificationsToInclude",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).LinuxParameterClassificationsToInclude, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -211,6 +219,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("WindowParameterMaxPatchPublishDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterMaxPatchPublishDate = (global::System.DateTime?) content.GetValueForProperty("WindowParameterMaxPatchPublishDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterMaxPatchPublishDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("WindowParameterPatchNameMasksToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterPatchNameMasksToInclude = (System.Collections.Generic.List<string>) content.GetValueForProperty("WindowParameterPatchNameMasksToInclude",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterPatchNameMasksToInclude, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("WindowParameterPatchNameMasksToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterPatchNameMasksToExclude = (System.Collections.Generic.List<string>) content.GetValueForProperty("WindowParameterPatchNameMasksToExclude",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParametersInternal)this).WindowParameterPatchNameMasksToExclude, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("LinuxParameterClassificationsToInclude"))
             {

@@ -116,6 +116,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("ClusterName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ClusterName, global::System.Convert.ToString);
+            }
             if (content.Contains("NamespaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).NamespaceName = (string) content.GetValueForProperty("NamespaceName",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).NamespaceName, global::System.Convert.ToString);
@@ -168,6 +172,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentityInternal)this).ClusterName, global::System.Convert.ToString);
             }
             if (content.Contains("NamespaceName"))
             {

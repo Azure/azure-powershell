@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string KeyVaultAccessToken { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet,
-            Mandatory = false, HelpMessage = "Account Id / User Id / User Name to login with")]
+            Mandatory = false, HelpMessage = "Account Id / User Id / User Name to log in with")]
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = true, HelpMessage = "Login using managed service identity in the current environment.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = true, HelpMessage = "Log in using managed service identity in the current environment.")]
         [Alias("MSI", "ManagedService")]
         public SwitchParameter Identity { get; set; }
 

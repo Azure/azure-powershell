@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.HttpPath(Path = "/providers/Microsoft.Relationships/operations", ApiVersion = "2023-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.HttpPath(Path = "/providers/Microsoft.Relationships/operations", ApiVersion = "2026-08-01")]
     public partial class GetAzRelationshipsOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.IContext

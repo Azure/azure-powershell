@@ -1033,6 +1033,14 @@
     "module": "Mission"
   },
   {
+    "module": "DocumentDB",
+    "alias": "DocumentDB"
+  },
+  {
+    "module": "RedHatOpenShiftHcp",
+    "alias": "RedHatOpenShiftHcp"
+  },
+  {
     "module": "Resiliency",
     "alias": "Resiliency"
   }

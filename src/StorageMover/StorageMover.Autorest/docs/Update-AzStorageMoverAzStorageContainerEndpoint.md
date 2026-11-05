@@ -16,13 +16,15 @@ Properties not specified in the request body will be unchanged.
 ### UpdateExpanded (Default)
 ```
 Update-AzStorageMoverAzStorageContainerEndpoint -Name <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -StorageMoverName <String> [-SubscriptionId <String>] [-AllowedStorageAccount <String[]>]
+ [-Description <String>] [-EnableCrossTenantTransfer] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStorageMoverAzStorageContainerEndpoint -InputObject <IStorageMoverIdentity> [-Description <String>]
+Update-AzStorageMoverAzStorageContainerEndpoint -InputObject <IStorageMoverIdentity>
+ [-AllowedStorageAccount <String[]>] [-Description <String>] [-EnableCrossTenantTransfer]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -63,7 +65,91 @@ Type                         : microsoft.storagemover/storagemovers/endpoints
 
 This command updates the description of an AzStorageContainerEndpoint.
 
+### Example 2: Replace the storage accounts allowed for cross-tenant data transfer
+```powershell
+Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AllowedStorageAccount "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount1", "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount2"
+```
+
+```output
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
+IdentityPrincipalId          : 00000000-0000-0000-0000-000000000000
+IdentityTenantId             : 00000000-0000-0000-0000-000000000000
+IdentityType                 : SystemAssigned
+IdentityUserAssignedIdentity : {
+                               }
+Name                         : myEndpoint
+Property                     : {
+                                 "endpointType": "AzureStorageBlobContainer",
+                                 "endpointKind": "Target",
+                                 "provisioningState": "Succeeded",
+                                 "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
+                                 "blobContainerName": "myContainer",
+                                 "enableCrossTenantTransfer": true,
+                                 "allowedStorageAccounts": [ "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount1", "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount2" ]
+                               }
+ResourceGroupName            : myResourceGroup
+SystemDataCreatedAt          : 10/19/2026 10:43:52 AM
+SystemDataCreatedBy          : xxxxxxxxxx
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/19/2026 10:43:53 AM
+SystemDataLastModifiedBy     : xxxxxxxxxx
+SystemDataLastModifiedByType : User
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command replaces the list of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with the endpoint.
+
+### Example 3: Disable cross-tenant data transfer for an AzStorageContainer endpoint
+```powershell
+Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -EnableCrossTenantTransfer:$false -AllowedStorageAccount @()
+```
+
+```output
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
+IdentityPrincipalId          : 00000000-0000-0000-0000-000000000000
+IdentityTenantId             : 00000000-0000-0000-0000-000000000000
+IdentityType                 : SystemAssigned
+IdentityUserAssignedIdentity : {
+                               }
+Name                         : myEndpoint
+Property                     : {
+                                 "endpointType": "AzureStorageBlobContainer",
+                                 "endpointKind": "Target",
+                                 "provisioningState": "Succeeded",
+                                 "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
+                                 "blobContainerName": "myContainer",
+                                 "enableCrossTenantTransfer": false,
+                                 "allowedStorageAccounts": [ ]
+                               }
+ResourceGroupName            : myResourceGroup
+SystemDataCreatedAt          : 10/19/2026 10:43:52 AM
+SystemDataCreatedBy          : xxxxxxxxxx
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/19/2026 10:43:55 AM
+SystemDataLastModifiedBy     : xxxxxxxxxx
+SystemDataLastModifiedByType : User
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command disables cross-tenant data transfer for the endpoint and clears its list of allowed partner-tenant storage accounts.
+
 ## PARAMETERS
+
+### -AllowedStorageAccount
+The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+The specified list replaces the existing list; specify an empty array to clear it.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -85,6 +171,22 @@ A description for the endpoint.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableCrossTenantTransfer
+Enables or disables using this endpoint as one side of a cross-tenant data transfer.
+To disable, set this switch to false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

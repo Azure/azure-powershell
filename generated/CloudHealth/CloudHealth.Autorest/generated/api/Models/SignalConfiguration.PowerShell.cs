@@ -107,37 +107,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Configuration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Configuration = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalRecommendationConfiguration) content.GetValueForProperty("Configuration",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Configuration, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalRecommendationConfigurationTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SignalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).SignalId = (string) content.GetValueForProperty("SignalId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).SignalId, global::System.Convert.ToString);
             }
-            if (content.Contains("MetricNamespace"))
+            if (content.Contains("DisplayName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).MetricNamespace = (string) content.GetValueForProperty("MetricNamespace",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).MetricNamespace, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DisplayName, global::System.Convert.ToString);
             }
-            if (content.Contains("MetricName"))
+            if (content.Contains("Description"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).MetricName = (string) content.GetValueForProperty("MetricName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).MetricName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Description, global::System.Convert.ToString);
             }
-            if (content.Contains("AggregationType"))
+            if (content.Contains("ApplicableResourceType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).AggregationType = (string) content.GetValueForProperty("AggregationType",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).AggregationType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).ApplicableResourceType = (System.Collections.Generic.List<string>) content.GetValueForProperty("ApplicableResourceType",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).ApplicableResourceType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("Unit"))
+            if (content.Contains("RefreshInterval"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Unit, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).RefreshInterval = (string) content.GetValueForProperty("RefreshInterval",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).RefreshInterval, global::System.Convert.ToString);
             }
-            if (content.Contains("TimeGrain"))
+            if (content.Contains("DataUnit"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).TimeGrain = (string) content.GetValueForProperty("TimeGrain",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).TimeGrain, global::System.Convert.ToString);
-            }
-            if (content.Contains("DimensionFilter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DimensionFilter = (string) content.GetValueForProperty("DimensionFilter",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DimensionFilter, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DataUnit = (string) content.GetValueForProperty("DataUnit",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DataUnit, global::System.Convert.ToString);
             }
             if (content.Contains("EvaluationRule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).EvaluationRule = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEvaluationRule) content.GetValueForProperty("EvaluationRule",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).EvaluationRule, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRuleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ConfigurationSignalKind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).ConfigurationSignalKind = (string) content.GetValueForProperty("ConfigurationSignalKind",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).ConfigurationSignalKind, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -156,37 +160,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Configuration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Configuration = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalRecommendationConfiguration) content.GetValueForProperty("Configuration",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Configuration, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalRecommendationConfigurationTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SignalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).SignalId = (string) content.GetValueForProperty("SignalId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).SignalId, global::System.Convert.ToString);
             }
-            if (content.Contains("MetricNamespace"))
+            if (content.Contains("DisplayName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).MetricNamespace = (string) content.GetValueForProperty("MetricNamespace",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).MetricNamespace, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DisplayName, global::System.Convert.ToString);
             }
-            if (content.Contains("MetricName"))
+            if (content.Contains("Description"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).MetricName = (string) content.GetValueForProperty("MetricName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).MetricName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Description, global::System.Convert.ToString);
             }
-            if (content.Contains("AggregationType"))
+            if (content.Contains("ApplicableResourceType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).AggregationType = (string) content.GetValueForProperty("AggregationType",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).AggregationType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).ApplicableResourceType = (System.Collections.Generic.List<string>) content.GetValueForProperty("ApplicableResourceType",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).ApplicableResourceType, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("Unit"))
+            if (content.Contains("RefreshInterval"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).Unit, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).RefreshInterval = (string) content.GetValueForProperty("RefreshInterval",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).RefreshInterval, global::System.Convert.ToString);
             }
-            if (content.Contains("TimeGrain"))
+            if (content.Contains("DataUnit"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).TimeGrain = (string) content.GetValueForProperty("TimeGrain",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).TimeGrain, global::System.Convert.ToString);
-            }
-            if (content.Contains("DimensionFilter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DimensionFilter = (string) content.GetValueForProperty("DimensionFilter",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DimensionFilter, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DataUnit = (string) content.GetValueForProperty("DataUnit",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).DataUnit, global::System.Convert.ToString);
             }
             if (content.Contains("EvaluationRule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).EvaluationRule = (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEvaluationRule) content.GetValueForProperty("EvaluationRule",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).EvaluationRule, Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRuleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ConfigurationSignalKind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).ConfigurationSignalKind = (string) content.GetValueForProperty("ConfigurationSignalKind",((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal)this).ConfigurationSignalKind, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

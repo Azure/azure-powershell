@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ServiceGroups
-Module Guid: f41823c6-d8a5-433a-96b0-8e67f7a8dccd
+Module Guid: af34bdd4-1b1d-42de-8fd1-14a73104e926
 Download Help Link: https://learn.microsoft.com/powershell/module/az.servicegroups
 Help Version: 1.0.0.0
 Locale: en-US
@@ -13,9 +13,6 @@ Microsoft Azure PowerShell: ServiceGroups cmdlets
 ## Az.ServiceGroups Cmdlets
 ### [Get-AzServiceGroup](Get-AzServiceGroup.md)
 Get the details of the serviceGroup
-
-### [Get-AzServiceGroupAncestor](Get-AzServiceGroupAncestor.md)
-Get the details of the serviceGroup's ancestors
 
 ### [New-AzServiceGroup](New-AzServiceGroup.md)
 Create a serviceGroup

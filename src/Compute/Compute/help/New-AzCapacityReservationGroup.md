@@ -21,6 +21,8 @@ New-AzCapacityReservationGroup -ResourceGroupName <String> -Name <String> -Locat
 ## DESCRIPTION
 The **New-AzCapacityReservationGroup** cmdlet creates a Capacity Reservation Group
 
+The Open Capacity Reservation feature is in preview.
+
 ## EXAMPLES
 
 ### Example 1

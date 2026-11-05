@@ -33,6 +33,26 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
+        /// Gets or sets whether the backup is immutable.
+        /// </summary>
+        public bool? IsBackupImmutable { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether time-based immutability is enabled for the backup.
+        /// </summary>
+        public string TimeBasedImmutability { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time-based immutability mode for the backup.
+        /// </summary>
+        public string TimeBasedImmutabilityMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether legal hold immutability is enabled for the backup.
+        /// </summary>
+        public string LegalHoldImmutability { get; set; }
+
+        /// <summary>
         /// Gets or sets the backup name.
         /// </summary>
         public string BackupName { get; set; }

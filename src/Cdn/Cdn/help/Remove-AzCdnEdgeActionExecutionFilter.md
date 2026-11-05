@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnedgeactionexecutionfilter
 schema: 2.0.0
@@ -15,7 +15,7 @@ Delete EdgeActionExecutionFilter resource
 ```
 Remove-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetails Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetail { get => (this._licenseDetail = this._licenseDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseDetails()); set { {_licenseDetail = value;} } }
 
         /// <summary>Internal Acessors for LicenseDetailAssignedLicense</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetailAssignedLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetailAssignedLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).AssignedLicense = value ?? default(int); }
 
         /// <summary>Internal Acessors for LicenseDetailImmutableId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetailImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.LicenseDetailImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)LicenseDetail).ImmutableId = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Description = @"Describes the license target server.",
         SerializedName = @"target",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2", "Windows Server 2016")]
         string LicenseDetailTarget { get; set; }
         /// <summary>Describes the license core type (pCore or vCore).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Activated", "Deactivated")]
         string LicenseDetailState { get; set; }
         /// <summary>Describes the license target server.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2", "Windows Server 2016")]
         string LicenseDetailTarget { get; set; }
         /// <summary>Describes the license core type (pCore or vCore).</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("pCore", "vCore")]

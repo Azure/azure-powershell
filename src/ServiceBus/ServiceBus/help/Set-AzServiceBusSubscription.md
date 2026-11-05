@@ -20,7 +20,8 @@ Set-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceName <
  [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <String>] [-ForwardTo <String>]
  [-ForwardDeadLetteredMessagesTo <String>] [-MaxDeliveryCount <Int32>]
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -30,7 +31,8 @@ Set-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-AutoDeleteOnId
  [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <String>] [-ForwardTo <String>]
  [-ForwardDeadLetteredMessagesTo <String>] [-MaxDeliveryCount <Int32>]
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,6 +119,21 @@ Updates `DefaultMessageTimeToLive` and `EnableBatchedOperations` ServiceBus subs
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -138,6 +155,21 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

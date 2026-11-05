@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Description(@"update a serviceGroup")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.HttpPath(Path = "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}", ApiVersion = "2024-02-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.HttpPath(Path = "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}", ApiVersion = "2026-08-01")]
     public partial class UpdateAzServiceGroup_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IContext
@@ -47,6 +47,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// The criticality designation of the service group. Valid values range from 0 through 4.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The criticality designation of the service group. Valid values range from 0 through 4.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The criticality designation of the service group. Valid values range from 0 through 4.",
+        SerializedName = @"criticality",
+        PossibleTypes = new [] { typeof(int) })]
+        public int AttributeCriticality { get => _updateServiceGroupRequestBody.AttributeCriticality ?? default(int); set => _updateServiceGroupRequestBody.AttributeCriticality = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]

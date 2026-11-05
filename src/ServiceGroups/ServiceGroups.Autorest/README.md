@@ -29,11 +29,11 @@ For information on how to develop for `Az.ServiceGroups`, see [how-to.md](how-to
 
 ```yaml
 # Pin to the commit containing the ServiceGroups swagger spec
-commit: 17c3c5aeb2c707bcf9e7ee70dfa0b9cd2628b4c2
+commit: 7d9690b822b9c2c470e8fd89a781bdcd4a890731
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/management/resource-manager/Microsoft.Management/ServiceGroups/preview/2024-02-01-preview/serviceGroups.json
+  - $(repo)/specification/management/resource-manager/Microsoft.Management/ServiceGroups/stable/2026-08-01/serviceGroups.json
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name

@@ -109,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             // actually deserialize
             if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipPropertiesV2TypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -151,10 +151,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("SourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceId = (string) content.GetValueForProperty("SourceId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceId, global::System.Convert.ToString);
-            }
             if (content.Contains("TargetId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).TargetId = (string) content.GetValueForProperty("TargetId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).TargetId, global::System.Convert.ToString);
@@ -171,9 +167,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipMetadata) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.RelationshipMetadataTypeConverter.ConvertFrom);
             }
-            if (content.Contains("TargetTenant"))
+            if (content.Contains("SourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).TargetTenant = (string) content.GetValueForProperty("TargetTenant",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).TargetTenant, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceId = (string) content.GetValueForProperty("SourceId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceTenant"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceTenant = (string) content.GetValueForProperty("SourceTenant",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceTenant, global::System.Convert.ToString);
             }
             if (content.Contains("OriginInformationRelationshipOriginType"))
             {
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             // actually deserialize
             if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipPropertiesV2TypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -252,10 +252,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("SourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceId = (string) content.GetValueForProperty("SourceId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceId, global::System.Convert.ToString);
-            }
             if (content.Contains("TargetId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).TargetId = (string) content.GetValueForProperty("TargetId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).TargetId, global::System.Convert.ToString);
@@ -272,9 +268,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipMetadata) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.RelationshipMetadataTypeConverter.ConvertFrom);
             }
-            if (content.Contains("TargetTenant"))
+            if (content.Contains("SourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).TargetTenant = (string) content.GetValueForProperty("TargetTenant",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).TargetTenant, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceId = (string) content.GetValueForProperty("SourceId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceTenant"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceTenant = (string) content.GetValueForProperty("SourceTenant",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal)this).SourceTenant, global::System.Convert.ToString);
             }
             if (content.Contains("OriginInformationRelationshipOriginType"))
             {
