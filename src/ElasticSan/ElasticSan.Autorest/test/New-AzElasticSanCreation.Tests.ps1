@@ -107,7 +107,7 @@ Describe 'New-AzElasticSan creation forwarding' {
         }
         foreach ($version in @('Omitted', 'V1', 'V2')) {
             foreach ($enforcement in @('Enabled', 'Disabled', 'None')) {
-                if ($version -ne 'V2' -or $enforcement -ne 'Disabled') {
+                if ($version -ne 'V2' -or $enforcement -eq 'Enabled') {
                     @{ Variant = $variant; Version = $version; AsJob = $false; IopsParameter = 'TotalIops'; Enforcement = $enforcement }
                 }
             }
@@ -115,10 +115,16 @@ Describe 'New-AzElasticSan creation forwarding' {
         foreach ($scenario in @('BelowLimit', 'AtLimit', 'Int64Max', 'ExplicitLimit', 'ExplicitAll', 'ExplicitZeros', 'Partial', 'DifferentRegion', 'DifferentSku', 'Int64RegionalLimit')) {
             @{ Variant = $variant; Version = 'V2'; AsJob = $false; IopsParameter = 'TotalIops'; AutoScaleScenario = $scenario }
         }
+        foreach ($location in @('East US', 'EASTUS', ' East US ', "East`tUS")) {
+            @{ Variant = $variant; Version = 'V2'; AsJob = $false; IopsParameter = 'TotalIops'; Location = $location }
+        }
+        foreach ($version in @('Omitted', 'V1', 'V2')) {
+            @{ Variant = $variant; Version = $version; AsJob = $false; IopsParameter = 'TotalIops'; Location = 'East US'; AutoScaleScenario = 'ExplicitAll' }
+        }
     }
 
-    It '<Variant> <Version> <IopsParameter> SkuName=<SkuName> Capacity=<Capacity> AsJob=<AsJob> NoWait=<NoWait> Enforcement=<Enforcement> AutoScale=<AutoScaleScenario> forwards the requested capacities and version through the public command' -TestCases $cases {
-        param($Variant, $Version, $AsJob, $IopsParameter, $SkuName = 'Premium_LRS', $Capacity, $NoWait = $false, $Enforcement, $AutoScaleScenario)
+    It '<Variant> <Version> <IopsParameter> SkuName=<SkuName> Capacity=<Capacity> AsJob=<AsJob> NoWait=<NoWait> Enforcement=<Enforcement> AutoScale=<AutoScaleScenario> Location=<Location> forwards the requested capacities and version through the public command' -TestCases $cases {
+        param($Variant, $Version, $AsJob, $IopsParameter, $SkuName = 'Premium_LRS', $Capacity, $NoWait = $false, $Enforcement, $AutoScaleScenario, $Location = 'eastus')
 
         $responder = [ElasticSan.CreationTestResponder]::new()
         $responder.ExpectedPath = $sanId
@@ -128,7 +134,7 @@ Describe 'New-AzElasticSan creation forwarding' {
         )
         $mock.SetPlayback()
         $parameters = @{
-            Location = 'eastus'
+            Location = $Location
             SkuName = $SkuName
             HttpPipelinePrepend = @($mock, $responder.Step)
             Confirm = $false
@@ -196,7 +202,7 @@ Describe 'New-AzElasticSan creation forwarding' {
                 $parameters.CapacityUnitScaleUpLimitTiB = 500
                 $parameters.IncreaseCapacityUnitByTiB = 7
                 $parameters.UnusedSizeTiB = 3
-                $parameters.AutoScalePolicyEnforcement = 'None'
+                $parameters.AutoScalePolicyEnforcement = 'Enabled'
             }
             'ExplicitZeros' {
                 $parameters.CapacityUnitScaleUpLimitTiB = 0
@@ -241,6 +247,7 @@ Describe 'New-AzElasticSan creation forwarding' {
             $san.Id | Should -Be $sanId
         }
         $body = $responder.RequestBody | ConvertFrom-Json
+        $body.location | Should -Be $parameters.Location
         $body.properties.sku.name | Should -Be $parameters.SkuName
         $properties = $body.properties
         $autoscale = $properties.autoScaleProperties.scaleUpProperties
@@ -278,7 +285,7 @@ Describe 'New-AzElasticSan creation forwarding' {
             $properties.PSObject.Properties.Name | Should -Not -Contain 'totalIop'
         } else {
             $responder.SkuRequestCount | Should -Be 0
-            if (-not $Enforcement) {
+            if (-not $parameters.ContainsKey('AutoScalePolicyEnforcement')) {
                 $properties.PSObject.Properties.Name | Should -Not -Contain 'autoScaleProperties'
             }
             $expectedBase = if ($Capacity -eq 'BaseOnly') { 0 } elseif ($Version -eq 'V1ExplicitCapacity') { 3 } else { 20 }
@@ -343,12 +350,14 @@ Describe 'New-AzElasticSan creation forwarding' {
     }
 
     $disabledCases = foreach ($variant in @('Named', 'Identity', 'IdentityComponents')) {
-        foreach ($enforcement in @('Disabled', 'dIsAbLeD')) {
-            @{ Variant = $variant; Enforcement = $enforcement }
+        foreach ($enforcement in @('Disabled', 'dIsAbLeD', 'None', 'nOnE')) {
+            foreach ($explicitLimit in @($false, $true)) {
+                @{ Variant = $variant; Enforcement = $enforcement; ExplicitLimit = $explicitLimit }
+            }
         }
     }
-    It '<Variant> rejects <Enforcement> autoscale for V2 before sending a request' -TestCases $disabledCases {
-        param($Variant, $Enforcement)
+    It '<Variant> rejects <Enforcement> autoscale for V2 with ExplicitLimit=<ExplicitLimit> before sending a request' -TestCases $disabledCases {
+        param($Variant, $Enforcement, $ExplicitLimit)
 
         $responder = [ElasticSan.CreationTestResponder]::new()
         $responder.ExpectedPath = $sanId
@@ -383,7 +392,10 @@ Describe 'New-AzElasticSan creation forwarding' {
                 }
             }
         }
-        { New-AzElasticSan @parameters } | Should -Throw 'AutoScalePolicyEnforcement cannot be Disabled when Version is V2.'
+        if ($ExplicitLimit) {
+            $parameters.CapacityUnitScaleUpLimitTiB = 100
+        }
+        { New-AzElasticSan @parameters } | Should -Throw 'AutoScalePolicyEnforcement cannot be Disabled or None when Version is V2.'
         $responder.RequestCount | Should -Be 0
         $responder.SkuRequestCount | Should -Be 0
     }

@@ -21,7 +21,7 @@ create ElasticSan.
 create ElasticSan.
 For V2, omitted autoscale settings default to Enabled, an increase of 1 TiB and an unused-capacity threshold of 1 TiB.
 If CapacityUnitScaleUpLimitTiB is omitted, the command queries Get-AzElasticSanSkuList for the target subscription, Location and SkuName, and caps five times TotalSizeTiB at elasticSanMaxTotalCapacityTiB.
-The command fails before creating the SAN if this lookup fails or does not provide an unambiguous positive capacity limit. Explicit autoscale values are preserved, except Disabled is rejected for V2. V1 behavior is unchanged.
+The command fails before creating the SAN if this lookup fails or does not provide an unambiguous positive capacity limit. Explicit autoscale values are preserved, except Disabled and None are rejected for V2. V1 behavior is unchanged.
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 
@@ -95,7 +95,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Enable or Disable scale up setting on Elastic San Appliance.
-    # Defaults to Enabled for V2. Disabled is not supported when Version is V2.
+    # Defaults to Enabled for V2. Disabled and None are not supported when Version is V2.
     ${AutoScalePolicyEnforcement},
 
     [Parameter()]
@@ -252,8 +252,8 @@ param(
 process {
     $createParameters = @{} + $PSBoundParameters
     if ($Version -eq 'V2') {
-        if ($AutoScalePolicyEnforcement -eq 'Disabled') {
-            throw "AutoScalePolicyEnforcement cannot be Disabled when Version is V2."
+        if ($AutoScalePolicyEnforcement -in @('Disabled', 'None')) {
+            throw "AutoScalePolicyEnforcement cannot be Disabled or None when Version is V2."
         }
 
         foreach ($parameterName in @('TotalSizeTiB', 'TotalIops', 'TotalMBps')) {
@@ -287,9 +287,10 @@ process {
                 throw 'A target subscription is required for the V2 autoscale capacity lookup.'
             }
 
+            $lookupLocation = ($Location -replace '\s', '').ToLowerInvariant()
             $skuParameters = @{
                 SubscriptionId = $targetSubscriptionId
-                Filter = "location eq $Location"
+                Filter = "location eq $lookupLocation"
                 ErrorAction = 'Stop'
             }
             foreach ($parameterName in @('DefaultProfile', 'HttpPipelineAppend', 'HttpPipelinePrepend', 'Proxy', 'ProxyCredential', 'ProxyUseDefaultCredentials', 'Verbose', 'Debug')) {
@@ -298,7 +299,7 @@ process {
                 }
             }
             $skus = @(Az.ElasticSan\Get-AzElasticSanSkuList @skuParameters | Where-Object {
-                $_.Name -eq $SkuName -and $_.Location -contains $Location -and $_.ResourceType -eq 'elasticSans'
+                $_.Name -eq $SkuName -and $_.Location -contains $lookupLocation -and $_.ResourceType -eq 'elasticSans'
             })
             if ($skus.Count -ne 1) {
                 throw "Cannot determine the V2 autoscale capacity limit: expected one SKU '$SkuName' in location '$Location', found $($skus.Count). Supply CapacityUnitScaleUpLimitTiB explicitly."

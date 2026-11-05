@@ -4,6 +4,8 @@
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
     ## Upcoming Release
+    * Fixed V2 autoscale SKU lookup to match display-form locations such as East US to eastus.
+    * Rejected `AutoScalePolicyEnforcement None` when creating a V2 SAN, in addition to Disabled.
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2

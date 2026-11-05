@@ -34,7 +34,8 @@ New-AzElasticSan -InputObject <IElasticSanIdentity> -Location <String> -SkuName 
 
 ## DESCRIPTION
 Create ElasticSan.
-For V2, omitted autoscale settings default to Enabled, an increase of 1 TiB and an unused-capacity threshold of 1 TiB. If CapacityUnitScaleUpLimitTiB is omitted, the command calls Get-AzElasticSanSkuList for the target subscription and Location, selects SkuName, and uses the smaller of five times TotalSizeTiB and elasticSanMaxTotalCapacityTiB. The command fails before creating the SAN if this lookup fails or does not provide an unambiguous positive capacity limit. Explicit autoscale values are preserved, except Disabled is rejected for V2. V1 behavior is unchanged.
+For V2, omitted autoscale settings default to Enabled, an increase of 1 TiB and an unused-capacity threshold of 1 TiB. If CapacityUnitScaleUpLimitTiB is omitted, the command calls Get-AzElasticSanSkuList for the target subscription and Location, selects SkuName, and uses the smaller of five times TotalSizeTiB and elasticSanMaxTotalCapacityTiB. The command fails before creating the SAN if this lookup fails or does not provide an unambiguous positive capacity limit. Explicit autoscale values are preserved, except Disabled and None are rejected for V2. V1 behavior is unchanged.
+For SKU discovery, location names are normalized by removing whitespace and converting to lowercase, so East US matches eastus. The location sent in the create request is unchanged.
 
 ## EXAMPLES
 
@@ -147,7 +148,7 @@ Accept wildcard characters: False
 
 ### -AutoScalePolicyEnforcement
 Enable or Disable scale up setting on Elastic San Appliance.
-Defaults to Enabled for V2. Disabled is not supported when Version is V2.
+Defaults to Enabled for V2. Disabled and None are not supported when Version is V2.
 
 ```yaml
 Type: System.String
