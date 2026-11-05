@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Validated registry names before container registry data-plane requests.
+* Updated `Connect-AzContainerRegistry` to pass credentials as data rather than executable PowerShell.
 
 ## Version 5.2.0
 * Added Change Safety support for additional cmdlets.

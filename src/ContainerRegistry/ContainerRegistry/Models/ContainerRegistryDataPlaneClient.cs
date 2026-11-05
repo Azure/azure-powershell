@@ -20,6 +20,7 @@ using Microsoft.Azure.ContainerRegistry;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Track2 = Azure.Containers.ContainerRegistry;
 using Azure.Containers.ContainerRegistry;
@@ -32,6 +33,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     public class ContainerRegistryDataPlaneClient
     {
+        internal const string RegistryNamePattern = @"\A[a-zA-Z0-9]{5,50}\z";
+
         private const string _defaultGrantType = "access_token";
         private const string _defaultScope = "registry:catalog:*";
         private const string _https = "https://";
@@ -105,7 +108,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public void SetEndPoint(string RegistryName)
         {
-            _endPoint = RegistryName.ToLower() + '.' + _suffix;
+            if (RegistryName == null || !Regex.IsMatch(RegistryName, RegistryNamePattern))
+            {
+                throw new AzPSArgumentException(
+                    "Registry name must contain 5-50 ASCII letters or digits.",
+                    nameof(RegistryName));
+            }
+
+            _endPoint = RegistryName.ToLowerInvariant() + '.' + _suffix;
             _client.LoginUri = _https + _endPoint;
             _credential = new Track2TokenCredential(new DataServiceCredential(AzureSession.Instance.AuthenticationFactory,
                         _context, AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId));
