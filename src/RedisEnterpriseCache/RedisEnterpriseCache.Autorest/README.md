@@ -39,7 +39,7 @@ require:
 input-file:
   - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/stable/2026-09-01/redisenterprise.json
 
-module-version: 3.0.0
+module-version: 2.1.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
 
@@ -108,6 +108,34 @@ directive:
       subject: UnlinkMigrationMigratedEndpoint
     set:
       subject: MigrationUnlinkMigratedEndpoint
+  # Clarify that Migration cmdlets apply only to Azure Cache for Redis
+  # Basic, Standard, and Premium sources.
+  - where:
+      verb: Get
+      subject: Migration
+    set:
+      command-description: Gets information about a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
+  - where:
+      verb: Test
+      subject: Migration
+    set:
+      command-description: Validates whether an Azure Cache for Redis Basic, Standard, or Premium cache can be migrated to Azure Managed Redis.
+  - where:
+      verb: Undo
+      subject: Migration
+    set:
+      command-description: Cancels or rolls back a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
+  - where:
+      verb: Invoke
+      subject: MigrationUnlinkMigratedEndpoint
+    set:
+      command-description: Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migrated from an Azure Cache for Redis Basic, Standard, or Premium cache.
+  - where:
+      verb: Test
+      subject: Migration
+      parameter-name: SourceResourceId
+    set:
+      parameter-description: The resource ID of the source Azure Cache for Redis Basic, Standard, or Premium cache to validate.
   - where:
       verb: New
       subject: Key

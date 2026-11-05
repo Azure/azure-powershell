@@ -27,7 +27,7 @@ Gets information about a database in a Redis Enterprise cluster.
 Retrieves all access keys for a Redis Enterprise database.
 
 ### [Get-AzRedisEnterpriseCacheMigration](Get-AzRedisEnterpriseCacheMigration.md)
-Gets information about a migration in a Redis Enterprise cluster.
+Gets information about a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 
 ### [Get-AzRedisEnterpriseCacheOperationStatus](Get-AzRedisEnterpriseCacheOperationStatus.md)
 Gets the status of operation.
@@ -52,7 +52,7 @@ Forcibly removes the link to the specified database resource.
 Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migrated from Azure Cache for Redis Enterprise, removing the source cache endpoint that was redirected to this cluster during migration.
 
 ### [Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint](Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint.md)
-Unlinks the migrated endpoint from the Azure Managed Redis cluster that was migrated from Azure Cache for Redis, removing the source cache endpoint that was redirected to this cluster during migration.
+Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migrated from an Azure Cache for Redis Basic, Standard, or Premium cache, removing the source cache endpoint that was redirected to this cluster during migration.
 
 ### [New-AzRedisEnterpriseCache](New-AzRedisEnterpriseCache.md)
 Creates a Redis Enterprise cache.
@@ -76,13 +76,13 @@ Deletes a single access policy assignment.
 Deletes a single database in a Redis Enterprise cache.
 
 ### [Start-AzRedisEnterpriseCacheMigration](Start-AzRedisEnterpriseCacheMigration.md)
-Starts a migration from a source Azure Cache for Redis to a target Azure Managed Redis (Redis Enterprise) cluster.
+Starts a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 
 ### [Test-AzRedisEnterpriseCacheMigration](Test-AzRedisEnterpriseCacheMigration.md)
-Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
+Validates whether an Azure Cache for Redis Basic, Standard, or Premium cache can be migrated to Azure Managed Redis.
 
 ### [Undo-AzRedisEnterpriseCacheMigration](Undo-AzRedisEnterpriseCacheMigration.md)
-Cancel or rollback the migration operation in a Redis Enterprise cluster.
+Cancels or rolls back a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 
 ### [Update-AzRedisEnterpriseCache](Update-AzRedisEnterpriseCache.md)
 Updates an existing Redis Enterprise cluster.

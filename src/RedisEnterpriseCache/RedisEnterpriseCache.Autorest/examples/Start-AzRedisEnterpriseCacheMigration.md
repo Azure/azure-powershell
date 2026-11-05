@@ -15,4 +15,4 @@ LastModifiedTime      : 30-10-2026 11:14:35
 RollbackEligibleUntil : 29-11-2026 11:14:35
 ```
 
-Starts a migration from Azure Cache for Redis to Azure Managed Redis, switches the source DNS endpoint, and skips data migration.
+Starts a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis, switches the source DNS endpoint, and skips data migration.

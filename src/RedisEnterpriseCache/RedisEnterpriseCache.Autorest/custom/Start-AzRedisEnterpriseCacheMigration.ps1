@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Starts a migration from a source Azure Cache for Redis to a target Azure Managed Redis (Redis Enterprise) cluster.
+Starts a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 .Description
-Starts a migration from a source Azure Cache for Redis to a target Azure Managed Redis (Redis Enterprise) cluster.
+Starts a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 This custom cmdlet provides friendly parameters instead of requiring raw JSON input.
 It constructs the discriminated union request body internally and calls the generated cmdlet underneath.
 .Example
@@ -54,7 +54,7 @@ function Start-AzRedisEnterpriseCacheMigration {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
-        # The resource ID of the source Azure Cache for Redis to migrate from.
+        # The resource ID of the source Azure Cache for Redis Basic, Standard, or Premium cache to migrate from.
         ${SourceResourceId},
 
         [Parameter(Mandatory)]

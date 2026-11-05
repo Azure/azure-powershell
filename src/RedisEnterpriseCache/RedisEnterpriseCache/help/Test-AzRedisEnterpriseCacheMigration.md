@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzRedisEnterpriseCacheMigration
 
 ## SYNOPSIS
-Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
+Validates whether an Azure Cache for Redis Basic, Standard, or Premium cache can be migrated to Azure Managed Redis.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Test-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <S
 ```
 
 ## DESCRIPTION
-Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
+Validates whether an Azure Cache for Redis Basic, Standard, or Premium cache can be migrated to Azure Managed Redis.
 
 ## EXAMPLES
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceResourceId
-The source resource ID to validate migration from.
+The resource ID of the source Azure Cache for Redis Basic, Standard, or Premium cache to validate.
 This is the resource ID of the Azure Cache for Redis.
 
 ```yaml

@@ -14,11 +14,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
     {
 
         /// <summary>Backing field for <see cref="SasUri" /> property.</summary>
-        private System.Security.SecureString _sasUri;
+        private string _sasUri;
 
         /// <summary>SAS URI for the target directory to export to</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
-        public System.Security.SecureString SasUri { get => this._sasUri; set => this._sasUri = value; }
+        public string SasUri { get => this._sasUri; set => this._sasUri = value; }
 
         /// <summary>Creates an new <see cref="ExportClusterParameters" /> instance.</summary>
         public ExportClusterParameters()
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         Update = true,
         Description = @"SAS URI for the target directory to export to",
         SerializedName = @"sasUri",
-        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
-        System.Security.SecureString SasUri { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string SasUri { get; set; }
 
     }
     /// Parameters for a Redis Enterprise export operation.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 
     {
         /// <summary>SAS URI for the target directory to export to</summary>
-        System.Security.SecureString SasUri { get; set; }
+        string SasUri { get; set; }
 
     }
 }

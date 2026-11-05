@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzRedisEnterpriseCacheMigration
 
 ## SYNOPSIS
-Starts a migration from a source Azure Cache for Redis to a target Azure Managed Redis (Redis Enterprise) cluster.
+Starts a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Start-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <
 ```
 
 ## DESCRIPTION
-Starts a migration from a source Azure Cache for Redis to a target Azure Managed Redis (Redis Enterprise) cluster.
+Starts a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 This custom cmdlet provides friendly parameters instead of requiring raw JSON input.
 It constructs the discriminated union request body internally and calls the generated cmdlet underneath.
 
@@ -43,7 +43,7 @@ LastModifiedTime      : 30-10-2026 11:14:35
 RollbackEligibleUntil : 29-11-2026 11:14:35
 ```
 
-Starts a migration from Azure Cache for Redis to Azure Managed Redis, switches the source DNS endpoint, and skips data migration.
+Starts a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis, switches the source DNS endpoint, and skips data migration.
 
 ## PARAMETERS
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceResourceId
-The resource ID of the source Azure Cache for Redis to migrate from.
+The resource ID of the source Azure Cache for Redis Basic, Standard, or Premium cache to migrate from.
 
 ```yaml
 Type: System.String

@@ -7,4 +7,4 @@ Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint -ClusterName "cache
 True
 ```
 
-After the source Azure Cache for Redis resource has been deleted, permanently unlinks its endpoint from the Azure Managed Redis cluster.
+After the source Azure Cache for Redis Basic, Standard, or Premium cache has been deleted, permanently unlinks its endpoint from the Azure Managed Redis cluster.

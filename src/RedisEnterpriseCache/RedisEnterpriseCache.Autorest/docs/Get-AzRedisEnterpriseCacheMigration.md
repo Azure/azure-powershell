@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRedisEnterpriseCacheMigration
 
 ## SYNOPSIS
-Gets information about a migration in a Redis Enterprise cluster.
+Gets information about a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <St
 ```
 
 ## DESCRIPTION
-Gets information about a migration in a Redis Enterprise cluster.
+Gets information about a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 
 ## EXAMPLES
 

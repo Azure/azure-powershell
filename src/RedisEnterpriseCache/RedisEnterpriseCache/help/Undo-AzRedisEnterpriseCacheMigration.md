@@ -8,7 +8,7 @@ schema: 2.0.0
 # Undo-AzRedisEnterpriseCacheMigration
 
 ## SYNOPSIS
-Cancel or rollback the migration operation in a Redis Enterprise cluster.
+Cancels or rolls back a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Undo-AzRedisEnterpriseCacheMigration -InputObject <IRedisEnterpriseCacheIdentity
 ```
 
 ## DESCRIPTION
-Cancel or rollback the migration operation in a Redis Enterprise cluster.
+Cancels or rolls back a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
 
 ## EXAMPLES
 
