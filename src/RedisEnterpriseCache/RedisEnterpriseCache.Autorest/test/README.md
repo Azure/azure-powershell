@@ -24,6 +24,13 @@ that transport assertion. GET-header isolation is not asserted.
 Record this suite with `-Record -TestName RedisEnterpriseCache-ChangeSafety`.
 Preserve the original `env.json` and legacy scenario recording when recording
 only this suite; commit only the new recording and matching fixture metadata.
+After the recorded cases finish, test-level normalization replaces signed
+polling URL query values (`t`, `c`, `s`, `h`) with `Sanitized` in request lookup
+keys, request URIs and `Azure-AsyncOperation`/`Location` response headers.
+It preserves API versions and response payloads, rejects lookup-key collisions,
+and does not modify live requests, the recorder, or setup/cleanup.
+`RecordingNormalization.Tests.ps1` covers this normalization offline on
+PowerShell Core and Windows PowerShell.
 The existing harness initializes recording files even for unselected scenarios,
 so restore untouched legacy inputs before full Playback. Do not record access
 keys or grant access to the legacy scenario's hardcoded user.

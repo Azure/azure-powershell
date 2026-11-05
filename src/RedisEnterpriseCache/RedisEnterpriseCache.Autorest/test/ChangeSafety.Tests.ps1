@@ -11,6 +11,10 @@ if (($null -eq $TestName) -or ($TestName -contains 'RedisEnterpriseCache-ChangeS
 }
 
 Describe 'RedisEnterpriseCache-ChangeSafety' {
+    AfterAll {
+        Complete-RedisEnterpriseCacheTestRecording -Path $TestRecordingFile
+    }
+
     BeforeAll {
         $fixturePath = Join-Path $PSScriptRoot 'ChangeSafety.env.json'
         if ($TestMode -eq 'playback') {
