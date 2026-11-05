@@ -15,15 +15,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Sync-AzResiliencyGoalResource
 }
 
 Describe 'Sync-AzResiliencyGoalResource' {
-    It 'Sync' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $goalParameters = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
+        $goalIdentity = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
+        # Only one refresh can run per goal assignment, so a conflicting refresh is retried.
+        $refreshInProgress = 'InvalidResourceOperation|Conflict|\(409\)'
+        # The refresh has completed once the cmdlet returns; the goal resources must then be listable.
+        function Assert-GoalResourcesListed {
+            { Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalResource @goalParameters } } | Should -Not -Throw
+        }
     }
 
-    It 'SyncViaIdentityServiceGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Sync' {
+        { Invoke-ResiliencyWithRetry -AlsoRetryOn $refreshInProgress { Sync-AzResiliencyGoalResource @goalParameters } } | Should -Not -Throw
+        Assert-GoalResourcesListed
     }
 
-    It 'SyncViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SyncViaIdentityServiceGroup' {
+        { Invoke-ResiliencyWithRetry -AlsoRetryOn $refreshInProgress { Sync-AzResiliencyGoalResource -ServiceGroupInputObject @{ ServiceGroupName = $env.serviceGroupName } -GoalAssignmentName $env.goalAssignmentName } } | Should -Not -Throw
+        Assert-GoalResourcesListed
+    }
+
+    It 'SyncViaIdentity' {
+        { Invoke-ResiliencyWithRetry -AlsoRetryOn $refreshInProgress { Sync-AzResiliencyGoalResource -InputObject $goalIdentity } } | Should -Not -Throw
+        Assert-GoalResourcesListed
     }
 }

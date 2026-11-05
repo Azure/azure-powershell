@@ -15,35 +15,70 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzResiliencyEnrollment'))
 }
 
 Describe 'New-AzResiliencyEnrollment' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $planParameters = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
+        $usagePlanIdentity = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
+        $body = @{ properties = @{ serviceGroupId = $env.enrollmentServiceGroupId } }
+        # Each scenario enrolls the dedicated service group, verifies the enrollment and removes it again.
+        function Assert-NewEnrollment([object]$Enrollment, [string]$Name) {
+            $Enrollment.Name | Should -Be $Name
+            $Enrollment.ServiceGroupId | Should -Be $env.enrollmentServiceGroupId
+            $Enrollment.ProvisioningState | Should -Be 'Succeeded'
+            Remove-AzResiliencyEnrollment @planParameters -Name $Name
+            @(Get-AzResiliencyEnrollment @planParameters).Name | Should -Not -Contain $Name
+        }
     }
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $name = "$($env.enrollmentName)-new1"
+        $enrollment = Invoke-ResiliencyWithRetry { New-AzResiliencyEnrollment @planParameters -Name $name -ServiceGroupId $env.enrollmentServiceGroupId }
+        Assert-NewEnrollment $enrollment $name
     }
 
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonString' {
+        $name = "$($env.enrollmentName)-new2"
+        $json = $body | ConvertTo-Json -Depth 5
+        $enrollment = Invoke-ResiliencyWithRetry { New-AzResiliencyEnrollment @planParameters -Name $name -JsonString $json }
+        Assert-NewEnrollment $enrollment $name
     }
 
-    It 'CreateViaIdentityUsagePlanExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonFilePath' {
+        $name = "$($env.enrollmentName)-new3"
+        $jsonFilePath = Join-Path $TestDrive 'enrollment.json'
+        $body | ConvertTo-Json -Depth 5 | Set-Content $jsonFilePath
+        $enrollment = Invoke-ResiliencyWithRetry { New-AzResiliencyEnrollment @planParameters -Name $name -JsonFilePath $jsonFilePath }
+        Assert-NewEnrollment $enrollment $name
     }
 
-    It 'CreateViaIdentityUsagePlan' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaIdentityUsagePlanExpanded' {
+        $name = "$($env.enrollmentName)-new4"
+        $enrollment = Invoke-ResiliencyWithRetry { New-AzResiliencyEnrollment -UsagePlanInputObject $usagePlanIdentity -Name $name -ServiceGroupId $env.enrollmentServiceGroupId }
+        Assert-NewEnrollment $enrollment $name
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaIdentityUsagePlan' {
+        $name = "$($env.enrollmentName)-new5"
+        $enrollment = Invoke-ResiliencyWithRetry { New-AzResiliencyEnrollment -UsagePlanInputObject $usagePlanIdentity -Name $name -Resource @{ ServiceGroupId = $env.enrollmentServiceGroupId } }
+        Assert-NewEnrollment $enrollment $name
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        $name = "$($env.enrollmentName)-new6"
+        $enrollment = Invoke-ResiliencyWithRetry { New-AzResiliencyEnrollment @planParameters -Name $name -Resource @{ ServiceGroupId = $env.enrollmentServiceGroupId } }
+        Assert-NewEnrollment $enrollment $name
     }
 
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaIdentityExpanded' {
+        $name = "$($env.enrollmentName)-new7"
+        $identity = $usagePlanIdentity + @{ EnrollmentName = $name }
+        $enrollment = Invoke-ResiliencyWithRetry { New-AzResiliencyEnrollment -InputObject $identity -ServiceGroupId $env.enrollmentServiceGroupId }
+        Assert-NewEnrollment $enrollment $name
+    }
+
+    It 'CreateViaIdentity' {
+        $name = "$($env.enrollmentName)-new8"
+        $identity = $usagePlanIdentity + @{ EnrollmentName = $name }
+        $enrollment = Invoke-ResiliencyWithRetry { New-AzResiliencyEnrollment -InputObject $identity -Resource @{ ServiceGroupId = $env.enrollmentServiceGroupId } }
+        Assert-NewEnrollment $enrollment $name
     }
 }

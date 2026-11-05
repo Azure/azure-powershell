@@ -15,15 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzResiliencyEnrollment
 }
 
 Describe 'Remove-AzResiliencyEnrollment' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $planParameters = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
+        $usagePlanIdentity = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
+        function New-TestEnrollment([string]$Name) {
+            return Invoke-ResiliencyWithRetry { New-AzResiliencyEnrollment @planParameters -Name $Name -ServiceGroupId $env.enrollmentServiceGroupId }
+        }
     }
 
-    It 'DeleteViaIdentityUsagePlan' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $name = "$($env.enrollmentName)-rm1"
+        $null = New-TestEnrollment $name
+        Remove-AzResiliencyEnrollment @planParameters -Name $name -PassThru | Should -BeTrue
+        @(Get-AzResiliencyEnrollment @planParameters).Name | Should -Not -Contain $name
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentityUsagePlan' {
+        $name = "$($env.enrollmentName)-rm2"
+        $null = New-TestEnrollment $name
+        Remove-AzResiliencyEnrollment -UsagePlanInputObject $usagePlanIdentity -Name $name -PassThru | Should -BeTrue
+        @(Get-AzResiliencyEnrollment @planParameters).Name | Should -Not -Contain $name
+    }
+
+    It 'DeleteViaIdentity' {
+        $name = "$($env.enrollmentName)-rm3"
+        $enrollment = New-TestEnrollment $name
+        Remove-AzResiliencyEnrollment -InputObject $enrollment -PassThru | Should -BeTrue
+        @(Get-AzResiliencyEnrollment @planParameters).Name | Should -Not -Contain $name
     }
 }

@@ -15,19 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzResiliencyEnrollment'))
 }
 
 Describe 'Get-AzResiliencyEnrollment' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $planParameters = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
+        $usagePlanIdentity = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
     }
 
-    It 'GetViaIdentityUsagePlan' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $enrollments = @(Get-AzResiliencyEnrollment @planParameters)
+        $enrollments.Name | Should -Contain $env.enrollmentName
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityUsagePlan' {
+        $enrollment = Get-AzResiliencyEnrollment -UsagePlanInputObject $usagePlanIdentity -Name $env.enrollmentName
+        $enrollment.Name | Should -Be $env.enrollmentName
+        $enrollment.ServiceGroupId | Should -Be $env.serviceGroupId
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $enrollment = Get-AzResiliencyEnrollment @planParameters -Name $env.enrollmentName
+        $enrollment.Name | Should -Be $env.enrollmentName
+        $enrollment.ServiceGroupId | Should -Be $env.serviceGroupId
+        $enrollment.ProvisioningState | Should -Be 'Succeeded'
+    }
+
+    It 'GetViaIdentity' {
+        $identity = $usagePlanIdentity + @{ EnrollmentName = $env.enrollmentName }
+        $enrollment = Get-AzResiliencyEnrollment -InputObject $identity
+        $enrollment.Name | Should -Be $env.enrollmentName
+        $enrollment.ServiceGroupId | Should -Be $env.serviceGroupId
     }
 }

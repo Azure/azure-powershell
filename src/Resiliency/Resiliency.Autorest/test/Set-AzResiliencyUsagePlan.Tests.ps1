@@ -15,19 +15,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzResiliencyUsagePlan'))
 }
 
 Describe 'Set-AzResiliencyUsagePlan' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $planParameters = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; Name = $env.usagePlanName }
+        function Assert-SetUsagePlan([object]$Plan) {
+            $Plan.Name | Should -Be $env.usagePlanName
+            $Plan.Location | Should -Be 'global'
+            $Plan.PlanType | Should -Be 'Standard'
+            $Plan.ProvisioningState | Should -Be 'Succeeded'
+        }
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $plan = Set-AzResiliencyUsagePlan @planParameters -Location global -PlanType Standard -Tag @{ scenario = 'UpdateExpanded' }
+        Assert-SetUsagePlan $plan
     }
 
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $plan = Set-AzResiliencyUsagePlan @planParameters -Resource @{ Location = 'global'; PlanType = 'Standard' }
+        Assert-SetUsagePlan $plan
     }
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonFilePath' {
+        $jsonFilePath = Join-Path $TestDrive 'usagePlan.json'
+        @{ location = 'global'; properties = @{ planType = 'Standard' } } | ConvertTo-Json -Depth 5 | Set-Content $jsonFilePath
+        $plan = Set-AzResiliencyUsagePlan @planParameters -JsonFilePath $jsonFilePath
+        Assert-SetUsagePlan $plan
+    }
+
+    It 'UpdateViaJsonString' {
+        $json = @{ location = 'global'; properties = @{ planType = 'Standard' } } | ConvertTo-Json -Depth 5
+        $plan = Set-AzResiliencyUsagePlan @planParameters -JsonString $json
+        Assert-SetUsagePlan $plan
     }
 }
