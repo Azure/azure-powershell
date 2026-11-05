@@ -14,7 +14,7 @@ This directory contains the PowerShell module for the Resiliency service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 5.5.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,6 +49,25 @@ directive:
     where: $.definitions.DrillProperties.properties.errorDetails
     transform: >-
       $["x-ms-client-name"] = "DrillErrorDetail";
+
+  # The service returns planType on GET, but the spec marks it create-only
+  # (x-ms-mutability: ["create"]). Without "read", the generated model never
+  # deserializes it (.PlanType is null) and Update-AzResiliencyRecoveryPlan (GET+PUT)
+  # sends a PUT without the required planType. Mark it readable, matching drillType.
+  - from: swagger-document
+    where: $.definitions.RecoveryPlanProperties.properties.planType
+    transform: >-
+      $["x-ms-mutability"] = ["read", "create"];
+
+  # GoalAssignments PUT/PATCH declare final-state-via: location. When the initial
+  # response has no Location header the generated final GET fails with
+  # "Invalid URI: The URI is empty", and the PATCH Location target returns the
+  # resource as a JSON string. Read the final state from the resource itself
+  # (original-uri), as the Goals team recommends.
+  - from: swagger-document
+    where: $.paths["/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/goalAssignments/{goalAssignmentName}"][put,patch]
+    transform: >-
+      $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
 
   # Action-style POSTs normalize onto a single subject per operation group, so their
   # differing request bodies collide on one -Body parameter and Export-ProxyCmdlet
