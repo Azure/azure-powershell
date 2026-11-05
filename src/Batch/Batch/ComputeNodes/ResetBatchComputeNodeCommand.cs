@@ -17,6 +17,7 @@ using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSComputeNode ComputeNode { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ReimageOption", "18.0.0", "5.0.0", ChangeDescription = "The Batch API has deprecated the RetainedData value, and a newer API version removes it, so RetainedData is being removed from this parameter (Requeue, Terminate and TaskCompletion stay). Use TaskCompletion instead, and upload task data to Azure Storage in your task.")]
         [Parameter]
         [ValidateNotNullOrEmpty]
         public ComputeNodeReimageOption? ReimageOption { get; set; }
