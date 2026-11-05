@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Removed unused MD5 calculations from disk and blob uploads and switched managed disk upload lock names and deterministic Azure Enhanced Monitoring test IDs to SHA-256.
+* Removed unused MD5 calculations from disk and blob uploads and switched disk and blob upload lock names and deterministic Azure Enhanced Monitoring test IDs to SHA-256.
 * Added a preview message to `New-AzCapacityReservationGroup` indicating that the Open Capacity Reservation feature is in preview.
 
 ## Version 11.11.0

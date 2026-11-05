@@ -317,9 +317,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             var invariant = destinationBlobUri.ToString().ToLowerInvariant();
             var bytes = Encoding.Unicode.GetBytes(invariant);
-            using (var md5 = MD5.Create())
+            using (var sha256 = SHA256.Create())
             {
-                byte[] hash = md5.ComputeHash(bytes);
+                byte[] hash = sha256.ComputeHash(bytes);
                 return Convert.ToBase64String(hash).Replace('/', '_');
             }
         }
