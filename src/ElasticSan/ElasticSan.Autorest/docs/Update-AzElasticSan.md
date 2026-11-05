@@ -17,7 +17,7 @@ Update a Elastic San.
 Update-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AutoScalePolicyEnforcement <String>] [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>]
  [-ExtendedCapacitySizeTiB <Int64>] [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>]
- [-Tag <Hashtable>] [-TotalIop <Int64>] [-TotalMBps <Int64>] [-TotalSizeTiB <Int64>] [-UnusedSizeTiB <Int64>]
+ [-Tag <Hashtable>] [-TotalIops <Int64>] [-TotalMBps <Int64>] [-TotalSizeTiB <Int64>] [-UnusedSizeTiB <Int64>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Update-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId 
 ```
 Update-AzElasticSan -InputObject <IElasticSanIdentity> [-AutoScalePolicyEnforcement <String>]
  [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
- [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-TotalIop <Int64>]
+ [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-TotalIops <Int64>]
  [-TotalMBps <Int64>] [-TotalSizeTiB <Int64>] [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -75,6 +75,14 @@ VolumeGroupCount             : 0
 ```
 
 This command updates properties of an Elastic SAN.
+
+### Example 2: Update V2 capacity and performance
+```powershell
+Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsanv2 -TotalSizeTiB 20 -TotalIops 100000 -TotalMBps 4000
+```
+
+This command updates the total capacity, IOPS and throughput of a V2 Elastic SAN.
+The legacy TotalIop parameter name remains available as an alias for TotalIops.
 
 ## PARAMETERS
 
@@ -291,14 +299,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TotalIop
+### -TotalIops
 Total Provisioned IOPS of the Elastic San appliance.
 Supported only for ElasticSanVersion V2.
 
 ```yaml
 Type: System.Int64
 Parameter Sets: (All)
-Aliases:
+Aliases: TotalIop
 
 Required: False
 Position: Named

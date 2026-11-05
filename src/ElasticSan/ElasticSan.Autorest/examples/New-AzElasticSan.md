@@ -79,3 +79,10 @@ VolumeGroupCount             : 0
 ```
 
 This command creates an Elastic SAN.
+
+### Example 3: Create a V2 Elastic SAN
+```powershell
+New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsanv2 -Location eastus -SkuName 'ElasticSAN_LRS' -Version V2 -TotalSizeTiB 20 -TotalIops 100000 -TotalMBps 4000
+```
+
+This command creates a V2 Elastic SAN with independently specified total capacity, IOPS and throughput. V1 base and extended capacity defaults are not added to the V2 request.

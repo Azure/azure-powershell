@@ -172,3 +172,10 @@ Type                                                   : Microsoft.ElasticSan/el
 ```
 
 This command disables EnforceDataIntegrityCheckForIscsi on a volume group.
+
+### Example 6: Update performance reservations
+```powershell
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name myperformancegroup -ReservedIops 20000 -ReservedMBps 800
+```
+
+This command updates the reserved IOPS and throughput of an existing PerformanceCritical volume group. The quality of service tier is selected during creation and is not an update input.

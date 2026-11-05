@@ -18,8 +18,8 @@ New-AzElasticSan -Name <String> -ResourceGroupName <String> -Location <String> -
  [-SubscriptionId <String>] [-AutoScalePolicyEnforcement <String>] [-AvailabilityZone <String[]>]
  [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
  [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TotalIops <Int64>] [-TotalMBps <Int64>] [-TotalSizeTiB <Int64>] [-UnusedSizeTiB <Int64>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -28,12 +28,14 @@ New-AzElasticSan -InputObject <IElasticSanIdentity> -Location <String> -SkuName 
  [-AutoScalePolicyEnforcement <String>] [-AvailabilityZone <String[]>] [-BaseSizeTiB <Int64>]
  [-CapacityUnitScaleUpLimitTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
  [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TotalIops <Int64>] [-TotalMBps <Int64>] [-TotalSizeTiB <Int64>] [-UnusedSizeTiB <Int64>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Create ElasticSan.
+For V2, omitted autoscale settings default to Enabled, an increase of 1 TiB and an unused-capacity threshold of 1 TiB. If CapacityUnitScaleUpLimitTiB is omitted, the command calls Get-AzElasticSanSkuList for the target subscription and Location, selects SkuName, and uses the smaller of five times TotalSizeTiB and elasticSanMaxTotalCapacityTiB. The command fails before creating the SAN if this lookup fails or does not provide an unambiguous positive capacity limit. Explicit autoscale values are preserved, except Disabled and None are rejected for V2. V1 behavior is unchanged.
+For SKU discovery, location names are normalized by removing whitespace and converting to lowercase, so East US matches eastus. The location sent in the create request is unchanged.
 
 ## EXAMPLES
 
@@ -119,6 +121,14 @@ VolumeGroupCount             : 0
 
 This command creates an Elastic SAN.
 
+### Example 3: Create a V2 Elastic SAN
+```powershell
+New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsanv2 -Location eastus -SkuName 'ElasticSAN_LRS' -Version V2 -TotalSizeTiB 20 -TotalIops 100000 -TotalMBps 4000
+```
+
+This command creates a V2 Elastic SAN with independently specified total capacity, IOPS and throughput.
+V1 base and extended capacity defaults are not added to the V2 request.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -138,6 +148,7 @@ Accept wildcard characters: False
 
 ### -AutoScalePolicyEnforcement
 Enable or Disable scale up setting on Elastic San Appliance.
+Defaults to Enabled for V2. Disabled and None are not supported when Version is V2.
 
 ```yaml
 Type: System.String
@@ -168,7 +179,7 @@ Accept wildcard characters: False
 
 ### -BaseSizeTiB
 Base size of the Elastic San appliance in TiB.
-Default value is 20.
+Defaults to 20 for V1.
 
 ```yaml
 Type: System.Int64
@@ -184,6 +195,8 @@ Accept wildcard characters: False
 
 ### -CapacityUnitScaleUpLimitTiB
 Maximum scale up size on Elastic San appliance in TiB.
+For V2, defaults to the smaller of five times TotalSizeTiB and the regional maximum total capacity for SkuName.
+When omitted for V2, Get-AzElasticSanSkuList is called for the target subscription and Location.
 
 ```yaml
 Type: System.Int64
@@ -215,7 +228,7 @@ Accept wildcard characters: False
 
 ### -ExtendedCapacitySizeTiB
 Extended size of the Elastic San appliance in TiB.
-Default value is 0.
+Defaults to 0 for V1.
 
 ```yaml
 Type: System.Int64
@@ -231,6 +244,7 @@ Accept wildcard characters: False
 
 ### -IncreaseCapacityUnitByTiB
 Unit to increase Capacity Unit on Elastic San appliance in TiB.
+Defaults to 1 for V2.
 
 ```yaml
 Type: System.Int64
@@ -396,11 +410,77 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UnusedSizeTiB
-Unused size on Elastic San appliance in TiB.
+### -TotalIops
+Total provisioned IOPS of the Elastic San appliance.
+Required for V2; read-only for V1.
 
 ```yaml
 Type: System.Int64
+Parameter Sets: (All)
+Aliases: TotalIop
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TotalMBps
+Total provisioned throughput of the Elastic San appliance in MBps.
+Required for V2; read-only for V1.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TotalSizeTiB
+Total size of the Elastic San appliance in TiB.
+Required for V2; read-only for V1.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UnusedSizeTiB
+Unused size on Elastic San appliance in TiB.
+Defaults to 1 for V2.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Elastic San appliance version.
+Defaults to V1 if not specified.
+V2 requires TotalSizeTiB, TotalIops and TotalMBps; V1 capacity defaults are not added for V2.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -456,4 +536,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

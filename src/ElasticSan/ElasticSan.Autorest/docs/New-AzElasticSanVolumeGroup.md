@@ -15,31 +15,33 @@ Create a Volume Group.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
- [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
+ [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionInTransit]
+ [-EncryptionUserAssignedIdentity <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
+ [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-ProtocolType <String>] [-QualityOfService <String>] [-ReservedIops <Int32>] [-ReservedMBps <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityElasticSanExpanded
 ```
 New-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Name <String> [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
- [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EncryptionInTransit] [-EncryptionUserAssignedIdentity <String>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
+ [-QualityOfService <String>] [-ReservedIops <Int32>] [-ReservedMBps <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>]
+New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>] [-EncryptionInTransit]
  [-EncryptionUserAssignedIdentity <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
  [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
  [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ProtocolType <String>] [-QualityOfService <String>] [-ReservedIops <Int32>] [-ReservedMBps <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -221,6 +223,24 @@ Type                                                   : Microsoft.ElasticSan/el
 
 This command creates a volume group with EnforceDataIntegrityCheckForIscsi disabled.
 
+### Example 6: Create V2 volume groups with quality of service settings
+```powershell
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name mygeneralpurposegroup -ProtocolType Iscsi -QualityOfService GeneralPurpose
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name myperformancegroup -ProtocolType Iscsi -QualityOfService PerformanceCritical -ReservedIops 10000 -ReservedMBps 400
+```
+
+These commands create GeneralPurpose and PerformanceCritical volume groups in a V2 Elastic SAN.
+Performance reservations apply only to PerformanceCritical volume groups.
+
+### Example 7: Create an iSCSI volume group with encryption in transit
+```powershell
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myencryptedgroup -ProtocolType Iscsi -EncryptionInTransit
+```
+
+This command enables encryption in transit for an iSCSI volume group.
+Use `-EncryptionInTransit:$false` to explicitly disable it.
+Encryption in transit is separate from encryption at rest and data-integrity checking.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -290,6 +310,22 @@ Type of encryption
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionInTransit
+A boolean indicating whether or not encryption in transit is enabled.
+Supported only for ISCSI protocol.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -473,6 +509,54 @@ Type of storage target
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QualityOfService
+Quality of service tier for the volume group.
+Applicable to V2 Elastic SANs only.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservedIops
+Reserved IOPS for the volume group.
+Applicable to PerformanceCritical volume groups only.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: ReservedIop
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservedMBps
+Reserved throughput in MBps for the volume group.
+Applicable to PerformanceCritical volume groups only.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

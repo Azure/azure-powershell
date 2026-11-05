@@ -165,11 +165,26 @@ function Update-AzElasticSanVolumeGroup {
         ${NetworkAclsVirtualNetworkRule},
     
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
         [System.String]
         # Type of storage target
         ${ProtocolType},
+
+        [Parameter()]
+        [Alias('ReservedIop')]
+        [ValidateRange(0, 2147483647)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.Int32]
+        # Reserved IOPS for the volume group. Applicable to PerformanceCritical volume groups only.
+        ${ReservedIops},
+
+        [Parameter()]
+        [ValidateRange(0, 2147483647)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.Int32]
+        # Reserved throughput in MBps for the volume group. Applicable to PerformanceCritical volume groups only.
+        ${ReservedMBps},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
