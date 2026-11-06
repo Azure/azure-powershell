@@ -1,0 +1,163 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/AIInfraOptimization/AIInfraOptimization.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "AIInfraOptimization"
+    service-name: "AIInfraOptimization"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      # Hide the Operations endpoint from the public interface
+      - where:
+          subject: Operation
+        hide: true
+      # Default SubscriptionId to the current context
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      # Remove Set-* cmdlets
+      - where:
+          verb: Set
+        remove: true
+      # The emitter pascal-cases the subject prefix to AiInfraOptimization. Restore the AI acronym
+      # so cmdlet nouns match the module name Az.AIInfraOptimization.
+      - where:
+          subject-prefix: AiInfraOptimization
+        set:
+          subject-prefix: AIInfraOptimization
+
+      # recommendVmSku is a read-only POST action. Expose it as Get-AzAIInfraOptimizationVMSkuRecommendation
+      # instead of the generated Invoke-AzAIInfraOptimizationRecommendRecommendationVMSku.
+      - where:
+          verb: Invoke
+          subject: RecommendRecommendationVMSku
+        set:
+          verb: Get
+          subject: VMSkuRecommendation
+      # Getting a recommendation changes no Azure resource, so -WhatIf and -Confirm do not apply.
+      - where:
+          verb: Get
+          subject: VMSkuRecommendation
+        set:
+          suppress-should-process: true
+      # Keep the expanded and JSON request variants. The body-object variant duplicates them, and the
+      # identity variants only wrap the subscription ID and location that are already parameters.
+      - where:
+          subject: VMSkuRecommendation
+          variant: ^Recommend$|^RecommendViaIdentity$|^RecommendViaIdentityExpanded$
+        remove: true
+
+      # Drop the redundant Model prefix from the Hugging Face model identifier.
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: ModelHuggingFaceModelId
+        set:
+          parameter-name: HuggingFaceModelId
+      # Spell out the model architecture inputs instead of the singularized numLayers, numKeyValueHeads
+      # and headDim wire names.
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: ModelNumLayer
+        set:
+          parameter-name: ModelLayerCount
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: ModelNumKeyValueHead
+        set:
+          parameter-name: ModelKeyValueHeadCount
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: ModelHeadDim
+        set:
+          parameter-name: ModelHeadDimension
+      # The singularized TokenBudgetPromptToken and TokenBudgetMaxOutputToken names read like token
+      # values; they are token counts.
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: TokenBudgetPromptToken
+        set:
+          parameter-name: PromptTokenCount
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: TokenBudgetMaxOutputToken
+        set:
+          parameter-name: MaxOutputTokenCount
+      # Drop the workload, deployment, optimization and subscriptionOptions request section prefixes
+      # where the remaining name is unambiguous.
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: WorkloadMaxConcurrentRequestsPerReplica
+        set:
+          parameter-name: MaxConcurrentRequestsPerReplica
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: DeploymentReplicaCount
+        set:
+          parameter-name: ReplicaCount
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: DeploymentProcurementOption
+        set:
+          parameter-name: ProcurementOption
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: OptimizationRankingPreference
+        set:
+          parameter-name: RankingPreference
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: SubscriptionOptionIncludeQuota
+        set:
+          parameter-name: IncludeQuota
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: SubscriptionOptionIncludePlacement
+        set:
+          parameter-name: IncludePlacement
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: SubscriptionOptionIncludePricing
+        set:
+          parameter-name: IncludePricing
+
+      # The TypeSpec descriptions reference wire property names. Point to the PowerShell parameters instead.
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: PromptTokenCount
+        set:
+          parameter-description: The number of prompt, or input, tokens per inference request. Must be supplied together with MaxOutputTokenCount, and the two must total from 1 through 131072.
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: MaxOutputTokenCount
+        set:
+          parameter-description: The maximum number of generated output tokens per inference request. Must be supplied together with PromptTokenCount, and the two must total from 1 through 131072.
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: ModelLayerCount
+        set:
+          parameter-description: The model layer count, used for architecture-aware key-value cache sizing. Supply ModelLayerCount, ModelKeyValueHeadCount and ModelHeadDimension together with ModelParameterCount.
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: ModelKeyValueHeadCount
+        set:
+          parameter-description: The model key-value head count, used for architecture-aware key-value cache sizing. Supply ModelLayerCount, ModelKeyValueHeadCount and ModelHeadDimension together with ModelParameterCount.
+      - where:
+          subject: VMSkuRecommendation
+          parameter-name: ModelHeadDimension
+        set:
+          parameter-description: The attention head dimension, used for architecture-aware key-value cache sizing. Supply ModelLayerCount, ModelKeyValueHeadCount and ModelHeadDimension together with ModelParameterCount.
+
+# Replaces the spec's linter block. The "client-sdk" rule set it also extends does not
+# exist in the @azure-tools/typespec-azure-rulesets version pinned by eng/emitter-package.json.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
