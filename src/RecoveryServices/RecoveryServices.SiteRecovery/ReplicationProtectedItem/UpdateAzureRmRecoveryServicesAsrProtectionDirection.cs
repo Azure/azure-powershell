@@ -352,6 +352,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryCapacityReservationGroupId { get; set; }
 
         /// <summary>
+        /// Gets or sets the confidential data disk encryption (CDDE) user-assigned managed identity ARM Id.
+        /// Applicable when reprotecting a CMK confidential VM with encrypted data disks.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryConfidentialDataDiskEncryptionIdentity { get; set; }
+
+        /// <summary>
         /// Gets or sets BootDiagnosticStorageAccountId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
@@ -801,7 +810,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId,
                     RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId,
                     RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
-                    PlatformFaultDomain = this.PlatformFaultDomain
+                    PlatformFaultDomain = this.PlatformFaultDomain,
+                    RecoveryConfidentialDataDiskEncryptionIdentity =
+                        this.IsParameterBound(c => c.RecoveryConfidentialDataDiskEncryptionIdentity)
+                            ? this.RecoveryConfidentialDataDiskEncryptionIdentity
+                            : null
                 };
 
                 // Fetch the latest Protected item objects

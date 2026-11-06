@@ -92,6 +92,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="targetAvailabilityZone">The target availability zone.
         /// </param>
 
+        /// <param name="targetExtendedLocation">The target extended location.
+        /// </param>
+
         /// <param name="targetProximityPlacementGroupId">The target proximity placement group Id.
         /// </param>
 
@@ -222,7 +225,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="targetCapacityReservationGroupId">The target capacity reservation group ARM Id.
         /// </param>
-        public InMageRcmReplicationDetails(string internalIdentifier = default(string), string fabricDiscoveryMachineId = default(string), string multiVMGroupName = default(string), string discoveryType = default(string), string processServerId = default(string), int? processorCoreCount = default(int?), double? allocatedMemoryInMb = default(double?), string processServerName = default(string), string runAsAccountId = default(string), string osType = default(string), string firmwareType = default(string), string primaryNicIPAddress = default(string), string targetGeneration = default(string), string licenseType = default(string), string linuxLicenseType = default(string), string storageAccountId = default(string), string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetLocation = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), string failoverRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), long? lastRpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialReplicationProgressPercentage = default(int?), long? initialReplicationProcessedBytes = default(long?), long? initialReplicationTransferredBytes = default(long?), string initialReplicationProgressHealth = default(string), int? resyncProgressPercentage = default(int?), long? resyncProcessedBytes = default(long?), long? resyncTransferredBytes = default(long?), string resyncProgressHealth = default(string), string resyncRequired = default(string), string resyncState = default(string), string agentUpgradeState = default(string), string lastAgentUpgradeType = default(string), string agentUpgradeJobId = default(string), string agentUpgradeAttemptToVersion = default(string), System.Collections.Generic.IList<InMageRcmProtectedDiskDetails> protectedDisks = default(System.Collections.Generic.IList<InMageRcmProtectedDiskDetails>), System.Collections.Generic.IList<InMageRcmUnProtectedDiskDetails> unprotectedDisks = default(System.Collections.Generic.IList<InMageRcmUnProtectedDiskDetails>), string isLastUpgradeSuccessful = default(string), bool? isAgentRegistrationSuccessfulAfterFailover = default(bool?), InMageRcmMobilityAgentDetails mobilityAgentDetails = default(InMageRcmMobilityAgentDetails), System.Collections.Generic.IList<InMageRcmLastAgentUpgradeErrorDetails> lastAgentUpgradeErrorDetails = default(System.Collections.Generic.IList<InMageRcmLastAgentUpgradeErrorDetails>), System.Collections.Generic.IList<InMageRcmAgentUpgradeBlockingErrorDetails> agentUpgradeBlockingErrorDetails = default(System.Collections.Generic.IList<InMageRcmAgentUpgradeBlockingErrorDetails>), System.Collections.Generic.IList<InMageRcmNicDetails> vmNics = default(System.Collections.Generic.IList<InMageRcmNicDetails>), InMageRcmDiscoveredProtectedVmDetails discoveredVMDetails = default(InMageRcmDiscoveredProtectedVmDetails), System.Collections.Generic.IList<UserCreatedResourceTag> targetVMTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> seedManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetNicTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), string sqlServerLicenseType = default(string), System.Collections.Generic.IList<string> supportedOSVersions = default(System.Collections.Generic.IList<string>), string osName = default(string), SecurityProfileProperties targetVMSecurityProfile = default(SecurityProfileProperties), string targetCapacityReservationGroupId = default(string))
+        public InMageRcmReplicationDetails(string internalIdentifier = default(string), string fabricDiscoveryMachineId = default(string), string multiVMGroupName = default(string), string discoveryType = default(string), string processServerId = default(string), int? processorCoreCount = default(int?), double? allocatedMemoryInMb = default(double?), string processServerName = default(string), string runAsAccountId = default(string), string osType = default(string), string firmwareType = default(string), string primaryNicIPAddress = default(string), string targetGeneration = default(string), string licenseType = default(string), string linuxLicenseType = default(string), string storageAccountId = default(string), string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetLocation = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), ExtendedLocation targetExtendedLocation = default(ExtendedLocation), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), string failoverRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), long? lastRpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialReplicationProgressPercentage = default(int?), long? initialReplicationProcessedBytes = default(long?), long? initialReplicationTransferredBytes = default(long?), string initialReplicationProgressHealth = default(string), int? resyncProgressPercentage = default(int?), long? resyncProcessedBytes = default(long?), long? resyncTransferredBytes = default(long?), string resyncProgressHealth = default(string), string resyncRequired = default(string), string resyncState = default(string), string agentUpgradeState = default(string), string lastAgentUpgradeType = default(string), string agentUpgradeJobId = default(string), string agentUpgradeAttemptToVersion = default(string), System.Collections.Generic.IList<InMageRcmProtectedDiskDetails> protectedDisks = default(System.Collections.Generic.IList<InMageRcmProtectedDiskDetails>), System.Collections.Generic.IList<InMageRcmUnProtectedDiskDetails> unprotectedDisks = default(System.Collections.Generic.IList<InMageRcmUnProtectedDiskDetails>), string isLastUpgradeSuccessful = default(string), bool? isAgentRegistrationSuccessfulAfterFailover = default(bool?), InMageRcmMobilityAgentDetails mobilityAgentDetails = default(InMageRcmMobilityAgentDetails), System.Collections.Generic.IList<InMageRcmLastAgentUpgradeErrorDetails> lastAgentUpgradeErrorDetails = default(System.Collections.Generic.IList<InMageRcmLastAgentUpgradeErrorDetails>), System.Collections.Generic.IList<InMageRcmAgentUpgradeBlockingErrorDetails> agentUpgradeBlockingErrorDetails = default(System.Collections.Generic.IList<InMageRcmAgentUpgradeBlockingErrorDetails>), System.Collections.Generic.IList<InMageRcmNicDetails> vmNics = default(System.Collections.Generic.IList<InMageRcmNicDetails>), InMageRcmDiscoveredProtectedVmDetails discoveredVMDetails = default(InMageRcmDiscoveredProtectedVmDetails), System.Collections.Generic.IList<UserCreatedResourceTag> targetVMTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> seedManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetNicTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), string sqlServerLicenseType = default(string), System.Collections.Generic.IList<string> supportedOSVersions = default(System.Collections.Generic.IList<string>), string osName = default(string), SecurityProfileProperties targetVMSecurityProfile = default(SecurityProfileProperties), string targetCapacityReservationGroupId = default(string))
 
         {
             this.InternalIdentifier = internalIdentifier;
@@ -247,6 +250,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetLocation = targetLocation;
             this.TargetAvailabilitySetId = targetAvailabilitySetId;
             this.TargetAvailabilityZone = targetAvailabilityZone;
+            this.TargetExtendedLocation = targetExtendedLocation;
             this.TargetProximityPlacementGroupId = targetProximityPlacementGroupId;
             this.TargetBootDiagnosticsStorageAccountId = targetBootDiagnosticsStorageAccountId;
             this.TargetNetworkId = targetNetworkId;
@@ -429,6 +433,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetAvailabilityZone")]
         public string TargetAvailabilityZone {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target extended location.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetExtendedLocation")]
+        public ExtendedLocation TargetExtendedLocation {get; set; }
 
         /// <summary>
         /// Gets or sets the target proximity placement group Id.
@@ -682,5 +692,105 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetCapacityReservationGroupId")]
         public string TargetCapacityReservationGroupId {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            if (this.TargetExtendedLocation != null)
+            {
+                this.TargetExtendedLocation.Validate();
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            if (this.TargetVMTags != null)
+            {
+                foreach (var element in this.TargetVMTags)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (this.SeedManagedDiskTags != null)
+            {
+                foreach (var element in this.SeedManagedDiskTags)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (this.TargetManagedDiskTags != null)
+            {
+                foreach (var element in this.TargetManagedDiskTags)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (this.TargetNicTags != null)
+            {
+                foreach (var element in this.TargetNicTags)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+
+
+
+
+
+        }
     }
 }

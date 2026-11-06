@@ -65,7 +65,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="tfoLbBackendAddressPoolIds">
         /// </param>
-        public IPConfigDetails(string name = default(string), bool? isPrimary = default(bool?), string subnetName = default(string), string staticIPAddress = default(string), string ipAddressType = default(string), bool? isSeletedForFailover = default(bool?), string recoverySubnetName = default(string), string recoveryStaticIPAddress = default(string), string recoveryIPAddressType = default(string), string recoveryPublicIPAddressId = default(string), System.Collections.Generic.IList<string> recoveryLbBackendAddressPoolIds = default(System.Collections.Generic.IList<string>), string tfoSubnetName = default(string), string tfoStaticIPAddress = default(string), string tfoPublicIPAddressId = default(string), System.Collections.Generic.IList<string> tfoLbBackendAddressPoolIds = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="ipVersion">The IP version (IPv4 / IPv6) of the ip-config, as reported by the service.
+        /// Read-only - it reflects the discovered NIC configuration and cannot be set
+        /// by the caller. Orthogonal to the allocation type (static / dynamic).
+        /// Omitted when IPv6 support is not enabled.
+        /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;</param>
+        public IPConfigDetails(string name = default(string), bool? isPrimary = default(bool?), string subnetName = default(string), string staticIPAddress = default(string), string ipAddressType = default(string), bool? isSeletedForFailover = default(bool?), string recoverySubnetName = default(string), string recoveryStaticIPAddress = default(string), string recoveryIPAddressType = default(string), string recoveryPublicIPAddressId = default(string), System.Collections.Generic.IList<string> recoveryLbBackendAddressPoolIds = default(System.Collections.Generic.IList<string>), string tfoSubnetName = default(string), string tfoStaticIPAddress = default(string), string tfoPublicIPAddressId = default(string), System.Collections.Generic.IList<string> tfoLbBackendAddressPoolIds = default(System.Collections.Generic.IList<string>), string ipVersion = default(string))
 
         {
             this.Name = name;
@@ -83,6 +89,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TfoStaticIPAddress = tfoStaticIPAddress;
             this.TfoPublicIPAddressId = tfoPublicIPAddressId;
             this.TfoLbBackendAddressPoolIds = tfoLbBackendAddressPoolIds;
+            this.IPVersion = ipVersion;
             CustomInit();
         }
 
@@ -181,5 +188,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tfoLBBackendAddressPoolIds")]
         public System.Collections.Generic.IList<string> TfoLbBackendAddressPoolIds {get; set; }
+
+        /// <summary>
+        /// Gets the IP version (IPv4 / IPv6) of the ip-config, as reported by the
+        /// service. Read-only - it reflects the discovered NIC configuration and
+        /// cannot be set by the caller. Orthogonal to the allocation type (static /
+        /// dynamic). Omitted when IPv6 support is not enabled. Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ipVersion")]
+        public string IPVersion {get; private set; }
     }
 }

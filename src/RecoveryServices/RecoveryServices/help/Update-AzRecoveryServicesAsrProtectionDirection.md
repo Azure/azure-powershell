@@ -79,6 +79,7 @@ Update-AzRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  [-KeyEncryptionVaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-RecoveryAvailabilityZone <String>]
  [-PlatformFaultDomain <Integer>]
+ [-RecoveryConfidentialDataDiskEncryptionIdentity <String>]
  [<CommonParameters>]
 ```
 
@@ -95,6 +96,7 @@ Update-AzRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  [-KeyEncryptionVaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-RecoveryAvailabilityZone <String>]
  [-PlatformFaultDomain <Integer>]
+ [-RecoveryConfidentialDataDiskEncryptionIdentity <String>]
  [<CommonParameters>]
 ```
 
@@ -164,6 +166,57 @@ $currentJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -Pro
 ```
 
 Start the update direction operation for the specified replication protected item in target azure region defined by protection container mapping and using cache storage (in same region as VM) and virtual machine scale set.
+
+### Example 7: Reprotect an individual confidential VM with explicit reverse-direction encryption settings
+
+```powershell
+$rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem `
+    -ProtectionContainer $protectionContainer -Name $rpiName
+
+$reverseOsConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig `
+    -ManagedDisk -DiskId $failedOverVm.StorageProfile.OsDisk.ManagedDisk.Id `
+    -LogStorageAccountId $reverseCacheStorageAccountId `
+    -RecoveryResourceGroupId $reverseRecoveryResourceGroupId `
+    -RecoveryReplicaDiskAccountType StandardSSD_LRS `
+    -RecoveryTargetDiskAccountType StandardSSD_LRS `
+    -ReplicaConfidentialDiskEncryptionSetId $reverseReplicaOsConfidentialDesId `
+    -TargetConfidentialDiskEncryptionSetId $reverseTargetOsConfidentialDesId
+
+$reverseDataConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig `
+    -ManagedDisk -DiskId $failedOverVm.StorageProfile.DataDisks[0].ManagedDisk.Id `
+    -LogStorageAccountId $reverseCacheStorageAccountId `
+    -RecoveryResourceGroupId $reverseRecoveryResourceGroupId `
+    -RecoveryReplicaDiskAccountType StandardSSD_LRS `
+    -RecoveryTargetDiskAccountType StandardSSD_LRS `
+    -ReplicaConfidentialDiskEncryptionSetId $reverseReplicaDataConfidentialDesId `
+    -TargetConfidentialDiskEncryptionSetId $reverseTargetDataConfidentialDesId
+
+$job = Update-AzRecoveryServicesAsrProtectionDirection `
+    -AzureToAzure -ReplicationProtectedItem $rpi `
+    -ProtectionContainerMapping $reverseMapping `
+    -RecoveryResourceGroupId $reverseRecoveryResourceGroupId `
+    -AzureToAzureDiskReplicationConfiguration $reverseOsConfig,$reverseDataConfig `
+    -RecoveryConfidentialDataDiskEncryptionIdentity $reverseRecoveryIdentityId
+```
+
+Starts reverse replication for an individual confidential VM after failover has been committed and reprotect is allowed.
+Authenticate, select the subscription, and set the ASR vault context before running the example.
+The service and installed module must support confidential VM reprotect.
+`$protectionContainer` and `$rpiName` identify the current protected item.
+`$failedOverVm` is the VM now running in the recovery region, returned by `Get-AzVM`, with one customer-managed-key encrypted OS disk and one confidential customer-managed-key encrypted data disk.
+Include configurations for additional protected disks when present.
+
+`$reverseMapping` is the protection-container mapping from the current running region back to the intended recovery destination.
+Use current VM disk IDs, a cache account in the current running region, and an existing recovery resource group in the reverse destination.
+Choose supported disk account types and confidential DES ARM resource IDs appropriate to each disk's reverse replica and target roles.
+`$reverseRecoveryIdentityId` is the recovery user-assigned managed identity ARM resource ID for confidential data disk encryption in that direction, with the required encryption permissions.
+Do not reuse the forward disk configurations unchanged.
+
+This example supplies explicit replica confidential DES settings for the new-disk/full-copy reprotect scenario.
+It is not an example of reusing original disks for differential replication.
+It uses the individual protected-item parameter set, not recovery-plan reprotect.
+With explicit disk configurations, pass cache settings on each configuration rather than a command-level `LogStorageAccountId`.
+Monitor the returned job with `Get-AzRecoveryServicesAsrJob -Name $job.Name`; after it succeeds, retrieve the protected item from its current container to inspect the reverse-direction settings and replication progress.
 
 ## PARAMETERS
 
@@ -589,6 +642,21 @@ Accept wildcard characters: False
 
 ### -RecoveryCloudServiceId
 The resource ID of the recovery cloud service to failover this virtual machine to.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryConfidentialDataDiskEncryptionIdentity
+Specifies the confidential data disk encryption user-assigned managed identity ARM Id to be used by the failover confidential VM. Applicable when reprotecting a CMK confidential VM with encrypted data disks.
 
 ```yaml
 Type: System.String
