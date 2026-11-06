@@ -1,0 +1,42 @@
+{
+  "resourceType": "locations/operationStatuses",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceManagementOperationStatus",
+      "description": "Returns the current status of an async operation.",
+      "path": "/providers/Microsoft.AzureResilienceManagement/locations/{location}/operationStatuses/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/get-azresiliencemanagementoperationstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "-OperationId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns the current status of an async operation.",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

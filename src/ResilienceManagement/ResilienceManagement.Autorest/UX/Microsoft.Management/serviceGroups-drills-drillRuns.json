@@ -1,0 +1,85 @@
+{
+  "resourceType": "serviceGroups/drills/drillRuns",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceManagementDrillRun",
+      "description": "Get a DrillRun",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/drills/{drillName}/drillRuns/{drillRunName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/get-azresiliencemanagementdrillrun"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DrillName <String>",
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DrillRun",
+          "parameters": [
+            {
+              "name": "-DrillName",
+              "value": "[Path.drillName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.drillRunName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Resume-AzResilienceManagementDrillRun",
+      "description": "This unblocks a Failover workflow that is paused after the Fault stage, to proceed to the Failover stage.",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/drills/{drillName}/drillRuns/{drillRunName}/resume",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/resume-azresiliencemanagementdrillrun"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DrillName <String>",
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "This unblocks a Failover workflow that is paused after the Fault stage, to proceed to the Failover stage.",
+          "parameters": [
+            {
+              "name": "-DrillName",
+              "value": "[Path.drillName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.drillRunName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
