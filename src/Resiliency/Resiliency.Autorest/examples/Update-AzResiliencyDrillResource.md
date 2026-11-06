@@ -11,3 +11,11 @@ Update-AzResiliencyDrillResource -DrillName contoso-zonal-drill -ServiceGroupNam
 ```
 
 Excludes a virtual machine from the drill.
+
+### Example 3: Set the default fault of a resource in a drill
+```powershell
+$vm = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Compute/virtualMachines/contoso-vm"
+Update-AzResiliencyDrillResource -DrillName contoso-zonal-drill -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid -FaultDurationInMin 30 -ResourceListUpdateResource @(@{ Id = $vm; DefaultFaultName = "VMShutdown"; DefaultFaultUrn = "urn:csci:microsoft:virtualMachine:shutdown/1.0"; DefaultFaultTargetResourceId = $vm })
+```
+
+Sets the default fault for a virtual machine that is already in the drill. `DefaultFaultName`, `DefaultFaultUrn` and `DefaultFaultTargetResourceId` must all be set.
