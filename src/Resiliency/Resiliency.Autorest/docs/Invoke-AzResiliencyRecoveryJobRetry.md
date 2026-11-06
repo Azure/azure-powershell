@@ -245,7 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IErrorResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IRecoveryPlanActionBaseResponse
 
 ## NOTES
 
