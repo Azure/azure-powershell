@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.1.0
 * First preview release for module Az.AIInfraOptimization
     - Added 'Get-AzAIInfraOptimizationVMSkuRecommendation' to recommend Azure VM (Virtual Machine) sizes for AI inference workloads
 

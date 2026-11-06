@@ -156,6 +156,16 @@ options:
         set:
           parameter-description: The attention head dimension, used for architecture-aware key-value cache sizing. Supply ModelLayerCount, ModelKeyValueHeadCount and ModelHeadDimension together with ModelParameterCount.
 
+      # The emitter rewrites test/loadEnv.ps1 from its template on every generation. The template's
+      # fallback for an env file in the parent folder joins the literal text '..\$envFile' and then reads
+      # the test folder path anyway, so resolve the parent folder and read the resolved path.
+      # Avoid JavaScript block braces, which the TypeSpec configuration loader interpolates.
+      - from: source-file-other
+        transform: |
+          const path = $documentPath.replace(/\\/g, "/");
+          if (path.endsWith("/AIInfraOptimization.Autorest/test/loadEnv.ps1"))
+            $ = $.replace("Join-Path $PSScriptRoot '..\\$envFile'", "Join-Path (Split-Path -Path $PSScriptRoot -Parent) $envFile").replace("Get-Content (Join-Path $PSScriptRoot $envFile)", "Get-Content -Path $envFilePath");
+
 # Replaces the spec's linter block. The "client-sdk" rule set it also extends does not
 # exist in the @azure-tools/typespec-azure-rulesets version pinned by eng/emitter-package.json.
 linter:

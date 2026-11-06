@@ -20,10 +20,10 @@ if ($TestMode -eq 'live') {
 if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
     $envFilePath = Join-Path $PSScriptRoot $envFile
 } else {
-    $envFilePath = Join-Path $PSScriptRoot '..\$envFile'
+    $envFilePath = Join-Path (Split-Path -Path $PSScriptRoot -Parent) $envFile
 }
 $env = @{}
 if (Test-Path -Path $envFilePath) {
-    $env = Get-Content (Join-Path $PSScriptRoot $envFile) | ConvertFrom-Json
+    $env = Get-Content -Path $envFilePath | ConvertFrom-Json
     $PSDefaultParameterValues=@{"*:Tenant"=$env.Tenant}
 }
