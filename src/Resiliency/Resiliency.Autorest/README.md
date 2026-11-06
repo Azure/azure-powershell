@@ -132,4 +132,16 @@ directive:
       variant: List1
     set:
       variant: ListByResourceGroup
+
+  # Set-AzResiliencyRecoveryPlan (PUT) declares -EnableSystemAssignedIdentity but
+  # autorest.powershell 4.0.758 only wires that flag for New- and Update- cmdlets.
+  # Set- therefore sends identity.type UserAssigned when -UserAssignedIdentity is
+  # given (dropping the system-assigned identity) and no identity at all when only
+  # -EnableSystemAssignedIdentity is given. The cmdlet is also redundant: New- creates
+  # the plan, Update-AzResiliencyRecoveryPlan (GET+PUT) keeps the existing identity and
+  # honours the flag, and Azure CLI has no equivalent. Remove Set-.
+  - where:
+      verb: Set
+      subject: RecoveryPlan
+    remove: true
 ```

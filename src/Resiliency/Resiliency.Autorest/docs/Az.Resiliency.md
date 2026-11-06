@@ -141,9 +141,6 @@ Update an Enrollment.
 ### [Set-AzResiliencyGoalAssignment](Set-AzResiliencyGoalAssignment.md)
 Update a goal assignment.
 
-### [Set-AzResiliencyRecoveryPlan](Set-AzResiliencyRecoveryPlan.md)
-Update a RecoveryPlan
-
 ### [Set-AzResiliencyUsagePlan](Set-AzResiliencyUsagePlan.md)
 Update a UsagePlan
 

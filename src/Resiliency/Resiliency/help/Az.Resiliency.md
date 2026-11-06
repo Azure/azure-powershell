@@ -145,9 +145,6 @@ Get a RecoveryPlan
 ### [New-AzResiliencyRecoveryPlan](New-AzResiliencyRecoveryPlan.md)
 Create a RecoveryPlan
 
-### [Set-AzResiliencyRecoveryPlan](Set-AzResiliencyRecoveryPlan.md)
-Update a RecoveryPlan
-
 ### [Update-AzResiliencyRecoveryPlan](Update-AzResiliencyRecoveryPlan.md)
 Update a RecoveryPlan
 
