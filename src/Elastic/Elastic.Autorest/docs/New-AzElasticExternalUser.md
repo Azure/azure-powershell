@@ -15,14 +15,14 @@ Create external user configurations for your Elastic monitor resource, enabling 
 ### CreateExpanded (Default)
 ```
 New-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EmailId <String>] [-FullName <String>] [-Password <String>] [-Role <String[]>] [-UserName <String>]
+ [-EmailId <String>] [-FullName <String>] [-Password <SecureString>] [-Role <String[]>] [-UserName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticExternalUser -InputObject <IElasticIdentity> [-EmailId <String>] [-FullName <String>]
- [-Password <String>] [-Role <String[]>] [-UserName <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-Password <SecureString>] [-Role <String[]>] [-UserName <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Password of the user to be created or updated
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

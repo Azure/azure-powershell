@@ -59,7 +59,7 @@ This command lists all subscriptions that are being monitored by the specified E
 
 ### Example 2: Get a specific monitored subscription by subscription ID
 ```powershell
-Get-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012"
+Get-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -SubscriptionId "12345678-1234-1234-1234-123456789012"
 ```
 
 ```output
