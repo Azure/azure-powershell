@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated code generation from AutoRest (Swagger) to TypeSpec. No user-facing changes in this release.
 
 ## Version 2.0.0
 * New anchor resource types and their corresponding cmdlets for resource and network anchors
