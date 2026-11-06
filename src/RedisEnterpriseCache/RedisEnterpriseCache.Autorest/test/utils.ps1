@@ -174,7 +174,12 @@ function Get-SelectedTestScenarios {
         return @($testScenarios)
     }
 
-    return @($testScenarios | Where-Object { $selectedTestNames -contains $_.TestName })
+    return @(
+        $testScenarios | Where-Object {
+            $scenarioTestName = $_.TestName
+            $null -ne ($selectedTestNames | Where-Object { $scenarioTestName -like $_ } | Select-Object -First 1)
+        }
+    )
 }
 
 function Initialize-TestFixture {

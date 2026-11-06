@@ -370,6 +370,9 @@ function New-AzRedisEnterpriseCache {
         $null = $GetPSBoundParameters.Remove("LinkedDatabase")
         $null = $GetPSBoundParameters.Remove("AccessKeysAuthentication")
         $null = $GetPSBoundParameters.Remove("NotifyKeyspaceEvents")
+        if (-not $GetPSBoundParameters.ContainsKey("PublicNetworkAccess")) {
+            $GetPSBoundParameters["PublicNetworkAccess"] = "Enabled"
+        }
         $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
 
         if (('CreateClusterOnly') -contains $PSCmdlet.ParameterSetName)
