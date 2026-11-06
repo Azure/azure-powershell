@@ -1,0 +1,153 @@
+{
+  "resourceType": "neuroShields/protectedResources/findings",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.networksecurity"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkSecurityNeuroShieldFinding",
+      "description": "Gets a finding under a protected resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkSecurity/neuroShields/{neuroShieldName}/protectedResources/{protectedResourceName}/findings/{findingId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networksecurity/get-aznetworksecurityneuroshieldfinding"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FindingId <String>",
+              "-NeuroShieldName <String>",
+              "-ProtectedResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a finding under a protected resource.",
+          "parameters": [
+            {
+              "name": "-FindingId",
+              "value": "[Path.findingId]"
+            },
+            {
+              "name": "-NeuroShieldName",
+              "value": "[Path.neuroShieldName]"
+            },
+            {
+              "name": "-ProtectedResourceName",
+              "value": "[Path.protectedResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkSecurityNeuroShieldFindingMitigation",
+      "description": "Triggers mitigation for all awaiting-approval mitigations under a finding.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkSecurity/neuroShields/{neuroShieldName}/protectedResources/{protectedResourceName}/findings/{findingId}/mitigate",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networksecurity/invoke-aznetworksecurityneuroshieldfindingmitigation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FindingId <String>",
+              "-NeuroShieldName <String>",
+              "-ProtectedResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Triggers mitigation for all awaiting-approval mitigations under a finding.",
+          "parameters": [
+            {
+              "name": "-FindingId",
+              "value": "[Path.findingId]"
+            },
+            {
+              "name": "-NeuroShieldName",
+              "value": "[Path.neuroShieldName]"
+            },
+            {
+              "name": "-ProtectedResourceName",
+              "value": "[Path.protectedResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkSecurityNeuroShieldFindingRollback",
+      "description": "Rolls back succeeded rollbackable mitigations under a finding.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkSecurity/neuroShields/{neuroShieldName}/protectedResources/{protectedResourceName}/findings/{findingId}/rollback",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networksecurity/invoke-aznetworksecurityneuroshieldfindingrollback"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FindingId <String>",
+              "-NeuroShieldName <String>",
+              "-ProtectedResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Rolls back succeeded rollbackable mitigations under a finding.",
+          "parameters": [
+            {
+              "name": "-FindingId",
+              "value": "[Path.findingId]"
+            },
+            {
+              "name": "-NeuroShieldName",
+              "value": "[Path.neuroShieldName]"
+            },
+            {
+              "name": "-ProtectedResourceName",
+              "value": "[Path.protectedResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
