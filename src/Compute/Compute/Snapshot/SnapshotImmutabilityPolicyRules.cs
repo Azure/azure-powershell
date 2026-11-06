@@ -82,9 +82,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 return false;
             }
 
-            bool sameTypeAndNotExpired = previous != null && previous.IsPolicyExpired != true
-                && string.Equals(previous.Type, policyType, StringComparison.OrdinalIgnoreCase);
-            if (sameTypeAndNotExpired)
+            bool previousNotExpired = previous != null && previous.IsPolicyExpired != true;
+            if (previousNotExpired)
             {
                 if (!previous.PolicyStartTime.HasValue)
                 {
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 return previous.PolicyExpirationTime.HasValue && start >= previous.PolicyExpirationTime.Value;
             }
 
-            // Unlocked-to-Locked transitions and expired-policy replacements require a newer start.
+            // Expired-policy replacements require a newer start.
             if (previous?.PolicyStartTime.HasValue == true && start <= previous.PolicyStartTime.Value)
             {
                 return false;
