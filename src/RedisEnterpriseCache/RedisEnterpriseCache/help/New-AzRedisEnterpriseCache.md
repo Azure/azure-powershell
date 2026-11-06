@@ -19,7 +19,7 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  [-Tag <Hashtable>] [-Module <IModule[]>] [-ClientProtocol <String>] [-Port <Int32>] [-EvictionPolicy <String>]
  [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>] [-ClusteringPolicy <String>]
  [-AccessKeysAuthentication <String>] [-NotifyKeyspaceEvents <String>]
- [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>] [-PublicNetworkAccess <String>]
+ [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>] -PublicNetworkAccess <String>
  [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-KeyEncryptionKeyIdentityType <String>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-AofPersistenceEnabled]
@@ -33,7 +33,7 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
 New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> -Sku <String> [-Capacity <Int32>] [-MinimumTlsVersion <String>] [-Zone <String[]>]
  [-Tag <Hashtable>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>]
- [-PublicNetworkAccess <String>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ -PublicNetworkAccess <String> [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-NoDatabase] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -46,7 +46,7 @@ Creates or updates an existing (overwrite/recreate, with potential downtime) cac
 
 ### Example 1: Create a Redis Enterprise cache
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -PublicNetworkAccess "Enabled"
 ```
 
 ```output
@@ -59,7 +59,7 @@ This command creates a Redis Enterprise cache named MyCache with an associated d
 
 ### Example 2: Create a Redis Enterprise cache using some optional parameters
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -PublicNetworkAccess "Enabled" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
 ```
 
 ```output
@@ -72,7 +72,7 @@ This command creates a Redis Enterprise cache named MyCache with an associated d
 
 ### Example 3: Advanced - Create a Redis Enterprise cache cluster without an associated database
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -NoDatabase
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -PublicNetworkAccess "Enabled" -NoDatabase
 ```
 
 ```output
@@ -87,7 +87,7 @@ Warning: This command creates a Redis Enterprise cache cluster named MyCache wit
 ```powershell
 $subscriptionId = (Get-AzContext).Subscription.Id
 $cache1Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache1/databases/default`"}"
-New-AzRedisEnterpriseCache -Name "Cache1" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database
+New-AzRedisEnterpriseCache -Name "Cache1" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database
 ```
 
 ```output
@@ -104,7 +104,7 @@ This command creates Cache1 and adds it to a new active geo-replication group. T
 $subscriptionId = (Get-AzContext).Subscription.Id
 $cache1Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache1/databases/default`"}"
 $cache2Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache2/databases/default`"}"
-New-AzRedisEnterpriseCache -Name "Cache2" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Balanced_B10" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database,$cache2Database
+New-AzRedisEnterpriseCache -Name "Cache2" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database,$cache2Database
 ```
 
 ```output
@@ -545,13 +545,14 @@ Accept wildcard characters: False
 ### -PublicNetworkAccess
 Whether or not public network traffic can access the Redis cluster.
 Only 'Enabled' or 'Disabled' can be set.
+Null is only supported for clusters created with an older API version that do not have this property.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

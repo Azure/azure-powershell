@@ -18,21 +18,21 @@ Creates a Redis Enterprise cache.
 .Description
 Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
 .Example
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -PublicNetworkAccess "Enabled"
 
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 .Example
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
+PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -PublicNetworkAccess "Enabled" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
 
 Location Name    Type                            Zone      Database
 -------- ----    ----                            ----      --------
 East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
 .Example
-PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -NoDatabase
+PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -PublicNetworkAccess "Enabled" -NoDatabase
 
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
@@ -206,12 +206,14 @@ function New-AzRedisEnterpriseCache {
         # This affects the availability SLA, and increases the risk of data loss.
         ${HighAvailability},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
+        [AllowNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
         # Whether or not public network traffic can access the Redis cluster.
         # Only 'Enabled' or 'Disabled' can be set.
+        # Null is only supported for clusters created with an older API version that do not have this property.
         ${PublicNetworkAccess},
 
         [Parameter()]
@@ -370,9 +372,6 @@ function New-AzRedisEnterpriseCache {
         $null = $GetPSBoundParameters.Remove("LinkedDatabase")
         $null = $GetPSBoundParameters.Remove("AccessKeysAuthentication")
         $null = $GetPSBoundParameters.Remove("NotifyKeyspaceEvents")
-        if (-not $GetPSBoundParameters.ContainsKey("PublicNetworkAccess")) {
-            $GetPSBoundParameters["PublicNetworkAccess"] = "Enabled"
-        }
         $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
 
         if (('CreateClusterOnly') -contains $PSCmdlet.ParameterSetName)
