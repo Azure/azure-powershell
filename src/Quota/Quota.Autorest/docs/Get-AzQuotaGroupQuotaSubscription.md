@@ -25,16 +25,10 @@ Get-AzQuotaGroupQuotaSubscription -InputObject <IQuotaIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
-### GetViaIdentityGroupQuota
-```
-Get-AzQuotaGroupQuotaSubscription -GroupQuotaInputObject <IQuotaIdentity> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentityManagementGroup
 ```
 Get-AzQuotaGroupQuotaSubscription -GroupQuotaName <String> -ManagementGroupInputObject <IQuotaIdentity>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -91,21 +85,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GroupQuotaInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
-Parameter Sets: GetViaIdentityGroupQuota
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -176,7 +155,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetViaIdentityGroupQuota, GetViaIdentityManagementGroup
+Parameter Sets: Get
 Aliases:
 
 Required: False
