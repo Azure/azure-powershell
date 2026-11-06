@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                     $"{AllowedWorkspaceServiceTiers.CapacityReservation}, {AllowedWorkspaceServiceTiers.lacluster}");
             }
 
-            if ((this.Capacity != null || this.Capacity != 0) && serviceTrier.Equals(AllowedWorkspaceServiceTiers.CapacityReservation))
+            if (this.Capacity != null && !serviceTrier.Equals(AllowedWorkspaceServiceTiers.CapacityReservation))
             {
                 throw new PSArgumentException($"Failed to set Capacity for SKU: {serviceTrier}, Capacity is only supported for {AllowedWorkspaceServiceTiers.CapacityReservation} SKU");
             }
