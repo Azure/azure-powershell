@@ -73,12 +73,14 @@ Update goal resources under a goal assignment.
 
 ## EXAMPLES
 
-### Example 1: Update the resources of a goal assignment
+### Example 1: Exclude a goal resource from zonal resiliency recommendations
 ```powershell
-Update-AzResiliencyGoalResource -ServiceGroupName contoso-sg -GoalAssignmentName contoso-zonal-goal -Resource @(@{ ResourceArmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Compute/virtualMachines/contoso-vm" })
+$goalResource = Get-AzResiliencyGoalResource -ServiceGroupName contoso-sg -GoalAssignmentName contoso-zonal-goal -Name contoso-goal-resource
+Update-AzResiliencyGoalResource -ServiceGroupName contoso-sg -GoalAssignmentName contoso-zonal-goal -Resource @(@{ Id = $goalResource.Id; ResourceArmId = $goalResource.ResourceArmId; ZonalResiliencyGoalParticipation = "Excluded" })
 ```
 
-Updates the resources evaluated by the goal assignment.
+Updates a resource evaluated by the goal assignment.
+Each item needs the goal resource `Id`, as returned by `Get-AzResiliencyGoalResource`.
 
 ## PARAMETERS
 
