@@ -1,4 +1,5 @@
-if (($null -eq $TestName) -or ($TestName -contains 'AzRedisEnterpriseCacheClusterLifecycle'))
+$selectedTestNames = Get-SelectedTestNames
+if (($selectedTestNames.Count -eq 0) -or ($selectedTestNames -contains 'AzRedisEnterpriseCacheClusterLifecycle'))
 {
     $TestEnvironmentName = 'cluster'
     $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'

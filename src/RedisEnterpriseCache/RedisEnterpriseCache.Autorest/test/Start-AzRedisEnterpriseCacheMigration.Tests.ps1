@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Start-AzRedisEnterpriseCacheMigration'))
+if(((Get-SelectedTestNames).Count -eq 0) -or ($TestName -contains 'Start-AzRedisEnterpriseCacheMigration'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {

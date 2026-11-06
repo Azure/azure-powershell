@@ -1,4 +1,5 @@
-if (($null -eq $TestName) -or ($TestName -contains 'AzRedisEnterpriseCacheGeoReplication'))
+$selectedTestNames = Get-SelectedTestNames
+if (($selectedTestNames.Count -eq 0) -or ($selectedTestNames -contains 'AzRedisEnterpriseCacheGeoReplication'))
 {
     $TestEnvironmentName = 'geo'
     $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'

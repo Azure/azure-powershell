@@ -117,9 +117,16 @@ $migrationRecordings = @{
     'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint' = 'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint.Recording.json'
 }
 
+function Get-SelectedTestNames {
+    return @(
+        $TestName |
+            Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) }
+    )
+}
+
 function Get-SelectedScenarioEnvironments {
-    $selectedTestNames = @($TestName)
-    if ($null -eq $TestName) {
+    $selectedTestNames = Get-SelectedTestNames
+    if ($selectedTestNames.Count -eq 0) {
         return @($scenarioEnvironments.Values)
     }
 
@@ -145,8 +152,8 @@ function Invoke-ScenarioRecordingSanitizer {
         }
     }
 
-    $selectedTestNames = @($TestName)
-    $selectedMigrationRecordings = if ($null -eq $TestName) {
+    $selectedTestNames = Get-SelectedTestNames
+    $selectedMigrationRecordings = if ($selectedTestNames.Count -eq 0) {
         @($migrationRecordings.Values)
     } else {
         @(
@@ -190,7 +197,8 @@ function setupEnv() {
         $envFilePrefix = 'localEnv'
     }
 
-    $selectedTestNames = @($TestName)
+    $selectedTestNames = Get-SelectedTestNames
+    $isUnfilteredRun = $selectedTestNames.Count -eq 0
     foreach ($scenarioEnvironment in Get-SelectedScenarioEnvironments) {
         Set-Content -Path (Join-Path $PSScriptRoot "$envFilePrefix.$($scenarioEnvironment.Environment).json") -Value (ConvertTo-Json $env)
     }
@@ -202,7 +210,7 @@ function setupEnv() {
         'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint'
     )
     $isMigrationTest = @($selectedTestNames | Where-Object { $migrationTestNames -contains $_ }).Count -gt 0
-    if (($null -eq $TestName) -or $isMigrationTest) {
+    if ($isUnfilteredRun -or $isMigrationTest) {
         Set-Content -Path (Join-Path $PSScriptRoot "$envFilePrefix.json") -Value (ConvertTo-Json $env)
     }
 
@@ -213,7 +221,7 @@ function setupEnv() {
     )
     $isTargetedMigrationTest = @($selectedTestNames | Where-Object { $ossMigrationTestNames -contains $_ }).Count -gt 0
     $isClusterUnlinkTest = $selectedTestNames -contains 'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint'
-    $needsOssCache = ($null -eq $TestName) -or $isTargetedMigrationTest
+    $needsOssCache = $isUnfilteredRun -or $isTargetedMigrationTest
 
     if ($needsOssCache) {
         $redisCacheModulePath = $env:AZURE_POWERSHELL_REDIS_CACHE_MODULE_PATH

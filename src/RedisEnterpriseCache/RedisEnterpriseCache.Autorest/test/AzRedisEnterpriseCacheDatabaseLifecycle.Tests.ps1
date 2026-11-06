@@ -1,4 +1,5 @@
-if (($null -eq $TestName) -or ($TestName -contains 'AzRedisEnterpriseCacheDatabaseLifecycle'))
+$selectedTestNames = Get-SelectedTestNames
+if (($selectedTestNames.Count -eq 0) -or ($selectedTestNames -contains 'AzRedisEnterpriseCacheDatabaseLifecycle'))
 {
     $TestEnvironmentName = 'database'
     $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'

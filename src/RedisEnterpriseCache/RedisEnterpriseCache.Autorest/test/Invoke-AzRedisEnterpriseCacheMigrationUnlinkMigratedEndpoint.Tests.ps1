@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint'))
+if(((Get-SelectedTestNames).Count -eq 0) -or ($TestName -contains 'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
