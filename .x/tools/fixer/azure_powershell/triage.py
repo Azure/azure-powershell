@@ -6,8 +6,6 @@
 
 """Azure PowerShell issue analysis dispatch to durable Foundry execution."""
 
-import re
-
 from x_engineering_agent.config import (
     BUG_ANALYSIS_DISPATCH_MARKER,
     BUG_ANALYSIS_MARKER,
@@ -16,6 +14,7 @@ from x_engineering_agent.tools.copilot.tasks import start_copilot_fork_task
 from x_engineering_agent.tools.github.api import _require_fix_workflow
 from x_engineering_agent.tools.github.issues import (
     _trusted_agent_comment_has_marker,
+    get_issue,
     get_issue_comments,
     post_comment,
     update_comment,
@@ -23,10 +22,16 @@ from x_engineering_agent.tools.github.issues import (
 from x_engineering_agent.tools.sensitive.scanning import (
     _ensure_issue_not_sensitive,
 )
+from x_engineering_agent.tools.triage.root_cause import prepare_bug_analysis
 
 
-def dispatch_powershell_copilot(owner, repo, issue_number, body, token=None):
-    """Post trusted analysis and queue implementation as one recoverable operation."""
+def dispatch_powershell_copilot(owner, repo, issue_number, body=None,
+                                token=None, *, analysis=None, pr_title=None,
+                                **prompt_inputs):
+    """Post the analysis and queue the implementation job as one recoverable step.
+
+    pr_title and other instructions stay private; pass them as guidance.
+    """
     from x_engineering_agent.tools.triage.analysis import (
         _finalize_bug_analysis,
     )
@@ -34,22 +39,23 @@ def dispatch_powershell_copilot(owner, repo, issue_number, body, token=None):
     _require_fix_workflow(owner, repo, "PowerShell Foundry dispatch")
     _ensure_issue_not_sensitive(owner, repo, issue_number, token=token)
     if (
-        BUG_ANALYSIS_MARKER in body
-        or BUG_ANALYSIS_DISPATCH_MARKER in body
+        BUG_ANALYSIS_MARKER in str(body or "")
+        or BUG_ANALYSIS_DISPATCH_MARKER in str(body or "")
     ):
         raise ValueError(
             "PowerShell analysis body contains a reserved state marker"
         )
-    title_match = re.search(
-        r"\*\*(?:Suggested|Use this EXACT) PR title:\*\*\s*`([^`]+)`",
-        body,
+    body, job_analysis = prepare_bug_analysis(
+        f"{owner}/{repo}", body=body, analysis=analysis,
     )
-    if title_match is None or not title_match.group(1).strip():
-        raise ValueError("PowerShell analysis requires a trusted suggested PR title")
-    title = title_match.group(1).strip()
-    if "\n" in title or "\r" in title:
-        raise ValueError("PowerShell suggested PR title must be a single line")
     comments = get_issue_comments(owner, repo, issue_number, token=token)
+    title = str(
+        pr_title or get_issue(owner, repo, issue_number, token=token)["title"]
+    ).strip()
+    if not title:
+        raise ValueError("PowerShell dispatch requires a PR title")
+    if "\n" in title or "\r" in title:
+        raise ValueError("PowerShell PR title must be a single line")
     completed = next(
         (
             comment for comment in reversed(comments)
@@ -61,7 +67,8 @@ def dispatch_powershell_copilot(owner, repo, issue_number, body, token=None):
     )
     if completed:
         assignment = start_copilot_fork_task(
-            owner, repo, issue_number, body, title, token=token,
+            owner, repo, issue_number, job_analysis, title, token=token,
+            **prompt_inputs,
         )
         _finalize_bug_analysis(
             owner, repo, issue_number, token=token,
@@ -94,7 +101,8 @@ def dispatch_powershell_copilot(owner, repo, issue_number, body, token=None):
         )
 
     assignment = start_copilot_fork_task(
-        owner, repo, issue_number, body, title, token=token,
+        owner, repo, issue_number, job_analysis, title, token=token,
+        **prompt_inputs,
     )
     pending_body = pending.get("body") or ""
     if BUG_ANALYSIS_DISPATCH_MARKER not in pending_body:
