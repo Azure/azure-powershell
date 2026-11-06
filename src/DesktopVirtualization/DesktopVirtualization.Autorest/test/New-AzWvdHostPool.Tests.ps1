@@ -70,6 +70,8 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.HostPoolType | Should -Be 'Pooled'              
                 $hostPool.LoadBalancerType | Should -Be 'DepthFirst'
                 $hostPool.RegistrationInfoRegistrationTokenOperation | Should -Be 'Update'
+                $hostPool.GetType().GetProperty('RegistrationInfoToken').PropertyType | Should -Be ([System.Security.SecureString])
+                (Get-Command New-AzWvdHostPool).Parameters['RegistrationInfoToken'].ParameterType | Should -Be ([System.Security.SecureString])
                 $hostPool.Description | Should -Be 'des'
                 $hostPool.FriendlyName | Should -Be 'fri'
                 $hostPool.MaxSessionLimit | Should -Be 5

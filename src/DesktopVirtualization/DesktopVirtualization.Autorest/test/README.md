@@ -242,6 +242,22 @@ if ($result.PassedCount -ne 110 -or $result.FailedCount -or $result.SkippedCount
 Do not run `check-dependencies.ps1` for offline replay: it can install dependencies or
 authenticate. No Record/Live execution, authentication or cloud cleanup is part of this handoff.
 
+### September Preview compatibility
+
+The September Preview follows the upstream API secret and paging metadata: registration
+token parameters/properties use `SecureString`, and the token-list command declares its
+individual `IRegistrationTokenMinimal` results. Six existing test scripts now assert these
+types without changing requests or recordings.
+
+The eight resulting compatibility diagnostics are recorded in the existing
+[module exceptions](../../../../tools/StaticAnalysis/Exceptions/Az.DesktopVirtualization/BreakingChangeIssues.csv),
+following the repository's
+[Preview release policy](../../../../documentation/Debugging-StaticAnalysis-Errors.md#breaking-changes).
+These are deliberate Preview changes, not claims of compatibility with older string-based
+scripts. The analyzer matches exceptions by cmdlet and problem ID, so future changes to
+these cmdlets still require manual compatibility review. Do not carry these exceptions
+into a general release without its breaking-change process.
+
 ### Offline checks and acceptance
 
 From the repository root, with the existing pinned Pester installation:

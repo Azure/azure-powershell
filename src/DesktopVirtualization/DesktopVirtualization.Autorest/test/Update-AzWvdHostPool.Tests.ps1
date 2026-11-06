@@ -70,6 +70,7 @@ Describe 'Update-AzWvdHostPool' {
                 $hostPool.HostPoolType | Should -Be 'Pooled'              
                 $hostPool.LoadBalancerType | Should -Be 'BreadthFirst'
                 $hostPool.Description | Should -Be 'des2'
+                $hostPool.GetType().GetProperty('RegistrationInfoToken').PropertyType | Should -Be ([System.Security.SecureString])
                 $hostPool.FriendlyName | Should -Be 'fri2'
                 $hostPool.MaxSessionLimit | Should -Be 6
                 $hostPool.VMTemplate | Should -Be '{option2}'
