@@ -174,6 +174,11 @@ namespace Microsoft.Azure.Management.NetApp
         INetAppResourceQuotaLimitsAccountOperations NetAppResourceQuotaLimitsAccount { get; }
 
         /// <summary>
+        /// Gets the INetAppAccountsOperations
+        /// </summary>
+        INetAppAccountsOperations NetAppAccounts { get; }
+
+        /// <summary>
         /// Gets the ISnapshotPoliciesOperations
         /// </summary>
         ISnapshotPoliciesOperations SnapshotPolicies { get; }

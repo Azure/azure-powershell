@@ -1,0 +1,233 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/sdk-py-test-rg/providers/Microsoft.NetApp/netAppAccounts/na-ldap-test?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Jlc291cmNlR3JvdXBzL3Nkay1weS10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL25ldEFwcEFjY291bnRzL25hLWxkYXAtdGVzdD9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "b638038a-edc6-445e-938d-87de58d3fb48"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3326.52219",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"datetime'2026-10-29T18%3A27%3A07.1091005Z'\""
+        ],
+        "x-ms-request-id": [
+          "6340a493-4459-440c-afe9-cdfb717dd7fe"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "c852ae6b-041d-4d34-95e4-3a6e8c5272cd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20261029T182849Z:c852ae6b-041d-4d34-95e4-3a6e8c5272cd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 942FE6E88E92439A818E6806B51FCAC7 Ref B: SN4AA2022303037 Ref C: 2026-10-29T18:28:48Z"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2026 18:28:48 GMT"
+        ],
+        "Content-Length": [
+          "1595"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/sdk-py-test-rg/providers/Microsoft.NetApp/netAppAccounts/na-ldap-test\",\r\n  \"name\": \"na-ldap-test\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2026-10-29T18%3A27%3A07.1091005Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"CreatedOnDate\": \"2026-10-28T17:03:11.7989179Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.NetApp\"\r\n    },\r\n    \"multiADStatus\": \"Enabled\",\r\n    \"ldapConfiguration\": {\r\n      \"domain\": \"contoso.com\",\r\n      \"ldapServers\": [\r\n        \"10.0.2.4\"\r\n      ],\r\n      \"secureLdapType\": \"LdapOverTLS\",\r\n      \"certificateCNHost\": \"ipaserver.contoso.com\",\r\n      \"ldapPort\": 389,\r\n      \"bindAuthenticationLevel\": \"Simple\",\r\n      \"bindDN\": \"uid=ldapuser,cn=users,cn=accounts,dc=contoso,dc=com\",\r\n      \"bindPasswordAkvConfig\": {\r\n        \"azureKeyVaultUri\": \"https://ldapbind-uksouth-kv-1.vault.azure.net\",\r\n        \"secretName\": \"ldapuser-password\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"7e4980cf-d3f7-4723-aa99-086f39bf3351\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/sdk-py-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/dap-bind-uksouth-identity\": {\r\n        \"principalId\": \"e6b09680-1f2c-43d7-a7fc-a35c305740fb\",\r\n        \"clientId\": \"3b654fdc-8bb5-4003-ae85-ba8fa5682900\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    }\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"b-pradeepgn@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-10-28T17:03:11.9856285Z\",\r\n    \"lastModifiedBy\": \"b-pradeepgn@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-10-29T13:00:57.5766402Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/sdk-py-test-rg/providers/Microsoft.NetApp/netAppAccounts/na-ldap-test?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Jlc291cmNlR3JvdXBzL3Nkay1weS10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL25ldEFwcEFjY291bnRzL25hLWxkYXAtdGVzdD9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "a24b8556-19a0-4c3f-b091-5e035bb60510"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3326.52219",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"datetime'2026-10-29T18%3A28%3A49.9984314Z'\""
+        ],
+        "x-ms-request-id": [
+          "0f959ace-4d7c-4088-a569-05a5f47a1975"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "c73772e5-eae8-4643-b787-70bb5f34e48c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20261029T182850Z:c73772e5-eae8-4643-b787-70bb5f34e48c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 788A47728EC140FBA12C34DF59C1DDCA Ref B: SN4AA2022305051 Ref C: 2026-10-29T18:28:50Z"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2026 18:28:50 GMT"
+        ],
+        "Content-Length": [
+          "1591"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/sdk-py-test-rg/providers/Microsoft.NetApp/netAppAccounts/na-ldap-test\",\r\n  \"name\": \"na-ldap-test\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2026-10-29T18%3A28%3A49.9984314Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"CreatedOnDate\": \"2026-10-28T17:03:11.7989179Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.NetApp\"\r\n    },\r\n    \"multiADStatus\": \"Enabled\",\r\n    \"ldapConfiguration\": {\r\n      \"domain\": \"contoso.com\",\r\n      \"ldapServers\": [\r\n        \"10.0.2.4\"\r\n      ],\r\n      \"secureLdapType\": \"LdapOverTLS\",\r\n      \"certificateCNHost\": \"ipaserver.contoso.com\",\r\n      \"ldapPort\": 389,\r\n      \"bindAuthenticationLevel\": \"Simple\",\r\n      \"bindDN\": \"uid=ldapuser,cn=users,cn=accounts,dc=contoso,dc=com\",\r\n      \"bindPasswordAkvConfig\": {\r\n        \"azureKeyVaultUri\": \"https://ldapbind-uksouth-kv-1.vault.azure.net\",\r\n        \"secretName\": \"ldapuser-password\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"7e4980cf-d3f7-4723-aa99-086f39bf3351\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/sdk-py-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/dap-bind-uksouth-identity\": {\r\n        \"principalId\": \"e6b09680-1f2c-43d7-a7fc-a35c305740fb\",\r\n        \"clientId\": \"3b654fdc-8bb5-4003-ae85-ba8fa5682900\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    }\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"b-pradeepgn@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-10-28T17:03:11.9856285Z\",\r\n    \"lastModifiedBy\": \"b-nasidd@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-10-29T18:28:49.888012Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/sdk-py-test-rg/providers/Microsoft.NetApp/netAppAccounts/na-ldap-test?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Jlc291cmNlR3JvdXBzL3Nkay1weS10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL25ldEFwcEFjY291bnRzL25hLWxkYXAtdGVzdD9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
+      "RequestMethod": "PATCH",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "5384ebce-997d-412a-8144-85cd3550da63"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3326.52219",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "94"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"ldapConfiguration\": {\r\n      \"domain\": \"contoso.com\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"datetime'2026-10-29T18%3A28%3A49.9984314Z'\""
+        ],
+        "x-ms-request-id": [
+          "a6c1997a-58e1-4b8d-9c10-5905a2b887be"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=723d61ed-68d4-4c12-8b79-3f232af57d8a/westus2/8ae5d35e-d17f-4e72-a536-8d5b612090b8"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "faabfeeb-0acc-4cc5-8f49-1fe4a7e79241"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20261029T182850Z:faabfeeb-0acc-4cc5-8f49-1fe4a7e79241"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 0F391FC8352F446EBA912A2A54CAFEA7 Ref B: SN4AA2022304039 Ref C: 2026-10-29T18:28:49Z"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2026 18:28:49 GMT"
+        ],
+        "Content-Length": [
+          "1591"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/sdk-py-test-rg/providers/Microsoft.NetApp/netAppAccounts/na-ldap-test\",\r\n  \"name\": \"na-ldap-test\",\r\n  \"type\": \"Microsoft.NetApp/netAppAccounts\",\r\n  \"etag\": \"W/\\\"datetime'2026-10-29T18%3A28%3A49.9984314Z'\\\"\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"CreatedOnDate\": \"2026-10-28T17:03:11.7989179Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.NetApp\"\r\n    },\r\n    \"multiADStatus\": \"Enabled\",\r\n    \"ldapConfiguration\": {\r\n      \"domain\": \"contoso.com\",\r\n      \"ldapServers\": [\r\n        \"10.0.2.4\"\r\n      ],\r\n      \"secureLdapType\": \"LdapOverTLS\",\r\n      \"certificateCNHost\": \"ipaserver.contoso.com\",\r\n      \"ldapPort\": 389,\r\n      \"bindAuthenticationLevel\": \"Simple\",\r\n      \"bindDN\": \"uid=ldapuser,cn=users,cn=accounts,dc=contoso,dc=com\",\r\n      \"bindPasswordAkvConfig\": {\r\n        \"azureKeyVaultUri\": \"https://ldapbind-uksouth-kv-1.vault.azure.net\",\r\n        \"secretName\": \"ldapuser-password\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"7e4980cf-d3f7-4723-aa99-086f39bf3351\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/sdk-py-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/dap-bind-uksouth-identity\": {\r\n        \"principalId\": \"e6b09680-1f2c-43d7-a7fc-a35c305740fb\",\r\n        \"clientId\": \"3b654fdc-8bb5-4003-ae85-ba8fa5682900\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    }\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"b-pradeepgn@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2026-10-28T17:03:11.9856285Z\",\r\n    \"lastModifiedBy\": \"b-nasidd@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2026-10-29T18:28:49.888012Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0661b131-4a11-479b-96bf-2f95acca2f73"
+  }
+}

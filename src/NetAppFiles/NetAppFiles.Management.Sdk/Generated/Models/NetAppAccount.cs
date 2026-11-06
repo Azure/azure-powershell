@@ -56,6 +56,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="identity">The managed service identities assigned to this resource.
         /// </param>
 
+        /// <param name="ldapConfiguration">LDAP Configuration for the account.
+        /// </param>
+
         /// <param name="provisioningState">Azure lifecycle management
         /// </param>
 
@@ -76,12 +79,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="multiAdStatus">MultiAD Status for the account
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public NetAppAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), System.Collections.Generic.IList<ActiveDirectory> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), string nfsV4IdDomain = default(string), string multiAdStatus = default(string))
+        public NetAppAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), LdapConfiguration ldapConfiguration = default(LdapConfiguration), string provisioningState = default(string), System.Collections.Generic.IList<ActiveDirectory> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), string nfsV4IdDomain = default(string), string multiAdStatus = default(string))
 
         : base(location, id, name, type, systemData, tags)
         {
             this.Etag = etag;
             this.Identity = identity;
+            this.LdapConfiguration = ldapConfiguration;
             this.ProvisioningState = provisioningState;
             this.ActiveDirectories = activeDirectories;
             this.Encryption = encryption;
@@ -113,6 +117,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public ManagedServiceIdentity Identity {get; set; }
+
+        /// <summary>
+        /// Gets or sets lDAP Configuration for the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ldapConfiguration")]
+        public LdapConfiguration LdapConfiguration {get; set; }
 
         /// <summary>
         /// Gets azure lifecycle management
@@ -165,6 +175,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
             if (this.Identity != null)
             {
                 this.Identity.Validate();
+            }
+            if (this.LdapConfiguration != null)
+            {
+                this.LdapConfiguration.Validate();
             }
 
             if (this.ActiveDirectories != null)

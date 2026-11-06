@@ -338,13 +338,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public IList<PlacementKeyValuePairs> PlacementRules { get; set; }
 
         /// <summary>
-        /// Gets or sets flag indicating whether subvolume operations are
-        /// enabled on the volume. Possible values include: 'Enabled',
-        /// 'Disabled'
-        /// </summary>
-        public string EnableSubvolumes { get; set; }
-
-        /// <summary>
         /// Gets or sets the resource ID of private endpoint for KeyVault. It
         /// must reside in the same VNET as the volume. Only applicable if
         /// encryptionKeySource = 'Microsoft.KeyVault'.
