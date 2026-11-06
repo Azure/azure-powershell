@@ -1,0 +1,1027 @@
+{
+  "Update-AzCommvaultPlan+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": "{\n  \"properties\": {\n    \"retention\": {\n      \"numberOfSnapshots\": 1\n    },\n    \"location\": \"East US 2\",\n    \"storagePlans\": [\n      {\n        \"name\": \"Sanity-Storage-Hot\",\n        \"storagePoolId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\n        \"copyName\": \"Primary Storage\",\n        \"copyPrecedence\": 0,\n        \"retentionPeriod\": 15,\n        \"retentionTime\": \"daily\",\n        \"backupRuleType\": \"ALL_FULLS\",\n        \"extendedRetention\": [ ]\n      }\n    ],\n    \"schedules\": [\n      {\n        \"backupType\": \"INCREMENTAL\",\n        \"frequency\": \"minutes\",\n        \"runsEvery\": 30,\n        \"time\": \"\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "773" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6e001a5a-0000-0100-0000-6ae350960000\"" ],
+        "Location": [ "https://eastus2euap.management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/48fc2f18-0ff0-4dc1-98f0-04294d8f95d5*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/ad1907bc-bd30-4f85-bf6f-30ddc29f11f1" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "93d43ef0-419d-434b-9773-b73680daa551" ],
+        "x-ms-correlation-request-id": [ "b0918b9b-833d-43f5-a73d-2093ff163b73" ],
+        "x-ms-client-request-id": [ "80106e97-73f1-475f-921a-06a3ad85d7ad" ],
+        "x-envoy-upstream-service-time": [ "1847" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/48fc2f18-0ff0-4dc1-98f0-04294d8f95d5*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-async-operation-timeout": [ "P6D" ],
+        "x-ms-request-id": [ "48fc2f18-0ff0-4dc1-98f0-04294d8f95d5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135638Z:b0918b9b-833d-43f5-a73d-2093ff163b73" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E27B416D5BFE417996F54F46B96ECF91 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:56:36Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:56:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1221" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:56:36.7002091Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":1},\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/48fc2f18-0ff0-4dc1-98f0-04294d8f95d5*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/48fc2f18-0ff0-4dc1-98f0-04294d8f95d5*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "80106e97-73f1-475f-921a-06a3ad85d7ad" ],
+        "CommandName": [ "New-AzCommvaultPlan" ],
+        "FullCommandName": [ "New-AzCommvaultPlan_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5000e7c1-0000-0100-0000-6ae3509e0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "5f8e616e-51e7-46e7-b09c-a22e6492e922" ],
+        "x-ms-correlation-request-id": [ "cfeb7c9a-041d-4d85-a173-854f0c8bed21" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20261029T135709Z:cfeb7c9a-041d-4d85-a173-854f0c8bed21" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7630A53912B74AD58D99657484C23E78 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:57:09Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:57:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "628" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/48fc2f18-0ff0-4dc1-98f0-04294d8f95d5*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"name\":\"48fc2f18-0ff0-4dc1-98f0-04294d8f95d5*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-29T13:56:36.7981062Z\",\"endTime\":\"2026-10-29T13:56:46.6455473Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "80106e97-73f1-475f-921a-06a3ad85d7ad" ],
+        "CommandName": [ "New-AzCommvaultPlan" ],
+        "FullCommandName": [ "New-AzCommvaultPlan_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a300fbef-0000-0300-0000-6ae3509e0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/e8ec33e7-a92c-4a0f-b4c0-4f8d86ef6b3f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "23805255-9d93-4ca8-9a1e-02c01ed0ef53" ],
+        "x-ms-correlation-request-id": [ "49fd8de2-5197-4f36-81a6-caffee014080" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135709Z:49fd8de2-5197-4f36-81a6-caffee014080" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BB32BE327B1D499E8C32327378023514 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:57:09Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:57:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1222" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:56:36.7002091Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":1},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "2d023d0a-9f15-41df-83e1-f4a40f2cae11" ],
+        "CommandName": [ "Update-AzCommvaultPlan" ],
+        "FullCommandName": [ "Update-AzCommvaultPlan_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a300fbef-0000-0300-0000-6ae3509e0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/2483fe22-8518-4ee4-b637-c871911f7b49" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f5f168a3-f3d0-4716-a21e-ee4fa67b803e" ],
+        "x-ms-correlation-request-id": [ "cf12cdb5-91e2-45e7-8ce8-4a334a6e889c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135710Z:cf12cdb5-91e2-45e7-8ce8-4a334a6e889c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: ACEF8E6500844357A048AC11F304E4FB Ref B: PNQ241100405025 Ref C: 2026-10-29T13:57:09Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:57:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1222" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:56:36.7002091Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":1},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": "{\n  \"properties\": {\n    \"retention\": {\n      \"numberOfSnapshots\": 2\n    },\n    \"location\": \"East US 2\",\n    \"storagePlans\": [\n      {\n        \"name\": \"Sanity-Storage-Hot\",\n        \"storagePoolId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\n        \"copyName\": \"Primary Storage\",\n        \"copyPrecedence\": 0,\n        \"retentionPeriod\": 15,\n        \"retentionTime\": \"daily\",\n        \"backupRuleType\": \"ALL_FULLS\",\n        \"extendedRetention\": [ ]\n      }\n    ],\n    \"schedules\": [\n      {\n        \"backupType\": \"INCREMENTAL\",\n        \"frequency\": \"minutes\",\n        \"runsEvery\": 30,\n        \"time\": \"\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "773" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6e00636d-0000-0100-0000-6ae350b80000\"" ],
+        "Location": [ "https://eastus2euap.management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/cde50ec6-034c-4866-834b-dc6b14ae16b8*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/9f086716-dd41-496a-a608-eb8d2d0f2d8c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "7eac8948-d78a-4c04-96a6-fb640ddc6e7e" ],
+        "x-ms-correlation-request-id": [ "fd830065-71ec-4b05-8ff0-b7c06e0f38fc" ],
+        "x-ms-client-request-id": [ "2d023d0a-9f15-41df-83e1-f4a40f2cae11" ],
+        "x-envoy-upstream-service-time": [ "1540" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/cde50ec6-034c-4866-834b-dc6b14ae16b8*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-async-operation-timeout": [ "P6D" ],
+        "x-ms-request-id": [ "cde50ec6-034c-4866-834b-dc6b14ae16b8" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135712Z:fd830065-71ec-4b05-8ff0-b7c06e0f38fc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9CE975B56B8E4F2890B85AC88E909926 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:57:10Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:57:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1220" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:57:10.431692Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":2},\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/cde50ec6-034c-4866-834b-dc6b14ae16b8*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/cde50ec6-034c-4866-834b-dc6b14ae16b8*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "2d023d0a-9f15-41df-83e1-f4a40f2cae11" ],
+        "CommandName": [ "Update-AzCommvaultPlan" ],
+        "FullCommandName": [ "Update-AzCommvaultPlan_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"50008ed6-0000-0100-0000-6ae350d30000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "f8211539-b277-4f60-9f44-ce234545cefe" ],
+        "x-ms-correlation-request-id": [ "458b49e0-b812-4630-808f-beaed070fa0a" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20261029T135742Z:458b49e0-b812-4630-808f-beaed070fa0a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5661424F3C4E47DB97E48B89D963B7D0 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:57:42Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:57:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "628" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/cde50ec6-034c-4866-834b-dc6b14ae16b8*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"name\":\"cde50ec6-034c-4866-834b-dc6b14ae16b8*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-29T13:57:10.5157749Z\",\"endTime\":\"2026-10-29T13:57:39.8901564Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "2d023d0a-9f15-41df-83e1-f4a40f2cae11" ],
+        "CommandName": [ "Update-AzCommvaultPlan" ],
+        "FullCommandName": [ "Update-AzCommvaultPlan_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a30070f1-0000-0300-0000-6ae350d30000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/6948563b-9e18-4d1d-8e0a-98d069a89995" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7aac080e-e72e-4164-a5e0-992de643173e" ],
+        "x-ms-correlation-request-id": [ "70231a8a-3b17-4605-9308-54b5a388f071" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135743Z:70231a8a-3b17-4605-9308-54b5a388f071" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 32C0D24AFC1D413A9BF7C472F7DDDAE9 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:57:42Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:57:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1221" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:57:10.431692Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":2},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityCloudAccountExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "1eaa4041-36ec-41db-b075-b42faa661ab0" ],
+        "CommandName": [ "Get-AzCommvaultCloudAccount" ],
+        "FullCommandName": [ "Get-AzCommvaultCloudAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"96005a55-0000-0300-0000-6ad07b360000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f000325b-2459-45b9-a1be-c5a65a8042e8" ],
+        "x-ms-correlation-request-id": [ "95e47c65-c06b-43b8-b6d5-d8e9dec5e5c7" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135743Z:95e47c65-c06b-43b8-b6d5-d8e9dec5e5c7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 57AD4FBC30694CFC85F0F93BC7D6AEF6 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:57:43Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:57:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3\",\"name\":\"CCA-Test-Scus-11082026-3\",\"type\":\"commvault.contentstore/cloudaccounts\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-11T09:28:23.2590391Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-15T07:05:07.44028Z\"},\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/commvault-rg-test-14052026/providers/Microsoft.ManagedIdentity/userAssignedIdentities/CommvaultMI-2\":{\"clientId\":\"66666666-6666-6666-6666-666666666666\",\"principalId\":\"55555555-5555-5555-5555-555555555555\"}}},\"properties\":{\"marketplace\":{\"subscriptionId\":\"77777777-7777-7777-7777-777777777777\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"commvault\",\"offerId\":\"commvault-cloud-azure-native-service\",\"planId\":\"commvault-cloud-native-service-v2\",\"planName\":\"Commvault Cloud Azure Native Service v2\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"Test User\",\"lastName\":\"Test User\",\"emailAddress\":\"user@contoso.com\"},\"provisioningState\":\"Succeeded\",\"ssoUrl\":\"https://commvault.example.com/identity/initOpenIdAuthFlow.do?clientId=88888888-8888-8888-8888-888888888888\u0026tid=11111111-1111-1111-1111-111111111111\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityCloudAccountExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "3e4d201f-d06c-4aa6-87aa-660a42f87e0a" ],
+        "CommandName": [ "Update-AzCommvaultPlan" ],
+        "FullCommandName": [ "Update-AzCommvaultPlan_UpdateViaIdentityCloudAccountExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a30070f1-0000-0300-0000-6ae350d30000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/8358e504-cf03-49cb-a7cb-013d94dc4d64" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "684e5b99-9217-41a7-ac6a-4d6c754b2f7b" ],
+        "x-ms-correlation-request-id": [ "dd39c40c-7b6d-4e7e-bdcc-8e7761298da1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135744Z:dd39c40c-7b6d-4e7e-bdcc-8e7761298da1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 338D64F594544C11A6D08ABF67113D7D Ref B: PNQ241100405025 Ref C: 2026-10-29T13:57:43Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:57:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1221" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:57:10.431692Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":2},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityCloudAccountExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": "{\n  \"properties\": {\n    \"retention\": {\n      \"numberOfSnapshots\": 3\n    },\n    \"location\": \"East US 2\",\n    \"storagePlans\": [\n      {\n        \"name\": \"Sanity-Storage-Hot\",\n        \"storagePoolId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\n        \"copyName\": \"Primary Storage\",\n        \"copyPrecedence\": 0,\n        \"retentionPeriod\": 15,\n        \"retentionTime\": \"daily\",\n        \"backupRuleType\": \"ALL_FULLS\",\n        \"extendedRetention\": [ ]\n      }\n    ],\n    \"schedules\": [\n      {\n        \"backupType\": \"INCREMENTAL\",\n        \"frequency\": \"minutes\",\n        \"runsEvery\": 30,\n        \"time\": \"\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "773" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6e004080-0000-0100-0000-6ae350da0000\"" ],
+        "Location": [ "https://eastus2euap.management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/962cb0b5-d6b9-4b49-8271-a69c6a2eedc0*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/e08cb5fc-bf4b-470c-8b7a-4ba816d1b88d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "938d32da-40c4-437f-bd73-c11c1be7114b" ],
+        "x-ms-correlation-request-id": [ "5a8dcd82-207e-4a5d-9387-43a1aa649925" ],
+        "x-ms-client-request-id": [ "3e4d201f-d06c-4aa6-87aa-660a42f87e0a" ],
+        "x-envoy-upstream-service-time": [ "1342" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/962cb0b5-d6b9-4b49-8271-a69c6a2eedc0*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-async-operation-timeout": [ "P6D" ],
+        "x-ms-request-id": [ "962cb0b5-d6b9-4b49-8271-a69c6a2eedc0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135746Z:5a8dcd82-207e-4a5d-9387-43a1aa649925" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 06D63A1CBEA74297B99C2B16CE406028 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:57:44Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:57:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1221" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:57:44.3875315Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":3},\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityCloudAccountExpanded+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/962cb0b5-d6b9-4b49-8271-a69c6a2eedc0*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/962cb0b5-d6b9-4b49-8271-a69c6a2eedc0*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "3e4d201f-d06c-4aa6-87aa-660a42f87e0a" ],
+        "CommandName": [ "Update-AzCommvaultPlan" ],
+        "FullCommandName": [ "Update-AzCommvaultPlan_UpdateViaIdentityCloudAccountExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"50005ddf-0000-0100-0000-6ae350eb0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "e6428ad4-6501-44dc-87ac-2097c8e24109" ],
+        "x-ms-correlation-request-id": [ "00239301-cb8f-4966-aa6c-ffff30d7dd29" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20261029T135817Z:00239301-cb8f-4966-aa6c-ffff30d7dd29" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C2D853B5A85C4B1C82E9FAE048F0D693 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:58:16Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:58:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "628" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/962cb0b5-d6b9-4b49-8271-a69c6a2eedc0*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"name\":\"962cb0b5-d6b9-4b49-8271-a69c6a2eedc0*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-29T13:57:44.4135397Z\",\"endTime\":\"2026-10-29T13:58:03.5564304Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityCloudAccountExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "3e4d201f-d06c-4aa6-87aa-660a42f87e0a" ],
+        "CommandName": [ "Update-AzCommvaultPlan" ],
+        "FullCommandName": [ "Update-AzCommvaultPlan_UpdateViaIdentityCloudAccountExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a300cdf1-0000-0300-0000-6ae350eb0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/d71ef4b5-7762-4a1c-88a9-a001a67f3e2f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "10e5e0ff-c819-4af8-b171-8858c01e0082" ],
+        "x-ms-correlation-request-id": [ "0939081b-141c-4a16-9452-f5bac2b66280" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135818Z:0939081b-141c-4a16-9452-f5bac2b66280" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E6DB42D5530A4110AA296A61C8A98A6D Ref B: PNQ241100405025 Ref C: 2026-10-29T13:58:17Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:58:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1222" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:57:44.3875315Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":3},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "727274c4-b658-4f13-ac94-26d3919a12d4" ],
+        "CommandName": [ "Get-AzCommvaultPlan" ],
+        "FullCommandName": [ "Get-AzCommvaultPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a300cdf1-0000-0300-0000-6ae350eb0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/d0f56b7d-53eb-466b-b7ee-1b31c2578410" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2102d695-8d9d-4fab-a5ce-5ee88da2ddcd" ],
+        "x-ms-correlation-request-id": [ "3f63c0d9-1406-454a-8d98-b007f514fef6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135818Z:3f63c0d9-1406-454a-8d98-b007f514fef6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 202679E75F3F432FAE6F02695C116728 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:58:18Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:58:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1222" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:57:44.3875315Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":3},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "e89a96e5-2a5b-4b4c-aa5c-9277bd4d9128" ],
+        "CommandName": [ "Update-AzCommvaultPlan" ],
+        "FullCommandName": [ "Update-AzCommvaultPlan_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a300cdf1-0000-0300-0000-6ae350eb0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/e2d894f5-26a6-474c-83ae-898dc3ee790c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f4f25c3d-3ced-4413-b0e2-66f5e08ab0df" ],
+        "x-ms-correlation-request-id": [ "2307a648-98e9-4d3b-a7da-1614676f8881" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135818Z:2307a648-98e9-4d3b-a7da-1614676f8881" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F76CBC50136F441985DE8CF9EB305501 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:58:18Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:58:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1222" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:57:44.3875315Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":3},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": "{\n  \"properties\": {\n    \"retention\": {\n      \"numberOfSnapshots\": 4\n    },\n    \"location\": \"East US 2\",\n    \"storagePlans\": [\n      {\n        \"name\": \"Sanity-Storage-Hot\",\n        \"storagePoolId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\n        \"copyName\": \"Primary Storage\",\n        \"copyPrecedence\": 0,\n        \"retentionPeriod\": 15,\n        \"retentionTime\": \"daily\",\n        \"backupRuleType\": \"ALL_FULLS\",\n        \"extendedRetention\": [ ]\n      }\n    ],\n    \"schedules\": [\n      {\n        \"backupType\": \"INCREMENTAL\",\n        \"frequency\": \"minutes\",\n        \"runsEvery\": 30,\n        \"time\": \"\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "773" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6e00e093-0000-0100-0000-6ae350fc0000\"" ],
+        "Location": [ "https://eastus2euap.management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/8ebdb7a6-9e9b-4eeb-9097-8763c92574b2*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/9a328522-e84c-435a-bd1f-b85642f25823" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "2a09c601-f218-4562-9ec4-978885cac8c5" ],
+        "x-ms-correlation-request-id": [ "82c79737-66bc-4b09-930c-d1d6781ca775" ],
+        "x-ms-client-request-id": [ "e89a96e5-2a5b-4b4c-aa5c-9277bd4d9128" ],
+        "x-envoy-upstream-service-time": [ "841" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/8ebdb7a6-9e9b-4eeb-9097-8763c92574b2*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-async-operation-timeout": [ "P6D" ],
+        "x-ms-request-id": [ "8ebdb7a6-9e9b-4eeb-9097-8763c92574b2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135820Z:82c79737-66bc-4b09-930c-d1d6781ca775" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3BB2062D803F4AA4890885358534C6C2 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:58:19Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:58:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1221" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:58:19.2611028Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":4},\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/8ebdb7a6-9e9b-4eeb-9097-8763c92574b2*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/8ebdb7a6-9e9b-4eeb-9097-8763c92574b2*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "e89a96e5-2a5b-4b4c-aa5c-9277bd4d9128" ],
+        "CommandName": [ "Update-AzCommvaultPlan" ],
+        "FullCommandName": [ "Update-AzCommvaultPlan_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"500080f0-0000-0100-0000-6ae351170000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "5e50f468-08c6-4969-9a4b-c564d602d97b" ],
+        "x-ms-correlation-request-id": [ "8aa708d3-e306-4dd9-8f1a-7bbec552c45a" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20261029T135851Z:8aa708d3-e306-4dd9-8f1a-7bbec552c45a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6DAE1DF233284851A03AE1E62610542E Ref B: PNQ241100405025 Ref C: 2026-10-29T13:58:50Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:58:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "626" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/8ebdb7a6-9e9b-4eeb-9097-8763c92574b2*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"name\":\"8ebdb7a6-9e9b-4eeb-9097-8763c92574b2*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-29T13:58:19.31436Z\",\"endTime\":\"2026-10-29T13:58:47.1194919Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "e89a96e5-2a5b-4b4c-aa5c-9277bd4d9128" ],
+        "CommandName": [ "Update-AzCommvaultPlan" ],
+        "FullCommandName": [ "Update-AzCommvaultPlan_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a300b5f2-0000-0300-0000-6ae351170000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/3350f28e-5722-4e1c-86e1-0006c6b33af1" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "efefe767-c0fd-42eb-b3d2-6c90b9053ac8" ],
+        "x-ms-correlation-request-id": [ "4fca0ee9-8aec-4d3b-ac0f-2d1ec06b69af" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135851Z:4fca0ee9-8aec-4d3b-ac0f-2d1ec06b69af" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8D4785884DDE4B3CA366A87008803194 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:58:51Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:58:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1222" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"name\":\"azps-plan-update\",\"type\":\"commvault.contentstore/cloudaccounts/plans\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T13:56:36.7002091Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T13:58:19.2611028Z\"},\"properties\":{\"location\":\"East US 2\",\"storagePlans\":[{\"name\":\"Sanity-Storage-Hot\",\"storagePoolId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/Sanity-Storage-Hot\",\"copyName\":\"Primary Storage\",\"copyPrecedence\":0,\"retentionPeriod\":15,\"retentionTime\":\"daily\",\"backupRuleType\":\"ALL_FULLS\",\"extendedRetention\":[]}],\"schedules\":[{\"backupType\":\"INCREMENTAL\",\"frequency\":\"minutes\",\"runsEvery\":30,\"dayOfMonth\":null,\"monthOfYear\":null,\"dayOfWeek\":null,\"weekOfMonth\":null,\"weeklyDays\":null,\"time\":\"\",\"timeZone\":null}],\"retention\":{\"numberOfSnapshots\":4},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+Cleanup+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "d6bc41ee-f00d-49d3-97cf-7ea0f8bc5ad0" ],
+        "CommandName": [ "Remove-AzCommvaultPlan" ],
+        "FullCommandName": [ "Remove-AzCommvaultPlan_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6e00c6a8-0000-0100-0000-6ae3511f0000\"" ],
+        "Location": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/d9f6bac1-4cfc-4881-bf1c-92937353cee7" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "ffca73c5-385a-4e08-95a3-edc331ac072b" ],
+        "x-ms-correlation-request-id": [ "72ad686e-93f2-4add-8763-ef215b49ad5b" ],
+        "x-ms-client-request-id": [ "d6bc41ee-f00d-49d3-97cf-7ea0f8bc5ad0" ],
+        "x-envoy-upstream-service-time": [ "2645" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-request-id": [ "c2d2570c-ebb1-497f-835f-4e4f7a551b6d" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135855Z:72ad686e-93f2-4add-8763-ef215b49ad5b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 58A4C86DFAB84C5BB7A61B13D47452D5 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:58:51Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:58:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+Cleanup+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "d6bc41ee-f00d-49d3-97cf-7ea0f8bc5ad0" ],
+        "CommandName": [ "Remove-AzCommvaultPlan" ],
+        "FullCommandName": [ "Remove-AzCommvaultPlan_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"50009bf2-0000-0100-0000-6ae3511c0000\"" ],
+        "Location": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/eastus/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-operation-identifier": [ "" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/eastus/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-request-id": [ "33c88a73-923c-482e-906b-36dea4ad6a02" ],
+        "x-ms-correlation-request-id": [ "6b7fc6d9-5a73-4575-9a87-5ab17ad44854" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20261029T135925Z:6b7fc6d9-5a73-4575-9a87-5ab17ad44854" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 380998A1D4BE4C51891052DF03AC8CA3 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:59:25Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:59:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "556" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"name\":\"c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"status\":\"Deleting\",\"startTime\":\"2026-10-29T13:58:52.116894Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+Cleanup+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/eastus/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/eastus/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "d6bc41ee-f00d-49d3-97cf-7ea0f8bc5ad0" ],
+        "CommandName": [ "Remove-AzCommvaultPlan" ],
+        "FullCommandName": [ "Remove-AzCommvaultPlan_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"51003d01-0000-0100-0000-6ae351420000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "b18e2ffa-e144-432c-ab3d-4072d2ebe926" ],
+        "x-ms-correlation-request-id": [ "68b315f4-73ae-4399-8250-3f0d0642d830" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20261029T135956Z:68b315f4-73ae-4399-8250-3f0d0642d830" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F791DE91F20343B384B655EC035C3F6A Ref B: PNQ241100405025 Ref C: 2026-10-29T13:59:55Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:59:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "627" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/eastus/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"name\":\"c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-29T13:58:52.116894Z\",\"endTime\":\"2026-10-29T13:59:30.2489132Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+Cleanup+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "d6bc41ee-f00d-49d3-97cf-7ea0f8bc5ad0" ],
+        "CommandName": [ "Remove-AzCommvaultPlan" ],
+        "FullCommandName": [ "Remove-AzCommvaultPlan_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"51003d01-0000-0100-0000-6ae351420000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "0910bf44-cebb-437f-87ba-56ec4d669b40" ],
+        "x-ms-correlation-request-id": [ "8596e768-c23a-489e-9233-bec2362c592a" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20261029T135957Z:8596e768-c23a-489e-9233-bec2362c592a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DB6885E706ED425FBD2CEA519F5F7D11 Ref B: PNQ241100405025 Ref C: 2026-10-29T13:59:56Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:59:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "627" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"name\":\"c2d2570c-ebb1-497f-835f-4e4f7a551b6d*3464941830845E7C2D847A7AC7DDA2421FC6A0834A789FD3708FF8381FFD3CAA\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-29T13:58:52.116894Z\",\"endTime\":\"2026-10-29T13:59:30.2489132Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzCommvaultPlan+[NoContext]+Cleanup+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "21521b6a-b2ed-4898-b5b7-a4d8e5ed6f1a" ],
+        "CommandName": [ "Get-AzCommvaultPlan" ],
+        "FullCommandName": [ "Get-AzCommvaultPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/89e7e86e-a43c-4ab4-b235-4f1336583624" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "5e776d2d-bc44-4a8d-b413-68c7692032dd" ],
+        "x-ms-correlation-request-id": [ "503df946-55bc-44d3-ae91-4621b1cdf4a3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T135958Z:503df946-55bc-44d3-ae91-4621b1cdf4a3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8083B1524E4C4B9B9E9ED8C203E0C5EF Ref B: PNQ241100405025 Ref C: 2026-10-29T13:59:57Z" ],
+        "Date": [ "Thu, 29 Oct 2026 13:59:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "169" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/plans/azps-plan-update\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

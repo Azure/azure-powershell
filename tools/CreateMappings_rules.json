@@ -1039,5 +1039,9 @@
   {
     "module": "RedHatOpenShiftHcp",
     "alias": "RedHatOpenShiftHcp"
+  },
+  {
+    "alias": "Commvault",
+    "module": "Commvault"
   }
 ]
