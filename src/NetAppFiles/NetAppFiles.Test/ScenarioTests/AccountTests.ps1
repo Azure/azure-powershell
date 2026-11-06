@@ -300,13 +300,19 @@ function Test-AccountLdapConfigurationCreate
         Assert-AreEqual $configuration.BindDN $account.LdapConfiguration.BindDN
         Assert-AreEqual $configuration.BindPasswordAkvConfig.SecretName $account.LdapConfiguration.BindPasswordAkvConfig.SecretName
         Assert-AreEqual $configuration.BindPasswordAkvConfig.AzureKeyVaultUri $account.LdapConfiguration.BindPasswordAkvConfig.AzureKeyVaultUri
-        $before = $account.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress
-        $updated = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -LdapConfiguration @{ Domain = $configuration.Domain } -Confirm:$false -ErrorAction Stop
+        $newUserDN = "cn=users,cn=accounts,dc=contoso,dc=com"
+        Assert-True { $account.LdapConfiguration.UserDN -ne $newUserDN }
+        $account.LdapConfiguration.UserDN = $newUserDN
+        $expectedConfiguration = $account.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress
+        $configuration.UserDN = $newUserDN
+        $updated = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -LdapConfiguration $configuration -Confirm:$false -ErrorAction Stop
         Assert-AreEqual "Succeeded" $updated.ProvisioningState
-        Assert-AreEqual $before ($updated.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+        Assert-AreEqual $newUserDN $updated.LdapConfiguration.UserDN
+        Assert-AreEqual $expectedConfiguration ($updated.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
         $after = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
         Assert-AreEqual "Succeeded" $after.ProvisioningState
-        Assert-AreEqual $before ($after.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+        Assert-AreEqual $newUserDN $after.LdapConfiguration.UserDN
+        Assert-AreEqual $expectedConfiguration ($after.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
     }
     finally
     {
