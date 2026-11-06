@@ -165,9 +165,10 @@ function Initialize-AzDataProtectionBackupInstance {
             $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureOperationalStoreParameters]::new()
             $operationalParam.DataStoreType = "OperationalStore"
             $operationalParam.ObjectType = "AzureOperationalStoreParameters"
-            $operationalParam.ResourceGroupId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
-            $backupInstanceResource.Property.PolicyInfo.PolicyParameter.DataStoreParametersList += @($operationalParam)
-            $backupInstanceResource.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId = $SnapshotResourceGroupId
+            $operationalParam.ResourceGroupId = $SnapshotResourceGroupId
+            $dataStoreParameters = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataStoreParameters]]::new()
+            $dataStoreParameters.Add($operationalParam)
+            $backupInstanceResource.Property.PolicyInfo.PolicyParameter.DataStoreParametersList = $dataStoreParameters
         }
 
         if($manifest.addBackupDatasourceParametersList -eq $true)

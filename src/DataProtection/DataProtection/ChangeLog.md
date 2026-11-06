@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed operational-store collection initialization in `Initialize-AzDataProtectionBackupInstance` on Windows PowerShell.
 
 ## Version 3.1.1
 * Added Cosmos DB item-level restore to `New-AzDataProtectionRestoreConfigurationClientObject` and `Initialize-AzDataProtectionRestoreRequest`; select databases or database/container pairs with `-ResourceIdentifier`.
