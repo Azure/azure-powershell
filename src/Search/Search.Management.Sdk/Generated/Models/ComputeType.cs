@@ -16,10 +16,10 @@ namespace Microsoft.Azure.Management.Search.Models
         /// <summary>
         /// Create the service with the Default Compute.
         /// </summary>
-        public const string Default = "default";
+        public const string Default = "Default";
         /// <summary>
-        /// Create the service with Azure Confidential Compute.
+        /// Create the dedicated service with Azure Confidential Compute.
         /// </summary>
-        public const string Confidential = "confidential";
+        public const string Confidential = "Confidential";
     }
 }

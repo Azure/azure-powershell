@@ -108,6 +108,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = KnowledgeRetrievalModeMessage)]
+        public PSKnowledgeRetrievalMode? KnowledgeRetrievalMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = ComputeTypeMessage)]
         public PSComputeType? ComputeType { get; set; }
 
@@ -197,6 +202,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     disableLocalAuth: DisableLocalAuth,
                     authOptions: (DataPlaneAuthOptions)authOptions,
                     semanticSearch: semanticSearchMode,
+                    knowledgeRetrieval: KnowledgeRetrievalMode?.ToString().ToLowerInvariant(),
                     computeType: computeType,
                     dataExfiltrationProtections: dataExfiltrationProtections);
 

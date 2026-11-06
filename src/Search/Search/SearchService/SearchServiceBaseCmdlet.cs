@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Management.Search
         protected const string AuthOptionsMessage = "(Optional) Whether to only allow API key authentication or both API key authentication and AAD authentication for the Azure AI Search service";
         protected const string AadAuthFailureModeMessage = "(Optional) What status code to return when failing AAD authentication, if both api key and AAD authentication are allowed for the Azure AI Search service";
         protected const string SemanticSearchModeMessage = "(Optional) Option to control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations";
+        protected const string KnowledgeRetrievalModeMessage = "(Optional) Billing plan for agentic retrieval (Free/Standard). This configuration is only available for certain Azure AI Search SKUs in certain locations.";
         protected const string ComputeTypeMessage = "(Optional) Option to support the search service using either the Default Compute or Azure Confidential Compute.";
         protected const string DataExfiltrationProtectionsMessage = "(Optional) A list of data exfiltration scenarios that are explicitly disallowed for the search service.";
         protected const string BypassMessage = "(Optional) Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section.";

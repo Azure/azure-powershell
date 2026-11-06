@@ -38,10 +38,9 @@ namespace Microsoft.Azure.Management.Search
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The unique identifier for a Microsoft Azure subscription. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -66,37 +65,37 @@ namespace Microsoft.Azure.Management.Search
         /// </summary>
         public virtual IOperations Operations { get; private set; }
         /// <summary>
-        /// Gets the IAdminKeysOperations
-        /// </summary>
-        public virtual IAdminKeysOperations AdminKeys { get; private set; }
-        /// <summary>
-        /// Gets the IQueryKeysOperations
-        /// </summary>
-        public virtual IQueryKeysOperations QueryKeys { get; private set; }
-        /// <summary>
         /// Gets the IServicesOperations
         /// </summary>
         public virtual IServicesOperations Services { get; private set; }
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
-        /// </summary>
-        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations
-        /// </summary>
-        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
-        /// <summary>
-        /// Gets the ISharedPrivateLinkResourcesOperations
-        /// </summary>
-        public virtual ISharedPrivateLinkResourcesOperations SharedPrivateLinkResources { get; private set; }
         /// <summary>
         /// Gets the IUsagesOperations
         /// </summary>
         public virtual IUsagesOperations Usages { get; private set; }
         /// <summary>
+        /// Gets the IQueryKeysOperations
+        /// </summary>
+        public virtual IQueryKeysOperations QueryKeys { get; private set; }
+        /// <summary>
+        /// Gets the IAdminKeysOperations
+        /// </summary>
+        public virtual IAdminKeysOperations AdminKeys { get; private set; }
+        /// <summary>
         /// Gets the INetworkSecurityPerimeterConfigurationsOperations
         /// </summary>
         public virtual INetworkSecurityPerimeterConfigurationsOperations NetworkSecurityPerimeterConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+        /// <summary>
+        /// Gets the ISharedPrivateLinkResourcesOperations
+        /// </summary>
+        public virtual ISharedPrivateLinkResourcesOperations SharedPrivateLinkResources { get; private set; }
         /// <summary>
         /// Initializes a new instance of the SearchManagementClient class.
         /// </summary>
@@ -336,16 +335,16 @@ namespace Microsoft.Azure.Management.Search
         private void Initialize()
         {
             this.Operations = new Operations(this);
-            this.AdminKeys = new AdminKeysOperations(this);
-            this.QueryKeys = new QueryKeysOperations(this);
             this.Services = new ServicesOperations(this);
-            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
-            this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
-            this.SharedPrivateLinkResources = new SharedPrivateLinkResourcesOperations(this);
             this.Usages = new UsagesOperations(this);
+            this.QueryKeys = new QueryKeysOperations(this);
+            this.AdminKeys = new AdminKeysOperations(this);
             this.NetworkSecurityPerimeterConfigurations = new NetworkSecurityPerimeterConfigurationsOperations(this);
+            this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            this.SharedPrivateLinkResources = new SharedPrivateLinkResourcesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-05-01";
+            this.ApiVersion = "2026-11-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -382,11 +381,13 @@ namespace Microsoft.Azure.Management.Search
         /// <summary>
         /// Gets the quota usage for a search SKU in the given subscription.
         /// </summary>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='location'>
-        /// The unique location name for a Microsoft Azure geographic region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='skuName'>
         /// The unique SKU name that identifies a billable tier.
@@ -412,27 +413,28 @@ namespace Microsoft.Azure.Management.Search
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<QuotaUsageResult>> UsageBySubscriptionSkuWithHttpMessagesAsync(string location, string skuName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<QuotaUsageResult>> UsageBySubscriptionSkuWithHttpMessagesAsync(string location, string skuName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
 
 
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
             }
-
-            if (this.ApiVersion == null)
+            if (location != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.ApiVersion");
-            }
-
-            if (this.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
+                if (location.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "location", 1);
+                }
             }
 
             if (skuName == null)
@@ -440,11 +442,6 @@ namespace Microsoft.Azure.Management.Search
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "skuName");
             }
 
-            System.Guid? clientRequestId = default(System.Guid?);
-            if (searchManagementRequestOptions != null)
-            {
-                clientRequestId = searchManagementRequestOptions.ClientRequestId;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -465,7 +462,7 @@ namespace Microsoft.Azure.Management.Search
             var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages/{skuName}").ToString();
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.SubscriptionId, this.SerializationSettings).Trim('"')));
             _url = _url.Replace("{skuName}", System.Uri.EscapeDataString(skuName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();

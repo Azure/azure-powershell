@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Search.Models
     /// Describes a shared private link resource managed by the Azure AI Search
     /// service.
     /// </summary>
-    public partial class SharedPrivateLinkResource : Resource
+    public partial class SharedPrivateLinkResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SharedPrivateLinkResource class.

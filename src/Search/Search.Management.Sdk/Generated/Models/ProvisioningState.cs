@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.Search.Models
         [System.Runtime.Serialization.EnumMember(Value = "succeeded")]
         Succeeded,
         /// <summary>
-        /// The search service is being provisioned or scaled up or down.
+        /// The search service is being provisioned or scaled up or down. For dedicated
+        /// search services only.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "provisioning")]
         Provisioning,

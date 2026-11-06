@@ -14,19 +14,47 @@ namespace Microsoft.Azure.Management.Search
     public partial interface IPrivateEndpointConnectionsOperations
     {
         /// <summary>
-        /// Updates a private endpoint connection to the search service in the given
-        /// resource group.
+        /// Gets a list of all private endpoint connections in the given service.
         /// </summary>
         /// <remarks>
-        /// Updates a private endpoint connection to the search service in the given
-        /// resource group.
+        /// Gets a list of all private endpoint connections in the given service.
         /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the details of the private endpoint connection to the search service
+        /// in the given resource group.
+        /// </summary>
+        /// <remarks>
+        /// Gets the details of the private endpoint connection to the search service
+        /// in the given resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -35,6 +63,49 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection to the Azure AI Search service
         /// with the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Updates a private endpoint connection to the search service in the given
+        /// resource group.
+        /// </summary>
+        /// <remarks>
+        /// Updates a private endpoint connection to the search service in the given
+        /// resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='properties'>
         /// Describes the properties of an existing private endpoint connection to the
@@ -52,22 +123,28 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> UpdateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> UpdateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the details of the private endpoint connection to the search service
-        /// in the given resource group.
+        /// Disconnects the private endpoint connection and deletes it from the search
+        /// service.
+        /// Returns 200 (OK) with the deleted connection details on successful
+        /// deletion, or 404 (Not Found) if the connection does not exist.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </summary>
         /// <remarks>
-        /// Gets the details of the private endpoint connection to the search service
-        /// in the given resource group.
+        /// Disconnects the private endpoint connection and deletes it from the search
+        /// service.
+        /// Returns 200 (OK) with the deleted connection details on successful
+        /// deletion, or 404 (Not Found) if the connection does not exist.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -77,42 +154,10 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the private endpoint connection to the Azure AI Search service
         /// with the specified resource group.
         /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Disconnects the private endpoint connection and deletes it from the search
-        /// service.
-        /// </summary>
-        /// <remarks>
-        /// Disconnects the private endpoint connection and deletes it from the search
-        /// service.
-        /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure AI Search service
-        /// with the specified resource group.
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -126,38 +171,7 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> DeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets a list of all private endpoint connections in the given service.
-        /// </summary>
-        /// <remarks>
-        /// Gets a list of all private endpoint connections in the given service.
-        /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> DeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of all private endpoint connections in the given service.
@@ -180,7 +194,7 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>>> ListByServiceNextWithHttpMessagesAsync(string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>>> ListByServiceNextWithHttpMessagesAsync(string nextPageLink, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

@@ -17,10 +17,10 @@ Update an Azure AI Search service.
 Set-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-PartitionCount <Int32>]
  [-ReplicaCount <Int32>] [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>]
  [-IPRuleList <PSIpRule[]>] [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>]
- [-AadAuthFailureMode <PSAadAuthFailureMode>]
+ [-AadAuthFailureMode <PSAadAuthFailureMode>] [-KnowledgeRetrievalMode <PSKnowledgeRetrievalMode>]
  [-DataExfiltrationProtectionList <PSDataExfiltrationProtection[]>] [-Bypass <PSSearchBypass>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -28,9 +28,10 @@ Set-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-PartitionCo
 Set-AzSearchService [-InputObject] <PSSearchService> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
  [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
  [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
+ [-KnowledgeRetrievalMode <PSKnowledgeRetrievalMode>]
  [-DataExfiltrationProtectionList <PSDataExfiltrationProtection[]>] [-Bypass <PSSearchBypass>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -38,9 +39,10 @@ Set-AzSearchService [-InputObject] <PSSearchService> [-PartitionCount <Int32>] [
 Set-AzSearchService [-ResourceId] <String> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
  [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
  [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
+ [-KnowledgeRetrievalMode <PSKnowledgeRetrievalMode>]
  [-DataExfiltrationProtectionList <PSDataExfiltrationProtection[]>] [-Bypass <PSSearchBypass>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +69,15 @@ Tags              :
 
 The example changes partition count and replica count of the Azure AI Search service to 2.
 
+### Example 2: Set the agentic retrieval billing plan
+```powershell
+Set-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -KnowledgeRetrievalMode Standard
+```
+
+The command selects the standard agentic retrieval billing plan for an existing Azure AI Search service.
+If `KnowledgeRetrievalMode` is omitted, the existing billing plan is preserved.
+Agentic retrieval availability depends on the service SKU and location.
+
 ## PARAMETERS
 
 ### -AadAuthFailureMode
@@ -77,6 +88,21 @@ Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadA
 Parameter Sets: (All)
 Aliases:
 Accepted values: Http403, Http401WithBearerChallenge
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -109,6 +135,21 @@ Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSear
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, AzureServices
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -209,6 +250,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KnowledgeRetrievalMode
+(Optional) Billing plan for agentic retrieval (Free/Standard). This configuration is only available for certain Azure AI Search SKUs in certain locations.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSKnowledgeRetrievalMode]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Free, Standard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Search Service name.
 
@@ -231,6 +288,21 @@ Search Service partition count.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+Controls how progress records are handled. This is a PowerShell common parameter.
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

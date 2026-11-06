@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.Search
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Management.Search
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -64,8 +62,7 @@ namespace Microsoft.Azure.Management.Search
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -86,8 +83,7 @@ namespace Microsoft.Azure.Management.Search
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -116,8 +112,7 @@ namespace Microsoft.Azure.Management.Search
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -141,8 +136,7 @@ namespace Microsoft.Azure.Management.Search
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -171,8 +165,7 @@ namespace Microsoft.Azure.Management.Search
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -196,8 +189,7 @@ namespace Microsoft.Azure.Management.Search
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified

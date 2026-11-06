@@ -105,6 +105,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = KnowledgeRetrievalModeMessage)]
+        public PSKnowledgeRetrievalMode? KnowledgeRetrievalMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = DataExfiltrationProtectionsMessage)]
         public PSDataExfiltrationProtection[] DataExfiltrationProtectionList { get; set; }
 
@@ -202,6 +207,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
                         DisableLocalAuth = DisableLocalAuth,
                         AuthOptions = (DataPlaneAuthOptions)authOptions,
+                        KnowledgeRetrieval = KnowledgeRetrievalMode?.ToString().ToLowerInvariant() ?? service.KnowledgeRetrieval,
 
                         DataExfiltrationProtections = dataExfiltrationProtections.Any() ? dataExfiltrationProtections : service.DataExfiltrationProtections,
                     };
