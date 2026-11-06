@@ -166,6 +166,14 @@ options:
           if (path.endsWith("/AIInfraOptimization.Autorest/test/loadEnv.ps1"))
             $ = $.replace("Join-Path $PSScriptRoot '..\\$envFile'", "Join-Path (Split-Path -Path $PSScriptRoot -Parent) $envFile").replace("Get-Content (Join-Path $PSScriptRoot $envFile)", "Get-Content -Path $envFilePath");
 
+      # The emitter hard-codes Az.Accounts 2.7.5 as the minimum in README.md. State the version that
+      # RequiredModules in Az.AIInfraOptimization.psd1 requires instead.
+      - from: source-file-other
+        transform: |
+          const path = $documentPath.replace(/\\/g, "/");
+          if (path.endsWith("/AIInfraOptimization.Autorest/README.md"))
+            $ = $.replace("version 2.7.5 or greater", "version 5.5.4 or greater");
+
 # Replaces the spec's linter block. The "client-sdk" rule set it also extends does not
 # exist in the @azure-tools/typespec-azure-rulesets version pinned by eng/emitter-package.json.
 linter:
