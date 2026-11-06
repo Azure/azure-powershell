@@ -81,7 +81,7 @@ The name of the ANF volume quota rule
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
-Aliases:
+Aliases: SubvolumeName
 
 Required: False
 Position: Named

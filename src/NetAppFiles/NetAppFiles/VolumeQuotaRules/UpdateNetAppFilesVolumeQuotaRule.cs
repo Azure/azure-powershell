@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the ANF QuotaRule")]
+        [Alias("SubvolumeName")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/volumequotarules",
