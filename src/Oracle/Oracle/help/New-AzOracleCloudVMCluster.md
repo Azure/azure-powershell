@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/new-azoraclecloudvmcluster
 schema: 2.0.0
@@ -14,32 +14,35 @@ Create a CloudVmCluster
 
 ### CreateExpanded (Default)
 ```
-New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-BackupSubnetCidr <String>] [-CloudExadataInfrastructureId <String>]
+New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-BackupSubnetCidr <String>] [-CloudExadataInfrastructureId <String>]
  [-ClusterName <String>] [-CpuCoreCount <Int32>] [-DataCollectionOptionIsDiagnosticsEventsEnabled]
  [-DataCollectionOptionIsHealthMonitoringEnabled] [-DataCollectionOptionIsIncidentLogsEnabled]
  [-DataStoragePercentage <Int32>] [-DataStorageSizeInTb <Double>] [-DbNodeStorageSizeInGb <Int32>]
  [-DbServer <String[]>] [-DisplayName <String>] [-Domain <String>] [-ExascaleDbStorageVaultId <String>]
- [-GiVersion <String>] [-Hostname <String>] [-IsLocalBackupEnabled] [-IsSparseDiskgroupEnabled]
- [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-NsgCidr <INsgCidr[]>] [-OcpuCount <Single>]
- [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>] [-SshPublicKey <String[]>]
- [-SubnetId <String>] [-SystemVersion <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VnetId <String>]
- [-ZoneId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GiVersion <String>] [-HostnameV2 <String>] [-IsAcceleratedNetworkEnabled] [-IsLocalBackupEnabled]
+ [-IsSparseDiskgroupEnabled] [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-NetworkAnchorId <String>]
+ [-NsgCidr <INsgCidr[]>] [-OcpuCount <Single>] [-ProximityPlacementGroupEntityTypeIntendedToUse <String>]
+ [-ProximityPlacementGroupProximityAnchorId <String>]
+ [-ProximityPlacementGroupProximityPlacementGroupId <String>] [-RecoStoragePercentage <Int32>]
+ [-ResourceAnchorId <String>] [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>]
+ [-SparseStoragePercentage <Int32>] [-SshPublicKey <String[]>] [-SubnetId <String>] [-SystemVersion <String>]
+ [-Tag <Hashtable>] [-TimeZone <String>] [-VnetId <String>] [-ZoneId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +73,7 @@ $dbServerOcid1 = $dbServerList[0].Ocid
 $dbServerOcid2 = $dbServerList[1].Ocid
 
 $vmClusterName = "OFake_PowerShellTestVmCluster"
-New-AzOracleCloudVMCluster -Name $vmClusterName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $vmClusterName -HostName "host" -CpuCoreCount 4 -CloudExadataInfrastructureId $exaInfraId -SshPublicKey $sshPublicKey -VnetId $vnetId -GiVersion "19.0.0.0" -SubnetId $subnetId -LicenseModel "LicenseIncluded" -ClusterName "TestVMC" -MemorySizeInGb 90 -DbNodeStorageSizeInGb 180 -DataStorageSizeInTb 2.0 -DataStoragePercentage 80 -TimeZone "UTC" -DbServer @($dbServerOcid1, $dbServerOcid2)
+New-AzOracleCloudVMCluster -Name $vmClusterName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $vmClusterName -HostName "host" -CpuCoreCount 4 -CloudExadataInfrastructureId $exaInfraId -SshPublicKey $sshPublicKey -VnetId $vnetId -GiVersion "19.0.0.0" -SubnetId $subnetId -LicenseModel "LicenseIncluded" -ClusterName "TestVMC" -MemorySizeInGb 90 -DbNodeStorageSizeInGb 180 -DataStorageSizeInTb 2.0 -DataStoragePercentage 80 -TimeZone "UTC" -DbServer @($dbServerOcid1, $dbServerOcid2)       
 ```
 
 ```output
@@ -382,11 +385,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Hostname
+### -HostnameV2
 The hostname for the cloud VM cluster.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsAcceleratedNetworkEnabled
+Indicates if the Accelerated Networking feature is enabled or disabled for provisioning an Exadata VM cluster.
+The default value is: false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -520,6 +539,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkAnchorId
+Azure Network Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -567,6 +601,82 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProximityPlacementGroupEntityTypeIntendedToUse
+Entity type intended to use the proximity placement group
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroupProximityAnchorId
+Proximity Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroupProximityPlacementGroupId
+Proximity placement group ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoStoragePercentage
+The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups).
+See [Storage Configuration](/Content/Database/Concepts/exaoverview.htm#Exadata) in the Exadata documentation for details on the impact of the configuration settings on storage.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceAnchorId
+Azure Resource Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -602,6 +712,22 @@ Accept wildcard characters: False
 ### -ScanListenerPortTcpSsl
 The TCPS Single Client Access Name (SCAN) port.
 The default port is 2484.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SparseStoragePercentage
+The percentage assigned to SPARSE storage (Exadata snapshots).
+See [Storage Configuration](/Content/Database/Concepts/exaoverview.htm#Exadata) in the Exadata documentation for details on the impact of the configuration settings on storage.
 
 ```yaml
 Type: System.Int32
@@ -780,3 +906,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

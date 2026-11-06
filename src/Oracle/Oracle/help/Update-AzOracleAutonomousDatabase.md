@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/update-azoracleautonomousdatabase
 schema: 2.0.0
@@ -17,44 +17,44 @@ Update a AutonomousDatabase
 Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdminPassword <SecureString>] [-AutonomousMaintenanceScheduleType <String>]
  [-BackupRetentionPeriodInDay <Int32>] [-ComputeCount <Single>] [-CpuCoreCount <Int32>]
- [-CustomerContact <ICustomerContact[]>] [-DataStorageSizeInGb <Int32>] [-DataStorageSizeInTb <Int32>]
- [-DatabaseEdition <String>] [-DisplayName <String>] [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled]
- [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired] [-LicenseModel <String>]
- [-LocalAdgAutoFailoverMaxDataLossLimit <Int32>] [-LongTermBackupScheduleIsDisabled]
+ [-CustomerContact <ICustomerContact[]>] [-DatabaseEdition <String>] [-DataStorageSizeInGb <Int32>]
+ [-DataStorageSizeInTb <Int32>] [-DisplayName <String>] [-IsAutoScalingEnabled]
+ [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired]
+ [-LicenseModel <String>] [-LocalAdgAutoFailoverMaxDataLossLimit <Int32>] [-LongTermBackupScheduleIsDisabled]
  [-LongTermBackupScheduleRepeatCadence <String>] [-LongTermBackupScheduleRetentionPeriodInDay <Int32>]
  [-LongTermBackupScheduleTimeOfBackup <DateTime>] [-OpenMode <String>] [-PeerDbId <String>]
  [-PermissionLevel <String>] [-Role <String>] [-ScheduledOperationsList <IScheduledOperationsTypeUpdate[]>]
- [-Tag <Hashtable>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzOracleAutonomousDatabase -InputObject <IOracleIdentity> [-AdminPassword <SecureString>]
  [-AutonomousMaintenanceScheduleType <String>] [-BackupRetentionPeriodInDay <Int32>] [-ComputeCount <Single>]
- [-CpuCoreCount <Int32>] [-CustomerContact <ICustomerContact[]>] [-DataStorageSizeInGb <Int32>]
- [-DataStorageSizeInTb <Int32>] [-DatabaseEdition <String>] [-DisplayName <String>] [-IsAutoScalingEnabled]
+ [-CpuCoreCount <Int32>] [-CustomerContact <ICustomerContact[]>] [-DatabaseEdition <String>]
+ [-DataStorageSizeInGb <Int32>] [-DataStorageSizeInTb <Int32>] [-DisplayName <String>] [-IsAutoScalingEnabled]
  [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired]
  [-LicenseModel <String>] [-LocalAdgAutoFailoverMaxDataLossLimit <Int32>] [-LongTermBackupScheduleIsDisabled]
  [-LongTermBackupScheduleRepeatCadence <String>] [-LongTermBackupScheduleRetentionPeriodInDay <Int32>]
  [-LongTermBackupScheduleTimeOfBackup <DateTime>] [-OpenMode <String>] [-PeerDbId <String>]
  [-PermissionLevel <String>] [-Role <String>] [-ScheduledOperationsList <IScheduledOperationsTypeUpdate[]>]
- [-Tag <Hashtable>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +121,7 @@ Type                                          : oracle.database/autonomousdataba
 UsedDataStorageSizeInGb                       : 
 UsedDataStorageSizeInTb                       : 
 VnetId                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
-WhitelistedIP                                 :
+WhitelistedIP                                 : 
 ```
 
 Update an Autonomous Database resource.
@@ -513,7 +513,7 @@ The database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: Autonomousdatabasename
 
 Required: True
@@ -589,7 +589,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -635,7 +635,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -723,3 +723,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

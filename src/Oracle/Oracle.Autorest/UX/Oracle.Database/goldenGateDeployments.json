@@ -1,0 +1,85 @@
+{
+  "resourceType": "goldenGateDeployments",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleGoldenGateDeployment",
+      "description": "Get a GoldenGateDeployment",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/goldenGateDeployments/{goldenGateDeploymentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoraclegoldengatedeployment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a GoldenGateDeployment",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.goldenGateDeploymentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzOracleGoldenGateDeployment",
+      "description": "Delete a GoldenGateDeployment",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/goldenGateDeployments/{goldenGateDeploymentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/remove-azoraclegoldengatedeployment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a GoldenGateDeployment",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.goldenGateDeploymentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

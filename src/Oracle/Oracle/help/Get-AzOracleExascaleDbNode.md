@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoracleexascaledbnode
 schema: 2.0.0
@@ -15,27 +15,24 @@ Get a ExascaleDbNode
 ### List (Default)
 ```
 Get-AzOracleExascaleDbNode -ExadbVMClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzOracleExascaleDbNode -ExadbVMClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityExadbVMCluster
-```
-Get-AzOracleExascaleDbNode -Name <String> -ExadbVMClusterInputObject <IOracleIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzOracleExascaleDbNode -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzOracleExascaleDbNode -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityExadbVMCluster
+```
+Get-AzOracleExascaleDbNode -ExadbVMClusterInputObject <IOracleIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +93,7 @@ The name of the ExadbVmCluster
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -142,7 +139,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -158,7 +155,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -182,3 +179,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

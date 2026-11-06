@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/rename-azoracleautonomousdatabasedisasterrecoveryconfiguration
 schema: 2.0.0
@@ -17,45 +17,43 @@ Perform ChangeDisasterRecoveryConfiguration action on Autonomous Database
 Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -Autonomousdatabasename <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DisasterRecoveryType <String>]
  [-IsReplicateAutomaticBackup] [-IsSnapshotStandby] [-TimeSnapshotStandbyEnabledTill <DateTime>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ChangeViaJsonString
-```
-Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -Autonomousdatabasename <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ChangeViaJsonFilePath
-```
-Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -Autonomousdatabasename <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Change
 ```
 Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -Autonomousdatabasename <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Body <IDisasterRecoveryConfigurationDetails>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> -Body <IDisasterRecoveryConfigurationDetails> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ChangeViaIdentity
+```
+Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -InputObject <IOracleIdentity>
+ -Body <IDisasterRecoveryConfigurationDetails> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ChangeViaIdentityExpanded
 ```
 Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -InputObject <IOracleIdentity>
  [-DisasterRecoveryType <String>] [-IsReplicateAutomaticBackup] [-IsSnapshotStandby]
- [-TimeSnapshotStandbyEnabledTill <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TimeSnapshotStandbyEnabledTill <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### ChangeViaIdentity
+### ChangeViaJsonFilePath
 ```
-Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -InputObject <IOracleIdentity>
- -Body <IDisasterRecoveryConfigurationDetails> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -Autonomousdatabasename <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ChangeViaJsonString
+```
+Rename-AzOracleAutonomousDatabaseDisasterRecoveryConfiguration -Autonomousdatabasename <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,7 +152,7 @@ The database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ChangeExpanded, ChangeViaJsonString, ChangeViaJsonFilePath, Change
+Parameter Sets: Change, ChangeExpanded, ChangeViaJsonFilePath, ChangeViaJsonString
 Aliases:
 
 Required: True
@@ -217,7 +215,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: ChangeViaIdentityExpanded, ChangeViaIdentity
+Parameter Sets: ChangeViaIdentity, ChangeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -311,7 +309,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ChangeExpanded, ChangeViaJsonString, ChangeViaJsonFilePath, Change
+Parameter Sets: Change, ChangeExpanded, ChangeViaJsonFilePath, ChangeViaJsonString
 Aliases:
 
 Required: True
@@ -327,7 +325,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ChangeExpanded, ChangeViaJsonString, ChangeViaJsonFilePath, Change
+Parameter Sets: Change, ChangeExpanded, ChangeViaJsonFilePath, ChangeViaJsonString
 Aliases:
 
 Required: False
@@ -400,3 +398,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

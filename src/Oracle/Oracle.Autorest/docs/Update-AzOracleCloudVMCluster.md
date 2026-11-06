@@ -18,9 +18,10 @@ Update-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-Subsc
  [-ComputeNode <String[]>] [-CpuCoreCount <Int32>] [-DataCollectionOptionIsDiagnosticsEventsEnabled]
  [-DataCollectionOptionIsHealthMonitoringEnabled] [-DataCollectionOptionIsIncidentLogsEnabled]
  [-DataStorageSizeInTb <Double>] [-DbNodeStorageSizeInGb <Int32>] [-DisplayName <String>]
- [-FileSystemConfigurationDetail <IFileSystemConfigurationDetails[]>] [-LicenseModel <String>]
- [-MemorySizeInGb <Int32>] [-OcpuCount <Single>] [-SshPublicKey <String[]>] [-StorageSizeInGb <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FileSystemConfigurationDetail <IFileSystemConfigurationDetails[]>] [-IsAcceleratedNetworkEnabled]
+ [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-OcpuCount <Single>] [-SshPublicKey <String[]>]
+ [-StorageSizeInGb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -29,9 +30,9 @@ Update-AzOracleCloudVMCluster -InputObject <IOracleIdentity> [-ComputeNode <Stri
  [-DataCollectionOptionIsDiagnosticsEventsEnabled] [-DataCollectionOptionIsHealthMonitoringEnabled]
  [-DataCollectionOptionIsIncidentLogsEnabled] [-DataStorageSizeInTb <Double>] [-DbNodeStorageSizeInGb <Int32>]
  [-DisplayName <String>] [-FileSystemConfigurationDetail <IFileSystemConfigurationDetails[]>]
- [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-OcpuCount <Single>] [-SshPublicKey <String[]>]
- [-StorageSizeInGb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-IsAcceleratedNetworkEnabled] [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-OcpuCount <Single>]
+ [-SshPublicKey <String[]>] [-StorageSizeInGb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -316,6 +317,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -IsAcceleratedNetworkEnabled
+Indicates if the Accelerated Networking feature is enabled or disabled for provisioning an Exadata VM cluster.
+The default value is: false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

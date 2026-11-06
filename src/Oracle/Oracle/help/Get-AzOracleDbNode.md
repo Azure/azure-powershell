@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoracledbnode
 schema: 2.0.0
@@ -21,19 +21,17 @@ Get-AzOracleDbNode -Cloudvmclustername <String> -ResourceGroupName <String> [-Su
 ### Get
 ```
 Get-AzOracleDbNode -Cloudvmclustername <String> -Ocid <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityCloudVMCluster
-```
-Get-AzOracleDbNode -Ocid <String> -CloudVMClusterInputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzOracleDbNode -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
+Get-AzOracleDbNode -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityCloudVMCluster
+```
+Get-AzOracleDbNode -CloudVMClusterInputObject <IOracleIdentity> -Ocid <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -79,7 +77,7 @@ CloudVmCluster name
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -141,7 +139,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -157,7 +155,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -181,3 +179,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/new-azoracleexadbvmcluster
 schema: 2.0.0
@@ -14,31 +14,31 @@ Create a ExadbVmCluster
 
 ### CreateExpanded (Default)
 ```
-New-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-BackupSubnetCidr <String>] [-ClusterName <String>]
+New-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-BackupSubnetCidr <String>] [-ClusterName <String>]
  [-DataCollectionOptionIsDiagnosticsEventsEnabled] [-DataCollectionOptionIsHealthMonitoringEnabled]
  [-DataCollectionOptionIsIncidentLogsEnabled] [-DisplayName <String>] [-Domain <String>]
  [-EnabledEcpuCount <Int32>] [-ExascaleDbStorageVaultId <String>] [-GridImageOcid <String>]
- [-Hostname <String>] [-LicenseModel <String>] [-NodeCount <Int32>] [-NsgCidr <INsgCidr[]>]
- [-PrivateZoneOcid <String>] [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>] [-Shape <String>]
- [-ShapeAttribute <String>] [-SshPublicKey <String[]>] [-SubnetId <String>] [-SystemVersion <String>]
- [-Tag <Hashtable>] [-TimeZone <String>] [-TotalEcpuCount <Int32>] [-VMFileSystemStorageTotalSizeInGb <Int32>]
- [-VnetId <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HostnameV2 <String>] [-LicenseModel <String>] [-NodeCount <Int32>] [-NsgCidr <INsgCidr[]>]
+ [-PrivateZoneOcid <String>] [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>]
+ [-Shape <String>] [-ShapeAttribute <String>] [-SshPublicKey <String[]>] [-SubnetId <String>]
+ [-SystemVersion <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-TotalEcpuCount <Int32>]
+ [-VMFileSystemStorageTotalSizeInGb <Int32>] [-VnetId <String>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +65,7 @@ $exascaleDbStorageVault = Get-AzOracleExascaleDbStorageVault -Name $exascaleStor
 $exascaleDbStorageVaultId = $exascaleDbStorageVault.Id
 
 $exadbVmClusterName = "OFake_PowerShellTestExadbVmCluster"
-New-AzOracleExadbVMCluster -Name $exadbVmClusterName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $exadbVmClusterName -HostName "host" -totalEcpuCount 8 -exascaleDbStorageVaultId $exascaleDbStorageVaultId -SshPublicKey $sshPublicKey -VnetId $vnetId -SubnetId $subnetId -LicenseModel "LicenseIncluded" -shape "ExaDbXS" -enabledEcpuCount 8 -TimeZone "UTC" -nodeCount 1
+New-AzOracleExadbVMCluster -Name $exadbVmClusterName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $exadbVmClusterName -HostName "host" -totalEcpuCount 8 -exascaleDbStorageVaultId $exascaleDbStorageVaultId -SshPublicKey $sshPublicKey -VnetId $vnetId -SubnetId $subnetId -LicenseModel "LicenseIncluded" -shape "ExaDbXS" -enabledEcpuCount 8 -TimeZone "UTC" -nodeCount 1 
 ```
 
 ```output
@@ -300,7 +300,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Hostname
+### -HostnameV2
 The hostname for the Exadata VM cluster on Exascale Infrastructure.
 
 ```yaml
@@ -725,3 +725,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
