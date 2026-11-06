@@ -49,6 +49,23 @@ subject-prefix: NetworkSecurity
 resourcegroup-append: true
 
 directive:
+  - from: loadEnv.ps1
+    where: $
+    transform: |
+      return $.replace(
+        "Join-Path $PSScriptRoot '..\\$envFile'",
+        "Join-Path (Split-Path -Path $PSScriptRoot -Parent) $envFile"
+      ).replace(
+        "Get-Content (Join-Path $PSScriptRoot $envFile)",
+        "Get-Content -Path $envFilePath -Raw"
+      );
+  - from: README.md
+    where: $
+    transform: |
+      return $.replace(
+        /(^- \[Az\.Accounts module\].*version )2\.7\.5( or greater)/m,
+        (_, prefix, suffix) => prefix + '5.5.4' + suffix
+      );
   - where:
       verb: Set
     remove: true
