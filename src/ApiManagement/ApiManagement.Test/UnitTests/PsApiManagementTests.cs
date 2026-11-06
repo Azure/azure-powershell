@@ -9,6 +9,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
 {
+    [Trait(Category.AcceptanceType, Category.CheckIn)]
     public class PsApiManagementTests
     {
         public PsApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
