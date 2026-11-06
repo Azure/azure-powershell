@@ -69,6 +69,15 @@ directive:
     transform: >-
       $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
 
+  # While an operation is still running the service returns HTTP 202 with the
+  # operation-status body, but the spec allows only 200, so
+  # Get-AzResiliencyOperationStatus failed instead of showing Status = Accepted.
+  # Accept 202 with the same body. Remove after the service returns 200.
+  - from: swagger-document
+    where: $.paths["/providers/Microsoft.AzureResilienceManagement/locations/{location}/operationStatuses/{operationId}"].get.responses
+    transform: >-
+      $["202"] = $["200"];
+
   # Action-style POSTs normalize onto a single subject per operation group, so their
   # differing request bodies collide on one -Body parameter and Export-ProxyCmdlet
   # fails with "The parameter 'Body' has multiple parameter types". Give each action
