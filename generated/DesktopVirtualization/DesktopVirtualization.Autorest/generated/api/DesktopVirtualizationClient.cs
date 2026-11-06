@@ -30392,9 +30392,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization
                 await eventListener.AssertMaximumLength(nameof(hostPoolName),hostPoolName,64);
                 await eventListener.AssertRegEx(nameof(hostPoolName), hostPoolName, @"^[A-Za-z0-9@.\-_ ]*$");
                 await eventListener.AssertNotNull(nameof(vmPath),vmPath);
-                await eventListener.AssertMinimumLength(nameof(vmPath),vmPath,3);
-                await eventListener.AssertMaximumLength(nameof(vmPath),vmPath,1092);
-                await eventListener.AssertRegEx(nameof(vmPath), vmPath, @"^[A-Z][a-z][0-9][@./-_ ]*$");
             }
         }
 

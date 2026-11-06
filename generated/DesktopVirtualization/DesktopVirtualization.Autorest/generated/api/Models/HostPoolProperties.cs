@@ -256,7 +256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>The registration token base64 encoded string.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RegistrationInfoToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoInternal)RegistrationInfo).Token; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoInternal)RegistrationInfo).Token = value ?? null; }
+        public System.Security.SecureString RegistrationInfoToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoInternal)RegistrationInfo).Token; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoInternal)RegistrationInfo).Token = value ?? null; }
 
         /// <summary>Backing field for <see cref="RelayUdp" /> property.</summary>
         private string _relayUdp;
@@ -691,8 +691,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Update = true,
         Description = @"The registration token base64 encoded string.",
         SerializedName = @"token",
-        PossibleTypes = new [] { typeof(string) })]
-        string RegistrationInfoToken { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString RegistrationInfoToken { get; set; }
         /// <summary>
         /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
         /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
@@ -906,7 +906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Delete", "None", "Update")]
         string RegistrationInfoRegistrationTokenOperation { get; set; }
         /// <summary>The registration token base64 encoded string.</summary>
-        string RegistrationInfoToken { get; set; }
+        System.Security.SecureString RegistrationInfoToken { get; set; }
         /// <summary>
         /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
         /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors

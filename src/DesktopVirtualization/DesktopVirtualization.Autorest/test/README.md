@@ -250,6 +250,7 @@ From the repository root, with the existing pinned Pester installation:
 $ErrorActionPreference = 'Stop'
 Import-Module Microsoft.PowerShell.Utility
 Import-Module Microsoft.PowerShell.Management
+Import-Module Microsoft.PowerShell.Security
 $PSModuleAutoLoadingPreference = 'None'
 if (Get-Module Az.*) { throw 'Loaded Az modules are forbidden for offline checks' }
 Import-Module ./artifacts/Debug/Az.DesktopVirtualization/DesktopVirtualization.Autorest/generated/modules/Pester/4.10.1/Pester.psd1

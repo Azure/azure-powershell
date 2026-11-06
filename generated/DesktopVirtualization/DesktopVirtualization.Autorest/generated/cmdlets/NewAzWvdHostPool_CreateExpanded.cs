@@ -555,8 +555,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"The registration token base64 encoded string.",
         SerializedName = @"token",
-        PossibleTypes = new [] { typeof(string) })]
-        public string RegistrationInfoToken { get => _hostPoolBody.RegistrationInfoToken ?? null; set => _hostPoolBody.RegistrationInfoToken = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString RegistrationInfoToken { get => _hostPoolBody.RegistrationInfoToken ?? null; set => _hostPoolBody.RegistrationInfoToken = value; }
 
         /// <summary>The type of resetting the token.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of resetting the token.")]

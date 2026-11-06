@@ -20,6 +20,9 @@
 ## Upcoming Release
 
 * Upgraded API version to 2026-09-01-preview.
+    - Changed registration token parameters and returned token properties from `String` to `SecureString` to honor the API secret metadata. Callers passing a string to `New-AzWvdHostPool -RegistrationInfoToken` must convert it to a secure string.
+    - Updated registration-token list command output type declarations to describe the individual paged results.
+    - Incorporated the finalized August preview contract, including paged registration-token results and virtual machine resource ID metadata, while retaining September NVMe support.
     - Added support for NVMe (Non-Volatile Memory Express) ephemeral operating system disk placement in `New-AzWvdSessionHostConfiguration` and `Update-AzWvdSessionHostConfiguration` using `-DiffDiskSettingOption Local` and `-DiffDiskSettingPlacement NvmeDisk`.
     - Supported `Standard_LRS`, `StandardSSD_LRS`, and `Premium_LRS` values for `-ManagedDiskType` with ephemeral operating system disks on compatible virtual machine sizes.
 

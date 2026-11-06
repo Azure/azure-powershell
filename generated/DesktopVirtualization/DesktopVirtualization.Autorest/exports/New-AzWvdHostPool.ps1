@@ -340,7 +340,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # The registration token base64 encoded string.
     ${RegistrationInfoToken},
 

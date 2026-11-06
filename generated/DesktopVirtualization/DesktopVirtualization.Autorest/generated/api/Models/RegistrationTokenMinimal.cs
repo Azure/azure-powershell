@@ -21,11 +21,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public global::System.DateTime? ExpirationTime { get => this._expirationTime; set => this._expirationTime = value; }
 
         /// <summary>Backing field for <see cref="Token" /> property.</summary>
-        private string _token;
+        private System.Security.SecureString _token;
 
         /// <summary>The registration token base64 encoded string.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public string Token { get => this._token; set => this._token = value; }
+        public System.Security.SecureString Token { get => this._token; set => this._token = value; }
 
         /// <summary>Creates an new <see cref="RegistrationTokenMinimal" /> instance.</summary>
         public RegistrationTokenMinimal()
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Update = true,
         Description = @"The registration token base64 encoded string.",
         SerializedName = @"token",
-        PossibleTypes = new [] { typeof(string) })]
-        string Token { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString Token { get; set; }
 
     }
     /// Represents a Minimal set of properties for RegistrationToken definition.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Expiration time of registration token.</summary>
         global::System.DateTime? ExpirationTime { get; set; }
         /// <summary>The registration token base64 encoded string.</summary>
-        string Token { get; set; }
+        System.Security.SecureString Token { get; set; }
 
     }
 }
