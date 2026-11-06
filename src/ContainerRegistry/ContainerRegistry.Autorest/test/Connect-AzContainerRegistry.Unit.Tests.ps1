@@ -41,7 +41,7 @@ Describe 'Connect-AzContainerRegistry.Unit' {
         $context.Tenant = New-Object Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureTenant
         $context.Tenant.Id = '11111111-1111-1111-1111-111111111111'
         $context.Subscription = New-Object Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureSubscription
-        $context.Subscription.Id = '22222222-2222-2222-2222-222222222222'
+        # No subscription forces discovery fallback without making an ARM request.
         $script:profile.DefaultContext = $context
     }
 
@@ -75,6 +75,10 @@ Describe 'Connect-AzContainerRegistry.Unit' {
         @{ Label = 'trailing space'; RegistryName = 'abcde ' }
         @{ Label = 'embedded space'; RegistryName = 'abc de' }
         @{ Label = 'hyphen'; RegistryName = 'abc-de' }
+        @{ Label = 'short DNL prefix'; RegistryName = ('abcd-' + ('a' * 16)) }
+        @{ Label = 'long DNL prefix'; RegistryName = (('a' * 47) + '-' + ('b' * 16)) }
+        @{ Label = 'short DNL hash'; RegistryName = ('abcde-' + ('a' * 15)) }
+        @{ Label = 'long DNL hash'; RegistryName = ('abcde-' + ('a' * 17)) }
         @{ Label = 'underscore'; RegistryName = 'abc_de' }
         @{ Label = 'login server'; RegistryName = 'abcde.azurecr.io' }
         @{ Label = 'URL'; RegistryName = 'https://abcde.azurecr.io' }
@@ -101,6 +105,8 @@ Describe 'Connect-AzContainerRegistry.Unit' {
             @{ Label = '50 characters'; RegistryName = ('A' * 50); ExpectedServer = (('a' * 50) + '.azurecr.io') }
             @{ Label = 'only digits'; RegistryName = '12345'; ExpectedServer = '12345.azurecr.io' }
             @{ Label = 'mixed case'; RegistryName = 'MyRegistry123'; ExpectedServer = 'myregistry123.azurecr.io' }
+            @{ Label = 'DNL label'; RegistryName = 'MyRegistry-0123456789ABCDEF'; ExpectedServer = 'myregistry-0123456789abcdef.azurecr.io' }
+            @{ Label = 'maximum DNL label'; RegistryName = (('A' * 46) + '-' + ('B' * 16)); ExpectedServer = (('a' * 46) + '-' + ('b' * 16) + '.azurecr.io') }
         ) {
             param($Label, $RegistryName, $ExpectedServer)
 
@@ -109,6 +115,27 @@ Describe 'Connect-AzContainerRegistry.Unit' {
 
             $result.Count | Should -Be 1
             $result[0].Arguments[1] | Should -BeExactly $ExpectedServer
+        }
+    }
+
+    It 'Exposes the selected fallback endpoint for <Label>' -TestCases @(
+        @{ Label = 'DNL label'; Cloud = 'AzureCloud'; Name = 'myregistry-0123456789abcdef'; ExpectedServer = 'myregistry-0123456789abcdef.azurecr.io' }
+        @{ Label = 'sovereign cloud'; Cloud = 'AzureChinaCloud'; Name = 'myregistry'; ExpectedServer = 'myregistry.azurecr.cn' }
+    ) {
+        param($Label, $Cloud, $Name, $ExpectedServer)
+
+        function global:docker { throw 'Docker must not run with ExposeToken.' }
+        $originalEnvironment = $script:profile.DefaultContext.Environment
+        try {
+            $script:profile.DefaultContext.Environment =
+                [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[$Cloud]
+            $result = Connect-AzContainerRegistry -Name $Name -UserName 'user' -Password 'password' `
+                -ExposeToken -DefaultProfile $script:profile -ErrorAction Stop -WarningAction SilentlyContinue
+
+            $result.loginServer | Should -BeExactly $ExpectedServer
+            $result.accessToken | Should -BeOfType System.Security.SecureString
+        } finally {
+            $script:profile.DefaultContext.Environment = $originalEnvironment
         }
     }
 

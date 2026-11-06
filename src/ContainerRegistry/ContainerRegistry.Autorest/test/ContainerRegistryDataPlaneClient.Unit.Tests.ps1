@@ -38,7 +38,7 @@ Describe 'ContainerRegistryDataPlaneClient.Unit' {
         $context.Tenant = New-Object Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureTenant
         $context.Tenant.Id = '11111111-1111-1111-1111-111111111111'
         $context.Subscription = New-Object Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureSubscription
-        $context.Subscription.Id = '22222222-2222-2222-2222-222222222222'
+        # No subscription forces discovery fallback without making an ARM request.
         $script:profile.DefaultContext = $context
     }
 
@@ -56,6 +56,10 @@ Describe 'ContainerRegistryDataPlaneClient.Unit' {
         @{ Label = 'trailing space'; RegistryName = 'abcde ' }
         @{ Label = 'embedded space'; RegistryName = 'abc de' }
         @{ Label = 'hyphen'; RegistryName = 'abc-de' }
+        @{ Label = 'short DNL prefix'; RegistryName = ('abcd-' + ('a' * 16)) }
+        @{ Label = 'long DNL prefix'; RegistryName = (('a' * 47) + '-' + ('b' * 16)) }
+        @{ Label = 'short DNL hash'; RegistryName = ('abcde-' + ('a' * 15)) }
+        @{ Label = 'long DNL hash'; RegistryName = ('abcde-' + ('a' * 17)) }
         @{ Label = 'underscore'; RegistryName = 'abc_de' }
         @{ Label = 'login server'; RegistryName = 'abcde.azurecr.io' }
         @{ Label = 'URL'; RegistryName = 'https://abcde.azurecr.io' }
@@ -108,5 +112,17 @@ Describe 'ContainerRegistryDataPlaneClient.Unit' {
         } finally {
             [System.Threading.Thread]::CurrentThread.CurrentCulture = $originalCulture
         }
+    }
+
+    It 'Preserves the DNL label and warns when discovery is unavailable' {
+        $warnings = New-Object 'System.Collections.Generic.List[string]'
+        $script:client.WarningLogger = { param($message) $warnings.Add($message) }.GetNewClosure()
+        $script:client.SetEndPoint('MyRegistry-0123456789ABCDEF')
+
+        $script:client.GetEndPoint() | Should -BeExactly 'myregistry-0123456789abcdef.azurecr.io'
+        $script:client.GetClient().LoginUri | Should -BeExactly 'https://myregistry-0123456789abcdef.azurecr.io'
+        $warnings.Count | Should -Be 1
+        $warnings[0] | Should -BeLike '*discovery failed*'
+        $warnings[0] | Should -BeLike '*complete label including its hash*'
     }
 }
