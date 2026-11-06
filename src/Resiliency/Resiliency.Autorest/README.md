@@ -59,15 +59,6 @@ directive:
     transform: >-
       $["x-ms-mutability"] = ["read", "create"];
 
-  # RecoveryJobs_Retry declares its 200 result as ErrorResponse, but the service returns
-  # the retried job's ID. Use the recovery-plan action result (jobId) so
-  # Invoke-AzResiliencyRecoveryJobRetry exposes JobId (decoded by
-  # custom/RecoveryPlanActionBaseResponse.json.cs).
-  - from: swagger-document
-    where: $.paths["/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/recoveryJobs/{recoveryJobName}/retry"].post.responses["200"]
-    transform: >-
-      $.schema = { "$ref": "#/definitions/RecoveryPlanActionBaseResponse" };
-
   # GoalAssignments PUT/PATCH declare final-state-via: location. When the initial
   # response has no Location header the generated final GET fails with
   # "Invalid URI: The URI is empty", and the PATCH Location target returns the
