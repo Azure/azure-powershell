@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             string computeType = null;
             if (ComputeType.HasValue)
             {
-                computeType = ComputeType.ToString().ToLower();
+                computeType = ComputeType.ToString();
             }
 
             var dataExfiltrationProtections = new List<string>();
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             string publicNetworkAccess = null;
             if (PublicNetworkAccess.HasValue)
             {
-                publicNetworkAccess = PublicNetworkAccess.ToString().ToLower();
+                publicNetworkAccess = PublicNetworkAccess.ToString();
             }
 
             Azure.Management.Search.Models.SearchService searchService =

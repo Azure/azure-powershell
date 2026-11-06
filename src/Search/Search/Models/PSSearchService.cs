@@ -193,10 +193,11 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
 
             ETag = searchService.ETag;
 
-            if (searchService.KnowledgeRetrieval != null)
+            if (searchService.KnowledgeRetrieval != null &&
+                Enum.TryParse(searchService.KnowledgeRetrieval, ignoreCase: true, out PSKnowledgeRetrievalMode knowledgeRetrievalMode) &&
+                Enum.IsDefined(typeof(PSKnowledgeRetrievalMode), knowledgeRetrievalMode))
             {
-                KnowledgeRetrievalMode = (PSKnowledgeRetrievalMode)Enum.Parse(
-                    typeof(PSKnowledgeRetrievalMode), searchService.KnowledgeRetrieval, ignoreCase: true);
+                KnowledgeRetrievalMode = knowledgeRetrievalMode;
             }
         }
 

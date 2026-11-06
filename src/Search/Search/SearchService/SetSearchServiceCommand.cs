@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     string publicNetworkAccess = null;
                     if (PublicNetworkAccess.HasValue)
                     {
-                        publicNetworkAccess = PublicNetworkAccess.ToString().ToLower();
+                        publicNetworkAccess = PublicNetworkAccess.ToString();
                     }
 
                     // UPDATE
