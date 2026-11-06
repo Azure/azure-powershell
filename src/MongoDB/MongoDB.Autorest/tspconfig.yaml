@@ -1,0 +1,51 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/MongoDB/MongoDB.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 1.0.0
+    prefix: "Az"
+    subject-prefix: "MongoDB"
+    service-name: "MongoDB"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|ViaJsonString|ViaJsonFilePath))
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      - where:
+          verb: Update|Set
+        remove: true
+      - where:
+          subject-prefix: MongoDb(.*)
+        set:
+          subject-prefix: MongoDB$1
+      - where:
+          subject: Organization
+          variant: ^List1$
+        set:
+          variant: List
+      - where:
+          subject: Organization
+          variant: ^List$
+          parameter-name: ResourceGroupName
+        set:
+          variant: List1
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
