@@ -1,0 +1,138 @@
+{
+  "Get-AzPlanetaryComputerGeoCatalogPrivateLink+[NoContext]+Discovers private-link resources and reads existing connections+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/internal-testing/providers/Microsoft.Orbital/geoCatalogs/PE-03-20-2/privateLinkResources?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/internal-testing/providers/Microsoft.Orbital/geoCatalogs/PE-03-20-2/privateLinkResources?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "00000000-0000-0000-0000-000000000004" ],
+        "CommandName": [ "Get-AzPlanetaryComputerGeoCatalogPrivateLink" ],
+        "FullCommandName": [ "Get-AzPlanetaryComputerGeoCatalogPrivateLink_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.9", "Az.PlanetaryComputer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000004/eastus2euap/00000000-0000-0000-0000-000000000004" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000004" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-0000-0000-000000000004" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261102T213834Z:00000000-0000-0000-0000-000000000004" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5844A55F8D3A4637843A37C4DF104F8B Ref B: BY1AA1072316060 Ref C: 2026-11-02T21:38:34Z" ],
+        "Date": [ "Mon, 02 Nov 2026 21:38:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "368" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/internal-testing/providers/Microsoft.Orbital/geoCatalogs/PE-03-20-2/privateLinkResources/geocatalog\",\"name\":\"geocatalog\",\"type\":\"geoCatalogs/privateLinkResources\",\"properties\":{\"groupId\":\"geocatalog\",\"requiredMembers\":[\"api\"],\"requiredZoneNames\":[\"privatelink.geocatalog.spatio.azure.com\"]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPlanetaryComputerGeoCatalogPrivateLink+[NoContext]+Discovers private-link resources and reads existing connections+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/internal-testing/providers/Microsoft.Orbital/geoCatalogs/PE-03-20-2/privateEndpointConnections?api-version=2026-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/internal-testing/providers/Microsoft.Orbital/geoCatalogs/PE-03-20-2/privateEndpointConnections?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "00000000-0000-0000-0000-000000000004" ],
+        "CommandName": [ "Get-AzPlanetaryComputerGeoCatalogPrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzPlanetaryComputerGeoCatalogPrivateEndpointConnection_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.9", "Az.PlanetaryComputer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000004/eastus2euap/00000000-0000-0000-0000-000000000004" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000004" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-0000-0000-000000000004" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261102T213835Z:00000000-0000-0000-0000-000000000004" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: ED62D4D4974347BC9599F11420CD2037 Ref B: BY1AA1072316060 Ref C: 2026-11-02T21:38:34Z" ],
+        "Date": [ "Mon, 02 Nov 2026 21:38:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "923" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/internal-testing/providers/Microsoft.Orbital/geoCatalogs/PE-03-20-2/privateEndpointConnections/sample-private-endpoint.00000000-0000-0000-0000-000000000003\",\"name\":\"sample-private-endpoint.00000000-0000-0000-0000-000000000003\",\"type\":\"microsoft.orbital/geocatalogs/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000004\",\"createdByType\":\"Application\",\"createdAt\":\"2026-11-02T04:35:00.6575495Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000004\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-11-02T04:35:00.6575495Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/internal-testing/providers/Microsoft.Network/privateEndpoints/sample-private-endpoint\"},\"groupIds\":[\"geocatalog\"],\"privateLinkServiceConnectionState\":{\"status\":\"Approved\"}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPlanetaryComputerGeoCatalogPrivateLink+[NoContext]+Discovers private-link resources and reads existing connections+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/internal-testing/providers/Microsoft.Orbital/geoCatalogs/PE-03-20-2/privateEndpointConnections/sample-private-endpoint.00000000-0000-0000-0000-000000000003?api-version=2026-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/internal-testing/providers/Microsoft.Orbital/geoCatalogs/PE-03-20-2/privateEndpointConnections/sample-private-endpoint.00000000-0000-0000-0000-000000000003?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "00000000-0000-0000-0000-000000000004" ],
+        "CommandName": [ "Get-AzPlanetaryComputerGeoCatalogPrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzPlanetaryComputerGeoCatalogPrivateEndpointConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.9", "Az.PlanetaryComputer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000000-0000-0000-0000-000000000004\"" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000004/eastus2euap/00000000-0000-0000-0000-000000000004" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000004" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-0000-0000-000000000004" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261102T213835Z:00000000-0000-0000-0000-000000000004" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 66C3D529EB9F4861A6CB934CD92889D5 Ref B: BY1AA1072316060 Ref C: 2026-11-02T21:38:35Z" ],
+        "Date": [ "Mon, 02 Nov 2026 21:38:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "911" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/internal-testing/providers/Microsoft.Orbital/geoCatalogs/PE-03-20-2/privateEndpointConnections/sample-private-endpoint.00000000-0000-0000-0000-000000000003\",\"name\":\"sample-private-endpoint.00000000-0000-0000-0000-000000000003\",\"type\":\"microsoft.orbital/geocatalogs/privateEndpointConnections\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000004\",\"createdByType\":\"Application\",\"createdAt\":\"2026-11-02T04:35:00.6575495Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000004\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-11-02T04:35:00.6575495Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/internal-testing/providers/Microsoft.Network/privateEndpoints/sample-private-endpoint\"},\"groupIds\":[\"geocatalog\"],\"privateLinkServiceConnectionState\":{\"status\":\"Approved\"}}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -31,6 +31,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentityUpdate()); set { {_identity = value;} } }
 
+        /// <summary>Internal Acessors for Property</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogUpdateProperties()); set { {_property = value;} } }
+
+        /// <summary>Backing field for <see cref="Property" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties _property;
+
+        /// <summary>The updatable properties of the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogUpdateProperties()); set => this._property = value; }
+
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
+        public string PublicNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdatePropertiesInternal)Property).PublicNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdatePropertiesInternal)Property).PublicNetworkAccess = value ?? null; }
+
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateTags _tag;
 
@@ -71,6 +85,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities) })]
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether or not public network access is allowed for the GeoCatalog.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
@@ -95,6 +121,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         string IdentityType { get; set; }
         /// <summary>The identities assigned to this resource by the user.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>The updatable properties of the GeoCatalog.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties Property { get; set; }
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>Resource tags.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateTags Tag { get; set; }
 

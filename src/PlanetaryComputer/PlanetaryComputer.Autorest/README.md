@@ -29,7 +29,7 @@ For information on how to develop for `Az.PlanetaryComputer`, see [how-to.md](ho
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 5bdf5ca47c2e514554564bb5ba554318ffc99a78
+commit: 9ecfd7c772db95534126fb62a2e983d9145bbd57
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -38,12 +38,15 @@ require:
 try-require:
   - $(repo)/specification/orbitalplanetarycomputer/resource-manager/readme.powershell.md
 
-tag: package-2026-04-15
+tag: package-2026-10-01
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 title: PlanetaryComputer
 subject-prefix: $(service-name)
+
+# Keep service-specific connection management alongside GeoCatalog private-link discovery.
+keep-pec-and-plr: true
 
 directive:
   # Following are common directives which are normally required in all the RPs
@@ -61,4 +64,10 @@ directive:
   - where:
       verb: Set
     remove: true
+
+  # Distinguish connections belonging to a GeoCatalog from other service resources.
+  - where:
+      subject: PrivateEndpointConnection
+    set:
+      subject: GeoCatalogPrivateEndpointConnection
 ```

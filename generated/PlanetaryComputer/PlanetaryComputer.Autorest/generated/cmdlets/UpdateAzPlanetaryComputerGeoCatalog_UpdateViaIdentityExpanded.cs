@@ -136,6 +136,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether or not public network access is allowed for the GeoCatalog.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether or not public network access is allowed for the GeoCatalog.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get => _resourceBody.PublicNetworkAccess ?? null; set => _resourceBody.PublicNetworkAccess = value; }
+
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
@@ -531,6 +543,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
             {
                 this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PublicNetworkAccess")))
+            {
+                this.PublicNetworkAccess = (string)(this.MyInvocation?.BoundParameters["PublicNetworkAccess"]);
             }
         }
 

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalog))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Description(@"create a GeoCatalog")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}", ApiVersion = "2026-04-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}", ApiVersion = "2026-10-01")]
     public partial class NewAzPlanetaryComputerGeoCatalog_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IContext
@@ -87,6 +87,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PlanetaryComputer Client => Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Module.Instance.ClientAPI;
 
+        /// <summary>The compute properties of the catalog service</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The compute properties of the catalog service")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The compute properties of the catalog service",
+        SerializedName = @"catalogTier",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
+        public string ComputePropertyCatalogTier { get => _resourceBody.ComputePropertyCatalogTier ?? null; set => _resourceBody.ComputePropertyCatalogTier = value; }
+
+        /// <summary>The compute properties of the ingestion service</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The compute properties of the ingestion service")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The compute properties of the ingestion service",
+        SerializedName = @"ingestionTier",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
+        public string ComputePropertyIngestionTier { get => _resourceBody.ComputePropertyIngestionTier ?? null; set => _resourceBody.ComputePropertyIngestionTier = value; }
+
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
@@ -151,6 +175,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.HttpPipeline Pipeline { get; set; }
 
+        /// <summary>The database tier for the geocatalog</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The database tier for the geocatalog")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The database tier for the geocatalog",
+        SerializedName = @"databaseTier",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
+        public string PremiumConfigurationDatabaseTier { get => _resourceBody.PremiumConfigurationDatabaseTier ?? null; set => _resourceBody.PremiumConfigurationDatabaseTier = value; }
+
+        /// <summary>The capacity of managed storage in Petabytes (minimum 5)</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The capacity of managed storage in Petabytes (minimum 5)")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The capacity of managed storage in Petabytes (minimum 5)",
+        SerializedName = @"managedStorageCapacity",
+        PossibleTypes = new [] { typeof(int) })]
+        public int PremiumConfigurationManagedStorageCapacity { get => _resourceBody.PremiumConfigurationManagedStorageCapacity ?? default(int); set => _resourceBody.PremiumConfigurationManagedStorageCapacity = value; }
+
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Runtime)]
@@ -166,6 +213,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether or not public network access is allowed for the GeoCatalog.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether or not public network access is allowed for the GeoCatalog.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get => _resourceBody.PublicNetworkAccess ?? null; set => _resourceBody.PublicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -223,7 +282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         Description = @"Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Premium")]
         public string Tier { get => _resourceBody.Tier ?? null; set => _resourceBody.Tier = value; }
 
         /// <summary>
