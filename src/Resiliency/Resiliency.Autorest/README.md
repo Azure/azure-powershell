@@ -153,4 +153,14 @@ directive:
       verb: Set
       subject: RecoveryPlan
     remove: true
+
+  # Set-AzResiliencyGoalAssignment sends PUT, which the Goals service treats as
+  # create-only (one goal assignment per service group): a PUT to an existing goal
+  # assignment returns 400 RHUBUserErrorInvalidRequestParameter. New- creates it and
+  # Update-AzResiliencyGoalAssignment (PATCH) updates it; Azure CLI likewise has only
+  # create and update. Remove Set-.
+  - where:
+      verb: Set
+      subject: GoalAssignment
+    remove: true
 ```

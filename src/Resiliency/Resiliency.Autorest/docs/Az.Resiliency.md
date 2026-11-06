@@ -138,9 +138,6 @@ This action resumes the ongoing recovery orchestration job that was paused for r
 ### [Set-AzResiliencyEnrollment](Set-AzResiliencyEnrollment.md)
 Update an Enrollment.
 
-### [Set-AzResiliencyGoalAssignment](Set-AzResiliencyGoalAssignment.md)
-Update a goal assignment.
-
 ### [Set-AzResiliencyUsagePlan](Set-AzResiliencyUsagePlan.md)
 Update a UsagePlan
 

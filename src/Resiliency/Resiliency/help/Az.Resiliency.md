@@ -52,9 +52,6 @@ Gets a goal assignment.
 ### [New-AzResiliencyGoalAssignment](New-AzResiliencyGoalAssignment.md)
 Create a goal assignment.
 
-### [Set-AzResiliencyGoalAssignment](Set-AzResiliencyGoalAssignment.md)
-Update a goal assignment.
-
 ### [Update-AzResiliencyGoalAssignment](Update-AzResiliencyGoalAssignment.md)
 Update a goal assignment.
 
