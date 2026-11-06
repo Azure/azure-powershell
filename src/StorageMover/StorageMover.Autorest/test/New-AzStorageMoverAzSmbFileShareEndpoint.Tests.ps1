@@ -85,17 +85,48 @@ Describe 'New/Update-AzStorageMoverAzSmbFileShareEndpoint' {
         $endpoint.Property.EndpointKind | Should -Be "Source"
     }
 
+}
+
+Describe 'New-AzStorageMoverAzSmbFileShareEndpoint RequestContract' -Tag @('PythonParity', 'Offline') {
     It 'CreateExpandedCrossTenantRequest' {
-        # The service does not accept cross-tenant settings on Azure SMB file share endpoints yet, so this checks the request offline.
-        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
-        $endpoint = New-AzStorageMoverAzSmbFileShareEndpoint -Name "smbsharexto" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -StorageAccountResourceId $env.EndpointStorageAccountId -FileShareName $env.EndpointFileShareName -EnableCrossTenantTransfer -AllowedStorageAccount $env.PartnerStorageAccountId
-        $request = $endpoint.Property.ToJsonString() | ConvertFrom-Json
+        $response = @{ properties = @{ endpointType = 'AzureStorageSmbFileShare' } }
+        $capture = Invoke-StorageMoverTestRequest -Response $response -Command {
+            param($pipeline)
+            New-AzStorageMoverAzSmbFileShareEndpoint -Name 'smbsharexto' -SubscriptionId $env.SubscriptionId -ResourceGroupName 'rg' -StorageMoverName 'mover' -StorageAccountResourceId $env.EndpointStorageAccountId -FileShareName $env.EndpointFileShareName -EnableCrossTenantTransfer -AllowedStorageAccount $env.PartnerStorageAccountId -HttpPipelinePrepend $pipeline
+        }
+        $capture.Requests[0].Method | Should -Be 'PUT'
+        $request = ($capture.Requests[0].Content | ConvertFrom-Json).properties
         $request.enableCrossTenantTransfer | Should -Be $true
         $request.allowedStorageAccounts | Should -Be $env.PartnerStorageAccountId
 
-        $endpoint = New-AzStorageMoverAzSmbFileShareEndpoint -Name "smbsharexto" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -StorageAccountResourceId $env.EndpointStorageAccountId -FileShareName $env.EndpointFileShareName
-        $request = $endpoint.Property.ToJsonString() | ConvertFrom-Json
+        $capture = Invoke-StorageMoverTestRequest -Response $response -Command {
+            param($pipeline)
+            New-AzStorageMoverAzSmbFileShareEndpoint -Name 'smbsharexto' -SubscriptionId $env.SubscriptionId -ResourceGroupName 'rg' -StorageMoverName 'mover' -StorageAccountResourceId $env.EndpointStorageAccountId -FileShareName $env.EndpointFileShareName -HttpPipelinePrepend $pipeline
+        }
+        $request = ($capture.Requests[0].Content | ConvertFrom-Json).properties
         $request.PSObject.Properties.Name | Should -Not -Contain "enableCrossTenantTransfer"
         $request.PSObject.Properties.Name | Should -Not -Contain "allowedStorageAccounts"
+    }
+}
+
+Describe 'New-AzStorageMoverAzSmbFileShareEndpoint PythonParity' -Tag 'PythonParity' {
+    It 'CreateGetAndDeleteSourceEndpointInEastUs' {
+        $context = $null
+        try {
+            $context = New-StorageMoverTestContext -Name 'sm-smb-file-share-source'
+            $accountId = "/subscriptions/$($context.SubscriptionId)/resourceGroups/$($context.ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/testaccount"
+            $endpoint = New-AzStorageMoverAzSmbFileShareEndpoint @context -Name 'source' -StorageAccountResourceId $accountId -FileShareName 'testshare' -EndpointKind Source
+            $endpoint.Property.EndpointType | Should -Be 'AzureStorageSmbFileShare'
+            $endpoint.Property.EndpointKind | Should -Be 'Source'
+            $endpoint = Get-AzStorageMoverEndpoint @context -Name 'source'
+            $endpoint.Property.EndpointKind | Should -Be 'Source'
+            $endpoint.Property.StorageAccountResourceId | Should -Be $accountId
+            Remove-AzStorageMoverEndpoint @context -Name 'source'
+            Invoke-StorageMoverTestFailure -Code ResourceNotFound -Command {
+                Get-AzStorageMoverEndpoint @context -Name 'source' -ErrorAction Stop
+            }
+        } finally {
+            Remove-StorageMoverTestContext -Context $context
+        }
     }
 }

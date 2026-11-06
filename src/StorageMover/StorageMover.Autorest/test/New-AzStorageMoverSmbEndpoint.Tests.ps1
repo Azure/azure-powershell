@@ -74,13 +74,32 @@ Describe 'New/Update-AzStorageMoverSmbEndpoint' {
         $smbEndpoint.Property.ProvisioningState | Should -Be "Succeeded"
     }
 
+}
+
+Describe 'New-AzStorageMoverSmbEndpoint RequestContract' -Tag @('PythonParity', 'Offline') {
     It 'CreateExpandedSourceTypeRequest' {
-        # The service does not return sourceType, so this checks the request offline.
-        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
-        $smbEndpoint = New-AzStorageMoverSmbEndpoint -Name "smbfsxo" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -Host "10.0.0.6" -ShareName "share" -SourceType FSX-SMB -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/username" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/password"
-        $request = $smbEndpoint.Property.ToJsonString() | ConvertFrom-Json
+        $capture = Invoke-StorageMoverTestRequest -Response @{ properties = @{ endpointType = 'SmbMount' } } -Command {
+            param($pipeline)
+            New-AzStorageMoverSmbEndpoint -Name 'smbfsxo' -SubscriptionId $env.SubscriptionId -ResourceGroupName 'rg' -StorageMoverName 'mover' -Host '10.0.0.6' -ShareName 'share' -SourceType FSX-SMB -CredentialsUsernameUri 'https://examples-azureKeyVault.vault.azure.net/secrets/username' -CredentialsPasswordUri 'https://examples-azureKeyVault.vault.azure.net/secrets/password' -HttpPipelinePrepend $pipeline
+        }
+        $capture.Requests[0].Method | Should -Be 'PUT'
+        $request = ($capture.Requests[0].Content | ConvertFrom-Json).properties
         $request.sourceType | Should -Be "FSX-SMB"
         $request.credentials.usernameUri | Should -Be "https://examples-azureKeyVault.vault.azure.net/secrets/username"
         $request.credentials.passwordUri | Should -Be "https://examples-azureKeyVault.vault.azure.net/secrets/password"
+    }
+}
+
+Describe 'New-AzStorageMoverSmbEndpoint PythonParity' -Tag 'PythonParity' {
+    It 'RejectTargetEndpointKind' {
+        $context = $null
+        try {
+            $context = New-StorageMoverTestContext -Name 'sm-smb-target-validation'
+            Invoke-StorageMoverTestFailure -Command {
+                New-AzStorageMoverSmbEndpoint @context -Name 'invalid' -Host '10.0.0.1' -ShareName 'testshare' -EndpointKind Target -ErrorAction Stop
+            }
+        } finally {
+            Remove-StorageMoverTestContext -Context $context
+        }
     }
 }
