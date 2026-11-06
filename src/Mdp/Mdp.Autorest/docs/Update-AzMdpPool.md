@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMdpPool
 
 ## SYNOPSIS
-update a Pool
+Update a Pool
 
 ## SYNTAX
 
@@ -17,9 +17,9 @@ update a Pool
 Update-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>]
  [-EnableSystemAssignedIdentity <Boolean?>] [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>]
- [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>]
+ [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -39,12 +39,13 @@ Update-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile 
 Update-AzMdpPool -InputObject <IMdpIdentity> [-AgentProfile <IAgentProfile>]
  [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity <Boolean?>]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
- [-ProvisioningState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <String>] [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a Pool
+Update a Pool
 
 ## EXAMPLES
 
@@ -131,7 +132,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -273,6 +274,21 @@ Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuntimeConfigurationWorkFolder
+The target work folder of the task agent on the machine.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

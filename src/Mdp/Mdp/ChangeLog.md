@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated code generation from Swagger (AutoRest) to TypeSpec (TSP)
+    - No change to cmdlets, parameters, or output types
 
 ## Version 0.1.2
 * Fixed module name in module metadata
