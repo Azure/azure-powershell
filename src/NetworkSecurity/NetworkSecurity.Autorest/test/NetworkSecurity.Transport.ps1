@@ -33,69 +33,78 @@ $cases = @(
     @{ Operation = 'Operations_List'; Command = 'Get-AzNetworkSecurityOperation'; Parameters = @{}; Method = 'GET'; Path = '/providers/Microsoft.NetworkSecurity/operations' }
 )
 
-Describe 'NetworkSecurity HTTP contract' {
-    BeforeEach {
-        $script:networkSecurityRequests = [System.Collections.Generic.List[object]]::new()
-        $script:networkSecurityResponses = [System.Collections.Generic.Queue[object]]::new()
-        $script:networkSecurityResponses.Enqueue(@{ Status = 200; Body = '{"value":[],"properties":{"provisioningState":"Succeeded"},"status":"Succeeded"}' })
-        $script:networkSecurityOffline = [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurity.Runtime.PipelineMock]::new((Join-Path $TestDrive 'unused.json'))
-        $script:networkSecurityOffline.SetPlayback()
-        # The generated proxy recognizes playback for offline authentication; the outer hook supplies unit-test responses.
-        $script:networkSecurityTransport = [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurity.Runtime.SendAsyncStep] {
-            param($request, $callback, $next)
-            $headers = @{}
-            foreach ($header in $request.Headers) { $headers[$header.Key] = $header.Value -join ',' }
-            $body = if ($request.Content) { $request.Content.ReadAsStringAsync().GetAwaiter().GetResult() } else { $null }
-            $script:networkSecurityRequests.Add(@{ Method = $request.Method.Method; Uri = $request.RequestUri; Body = $body; Headers = $headers })
-            $mockResponse = $script:networkSecurityResponses.Dequeue()
-            $response = [System.Net.Http.HttpResponseMessage]::new($mockResponse.Status)
-            $response.RequestMessage = $request
-            $response.Content = [System.Net.Http.StringContent]::new($mockResponse.Body, [System.Text.Encoding]::UTF8, 'application/json')
-            return [System.Threading.Tasks.Task]::FromResult($response)
-        }
-    }
+function Invoke-NetworkSecurityTransportTest {
+    param([Parameter(Mandatory)][string] $CmdletName)
 
-    It 'routes <Operation> through <Command>' -TestCases $cases {
-        param($Operation, $Command, $Parameters, $Method, $Path)
-        $arguments = $Parameters.Clone()
-        if ((Get-Command $Command).Parameters.ContainsKey('Confirm')) { $arguments.Confirm = $false }
-        if ((Get-Command $Command).Parameters.ContainsKey('NoWait')) { $arguments.NoWait = $true }
-        & $Command @arguments -HttpPipelinePrepend @($script:networkSecurityOffline, $script:networkSecurityTransport) -ErrorAction Stop | Out-Null
-        $script:networkSecurityRequests.Count | Should -Be 1
-        $request = $script:networkSecurityRequests[0]
-        $request.Method | Should -Be $Method
-        $request.Uri.AbsolutePath | Should -Be $Path
-        $request.Uri.Query | Should -Match 'api-version=2026-10-01-preview'
-        if ($Parameters.ContainsKey('IfMatch')) { $request.Headers['If-Match'] | Should -Be '"test-etag"' }
-        if ($Operation -eq 'NeuroShields_Update') {
-            $body = $request.Body | ConvertFrom-Json
-            $body.properties.description | Should -Be 'Updated'
-            $body.properties.PSObject.Properties.Name | Should -Not -Contain 'responseMode'
-            $body.properties.PSObject.Properties.Name | Should -Not -Contain 'severityThreshold'
-            $body.PSObject.Properties.Name | Should -Not -Contain 'tags'
-        }
-        if ($Operation -eq 'NeuroShieldProtectedResources_CreateOrUpdate') {
-            $body = $request.Body | ConvertFrom-Json
-            $body.properties.targetIdentity.type | Should -Be 'SystemAssigned'
-            $body.properties.targetIdentity.principalId | Should -Be $Parameters.TargetIdentityPrincipalId
-            $body.properties.targetIdentity.tenantId | Should -Be $Parameters.TargetIdentityTenantId
-            $body.properties.targetResourceId | Should -Be $Parameters.TargetResourceId
-        }
-    }
+    $commandCases = @($cases | Where-Object Command -EQ $CmdletName)
+    if (-not $commandCases.Count) { throw "No HTTP-contract cases found for $CmdletName." }
 
-    It 'follows operation catalog nextLink and returns both pages' {
-        $script:networkSecurityResponses.Clear()
-        $script:networkSecurityResponses.Enqueue(@{ Status = 200; Body = '{"value":[{"name":"first/read"}],"nextLink":"https://management.azure.com/providers/Microsoft.NetworkSecurity/operations?api-version=2026-10-01-preview&$skiptoken=next"}' })
-        $script:networkSecurityResponses.Enqueue(@{ Status = 200; Body = '{"value":[{"name":"second/read"}]}' })
-        $items = @(Get-AzNetworkSecurityOperation -HttpPipelinePrepend @($script:networkSecurityOffline, $script:networkSecurityTransport) -ErrorAction Stop)
-        $items.Name | Should -Be @('first/read', 'second/read')
-        $script:networkSecurityRequests.Count | Should -Be 2
-        $script:networkSecurityRequests[1].Uri.Query | Should -Match '\$skiptoken=next'
-    }
+    Describe $CmdletName {
+        BeforeEach {
+            $script:networkSecurityRequests = [System.Collections.Generic.List[object]]::new()
+            $script:networkSecurityResponses = [System.Collections.Generic.Queue[object]]::new()
+            $script:networkSecurityResponses.Enqueue(@{ Status = 200; Body = '{"value":[],"properties":{"provisioningState":"Succeeded"},"status":"Succeeded"}' })
+            $script:networkSecurityOffline = [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurity.Runtime.PipelineMock]::new((Join-Path $TestDrive 'unused.json'))
+            $script:networkSecurityOffline.SetPlayback()
+            # The generated proxy recognizes playback for offline authentication; the outer hook supplies unit-test responses.
+            $script:networkSecurityTransport = [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurity.Runtime.SendAsyncStep] {
+                param($request, $callback, $next)
+                $headers = @{}
+                foreach ($header in $request.Headers) { $headers[$header.Key] = $header.Value -join ',' }
+                $body = if ($request.Content) { $request.Content.ReadAsStringAsync().GetAwaiter().GetResult() } else { $null }
+                $script:networkSecurityRequests.Add(@{ Method = $request.Method.Method; Uri = $request.RequestUri; Body = $body; Headers = $headers })
+                $mockResponse = $script:networkSecurityResponses.Dequeue()
+                $response = [System.Net.Http.HttpResponseMessage]::new($mockResponse.Status)
+                $response.RequestMessage = $request
+                $response.Content = [System.Net.Http.StringContent]::new($mockResponse.Body, [System.Text.Encoding]::UTF8, 'application/json')
+                return [System.Threading.Tasks.Task]::FromResult($response)
+            }
+        }
 
-    It 'surfaces operation catalog service errors' {
-        $script:networkSecurityResponses.Clear()
-        $script:networkSecurityResponses.Enqueue(@{ Status = 400; Body = '{"error":{"code":"InvalidRequest","message":"Catalog request rejected"}}' })
-        { Get-AzNetworkSecurityOperation -HttpPipelinePrepend @($script:networkSecurityOffline, $script:networkSecurityTransport) -ErrorAction Stop } | Should -Throw 'Catalog request rejected'
+        It 'routes <Operation> through <Command>' -TestCases $commandCases {
+            param($Operation, $Command, $Parameters, $Method, $Path)
+            $arguments = $Parameters.Clone()
+            if ((Get-Command $Command).Parameters.ContainsKey('Confirm')) { $arguments.Confirm = $false }
+            if ((Get-Command $Command).Parameters.ContainsKey('NoWait')) { $arguments.NoWait = $true }
+            & $Command @arguments -HttpPipelinePrepend @($script:networkSecurityOffline, $script:networkSecurityTransport) -ErrorAction Stop | Out-Null
+            $script:networkSecurityRequests.Count | Should -Be 1
+            $request = $script:networkSecurityRequests[0]
+            $request.Method | Should -Be $Method
+            $request.Uri.AbsolutePath | Should -Be $Path
+            $request.Uri.Query | Should -Match 'api-version=2026-10-01-preview'
+            if ($Parameters.ContainsKey('IfMatch')) { $request.Headers['If-Match'] | Should -Be '"test-etag"' }
+            if ($Operation -eq 'NeuroShields_Update') {
+                $body = $request.Body | ConvertFrom-Json
+                $body.properties.description | Should -Be 'Updated'
+                $body.properties.PSObject.Properties.Name | Should -Not -Contain 'responseMode'
+                $body.properties.PSObject.Properties.Name | Should -Not -Contain 'severityThreshold'
+                $body.PSObject.Properties.Name | Should -Not -Contain 'tags'
+            }
+            if ($Operation -eq 'NeuroShieldProtectedResources_CreateOrUpdate') {
+                $body = $request.Body | ConvertFrom-Json
+                $body.properties.targetIdentity.type | Should -Be 'SystemAssigned'
+                $body.properties.targetIdentity.principalId | Should -Be $Parameters.TargetIdentityPrincipalId
+                $body.properties.targetIdentity.tenantId | Should -Be $Parameters.TargetIdentityTenantId
+                $body.properties.targetResourceId | Should -Be $Parameters.TargetResourceId
+            }
+        }
+
+        if ($CmdletName -eq 'Get-AzNetworkSecurityOperation') {
+            It 'follows operation catalog nextLink and returns both pages' {
+                $script:networkSecurityResponses.Clear()
+                $script:networkSecurityResponses.Enqueue(@{ Status = 200; Body = '{"value":[{"name":"first/read"}],"nextLink":"https://management.azure.com/providers/Microsoft.NetworkSecurity/operations?api-version=2026-10-01-preview&$skiptoken=next"}' })
+                $script:networkSecurityResponses.Enqueue(@{ Status = 200; Body = '{"value":[{"name":"second/read"}]}' })
+                $items = @(Get-AzNetworkSecurityOperation -HttpPipelinePrepend @($script:networkSecurityOffline, $script:networkSecurityTransport) -ErrorAction Stop)
+                $items.Name | Should -Be @('first/read', 'second/read')
+                $script:networkSecurityRequests.Count | Should -Be 2
+                $script:networkSecurityRequests[1].Uri.Query | Should -Match '\$skiptoken=next'
+            }
+
+            It 'surfaces operation catalog service errors' {
+                $script:networkSecurityResponses.Clear()
+                $script:networkSecurityResponses.Enqueue(@{ Status = 400; Body = '{"error":{"code":"InvalidRequest","message":"Catalog request rejected"}}' })
+                { Get-AzNetworkSecurityOperation -HttpPipelinePrepend @($script:networkSecurityOffline, $script:networkSecurityTransport) -ErrorAction Stop } | Should -Throw 'Catalog request rejected'
+            }
+        }
     }
 }
