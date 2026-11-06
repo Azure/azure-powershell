@@ -69,6 +69,10 @@ namespace Microsoft.Azure.Management.Storage
         /// </summary>
         public virtual IStorageAccountsOperations StorageAccounts { get; private set; }
         /// <summary>
+        /// Gets the IContextCachesOperations
+        /// </summary>
+        public virtual IContextCachesOperations ContextCaches { get; private set; }
+        /// <summary>
         /// Gets the IDeletedAccountsOperations
         /// </summary>
         public virtual IDeletedAccountsOperations DeletedAccounts { get; private set; }
@@ -80,6 +84,18 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the ISkusOperations
         /// </summary>
         public virtual ISkusOperations Skus { get; private set; }
+        /// <summary>
+        /// Gets the IContextCacheContainersOperations
+        /// </summary>
+        public virtual IContextCacheContainersOperations ContextCacheContainers { get; private set; }
+        /// <summary>
+        /// Gets the IAdvancedPlatformMetricsOperations
+        /// </summary>
+        public virtual IAdvancedPlatformMetricsOperations AdvancedPlatformMetrics { get; private set; }
+        /// <summary>
+        /// Gets the IBlobAccessPointConfigurationsOperations
+        /// </summary>
+        public virtual IBlobAccessPointConfigurationsOperations BlobAccessPointConfigurations { get; private set; }
         /// <summary>
         /// Gets the IBlobServicesOperations
         /// </summary>
@@ -164,6 +180,10 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the ITableOperations
         /// </summary>
         public virtual ITableOperations Table { get; private set; }
+        /// <summary>
+        /// Gets the IBlobAccessPointConnectionTestsOperations
+        /// </summary>
+        public virtual IBlobAccessPointConnectionTestsOperations BlobAccessPointConnectionTests { get; private set; }
         /// <summary>
         /// Initializes a new instance of the StorageManagementClient class.
         /// </summary>
@@ -404,9 +424,13 @@ namespace Microsoft.Azure.Management.Storage
         {
             this.Operations = new Operations(this);
             this.StorageAccounts = new StorageAccountsOperations(this);
+            this.ContextCaches = new ContextCachesOperations(this);
             this.DeletedAccounts = new DeletedAccountsOperations(this);
             this.Usages = new UsagesOperations(this);
             this.Skus = new SkusOperations(this);
+            this.ContextCacheContainers = new ContextCacheContainersOperations(this);
+            this.AdvancedPlatformMetrics = new AdvancedPlatformMetricsOperations(this);
+            this.BlobAccessPointConfigurations = new BlobAccessPointConfigurationsOperations(this);
             this.BlobServices = new BlobServicesOperations(this);
             this.BlobContainers = new BlobContainersOperations(this);
             this.Connectors = new ConnectorsOperations(this);
@@ -428,8 +452,9 @@ namespace Microsoft.Azure.Management.Storage
             this.StorageTaskAssignmentInstancesReport = new StorageTaskAssignmentInstancesReportOperations(this);
             this.TableServices = new TableServicesOperations(this);
             this.Table = new TableOperations(this);
+            this.BlobAccessPointConnectionTests = new BlobAccessPointConnectionTestsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-08-01";
+            this.ApiVersion = "2026-09-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -459,10 +484,22 @@ namespace Microsoft.Azure.Management.Storage
                         new Microsoft.Rest.Serialization.Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BlobAccessPointSourceProperties>("sourceType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BlobAccessPointSourceProperties>("sourceType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BlobAccessPointSourcePropertiesUpdate>("sourceType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BlobAccessPointSourcePropertiesUpdate>("sourceType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<StorageConnectorSource>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<StorageConnectorSource>("type"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<StorageConnectorSourceUpdate>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<StorageConnectorSourceUpdate>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BlobAccessPointRemoteAuthProperties>("authType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BlobAccessPointRemoteAuthProperties>("authType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BlobAccessPointRemoteAuthPropertiesUpdate>("authType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BlobAccessPointRemoteAuthPropertiesUpdate>("authType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BlobAccessPointConnectionProperties>("connectionType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BlobAccessPointConnectionProperties>("connectionType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BlobAccessPointConnectionPropertiesUpdate>("connectionType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BlobAccessPointConnectionPropertiesUpdate>("connectionType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<StorageConnectorConnection>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<StorageConnectorConnection>("type"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<StorageConnectorAuthProperties>("type"));

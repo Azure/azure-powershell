@@ -83,6 +83,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// premium block blobs storage account type.
         /// Possible values include: &#39;Hot&#39;, &#39;Cool&#39;, &#39;Premium&#39;, &#39;Cold&#39;, &#39;Smart&#39;</param>
 
+        /// <param name="turboTier">Configures Turbo Tier for the storage account.
+        /// </param>
+
         /// <param name="routingPreference">Maintains information about the network routing choice opted by the user
         /// for data transfer
         /// </param>
@@ -175,7 +178,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="dataCollaborationPolicyProperties">Data Collaboration policy for the storage account.
         /// </param>
-        public StorageAccountCreateParameters(Sku sku, string kind, string location, ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), string allowedCopyScope = default(string), string publicNetworkAccess = default(string), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string), GeoPriorityReplicationStatus geoPriorityReplicationStatus = default(GeoPriorityReplicationStatus), StorageAccountSharedKeyAccessProperties allowSharedKeyAccessForServices = default(StorageAccountSharedKeyAccessProperties), StorageDataCollaborationPolicyProperties dataCollaborationPolicyProperties = default(StorageDataCollaborationPolicyProperties))
+
+        /// <param name="allowCrossTenantDelegationSas">Allow or disallow cross AAD tenant user delegation SAS (shared access
+        /// signature). The default interpretation is false for this property.
+        /// </param>
+        public StorageAccountCreateParameters(Sku sku, string kind, string location, ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Identity identity = default(Identity), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), string allowedCopyScope = default(string), string publicNetworkAccess = default(string), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string), GeoPriorityReplicationStatus geoPriorityReplicationStatus = default(GeoPriorityReplicationStatus), StorageAccountSharedKeyAccessProperties allowSharedKeyAccessForServices = default(StorageAccountSharedKeyAccessProperties), StorageDataCollaborationPolicyProperties dataCollaborationPolicyProperties = default(StorageDataCollaborationPolicyProperties), TurboTier turboTier = default(TurboTier), bool? allowCrossTenantDelegationSas = default(bool?))
 
         {
             this.Sku = sku;
@@ -191,6 +198,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.CustomDomain = customDomain;
             this.Encryption = encryption;
             this.AccessTier = accessTier;
+            this.TurboTier = turboTier;
             this.RoutingPreference = routingPreference;
             this.AllowedCopyScope = allowedCopyScope;
             this.PublicNetworkAccess = publicNetworkAccess;
@@ -214,6 +222,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.GeoPriorityReplicationStatus = geoPriorityReplicationStatus;
             this.AllowSharedKeyAccessForServices = allowSharedKeyAccessForServices;
             this.DataCollaborationPolicyProperties = dataCollaborationPolicyProperties;
+            this.AllowCrossTenantDelegationSas = allowCrossTenantDelegationSas;
             CustomInit();
         }
 
@@ -319,6 +328,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.accessTier")]
         public AccessTier? AccessTier {get; set; }
+
+        /// <summary>
+        /// Gets or sets configures Turbo Tier for the storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.turboTier")]
+        public TurboTier TurboTier {get; set; }
 
         /// <summary>
         /// Gets or sets maintains information about the network routing choice opted
@@ -486,6 +501,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dataCollaborationPolicyProperties")]
         public StorageDataCollaborationPolicyProperties DataCollaborationPolicyProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets allow or disallow cross AAD tenant user delegation SAS (shared
+        /// access signature). The default interpretation is false for this property.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allowCrossTenantDelegationSas")]
+        public bool? AllowCrossTenantDelegationSas {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -534,6 +556,10 @@ namespace Microsoft.Azure.Management.Storage.Models
             }
 
 
+            if (this.TurboTier != null)
+            {
+                this.TurboTier.Validate();
+            }
 
 
 

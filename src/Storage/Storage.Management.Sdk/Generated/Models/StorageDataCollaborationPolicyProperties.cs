@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// the storage account.
         /// </param>
 
+        /// <param name="allowBlobAccessPoints">Indicates whether Blob Access Point configurations are allowed to be
+        /// created or managed on the storage account.
+        /// </param>
+
         /// <param name="allowStorageDataShares">Indicates whether data shares are allowed to be created or managed on the
         /// storage account.
         /// </param>
@@ -35,10 +39,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="allowCrossTenantDataSharing">Indicates whether cross-entra tenant data sharing is allowed on the storage
         /// account.
         /// </param>
-        public StorageDataCollaborationPolicyProperties(bool? allowStorageConnectors = default(bool?), bool? allowStorageDataShares = default(bool?), bool? allowCrossTenantDataSharing = default(bool?))
+        public StorageDataCollaborationPolicyProperties(bool? allowStorageConnectors = default(bool?), bool? allowStorageDataShares = default(bool?), bool? allowCrossTenantDataSharing = default(bool?), bool? allowBlobAccessPoints = default(bool?))
 
         {
             this.AllowStorageConnectors = allowStorageConnectors;
+            this.AllowBlobAccessPoints = allowBlobAccessPoints;
             this.AllowStorageDataShares = allowStorageDataShares;
             this.AllowCrossTenantDataSharing = allowCrossTenantDataSharing;
             CustomInit();
@@ -56,6 +61,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "allowStorageConnectors")]
         public bool? AllowStorageConnectors {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether Blob Access Point configurations are allowed
+        /// to be created or managed on the storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "allowBlobAccessPoints")]
+        public bool? AllowBlobAccessPoints {get; set; }
 
         /// <summary>
         /// Gets or sets indicates whether data shares are allowed to be created or

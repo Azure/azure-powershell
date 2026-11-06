@@ -101,8 +101,14 @@ Checks the availability of a Storage account name.
 ### [Get-AzStorageAccountNetworkRuleSet](Get-AzStorageAccountNetworkRuleSet.md)
 Get the NetWorkRule property of a Storage account
 
+### [Get-AzStorageAdvancedPlatformMetricsRule](Get-AzStorageAdvancedPlatformMetricsRule.md)
+Get the advanced platform metrics rule for the storage account by rule type.
+
 ### [Get-AzStorageBlob](Get-AzStorageBlob.md)
 Lists blobs in a container.
+
+### [Get-AzStorageBlobAccessPointConfiguration](Get-AzStorageBlobAccessPointConfiguration.md)
+Get the specified Blob Access Point configuration.
 
 ### [Get-AzStorageBlobByTag](Get-AzStorageBlobByTag.md)
 Lists blobs in a storage account across containers, with a blob tag filter sql expression.
@@ -130,6 +136,12 @@ Lists the storage containers.
 
 ### [Get-AzStorageContainerStoredAccessPolicy](Get-AzStorageContainerStoredAccessPolicy.md)
 Gets the stored access policy or policies for an Azure storage container.
+
+### [Get-AzStorageContextCache](Get-AzStorageContextCache.md)
+Get a Context Cache.
+
+### [Get-AzStorageContextCacheContainer](Get-AzStorageContextCacheContainer.md)
+Get a container in a Context Cache.
 
 ### [Get-AzStorageCORSRule](Get-AzStorageCORSRule.md)
 Gets CORS rules for a Storage service type.
@@ -257,6 +269,12 @@ Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccoun
 ### [New-AzStorageAccountSASToken](New-AzStorageAccountSASToken.md)
 Creates an account-level SAS token.
 
+### [New-AzStorageAdvancedPlatformMetricsRule](New-AzStorageAdvancedPlatformMetricsRule.md)
+Create the advanced platform metrics rule for the storage account.
+
+### [New-AzStorageBlobAccessPointConfiguration](New-AzStorageBlobAccessPointConfiguration.md)
+Create a Blob Access Point configuration.
+
 ### [New-AzStorageBlobInventoryPolicyRule](New-AzStorageBlobInventoryPolicyRule.md)
 Creates a blob inventory policy rule object, which can be used in Set-AzStorageBlobInventoryPolicy.
 
@@ -280,6 +298,12 @@ Creates a stored access policy for an Azure storage container.
 
 ### [New-AzStorageContext](New-AzStorageContext.md)
 Creates an Azure Storage context.
+
+### [New-AzStorageContextCache](New-AzStorageContextCache.md)
+Create a Context Cache.
+
+### [New-AzStorageContextCacheContainer](New-AzStorageContextCacheContainer.md)
+Create a container in a Context Cache.
 
 ### [New-AzStorageDirectory](New-AzStorageDirectory.md)
 Creates a directory.
@@ -367,8 +391,14 @@ Removes the management policy of an Azure Storage account.
 ### [Remove-AzStorageAccountNetworkRule](Remove-AzStorageAccountNetworkRule.md)
 Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
 
+### [Remove-AzStorageAdvancedPlatformMetricsRule](Remove-AzStorageAdvancedPlatformMetricsRule.md)
+Delete the advanced platform metrics rule for the storage account by rule type.
+
 ### [Remove-AzStorageBlob](Remove-AzStorageBlob.md)
 Removes the specified storage blob.
+
+### [Remove-AzStorageBlobAccessPointConfiguration](Remove-AzStorageBlobAccessPointConfiguration.md)
+Delete a Blob Access Point configuration.
 
 ### [Remove-AzStorageBlobImmutabilityPolicy](Remove-AzStorageBlobImmutabilityPolicy.md)
 Removes ImmutabilityPolicy of a Storage blob.
@@ -381,6 +411,12 @@ Removes the specified storage container.
 
 ### [Remove-AzStorageContainerStoredAccessPolicy](Remove-AzStorageContainerStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage container.
+
+### [Remove-AzStorageContextCache](Remove-AzStorageContextCache.md)
+Delete a Context Cache.
+
+### [Remove-AzStorageContextCacheContainer](Remove-AzStorageContextCacheContainer.md)
+Delete a container from a Context Cache.
 
 ### [Remove-AzStorageCORSRule](Remove-AzStorageCORSRule.md)
 Removes CORS for a Storage service.
@@ -457,6 +493,9 @@ Modifies a Storage account.
 ### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
 Creates or modifies the management policy of an Azure Storage account.
 
+### [Set-AzStorageAdvancedPlatformMetricsRule](Set-AzStorageAdvancedPlatformMetricsRule.md)
+Update the advanced platform metrics rule for the storage account.
+
 ### [Set-AzStorageBlobContent](Set-AzStorageBlobContent.md)
 Uploads a local file to an Azure Storage blob.
 
@@ -477,6 +516,12 @@ Sets the public access permission to a storage container.
 
 ### [Set-AzStorageContainerStoredAccessPolicy](Set-AzStorageContainerStoredAccessPolicy.md)
 Sets a stored access policy for an Azure storage container.
+
+### [Set-AzStorageContextCache](Set-AzStorageContextCache.md)
+Update a Context Cache.
+
+### [Set-AzStorageContextCacheContainer](Set-AzStorageContextCacheContainer.md)
+Update a container in a Context Cache.
 
 ### [Set-AzStorageCORSRule](Set-AzStorageCORSRule.md)
 Sets the CORS rules for a type of Storage service.
@@ -531,6 +576,16 @@ Stops a copy operation.
 ### [Stop-AzStorageFileCopy](Stop-AzStorageFileCopy.md)
 Stops a copy operation to the specified destination file.
 
+### [Test-AzStorageBlobAccessPointConfigurationConnection](Test-AzStorageBlobAccessPointConfigurationConnection.md)
+Test the connection configured on an existing Blob Access Point configuration.
+
+### [Test-AzStorageBlobAccessPointConnection](Test-AzStorageBlobAccessPointConnection.md)
+Test a proposed Blob Access Point connection before the configuration is created.
+The connection is validated in the context of the storage account in the request path, so no Blob Access Point configuration needs to exist beforehand.
+
+### [Test-AzStorageContextCacheNameAvailability](Test-AzStorageContextCacheNameAvailability.md)
+Check the availability of a context cache resource name.
+
 ### [Update-AzDataLakeGen2AclRecursive](Update-AzDataLakeGen2AclRecursive.md)
 Update ACL recursively on the specified path. 
 
@@ -546,8 +601,20 @@ Modifies a Storage file share.
 ### [Update-AzStorageAccountNetworkRuleSet](Update-AzStorageAccountNetworkRuleSet.md)
 Update the NetworkRule property of a Storage account
 
+### [Update-AzStorageAdvancedPlatformMetricsRule](Update-AzStorageAdvancedPlatformMetricsRule.md)
+Update the advanced platform metrics rule for the storage account.
+
+### [Update-AzStorageBlobAccessPointConfiguration](Update-AzStorageBlobAccessPointConfiguration.md)
+Update a Blob Access Point configuration.
+
 ### [Update-AzStorageBlobServiceProperty](Update-AzStorageBlobServiceProperty.md)
 Modifies the service properties for the Azure Storage Blob service.
+
+### [Update-AzStorageContextCache](Update-AzStorageContextCache.md)
+Update a Context Cache.
+
+### [Update-AzStorageContextCacheContainer](Update-AzStorageContextCacheContainer.md)
+Update a container in a Context Cache.
 
 ### [Update-AzStorageEncryptionScope](Update-AzStorageEncryptionScope.md)
 Modify an encryption scope for a Storage account.

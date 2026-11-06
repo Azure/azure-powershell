@@ -1,0 +1,382 @@
+{
+  "ManagementApiUpgrade.Metrics+[NoContext]+Creates, reads, updates, and removes the capacity metrics rule while preserving filters+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics?api-version=2026-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "ce032a1e-e82d-4447-ae4a-4dc0ea115e99" ],
+        "CommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule" ],
+        "FullCommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.1.0", "PSVersion/v7.4.22", "Az.Storage/9.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "x-ms-request-id": [ "52ecdb7c-db15-4ec7-b693-352133252cef" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/f52cddee-fdf7-4c90-a267-2dd32665c085" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "2f8583a8-656d-42ab-9ba4-d748b3858257" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160235Z:2f8583a8-656d-42ab-9ba4-d748b3858257" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 644C2B2E972543BAAEA78849C5229A56 Ref B: SN4AA2022401019 Ref C: 2026-11-03T16:02:34Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:02:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.Metrics+[NoContext]+Creates, reads, updates, and removes the capacity metrics rule while preserving filters+$PUT+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ruleConfig\": {\r\n      \"filterType\": \"ContainerListFilter\",\r\n      \"filterValues\": [ \"metrics-one\", \"metrics-two\" ]\r\n    },\r\n    \"enabled\": true\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "178" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "x-ms-request-id": [ "6c0b0db9-7be1-469b-bfa7-f0259b1f3bc4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/d4387201-4872-4dbf-9cd2-cee8eeea5335" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-correlation-request-id": [ "87a5b1ae-b21f-4bd4-af3e-248c62464cab" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160236Z:87a5b1ae-b21f-4bd4-af3e-248c62464cab" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 96F10FEF41C241A7B71C355EDEB03AA4 Ref B: SN4AA2022401019 Ref C: 2026-11-03T16:02:35Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:02:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerBlobCount\",\"ContainerUsedSize\"],\"enabled\":true,\"lastModifiedTime\":\"2026-11-03T16:02:36.0032912Z\",\"ruleConfig\":{\"filterType\":\"ContainerListFilter\",\"filterValues\":[\"metrics-one\",\"metrics-two\"]}}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.Metrics+[NoContext]+Creates, reads, updates, and removes the capacity metrics rule while preserving filters+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "b0c540c7-ab2f-4ef8-8ba5-ac59a1798cb1" ],
+        "CommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule" ],
+        "FullCommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.1.0", "PSVersion/v7.4.22", "Az.Storage/9.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "0dbe065e-343f-4147-83d8-57ae5b38a518" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/1530032b-4da9-4c44-a5c2-91adc741477c" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "cc5f7310-94fd-47be-8e13-4c116ed20bb3" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160236Z:cc5f7310-94fd-47be-8e13-4c116ed20bb3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4861AE38375542D6A7CAF5F100ABC984 Ref B: SN4AA2022401019 Ref C: 2026-11-03T16:02:36Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:02:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerBlobCount\",\"ContainerUsedSize\"],\"enabled\":true,\"lastModifiedTime\":\"2026-11-03T16:02:36.0032912Z\",\"ruleConfig\":{\"filterType\":\"ContainerListFilter\",\"filterValues\":[\"metrics-one\",\"metrics-two\"]}}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.Metrics+[NoContext]+Creates, reads, updates, and removes the capacity metrics rule while preserving filters+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics?api-version=2026-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "609c38ba-393e-4aee-9719-c29466edafca" ],
+        "CommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule" ],
+        "FullCommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.1.0", "PSVersion/v7.4.22", "Az.Storage/9.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f43d04b5-b5a3-421c-bab4-f22a44882fff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/18d08564-d517-4502-b102-f24ce364b2db" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "3d098438-77b0-4323-b6e3-87fb8ff4b208" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160236Z:3d098438-77b0-4323-b6e3-87fb8ff4b208" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 80965F44ED804AF6B2085B874131A4C1 Ref B: SN4AA2022401019 Ref C: 2026-11-03T16:02:36Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:02:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "629" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerBlobCount\",\"ContainerUsedSize\"],\"enabled\":true,\"lastModifiedTime\":\"2026-11-03T16:02:36.0032912Z\",\"ruleConfig\":{\"filterType\":\"ContainerListFilter\",\"filterValues\":[\"metrics-one\",\"metrics-two\"]}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.Metrics+[NoContext]+Creates, reads, updates, and removes the capacity metrics rule while preserving filters+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "e5dc5db6-1ad1-4d06-ae52-03b341c73960" ],
+        "CommandName": [ "Update-AzStorageAdvancedPlatformMetricsRule" ],
+        "FullCommandName": [ "Update-AzStorageAdvancedPlatformMetricsRule_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.1.0", "PSVersion/v7.4.22", "Az.Storage/9.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "110f465b-8e49-4bf0-8ad4-785cd030aab5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/3fc62ed0-6c53-4ac4-9967-a3182bbbcfb9" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-correlation-request-id": [ "a8467857-6292-490b-ba58-98a9aa80cc75" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160237Z:a8467857-6292-490b-ba58-98a9aa80cc75" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A1B42ECD41A94A93823CDFF49B39B673 Ref B: SN4AA2022401019 Ref C: 2026-11-03T16:02:37Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:02:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerBlobCount\",\"ContainerUsedSize\"],\"enabled\":true,\"lastModifiedTime\":\"2026-11-03T16:02:36.0032912Z\",\"ruleConfig\":{\"filterType\":\"ContainerListFilter\",\"filterValues\":[\"metrics-one\",\"metrics-two\"]}}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.Metrics+[NoContext]+Creates, reads, updates, and removes the capacity metrics rule while preserving filters+$PUT+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01+6": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ruleConfig\": {\r\n      \"filterType\": \"ContainerListFilter\",\r\n      \"filterValues\": [ \"metrics-one\", \"metrics-two\" ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "179" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d4156f74-d498-4ac0-9753-7752b71a414a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/42a17b79-ebe7-4f76-ab2f-f99f24eb374a" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-correlation-request-id": [ "21d3f146-ef23-47ef-b9fa-cbea42d5032d" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160237Z:21d3f146-ef23-47ef-b9fa-cbea42d5032d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5738AD2E6EF24BD781DE39CA5CD74F38 Ref B: SN4AA2022401019 Ref C: 2026-11-03T16:02:37Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:02:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "618" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerBlobCount\",\"ContainerUsedSize\"],\"enabled\":false,\"lastModifiedTime\":\"2026-11-03T16:02:37.7038698Z\",\"ruleConfig\":{\"filterType\":\"ContainerListFilter\",\"filterValues\":[\"metrics-one\",\"metrics-two\"]}}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.Metrics+[NoContext]+Creates, reads, updates, and removes the capacity metrics rule while preserving filters+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "835fbd1b-fb43-4062-ba42-1bb6ed1708cd" ],
+        "CommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule" ],
+        "FullCommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.1.0", "PSVersion/v7.4.22", "Az.Storage/9.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "3ede784f-2247-4dc5-af92-60356ec0a634" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/04e92a96-cf37-42f4-bc76-076728b88e51" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-correlation-request-id": [ "20c30a28-172c-4c19-9262-a3eb70a0e873" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160238Z:20c30a28-172c-4c19-9262-a3eb70a0e873" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DB56E8FBB57545E3A87B05C4E2317951 Ref B: SN4AA2022401019 Ref C: 2026-11-03T16:02:38Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:02:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "618" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerBlobCount\",\"ContainerUsedSize\"],\"enabled\":false,\"lastModifiedTime\":\"2026-11-03T16:02:37.7038698Z\",\"ruleConfig\":{\"filterType\":\"ContainerListFilter\",\"filterValues\":[\"metrics-one\",\"metrics-two\"]}}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.Metrics+[NoContext]+Creates, reads, updates, and removes the capacity metrics rule while preserving filters+$DELETE+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01+8": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "f1d16d71-851d-47f4-a4a0-7f0f49023cbe" ],
+        "CommandName": [ "Remove-AzStorageAdvancedPlatformMetricsRule" ],
+        "FullCommandName": [ "Remove-AzStorageAdvancedPlatformMetricsRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.1.0", "PSVersion/v7.4.22", "Az.Storage/9.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "8aa525c2-099e-41e7-b5d6-7ee67f0611c2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/616442fa-1bcf-4ef1-9724-c05377bd01e7" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-correlation-request-id": [ "ac08d92c-4319-4acc-a5f1-7b45fd3a81ef" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160238Z:ac08d92c-4319-4acc-a5f1-7b45fd3a81ef" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9B74D09AC55F4D21A7A21DC83DCAA619 Ref B: SN4AA2022401019 Ref C: 2026-11-03T16:02:38Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:02:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "text/plain; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.Metrics+[NoContext]+Creates, reads, updates, and removes the capacity metrics rule while preserving filters+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics?api-version=2026-09-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/advancedPlatformMetrics?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "c5d87d3e-8da9-437d-aef4-37b3466ebcd9" ],
+        "CommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule" ],
+        "FullCommandName": [ "Get-AzStorageAdvancedPlatformMetricsRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.1.0", "PSVersion/v7.4.22", "Az.Storage/9.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "cb924b66-743e-430a-8879-46461a84b08a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/0d311355-e504-48f8-8e25-2aab7d05301c" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "eb9914c9-7f58-4531-989d-a5276cdb6967" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160238Z:eb9914c9-7f58-4531-989d-a5276cdb6967" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B4E3426A784148A68666838678E51949 Ref B: SN4AA2022401019 Ref C: 2026-11-03T16:02:38Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:02:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

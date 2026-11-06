@@ -46,7 +46,15 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="maxProvisionedBandwidthMiBPerSec">The maximum provisioned bandwidth limit in mebibytes per second for a file
         /// share in the storage account.
         /// </param>
-        public FileShareLimits(int? minProvisionedStorageGiB = default(int?), int? maxProvisionedStorageGiB = default(int?), int? minProvisionedIops = default(int?), int? maxProvisionedIops = default(int?), int? minProvisionedBandwidthMiBPerSec = default(int?), int? maxProvisionedBandwidthMiBPerSec = default(int?))
+
+        /// <param name="guardrailIoScalar">The IO scalar used for guardrail calculations for a file share in the
+        /// storage account.
+        /// </param>
+
+        /// <param name="guardrailBandwidthScalar">The bandwidth scalar used for guardrail calculations for a file share in
+        /// the storage account.
+        /// </param>
+        public FileShareLimits(int? minProvisionedStorageGiB = default(int?), int? maxProvisionedStorageGiB = default(int?), int? minProvisionedIops = default(int?), int? maxProvisionedIops = default(int?), int? minProvisionedBandwidthMiBPerSec = default(int?), int? maxProvisionedBandwidthMiBPerSec = default(int?), double? guardrailIoScalar = default(double?), double? guardrailBandwidthScalar = default(double?))
 
         {
             this.MinProvisionedStorageGiB = minProvisionedStorageGiB;
@@ -55,6 +63,8 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.MaxProvisionedIops = maxProvisionedIops;
             this.MinProvisionedBandwidthMiBPerSec = minProvisionedBandwidthMiBPerSec;
             this.MaxProvisionedBandwidthMiBPerSec = maxProvisionedBandwidthMiBPerSec;
+            this.GuardrailIoScalar = guardrailIoScalar;
+            this.GuardrailBandwidthScalar = guardrailBandwidthScalar;
             CustomInit();
         }
 
@@ -105,5 +115,19 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "maxProvisionedBandwidthMiBPerSec")]
         public int? MaxProvisionedBandwidthMiBPerSec {get; private set; }
+
+        /// <summary>
+        /// Gets the IO scalar used for guardrail calculations for a file share in the
+        /// storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "guardrailIOScalar")]
+        public double? GuardrailIoScalar {get; private set; }
+
+        /// <summary>
+        /// Gets the bandwidth scalar used for guardrail calculations for a file share
+        /// in the storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "guardrailBandwidthScalar")]
+        public double? GuardrailBandwidthScalar {get; private set; }
     }
 }

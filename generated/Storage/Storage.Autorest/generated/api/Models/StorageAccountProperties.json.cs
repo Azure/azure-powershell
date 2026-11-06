@@ -81,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_sasPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("sasPolicy"), out var __jsonSasPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SasPolicy.FromJson(__jsonSasPolicy) : _sasPolicy;}
             {_keyPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("keyPolicy"), out var __jsonKeyPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyPolicy.FromJson(__jsonKeyPolicy) : _keyPolicy;}
             {_keyCreationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("keyCreationTime"), out var __jsonKeyCreationTime) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyCreationTime.FromJson(__jsonKeyCreationTime) : _keyCreationTime;}
+            {_turboTier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("turboTier"), out var __jsonTurboTier) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.TurboTier.FromJson(__jsonTurboTier) : _turboTier;}
             {_azureFilesIdentityBasedAuthentication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("azureFilesIdentityBasedAuthentication"), out var __jsonAzureFilesIdentityBasedAuthentication) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AzureFilesIdentityBasedAuthentication.FromJson(__jsonAzureFilesIdentityBasedAuthentication) : _azureFilesIdentityBasedAuthentication;}
             {_networkRuleSet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("networkAcls"), out var __jsonNetworkAcls) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NetworkRuleSet.FromJson(__jsonNetworkAcls) : _networkRuleSet;}
             {_geoReplicationStat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("geoReplicationStats"), out var __jsonGeoReplicationStats) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoReplicationStats.FromJson(__jsonGeoReplicationStats) : _geoReplicationStat;}
@@ -119,6 +120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_dnsEndpointType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("dnsEndpointType"), out var __jsonDnsEndpointType) ? (string)__jsonDnsEndpointType : (string)_dnsEndpointType;}
             {_isSkuConversionBlocked = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("isSkuConversionBlocked"), out var __jsonIsSkuConversionBlocked) ? (bool?)__jsonIsSkuConversionBlocked : _isSkuConversionBlocked;}
             {_accountMigrationInProgress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("accountMigrationInProgress"), out var __jsonAccountMigrationInProgress) ? (bool?)__jsonAccountMigrationInProgress : _accountMigrationInProgress;}
+            {_allowCrossTenantDelegationSas = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("allowCrossTenantDelegationSas"), out var __jsonAllowCrossTenantDelegationSas) ? (bool?)__jsonAllowCrossTenantDelegationSas : _allowCrossTenantDelegationSas;}
             {_primaryEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("primaryEndpoints"), out var __jsonPrimaryEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Endpoints.FromJson(__jsonPrimaryEndpoints) : _primaryEndpoint;}
             {_secondaryEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("secondaryEndpoints"), out var __jsonSecondaryEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Endpoints.FromJson(__jsonSecondaryEndpoints) : _secondaryEndpoint;}
             {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("encryption"), out var __jsonEncryption) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Encryption.FromJson(__jsonEncryption) : _encryption;}
@@ -160,6 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 AddIf( null != this._keyCreationTime ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._keyCreationTime.ToJson(null,serializationMode) : null, "keyCreationTime" ,container.Add );
             }
+            AddIf( null != this._turboTier ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._turboTier.ToJson(null,serializationMode) : null, "turboTier" ,container.Add );
             AddIf( null != this._azureFilesIdentityBasedAuthentication ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._azureFilesIdentityBasedAuthentication.ToJson(null,serializationMode) : null, "azureFilesIdentityBasedAuthentication" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
@@ -251,6 +254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 AddIf( null != this._accountMigrationInProgress ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._accountMigrationInProgress) : null, "accountMigrationInProgress" ,container.Add );
             }
+            AddIf( null != this._allowCrossTenantDelegationSas ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._allowCrossTenantDelegationSas) : null, "allowCrossTenantDelegationSas" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._primaryEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._primaryEndpoint.ToJson(null,serializationMode) : null, "primaryEndpoints" ,container.Add );
