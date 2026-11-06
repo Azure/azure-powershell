@@ -194,3 +194,9 @@ Keep entries concise — 1–2 sentences per field. The goal is to give future d
 ## Known Issues
 
 <!-- Entries are added automatically by Step 8 after successful debugging sessions. Do not remove existing entries. -->
+
+### NuGet restore fails because direct access to nuget.org is blocked
+- **Symptom**: `dotnet restore` or `dotnet build` fails with `NU1301: Unable to load the service index for source https://api.nuget.org/v3/index.json` on a Microsoft-managed developer device.
+- **Root cause**: The repository's `NuGet.Config` explicitly lists nuget.org, which takes precedence over the device's otherwise-unconfigured package-manager default. Device policy blocks direct public-registry access and requires public NuGet packages to be restored through the Central Feed Services (CFS) proxy.
+- **Fix**: Do not modify the repository's `NuGet.Config` and do not request a DIRE solely for this failure. Create a temporary NuGet config outside the repository containing the absolute path to `tools/LocalFeed`, the existing `azure-powershell` Azure Artifacts source, and `https://packagefeedproxy.microsoft.io/nuget/v3/index.json` in place of nuget.org. Restore with `dotnet restore src/Compute/Compute.sln --configfile <temp-config>`, then build with `dotnet build src/Compute/Compute.sln --no-restore`.
+- **Files involved**: NuGet.Config, src/Compute/Compute.sln, the temporary NuGet config outside the repository
