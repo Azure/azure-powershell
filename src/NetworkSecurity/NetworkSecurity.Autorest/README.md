@@ -27,8 +27,7 @@ For information on how to develop for `Az.NetworkSecurity`, see [how-to.md](how-
 
 Azure PowerShell management cmdlets for Microsoft.NetworkSecurity.
 
-The module name and cmdlet design are provisional pending
-[design review](https://github.com/Azure/azure-powershell-cmdlet-review-pr/issues/1580).
+The module name and cmdlet design are provisional pending design review.
 The service is in private preview. Subscriptions require the
 `Microsoft.NetworkSecurity/NeuroShieldPreview` AFEC feature.
 
