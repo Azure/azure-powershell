@@ -12,7 +12,7 @@ Get a host pool.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzWvdHostPool [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -30,7 +30,7 @@ Get-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzWvdHostPool -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
  [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -167,7 +167,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

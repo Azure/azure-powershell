@@ -47,7 +47,7 @@ Describe 'Update-AzWvdDesktop' {
                                 -Name 'SessionDesktop' `
                                 -FriendlyName 'Fri2' `
                                 -Description 'Des2'
-                $desktop.Name | Should -Be 'ApplicationGroupPowershell1/SessionDesktop'
+                $desktop.Name | Should -Be "$($env.DesktopApplicationGroup)/SessionDesktop"
                 $desktop.FriendlyName | Should -Be 'Fri2'
                 $desktop.Description | Should -Be 'Des2'
 
@@ -55,7 +55,7 @@ Describe 'Update-AzWvdDesktop' {
                                 -ResourceGroupName $env.ResourceGroup `
                                 -ApplicationGroupName $env.DesktopApplicationGroup `
                                 -Name 'SessionDesktop'
-                $desktop.Name | Should -Be 'ApplicationGroupPowershell1/SessionDesktop'
+                $desktop.Name | Should -Be "$($env.DesktopApplicationGroup)/SessionDesktop"
                 $desktop.FriendlyName | Should -Be 'Fri2'
                 $desktop.Description | Should -Be 'Des2'
         }

@@ -16,15 +16,14 @@ Describe 'Remove-AzWvdPrivateEndpointConnection' {
         $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
                                                                         -WorkspaceName $env.PvtLinkWS 
 
-        $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionNameWS
+        ($privateEndpointConnection.Name -match "^$([regex]::Escape($env.PrivateEndpointConnectionNameWS))\.").Count | Should -Be 1
+        ($privateEndpointConnection.Name -match "^$([regex]::Escape($env.PrivateEndpointConnectionNameWS1))\.").Count | Should -Be 1
 
-        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                -WorkspaceName $env.PvtLinkWS `
-                                                -Name $privateEndpointConnection[1].Name
-
-        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                -WorkspaceName $env.PvtLinkWS `
-                                                -Name $privateEndpointConnection[0].Name
+        foreach ($connection in $privateEndpointConnection) {
+            Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                   -WorkspaceName $env.PvtLinkWS `
+                                                   -Name $connection.Name
+        }
         try{
             $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
                                                                             -WorkspaceName $env.PvtLinkWS
@@ -39,16 +38,14 @@ Describe 'Remove-AzWvdPrivateEndpointConnection' {
         $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
                                                                         -HostPoolName $env.PvtLinkHP
 
-        $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionNameHP
+        ($privateEndpointConnection.Name -match "^$([regex]::Escape($env.PrivateEndpointConnectionNameHP))\.").Count | Should -Be 1
+        ($privateEndpointConnection.Name -match "^$([regex]::Escape($env.PrivateEndpointConnectionNameHP1))\.").Count | Should -Be 1
 
-        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                -HostPoolName $env.PvtLinkHP `
-                                                -Name $privateEndpointConnection[0].Name
-
-                                                                            
-        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
-                                                -HostPoolName $env.PvtLinkHP `
-                                                -Name $privateEndpointConnection[1].Name
+        foreach ($connection in $privateEndpointConnection) {
+            Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                   -HostPoolName $env.PvtLinkHP `
+                                                   -Name $connection.Name
+        }
 
         try{
             $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `

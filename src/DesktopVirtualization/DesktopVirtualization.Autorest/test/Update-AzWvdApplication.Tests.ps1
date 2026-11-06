@@ -51,7 +51,7 @@ Describe 'Update-AzWvdApplication' {
                                 -IconPath 'C:\windows\system32\mspaint.exe' `
                                 -CommandLineSetting 'Allow' `
                                 -ShowInPortal:$true
-                $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
+                $application.Name | Should -Be "$($env.RemoteApplicationGroup)/Paint"
                 $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $application.FriendlyName | Should -Be 'fri'
                 $application.Description | Should -Be 'des'
@@ -71,7 +71,7 @@ Describe 'Update-AzWvdApplication' {
                                 -IconPath 'C:\windows\system32\SnippingTool.exe' `
                                 -CommandLineSetting 'DoNotAllow' `
                                 -ShowInPortal:$false
-                $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
+                $application.Name | Should -Be "$($env.RemoteApplicationGroup)/Paint"
                 $application.FilePath | Should -Be 'C:\windows\system32\SnippingTool.exe'
                 $application.FriendlyName | Should -Be 'fri2'
                 $application.Description | Should -Be 'des2'
@@ -191,7 +191,7 @@ Describe 'Update-AzWvdApplication' {
                 -GroupName $env.RemoteApplicationGroup `
                 -Name 'UnitTest-MSIX-Application'
 
-            $application.Name | Should -Be 'ApplicationGroupPowershell2/UnitTest-MSIX-Application'
+            $application.Name | Should -Be "$($env.RemoteApplicationGroup)/UnitTest-MSIX-Application"
             $application.FriendlyName | Should -Be 'friendlyname'
             $application.Description | Should -Be 'Unit Test MSIX Application'
             $application.IconIndex | Should -Be 0
@@ -208,7 +208,7 @@ Describe 'Update-AzWvdApplication' {
                 -IconIndex 1 `
                 -IconPath 'C:\windows\system32\Updated.exe' 
 
-            $application.Name | Should -Be 'ApplicationGroupPowershell2/UnitTest-MSIX-Application' 
+            $application.Name | Should -Be "$($env.RemoteApplicationGroup)/UnitTest-MSIX-Application"
             $application.FriendlyName | Should -Be 'Updated-FriendlyName'
             $application.Description | Should -Be 'Updated-Description'
             $application.IconIndex | Should -Be 1
