@@ -1,26 +1,21 @@
-$selectedTestNames = Get-SelectedTestNames
-if (($selectedTestNames.Count -eq 0) -or ($selectedTestNames -contains 'AzRedisEnterpriseCacheClusterLifecycle'))
-{
-    $TestEnvironmentName = 'cluster'
-    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-    if (-not (Test-Path $loadEnvPath)) {
-        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-    }
-    . $loadEnvPath
-    $TestRecordingFile = Join-Path $PSScriptRoot 'AzRedisEnterpriseCacheClusterLifecycle.Recording.json'
-    $currentPath = $PSScriptRoot
-    while (-not $mockingPath) {
-        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-        $currentPath = Split-Path -Path $currentPath -Parent
-    }
-    . ($mockingPath | Select-Object -First 1).FullName
+$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+if (-not (Test-Path $loadEnvPath)) {
+    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
+. $loadEnvPath
+$TestRecordingFile = Join-Path $PSScriptRoot 'AzRedisEnterpriseCacheClusterLifecycle.Recording.json'
+$currentPath = $PSScriptRoot
+while (-not $mockingPath) {
+    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+    $currentPath = Split-Path -Path $currentPath -Parent
+}
+. ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'AzRedisEnterpriseCacheClusterLifecycle' {
     It 'Creates a cache with database features' {
         $splat = @{
-            Name = $env.ClusterName
-            ResourceGroupName = $env.ResourceGroupName
+            Name = $env.ClusterLifecycleClusterName
+            ResourceGroupName = $env.ClusterLifecycleResourceGroupName
             Location = $env.Location
             SubscriptionId = $env.SubscriptionId
             Sku = 'Balanced_B10'
@@ -63,7 +58,7 @@ Describe 'AzRedisEnterpriseCacheClusterLifecycle' {
     }
 
     It 'Lists supported SKUs' {
-        $skus = Get-AzRedisEnterpriseCacheSku -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName
+        $skus = Get-AzRedisEnterpriseCacheSku -ClusterName $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName
         $skus | Should -Not -Be $null
         @($skus.Name) | Should -Contain 'Balanced_B250'
         @($skus.Name) | Should -Contain 'Balanced_B50'
@@ -71,29 +66,29 @@ Describe 'AzRedisEnterpriseCacheClusterLifecycle' {
     }
 
     It 'Updates identity and maintenance windows' {
-        $cache = Update-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName -EnableSystemAssignedIdentity $false
+        $cache = Update-AzRedisEnterpriseCache -Name $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName -EnableSystemAssignedIdentity $false
         $cache.IdentityType | Should -Be 'None'
 
         $windows = @(
             @{Type='Weekly'; ScheduleDayOfWeek='Wednesday'; StartHourUtc=10; Duration='PT10H'}
             @{Type='Weekly'; ScheduleDayOfWeek='Saturday'; StartHourUtc=10; Duration='PT10H'}
         )
-        $cache = Update-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName -MaintenanceConfigurationMaintenanceWindow $windows
+        $cache = Update-AzRedisEnterpriseCache -Name $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName -MaintenanceConfigurationMaintenanceWindow $windows
         $cache.MaintenanceConfigurationMaintenanceWindow.Count | Should -Be 2
         $cache.MaintenanceConfigurationMaintenanceWindow[0].ScheduleDayOfWeek | Should -Be 'Wednesday'
         $cache.MaintenanceConfigurationMaintenanceWindow[0].StartHourUtc | Should -Be 10
     }
 
     It 'Gets and lists the cache' {
-        $cache = Get-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName
-        $cache.Name | Should -Be $env.ClusterName
+        $cache = Get-AzRedisEnterpriseCache -Name $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName
+        $cache.Name | Should -Be $env.ClusterLifecycleClusterName
         ($cache.Location.ToLower() -replace '\s', '') | Should -Be $env.Location
         $cache.Type | Should -Be 'Microsoft.Cache/redisEnterprise'
         $cache.Database.Count | Should -Be 1
         $cache.Database['default'].Name | Should -Be 'default'
 
-        $resourceGroupCaches = @(Get-AzRedisEnterpriseCache -ResourceGroupName $env.ResourceGroupName)
-        $matchingCache = @($resourceGroupCaches | Where-Object Name -eq $env.ClusterName)
+        $resourceGroupCaches = @(Get-AzRedisEnterpriseCache -ResourceGroupName $env.ClusterLifecycleResourceGroupName)
+        $matchingCache = @($resourceGroupCaches | Where-Object Name -eq $env.ClusterLifecycleClusterName)
         $matchingCache.Count | Should -Be 1
         $matchingCache[0].Type | Should -Be 'Microsoft.Cache/redisEnterprise'
 
@@ -101,29 +96,29 @@ Describe 'AzRedisEnterpriseCacheClusterLifecycle' {
     }
 
     It 'Gets the database and keys' {
-        $databases = @(Get-AzRedisEnterpriseCacheDatabase -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName)
+        $databases = @(Get-AzRedisEnterpriseCacheDatabase -Name $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName)
         $databases.Count | Should -Be 1
         $databases[0].Name | Should -Be 'default'
         $databases[0].Type | Should -Be 'Microsoft.Cache/redisEnterprise/databases'
 
-        $keys = Get-AzRedisEnterpriseCacheKey -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName
+        $keys = Get-AzRedisEnterpriseCacheKey -Name $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName
         $keys.PrimaryKey | Should -Not -Be $null
         $keys.SecondaryKey | Should -Not -Be $null
     }
 
     It 'Creates and removes an access policy assignment' {
-        $assignment = New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicy -ClusterName $env.ClusterName -DatabaseName default -ResourceGroupName $env.ResourceGroupName -UserObjectId '5dce0ce9-f0a7-437f-aea2-760d05c62ca9' -AccessPolicyName default
+        $assignment = New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicy -ClusterName $env.ClusterLifecycleClusterName -DatabaseName default -ResourceGroupName $env.ClusterLifecycleResourceGroupName -UserObjectId '5dce0ce9-f0a7-437f-aea2-760d05c62ca9' -AccessPolicyName default
         $assignment.Name | Should -Be 'testPolicy'
         $assignment.ProvisioningState | Should -Be 'Succeeded'
 
         {
-            Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicy -ClusterName $env.ClusterName -DatabaseName default -ResourceGroupName $env.ResourceGroupName
+            Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicy -ClusterName $env.ClusterLifecycleClusterName -DatabaseName default -ResourceGroupName $env.ClusterLifecycleResourceGroupName
         } | Should -Not -Throw
     }
 
     It 'Regenerates both access keys' {
         foreach ($keyType in 'Primary', 'Secondary') {
-            $keys = New-AzRedisEnterpriseCacheKey -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName -KeyType $keyType
+            $keys = New-AzRedisEnterpriseCacheKey -Name $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName -KeyType $keyType
             $keys.PrimaryKey | Should -Not -Be $null
             $keys.SecondaryKey | Should -Not -Be $null
         }
@@ -131,7 +126,7 @@ Describe 'AzRedisEnterpriseCacheClusterLifecycle' {
 
     It 'Deletes the cache' {
         {
-            Remove-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName
+            Remove-AzRedisEnterpriseCache -Name $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName
         } | Should -Not -Throw
     }
 }

@@ -14,7 +14,7 @@ Starts a migration from an Azure Cache for Redis Basic, Standard, or Premium cac
 
 ```
 Start-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -SourceResourceId <String> [-SwitchDns] [-SkipDataMigration] [-ForceMigrate]
+ [-SubscriptionId <String>] -SourceResourceId <String> -SwitchDns -SkipDataMigration [-ForceMigrate]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```

@@ -94,155 +94,184 @@ function Wait-ForMigrationResources {
     throw "Migration resources did not become ready within 30 minutes. OSS provisioning: $ossState; cluster provisioning/resource: $clusterState; database provisioning/resource: $databaseState."
 }
 
-$env = @{}
-$scenarioEnvironments = @{
-    'AzRedisEnterpriseCacheClusterLifecycle' = @{
-        Environment = 'cluster'
+$testScenarios = @(
+    @{
+        TestName = 'AzRedisEnterpriseCacheClusterLifecycle'
         Recording = 'AzRedisEnterpriseCacheClusterLifecycle.Recording.json'
+        Fixture = 'None'
+        ResourceGroupProperty = 'ClusterLifecycleResourceGroupName'
+        EnvironmentProperties = @('ClusterLifecycleResourceGroupName', 'ClusterLifecycleClusterName')
     }
-    'AzRedisEnterpriseCacheDatabaseLifecycle' = @{
-        Environment = 'database'
+    @{
+        TestName = 'AzRedisEnterpriseCacheDatabaseLifecycle'
         Recording = 'AzRedisEnterpriseCacheDatabaseLifecycle.Recording.json'
+        Fixture = 'None'
+        ResourceGroupProperty = 'DatabaseLifecycleResourceGroupName'
+        EnvironmentProperties = @('DatabaseLifecycleResourceGroupName', 'DatabaseLifecycleClusterName')
     }
-    'AzRedisEnterpriseCacheGeoReplication' = @{
-        Environment = 'geo'
+    @{
+        TestName = 'AzRedisEnterpriseCacheGeoReplication'
         Recording = 'AzRedisEnterpriseCacheGeoReplication.Recording.json'
+        Fixture = 'None'
+        ResourceGroupProperty = 'GeoResourceGroupName'
+        EnvironmentProperties = @('GeoResourceGroupName', 'GeoPrimaryClusterName', 'GeoSecondaryClusterName')
     }
-}
+    @{
+        TestName = 'Test-AzRedisEnterpriseCacheMigration'
+        Recording = 'Test-AzRedisEnterpriseCacheMigration.Recording.json'
+        Fixture = 'BalancedMigration'
+        ResourceGroupProperty = 'MigrationValidateResourceGroupName'
+        ClusterProperty = 'MigrationValidateClusterName'
+        OssCacheProperty = 'MigrationValidateOssCacheName'
+        EnvironmentProperties = @('MigrationValidateResourceGroupName', 'MigrationValidateClusterName', 'MigrationValidateOssCacheName')
+    }
+    @{
+        TestName = 'Start-AzRedisEnterpriseCacheMigration'
+        Recording = 'Start-AzRedisEnterpriseCacheMigration.Recording.json'
+        Fixture = 'BalancedMigration'
+        ResourceGroupProperty = 'MigrationStartResourceGroupName'
+        ClusterProperty = 'MigrationStartClusterName'
+        OssCacheProperty = 'MigrationStartOssCacheName'
+        EnvironmentProperties = @('MigrationStartResourceGroupName', 'MigrationStartClusterName', 'MigrationStartOssCacheName')
+    }
+    @{
+        TestName = 'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint'
+        Recording = 'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint.Recording.json'
+        Fixture = 'BalancedMigration'
+        ResourceGroupProperty = 'MigrationUnlinkResourceGroupName'
+        ClusterProperty = 'MigrationUnlinkClusterName'
+        OssCacheProperty = 'MigrationUnlinkOssCacheName'
+        EnvironmentProperties = @('MigrationUnlinkResourceGroupName', 'MigrationUnlinkClusterName', 'MigrationUnlinkOssCacheName')
+    }
+    @{
+        TestName = 'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint'
+        Recording = 'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint.Recording.json'
+        Fixture = 'EnterpriseMigration'
+        ResourceGroupProperty = 'ClusterUnlinkResourceGroupName'
+        ClusterProperty = 'ClusterUnlinkClusterName'
+        EnvironmentProperties = @('ClusterUnlinkResourceGroupName', 'ClusterUnlinkClusterName')
+    }
+)
+
 $playbackEnvironment = Get-Content (Join-Path $PSScriptRoot 'env.json') -Raw | ConvertFrom-Json
-$migrationRecordings = @{
-    'Test-AzRedisEnterpriseCacheMigration' = 'Test-AzRedisEnterpriseCacheMigration.Recording.json'
-    'Start-AzRedisEnterpriseCacheMigration' = 'Start-AzRedisEnterpriseCacheMigration.Recording.json'
-    'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint' = 'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint.Recording.json'
-    'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint' = 'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint.Recording.json'
-}
 
 function Get-SelectedTestNames {
-    return @(
+    $selectedTestNames = @(
         $TestName |
             Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) }
     )
+
+    if (($selectedTestNames.Count -eq 0) -or ($selectedTestNames -contains '*')) {
+        return @()
+    }
+
+    return $selectedTestNames
 }
 
-function Get-SelectedScenarioEnvironments {
-    $selectedTestNames = Get-SelectedTestNames
+function Get-SelectedTestScenarios {
+    $selectedTestNames = @(Get-SelectedTestNames)
     if ($selectedTestNames.Count -eq 0) {
-        return @($scenarioEnvironments.Values)
+        return @($testScenarios)
     }
 
-    return @(
-        $scenarioEnvironments.Keys |
-            Where-Object { $selectedTestNames -contains $_ } |
-            ForEach-Object { $scenarioEnvironments[$_] }
-    )
+    return @($testScenarios | Where-Object { $selectedTestNames -contains $_.TestName })
 }
 
-function Invoke-ScenarioRecordingSanitizer {
-    foreach ($scenarioEnvironment in Get-SelectedScenarioEnvironments) {
-        $environmentPath = Join-Path $PSScriptRoot "env.$($scenarioEnvironment.Environment).json"
-        $recordingPath = Join-Path $PSScriptRoot $scenarioEnvironment.Recording
-        $recordingEnvironment = Get-Content $environmentPath -Raw | ConvertFrom-Json
+function Initialize-TestFixture {
+    param(
+        [Parameter(Mandatory)]
+        [hashtable] $Scenario,
 
-        foreach ($path in @($environmentPath, $recordingPath)) {
-            $content = Get-Content $path -Raw
-            $content = $content.Replace($recordingEnvironment.SubscriptionId, $playbackEnvironment.SubscriptionId)
-            $content = $content.Replace($recordingEnvironment.Tenant, $playbackEnvironment.Tenant)
-            $content = $content -replace '(\\?"(?:primaryKey|secondaryKey)\\?"\s*:\s*\\?")[^"\\]*(\\?")', '${1}[Sanitized]${2}'
-            Set-Content -Path $path -Value $content -NoNewline
-        }
-    }
-
-    $selectedTestNames = Get-SelectedTestNames
-    $selectedMigrationRecordings = if ($selectedTestNames.Count -eq 0) {
-        @($migrationRecordings.Values)
-    } else {
-        @(
-            $migrationRecordings.Keys |
-                Where-Object { $selectedTestNames -contains $_ } |
-                ForEach-Object { $migrationRecordings[$_] }
-        )
-    }
-
-    if ($selectedMigrationRecordings.Count -gt 0) {
-        $recordingEnvironment = Get-Content (Join-Path $PSScriptRoot 'env.json') -Raw | ConvertFrom-Json
-        foreach ($recording in $selectedMigrationRecordings) {
-            $recordingPath = Join-Path $PSScriptRoot $recording
-            $content = Get-Content $recordingPath -Raw
-            foreach ($property in $playbackEnvironment.PSObject.Properties) {
-                $recordingValue = $recordingEnvironment.($property.Name)
-                if ($recordingValue) {
-                    $content = $content.Replace([string]$recordingValue, [string]$property.Value)
-                }
-            }
-            $content = $content -replace '(\\?"(?:primaryKey|secondaryKey)\\?"\s*:\s*\\?")[^"\\]*(\\?")', '${1}[Sanitized]${2}'
-            Set-Content -Path $recordingPath -Value $content -NoNewline
-        }
-    }
-}
-
-function setupEnv() {
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.ClusterName  = 'ps-cache-test1-' + (RandomString -allChars $false -len 8)
-    $env.ClusterName2 = 'ps-cache-test2-' + (RandomString -allChars $false -len 8)
-    $env.ClusterName3  = 'ps-cache-test3-' + (RandomString -allChars $false -len 8)
-    $env.ClusterName4 = 'ps-cache-test4-' + (RandomString -allChars $false -len 8)
-    $env.OssCacheName = 'ps-oss-cache-' + (RandomString -allChars $false -len 8)
-    $env.ResourceGroupName = 'ps-redisenterprise-rg-' + (RandomString -allChars $false -len 8)
-    $env.Location = 'eastus2euap'
-    New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
-
-    $envFilePrefix = 'env'
-    if ($TestMode -eq 'live') {
-        $envFilePrefix = 'localEnv'
-    }
-
-    $selectedTestNames = Get-SelectedTestNames
-    $isUnfilteredRun = $selectedTestNames.Count -eq 0
-    foreach ($scenarioEnvironment in Get-SelectedScenarioEnvironments) {
-        Set-Content -Path (Join-Path $PSScriptRoot "$envFilePrefix.$($scenarioEnvironment.Environment).json") -Value (ConvertTo-Json $env)
-    }
-
-    $migrationTestNames = @(
-        'Test-AzRedisEnterpriseCacheMigration'
-        'Start-AzRedisEnterpriseCacheMigration'
-        'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint'
-        'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint'
+        [Parameter(Mandatory)]
+        [System.Collections.IDictionary] $TestEnvironment
     )
-    $isMigrationTest = @($selectedTestNames | Where-Object { $migrationTestNames -contains $_ }).Count -gt 0
-    if ($isUnfilteredRun -or $isMigrationTest) {
-        Set-Content -Path (Join-Path $PSScriptRoot "$envFilePrefix.json") -Value (ConvertTo-Json $env)
+
+    if ($Scenario.Fixture -eq 'None') {
+        return
     }
 
-    $ossMigrationTestNames = @(
-        'Test-AzRedisEnterpriseCacheMigration'
-        'Start-AzRedisEnterpriseCacheMigration'
-        'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint'
-    )
-    $isTargetedMigrationTest = @($selectedTestNames | Where-Object { $ossMigrationTestNames -contains $_ }).Count -gt 0
-    $isClusterUnlinkTest = $selectedTestNames -contains 'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint'
-    $needsOssCache = $isUnfilteredRun -or $isTargetedMigrationTest
+    $resourceGroupName = $TestEnvironment[$Scenario.ResourceGroupProperty]
+    $clusterName = $TestEnvironment[$Scenario.ClusterProperty]
 
-    if ($needsOssCache) {
+    if ($Scenario.Fixture -eq 'BalancedMigration') {
+        $ossCacheName = $TestEnvironment[$Scenario.OssCacheProperty]
         $redisCacheModulePath = $env:AZURE_POWERSHELL_REDIS_CACHE_MODULE_PATH
         if ($redisCacheModulePath) {
             Import-Module $redisCacheModulePath -Force -ErrorAction Stop
         } else {
             Import-Module Az.RedisCache -ErrorAction Stop
         }
-        New-AzRedisCache -ResourceGroupName $env.ResourceGroupName -Name $env.OssCacheName -Location $env.Location -Sku "Basic" -Size "C0" | Out-Null
+
+        New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $ossCacheName -Location $TestEnvironment.Location -Sku 'Basic' -Size 'C0' | Out-Null
+        New-AzRedisEnterpriseCache -Name $clusterName -ResourceGroupName $resourceGroupName -Location $TestEnvironment.Location -Sku 'Balanced_B1' -ClientProtocol 'Encrypted' -ClusteringPolicy 'OSSCluster' -EvictionPolicy 'VolatileLRU' -PublicNetworkAccess 'Enabled' -ErrorAction Stop | Out-Null
+        Wait-ForMigrationResources -ResourceGroupName $resourceGroupName -OssCacheName $ossCacheName -ClusterName $clusterName
+        return
     }
 
-    if ($isTargetedMigrationTest) {
-        New-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -Sku "Balanced_B1" -ClientProtocol "Encrypted" -ClusteringPolicy "OSSCluster" -EvictionPolicy "VolatileLRU" -PublicNetworkAccess "Enabled" -ErrorAction Stop | Out-Null
-        Wait-ForMigrationResources -ResourceGroupName $env.ResourceGroupName -OssCacheName $env.OssCacheName -ClusterName $env.ClusterName
-    } elseif ($isClusterUnlinkTest) {
-        New-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -Sku "Enterprise_E1" -ClientProtocol "Encrypted" -ClusteringPolicy "EnterpriseCluster" -EvictionPolicy "NoEviction" -PublicNetworkAccess "Enabled" -ErrorAction Stop | Out-Null
+    if ($Scenario.Fixture -eq 'EnterpriseMigration') {
+        New-AzRedisEnterpriseCache -Name $clusterName -ResourceGroupName $resourceGroupName -Location $TestEnvironment.Location -Sku 'Enterprise_E1' -ClientProtocol 'Encrypted' -ClusteringPolicy 'EnterpriseCluster' -EvictionPolicy 'NoEviction' -PublicNetworkAccess 'Enabled' -ErrorAction Stop | Out-Null
+        return
     }
 
+    throw "Unsupported test fixture '$($Scenario.Fixture)'."
 }
-function cleanupEnv() {
-    Az.Resources\Remove-AzResourceGroup -Name $env.ResourceGroupName -Force -ErrorAction SilentlyContinue | Out-Null
+
+function Invoke-ScenarioRecordingSanitizer {
+    foreach ($scenario in Get-SelectedTestScenarios) {
+        $recordingPath = Join-Path $PSScriptRoot $scenario.Recording
+        $content = Get-Content $recordingPath -Raw
+
+        foreach ($property in $playbackEnvironment.PSObject.Properties) {
+            $recordingValue = $script:recordingEnvironment[$property.Name]
+            if ($recordingValue) {
+                $content = $content.Replace([string]$recordingValue, [string]$property.Value)
+            }
+        }
+
+        $content = $content -replace '(\\?"(?:primaryKey|secondaryKey)\\?"\s*:\s*\\?")[^"\\]*(\\?")', '${1}[Sanitized]${2}'
+        Set-Content -Path $recordingPath -Value $content -NoNewline
+    }
+
+    Set-Content -Path (Join-Path $PSScriptRoot 'env.json') -Value ($playbackEnvironment | ConvertTo-Json) -NoNewline
+}
+
+function setupEnv {
+    $script:recordingEnvironment = [ordered]@{}
+    foreach ($property in $playbackEnvironment.PSObject.Properties) {
+        $script:recordingEnvironment[$property.Name] = $property.Value
+    }
+
+    $script:recordingEnvironment.SubscriptionId = (Get-AzContext).Subscription.Id
+    $script:recordingEnvironment.Tenant = (Get-AzContext).Tenant.Id
+    $script:recordingEnvironment.Location = 'eastus2euap'
+    $script:testResourceGroups = @()
+
+    foreach ($scenario in Get-SelectedTestScenarios) {
+        foreach ($propertyName in $scenario.EnvironmentProperties) {
+            if ($propertyName -like '*ResourceGroupName') {
+                $script:recordingEnvironment[$propertyName] = 'ps-redisenterprise-rg-' + (RandomString -allChars $false -len 8)
+            } elseif ($propertyName -like '*OssCacheName') {
+                $script:recordingEnvironment[$propertyName] = 'ps-oss-cache-' + (RandomString -allChars $false -len 8)
+            } else {
+                $script:recordingEnvironment[$propertyName] = 'ps-cache-' + (RandomString -allChars $false -len 8)
+            }
+        }
+
+        $resourceGroupName = $script:recordingEnvironment[$scenario.ResourceGroupProperty]
+        New-AzResourceGroup -Name $resourceGroupName -Location $script:recordingEnvironment.Location | Out-Null
+        $script:testResourceGroups += $resourceGroupName
+        Initialize-TestFixture -Scenario $scenario -TestEnvironment $script:recordingEnvironment
+    }
+
+    $environmentFile = if ($TestMode -eq 'live') { 'localEnv.json' } else { 'env.json' }
+    Set-Content -Path (Join-Path $PSScriptRoot $environmentFile) -Value ($script:recordingEnvironment | ConvertTo-Json)
+}
+
+function cleanupEnv {
+    foreach ($resourceGroupName in @($script:testResourceGroups | Select-Object -Unique)) {
+        Az.Resources\Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue | Out-Null
+    }
+
     if ($TestMode -eq 'record') {
         Invoke-ScenarioRecordingSanitizer
     }
