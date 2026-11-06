@@ -42,6 +42,7 @@ module-version: 0.1.1
 # Normally, title is the service name
 title: EdgeAction
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs

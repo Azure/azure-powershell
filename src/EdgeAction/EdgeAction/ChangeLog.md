@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Change Safety support.
 
 ## Version 1.0.0
 * General availability for module Az.EdgeAction

@@ -37,6 +37,7 @@ require:
 title: Fleet
 module-version: 0.1.0
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 directive:
   # Fix required parameter missing

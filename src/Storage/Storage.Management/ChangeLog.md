@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support for additional cmdlets.
 
 ## Version 9.7.2
 * Fixed a path traversal issue in `Get-AzStorageBlobContent` and `Get-AzDataLakeGen2ItemContent` where a source blob/file name containing directory traversal segments (e.g. `../`) could write content outside the specified destination directory.

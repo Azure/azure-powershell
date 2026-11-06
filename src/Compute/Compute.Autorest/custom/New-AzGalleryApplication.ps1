@@ -169,6 +169,10 @@ function New-AzGalleryApplication {
         ${ProxyUseDefaultCredentials}
     )
 
+    dynamicparam {
+        Get-AzComputeDynamicParameters -CommandName "Az.Compute.private\New-AzGalleryApplication_$($PSCmdlet.ParameterSetName)"
+    }
+
     process {
         Az.Compute.internal\New-AzGalleryApplication @PSBoundParameters
     }

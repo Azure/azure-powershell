@@ -1,17 +1,17 @@
 {
-  "Get-AzEdgeAction+EdgeActionFixtureSetup+[NoScenario]+$GET+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01+1": {
+  "Get-AzEdgeAction+EdgeActionFixtureSetup+[NoScenario]+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "84" ],
-        "x-ms-client-request-id": [ "606ddd13-0f28-484c-8cb8-2d4f7fb40ee2" ],
+        "x-ms-unique-id": [ "197" ],
+        "x-ms-client-request-id": [ "c39ffe29-ec33-4818-b511-7714c77d82a5" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzEdgeAction_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,28 +23,28 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "7a30e0da-59a3-4ce4-90c4-92b1764ff382" ],
-        "x-ms-correlation-request-id": [ "7a30e0da-59a3-4ce4-90c4-92b1764ff382" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112710Z:7a30e0da-59a3-4ce4-90c4-92b1764ff382" ],
+        "x-ms-request-id": [ "1aad584d-d4f6-4759-a46c-2bcb68c2201f" ],
+        "x-ms-correlation-request-id": [ "1aad584d-d4f6-4759-a46c-2bcb68c2201f" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044015Z:1aad584d-d4f6-4759-a46c-2bcb68c2201f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 22634FB9317046A09CCE6D85B13BCFDC Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:10Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AD81791F13FD4B97A1FE2EF4001FD1B7 Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:15Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "263" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.Cdn/EdgeActions/eagetf3d974a7818d\u0027 under resource group \u0027powershellsdk-edgeaction-tests-rgname\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.Cdn/EdgeActions/eaget1c132f7b7ad7\u0027 under resource group \u0027powershellsdk-edgeaction-tests-rgname\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+EdgeActionFixtureSetup+[NoScenario]+$PUT+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01+2": {
+  "Get-AzEdgeAction+EdgeActionFixtureSetup+[NoScenario]+$PUT+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01",
       "Content": "{\r\n  \"location\": \"global\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -59,44 +59,44 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourcegroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeactionoperations/5025bc37-ec4e-4cb5-816b-a7655482c512?api-version=2026-10-01&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized" ],
-        "x-envoy-upstream-service-time": [ "1615" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5943085a-f8ba-42c5-bfac-a9a02a52aaea/westus/56462471-5c67-4f91-9d86-fde016ee7774" ],
+        "Location": [ "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourcegroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeactionoperations/0ae86239-5451-4942-b833-e90c987812eb?api-version=2026-10-01&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized" ],
+        "x-envoy-upstream-service-time": [ "2540" ],
+        "x-ms-operation-identifier": [ "tenantId=72031ed9-9b48-4bb7-804a-0d1a2a44e7be,objectId=f5e2c515-c3cc-42da-9a1b-eff1cf38c9fd/westus/c3d57e8c-e717-4600-8659-33171f73748a" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-request-id": [ "ea423d49-7255-496e-882a-c7ff013ba6db" ],
-        "x-ms-correlation-request-id": [ "ea423d49-7255-496e-882a-c7ff013ba6db" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112712Z:ea423d49-7255-496e-882a-c7ff013ba6db" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-request-id": [ "6732879a-2ac3-4718-a160-eb1ca3ec1359" ],
+        "x-ms-correlation-request-id": [ "6732879a-2ac3-4718-a160-eb1ca3ec1359" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044018Z:6732879a-2ac3-4718-a160-eb1ca3ec1359" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D448F34765F940B5A7E77BB79E4375ED Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:10Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0FF98EECCFD0483399C0C0945C4809F4 Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:15Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "378" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d\",\"name\":\"eagetf3d974a7818d\",\"type\":\"Microsoft.Cdn/EdgeActions\"}",
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7\",\"name\":\"eaget1c132f7b7ad7\",\"type\":\"Microsoft.Cdn/EdgeActions\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+EdgeActionFixtureSetup+[NoScenario]+$GET+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourcegroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeactionoperations/5025bc37-ec4e-4cb5-816b-a7655482c512?api-version=2026-10-01&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+3": {
+  "Get-AzEdgeAction+EdgeActionFixtureSetup+[NoScenario]+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourcegroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeactionoperations/0ae86239-5451-4942-b833-e90c987812eb?api-version=2026-10-01&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourcegroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeactionoperations/5025bc37-ec4e-4cb5-816b-a7655482c512?api-version=2026-10-01&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourcegroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeactionoperations/0ae86239-5451-4942-b833-e90c987812eb?api-version=2026-10-01&t=Sanitized&c=Sanitized&s=Sanitized&h=Sanitized",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "86" ],
-        "x-ms-client-request-id": [ "024d3259-dbf8-4f7a-87b9-35a51b22b79c" ],
+        "x-ms-unique-id": [ "199" ],
+        "x-ms-client-request-id": [ "79256ce8-2c32-4efe-8869-02076f105703" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "New-AzEdgeAction_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -106,42 +106,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "141" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5943085a-f8ba-42c5-bfac-a9a02a52aaea/westus/502ef0cc-caff-43b1-a6d3-f4334aebf6ec" ],
+        "x-envoy-upstream-service-time": [ "135" ],
+        "x-ms-operation-identifier": [ "tenantId=72031ed9-9b48-4bb7-804a-0d1a2a44e7be,objectId=f5e2c515-c3cc-42da-9a1b-eff1cf38c9fd/westus/c20fb42d-2509-436d-b2e7-c046538e13d3" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-request-id": [ "2f779350-10f7-42b8-84cc-a86bcc0fe728" ],
-        "x-ms-correlation-request-id": [ "2f779350-10f7-42b8-84cc-a86bcc0fe728" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112743Z:2f779350-10f7-42b8-84cc-a86bcc0fe728" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-request-id": [ "539000da-c6da-4394-8ef2-fdf2dde5ca86" ],
+        "x-ms-correlation-request-id": [ "539000da-c6da-4394-8ef2-fdf2dde5ca86" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044049Z:539000da-c6da-4394-8ef2-fdf2dde5ca86" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BE6CB635C2AF48849E60B2B3E16FA69D Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:43Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FBD32BC43A704F1485C02CCCB606B270 Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:48Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "420" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"resourceId\":\"/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActionOperations/5025bc37-ec4e-4cb5-816b-a7655482c512\",\"operationId\":\"5025bc37-ec4e-4cb5-816b-a7655482c512\",\"status\":\"Succeeded\",\"operationType\":\"create\",\"startTime\":\"2026-10-14T11:27:11.0149021+00:00\",\"endTime\":\"2026-10-14T11:27:12.3165663+00:00\",\"error\":null}",
+      "Content": "{\"resourceId\":\"/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActionOperations/0ae86239-5451-4942-b833-e90c987812eb\",\"operationId\":\"0ae86239-5451-4942-b833-e90c987812eb\",\"status\":\"Succeeded\",\"operationType\":\"create\",\"startTime\":\"2026-11-04T04:40:15.8932065+00:00\",\"endTime\":\"2026-11-04T04:40:18.1164257+00:00\",\"error\":null}",
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+EdgeActionFixtureSetup+[NoScenario]+$GET+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01+4": {
+  "Get-AzEdgeAction+EdgeActionFixtureSetup+[NoScenario]+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "87" ],
-        "x-ms-client-request-id": [ "024d3259-dbf8-4f7a-87b9-35a51b22b79c" ],
+        "x-ms-unique-id": [ "200" ],
+        "x-ms-client-request-id": [ "79256ce8-2c32-4efe-8869-02076f105703" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "New-AzEdgeAction_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -151,40 +151,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "351" ],
+        "x-envoy-upstream-service-time": [ "368" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-request-id": [ "4bf0ee26-9b69-4b25-b9dc-2d71f34e645d" ],
-        "x-ms-correlation-request-id": [ "4bf0ee26-9b69-4b25-b9dc-2d71f34e645d" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112743Z:4bf0ee26-9b69-4b25-b9dc-2d71f34e645d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-request-id": [ "b7e5ce94-2ce8-4eb1-bb8d-b5d11affd514" ],
+        "x-ms-correlation-request-id": [ "b7e5ce94-2ce8-4eb1-bb8d-b5d11affd514" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044049Z:b7e5ce94-2ce8-4eb1-bb8d-b5d11affd514" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 82472C75726C4088B5096D7B9AC03052 Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:43Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E6D3E695152C4E84ABA755D9A3B40889 Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:49Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "378" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d\",\"name\":\"eagetf3d974a7818d\",\"type\":\"Microsoft.Cdn/EdgeActions\"}",
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7\",\"name\":\"eaget1c132f7b7ad7\",\"type\":\"Microsoft.Cdn/EdgeActions\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01+1": {
+  "Get-AzEdgeAction+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "88" ],
-        "x-ms-client-request-id": [ "915b38f5-d3c2-46d0-846d-17d7e0d342f3" ],
+        "x-ms-unique-id": [ "201" ],
+        "x-ms-client-request-id": [ "39a93d5d-ef53-4d13-9995-41389577b904" ],
         "CommandName": [ "Get-AzEdgeAction" ],
         "FullCommandName": [ "Get-AzEdgeAction_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -195,40 +195,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "345" ],
+        "x-envoy-upstream-service-time": [ "336" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-request-id": [ "5c2edd6c-aef6-4beb-bee7-d7f1d07a407a" ],
-        "x-ms-correlation-request-id": [ "5c2edd6c-aef6-4beb-bee7-d7f1d07a407a" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112744Z:5c2edd6c-aef6-4beb-bee7-d7f1d07a407a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-request-id": [ "3bad6138-e01d-44e2-b0ae-4f4a7d8525c9" ],
+        "x-ms-correlation-request-id": [ "3bad6138-e01d-44e2-b0ae-4f4a7d8525c9" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044050Z:3bad6138-e01d-44e2-b0ae-4f4a7d8525c9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1B0961318D3C4BC4B761E9EB6925AC57 Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:44Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0C1681BE2C5D450AB4EE142B19263ADF Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:49Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "378" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d\",\"name\":\"eagetf3d974a7818d\",\"type\":\"Microsoft.Cdn/EdgeActions\"}",
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7\",\"name\":\"eaget1c132f7b7ad7\",\"type\":\"Microsoft.Cdn/EdgeActions\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions?api-version=2026-10-01+1": {
+  "Get-AzEdgeAction+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions?api-version=2026-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "89" ],
-        "x-ms-client-request-id": [ "eabfad37-25b8-4b77-9885-c49d977114bb" ],
+        "x-ms-unique-id": [ "202" ],
+        "x-ms-client-request-id": [ "02e9a4da-4847-4e61-9f7e-ca12be19b4c6" ],
         "CommandName": [ "Get-AzEdgeAction" ],
         "FullCommandName": [ "Get-AzEdgeAction_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -240,40 +240,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-original-request-ids": [ "" ],
-        "x-envoy-upstream-service-time": [ "217" ],
+        "x-envoy-upstream-service-time": [ "225" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
-        "x-ms-request-id": [ "3a4b1dd3-8fa1-43c9-8088-a8508df1d02d" ],
-        "x-ms-correlation-request-id": [ "3a4b1dd3-8fa1-43c9-8088-a8508df1d02d" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112745Z:3a4b1dd3-8fa1-43c9-8088-a8508df1d02d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-request-id": [ "3700cdf4-ae7d-4e2a-9d81-58315c9eb19b" ],
+        "x-ms-correlation-request-id": [ "3700cdf4-ae7d-4e2a-9d81-58315c9eb19b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044051Z:3700cdf4-ae7d-4e2a-9d81-58315c9eb19b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C28F4643FD424F2A8B2DA787551A697B Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:45Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F0748264B1474F33860C5ED2FBEB7363 Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:50Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "390" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d\",\"name\":\"eagetf3d974a7818d\",\"type\":\"Microsoft.Cdn/EdgeActions\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7\",\"name\":\"eaget1c132f7b7ad7\",\"type\":\"Microsoft.Cdn/EdgeActions\"}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01+1": {
+  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "90" ],
-        "x-ms-client-request-id": [ "cbaf598d-255d-481d-8e3a-0a76b16fccb7" ],
+        "x-ms-unique-id": [ "203" ],
+        "x-ms-client-request-id": [ "50dcb17b-f85b-4ee1-910f-efb6b4efbd4b" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzEdgeAction_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -284,40 +284,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "344" ],
+        "x-envoy-upstream-service-time": [ "335" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-request-id": [ "94482057-1a9f-44c3-9b47-d9c064508d8b" ],
-        "x-ms-correlation-request-id": [ "94482057-1a9f-44c3-9b47-d9c064508d8b" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112746Z:94482057-1a9f-44c3-9b47-d9c064508d8b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-request-id": [ "541290b3-ea53-4a5b-b594-6d4f196f3e68" ],
+        "x-ms-correlation-request-id": [ "541290b3-ea53-4a5b-b594-6d4f196f3e68" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044051Z:541290b3-ea53-4a5b-b594-6d4f196f3e68" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4662CE842D144EE38F083DA5DAB03CB0 Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:45Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:46 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BBF6201B41014AF08CE2BFE2F7005658 Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:51Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "378" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d\",\"name\":\"eagetf3d974a7818d\",\"type\":\"Microsoft.Cdn/EdgeActions\"}",
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"attachments\":[]},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"location\":\"global\",\"tags\":{},\"id\":\"/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7\",\"name\":\"eaget1c132f7b7ad7\",\"type\":\"Microsoft.Cdn/EdgeActions\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d/executionFilters?api-version=2026-10-01+2": {
+  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7/executionFilters?api-version=2026-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d/executionFilters?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7/executionFilters?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "91" ],
-        "x-ms-client-request-id": [ "a2e7b7bc-8f1c-4a6d-a825-8dd2c6d8c992" ],
+        "x-ms-unique-id": [ "204" ],
+        "x-ms-client-request-id": [ "2d57d886-e598-4a04-b0ac-bd4a927580e1" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzEdgeActionExecutionFilter_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -329,17 +329,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-original-request-ids": [ "" ],
-        "x-envoy-upstream-service-time": [ "410" ],
+        "x-envoy-upstream-service-time": [ "413" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-request-id": [ "1ae7c8df-9782-4d00-9c23-b9f37615dbce" ],
-        "x-ms-correlation-request-id": [ "1ae7c8df-9782-4d00-9c23-b9f37615dbce" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112747Z:1ae7c8df-9782-4d00-9c23-b9f37615dbce" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-request-id": [ "60e46032-172b-4b3c-b780-801764d7a8d6" ],
+        "x-ms-correlation-request-id": [ "60e46032-172b-4b3c-b780-801764d7a8d6" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044052Z:60e46032-172b-4b3c-b780-801764d7a8d6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 375D1DDECAA049A0BE15BF517521AF62 Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:46Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:46 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E3313EAF282E409D963222218E3D66FE Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:51Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "12" ],
@@ -350,19 +350,19 @@
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d/versions?api-version=2026-10-01+3": {
+  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7/versions?api-version=2026-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d/versions?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7/versions?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "92" ],
-        "x-ms-client-request-id": [ "6e851a1c-34d0-498f-9f87-0a7bac36d5bb" ],
+        "x-ms-unique-id": [ "205" ],
+        "x-ms-client-request-id": [ "0d070bbd-7fb9-46b7-9d82-ca609ba6a108" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzEdgeActionVersion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -374,17 +374,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-original-request-ids": [ "" ],
-        "x-envoy-upstream-service-time": [ "439" ],
+        "x-envoy-upstream-service-time": [ "404" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-request-id": [ "4a7abbef-ae2a-4068-8ba9-87391561e959" ],
-        "x-ms-correlation-request-id": [ "4a7abbef-ae2a-4068-8ba9-87391561e959" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112747Z:4a7abbef-ae2a-4068-8ba9-87391561e959" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "247" ],
+        "x-ms-request-id": [ "5cc0f903-c58a-421c-a4f1-78508f7acb57" ],
+        "x-ms-correlation-request-id": [ "5cc0f903-c58a-421c-a4f1-78508f7acb57" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044053Z:5cc0f903-c58a-421c-a4f1-78508f7acb57" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 88EFD225EF404F598C09BA243954C6A5 Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:47Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 41D1F81C22A64536BD7AC3D30F19B3EE Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:52Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "12" ],
@@ -395,19 +395,19 @@
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01+4": {
+  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "93" ],
-        "x-ms-client-request-id": [ "fde8d753-07c4-4ef8-b2f6-ffb22cb20875" ],
+        "x-ms-unique-id": [ "206" ],
+        "x-ms-client-request-id": [ "85c6a44e-fe8f-4aab-98fe-d41ab12a18ca" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzEdgeAction_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -418,18 +418,18 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "1208" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5943085a-f8ba-42c5-bfac-a9a02a52aaea/westus/0f35f809-ed64-4973-b76f-886af0fb2d09" ],
+        "x-envoy-upstream-service-time": [ "1125" ],
+        "x-ms-operation-identifier": [ "tenantId=72031ed9-9b48-4bb7-804a-0d1a2a44e7be,objectId=f5e2c515-c3cc-42da-9a1b-eff1cf38c9fd/westus/e9f0110c-23d0-4916-a6c9-d8052516e053" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
-        "x-ms-request-id": [ "e2f2bf0e-c3b9-4c7a-8194-598e896fc138" ],
-        "x-ms-correlation-request-id": [ "e2f2bf0e-c3b9-4c7a-8194-598e896fc138" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112749Z:e2f2bf0e-c3b9-4c7a-8194-598e896fc138" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-request-id": [ "8cab5480-4a94-4547-a68f-d7ffd9d16208" ],
+        "x-ms-correlation-request-id": [ "8cab5480-4a94-4547-a68f-d7ffd9d16208" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044054Z:8cab5480-4a94-4547-a68f-d7ffd9d16208" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A26AA8AAF84B40F2908D2C47566DA2F9 Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:48Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 87D199BA2F5142DC9611A5E22E6CA592 Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:53Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:54 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -439,19 +439,19 @@
       "isContentBase64": false
     }
   },
-  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01+5": {
+  "Get-AzEdgeAction+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6b381315-e92c-478a-9cc3-ce3eda35bbe1/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eagetf3d974a7818d?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/powershellsdk-edgeaction-tests-rgname/providers/Microsoft.Cdn/edgeActions/eaget1c132f7b7ad7?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "94" ],
-        "x-ms-client-request-id": [ "5bc2d13b-6b46-45b6-8c21-04349239aa74" ],
+        "x-ms-unique-id": [ "207" ],
+        "x-ms-client-request-id": [ "79aedf4a-35fb-4a50-aa50-153be503db27" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzEdgeAction_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.7", "Az.EdgeAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.EdgeAction/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -463,21 +463,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "85898ffa-fe2a-4be8-8d06-7620577dc61b" ],
-        "x-ms-correlation-request-id": [ "85898ffa-fe2a-4be8-8d06-7620577dc61b" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261014T112749Z:85898ffa-fe2a-4be8-8d06-7620577dc61b" ],
+        "x-ms-request-id": [ "04eeb5f0-1799-44f0-9e79-ac41110fc224" ],
+        "x-ms-correlation-request-id": [ "04eeb5f0-1799-44f0-9e79-ac41110fc224" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261104T044054Z:04eeb5f0-1799-44f0-9e79-ac41110fc224" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 21C69F0AD8B849558CAC710B15F7C98E Ref B: SN4AA2022302027 Ref C: 2026-10-14T11:27:49Z" ],
-        "Date": [ "Wed, 14 Oct 2026 11:27:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 891854A275BF4A338A66582A21C11B45 Ref B: SYD281080709036 Ref C: 2026-11-04T04:40:54Z" ],
+        "Date": [ "Wed, 04 Nov 2026 04:40:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "263" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.Cdn/EdgeActions/eagetf3d974a7818d\u0027 under resource group \u0027powershellsdk-edgeaction-tests-rgname\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.Cdn/EdgeActions/eaget1c132f7b7ad7\u0027 under resource group \u0027powershellsdk-edgeaction-tests-rgname\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   }

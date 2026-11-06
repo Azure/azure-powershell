@@ -42,6 +42,7 @@ input-file:
 module-version: 1.0.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
+enable-change-safety: true
 
 directive:
   - from: swagger-document

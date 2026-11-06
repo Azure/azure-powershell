@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added Change Safety support.
 * Added a preview message to `New-AzCapacityReservationGroup` indicating that the Open Capacity Reservation feature is in preview.
 
 ## Version 11.11.0

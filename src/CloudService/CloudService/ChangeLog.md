@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support, including the custom cloud service VIP swap command.
 
 ## Version 3.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
@@ -62,4 +63,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.CloudService
-

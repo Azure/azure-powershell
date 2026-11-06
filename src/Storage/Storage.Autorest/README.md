@@ -44,6 +44,7 @@ module-version: 5.9.1
 # Normally, title is the service name
 title: Storage
 subject-prefix: $(service-name)
+enable-change-safety: true
 nested-object-to-string: true
 identity-correction-for-post: true 
 

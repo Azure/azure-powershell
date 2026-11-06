@@ -230,6 +230,10 @@ function Set-AzVmssVMRunCommand_ScriptLocalPath {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+
+    dynamicparam {
+        Get-AzComputeDynamicParameters -CommandName 'Az.Compute.private\Set-AzVmssVMRunCommand_UpdateExpanded'
+    }
     
     process {
         if ($PSBoundParameters.ContainsKey("ScriptLocalPath"))
