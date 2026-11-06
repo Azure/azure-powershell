@@ -14,11 +14,23 @@ Microsoft Azure PowerShell: Fleet cmdlets
 ### [Get-AzFleet](Get-AzFleet.md)
 Gets a Fleet.
 
+### [Get-AzFleetAutoUpgradeProfile](Get-AzFleetAutoUpgradeProfile.md)
+Get a AutoUpgradeProfile
+
 ### [Get-AzFleetCredentials](Get-AzFleetCredentials.md)
 Lists the user credentials of a Fleet.
 
+### [Get-AzFleetGate](Get-AzFleetGate.md)
+Get a Gate
+
+### [Get-AzFleetManagedNamespace](Get-AzFleetManagedNamespace.md)
+Get a FleetManagedNamespace
+
 ### [Get-AzFleetMember](Get-AzFleetMember.md)
 Get a FleetMember
+
+### [Get-AzFleetOperation](Get-AzFleetOperation.md)
+List the operations for the provider
 
 ### [Get-AzFleetUpdateRun](Get-AzFleetUpdateRun.md)
 Get a UpdateRun
@@ -28,6 +40,15 @@ Get a FleetUpdateStrategy
 
 ### [New-AzFleet](New-AzFleet.md)
 Create a Fleet.
+
+### [New-AzFleetAutoUpgradeProfile](New-AzFleetAutoUpgradeProfile.md)
+Create a AutoUpgradeProfile
+
+### [New-AzFleetAutoUpgradeProfileOperationUpdateRun](New-AzFleetAutoUpgradeProfileOperationUpdateRun.md)
+Generates an generate run for a given auto upgrade profile.
+
+### [New-AzFleetManagedNamespace](New-AzFleetManagedNamespace.md)
+Create a FleetManagedNamespace
 
 ### [New-AzFleetMember](New-AzFleetMember.md)
 Create a FleetMember
@@ -47,6 +68,12 @@ Create a FleetUpdateStrategy
 ### [Remove-AzFleet](Remove-AzFleet.md)
 Delete a Fleet
 
+### [Remove-AzFleetAutoUpgradeProfile](Remove-AzFleetAutoUpgradeProfile.md)
+Delete a AutoUpgradeProfile
+
+### [Remove-AzFleetManagedNamespace](Remove-AzFleetManagedNamespace.md)
+Delete a FleetManagedNamespace
+
 ### [Remove-AzFleetMember](Remove-AzFleetMember.md)
 Delete a FleetMember
 
@@ -56,6 +83,9 @@ Delete a UpdateRun
 ### [Remove-AzFleetUpdateStrategy](Remove-AzFleetUpdateStrategy.md)
 Delete a FleetUpdateStrategy
 
+### [Skip-AzFleetUpdateRun](Skip-AzFleetUpdateRun.md)
+Skips one or a combination of member/group/stage/afterStageWait(s) of an skip run.
+
 ### [Start-AzFleetUpdateRun](Start-AzFleetUpdateRun.md)
 Starts an UpdateRun.
 
@@ -64,6 +94,15 @@ Stops an UpdateRun.
 
 ### [Update-AzFleet](Update-AzFleet.md)
 Update a Fleet.
+
+### [Update-AzFleetAutoUpgradeProfile](Update-AzFleetAutoUpgradeProfile.md)
+Update a AutoUpgradeProfile
+
+### [Update-AzFleetGate](Update-AzFleetGate.md)
+Update a Gate
+
+### [Update-AzFleetManagedNamespace](Update-AzFleetManagedNamespace.md)
+Update a FleetManagedNamespace
 
 ### [Update-AzFleetMember](Update-AzFleetMember.md)
 Update a FleetMember

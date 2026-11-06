@@ -15,26 +15,25 @@ Update a UpdateRun
 ### UpdateExpanded (Default)
 ```
 Update-AzFleetUpdateRun -FleetName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-NodeImageSelectionType <String>]
- [-StrategyStage <IUpdateStage[]>] [-UpdateStrategyId <String>] [-UpgradeKubernetesVersion <String>]
- [-UpgradeType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-StrategyStage <IUpdateStage[]>]
+ [-UpdateStrategyId <String>] [-UpgradeKubernetesVersion <String>] [-UpgradeType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFleetUpdateRun -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-NodeImageSelectionType <String>] [-StrategyStage <IUpdateStage[]>] [-UpdateStrategyId <String>]
- [-UpgradeKubernetesVersion <String>] [-UpgradeType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-StrategyStage <IUpdateStage[]>] [-UpdateStrategyId <String>] [-UpgradeKubernetesVersion <String>]
+ [-UpgradeType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityFleetExpanded
 ```
 Update-AzFleetUpdateRun -FleetInputObject <IFleetIdentity> -Name <String> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-NodeImageSelectionType <String>] [-StrategyStage <IUpdateStage[]>]
- [-UpdateStrategyId <String>] [-UpgradeKubernetesVersion <String>] [-UpgradeType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IfNoneMatch <String>] [-StrategyStage <IUpdateStage[]>] [-UpdateStrategyId <String>]
+ [-UpgradeKubernetesVersion <String>] [-UpgradeType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -233,21 +232,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodeImageSelectionType
-The node image upgrade type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -297,6 +281,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -317,8 +302,7 @@ Use an existing strategy: Set the "updateStrategyId" field.
 (since 2023-08-15-preview)3.
 Use the default strategy to update all the members one by one: Leave both "updateStrategyId" and "strategy" unset.
 (since 2023-08-15-preview)Setting both "updateStrategyId" and "strategy" is invalid.UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
-Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
-UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
+Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
 
 ```yaml
 Type: System.String
@@ -348,7 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeType
-The upgrade type.Full requires the KubernetesVersion property to be set.NodeImageOnly requires the KubernetesVersion property not to be set.
+ManagedClusterUpgradeType is the type of upgrade to be applied.
 
 ```yaml
 Type: System.String

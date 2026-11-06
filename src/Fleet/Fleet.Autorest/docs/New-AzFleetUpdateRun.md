@@ -14,26 +14,29 @@ Create a UpdateRun
 
 ### CreateExpanded (Default)
 ```
-New-AzFleetUpdateRun -FleetName <String> -Name <String> -ResourceGroupName <String> -UpgradeType <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-NodeImageSelectionType <String>]
- [-StrategyStage <IUpdateStage[]>] [-UpdateStrategyId <String>] [-UpgradeKubernetesVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFleetUpdateRun -FleetName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-NodeImageSelectionCustomNodeImageVersion <INodeImageVersion[]>]
+ [-NodeImageSelectionType <String>] [-StrategyStage <IUpdateStage[]>] [-UpdateStrategyId <String>]
+ [-UpgradeKubernetesVersion <String>] [-UpgradeType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzFleetUpdateRun -InputObject <IFleetIdentity> -UpgradeType <String> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-NodeImageSelectionType <String>] [-StrategyStage <IUpdateStage[]>]
- [-UpdateStrategyId <String>] [-UpgradeKubernetesVersion <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFleetUpdateRun -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-NodeImageSelectionCustomNodeImageVersion <INodeImageVersion[]>] [-NodeImageSelectionType <String>]
+ [-StrategyStage <IUpdateStage[]>] [-UpdateStrategyId <String>] [-UpgradeKubernetesVersion <String>]
+ [-UpgradeType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityFleetExpanded
 ```
-New-AzFleetUpdateRun -FleetInputObject <IFleetIdentity> -Name <String> -UpgradeType <String>
- [-IfMatch <String>] [-IfNoneMatch <String>] [-NodeImageSelectionType <String>]
- [-StrategyStage <IUpdateStage[]>] [-UpdateStrategyId <String>] [-UpgradeKubernetesVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFleetUpdateRun -FleetInputObject <IFleetIdentity> -Name <String> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-NodeImageSelectionCustomNodeImageVersion <INodeImageVersion[]>]
+ [-NodeImageSelectionType <String>] [-StrategyStage <IUpdateStage[]>] [-UpdateStrategyId <String>]
+ [-UpgradeKubernetesVersion <String>] [-UpgradeType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -276,6 +279,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodeImageSelectionCustomNodeImageVersion
+Custom node image versions to upgrade the nodes to.
+This field is required if node image selection type is Custom.
+Otherwise, it must be empty.
+For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both).
+If the nodes belong to a family without a matching image version in this field, they are not upgraded.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.INodeImageVersion[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityFleetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeImageSelectionType
 The node image upgrade type.
 
@@ -340,6 +362,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -360,8 +383,7 @@ Use an existing strategy: Set the "updateStrategyId" field.
 (since 2023-08-15-preview)3.
 Use the default strategy to update all the members one by one: Leave both "updateStrategyId" and "strategy" unset.
 (since 2023-08-15-preview)Setting both "updateStrategyId" and "strategy" is invalid.UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
-Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
-UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
+Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
 
 ```yaml
 Type: System.String
@@ -391,14 +413,14 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeType
-The upgrade type.Full requires the KubernetesVersion property to be set.NodeImageOnly requires the KubernetesVersion property not to be set.
+ManagedClusterUpgradeType is the type of upgrade to be applied.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityFleetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
