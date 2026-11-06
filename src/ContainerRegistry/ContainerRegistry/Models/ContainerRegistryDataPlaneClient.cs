@@ -28,12 +28,17 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ContainerRegistry.Track2Models;
 using Azure;
 using Azure.Core.Serialization;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     public class ContainerRegistryDataPlaneClient
     {
-        internal const string RegistryNamePattern = @"\A[a-zA-Z0-9]{5,50}\z";
+        internal const string RegistryNamePattern =
+            @"\A(?:[a-zA-Z0-9]{5,50}|[a-zA-Z0-9]{5,46}-[a-zA-Z0-9]{16})\z";
 
         private const string _defaultGrantType = "access_token";
         private const string _defaultScope = "registry:catalog:*";
@@ -111,11 +116,12 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (RegistryName == null || !Regex.IsMatch(RegistryName, RegistryNamePattern))
             {
                 throw new AzPSArgumentException(
-                    "Registry name must contain 5-50 ASCII letters or digits.",
+                    "Specify a registry name of 5-50 ASCII letters or digits, or a DNL label with a 5-46 character alphanumeric prefix followed by a hyphen and a 16-character alphanumeric hash.",
                     nameof(RegistryName));
             }
 
-            _endPoint = RegistryName.ToLowerInvariant() + '.' + _suffix;
+            string loginServer = ResolveLoginServer(RegistryName);
+            _endPoint = loginServer;
             _client.LoginUri = _https + _endPoint;
             _credential = new Track2TokenCredential(new DataServiceCredential(AzureSession.Instance.AuthenticationFactory,
                         _context, AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId));
@@ -123,6 +129,82 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             {
                 Audience = _context.Environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId]
             });
+        }
+
+        private string ResolveLoginServer(string registryName)
+        {
+            string fallback = registryName.ToLowerInvariant() + '.' + _suffix;
+            string resourceName = registryName.Split('-')[0];
+            string loginServer;
+
+            try
+            {
+                if (string.IsNullOrEmpty(_context.Subscription?.Id))
+                {
+                    throw new AzPSInvalidOperationException(
+                        "No Azure subscription is selected for container registry discovery.");
+                }
+
+                using (var managementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                    _context, AzureEnvironment.Endpoint.ResourceManager))
+                {
+                    var filter = new ODataQuery<GenericResourceFilter>(
+                        $"resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{resourceName}'");
+                    var page = managementClient.Resources.List(filter);
+                    GenericResource registry = null;
+                    while (page != null)
+                    {
+                        foreach (var resource in page)
+                        {
+                            if (!string.Equals(resource.Name, resourceName, StringComparison.OrdinalIgnoreCase) ||
+                                !string.Equals(resource.Type, "Microsoft.ContainerRegistry/registries", StringComparison.OrdinalIgnoreCase))
+                            {
+                                continue;
+                            }
+
+                            if (registry != null)
+                            {
+                                throw new AzPSInvalidOperationException(
+                                    "More than one matching container registry was returned by Azure Resource Manager.");
+                            }
+                            registry = resource;
+                        }
+                        page = string.IsNullOrEmpty(page.NextPageLink)
+                            ? null
+                            : managementClient.Resources.ListNext(page.NextPageLink);
+                    }
+
+                    if (registry == null)
+                    {
+                        return UseFallbackLoginServer(fallback,
+                            $"Container registry '{resourceName}' was not found in the selected subscription.");
+                    }
+
+                    var properties = managementClient.Resources.GetById(registry.Id.TrimStart('/'), "2023-07-01").Properties;
+                    var value = properties == null ? null : JObject.FromObject(properties)["loginServer"];
+                    if (value == null || value.Type != JTokenType.String ||
+                        string.IsNullOrWhiteSpace(value.Value<string>()))
+                    {
+                        throw new AzPSInvalidOperationException(
+                            "Azure Resource Manager did not return a container registry login server.");
+                    }
+                    loginServer = value.Value<string>();
+                }
+            }
+            catch (Exception exception)
+            {
+                return UseFallbackLoginServer(fallback,
+                    $"Azure Resource Manager discovery failed ({exception.GetType().Name}).");
+            }
+
+            return loginServer;
+        }
+
+        private string UseFallbackLoginServer(string loginServer, string reason)
+        {
+            WarningLogger?.Invoke(
+                $"{reason} Using the supplied registry name or DNL label with the environment suffix. For a DNL-protected registry, supply the complete label including its hash.");
+            return loginServer;
         }
 
         public string GetEndPoint()

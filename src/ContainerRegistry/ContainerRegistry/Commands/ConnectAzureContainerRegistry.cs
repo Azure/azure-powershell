@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 WriteWarning("You can perform manual login using the provided access token, for example: 'docker login <loginServer> -u 00000000-0000-0000-0000-000000000000 -p <accessToken>'");
                 var cred = new
                 {
-                    loginServer = Name + ".azurecr.io",
+                    loginServer = this.RegistryDataPlaneClient.GetEndPoint(),
                     accessToken = this.Password.ConvertToSecureString()
                 };
                 WriteObject(cred);

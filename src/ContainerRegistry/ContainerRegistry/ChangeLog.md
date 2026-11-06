@@ -19,7 +19,13 @@
 -->
 ## Upcoming Release
 * Validated registry names before container registry data-plane requests.
-* Updated `Connect-AzContainerRegistry` to pass credentials as data rather than executable PowerShell.
+    - Preserved caller-supplied Domain Name Label (DNL) protected login-server labels.
+* Updated `Connect-AzContainerRegistry` credential handling.
+    - Passed credentials as data rather than executable PowerShell.
+* Updated container registry login-server discovery.
+    - Used Azure Resource Manager when available; otherwise warned and used the input with the environment suffix.
+* Updated `Connect-AzContainerRegistry -ExposeToken`.
+    - Returned the same login server used for authentication.
 
 ## Version 5.2.0
 * Added Change Safety support for additional cmdlets.
