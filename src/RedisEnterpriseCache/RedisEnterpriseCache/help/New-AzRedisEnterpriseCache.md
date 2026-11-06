@@ -19,7 +19,7 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  [-Tag <Hashtable>] [-Module <IModule[]>] [-ClientProtocol <String>] [-Port <Int32>] [-EvictionPolicy <String>]
  [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>] [-ClusteringPolicy <String>]
  [-AccessKeysAuthentication <String>] [-NotifyKeyspaceEvents <String>]
- [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>] -PublicNetworkAccess <String>
+ [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>] [-PublicNetworkAccess <String>]
  [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-KeyEncryptionKeyIdentityType <String>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-AofPersistenceEnabled]
@@ -33,7 +33,7 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
 New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> -Sku <String> [-Capacity <Int32>] [-MinimumTlsVersion <String>] [-Zone <String[]>]
  [-Tag <Hashtable>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>]
- -PublicNetworkAccess <String> [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-PublicNetworkAccess <String>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-NoDatabase] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -545,6 +545,7 @@ Accept wildcard characters: False
 ### -PublicNetworkAccess
 Whether or not public network traffic can access the Redis cluster.
 Only 'Enabled' or 'Disabled' can be set.
+Defaults to Enabled for new clusters and preserves the current value when updating an existing cluster.
 Null is only supported for clusters created with an older API version that do not have this property.
 
 ```yaml
@@ -552,7 +553,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

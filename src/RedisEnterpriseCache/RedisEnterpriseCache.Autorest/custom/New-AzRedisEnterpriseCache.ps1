@@ -206,13 +206,14 @@ function New-AzRedisEnterpriseCache {
         # This affects the availability SLA, and increases the risk of data loss.
         ${HighAvailability},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [AllowNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
         # Whether or not public network traffic can access the Redis cluster.
         # Only 'Enabled' or 'Disabled' can be set.
+        # Defaults to Enabled for new clusters and preserves the current value when updating an existing cluster.
         # Null is only supported for clusters created with an older API version that do not have this property.
         ${PublicNetworkAccess},
 
@@ -372,6 +373,31 @@ function New-AzRedisEnterpriseCache {
         $null = $GetPSBoundParameters.Remove("LinkedDatabase")
         $null = $GetPSBoundParameters.Remove("AccessKeysAuthentication")
         $null = $GetPSBoundParameters.Remove("NotifyKeyspaceEvents")
+        if (-not $GetPSBoundParameters.ContainsKey("PublicNetworkAccess")) {
+            $GetClusterParameters = @{
+                ClusterName = $ClusterName
+                ResourceGroupName = $ResourceGroupName
+                ErrorAction = "Stop"
+            }
+            foreach ($parameterName in @("SubscriptionId", "DefaultProfile", "HttpPipelineAppend", "HttpPipelinePrepend", "Proxy", "ProxyCredential", "ProxyUseDefaultCredentials")) {
+                if ($PSBoundParameters.ContainsKey($parameterName)) {
+                    $GetClusterParameters[$parameterName] = $PSBoundParameters[$parameterName]
+                }
+            }
+
+            try {
+                $existingCluster = Az.RedisEnterpriseCache.internal\Get-AzRedisEnterpriseCache @GetClusterParameters
+                $GetPSBoundParameters["PublicNetworkAccess"] = $existingCluster.PublicNetworkAccess
+            } catch {
+                $statusCode = $_.Exception.Response.StatusCode
+                if (($null -ne $statusCode -and [int] $statusCode -eq 404) -or
+                    $_.Exception.Message -match "NotFound|could not be found") {
+                    $GetPSBoundParameters["PublicNetworkAccess"] = "Enabled"
+                } else {
+                    throw
+                }
+            }
+        }
         $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
 
         if (('CreateClusterOnly') -contains $PSCmdlet.ParameterSetName)

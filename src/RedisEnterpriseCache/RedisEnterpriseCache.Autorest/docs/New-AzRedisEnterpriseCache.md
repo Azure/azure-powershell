@@ -22,7 +22,7 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Lo
  [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-LinkedDatabase <ILinkedDatabase[]>] [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>]
  [-MinimumTlsVersion <String>] [-Module <IModule[]>] [-NotifyKeyspaceEvents <String>] [-Port <Int32>]
- -PublicNetworkAccess <String> [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
+ [-PublicNetworkAccess <String>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Lo
  [-EnableSystemAssignedIdentity] [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-MinimumTlsVersion <String>]
- -PublicNetworkAccess <String> [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -547,6 +547,7 @@ Accept wildcard characters: False
 ### -PublicNetworkAccess
 Whether or not public network traffic can access the Redis cluster.
 Only 'Enabled' or 'Disabled' can be set.
+Defaults to Enabled for new clusters and preserves the current value when updating an existing cluster.
 Null is only supported for clusters created with an older API version that do not have this property.
 
 ```yaml
@@ -554,7 +555,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
