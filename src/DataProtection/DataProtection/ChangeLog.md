@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Get-AzDataProtectionJob` returning only the first page of backup jobs instead of all jobs when a vault has many jobs
+    - The cmdlet now follows pagination links to retrieve all backup jobs from the vault
+    - Fixed issue [#29899]
 
 ## Version 3.1.1
 * Added Cosmos DB item-level restore to `New-AzDataProtectionRestoreConfigurationClientObject` and `Initialize-AzDataProtectionRestoreRequest`; select databases or database/container pairs with `-ResourceIdentifier`.

@@ -88,7 +88,6 @@ function Get-AzDataProtectionJob
 
     process
     {
-        $jobs = $null
         $hasUseSecondaryRegion = $PSBoundParameters.Remove("UseSecondaryRegion")
 
         if($hasUseSecondaryRegion){
@@ -120,11 +119,44 @@ function Get-AzDataProtectionJob
                 Az.DataProtection.internal\Get-AzDataProtectionCrossRegionRestoreJobDetail @PSBoundParameters
             }
             else{
-                 Az.DataProtection.internal\Get-AzDataProtectionCrossRegionRestoreJob @PSBoundParameters
+                Az.DataProtection.internal\Get-AzDataProtectionCrossRegionRestoreJob @PSBoundParameters
             }
         }
         else{
-            Az.DataProtection.internal\Get-AzDataProtectionJob @PSBoundParameters
+            $hasId = $PSBoundParameters.ContainsKey("Id")
+            $hasInputObject = $PSBoundParameters.ContainsKey("InputObject")
+
+            if($hasId -or $hasInputObject){
+                Az.DataProtection.internal\Get-AzDataProtectionJob @PSBoundParameters
+            }
+            else{
+                # List case: implement pagination by following nextLink
+                $subscriptionIds = if($PSBoundParameters.ContainsKey("SubscriptionId")) { $SubscriptionId } else { @((Get-AzContext).Subscription.Id) }
+                $apiVersion = "2026-03-01"
+
+                foreach($subId in $subscriptionIds){
+                    $url = "https://management.azure.com/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.DataProtection/backupVaults/$VaultName/backupJobs?api-version=$apiVersion"
+
+                    do {
+                        $response = Invoke-AzRestMethod -Uri $url -Method GET
+                        if($response.StatusCode -ne 200){
+                            $errorContent = $response.Content | ConvertFrom-Json
+                            $errorMessage = if($errorContent.error) { $errorContent.error.message } else { $response.Content }
+                            throw "Failed to list backup jobs. Status: $($response.StatusCode). Error: $errorMessage"
+                        }
+                        $content = $response.Content | ConvertFrom-Json
+
+                        foreach($job in $content.value){
+                            $psObj = [PSCustomObject]$job
+                            $psObj.PSObject.TypeNames.Insert(0, "Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureBackupJobResource")
+                            $psObj.PSObject.TypeNames.Insert(0, "Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureBackupJobResource#Multiple")
+                            Write-Output $psObj
+                        }
+
+                        $url = $content.nextLink
+                    } while (-not [string]::IsNullOrEmpty($url))
+                }
+            }
         }
         
     }
