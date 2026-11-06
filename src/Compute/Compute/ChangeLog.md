@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `Set-AzSnapshotImmutabilityPolicy` and `Remove-AzSnapshotImmutabilityPolicy`, and exposed typed immutability policy details consistently in snapshot results. [Azure/azure-powershell-cmdlet-review-pr#1579]
 * Added a preview message to `New-AzCapacityReservationGroup` indicating that the Open Capacity Reservation feature is in preview.
 
 ## Version 11.11.0
