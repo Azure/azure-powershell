@@ -163,12 +163,6 @@ This action checks if the recovery orchestration plan is eligible for failover o
 ### [Invoke-AzResiliencyRecoveryPlanFailover](Invoke-AzResiliencyRecoveryPlanFailover.md)
 This action triggers the failover operation on the recovery orchestration plan for the qualified resources.
 
-### [Test-AzResiliencyRecoveryPlanFailoverCommitValidation](Test-AzResiliencyRecoveryPlanFailoverCommitValidation.md)
-This action checks if the recovery orchestration plan is eligible for failover commit operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
-
-### [Invoke-AzResiliencyRecoveryPlanFailoverCommit](Invoke-AzResiliencyRecoveryPlanFailoverCommit.md)
-This action triggers the failover commit operation on the recovery orchestration plan for the qualified resources.
-
 ### [Test-AzResiliencyRecoveryPlanReprotectValidation](Test-AzResiliencyRecoveryPlanReprotectValidation.md)
 This action checks if the recovery orchestration plan is eligible for reprotect operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
 
@@ -178,26 +172,11 @@ This action triggers the reprotect operation on the recovery orchestration plan 
 ### [Invoke-AzResiliencyRecoveryPlanFinalize](Invoke-AzResiliencyRecoveryPlanFinalize.md)
 This action finalizes the recovery orchestration plan, ensuring all necessary configurations are in place.
 
-### [Test-AzResiliencyRecoveryPlanTestFailoverValidation](Test-AzResiliencyRecoveryPlanTestFailoverValidation.md)
-This action checks if the recovery orchestration plan is eligible for test failover operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
-
-### [Invoke-AzResiliencyRecoveryPlanTestFailover](Invoke-AzResiliencyRecoveryPlanTestFailover.md)
-This action triggers the test failover operation on the recovery orchestration plan for the qualified resources.
-
-### [Test-AzResiliencyRecoveryPlanTestFailoverCleanupValidation](Test-AzResiliencyRecoveryPlanTestFailoverCleanupValidation.md)
-This action checks if the recovery orchestration plan is eligible for test failover cleanup operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
-
-### [Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup](Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup.md)
-This action triggers the test failover cleanup operation on the recovery orchestration plan for the qualified resources.
-
 ### [Get-AzResiliencyRecoveryResource](Get-AzResiliencyRecoveryResource.md)
 Get a RecoveryResource
 
 ### [Get-AzResiliencyRecoveryJob](Get-AzResiliencyRecoveryJob.md)
 Get a RecoveryJob
-
-### [Stop-AzResiliencyRecoveryJob](Stop-AzResiliencyRecoveryJob.md)
-This action attempts to cancel the ongoing recovery orchestration job.
 
 ### [Resume-AzResiliencyRecoveryJob](Resume-AzResiliencyRecoveryJob.md)
 This action resumes the ongoing recovery orchestration job that was paused for required user intervention.

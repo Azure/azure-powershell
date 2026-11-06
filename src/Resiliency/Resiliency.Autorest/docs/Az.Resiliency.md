@@ -79,20 +79,11 @@ This action retries the ongoing recovery orchestration job for resources that fa
 ### [Invoke-AzResiliencyRecoveryPlanFailover](Invoke-AzResiliencyRecoveryPlanFailover.md)
 This action triggers the failover operation on the recovery orchestration plan for the qualified resources.
 
-### [Invoke-AzResiliencyRecoveryPlanFailoverCommit](Invoke-AzResiliencyRecoveryPlanFailoverCommit.md)
-This action triggers the failover commit operation on the recovery orchestration plan for the qualified resources.
-
 ### [Invoke-AzResiliencyRecoveryPlanFinalize](Invoke-AzResiliencyRecoveryPlanFinalize.md)
 This action finalizes the recovery orchestration plan, ensuring all necessary configurations are in place.
 
 ### [Invoke-AzResiliencyRecoveryPlanReprotect](Invoke-AzResiliencyRecoveryPlanReprotect.md)
 This action triggers the reprotect operation on the recovery orchestration plan for the qualified resources.
-
-### [Invoke-AzResiliencyRecoveryPlanTestFailover](Invoke-AzResiliencyRecoveryPlanTestFailover.md)
-This action triggers the test failover operation on the recovery orchestration plan for the qualified resources.
-
-### [Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup](Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup.md)
-This action triggers the test failover cleanup operation on the recovery orchestration plan for the qualified resources.
 
 ### [New-AzResiliencyDrill](New-AzResiliencyDrill.md)
 Create a Drill
@@ -147,9 +138,6 @@ This starts a new running instance of the Drill.
 ### [Stop-AzResiliencyDrill](Stop-AzResiliencyDrill.md)
 This ends the currently running instance of the Drill.
 
-### [Stop-AzResiliencyRecoveryJob](Stop-AzResiliencyRecoveryJob.md)
-This action attempts to cancel the ongoing recovery orchestration job.
-
 ### [Sync-AzResiliencyDrillReadiness](Sync-AzResiliencyDrillReadiness.md)
 This triggers detection of any drifts from the desired state of Resources and RBAC.
 
@@ -159,9 +147,6 @@ This operation scans for new resources under the scope of the assignment.
 
 ### [Test-AzResiliencyDrillExecutionValidation](Test-AzResiliencyDrillExecutionValidation.md)
 This returns eligible resource to be faulted or failed over.
-
-### [Test-AzResiliencyRecoveryPlanFailoverCommitValidation](Test-AzResiliencyRecoveryPlanFailoverCommitValidation.md)
-This action checks if the recovery orchestration plan is eligible for failover commit operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
 
 ### [Test-AzResiliencyRecoveryPlanFailoverValidation](Test-AzResiliencyRecoveryPlanFailoverValidation.md)
 This action checks if the recovery orchestration plan is eligible for failover operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
@@ -174,12 +159,6 @@ This action performs the necessary readiness check on the recovery orchestration
 
 ### [Test-AzResiliencyRecoveryPlanReprotectValidation](Test-AzResiliencyRecoveryPlanReprotectValidation.md)
 This action checks if the recovery orchestration plan is eligible for reprotect operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
-
-### [Test-AzResiliencyRecoveryPlanTestFailoverCleanupValidation](Test-AzResiliencyRecoveryPlanTestFailoverCleanupValidation.md)
-This action checks if the recovery orchestration plan is eligible for test failover cleanup operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
-
-### [Test-AzResiliencyRecoveryPlanTestFailoverValidation](Test-AzResiliencyRecoveryPlanTestFailoverValidation.md)
-This action checks if the recovery orchestration plan is eligible for test failover operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
 
 ### [Update-AzResiliencyDrill](Update-AzResiliencyDrill.md)
 Update a Drill

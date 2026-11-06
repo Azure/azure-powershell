@@ -39,44 +39,6 @@
       ]
     },
     {
-      "name": "Invoke-AzResiliencyRecoveryPlanFailoverCommit",
-      "description": "This action triggers the failover commit operation on the recovery orchestration plan for the qualified resources.",
-      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/failoverCommit",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.resiliency/invoke-azresiliencyrecoveryplanfailovercommit"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-OperationId <String>",
-              "-RecoveryPlanName <String>",
-              "-ServiceGroupName <String>"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "This action triggers the failover commit operation on the recovery orchestration plan for the qualified resources.",
-          "parameters": [
-            {
-              "name": "-OperationId",
-              "value": "(New-Guid).Guid"
-            },
-            {
-              "name": "-RecoveryPlanName",
-              "value": "[Path.recoveryPlanName]"
-            },
-            {
-              "name": "-ServiceGroupName",
-              "value": "[Path.serviceGroupName]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Invoke-AzResiliencyRecoveryPlanFinalize",
       "description": "This action finalizes the recovery orchestration plan, ensuring all necessary configurations are in place.",
       "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/finalize",
@@ -148,44 +110,6 @@
       ]
     },
     {
-      "name": "Test-AzResiliencyRecoveryPlanFailoverCommitValidation",
-      "description": "This action checks if the recovery orchestration plan is eligible for failover commit operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.",
-      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/validateForFailoverCommit",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.resiliency/test-azresiliencyrecoveryplanfailovercommitvalidation"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-OperationId <String>",
-              "-RecoveryPlanName <String>",
-              "-ServiceGroupName <String>"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "This action checks if the recovery orchestration plan is eligible for failover commit operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.",
-          "parameters": [
-            {
-              "name": "-OperationId",
-              "value": "(New-Guid).Guid"
-            },
-            {
-              "name": "-RecoveryPlanName",
-              "value": "[Path.recoveryPlanName]"
-            },
-            {
-              "name": "-ServiceGroupName",
-              "value": "[Path.serviceGroupName]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Test-AzResiliencyRecoveryPlanReadiness",
       "description": "This action performs the necessary readiness check on the recovery orchestration plan to ensure it is in the desired state and eligible for all recovery actions, including all protected resources.",
       "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/checkReadiness",
@@ -206,44 +130,6 @@
       "examples": [
         {
           "description": "This action performs the necessary readiness check on the recovery orchestration plan to ensure it is in the desired state and eligible for all recovery actions, including all protected resources.",
-          "parameters": [
-            {
-              "name": "-OperationId",
-              "value": "(New-Guid).Guid"
-            },
-            {
-              "name": "-RecoveryPlanName",
-              "value": "[Path.recoveryPlanName]"
-            },
-            {
-              "name": "-ServiceGroupName",
-              "value": "[Path.serviceGroupName]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Test-AzResiliencyRecoveryPlanTestFailoverCleanupValidation",
-      "description": "This action checks if the recovery orchestration plan is eligible for test failover cleanup operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.",
-      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/validateForTestFailoverCleanup",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.resiliency/test-azresiliencyrecoveryplantestfailovercleanupvalidation"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-OperationId <String>",
-              "-RecoveryPlanName <String>",
-              "-ServiceGroupName <String>"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "This action checks if the recovery orchestration plan is eligible for test failover cleanup operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.",
           "parameters": [
             {
               "name": "-OperationId",

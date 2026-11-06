@@ -154,4 +154,34 @@ directive:
       verb: Set
       subject: GoalAssignment
     remove: true
+
+  # Not supported by the service in this release; Azure CLI omits the same commands.
+  - where:
+      verb: Stop
+      subject: RecoveryJob
+    remove: true
+  - where:
+      verb: Invoke
+      subject: RecoveryPlanFailoverCommit
+    remove: true
+  - where:
+      verb: Test
+      subject: RecoveryPlanFailoverCommitValidation
+    remove: true
+  - where:
+      verb: Invoke
+      subject: RecoveryPlanTestFailover
+    remove: true
+  - where:
+      verb: Test
+      subject: RecoveryPlanTestFailoverValidation
+    remove: true
+  - where:
+      verb: Invoke
+      subject: RecoveryPlanTestFailoverCleanup
+    remove: true
+  - where:
+      verb: Test
+      subject: RecoveryPlanTestFailoverCleanupValidation
+    remove: true
 ```

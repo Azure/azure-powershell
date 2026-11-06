@@ -17,8 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Runtime.Json;
 
     /// <summary>
-    /// For recovery-plan actions (CheckReadiness, Failover, FailoverCommit, Reprotect, TestFailover,
-    /// TestFailoverCleanup) the service returns the final result as an operation-status record
+    /// For recovery-plan actions (CheckReadiness, Failover, Reprotect) the service returns the final
+    /// result as an operation-status record
     /// {"status": "Succeeded", "properties": "&lt;JSON-encoded string&gt;"} instead of the spec shape
     /// {"jobId": "..."}, so JobId is null. Decode the string when jobId is absent. No-op once the
     /// service returns the spec shape; remove after the service fix.
