@@ -6,6 +6,9 @@ internal
 exports
 tools
 test/*-TestResults.xml
+test/provision-*.state.json
+test/avd-*.runtime.json
+test/avd-*.runtime.json.playback.json
 license.txt
 /*.ps1
 /*.psd1

@@ -25,7 +25,7 @@ New-AzWvdHostPool -HostPoolType <String> -LoadBalancerType <String> -Location <S
  [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-OboTenantId <String>]
  [-PersonalDesktopAssignmentType <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoToken <String>]
+ [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoToken <SecureString>]
  [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>] [-SkuCapacity <Int32>]
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
@@ -697,7 +697,7 @@ Accept wildcard characters: False
 The registration token base64 encoded string.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded
 Aliases:
 
