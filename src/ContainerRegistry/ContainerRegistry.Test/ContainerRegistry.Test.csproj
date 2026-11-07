@@ -10,6 +10,12 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\ContainerRegistry\ContainerRegistry.csproj" />
     <ProjectReference Include="..\..\Accounts\Accounts\Accounts.csproj" />
