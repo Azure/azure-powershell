@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private IAzureContext _context;
 
         private readonly string _acrTokenCacheKey;
+        private readonly Func<IResourceManagementClient> _resourceManagementClientFactory;
         private readonly Dictionary<Tuple<string, string, string, string, string, string>, string> _loginServerCache =
             new Dictionary<Tuple<string, string, string, string, string, string>, string>();
 
@@ -65,12 +66,23 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public Action<string> WarningLogger { get; set; }
 
         public ContainerRegistryDataPlaneClient(IAzureContext context, string acrTokenCacheKey)
+            : this(context, acrTokenCacheKey, () =>
+                AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                    context, AzureEnvironment.Endpoint.ResourceManager))
+        {
+        }
+
+        internal ContainerRegistryDataPlaneClient(
+            IAzureContext context,
+            string acrTokenCacheKey,
+            Func<IResourceManagementClient> resourceManagementClientFactory)
         {
             _context = context;
             _suffix = _context.Environment.ContainerRegistryEndpointSuffix;
             ServiceClientCredentials clientCredential = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(_accessToken, () => _accessToken);
             _client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureContainerRegistryClient>(clientCredential);
             _acrTokenCacheKey = acrTokenCacheKey;
+            _resourceManagementClientFactory = resourceManagementClientFactory;
         }
 
         public AzureContainerRegistryClient GetClient()
@@ -164,8 +176,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     return loginServer;
                 }
 
-                using (var managementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
-                    _context, AzureEnvironment.Endpoint.ResourceManager))
+                using (var managementClient = _resourceManagementClientFactory())
                 {
                     var filter = new ODataQuery<GenericResourceFilter>(
                         $"resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{resourceName}'");
