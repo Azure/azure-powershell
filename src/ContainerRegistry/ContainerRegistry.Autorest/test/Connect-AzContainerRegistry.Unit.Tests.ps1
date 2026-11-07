@@ -100,6 +100,15 @@ Describe 'Connect-AzContainerRegistry.Unit' {
             } | Should -Throw -ErrorId 'ParameterArgumentValidationError,Microsoft.Azure.Commands.ContainerRegistry.ConnectAzureContainerRegistry'
         }
 
+        It 'Rejects <Label> in inherited data-plane parameters' -TestCases $invalidNames {
+            param($Label, $RegistryName)
+
+            {
+                Get-AzContainerRegistryRepository -RegistryName $RegistryName `
+                    -DefaultProfile $script:profile -ErrorAction Stop
+            } | Should -Throw -ErrorId 'ParameterArgumentValidationError,Microsoft.Azure.Commands.ContainerRegistry.GetAzureContainerRegistryRepository'
+        }
+
         It 'Accepts <Label> and supplies a lowercase login server' -TestCases @(
             @{ Label = 'five characters'; RegistryName = 'AbC12'; ExpectedServer = 'abc12.azurecr.io' }
             @{ Label = '50 characters'; RegistryName = ('A' * 50); ExpectedServer = (('a' * 50) + '.azurecr.io') }

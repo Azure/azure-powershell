@@ -25,6 +25,7 @@ using Moq;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Net;
@@ -80,20 +81,82 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test
             resources.VerifyNoOtherCalls();
         }
 
+        public static TheoryData<string> InvalidRegistryNames => new TheoryData<string>
+        {
+            null,
+            "",
+            "abcd",
+            new string('a', 51),
+            " abcde",
+            "abcde ",
+            "abc de",
+            "abc-de",
+            "abcd-" + new string('a', 16),
+            new string('a', 47) + "-" + new string('b', 16),
+            "abcde-" + new string('a', 15),
+            "abcde-" + new string('a', 17),
+            "abc_de",
+            "abcde.azurecr.io",
+            "https://abcde.azurecr.io",
+            "abcde/path",
+            "abcde:443",
+            "abcde\n",
+            "abcd\u00e9",
+            "abcd\u0661",
+            "abcde; throw \"Registry name evaluated\"",
+            "collector.example/path",
+            "myregistry-0123456789abcdef\n"
+        };
+
         [Theory]
-        [InlineData(null)]
-        [InlineData("")]
-        [InlineData("abcd")]
-        [InlineData("collector.example/path")]
-        [InlineData("myregistry-0123456789abcde")]
-        [InlineData("myregistry-0123456789abcdef0")]
-        [InlineData("myregistry-0123456789abcdef\n")]
+        [MemberData(nameof(InvalidRegistryNames))]
         public void InvalidInputFailsBeforeDiscovery(string name)
         {
             var client = CreateClient();
-            Assert.Throws<AzPSArgumentException>(() => client.SetEndPoint(name));
+            var exception = Assert.Throws<AzPSArgumentException>(() => client.SetEndPoint(name));
+            Assert.Equal("RegistryName", exception.ParamName);
             Assert.Equal(0, factoryCalls);
             Assert.Empty(warnings);
+        }
+
+        [Theory]
+        [MemberData(nameof(InvalidRegistryNames))]
+        public void InvalidInputPreservesPreviouslyResolvedEndpoint(string name)
+        {
+            var client = CreateClient();
+            client.SetEndPoint(RegistryName);
+            var exception = Assert.Throws<AzPSArgumentException>(() => client.SetEndPoint(name));
+
+            Assert.Equal("RegistryName", exception.ParamName);
+            Assert.Equal(LoginServer, client.GetEndPoint());
+            Assert.Equal("https://" + LoginServer, client.GetClient().LoginUri);
+            Assert.Equal(1, factoryCalls);
+            VerifyList(Times.Once());
+            VerifyGet(Times.Once());
+            Assert.Empty(warnings);
+        }
+
+        [Theory]
+        [InlineData("IMAGE123", "image123.azurecr.io")]
+        [InlineData("IMAGE123-0123456789ABCDEF", "image123-0123456789abcdef.azurecr.io")]
+        public void EndpointFormattingIsIndependentOfCurrentCulture(string name, string expectedServer)
+        {
+            var originalCulture = CultureInfo.CurrentCulture;
+            context.Subscription.Id = null;
+            var client = CreateClient();
+            try
+            {
+                CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("tr-TR");
+                client.SetEndPoint(name);
+
+                Assert.Equal(expectedServer, client.GetEndPoint());
+                Assert.Equal("https://" + expectedServer, client.GetClient().LoginUri);
+                Assert.Equal(0, factoryCalls);
+            }
+            finally
+            {
+                CultureInfo.CurrentCulture = originalCulture;
+            }
         }
 
         [Fact]
