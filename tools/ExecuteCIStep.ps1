@@ -275,7 +275,7 @@ If ($Build)
             }
             $Template.$DependencyStep.Details += $Detail
         }
-        If ($PSBoundParameters.ContainsKey("TriggerType") && $PSBoundParameters.ContainsKey("Trigger")) {
+        If ($PSBoundParameters.ContainsKey("TriggerType") -and $PSBoundParameters.ContainsKey("Trigger")) {
             $Template | Add-Member -NotePropertyName "$TriggerType triggered" -NotePropertyValue $Trigger
         }
 

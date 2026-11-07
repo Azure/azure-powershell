@@ -29,11 +29,11 @@ steps:
     script: |
       if (Test-Path "${{ parameters.subTasksFilePath }}") {
         Get-Content "${{ parameters.subTasksFilePath }}" | ForEach-Object {
-          if ($_ && 'Predictor' -eq $_) {
+          if ($_ -and 'Predictor' -eq $_) {
             Write-Host "##vso[task.setvariable variable=SubTaskPredictor]true"
-          } elseif ($_ && 'Installer' -eq $_) {
+          } elseif ($_ -and 'Installer' -eq $_) {
             Write-Host "##vso[task.setvariable variable=SubTaskInstaller]true"
-          } elseif ($_ && 'all' -eq $_) {
+          } elseif ($_ -and 'all' -eq $_) {
             Write-Host "##vso[task.setvariable variable=SubTaskAll]true"
           }
         }
