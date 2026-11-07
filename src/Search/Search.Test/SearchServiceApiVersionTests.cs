@@ -21,7 +21,10 @@ using Microsoft.Rest;
 using Moq;
 using Newtonsoft.Json.Linq;
 using System;
+using System.IO;
+using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using System.Management.Automation.Runspaces;
 using System.Net;
 using System.Net.Http;
@@ -233,6 +236,70 @@ namespace Microsoft.Azure.Commands.Search.Test
                         first => Assert.Equal("first", Assert.IsType<PSPrivateLinkResource>(first.BaseObject).Name),
                         second => Assert.Equal("second", Assert.IsType<PSPrivateLinkResource>(second.BaseObject).Name));
                 }
+            }
+        }
+
+        [Theory]
+        [InlineData("Get")]
+        [InlineData("Remove")]
+        public void SharedPrivateLinkCleanupAttemptsGroupDeletionWhenLinkCleanupFails(string failingCommand)
+        {
+            string scriptPath = Path.Combine(AppContext.BaseDirectory, "ScenarioTests", "SearchServiceTests.ps1");
+            var script = Parser.ParseFile(scriptPath, out _, out ParseError[] errors);
+            Assert.Empty(errors);
+            var function = Assert.IsType<FunctionDefinitionAst>(script.Find(
+                node => node is FunctionDefinitionAst definition &&
+                    definition.Name == "Test-ManageAzSearchSharedPrivateLinkResources", true));
+            var statement = Assert.Single(function.Body.EndBlock.Statements.OfType<TryStatementAst>());
+            string cleanup = string.Join(Environment.NewLine,
+                statement.Finally.Statements.Select(node => node.Extent.Text));
+
+            using (var powershell = System.Management.Automation.PowerShell.Create())
+            {
+                powershell.AddScript("""
+                    param($cleanup, $failingCommand)
+                    $ErrorActionPreference = 'Stop'
+                    $rgname = 'test-rg'
+                    $svcName = 'test-search'
+                    $newSearchService = [pscustomobject]@{ Name = $svcName }
+                    $script:groupCleanupCalls = 0
+                    $failureMessage = $null
+
+                    function Get-AzSearchSharedPrivateLinkResource
+                    {
+                        [CmdletBinding()]
+                        param($ResourceGroupName, $ServiceName)
+                        if ($failingCommand -eq 'Get') { throw 'Injected Get failure' }
+                        [pscustomobject]@{ Name = 'test-link' }
+                    }
+                    function Remove-AzSearchSharedPrivateLinkResource
+                    {
+                        [CmdletBinding()]
+                        param([Parameter(ValueFromPipeline)] $InputObject, [switch] $Force)
+                        process { throw 'Injected Remove failure' }
+                    }
+                    function Clean-ResourceGroup
+                    {
+                        param($rgname)
+                        $script:groupCleanupCalls++
+                    }
+
+                    try { & ([scriptblock]::Create($cleanup)) }
+                    catch { $failureMessage = $_.Exception.Message }
+                    [pscustomobject]@{
+                        GroupCleanupCalls = $script:groupCleanupCalls
+                        FailureMessage = $failureMessage
+                    }
+                    """)
+                    .AddParameter("cleanup", cleanup)
+                    .AddParameter("failingCommand", failingCommand);
+
+                var results = powershell.Invoke();
+
+                Assert.Empty(powershell.Streams.Error);
+                var result = Assert.Single(results);
+                Assert.Equal(1, result.Properties["GroupCleanupCalls"].Value);
+                Assert.Equal($"Injected {failingCommand} failure", result.Properties["FailureMessage"].Value);
             }
         }
 

@@ -1308,12 +1308,18 @@ function Test-ManageAzSearchSharedPrivateLinkResources
 	finally
     {
         # Cleanup
-        if ($newSearchService)
+        try
         {
-            Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName -ErrorAction Stop `
-            | Remove-AzSearchSharedPrivateLinkResource -Force -ErrorAction Stop
+            if ($newSearchService)
+            {
+                Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName -ErrorAction Stop `
+                | Remove-AzSearchSharedPrivateLinkResource -Force -ErrorAction Stop
+            }
         }
-        Clean-ResourceGroup $rgname
+        finally
+        {
+            Clean-ResourceGroup $rgname
+        }
     }
 }
 
