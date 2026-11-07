@@ -114,15 +114,13 @@ Describe 'ContainerRegistryDataPlaneClient.Unit' {
         }
     }
 
-    It 'Preserves the DNL label and warns when discovery is unavailable' {
+    It 'Uses an explicit DNL label directly without discovery warnings' {
         $warnings = New-Object 'System.Collections.Generic.List[string]'
         $script:client.WarningLogger = { param($message) $warnings.Add($message) }.GetNewClosure()
         $script:client.SetEndPoint('MyRegistry-0123456789ABCDEF')
 
         $script:client.GetEndPoint() | Should -BeExactly 'myregistry-0123456789abcdef.azurecr.io'
         $script:client.GetClient().LoginUri | Should -BeExactly 'https://myregistry-0123456789abcdef.azurecr.io'
-        $warnings.Count | Should -Be 1
-        $warnings[0] | Should -BeLike '*discovery failed*'
-        $warnings[0] | Should -BeLike '*complete label including its hash*'
+        $warnings.Count | Should -Be 0
     }
 }

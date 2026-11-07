@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private IAzureContext _context;
 
         private readonly string _acrTokenCacheKey;
+        private readonly Dictionary<Tuple<string, string, string, string, string, string>, string> _loginServerCache =
+            new Dictionary<Tuple<string, string, string, string, string, string>, string>();
 
         private const int _minutesBeforeExpiration = 5;
 
@@ -134,7 +136,12 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private string ResolveLoginServer(string registryName)
         {
             string fallback = registryName.ToLowerInvariant() + '.' + _suffix;
-            string resourceName = registryName.Split('-')[0];
+            if (registryName.IndexOf('-') >= 0)
+            {
+                return fallback;
+            }
+
+            string resourceName = registryName;
             string loginServer;
 
             try
@@ -143,6 +150,18 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 {
                     throw new AzPSInvalidOperationException(
                         "No Azure subscription is selected for container registry discovery.");
+                }
+
+                var cacheKey = Tuple.Create(
+                    resourceName.ToLowerInvariant(),
+                    _context.Subscription.Id,
+                    _context.Tenant?.Id,
+                    _context.Account?.Id,
+                    _context.Environment.Name,
+                    _context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager));
+                if (_loginServerCache.TryGetValue(cacheKey, out loginServer))
+                {
+                    return loginServer;
                 }
 
                 using (var managementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
@@ -190,6 +209,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     }
                     loginServer = value.Value<string>();
                 }
+                _loginServerCache[cacheKey] = loginServer;
             }
             catch (Exception exception)
             {

@@ -118,7 +118,7 @@ Describe 'Connect-AzContainerRegistry.Unit' {
         }
     }
 
-    It 'Exposes the selected fallback endpoint for <Label>' -TestCases @(
+    It 'Exposes the selected endpoint for <Label>' -TestCases @(
         @{ Label = 'DNL label'; Cloud = 'AzureCloud'; Name = 'myregistry-0123456789abcdef'; ExpectedServer = 'myregistry-0123456789abcdef.azurecr.io' }
         @{ Label = 'sovereign cloud'; Cloud = 'AzureChinaCloud'; Name = 'myregistry'; ExpectedServer = 'myregistry.azurecr.cn' }
     ) {
@@ -137,6 +137,16 @@ Describe 'Connect-AzContainerRegistry.Unit' {
         } finally {
             $script:profile.DefaultContext.Environment = $originalEnvironment
         }
+    }
+
+    It 'Uses an explicit DNL label without discovery warnings' {
+        $warnings = @()
+        $result = Connect-AzContainerRegistry -Name 'MyRegistry-0123456789ABCDEF' `
+            -UserName 'user' -Password 'password' -DefaultProfile $script:profile `
+            -WarningVariable warnings -ErrorAction Stop
+
+        $result[0].Arguments[1] | Should -BeExactly 'myregistry-0123456789abcdef.azurecr.io'
+        $warnings.Count | Should -Be 0
     }
 
     Context 'Docker credentials are data, not PowerShell source' {

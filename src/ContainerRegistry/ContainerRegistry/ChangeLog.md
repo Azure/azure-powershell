@@ -20,10 +20,12 @@
 ## Upcoming Release
 * Validated registry names before container registry data-plane requests.
     - Preserved caller-supplied Domain Name Label (DNL) protected login-server labels.
+    - Used explicit DNL labels directly without ARM discovery.
 * Updated `Connect-AzContainerRegistry` credential handling.
     - Passed credentials as data rather than executable PowerShell.
 * Updated container registry login-server discovery.
     - Used Azure Resource Manager when available; otherwise warned and used the input with the environment suffix.
+    - Reused successful discovery results for the same registry and context within the client.
 * Updated `Connect-AzContainerRegistry -ExposeToken`.
     - Returned the same login server used for authentication.
 
