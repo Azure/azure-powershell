@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Newtonsoft.Json.Linq;
 using System;
@@ -35,6 +36,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry.Test
 {
+    [Trait(Category.AcceptanceType, Category.CheckIn)]
     public class ContainerRegistryDataPlaneClientTests : IDisposable
     {
         private const string RegistryName = "myregistry";
