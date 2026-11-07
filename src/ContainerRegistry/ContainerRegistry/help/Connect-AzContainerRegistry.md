@@ -149,5 +149,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
+For plain registry names, the cmdlet uses Azure Resource Manager to discover the login server, falling
+back to the supplied name and environment suffix if discovery fails. Successful discovery results are
+reused for the same registry and context within the client. A complete Domain Name Label (DNL) label,
+`registry-<hash>`, is used directly with the environment suffix, without ARM discovery.
 
 ## RELATED LINKS

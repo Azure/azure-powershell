@@ -20,6 +20,7 @@ using Microsoft.Azure.ContainerRegistry;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Track2 = Azure.Containers.ContainerRegistry;
 using Azure.Containers.ContainerRegistry;
@@ -27,11 +28,18 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ContainerRegistry.Track2Models;
 using Azure;
 using Azure.Core.Serialization;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     public class ContainerRegistryDataPlaneClient
     {
+        internal const string RegistryNamePattern =
+            @"\A(?:[a-zA-Z0-9]{5,50}|[a-zA-Z0-9]{5,46}-[a-zA-Z0-9]{16})\z";
+
         private const string _defaultGrantType = "access_token";
         private const string _defaultScope = "registry:catalog:*";
         private const string _https = "https://";
@@ -46,6 +54,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private IAzureContext _context;
 
         private readonly string _acrTokenCacheKey;
+        private readonly Func<IResourceManagementClient> _resourceManagementClientFactory;
+        private readonly Dictionary<Tuple<string, string, string, string, string, string>, string> _loginServerCache =
+            new Dictionary<Tuple<string, string, string, string, string, string>, string>();
 
         private const int _minutesBeforeExpiration = 5;
 
@@ -55,12 +66,23 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public Action<string> WarningLogger { get; set; }
 
         public ContainerRegistryDataPlaneClient(IAzureContext context, string acrTokenCacheKey)
+            : this(context, acrTokenCacheKey, () =>
+                AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                    context, AzureEnvironment.Endpoint.ResourceManager))
+        {
+        }
+
+        internal ContainerRegistryDataPlaneClient(
+            IAzureContext context,
+            string acrTokenCacheKey,
+            Func<IResourceManagementClient> resourceManagementClientFactory)
         {
             _context = context;
             _suffix = _context.Environment.ContainerRegistryEndpointSuffix;
             ServiceClientCredentials clientCredential = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(_accessToken, () => _accessToken);
             _client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureContainerRegistryClient>(clientCredential);
             _acrTokenCacheKey = acrTokenCacheKey;
+            _resourceManagementClientFactory = resourceManagementClientFactory;
         }
 
         public AzureContainerRegistryClient GetClient()
@@ -105,7 +127,15 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public void SetEndPoint(string RegistryName)
         {
-            _endPoint = RegistryName.ToLower() + '.' + _suffix;
+            if (RegistryName == null || !Regex.IsMatch(RegistryName, RegistryNamePattern))
+            {
+                throw new AzPSArgumentException(
+                    "Specify a registry name of 5-50 ASCII letters or digits, or a DNL label with a 5-46 character alphanumeric prefix followed by a hyphen and a 16-character alphanumeric hash.",
+                    nameof(RegistryName));
+            }
+
+            string loginServer = ResolveLoginServer(RegistryName);
+            _endPoint = loginServer;
             _client.LoginUri = _https + _endPoint;
             _credential = new Track2TokenCredential(new DataServiceCredential(AzureSession.Instance.AuthenticationFactory,
                         _context, AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId));
@@ -113,6 +143,99 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             {
                 Audience = _context.Environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId]
             });
+        }
+
+        private string ResolveLoginServer(string registryName)
+        {
+            string fallback = registryName.ToLowerInvariant() + '.' + _suffix;
+            if (registryName.IndexOf('-') >= 0)
+            {
+                return fallback;
+            }
+
+            string resourceName = registryName;
+            string loginServer;
+
+            try
+            {
+                if (string.IsNullOrEmpty(_context.Subscription?.Id))
+                {
+                    throw new AzPSInvalidOperationException(
+                        "No Azure subscription is selected for container registry discovery.");
+                }
+
+                var cacheKey = Tuple.Create(
+                    resourceName.ToLowerInvariant(),
+                    _context.Subscription.Id,
+                    _context.Tenant?.Id,
+                    _context.Account?.Id,
+                    _context.Environment.Name,
+                    _context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager));
+                if (_loginServerCache.TryGetValue(cacheKey, out loginServer))
+                {
+                    return loginServer;
+                }
+
+                using (var managementClient = _resourceManagementClientFactory())
+                {
+                    var filter = new ODataQuery<GenericResourceFilter>(
+                        $"resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{resourceName}'");
+                    var page = managementClient.Resources.List(filter);
+                    GenericResource registry = null;
+                    while (page != null)
+                    {
+                        foreach (var resource in page)
+                        {
+                            if (!string.Equals(resource.Name, resourceName, StringComparison.OrdinalIgnoreCase) ||
+                                !string.Equals(resource.Type, "Microsoft.ContainerRegistry/registries", StringComparison.OrdinalIgnoreCase))
+                            {
+                                continue;
+                            }
+
+                            if (registry != null)
+                            {
+                                throw new AzPSInvalidOperationException(
+                                    "More than one matching container registry was returned by Azure Resource Manager.");
+                            }
+                            registry = resource;
+                        }
+                        page = string.IsNullOrEmpty(page.NextPageLink)
+                            ? null
+                            : managementClient.Resources.ListNext(page.NextPageLink);
+                    }
+
+                    if (registry == null)
+                    {
+                        return UseFallbackLoginServer(fallback,
+                            $"Container registry '{resourceName}' was not found in the selected subscription.");
+                    }
+
+                    var properties = managementClient.Resources.GetById(registry.Id.TrimStart('/'), "2023-07-01").Properties;
+                    var value = properties == null ? null : JObject.FromObject(properties)["loginServer"];
+                    if (value == null || value.Type != JTokenType.String ||
+                        string.IsNullOrWhiteSpace(value.Value<string>()))
+                    {
+                        throw new AzPSInvalidOperationException(
+                            "Azure Resource Manager did not return a container registry login server.");
+                    }
+                    loginServer = value.Value<string>();
+                }
+                _loginServerCache[cacheKey] = loginServer;
+            }
+            catch (Exception exception)
+            {
+                return UseFallbackLoginServer(fallback,
+                    $"Azure Resource Manager discovery failed ({exception.GetType().Name}).");
+            }
+
+            return loginServer;
+        }
+
+        private string UseFallbackLoginServer(string loginServer, string reason)
+        {
+            WarningLogger?.Invoke(
+                $"{reason} Using the supplied registry name or DNL label with the environment suffix. For a DNL-protected registry, supply the complete label including its hash.");
+            return loginServer;
         }
 
         public string GetEndPoint()

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>docker</AssemblyName>
+    <UseAppHost>true</UseAppHost>
+    <IsTestProject>false</IsTestProject>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <Target Name="GetFixtureFiles" Returns="@(FixtureFiles)">
+    <ItemGroup>
+      <FixtureFiles Include="$(TargetDir)docker*" />
+    </ItemGroup>
+  </Target>
+</Project>
