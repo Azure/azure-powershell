@@ -20,6 +20,8 @@ Add [Pester](https://github.com/pester/Pester) tests to the `test` folder and ru
 
 The sibling `ContainerRegistry.Test` project uses xUnit, Moq and TestFx.
 No Azure sign-in or Docker installation is required.
+Native argument/stdin tests use a small executable fixture and require PowerShell 7.3 or later
+(`pwsh` on PATH). They do not cover Windows PowerShell 5.1 or legacy native-argument mode.
 
 Run from the repository root:
 
