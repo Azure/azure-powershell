@@ -18,60 +18,49 @@ Describe 'Update-AzResiliencyUsagePlan' {
     BeforeAll {
         $planParameters = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; Name = $env.usagePlanName }
         $identity = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
-        # The PATCH is accepted asynchronously (202 with operation-status headers). These scenarios use -NoWait and
-        # verify the persisted tags on the usage plan itself, because without -NoWait the cmdlet currently returns the
-        # wrong object (see UpdateExpandedWithoutNoWait below).
-        function Assert-UsagePlanTag([object]$Operation, [string]$Value) {
-            $Operation.Target | Should -Match '/operationStatuses/'
-            $plan = Wait-ResiliencySucceeded -Command { Get-AzResiliencyUsagePlan @planParameters } -Until { param($p) $p.Tag['scenario'] -eq $Value }
-            $plan.Name | Should -Be $env.usagePlanName
-            $plan.PlanType | Should -Be 'Standard'
-            $plan.Tag['scenario'] | Should -Be $Value
+        # Users run Update- without -NoWait: the cmdlet waits for the PATCH (202) and returns the usage plan read from the
+        # resource itself (final-state-via: original-uri, feffbf3a05). Assert the returned plan. UpdateViaIdentity covers
+        # the -NoWait path, which returns the operation target and is verified by polling the plan.
+        function Assert-UsagePlan([object]$Plan, [string]$Value) {
+            $Plan.Name | Should -Be $env.usagePlanName
+            $Plan.PlanType | Should -Be 'Standard'
+            $Plan.ProvisioningState | Should -Be 'Succeeded'
+            $Plan.Tag['scenario'] | Should -Be $Value
         }
     }
 
     It 'UpdateExpanded' {
-        $operation = Update-AzResiliencyUsagePlan @planParameters -Tag @{ scenario = 'UpdateExpanded' } -NoWait
-        Assert-UsagePlanTag $operation 'UpdateExpanded'
+        $plan = Update-AzResiliencyUsagePlan @planParameters -Tag @{ scenario = 'UpdateExpanded' }
+        Assert-UsagePlan $plan 'UpdateExpanded'
     }
 
     It 'UpdateViaJsonString' {
         $json = @{ tags = @{ scenario = 'UpdateViaJsonString' } } | ConvertTo-Json
-        $operation = Update-AzResiliencyUsagePlan @planParameters -JsonString $json -NoWait
-        Assert-UsagePlanTag $operation 'UpdateViaJsonString'
+        $plan = Update-AzResiliencyUsagePlan @planParameters -JsonString $json
+        Assert-UsagePlan $plan 'UpdateViaJsonString'
     }
 
     It 'UpdateViaJsonFilePath' {
         $jsonFilePath = Join-Path $TestDrive 'usagePlanUpdate.json'
         @{ tags = @{ scenario = 'UpdateViaJsonFilePath' } } | ConvertTo-Json | Set-Content $jsonFilePath
-        $operation = Update-AzResiliencyUsagePlan @planParameters -JsonFilePath $jsonFilePath -NoWait
-        Assert-UsagePlanTag $operation 'UpdateViaJsonFilePath'
+        $plan = Update-AzResiliencyUsagePlan @planParameters -JsonFilePath $jsonFilePath
+        Assert-UsagePlan $plan 'UpdateViaJsonFilePath'
     }
 
     It 'Update' {
-        $operation = Update-AzResiliencyUsagePlan @planParameters -Property @{ Tag = @{ scenario = 'Update' } } -NoWait
-        Assert-UsagePlanTag $operation 'Update'
+        $plan = Update-AzResiliencyUsagePlan @planParameters -Property @{ Tag = @{ scenario = 'Update' } }
+        Assert-UsagePlan $plan 'Update'
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $operation = Update-AzResiliencyUsagePlan -InputObject $identity -Tag @{ scenario = 'UpdateViaIdentityExpanded' } -NoWait
-        Assert-UsagePlanTag $operation 'UpdateViaIdentityExpanded'
+        $plan = Update-AzResiliencyUsagePlan -InputObject $identity -Tag @{ scenario = 'UpdateViaIdentityExpanded' }
+        Assert-UsagePlan $plan 'UpdateViaIdentityExpanded'
     }
 
     It 'UpdateViaIdentity' {
         $operation = Update-AzResiliencyUsagePlan -InputObject $identity -Property @{ Tag = @{ scenario = 'UpdateViaIdentity' } } -NoWait
-        Assert-UsagePlanTag $operation 'UpdateViaIdentity'
-    }
-
-    # Skipped: without -NoWait the generated poller reads the final result from the Location URL (UsagePlans_Update
-    # declares final-state-via: location), which points at the operation status, so the cmdlet returns a UsagePlan whose
-    # Name is the operation ID and whose Tag/PlanType/ProvisioningState are empty. Needs the same README directive as
-    # goal assignments (final-state-via: original-uri); unskip and record once the module is regenerated.
-    It 'UpdateExpandedWithoutNoWait' -skip {
-        $plan = Update-AzResiliencyUsagePlan @planParameters -Tag @{ scenario = 'UpdateExpandedWithoutNoWait' }
-        $plan.Name | Should -Be $env.usagePlanName
-        $plan.PlanType | Should -Be 'Standard'
-        $plan.ProvisioningState | Should -Be 'Succeeded'
-        $plan.Tag['scenario'] | Should -Be 'UpdateExpandedWithoutNoWait'
+        $operation.Target | Should -Match '/operationStatuses/'
+        $plan = Wait-ResiliencySucceeded -Command { Get-AzResiliencyUsagePlan @planParameters } -Until { param($p) $p.Tag['scenario'] -eq 'UpdateViaIdentity' }
+        Assert-UsagePlan $plan 'UpdateViaIdentity'
     }
 }
