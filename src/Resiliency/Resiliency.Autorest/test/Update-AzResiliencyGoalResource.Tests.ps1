@@ -30,10 +30,18 @@ Describe 'Update-AzResiliencyGoalResource' {
         function Get-UpdateJson([string]$Participation) {
             return @{ resources = @(@{ id = $goalResourceId; properties = @{ resourceArmId = $env.vmId; zonalResiliency = @{ goalParticipation = $Participation } } }) } | ConvertTo-Json -Depth 10
         }
-        # Every scenario toggles the VM's participation. Updates are sent with -NoWait (retrying while a previous POST on
-        # the goal assignment is still active) and the goal resource is polled until it reflects the change.
+        # Every scenario toggles the VM's participation, retrying while a previous POST on the goal assignment is active.
         function Invoke-GoalResourceUpdate([scriptblock]$Command) {
-            $null = Invoke-ResiliencyWithRetry -AlsoRetryOn 'InvalidResourceOperation|Conflict' $Command
+            return Invoke-ResiliencyWithRetry -AlsoRetryOn 'InvalidResourceOperation|Conflict' $Command
+        }
+        # Users run Update- without -NoWait: the cmdlet waits for the POST (202) to finish and writes each updated goal
+        # resource from the final result, which the module decodes from the service's string-encoded properties (dcabe291).
+        # UpdateViaIdentity covers the -NoWait path, which polls the persisted goal resource instead.
+        function Assert-UpdateResult([object[]]$Response, [string]$Participation) {
+            $item = @($Response) | Where-Object { $_.ResourceArmId -eq $env.vmId } | Select-Object -First 1
+            $item | Should -Not -BeNullOrEmpty -Because 'the cmdlet returns the updated goal resource'
+            $item.Id | Should -Be $goalResourceId
+            $item.ZonalResiliencyGoalParticipation | Should -Be $Participation
         }
         function Assert-Participation([string]$Participation) {
             $deadline = (Get-Date).AddMinutes(20)
@@ -50,44 +58,44 @@ Describe 'Update-AzResiliencyGoalResource' {
     }
 
     It 'UpdateViaIdentity' {
-        Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -InputObject $goalIdentity -Body @{ Resource = @(Get-ResourceUpdate 'Excluded') } -NoWait }
+        $null = Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -InputObject $goalIdentity -Body @{ Resource = @(Get-ResourceUpdate 'Excluded') } -NoWait }
         Assert-Participation 'Excluded'
     }
 
     It 'UpdateViaJsonString' {
-        Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -JsonString (Get-UpdateJson 'Included') -NoWait }
-        Assert-Participation 'Included'
+        $response = Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -JsonString (Get-UpdateJson 'Included') }
+        Assert-UpdateResult $response 'Included'
     }
 
     It 'UpdateViaJsonFilePath' {
         $jsonFilePath = Join-Path $TestDrive 'goalResources.json'
         Get-UpdateJson 'Excluded' | Set-Content $jsonFilePath
-        Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -JsonFilePath $jsonFilePath -NoWait }
-        Assert-Participation 'Excluded'
+        $response = Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -JsonFilePath $jsonFilePath }
+        Assert-UpdateResult $response 'Excluded'
     }
 
     It 'UpdateViaIdentityServiceGroupExpanded' {
-        Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -ServiceGroupInputObject $serviceGroupIdentity -GoalAssignmentName $env.goalAssignmentName -Resource @(Get-ResourceUpdate 'Included') -NoWait }
-        Assert-Participation 'Included'
+        $response = Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -ServiceGroupInputObject $serviceGroupIdentity -GoalAssignmentName $env.goalAssignmentName -Resource @(Get-ResourceUpdate 'Included') }
+        Assert-UpdateResult $response 'Included'
     }
 
     It 'UpdateViaIdentityServiceGroup' {
-        Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -ServiceGroupInputObject $serviceGroupIdentity -GoalAssignmentName $env.goalAssignmentName -Body @{ Resource = @(Get-ResourceUpdate 'Excluded') } -NoWait }
-        Assert-Participation 'Excluded'
+        $response = Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -ServiceGroupInputObject $serviceGroupIdentity -GoalAssignmentName $env.goalAssignmentName -Body @{ Resource = @(Get-ResourceUpdate 'Excluded') } }
+        Assert-UpdateResult $response 'Excluded'
     }
 
     It 'UpdateExpanded' {
-        Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -Resource @(Get-ResourceUpdate 'Included') -NoWait }
-        Assert-Participation 'Included'
+        $response = Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -Resource @(Get-ResourceUpdate 'Included') }
+        Assert-UpdateResult $response 'Included'
     }
 
     It 'Update' {
-        Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -Body @{ Resource = @(Get-ResourceUpdate 'Excluded') } -NoWait }
-        Assert-Participation 'Excluded'
+        $response = Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -Body @{ Resource = @(Get-ResourceUpdate 'Excluded') } }
+        Assert-UpdateResult $response 'Excluded'
     }
 
     It 'UpdateViaIdentityExpanded' {
-        Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -InputObject $goalIdentity -Resource @(Get-ResourceUpdate 'Included') -NoWait }
-        Assert-Participation 'Included'
+        $response = Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -InputObject $goalIdentity -Resource @(Get-ResourceUpdate 'Included') }
+        Assert-UpdateResult $response 'Included'
     }
 }

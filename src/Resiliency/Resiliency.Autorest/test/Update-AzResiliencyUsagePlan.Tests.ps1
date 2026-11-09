@@ -18,8 +18,9 @@ Describe 'Update-AzResiliencyUsagePlan' {
     BeforeAll {
         $planParameters = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; Name = $env.usagePlanName }
         $identity = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
-        # The PATCH is accepted asynchronously (202 with operation-status headers); -NoWait returns that
-        # operation and the persisted tags are then verified on the usage plan itself.
+        # The PATCH is accepted asynchronously (202 with operation-status headers). These scenarios use -NoWait and
+        # verify the persisted tags on the usage plan itself, because without -NoWait the cmdlet currently returns the
+        # wrong object (see UpdateExpandedWithoutNoWait below).
         function Assert-UsagePlanTag([object]$Operation, [string]$Value) {
             $Operation.Target | Should -Match '/operationStatuses/'
             $plan = Wait-ResiliencySucceeded -Command { Get-AzResiliencyUsagePlan @planParameters } -Until { param($p) $p.Tag['scenario'] -eq $Value }
@@ -60,5 +61,17 @@ Describe 'Update-AzResiliencyUsagePlan' {
     It 'UpdateViaIdentity' {
         $operation = Update-AzResiliencyUsagePlan -InputObject $identity -Property @{ Tag = @{ scenario = 'UpdateViaIdentity' } } -NoWait
         Assert-UsagePlanTag $operation 'UpdateViaIdentity'
+    }
+
+    # Skipped: without -NoWait the generated poller reads the final result from the Location URL (UsagePlans_Update
+    # declares final-state-via: location), which points at the operation status, so the cmdlet returns a UsagePlan whose
+    # Name is the operation ID and whose Tag/PlanType/ProvisioningState are empty. Needs the same README directive as
+    # goal assignments (final-state-via: original-uri); unskip and record once the module is regenerated.
+    It 'UpdateExpandedWithoutNoWait' -skip {
+        $plan = Update-AzResiliencyUsagePlan @planParameters -Tag @{ scenario = 'UpdateExpandedWithoutNoWait' }
+        $plan.Name | Should -Be $env.usagePlanName
+        $plan.PlanType | Should -Be 'Standard'
+        $plan.ProvisioningState | Should -Be 'Succeeded'
+        $plan.Tag['scenario'] | Should -Be 'UpdateExpandedWithoutNoWait'
     }
 }

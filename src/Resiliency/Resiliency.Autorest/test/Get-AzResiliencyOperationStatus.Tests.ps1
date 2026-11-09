@@ -17,9 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzResiliencyOperationStat
 Describe 'Get-AzResiliencyOperationStatus' {
     BeforeAll {
         $refreshInProgress = 'InvalidResourceOperation|Conflict|\(409\)'
-        # The operation-status endpoint answers HTTP 202 while the operation is running, but the spec declares only 200,
-        # so the generated cmdlet reports 'unrecognized response, Status: Accepted' until the operation has finished.
-        $operationStillRunning = 'unrecognized response, Status: Accepted'
         # Starts a goal-resource refresh without waiting and returns the location and ID of its operation.
         function Start-RefreshOperation {
             $operation = Invoke-ResiliencyWithRetry -AlsoRetryOn $refreshInProgress {
@@ -27,11 +24,11 @@ Describe 'Get-AzResiliencyOperationStatus' {
             }
             return Get-ResiliencyOperationFromUrl $operation.Target
         }
-        # Polls the status cmdlet until the operation finishes and checks that it succeeded.
+        # Polls the status cmdlet until the operation finishes (Status is Accepted while it runs) and checks that it succeeded.
         function Assert-OperationSucceeded([scriptblock]$GetStatus, [string]$OperationId) {
             $deadline = (Get-Date).AddMinutes(20)
             do {
-                $status = Invoke-ResiliencyWithRetry -AlsoRetryOn $operationStillRunning $GetStatus
+                $status = Invoke-ResiliencyWithRetry $GetStatus
                 $status.Name | Should -Be $OperationId
                 if ($status.Status -notin 'Accepted', 'Running', 'InProgress') {
                     break

@@ -39,7 +39,14 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 
-# Retries an operation while service-group RBAC propagates or ARM is transiently unavailable.
+# Retries an operation on transient failures and returns its result.
+# - ARM 5xx/gateway errors and -AlsoRetryOn matches are retried until -TimeoutMinutes.
+# - 403 authorization errors (AuthorizationFailed, LinkedAuthorizationFailed) occur while RBAC on a newly created
+#   service group propagates. Tests retry them only for -AuthorizationTimeoutMinutes, so a real permission bug fails
+#   the test quickly instead of leaving a live run hanging.
+# - 401 'AAD authentication failed' is retried only with -Setup: the service returns it while a new service group
+#   propagates, but inside a test it is a real authentication failure (e.g. unifiedResilienceItems) and must surface.
+# Fixture setup/cleanup passes -Setup, which retries all of the above until -TimeoutMinutes.
 # Start-TestSleep keeps playback fast; the recorded failed attempts are replayed in order.
 function Invoke-ResiliencyWithRetry {
     param(
@@ -47,23 +54,29 @@ function Invoke-ResiliencyWithRetry {
         [int]$TimeoutMinutes = 30,
         [int]$DelaySeconds = 30,
         # Additional error pattern to treat as retryable, e.g. a conflicting operation still in progress.
-        [string]$AlsoRetryOn
+        [string]$AlsoRetryOn,
+        [int]$AuthorizationTimeoutMinutes = 10,
+        [switch]$Setup
     )
 
     $PSDefaultParameterValues = $PSDefaultParameterValues.Clone()
     $PSDefaultParameterValues['*:ErrorAction'] = 'Stop'
     $deadline = (Get-Date).AddMinutes($TimeoutMinutes)
+    $authorizationDeadline = if ($Setup) { $deadline } else { (Get-Date).AddMinutes([Math]::Min($AuthorizationTimeoutMinutes, $TimeoutMinutes)) }
     while ($true) {
         try {
             return & $Command
         }
         catch {
             $errorText = "$($_.FullyQualifiedErrorId) $($_.ErrorDetails.Message) $($_.Exception.ToString())"
-            $isTransient = $errorText -match 'AuthorizationFailed|does not have permission to perform action|AAD authentication failed|ServiceUnavailable|Service Unavailable|GatewayTimeout|\((502|503|504)\)'
-                        if ($AlsoRetryOn -and $errorText -match $AlsoRetryOn) {
-                            $isTransient = $true
-                        }
-                        if (-not $isTransient -or (Get-Date) -gt $deadline) {
+            $retryUntil = $null
+            if ($errorText -match 'ServiceUnavailable|Service Unavailable|GatewayTimeout|\((502|503|504)\)' -or ($AlsoRetryOn -and $errorText -match $AlsoRetryOn)) {
+                $retryUntil = $deadline
+            }
+            elseif ($errorText -match 'AuthorizationFailed|does not have permission to perform action' -or ($Setup -and $errorText -match 'AAD authentication failed')) {
+                $retryUntil = $authorizationDeadline
+            }
+            if (-not $retryUntil -or (Get-Date) -gt $retryUntil) {
                 throw
             }
             Write-Host "Retrying after transient error: $(($errorText -split "`n")[0])"
@@ -137,7 +150,7 @@ function Wait-ResiliencyFixtureProvisioning {
     $deadline = (Get-Date).AddMinutes($TimeoutMinutes)
     $state = 'Unknown'
     while ((Get-Date) -lt $deadline) {
-        $resource = Invoke-ResiliencyWithRetry { Get-ResiliencyFixtureResource $Path } -TimeoutMinutes $TimeoutMinutes
+        $resource = Invoke-ResiliencyWithRetry -Setup { Get-ResiliencyFixtureResource $Path } -TimeoutMinutes $TimeoutMinutes
         $state = if ($resource) { $resource.properties.provisioningState } else { 'NotFound' }
         if ($state -eq 'Succeeded') {
             return $resource
@@ -240,8 +253,8 @@ function New-ResiliencyServiceGroup {
     param([string]$Name)
 
     $path = "/providers/Microsoft.Management/serviceGroups/$Name`?api-version=2026-08-01"
-    if (-not (Invoke-ResiliencyWithRetry { Get-ResiliencyFixtureResource $path })) {
-        $null = Invoke-ResiliencyWithRetry {
+    if (-not (Invoke-ResiliencyWithRetry -Setup { Get-ResiliencyFixtureResource $path })) {
+        $null = Invoke-ResiliencyWithRetry -Setup {
             Invoke-ResiliencyFixtureRequest PUT $path @{
                 properties = @{
                     displayName = $Name
@@ -256,10 +269,10 @@ function New-ResiliencyEnrollmentFixture {
     param([string]$UsagePlanName, [string]$EnrollmentName, [string]$ServiceGroupId)
 
     $path = "$($env.resourceGroupId)/providers/Microsoft.AzureResilienceManagement/usagePlans/$UsagePlanName/enrollments/$EnrollmentName`?api-version=2026-10-01"
-    $existing = Invoke-ResiliencyWithRetry { Get-ResiliencyFixtureResource $path }
+    $existing = Invoke-ResiliencyWithRetry -Setup { Get-ResiliencyFixtureResource $path }
     if (-not $existing -or $existing.properties.provisioningState -in 'Failed', 'Canceled') {
         # The caller's linked authorization on a new service group can take ~20 minutes to propagate.
-        $null = Invoke-ResiliencyWithRetry -TimeoutMinutes 40 {
+        $null = Invoke-ResiliencyWithRetry -Setup -TimeoutMinutes 40 {
             Invoke-ResiliencyFixtureRequest PUT $path @{ properties = @{ serviceGroupId = $ServiceGroupId } }
         }
     }
@@ -268,9 +281,9 @@ function New-ResiliencyEnrollmentFixture {
 
 function Initialize-ResiliencyGoalFixture {
     $goalPath = "$($env.goalAssignmentId)?api-version=2026-10-01"
-    $goal = Invoke-ResiliencyWithRetry { Get-ResiliencyFixtureResource $goalPath }
+    $goal = Invoke-ResiliencyWithRetry -Setup { Get-ResiliencyFixtureResource $goalPath }
     if (-not $goal) {
-        $null = Invoke-ResiliencyWithRetry {
+        $null = Invoke-ResiliencyWithRetry -Setup {
             Invoke-ResiliencyFixtureRequest PUT $goalPath @{ properties = @{ requireZonalResiliency = $true } }
         }
     }
@@ -280,7 +293,7 @@ function Initialize-ResiliencyGoalFixture {
     $resource = $null
     while (-not $resource -and (Get-Date) -lt $deadline) {
         try {
-            $null = Invoke-ResiliencyWithRetry {
+            $null = Invoke-ResiliencyWithRetry -Setup {
                 Invoke-ResiliencyFixtureRequest POST "$($env.goalAssignmentId)/refreshGoalResources?api-version=2026-10-01"
             }
         }
@@ -291,7 +304,7 @@ function Initialize-ResiliencyGoalFixture {
             }
         }
         Start-TestSleep -Seconds 60
-        $resources = Invoke-ResiliencyWithRetry {
+        $resources = Invoke-ResiliencyWithRetry -Setup {
             Invoke-ResiliencyFixtureRequest GET "$($env.goalAssignmentId)/goalResources?api-version=2026-10-01"
         }
         $resource = $resources.value | Where-Object { $_.properties.resourceArmId -eq $env.vmId } | Select-Object -First 1
@@ -305,7 +318,7 @@ function Initialize-ResiliencyGoalFixture {
     $item = $null
     while (-not $item -and (Get-Date) -lt $deadline) {
         try {
-            $items = Invoke-ResiliencyWithRetry -TimeoutMinutes 5 {
+            $items = Invoke-ResiliencyWithRetry -Setup -TimeoutMinutes 5 {
                 Invoke-ResiliencyFixtureRequest GET "$($env.serviceGroupId)/providers/Microsoft.AzureResilienceManagement/unifiedResilienceItems?api-version=2026-10-01"
             }
             $item = @($items.value) | Select-Object -First 1
@@ -360,14 +373,14 @@ function setupEnv() {
         Owner = 'azurepowershell'
         Workload = 'powershell-tests'
     }
-    $null = Invoke-ResiliencyWithRetry {
+    $null = Invoke-ResiliencyWithRetry -Setup {
         Invoke-ResiliencyFixtureRequest PUT "$($env.resourceGroupId)?api-version=2024-03-01" @{ location = $env.location; tags = $tags }
     }
 
     $deploymentPath = "$($env.resourceGroupId)/providers/Microsoft.Resources/deployments/resiliency-zonal-vm?api-version=2025-04-01"
     $deployment = Get-ResiliencyFixtureResource $deploymentPath
     if (-not $deployment -or $deployment.properties.provisioningState -ne 'Succeeded') {
-        $null = Invoke-ResiliencyWithRetry {
+        $null = Invoke-ResiliencyWithRetry -Setup {
             Invoke-ResiliencyFixtureRequest PUT $deploymentPath @{
                 properties = @{
                     mode = 'Incremental'
@@ -389,7 +402,7 @@ function setupEnv() {
 
     $planPath = "$($env.usagePlanId)?api-version=2026-10-01"
     if (-not (Get-ResiliencyFixtureResource $planPath)) {
-        $null = Invoke-ResiliencyWithRetry {
+        $null = Invoke-ResiliencyWithRetry -Setup {
             Invoke-ResiliencyFixtureRequest PUT $planPath @{ location = 'global'; properties = @{ planType = 'Standard' } }
         }
     }
@@ -403,7 +416,7 @@ function setupEnv() {
     # Warm up linked authorization on the second service group used by the enrollment create/delete tests.
     $warmupName = "$($env.enrollmentName)-warmup"
     New-ResiliencyEnrollmentFixture $env.usagePlanName $warmupName $env.enrollmentServiceGroupId
-    $null = Invoke-ResiliencyWithRetry {
+    $null = Invoke-ResiliencyWithRetry -Setup {
         Invoke-ResiliencyFixtureRequest DELETE "$($env.usagePlanId)/enrollments/$warmupName`?api-version=2026-10-01"
     }
     $deadline = (Get-Date).AddMinutes(15)
@@ -412,7 +425,7 @@ function setupEnv() {
     }
 
     $null = Wait-ResiliencyFixtureProvisioning $deploymentPath 'zonal VM deployment' -TimeoutMinutes 30
-    $null = Invoke-ResiliencyWithRetry {
+    $null = Invoke-ResiliencyWithRetry -Setup {
         Invoke-ResiliencyFixtureRequest PUT (Get-ResiliencyMembershipPath) @{
             properties = @{ sourceId = $env.serviceGroupId; sourceTenant = $env.Tenant }
         }
@@ -431,14 +444,14 @@ function setupEnv() {
 function Remove-ResiliencyFixtureChildren {
     param([string]$ListPath)
 
-    $children = Invoke-ResiliencyWithRetry -TimeoutMinutes 10 { Get-ResiliencyFixtureResource $ListPath }
+    $children = Invoke-ResiliencyWithRetry -Setup -TimeoutMinutes 10 { Get-ResiliencyFixtureResource $ListPath }
     foreach ($child in @($children.value)) {
-        $null = Invoke-ResiliencyWithRetry -TimeoutMinutes 10 {
+        $null = Invoke-ResiliencyWithRetry -Setup -TimeoutMinutes 10 {
             Invoke-ResiliencyFixtureRequest DELETE "$($child.id)?api-version=2026-10-01"
         }
     }
     $deadline = (Get-Date).AddMinutes(15)
-    while (@((Invoke-ResiliencyWithRetry -TimeoutMinutes 10 { Get-ResiliencyFixtureResource $ListPath }).value).Count -gt 0 -and (Get-Date) -lt $deadline) {
+    while (@((Invoke-ResiliencyWithRetry -Setup -TimeoutMinutes 10 { Get-ResiliencyFixtureResource $ListPath }).value).Count -gt 0 -and (Get-Date) -lt $deadline) {
         Start-TestSleep -Seconds 15
     }
 }

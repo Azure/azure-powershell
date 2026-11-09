@@ -18,16 +18,7 @@ Describe 'Remove-AzResiliencyGoalAssignment' {
     BeforeAll {
         # Only one goal assignment may exist per service group, so each scenario creates and deletes its own goal.
         function New-TestGoalAssignment([string]$Name) {
-            # -NoWait: the generated create poller expects a Location header that the service does not return.
-            $null = Invoke-ResiliencyWithRetry { New-AzResiliencyGoalAssignment -ServiceGroupName $env.goalServiceGroupName -Name $Name -RequireZonalResiliency -NoWait }
-            $deadline = (Get-Date).AddMinutes(15)
-            do {
-                $goal = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignment -ServiceGroupName $env.goalServiceGroupName -Name $Name }
-                if ($goal.ProvisioningState -in 'Succeeded', 'Failed', 'Canceled') {
-                    break
-                }
-                Start-TestSleep -Seconds 15
-            } while ((Get-Date) -lt $deadline)
+            $goal = Invoke-ResiliencyWithRetry { New-AzResiliencyGoalAssignment -ServiceGroupName $env.goalServiceGroupName -Name $Name -RequireZonalResiliency }
             $goal.ProvisioningState | Should -Be 'Succeeded'
             return $goal
         }

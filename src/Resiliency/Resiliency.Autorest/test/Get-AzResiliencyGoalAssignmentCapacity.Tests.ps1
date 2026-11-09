@@ -19,10 +19,13 @@ Describe 'Get-AzResiliencyGoalAssignmentCapacity' {
         $goalParameters = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
         $goalIdentity = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
         $body = @{ resourceIds = @($env.vmId) }
-        # The service completes the recommendation as a long-running operation; the cmdlet surfaces the final
-        # result without per-resource capacities (see test report), so only a successful, error-free call is asserted.
+        # The service returns the recommendation as an operation-status record whose properties are a JSON-encoded
+        # string; the module decodes it (dcabe291). For this VM the service returns no capacities or recommendations,
+        # so the lists are empty: assert they were decoded (an empty list, not null) and that there is no agent error.
         function Assert-Capacity([object]$Result) {
             $Result | Should -Not -BeNullOrEmpty
+            $null -ne $Result.ResourceCapacity | Should -BeTrue -Because 'resourceCapacities is decoded from the string-encoded properties'
+            $null -ne $Result.Recommendation | Should -BeTrue -Because 'recommendations is decoded from the string-encoded properties'
             $Result.AgentError | Should -BeNullOrEmpty
         }
     }
