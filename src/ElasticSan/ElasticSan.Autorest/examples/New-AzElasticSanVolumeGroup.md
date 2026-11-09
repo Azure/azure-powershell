@@ -171,3 +171,18 @@ Type                                                   : Microsoft.ElasticSan/el
 ```
 
 This command creates a volume group with EnforceDataIntegrityCheckForIscsi disabled.
+
+### Example 6: Create V2 volume groups with quality of service settings
+```powershell
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name mygeneralpurposegroup -ProtocolType Iscsi -QualityOfService GeneralPurpose
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name myperformancegroup -ProtocolType Iscsi -QualityOfService PerformanceCritical -ReservedIops 10000 -ReservedMBps 400
+```
+
+These commands create GeneralPurpose and PerformanceCritical volume groups in a V2 Elastic SAN. Performance reservations apply only to PerformanceCritical volume groups.
+
+### Example 7: Create an iSCSI volume group with encryption in transit
+```powershell
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myencryptedgroup -ProtocolType Iscsi -EncryptionInTransit
+```
+
+This command enables encryption in transit for an iSCSI volume group. Use `-EncryptionInTransit:$false` to explicitly disable it. Encryption in transit is separate from encryption at rest and data-integrity checking.

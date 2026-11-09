@@ -38,3 +38,10 @@ VolumeGroupCount             : 0
 ```
 
 This command updates properties of an Elastic SAN. 
+
+### Example 2: Update V2 capacity and performance
+```powershell
+Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsanv2 -TotalSizeTiB 20 -TotalIops 100000 -TotalMBps 4000
+```
+
+This command updates the total capacity, IOPS and throughput of a V2 Elastic SAN. The legacy TotalIop parameter name remains available as an alias for TotalIops.

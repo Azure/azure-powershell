@@ -21,14 +21,14 @@ Describe 'Get-AzElasticSan' {
     }
 
     It 'Get' {
-        $elasticSan = Get-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName1
-        $elasticSan.Name | Should -Be $env.ElasticSanName1
+        $elasticSan = Get-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName2
+        $elasticSan.Name | Should -Be $env.ElasticSanName2
         $elasticSan.BaseSizeTib | Should -Be $env.BaseSizeTib
         $elasticSan.ExtendedCapacitySizeTib | Should -Be $env.ExtendedCapacitySizeTib
         $elasticSan.Tag.Count | Should -BeGreaterOrEqual 1
 
         $elasticSan = Get-AzElasticSan -ResourceGroupName $env.ResourceGroupName2 -Name $env.ElasticSanName3
-        $elasticSan.PrivateEndpointConnection.Count | Should -Be 3
+        $elasticSan.PrivateEndpointConnection.Count | Should -Be 2
         foreach ($connection in $elasticSan.PrivateEndpointConnection) {
             $connection.Name | Should -Not -BeNullOrEmpty
             $connection.PrivateEndpointId | Should -Not -BeNullOrEmpty

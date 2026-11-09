@@ -114,6 +114,12 @@ function New-AzElasticSanVolumeGroup {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # A boolean indicating whether or not encryption in transit is enabled. Supported only for ISCSI protocol.
+        ${EncryptionInTransit},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
         [System.Boolean]
         # A boolean indicating whether or not Data Integrity Check is enabled
         ${EnforceDataIntegrityCheckForIscsi},
@@ -165,11 +171,33 @@ function New-AzElasticSanVolumeGroup {
         ${NetworkAclsVirtualNetworkRule},
     
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
         [System.String]
         # Type of storage target
         ${ProtocolType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("GeneralPurpose", "PerformanceCritical")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.String]
+        # Quality of service tier for the volume group. Applicable to V2 Elastic SANs only.
+        ${QualityOfService},
+
+        [Parameter()]
+        [Alias('ReservedIop')]
+        [ValidateRange(0, 2147483647)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.Int32]
+        # Reserved IOPS for the volume group. Applicable to PerformanceCritical volume groups only.
+        ${ReservedIops},
+
+        [Parameter()]
+        [ValidateRange(0, 2147483647)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.Int32]
+        # Reserved throughput in MBps for the volume group. Applicable to PerformanceCritical volume groups only.
+        ${ReservedMBps},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]

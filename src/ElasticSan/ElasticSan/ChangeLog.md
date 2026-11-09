@@ -4,6 +4,8 @@
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
     ## Upcoming Release
+    * Fixed V2 autoscale SKU lookup to match display-form locations such as East US to eastus.
+    * Rejected `AutoScalePolicyEnforcement None` when creating a V2 SAN, in addition to Disabled.
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -18,6 +20,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added autoscale defaults when creating V2 SANs with `New-AzElasticSan`.
+    - Defaulted enforcement to Enabled, the capacity increase to 1 TiB and the unused-capacity threshold to 1 TiB.
+    - Queried the selected SKU in the target region to cap the default scale-up limit at the smaller of five times provisioned size and the regional maximum total capacity.
+    - Preserved explicit inputs and skipped the SKU lookup when a scale-up limit was supplied.
+* Rejected explicitly disabled autoscale when creating a V2 SAN with `New-AzElasticSan`.
+* Improved validation of the packaged module when running playback tests.
+* Fixed identity-based background jobs in `New-AzElasticSan`, `New-AzElasticSanVolumeGroup` and `Update-AzElasticSanVolumeGroup`.
+* Added `EncryptionInTransit` to `New-AzElasticSanVolumeGroup` for iSCSI volume groups.
+* Standardized reservation output properties to `ReservedIops` and `TotalReservedIops`.
+    - Preserved `ReservedIop` and `TotalReservedIop` as compatibility properties.
+* Added `ElasticSAN_LRS` to SKU name completion in `New-AzElasticSan`.
+* Added `DirectAttach` to protocol completion in `New-AzElasticSanVolumeGroup` and `Update-AzElasticSanVolumeGroup`.
+* Added V2 volume-group quality of service and performance reservation inputs.
+    - Supported `QualityOfService`, `ReservedIops` and `ReservedMBps` in `New-AzElasticSanVolumeGroup`.
+    - Supported `ReservedIops` and `ReservedMBps` in `Update-AzElasticSanVolumeGroup`.
+* Standardized the SAN creation and update parameter name to `TotalIops`.
+    - Preserved `TotalIop` as an alias for compatibility with existing scripts.
+* Added V2 creation inputs to `New-AzElasticSan`.
+    - Supported `Version`, `TotalSizeTiB`, `TotalIops` and `TotalMBps`.
+    - Preserved default base and extended capacities for V1 without adding them to V2 requests.
+    - Reported a clear error before sending V2 creation requests when a required total capacity or performance input is omitted.
 * Added support for restoring soft-deleted volumes.
     - `Restore-AzElasticSanVolume`
     - Supported identity-based restore operations running as background jobs.
