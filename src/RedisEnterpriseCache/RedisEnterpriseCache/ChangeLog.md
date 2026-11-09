@@ -19,7 +19,10 @@
 -->
 ## Upcoming Release
 * Upgraded code generator. See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
-* Added support for API version 2026-09-01
+* Added support for preview API version 2026-10-01-preview
+* Added `FirewallRule` to `New-AzRedisEnterpriseCache` and `Update-AzRedisEnterpriseCache` for configuring Azure Managed Redis firewall rules
+* Added `AccessString` to `New-AzRedisEnterpriseCacheAccessPolicyAssignment` for configuring custom Redis access control list permissions
+* Added access policy assignment provisioning error details to command output
 * Added `Get-AzRedisEnterpriseCacheMigration` cmdlet to get information about a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis
 * Added `Start-AzRedisEnterpriseCacheMigration` cmdlet to start a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis
 * Added `Undo-AzRedisEnterpriseCacheMigration` cmdlet to cancel or rollback a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis

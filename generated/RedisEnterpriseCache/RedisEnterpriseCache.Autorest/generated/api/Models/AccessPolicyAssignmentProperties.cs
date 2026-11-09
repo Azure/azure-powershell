@@ -17,16 +17,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         private string _accessPolicyName;
 
         /// <summary>
-        /// Name of access policy under specific access policy assignment. Only "default" policy is supported for now.
+        /// **Deprecated.** This property always returns "default". Use `accessString` to configure custom Redis ACL permissions instead.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         public string AccessPolicyName { get => this._accessPolicyName; set => this._accessPolicyName = value; }
+
+        /// <summary>Backing field for <see cref="AccessString" /> property.</summary>
+        private string _accessString;
+
+        /// <summary>
+        /// The Redis ACL permissions string applied to this assignment, for example `+@read ~cache:*`. Defaults to `+@all ~*` if
+        /// not specified.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
+        public string AccessString { get => this._accessString; set => this._accessString = value; }
+
+        /// <summary>Internal Acessors for ProvisioningError</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningError Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentPropertiesInternal.ProvisioningError { get => (this._provisioningError = this._provisioningError ?? new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.AccessPolicyAssignmentProvisioningError()); set { {_provisioningError = value;} } }
+
+        /// <summary>Internal Acessors for ProvisioningErrorCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentPropertiesInternal.ProvisioningErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningErrorInternal)ProvisioningError).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningErrorInternal)ProvisioningError).Code = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentPropertiesInternal.ProvisioningErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningErrorInternal)ProvisioningError).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningErrorInternal)ProvisioningError).Message = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorTarget</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentPropertiesInternal.ProvisioningErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningErrorInternal)ProvisioningError).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningErrorInternal)ProvisioningError).Target = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Internal Acessors for User</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentPropertiesUser Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentPropertiesInternal.User { get => (this._user = this._user ?? new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.AccessPolicyAssignmentPropertiesUser()); set { {_user = value;} } }
+
+        /// <summary>Backing field for <see cref="ProvisioningError" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningError _provisioningError;
+
+        /// <summary>
+        /// Provisioning error details when the access string failed to apply (e.g., invalid ACL syntax). Null when provisioning succeeded.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningError ProvisioningError { get => (this._provisioningError = this._provisioningError ?? new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.AccessPolicyAssignmentProvisioningError()); }
+
+        /// <summary>Machine-readable error code (e.g., "InvalidAccessString").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
+        public string ProvisioningErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningErrorInternal)ProvisioningError).Code; }
+
+        /// <summary>Human-readable error message describing the failure.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
+        public string ProvisioningErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningErrorInternal)ProvisioningError).Message; }
+
+        /// <summary>The property that caused the error (e.g., "properties.accessString").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
+        public string ProvisioningErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningErrorInternal)ProvisioningError).Target; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -57,18 +100,65 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// Name of access policy under specific access policy assignment. Only "default" policy is supported for now.
+        /// **Deprecated.** This property always returns "default". Use `accessString` to configure custom Redis ACL permissions instead.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of access policy under specific access policy assignment. Only ""default"" policy is supported for now.",
+        Description = @"**Deprecated.** This property always returns ""default"". Use `accessString` to configure custom Redis ACL permissions instead.",
         SerializedName = @"accessPolicyName",
         PossibleTypes = new [] { typeof(string) })]
         string AccessPolicyName { get; set; }
+        /// <summary>
+        /// The Redis ACL permissions string applied to this assignment, for example `+@read ~cache:*`. Defaults to `+@all ~*` if
+        /// not specified.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The Redis ACL permissions string applied to this assignment, for example `+@read ~cache:*`. Defaults to `+@all ~*` if not specified.",
+        SerializedName = @"accessString",
+        PossibleTypes = new [] { typeof(string) })]
+        string AccessString { get; set; }
+        /// <summary>Machine-readable error code (e.g., "InvalidAccessString").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Machine-readable error code (e.g., ""InvalidAccessString"").",
+        SerializedName = @"code",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProvisioningErrorCode { get;  }
+        /// <summary>Human-readable error message describing the failure.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Human-readable error message describing the failure.",
+        SerializedName = @"message",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProvisioningErrorMessage { get;  }
+        /// <summary>The property that caused the error (e.g., "properties.accessString").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The property that caused the error (e.g., ""properties.accessString"").",
+        SerializedName = @"target",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProvisioningErrorTarget { get;  }
         /// <summary>Current provisioning status of the access policy assignment.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
@@ -99,9 +189,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 
     {
         /// <summary>
-        /// Name of access policy under specific access policy assignment. Only "default" policy is supported for now.
+        /// **Deprecated.** This property always returns "default". Use `accessString` to configure custom Redis ACL permissions instead.
         /// </summary>
         string AccessPolicyName { get; set; }
+        /// <summary>
+        /// The Redis ACL permissions string applied to this assignment, for example `+@read ~cache:*`. Defaults to `+@all ~*` if
+        /// not specified.
+        /// </summary>
+        string AccessString { get; set; }
+        /// <summary>
+        /// Provisioning error details when the access string failed to apply (e.g., invalid ACL syntax). Null when provisioning succeeded.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningError ProvisioningError { get; set; }
+        /// <summary>Machine-readable error code (e.g., "InvalidAccessString").</summary>
+        string ProvisioningErrorCode { get; set; }
+        /// <summary>Human-readable error message describing the failure.</summary>
+        string ProvisioningErrorMessage { get; set; }
+        /// <summary>The property that caused the error (e.g., "properties.accessString").</summary>
+        string ProvisioningErrorTarget { get; set; }
         /// <summary>Current provisioning status of the access policy assignment.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting")]
         string ProvisioningState { get; set; }

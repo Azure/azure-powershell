@@ -18,28 +18,29 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Lo
  [-SubscriptionId <String>] [-AccessKeysAuthentication <String>] [-AofPersistenceEnabled]
  [-AofPersistenceFrequency <String>] [-Capacity <Int32>] [-ClientProtocol <String>]
  [-ClusteringPolicy <String>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-EnableSystemAssignedIdentity]
- [-EvictionPolicy <String>] [-GroupNickname <String>] [-HighAvailability <String>]
- [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
- [-LinkedDatabase <ILinkedDatabase[]>] [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>]
- [-MinimumTlsVersion <String>] [-Module <IModule[]>] [-NotifyKeyspaceEvents <String>] [-Port <Int32>]
- [-PublicNetworkAccess <String>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EvictionPolicy <String>] [-FirewallRule <IFirewallRule[]>] [-GroupNickname <String>]
+ [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
+ [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-LinkedDatabase <ILinkedDatabase[]>]
+ [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-MinimumTlsVersion <String>]
+ [-Module <IModule[]>] [-NotifyKeyspaceEvents <String>] [-Port <Int32>] [-PublicNetworkAccess <String>]
+ [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateClusterOnly
 ```
 New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Location <String> -Sku <String>
  -NoDatabase [-SubscriptionId <String>] [-Capacity <Int32>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
- [-EnableSystemAssignedIdentity] [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
+ [-EnableSystemAssignedIdentity] [-FirewallRule <IFirewallRule[]>] [-HighAvailability <String>]
+ [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-MinimumTlsVersion <String>]
  [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Zone <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
+Creates or updates a cache cluster with an associated database.
 
 ## EXAMPLES
 
@@ -99,7 +100,8 @@ East US  Cache1 Microsoft.Cache/redisEnterprise      {default}
 
 ```
 
-This command creates Cache1 and adds it to a new active geo-replication group. The `-LinkedDatabase` value must include Cache1's own default database resource ID.
+This command creates Cache1 and adds it to a new active geo-replication group.
+The `-LinkedDatabase` value must include Cache1's own default database resource ID.
 
 ### Example 5: Create a cache in an existing active geo-replication group
 ```powershell
@@ -115,7 +117,8 @@ Location Name   Type                            Zone Database
 West US  Cache2 Microsoft.Cache/redisEnterprise      {default}
 ```
 
-This command creates Cache2 and adds it to the active geo-replication group containing Cache1. The `-LinkedDatabase` value includes the default database resource IDs for both caches.
+This command creates Cache2 and adds it to the active geo-replication group containing Cache1.
+The `-LinkedDatabase` value includes the default database resource IDs for both caches.
 
 ### Example 6: Create a Redis Enterprise cache with a maintenance window
 ```powershell
@@ -327,6 +330,24 @@ Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU,
 ```yaml
 Type: System.String
 Parameter Sets: CreateClusterWithDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallRule
+The complete set of firewall rules for the cluster.
+A supplied array replaces all existing rules; omitting the parameter or supplying an empty array clears all rules.
+At most 250 rules are supported.
+Non-empty rules require public network access to be enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False

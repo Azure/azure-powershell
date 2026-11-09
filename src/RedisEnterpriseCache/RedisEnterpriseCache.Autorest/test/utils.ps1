@@ -224,6 +224,9 @@ function Initialize-TestFixture {
 function Invoke-ScenarioRecordingSanitizer {
     foreach ($scenario in Get-SelectedTestScenarios) {
         $recordingPath = Join-Path $PSScriptRoot $scenario.Recording
+        if (-not (Test-Path $recordingPath)) {
+            continue
+        }
         $content = Get-Content $recordingPath -Raw
 
         foreach ($property in $playbackEnvironment.PSObject.Properties) {

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"Validates whether an Azure Cache for Redis Basic, Standard, or Premium cache can be migrated to Azure Managed Redis.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default/validate", ApiVersion = "2026-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default/validate", ApiVersion = "2026-10-01-preview")]
     public partial class TestAzRedisEnterpriseCacheMigration_ValidateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IContext

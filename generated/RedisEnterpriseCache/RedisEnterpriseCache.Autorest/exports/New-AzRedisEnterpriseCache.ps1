@@ -18,7 +18,7 @@
 .Synopsis
 Creates a Redis Enterprise cache.
 .Description
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
+Creates or updates a cache cluster with an associated database.
 .Example
 New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -PublicNetworkAccess "Enabled"
 .Example
@@ -49,6 +49,10 @@ Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+FIREWALLRULE <IFirewallRule[]>: The complete set of firewall rules for the cluster. A supplied array replaces all existing rules; omitting the parameter or supplying an empty array clears all rules. At most 250 rules are supported. Non-empty rules require public network access to be enabled.
+  Name <String>: The name of the firewall rule, unique within the cluster ignoring case. Must be 1-80 characters and contain only letters, numbers, hyphens, or underscores.
+  SourceAddressPrefix <String>: An IPv4 address (for example, "203.0.113.1"), IPv4 CIDR prefix (for example, "203.0.113.0/24"), or Azure service tag (for example, "AzureCloud"). IPv6 addresses are not supported.
 
 LINKEDDATABASE <ILinkedDatabase[]>: List of database resources to link with this database To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
   [Id <String>]: Resource ID of a database resource to link with this database.
@@ -235,6 +239,16 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule[]]
+    # The complete set of firewall rules for the cluster.
+    # A supplied array replaces all existing rules; omitting the parameter or supplying an empty array clears all rules.
+    # At most 250 rules are supported.
+    # Non-empty rules require public network access to be enabled.
+    ${FirewallRule},
 
     [Parameter()]
     [AllowEmptyCollection()]

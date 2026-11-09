@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create an existing (overwrite/recreate  with potential downtime) cache cluster
+Create an existing Redis Enterprise cluster.
 .Description
-Create an existing (overwrite/recreate  with potential downtime) cache cluster
+Create an existing Redis Enterprise cluster.
 .Example
 New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -PublicNetworkAccess "Enabled"
 .Example
@@ -51,6 +51,10 @@ Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+FIREWALLRULE <IFirewallRule[]>: The complete set of firewall rules for an Azure Managed Redis (AMR) cluster. At most 250 rules are supported, and non-empty rules require publicNetworkAccess to be Enabled.On PUT, the supplied array replaces all existing rules. Omitting this property or supplying an empty array clears all rules.On PATCH, omitting this property preserves existing rules. A supplied array replaces all existing rules; rules absent from it are deleted. Supplying an empty array clears all rules.Disabling publicNetworkAccess also clears existing rules. With publicNetworkAccess Enabled, an empty rule set allows all public traffic; it does not deny all traffic.Firewall rule changes cannot be combined with scaling or encryption changes in the same update request.
+  Name <String>: The name of the firewall rule, unique within the cluster ignoring case. Must be 1-80 characters and contain only letters, numbers, hyphens, or underscores.
+  SourceAddressPrefix <String>: An IPv4 address (for example, "203.0.113.1"), IPv4 CIDR prefix (for example, "203.0.113.0/24"), or Azure service tag (for example, "AzureCloud"). IPv6 addresses are not supported.
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
@@ -153,6 +157,19 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule[]]
+    # The complete set of firewall rules for an Azure Managed Redis (AMR) cluster.
+    # At most 250 rules are supported, and non-empty rules require publicNetworkAccess to be Enabled.On PUT, the supplied array replaces all existing rules.
+    # Omitting this property or supplying an empty array clears all rules.On PATCH, omitting this property preserves existing rules.
+    # A supplied array replaces all existing rules; rules absent from it are deleted.
+    # Supplying an empty array clears all rules.Disabling publicNetworkAccess also clears existing rules.
+    # With publicNetworkAccess Enabled, an empty rule set allows all public traffic; it does not deny all traffic.Firewall rule changes cannot be combined with scaling or encryption changes in the same update request.
+    ${FirewallRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]

@@ -144,18 +144,28 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityRedisEnterpriseExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
     [System.String]
-    # Name of access policy under specific access policy assignment.
-    # Only "default" policy is supported for now.
-    ${AccessPolicyName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityDatabaseExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityRedisEnterpriseExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [System.String]
     # The object ID of the user.
     ${UserObjectId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDatabaseExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRedisEnterpriseExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # **Deprecated.** This property always returns "default".
+    # Use `accessString` to configure custom Redis ACL permissions instead.
+    ${AccessPolicyName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityDatabaseExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRedisEnterpriseExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # The Redis ACL permissions string applied to this assignment, for example `+@read ~cache:*`.
+    # Defaults to `+@all ~*` if not specified.
+    ${AccessString},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]

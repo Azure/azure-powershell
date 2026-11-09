@@ -32,14 +32,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-# Pin the stable 2026-09-01 specification commit for reproducible generation.
-commit: 14c9159287e432eb9dfec9f51b0adc119270d693
+# Pin the preview 2026-10-01 specification commit for reproducible generation.
+commit: d041be265dd43bd327700a880c4632952b03aab7
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/stable/2026-09-01/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-10-01-preview/redisenterprise.json
 
-module-version: 2.1.0
+module-version: 2.2.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
 
@@ -82,6 +82,10 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
     transform: $['description'] = 'Creates or updates a particular access policy assignment for a database'
+  # Correct the cluster PUT description used by generated service APIs.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}"].put
+    transform: $['description'] = 'Creates or updates an existing Redis Enterprise cluster.'
   # This will remove the 'RedisEnterprise' prefix from the subject of every cmdlet
   # beginning with 'RedisEnterprise', because we have already set the subject-prefix above
   - where:
@@ -125,6 +129,12 @@ directive:
       subject: Migration
     set:
       command-description: Cancels or rolls back a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
+  # Preserve the established user-facing description instead of the raw service operation wording.
+  - where:
+      verb: Update
+      subject: ^$
+    set:
+      command-description: Updates an existing Redis Enterprise cluster.
   - where:
       verb: Invoke
       subject: MigrationUnlinkMigratedEndpoint
@@ -253,6 +263,13 @@ directive:
       property-name: NotifyKeyspaceEvent
     set:
       property-name: NotifyKeyspaceEvents
+  # Keep the generated firewall parameter help concise while retaining the replacement semantics.
+  - where:
+      verb: Update
+      subject: ^$
+      parameter-name: FirewallRule
+    set:
+      parameter-description: The complete set of firewall rules for the cluster. Omitting this parameter preserves existing rules. An empty array clears all rules, and a non-empty array replaces all rules. At most 250 rules are supported, and non-empty rules require public network access to be enabled. Firewall rules cannot be changed together with scaling or encryption settings.
 
   # Remove unused variants
   - where:

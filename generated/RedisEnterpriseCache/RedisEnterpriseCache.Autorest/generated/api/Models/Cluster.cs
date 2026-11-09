@@ -26,6 +26,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         public string CustomerManagedKeyEncryptionKeyUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).CustomerManagedKeyEncryptionKeyUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).CustomerManagedKeyEncryptionKeyUrl = value ?? null; }
 
         /// <summary>
+        /// The complete set of firewall rules for an Azure Managed Redis (AMR) cluster. At most 250 rules are supported, and non-empty
+        /// rules require publicNetworkAccess to be Enabled.
+        /// On PUT, the supplied array replaces all existing rules. Omitting this property or supplying an empty array clears all
+        /// rules.
+        /// On PATCH, omitting this property preserves existing rules. A supplied array replaces all existing rules; rules absent
+        /// from it are deleted. Supplying an empty array clears all rules.
+        /// Disabling publicNetworkAccess also clears existing rules. With publicNetworkAccess Enabled, an empty rule set allows all
+        /// public traffic; it does not deny all traffic.
+        /// Firewall rule changes cannot be combined with scaling or encryption changes in the same update request.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule> FirewallRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).FirewallRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).FirewallRule = value ?? null /* arrayOf */; }
+
+        /// <summary>
         /// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA,
         /// and increases the risk of data loss.
         /// </summary>
@@ -350,6 +364,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         PossibleTypes = new [] { typeof(string) })]
         string CustomerManagedKeyEncryptionKeyUrl { get; set; }
         /// <summary>
+        /// The complete set of firewall rules for an Azure Managed Redis (AMR) cluster. At most 250 rules are supported, and non-empty
+        /// rules require publicNetworkAccess to be Enabled.
+        /// On PUT, the supplied array replaces all existing rules. Omitting this property or supplying an empty array clears all
+        /// rules.
+        /// On PATCH, omitting this property preserves existing rules. A supplied array replaces all existing rules; rules absent
+        /// from it are deleted. Supplying an empty array clears all rules.
+        /// Disabling publicNetworkAccess also clears existing rules. With publicNetworkAccess Enabled, an empty rule set allows all
+        /// public traffic; it does not deny all traffic.
+        /// Firewall rule changes cannot be combined with scaling or encryption changes in the same update request.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The complete set of firewall rules for an Azure Managed Redis (AMR) cluster. At most 250 rules are supported, and non-empty rules require publicNetworkAccess to be Enabled.
+
+        On PUT, the supplied array replaces all existing rules. Omitting this property or supplying an empty array clears all rules.
+
+        On PATCH, omitting this property preserves existing rules. A supplied array replaces all existing rules; rules absent from it are deleted. Supplying an empty array clears all rules.
+
+        Disabling publicNetworkAccess also clears existing rules. With publicNetworkAccess Enabled, an empty rule set allows all public traffic; it does not deny all traffic.
+
+        Firewall rule changes cannot be combined with scaling or encryption changes in the same update request.",
+        SerializedName = @"firewallRules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule> FirewallRule { get; set; }
+        /// <summary>
         /// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA,
         /// and increases the risk of data loss.
         /// </summary>
@@ -649,6 +692,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// key encryption.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionCustomerManagedKeyEncryption EncryptionCustomerManagedKeyEncryption { get; set; }
+        /// <summary>
+        /// The complete set of firewall rules for an Azure Managed Redis (AMR) cluster. At most 250 rules are supported, and non-empty
+        /// rules require publicNetworkAccess to be Enabled.
+        /// On PUT, the supplied array replaces all existing rules. Omitting this property or supplying an empty array clears all
+        /// rules.
+        /// On PATCH, omitting this property preserves existing rules. A supplied array replaces all existing rules; rules absent
+        /// from it are deleted. Supplying an empty array clears all rules.
+        /// Disabling publicNetworkAccess also clears existing rules. With publicNetworkAccess Enabled, an empty rule set allows all
+        /// public traffic; it does not deny all traffic.
+        /// Firewall rule changes cannot be combined with scaling or encryption changes in the same update request.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule> FirewallRule { get; set; }
         /// <summary>
         /// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA,
         /// and increases the risk of data loss.

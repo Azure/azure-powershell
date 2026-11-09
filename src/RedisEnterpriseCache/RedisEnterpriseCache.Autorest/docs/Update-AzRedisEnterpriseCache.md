@@ -16,7 +16,7 @@ Updates an existing Redis Enterprise cluster.
 ```
 Update-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Capacity <Int32>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
+ [-FirewallRule <IFirewallRule[]>] [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-MinimumTlsVersion <String>]
  [-PublicNetworkAccess <String>] [-Sku <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
@@ -27,7 +27,7 @@ Update-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> 
 ```
 Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Capacity <Int32>]
  [-CustomerManagedKeyEncryptionKeyUrl <String>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
+ [-FirewallRule <IFirewallRule[]>] [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
  [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-MinimumTlsVersion <String>]
  [-PublicNetworkAccess <String>] [-Sku <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
@@ -167,6 +167,25 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallRule
+The complete set of firewall rules for the cluster.
+Omitting this parameter preserves existing rules.
+An empty array clears all rules, and a non-empty array replaces all rules.
+At most 250 rules are supported, and non-empty rules require public network access to be enabled.
+Firewall rules cannot be changed together with scaling or encryption settings.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule[]
 Parameter Sets: (All)
 Aliases:
 

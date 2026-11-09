@@ -124,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningError = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningError) content.GetValueForProperty("ProvisioningError",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningError, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.AccessPolicyAssignmentProvisioningErrorTypeConverter.ConvertFrom);
+            }
             if (content.Contains("User"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).User = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentPropertiesUser) content.GetValueForProperty("User",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).User, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.AccessPolicyAssignmentPropertiesUserTypeConverter.ConvertFrom);
@@ -131,6 +135,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("AccessPolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).AccessPolicyName = (string) content.GetValueForProperty("AccessPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).AccessPolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccessString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).AccessString = (string) content.GetValueForProperty("AccessString",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).AccessString, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorCode = (string) content.GetValueForProperty("ProvisioningErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorMessage = (string) content.GetValueForProperty("ProvisioningErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorTarget"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorTarget = (string) content.GetValueForProperty("ProvisioningErrorTarget",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorTarget, global::System.Convert.ToString);
             }
             if (content.Contains("UserObjectId"))
             {
@@ -201,6 +221,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningError = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentProvisioningError) content.GetValueForProperty("ProvisioningError",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningError, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.AccessPolicyAssignmentProvisioningErrorTypeConverter.ConvertFrom);
+            }
             if (content.Contains("User"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).User = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentPropertiesUser) content.GetValueForProperty("User",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).User, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.AccessPolicyAssignmentPropertiesUserTypeConverter.ConvertFrom);
@@ -208,6 +232,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("AccessPolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).AccessPolicyName = (string) content.GetValueForProperty("AccessPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).AccessPolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccessString"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).AccessString = (string) content.GetValueForProperty("AccessString",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).AccessString, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorCode = (string) content.GetValueForProperty("ProvisioningErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorMessage = (string) content.GetValueForProperty("ProvisioningErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningErrorTarget"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorTarget = (string) content.GetValueForProperty("ProvisioningErrorTarget",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentInternal)this).ProvisioningErrorTarget, global::System.Convert.ToString);
             }
             if (content.Contains("UserObjectId"))
             {

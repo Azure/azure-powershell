@@ -24,6 +24,9 @@ Describe 'AzRedisEnterpriseCacheClusterLifecycle' {
             ClusteringPolicy = 'OSSCluster'
             EvictionPolicy = 'VolatileLRU'
             PublicNetworkAccess = 'Enabled'
+            FirewallRule = @(
+                @{Name='initial-rule'; SourceAddressPrefix='203.0.113.0/24'}
+            )
             AccessKeysAuthentication = 'Enabled'
             NotifyKeyspaceEvents = 'KEA'
             MaintenanceConfigurationMaintenanceWindow = @(
@@ -49,6 +52,9 @@ Describe 'AzRedisEnterpriseCacheClusterLifecycle' {
         $cache.Database['default'].ResourceState | Should -Be 'Running'
         $cache.Database['default'].NotifyKeyspaceEvents | Should -Be $splat.NotifyKeyspaceEvents
         $cache.IdentityType | Should -Be 'SystemAssigned'
+        @($cache.FirewallRule).Count | Should -Be 1
+        $cache.FirewallRule[0].Name | Should -Be 'initial-rule'
+        $cache.FirewallRule[0].SourceAddressPrefix | Should -Be '203.0.113.0/24'
         $cache.MaintenanceConfigurationMaintenanceWindow.Count | Should -Be 2
         $cache.MaintenanceConfigurationMaintenanceWindow[0].ScheduleDayOfWeek | Should -Be 'Monday'
         $cache.MaintenanceConfigurationMaintenanceWindow[0].StartHourUtc | Should -Be 6
@@ -77,6 +83,19 @@ Describe 'AzRedisEnterpriseCacheClusterLifecycle' {
         $cache.MaintenanceConfigurationMaintenanceWindow.Count | Should -Be 2
         $cache.MaintenanceConfigurationMaintenanceWindow[0].ScheduleDayOfWeek | Should -Be 'Wednesday'
         $cache.MaintenanceConfigurationMaintenanceWindow[0].StartHourUtc | Should -Be 10
+    }
+
+    It 'Replaces and clears firewall rules' {
+        $rules = @(
+            @{Name='replacement-rule'; SourceAddressPrefix='AzureCloud'}
+        )
+        $cache = Update-AzRedisEnterpriseCache -Name $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName -FirewallRule $rules
+        @($cache.FirewallRule).Count | Should -Be 1
+        $cache.FirewallRule[0].Name | Should -Be 'replacement-rule'
+        $cache.FirewallRule[0].SourceAddressPrefix | Should -Be 'AzureCloud'
+
+        $cache = Update-AzRedisEnterpriseCache -Name $env.ClusterLifecycleClusterName -ResourceGroupName $env.ClusterLifecycleResourceGroupName -FirewallRule @()
+        @($cache.FirewallRule).Count | Should -Be 0
     }
 
     It 'Gets and lists the cache' {

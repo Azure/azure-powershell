@@ -43,6 +43,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionCustomerManagedKeyEncryption EncryptionCustomerManagedKeyEncryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)__clusterProperties).EncryptionCustomerManagedKeyEncryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)__clusterProperties).EncryptionCustomerManagedKeyEncryption = value ?? null /* model class */; }
 
         /// <summary>
+        /// The complete set of firewall rules for an Azure Managed Redis (AMR) cluster. At most 250 rules are supported, and non-empty
+        /// rules require publicNetworkAccess to be Enabled.
+        /// On PUT, the supplied array replaces all existing rules. Omitting this property or supplying an empty array clears all
+        /// rules.
+        /// On PATCH, omitting this property preserves existing rules. A supplied array replaces all existing rules; rules absent
+        /// from it are deleted. Supplying an empty array clears all rules.
+        /// Disabling publicNetworkAccess also clears existing rules. With publicNetworkAccess Enabled, an empty rule set allows all
+        /// public traffic; it does not deny all traffic.
+        /// Firewall rule changes cannot be combined with scaling or encryption changes in the same update request.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule> FirewallRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)__clusterProperties).FirewallRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)__clusterProperties).FirewallRule = value ?? null /* arrayOf */; }
+
+        /// <summary>
         /// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA,
         /// and increases the risk of data loss.
         /// </summary>

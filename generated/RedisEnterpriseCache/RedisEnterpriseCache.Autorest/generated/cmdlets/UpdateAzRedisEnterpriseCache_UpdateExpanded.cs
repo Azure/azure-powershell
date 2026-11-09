@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update an existing (overwrite/reupdate with potential downtime) cache cluster</summary>
+    /// <summary>Updates an existing Redis Enterprise cluster.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}"
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}"
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzRedisEnterpriseCache_UpdateExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"update an existing (overwrite/reupdate  with potential downtime) cache cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"Updates an existing Redis Enterprise cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Generated]
     public partial class UpdateAzRedisEnterpriseCache_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener,
@@ -122,6 +122,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
+        /// <summary>
+        /// The complete set of firewall rules for the cluster. Omitting this parameter preserves existing rules. An empty array clears
+        /// all rules, and a non-empty array replaces all rules. At most 250 rules are supported, and non-empty rules require public
+        /// network access to be enabled. Firewall rules cannot be changed together with scaling or encryption settings.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The complete set of firewall rules for the cluster. Omitting this parameter preserves existing rules. An empty array clears all rules, and a non-empty array replaces all rules. At most 250 rules are supported, and non-empty rules require public network access to be enabled. Firewall rules cannot be changed together with scaling or encryption settings.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The complete set of firewall rules for the cluster. Omitting this parameter preserves existing rules. An empty array clears all rules, and a non-empty array replaces all rules. At most 250 rules are supported, and non-empty rules require public network access to be enabled. Firewall rules cannot be changed together with scaling or encryption settings.",
+        SerializedName = @"firewallRules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule[] FirewallRule { get => _parametersBody.FirewallRule?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.FirewallRule = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule>(value) : null); }
 
         /// <summary>
         /// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA,
@@ -719,6 +735,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("MinimumTlsVersion")))
             {
                 this.MinimumTlsVersion = (string)(this.MyInvocation?.BoundParameters["MinimumTlsVersion"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("FirewallRule")))
+            {
+                this.FirewallRule = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule[])(this.MyInvocation?.BoundParameters["FirewallRule"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PublicNetworkAccess")))
             {

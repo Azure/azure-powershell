@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Cmdlets;
     using System;
 
-    /// <summary>create an existing (overwrite/recreate with potential downtime) cache cluster</summary>
+    /// <summary>create an existing Redis Enterprise cluster.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzRedisEnterpriseCache_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"create an existing (overwrite/recreate  with potential downtime) cache cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"create an existing Redis Enterprise cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}", ApiVersion = "2026-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}", ApiVersion = "2026-10-01-preview")]
     public partial class NewAzRedisEnterpriseCache_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IContext
@@ -121,6 +121,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
+        /// <summary>
+        /// The complete set of firewall rules for an Azure Managed Redis (AMR) cluster. At most 250 rules are supported, and non-empty
+        /// rules require publicNetworkAccess to be Enabled.On PUT, the supplied array replaces all existing rules. Omitting this
+        /// property or supplying an empty array clears all rules.On PATCH, omitting this property preserves existing rules. A supplied
+        /// array replaces all existing rules; rules absent from it are deleted. Supplying an empty array clears all rules.Disabling
+        /// publicNetworkAccess also clears existing rules. With publicNetworkAccess Enabled, an empty rule set allows all public
+        /// traffic; it does not deny all traffic.Firewall rule changes cannot be combined with scaling or encryption changes in the
+        /// same update request.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The complete set of firewall rules for an Azure Managed Redis (AMR) cluster. At most 250 rules are supported, and non-empty rules require publicNetworkAccess to be Enabled.On PUT, the supplied array replaces all existing rules. Omitting this property or supplying an empty array clears all rules.On PATCH, omitting this property preserves existing rules. A supplied array replaces all existing rules; rules absent from it are deleted. Supplying an empty array clears all rules.Disabling publicNetworkAccess also clears existing rules. With publicNetworkAccess Enabled, an empty rule set allows all public traffic; it does not deny all traffic.Firewall rule changes cannot be combined with scaling or encryption changes in the same update request.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The complete set of firewall rules for an Azure Managed Redis (AMR) cluster. At most 250 rules are supported, and non-empty rules require publicNetworkAccess to be Enabled.On PUT, the supplied array replaces all existing rules. Omitting this property or supplying an empty array clears all rules.On PATCH, omitting this property preserves existing rules. A supplied array replaces all existing rules; rules absent from it are deleted. Supplying an empty array clears all rules.Disabling publicNetworkAccess also clears existing rules. With publicNetworkAccess Enabled, an empty rule set allows all public traffic; it does not deny all traffic.Firewall rule changes cannot be combined with scaling or encryption changes in the same update request.",
+        SerializedName = @"firewallRules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule[] FirewallRule { get => _parametersBody.FirewallRule?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.FirewallRule = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule>(value) : null); }
 
         /// <summary>
         /// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA,

@@ -16,7 +16,7 @@
 .Synopsis
 Creates a Redis Enterprise cache.
 .Description
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
+Creates or updates a cache cluster with an associated database.
 .Example
 PS C:\> New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -PublicNetworkAccess "Enabled"
 
@@ -48,6 +48,10 @@ To create the parameters described below, construct a hash table containing the 
 MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
   Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+
+FIREWALLRULE <IFirewallRule[]>: The complete set of firewall rules for the cluster. A supplied array replaces all existing rules; omitting the parameter or supplying an empty array clears all rules. At most 250 rules are supported. Non-empty rules require public network access to be enabled.
+  Name <String>: The name of the firewall rule, unique within the cluster ignoring case.
+  SourceAddressPrefix <String>: An IPv4 address, IPv4 CIDR prefix, or Azure service tag.
 
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
@@ -222,6 +226,15 @@ function New-AzRedisEnterpriseCache {
         [System.Management.Automation.SwitchParameter]
         # Determines whether to enable a system-assigned identity for the resource.
         ${EnableSystemAssignedIdentity},
+
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule[]]
+        # The complete set of firewall rules for the cluster.
+        # A supplied array replaces all existing rules; omitting the parameter or supplying an empty array clears all rules.
+        # At most 250 rules are supported. Non-empty rules require public network access to be enabled.
+        ${FirewallRule},
 
         [Parameter()]
         [AllowEmptyCollection()]
@@ -420,6 +433,7 @@ function New-AzRedisEnterpriseCache {
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityUserAssignedIdentityResourceId")
         $null = $PSBoundParameters.Remove("HighAvailability")
         $null = $PSBoundParameters.Remove("PublicNetworkAccess")  # Remove for database creation
+        $null = $PSBoundParameters.Remove("FirewallRule")
         $null = $PSBoundParameters.Remove("MaintenanceConfigurationMaintenanceWindow")
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         $database = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters

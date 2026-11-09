@@ -47,6 +47,19 @@ Describe 'AzRedisEnterpriseCacheDatabaseLifecycle' {
         $databases[0].Type | Should -Be 'Microsoft.Cache/redisEnterprise/databases'
     }
 
+    It 'Creates and removes a custom access policy assignment' {
+        $assignment = New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName customPolicy -ClusterName $env.DatabaseLifecycleClusterName -DatabaseName default -ResourceGroupName $env.DatabaseLifecycleResourceGroupName -UserObjectId '5dce0ce9-f0a7-437f-aea2-760d05c62ca9' -AccessString '+@read ~cache:*'
+        $assignment.Name | Should -Be 'customPolicy'
+        $assignment.AccessPolicyName | Should -Be 'default'
+        $assignment.AccessString | Should -Be '+@read ~cache:*'
+        $assignment.ProvisioningState | Should -Be 'Succeeded'
+        $assignment.ProvisioningError | Should -Be $null
+
+        {
+            Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName customPolicy -ClusterName $env.DatabaseLifecycleClusterName -DatabaseName default -ResourceGroupName $env.DatabaseLifecycleResourceGroupName
+        } | Should -Not -Throw
+    }
+
     It 'Deletes the database and cache' {
         {
             Remove-AzRedisEnterpriseCacheDatabase -Name $env.DatabaseLifecycleClusterName -ResourceGroupName $env.DatabaseLifecycleResourceGroupName
