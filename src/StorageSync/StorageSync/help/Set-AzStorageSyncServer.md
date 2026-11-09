@@ -27,7 +27,7 @@ Set-AzStorageSyncServer [-InputObject] <PSRegisteredServer> [-Identity] [-AsJob]
 ```
 
 ## DESCRIPTION
-This command repairs a registered server when the server-to-service relationship that uses a managed identity is broken. A broken relationship typically results in authentication errors. It often occurs when the server's managed identity changes, such as when Azure Arc is deleted and recreated or when the managed identity on an Azure VM is turned off and back on.
+This cmdlet is used to repair a server where the server to service relationship established using a managed identity has been broken. This issue typically results in authentication errors and often occurs when the server's managed identity has changed, such as when Azure Arc was deleted and recreated or when the managed identity on an Azure VM was toggled off and back on.
 
 When you use the Identity parameter, run the command locally from an elevated PowerShell session. On an Azure Arc-enabled server, the local identity endpoint only issues tokens to local Administrators or members of the Hybrid agent extension applications group.
 
