@@ -3,3 +3,4 @@ queries:
       path:
         - "azps/src/Websites/Websites.Management.Sdk/Generated/WebAppsOperations.cs"
         - "azps/src/Websites/Websites.Management.Sdk/Generated/CertificatesOperations.cs"
+        - "azps/src/Compute/Compute/Sync/Upload/UploadOperationMetaData.cs"
