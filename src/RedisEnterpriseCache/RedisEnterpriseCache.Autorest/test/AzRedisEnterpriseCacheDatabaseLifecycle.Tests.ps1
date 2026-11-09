@@ -53,7 +53,9 @@ Describe 'AzRedisEnterpriseCacheDatabaseLifecycle' {
         $assignment.AccessPolicyName | Should -Be 'default'
         $assignment.AccessString | Should -Be '+@read ~cache:*'
         $assignment.ProvisioningState | Should -Be 'Succeeded'
-        $assignment.ProvisioningError | Should -Be $null
+        $assignment.ProvisioningErrorCode | Should -Be $null
+        $assignment.ProvisioningErrorMessage | Should -Be $null
+        $assignment.ProvisioningErrorTarget | Should -Be $null
 
         {
             Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName customPolicy -ClusterName $env.DatabaseLifecycleClusterName -DatabaseName default -ResourceGroupName $env.DatabaseLifecycleResourceGroupName
