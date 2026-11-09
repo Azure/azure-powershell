@@ -29,7 +29,7 @@ For information on how to develop for `Az.PlanetaryComputer`, see [how-to.md](ho
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 9ecfd7c772db95534126fb62a2e983d9145bbd57
+commit: 3d41865727e08555114cd851cb6145987474f9d8
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -70,4 +70,44 @@ directive:
       subject: PrivateEndpointConnection
     set:
       subject: GeoCatalogPrivateEndpointConnection
+
+  # AutoRest assumes every managed identity supports SystemAssigned. Keep the existing
+  # user-assigned identity and GET/PUT update behavior, but expose only supported types.
+  - from:
+      - NewAzPlanetaryComputerGeoCatalog_CreateExpanded.cs
+      - UpdateAzPlanetaryComputerGeoCatalog_UpdateExpanded.cs
+      - UpdateAzPlanetaryComputerGeoCatalog_UpdateViaIdentityExpanded.cs
+    where: $
+    transform: |
+      $ = $.replace(
+        /        \/\/\/ <summary>Determines whether to enable a system-assigned identity for the resource\.<\/summary>[\s\S]*?public [^\r\n]* EnableSystemAssignedIdentity [^\r\n]*/,
+        `        /// <summary>The managed identity type of the GeoCatalog.</summary>
+              [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The managed identity type of the GeoCatalog. Use None to remove identities or UserAssigned for user-assigned identities.")]
+              [global::System.Management.Automation.ValidateSet("None", "UserAssigned")]
+              [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
+              public string IdentityType { get; set; }`);
+      $ = $.replace(
+        /(        private void PreProcessManagedIdentityParameters(?:WithGetResult)?\(\)\r?\n        \{)[\s\S]*?\r?\n        \}/,
+        `$1
+                  if (this.UserAssignedIdentity?.Length > 0)
+                  {
+                      _resourceBody.IdentityUserAssignedIdentity.Clear();
+                      foreach (var id in this.UserAssignedIdentity)
+                      {
+                          _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.UserAssignedIdentity());
+                      }
+                  }
+                  if (this.IdentityType != null)
+                  {
+                      _resourceBody.IdentityType = this.IdentityType;
+                  }
+                  else if (true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity"))
+                  {
+                      _resourceBody.IdentityType = this.UserAssignedIdentity?.Length > 0 ? "UserAssigned" : "None";
+                  }
+                  if ("None".Equals(_resourceBody.IdentityType, StringComparison.OrdinalIgnoreCase))
+                  {
+                      _resourceBody.IdentityUserAssignedIdentity = null;
+                  }
+              }`);
 ```

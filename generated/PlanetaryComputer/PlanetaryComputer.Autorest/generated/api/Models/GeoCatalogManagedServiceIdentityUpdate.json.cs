@@ -7,11 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Extensions;
 
-    /// <summary>
-    /// Premium tier configuration properties for a GeoCatalog. Only valid when `tier` is `Premium`; must be omitted for Basic
-    /// catalogs. The server will return a validation error if provided with a Basic tier catalog.
-    /// </summary>
-    public partial class PremiumConfiguration
+    /// <summary>The user-assigned managed identity properties to update.</summary>
+    public partial class GeoCatalogManagedServiceIdentityUpdate
     {
 
         /// <summary>
@@ -57,22 +54,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration FromJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate FromJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject json ? new PremiumConfiguration(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject json ? new GeoCatalogManagedServiceIdentityUpdate(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject into a new instance of <see cref="PremiumConfiguration" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject into a new instance of <see cref="GeoCatalogManagedServiceIdentityUpdate" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal PremiumConfiguration(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject json)
+        internal GeoCatalogManagedServiceIdentityUpdate(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -80,20 +77,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             {
                 return;
             }
-            {_computeProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject>("computeProperties"), out var __jsonComputeProperties) ? Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogComputeProperties.FromJson(__jsonComputeProperties) : _computeProperty;}
-            {_managedStorageCapacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNumber>("managedStorageCapacity"), out var __jsonManagedStorageCapacity) ? (int?)__jsonManagedStorageCapacity : _managedStorageCapacity;}
-            {_databaseTier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("databaseTier"), out var __jsonDatabaseTier) ? (string)__jsonDatabaseTier : (string)_databaseTier;}
+            {_userAssignedIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject>("userAssignedIdentities"), out var __jsonUserAssignedIdentities) ? Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities.FromJson(__jsonUserAssignedIdentities) : _userAssignedIdentity;}
+            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="PremiumConfiguration" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="GeoCatalogManagedServiceIdentityUpdate" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode"
+        /// />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="PremiumConfiguration" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="GeoCatalogManagedServiceIdentityUpdate" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode serializationMode)
         {
@@ -105,18 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._computeProperty ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) this._computeProperty.ToJson(null,serializationMode) : null, "computeProperties" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._managedStorageCapacity ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNumber((int)this._managedStorageCapacity) : null, "managedStorageCapacity" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != (((object)this._databaseTier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString(this._databaseTier.ToString()) : null, "databaseTier" ,container.Add );
-            }
+            AddIf( null != this._userAssignedIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) this._userAssignedIdentity.ToJson(null,serializationMode) : null, "userAssignedIdentities" ,container.Add );
+            AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

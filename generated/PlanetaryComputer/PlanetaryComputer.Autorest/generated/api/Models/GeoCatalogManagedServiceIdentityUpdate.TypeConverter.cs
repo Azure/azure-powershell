@@ -8,9 +8,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
     using Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ManagedServiceIdentityUpdate" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="GeoCatalogManagedServiceIdentityUpdate"
+    /// />
     /// </summary>
-    public partial class ManagedServiceIdentityUpdateTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class GeoCatalogManagedServiceIdentityUpdateTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +27,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ManagedServiceIdentityUpdate"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="GeoCatalogManagedServiceIdentityUpdate"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ManagedServiceIdentityUpdate"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="GeoCatalogManagedServiceIdentityUpdate"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="ManagedServiceIdentityUpdate" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="GeoCatalogManagedServiceIdentityUpdate" /> type, otherwise
+        /// <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -95,31 +97,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="ManagedServiceIdentityUpdate" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="GeoCatalogManagedServiceIdentityUpdate" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ManagedServiceIdentityUpdate" />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="GeoCatalogManagedServiceIdentityUpdate"
+        /// />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="ManagedServiceIdentityUpdate" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="GeoCatalogManagedServiceIdentityUpdate"
+        /// />.</param>
         /// <returns>
-        /// an instance of <see cref="ManagedServiceIdentityUpdate" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="GeoCatalogManagedServiceIdentityUpdate" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return ManagedServiceIdentityUpdate.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return GeoCatalogManagedServiceIdentityUpdate.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -127,11 +131,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return ManagedServiceIdentityUpdate.DeserializeFromPSObject(sourceValue);
+                return GeoCatalogManagedServiceIdentityUpdate.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return ManagedServiceIdentityUpdate.DeserializeFromDictionary(sourceValue);
+                return GeoCatalogManagedServiceIdentityUpdate.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

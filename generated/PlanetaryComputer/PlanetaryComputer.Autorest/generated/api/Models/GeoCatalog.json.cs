@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             }
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.TrackedResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogProperties.FromJson(__jsonProperties) : _property;}
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
             AfterFromJson(json);
         }
 

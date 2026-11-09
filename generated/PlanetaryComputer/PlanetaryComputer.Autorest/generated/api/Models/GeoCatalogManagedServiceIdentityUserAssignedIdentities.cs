@@ -8,28 +8,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Extensions;
 
     /// <summary>The identities assigned to this resource by the user.</summary>
-    public partial class ManagedServiceIdentityUpdateUserAssignedIdentities :
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities,
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentitiesInternal
+    public partial class GeoCatalogManagedServiceIdentityUserAssignedIdentities :
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities,
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentitiesInternal
     {
 
         /// <summary>
-        /// Creates an new <see cref="ManagedServiceIdentityUpdateUserAssignedIdentities" /> instance.
+        /// Creates an new <see cref="GeoCatalogManagedServiceIdentityUserAssignedIdentities" /> instance.
         /// </summary>
-        public ManagedServiceIdentityUpdateUserAssignedIdentities()
+        public GeoCatalogManagedServiceIdentityUserAssignedIdentities()
         {
 
         }
     }
     /// The identities assigned to this resource by the user.
-    public partial interface IManagedServiceIdentityUpdateUserAssignedIdentities :
+    public partial interface IGeoCatalogManagedServiceIdentityUserAssignedIdentities :
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentity>
     {
 
     }
     /// The identities assigned to this resource by the user.
-    internal partial interface IManagedServiceIdentityUpdateUserAssignedIdentitiesInternal
+    internal partial interface IGeoCatalogManagedServiceIdentityUserAssignedIdentitiesInternal
 
     {
 

@@ -109,10 +109,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("PremiumConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration) content.GetValueForProperty("PremiumConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfiguration, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.PremiumConfigurationTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Tier"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).Tier = (string) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).Tier, global::System.Convert.ToString);
@@ -148,26 +144,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             if (content.Contains("StoppedSinceUtc"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).StoppedSinceUtc = (global::System.DateTime?) content.GetValueForProperty("StoppedSinceUtc",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).StoppedSinceUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("PremiumConfigurationDatabaseTier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationDatabaseTier = (string) content.GetValueForProperty("PremiumConfigurationDatabaseTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationDatabaseTier, global::System.Convert.ToString);
-            }
-            if (content.Contains("PremiumConfigurationComputeProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationComputeProperty = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties) content.GetValueForProperty("PremiumConfigurationComputeProperty",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationComputeProperty, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogComputePropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PremiumConfigurationManagedStorageCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationManagedStorageCapacity = (int?) content.GetValueForProperty("PremiumConfigurationManagedStorageCapacity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationManagedStorageCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("ComputePropertyCatalogTier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).ComputePropertyCatalogTier = (string) content.GetValueForProperty("ComputePropertyCatalogTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).ComputePropertyCatalogTier, global::System.Convert.ToString);
-            }
-            if (content.Contains("ComputePropertyIngestionTier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).ComputePropertyIngestionTier = (string) content.GetValueForProperty("ComputePropertyIngestionTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).ComputePropertyIngestionTier, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -186,10 +162,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("PremiumConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration) content.GetValueForProperty("PremiumConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfiguration, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.PremiumConfigurationTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Tier"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).Tier = (string) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).Tier, global::System.Convert.ToString);
@@ -225,26 +197,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             if (content.Contains("StoppedSinceUtc"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).StoppedSinceUtc = (global::System.DateTime?) content.GetValueForProperty("StoppedSinceUtc",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).StoppedSinceUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("PremiumConfigurationDatabaseTier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationDatabaseTier = (string) content.GetValueForProperty("PremiumConfigurationDatabaseTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationDatabaseTier, global::System.Convert.ToString);
-            }
-            if (content.Contains("PremiumConfigurationComputeProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationComputeProperty = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties) content.GetValueForProperty("PremiumConfigurationComputeProperty",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationComputeProperty, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogComputePropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PremiumConfigurationManagedStorageCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationManagedStorageCapacity = (int?) content.GetValueForProperty("PremiumConfigurationManagedStorageCapacity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).PremiumConfigurationManagedStorageCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("ComputePropertyCatalogTier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).ComputePropertyCatalogTier = (string) content.GetValueForProperty("ComputePropertyCatalogTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).ComputePropertyCatalogTier, global::System.Convert.ToString);
-            }
-            if (content.Contains("ComputePropertyIngestionTier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).ComputePropertyIngestionTier = (string) content.GetValueForProperty("ComputePropertyIngestionTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)this).ComputePropertyIngestionTier, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

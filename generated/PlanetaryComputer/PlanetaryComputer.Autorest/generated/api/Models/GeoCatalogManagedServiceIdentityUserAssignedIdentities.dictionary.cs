@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Extensions;
 
-    public partial class UserAssignedIdentities :
+    public partial class GeoCatalogManagedServiceIdentityUserAssignedIdentities :
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentity>
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentity> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentity>();
@@ -70,6 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.UserAssignedIdentities source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUserAssignedIdentities source) => source.__additionalProperties;
     }
 }

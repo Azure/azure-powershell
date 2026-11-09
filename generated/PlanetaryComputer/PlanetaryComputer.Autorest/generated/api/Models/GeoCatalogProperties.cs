@@ -29,14 +29,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
         public string CatalogUri { get => this._catalogUri; }
 
-        /// <summary>The compute properties of the catalog service</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string ComputePropertyCatalogTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).ComputePropertyCatalogTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).ComputePropertyCatalogTier = value ?? null; }
-
-        /// <summary>The compute properties of the ingestion service</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string ComputePropertyIngestionTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).ComputePropertyIngestionTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).ComputePropertyIngestionTier = value ?? null; }
-
         /// <summary>Backing field for <see cref="ManagedStorageResourceId" /> property.</summary>
         private System.Collections.Generic.List<string> _managedStorageResourceId;
 
@@ -50,12 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         /// <summary>Internal Acessors for ManagedStorageResourceId</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.ManagedStorageResourceId { get => this._managedStorageResourceId; set { {_managedStorageResourceId = value;} } }
 
-        /// <summary>Internal Acessors for PremiumConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.PremiumConfiguration { get => (this._premiumConfiguration = this._premiumConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.PremiumConfiguration()); set { {_premiumConfiguration = value;} } }
-
-        /// <summary>Internal Acessors for PremiumConfigurationComputeProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.PremiumConfigurationComputeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).ComputeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).ComputeProperty = value ?? null /* model class */; }
-
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.PrivateEndpointConnection { get => this._privateEndpointConnection; set { {_privateEndpointConnection = value;} } }
 
@@ -67,24 +53,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
 
         /// <summary>Internal Acessors for StoppedSinceUtc</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.StoppedSinceUtc { get => this._stoppedSinceUtc; set { {_stoppedSinceUtc = value;} } }
-
-        /// <summary>Backing field for <see cref="PremiumConfiguration" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration _premiumConfiguration;
-
-        /// <summary>
-        /// Premium tier configuration. Only valid when `tier` is `Premium`; must be omitted for Basic catalogs. The server will return
-        /// a validation error if provided with a Basic tier catalog.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration PremiumConfiguration { get => (this._premiumConfiguration = this._premiumConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.PremiumConfiguration()); set => this._premiumConfiguration = value; }
-
-        /// <summary>The database tier for the geocatalog</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string PremiumConfigurationDatabaseTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).DatabaseTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).DatabaseTier = value ?? null; }
-
-        /// <summary>The capacity of managed storage in Petabytes (minimum 5)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public int? PremiumConfigurationManagedStorageCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).ManagedStorageCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfigurationInternal)PremiumConfiguration).ManagedStorageCapacity = value ?? default(int); }
 
         /// <summary>Backing field for <see cref="PrivateEndpointConnection" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> _privateEndpointConnection;
@@ -170,30 +138,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         SerializedName = @"catalogUri",
         PossibleTypes = new [] { typeof(string) })]
         string CatalogUri { get;  }
-        /// <summary>The compute properties of the catalog service</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"The compute properties of the catalog service",
-        SerializedName = @"catalogTier",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string ComputePropertyCatalogTier { get; set; }
-        /// <summary>The compute properties of the ingestion service</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"The compute properties of the ingestion service",
-        SerializedName = @"ingestionTier",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string ComputePropertyIngestionTier { get; set; }
         /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
@@ -205,29 +149,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         SerializedName = @"managedStorageResourceIds",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ManagedStorageResourceId { get;  }
-        /// <summary>The database tier for the geocatalog</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"The database tier for the geocatalog",
-        SerializedName = @"databaseTier",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string PremiumConfigurationDatabaseTier { get; set; }
-        /// <summary>The capacity of managed storage in Petabytes (minimum 5)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"The capacity of managed storage in Petabytes (minimum 5)",
-        SerializedName = @"managedStorageCapacity",
-        PossibleTypes = new [] { typeof(int) })]
-        int? PremiumConfigurationManagedStorageCapacity { get; set; }
         /// <summary>Private endpoint connections to this GeoCatalog.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
@@ -303,7 +224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         Description = @"Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Premium")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic")]
         string Tier { get; set; }
 
     }
@@ -318,26 +239,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         string AutoGeneratedDomainNameLabelScope { get; set; }
         /// <summary>The URI of the catalog management UI.</summary>
         string CatalogUri { get; set; }
-        /// <summary>The compute properties of the catalog service</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string ComputePropertyCatalogTier { get; set; }
-        /// <summary>The compute properties of the ingestion service</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string ComputePropertyIngestionTier { get; set; }
         /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
         System.Collections.Generic.List<string> ManagedStorageResourceId { get; set; }
-        /// <summary>
-        /// Premium tier configuration. Only valid when `tier` is `Premium`; must be omitted for Basic catalogs. The server will return
-        /// a validation error if provided with a Basic tier catalog.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration PremiumConfiguration { get; set; }
-        /// <summary>The compute properties of the geocatalog</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties PremiumConfigurationComputeProperty { get; set; }
-        /// <summary>The database tier for the geocatalog</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string PremiumConfigurationDatabaseTier { get; set; }
-        /// <summary>The capacity of managed storage in Petabytes (minimum 5)</summary>
-        int? PremiumConfigurationManagedStorageCapacity { get; set; }
         /// <summary>Private endpoint connections to this GeoCatalog.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>The status of the last operation.</summary>
@@ -359,7 +262,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         /// <summary>
         /// Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Premium")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic")]
         string Tier { get; set; }
 
     }

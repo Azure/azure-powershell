@@ -15,17 +15,16 @@ Update a GeoCatalog
 ### UpdateExpanded (Default)
 ```
 Update-AzPlanetaryComputerGeoCatalog -CatalogName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-PublicNetworkAccess <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-IdentityType <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzPlanetaryComputerGeoCatalog -InputObject <IPlanetaryComputerIdentity>
- [-EnableSystemAssignedIdentity <Boolean?>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzPlanetaryComputerGeoCatalog -InputObject <IPlanetaryComputerIdentity> [-IdentityType <String>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,11 +106,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
+### -IdentityType
+The managed identity type of the GeoCatalog.
+Use None to remove identities or UserAssigned for user-assigned identities.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

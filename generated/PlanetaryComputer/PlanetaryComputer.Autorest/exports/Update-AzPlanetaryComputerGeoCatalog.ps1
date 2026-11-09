@@ -74,10 +74,12 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category('Body')]
-    [System.Nullable[System.Boolean]]
-    # Determines whether to enable a system-assigned identity for the resource.
-    ${EnableSystemAssignedIdentity},
+    [System.String]
+    # The managed identity type of the GeoCatalog.
+    # Use None to remove identities or UserAssigned for user-assigned identities.
+    ${IdentityType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]

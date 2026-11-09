@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Extensions;
 
     /// <summary>The identities assigned to this resource by the user.</summary>
-    public partial class ManagedServiceIdentityUpdateUserAssignedIdentities
+    public partial class GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities
     {
 
         /// <summary>
@@ -54,24 +54,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities FromJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities FromJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject json ? new ManagedServiceIdentityUpdateUserAssignedIdentities(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject json ? new GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject into a new instance of <see cref="ManagedServiceIdentityUpdateUserAssignedIdentities"
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject into a new instance of <see cref="GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities"
         /// />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject instance to deserialize from.</param>
         /// <param name="exclusions"></param>
-        internal ManagedServiceIdentityUpdateUserAssignedIdentities(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
+        internal GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -84,14 +84,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ManagedServiceIdentityUpdateUserAssignedIdentities" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode"
+        /// Serializes this instance of <see cref="GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode"
         /// />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ManagedServiceIdentityUpdateUserAssignedIdentities" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode"
+        /// a serialized instance of <see cref="GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode"
         /// />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode serializationMode)

@@ -77,7 +77,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             {
                 return;
             }
-            {_premiumConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonObject>("premiumConfiguration"), out var __jsonPremiumConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.PremiumConfiguration.FromJson(__jsonPremiumConfiguration) : _premiumConfiguration;}
             {_tier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("tier"), out var __jsonTier) ? (string)__jsonTier : (string)_tier;}
             {_catalogUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("catalogUri"), out var __jsonCatalogUri) ? (string)__jsonCatalogUri : (string)_catalogUri;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
@@ -108,10 +107,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             if (returnNow)
             {
                 return container;
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._premiumConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) this._premiumConfiguration.ToJson(null,serializationMode) : null, "premiumConfiguration" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.SerializationMode.IncludeCreate))
             {

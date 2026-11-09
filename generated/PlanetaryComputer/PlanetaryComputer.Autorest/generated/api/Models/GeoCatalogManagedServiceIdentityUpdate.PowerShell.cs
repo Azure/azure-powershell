@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.PowerShell;
 
-    /// <summary>The compute details of the Microsoft Planetary Computer Pro GeoCatalog.</summary>
-    [System.ComponentModel.TypeConverter(typeof(GeoCatalogComputePropertiesTypeConverter))]
-    public partial class GeoCatalogComputeProperties
+    /// <summary>The user-assigned managed identity properties to update.</summary>
+    [System.ComponentModel.TypeConverter(typeof(GeoCatalogManagedServiceIdentityUpdateTypeConverter))]
+    public partial class GeoCatalogManagedServiceIdentityUpdate
     {
 
         /// <summary>
@@ -63,44 +63,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogComputeProperties"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdate"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new GeoCatalogComputeProperties(content);
+            return new GeoCatalogManagedServiceIdentityUpdate(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogComputeProperties"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdate"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new GeoCatalogComputeProperties(content);
+            return new GeoCatalogManagedServiceIdentityUpdate(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="GeoCatalogComputeProperties" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="GeoCatalogManagedServiceIdentityUpdate" />, deserializing the content from a json
+        /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="GeoCatalogComputeProperties" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>
+        /// an instance of the <see cref="GeoCatalogManagedServiceIdentityUpdate" /> model class.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogComputeProperties"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdate"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal GeoCatalogComputeProperties(global::System.Collections.IDictionary content)
+        internal GeoCatalogManagedServiceIdentityUpdate(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -109,23 +114,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("CatalogTier"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputePropertiesInternal)this).CatalogTier = (string) content.GetValueForProperty("CatalogTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputePropertiesInternal)this).CatalogTier, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("IngestionTier"))
+            if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputePropertiesInternal)this).IngestionTier = (string) content.GetValueForProperty("IngestionTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputePropertiesInternal)this).IngestionTier, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)this).Type, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogComputeProperties"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdate"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal GeoCatalogComputeProperties(global::System.Management.Automation.PSObject content)
+        internal GeoCatalogManagedServiceIdentityUpdate(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -134,13 +139,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("CatalogTier"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputePropertiesInternal)this).CatalogTier = (string) content.GetValueForProperty("CatalogTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputePropertiesInternal)this).CatalogTier, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("IngestionTier"))
+            if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputePropertiesInternal)this).IngestionTier = (string) content.GetValueForProperty("IngestionTier",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputePropertiesInternal)this).IngestionTier, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)this).Type, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
@@ -162,9 +167,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             return ToJsonString();
         }
     }
-    /// The compute details of the Microsoft Planetary Computer Pro GeoCatalog.
-    [System.ComponentModel.TypeConverter(typeof(GeoCatalogComputePropertiesTypeConverter))]
-    public partial interface IGeoCatalogComputeProperties
+    /// The user-assigned managed identity properties to update.
+    [System.ComponentModel.TypeConverter(typeof(GeoCatalogManagedServiceIdentityUpdateTypeConverter))]
+    public partial interface IGeoCatalogManagedServiceIdentityUpdate
 
     {
 

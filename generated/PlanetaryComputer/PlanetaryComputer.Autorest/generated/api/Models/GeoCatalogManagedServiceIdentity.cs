@@ -7,10 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Extensions;
 
-    /// <summary>The template for adding optional properties.</summary>
-    public partial class ManagedServiceIdentityUpdate :
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate,
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateInternal
+    /// <summary>The user-assigned managed identities associated with the GeoCatalog.</summary>
+    public partial class GeoCatalogManagedServiceIdentity :
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentity,
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityInternal
     {
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
@@ -21,25 +21,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         public string Type { get => this._type; set => this._type = value; }
 
         /// <summary>Backing field for <see cref="UserAssignedIdentity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities _userAssignedIdentity;
+        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities _userAssignedIdentity;
 
         /// <summary>The identities assigned to this resource by the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities UserAssignedIdentity { get => (this._userAssignedIdentity = this._userAssignedIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentityUpdateUserAssignedIdentities()); set => this._userAssignedIdentity = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities UserAssignedIdentity { get => (this._userAssignedIdentity = this._userAssignedIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUserAssignedIdentities()); set => this._userAssignedIdentity = value; }
 
-        /// <summary>Creates an new <see cref="ManagedServiceIdentityUpdate" /> instance.</summary>
-        public ManagedServiceIdentityUpdate()
+        /// <summary>Creates an new <see cref="GeoCatalogManagedServiceIdentity" /> instance.</summary>
+        public GeoCatalogManagedServiceIdentity()
         {
 
         }
     }
-    /// The template for adding optional properties.
-    public partial interface IManagedServiceIdentityUpdate :
+    /// The user-assigned managed identities associated with the GeoCatalog.
+    public partial interface IGeoCatalogManagedServiceIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IJsonSerializable
     {
         /// <summary>The type of managed identity assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         Description = @"The type of managed identity assigned to this resource.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
         string Type { get; set; }
         /// <summary>The identities assigned to this resource by the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
@@ -58,19 +58,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         Update = true,
         Description = @"The identities assigned to this resource by the user.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities UserAssignedIdentity { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-    /// The template for adding optional properties.
-    internal partial interface IManagedServiceIdentityUpdateInternal
+    /// The user-assigned managed identities associated with the GeoCatalog.
+    internal partial interface IGeoCatalogManagedServiceIdentityInternal
 
     {
         /// <summary>The type of managed identity assigned to this resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
         string Type { get; set; }
         /// <summary>The identities assigned to this resource by the user.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities UserAssignedIdentity { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
 }

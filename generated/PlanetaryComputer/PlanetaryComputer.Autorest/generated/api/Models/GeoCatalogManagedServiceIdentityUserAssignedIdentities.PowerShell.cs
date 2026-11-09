@@ -7,13 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.PowerShell;
 
-    /// <summary>
-    /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-    /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    /// The dictionary values can be empty objects ({}) in requests.
-    /// </summary>
-    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentitiesTypeConverter))]
-    public partial class UserAssignedIdentities
+    /// <summary>The identities assigned to this resource by the user.</summary>
+    [System.ComponentModel.TypeConverter(typeof(GeoCatalogManagedServiceIdentityUserAssignedIdentitiesTypeConverter))]
+    public partial class GeoCatalogManagedServiceIdentityUserAssignedIdentities
     {
 
         /// <summary>
@@ -67,37 +63,80 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.UserAssignedIdentities"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUserAssignedIdentities"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new UserAssignedIdentities(content);
+            return new GeoCatalogManagedServiceIdentityUserAssignedIdentities(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.UserAssignedIdentities"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUserAssignedIdentities"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new UserAssignedIdentities(content);
+            return new GeoCatalogManagedServiceIdentityUserAssignedIdentities(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="UserAssignedIdentities" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="GeoCatalogManagedServiceIdentityUserAssignedIdentities" />, deserializing the content
+        /// from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="UserAssignedIdentities" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>
+        /// an instance of the <see cref="GeoCatalogManagedServiceIdentityUserAssignedIdentities" /> model class.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode.Parse(jsonText));
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUserAssignedIdentities"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal GeoCatalogManagedServiceIdentityUserAssignedIdentities(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
+            AfterDeserializeDictionary(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUserAssignedIdentities"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        internal GeoCatalogManagedServiceIdentityUserAssignedIdentities(global::System.Management.Automation.PSObject content)
+        {
+            bool returnNow = false;
+            BeforeDeserializePSObject(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
+            AfterDeserializePSObject(content);
+        }
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -115,50 +154,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             }
             return ToJsonString();
         }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.UserAssignedIdentities"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal UserAssignedIdentities(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.UserAssignedIdentities"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal UserAssignedIdentities(global::System.Management.Automation.PSObject content)
-        {
-            bool returnNow = false;
-            BeforeDeserializePSObject(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
-            AfterDeserializePSObject(content);
-        }
     }
-    /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-    /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    /// The dictionary values can be empty objects ({}) in requests.
-    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentitiesTypeConverter))]
-    public partial interface IUserAssignedIdentities
+    /// The identities assigned to this resource by the user.
+    [System.ComponentModel.TypeConverter(typeof(GeoCatalogManagedServiceIdentityUserAssignedIdentitiesTypeConverter))]
+    public partial interface IGeoCatalogManagedServiceIdentityUserAssignedIdentities
 
     {
 

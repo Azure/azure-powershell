@@ -29,14 +29,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
         public string CatalogUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).CatalogUri; }
 
-        /// <summary>The compute properties of the catalog service</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string ComputePropertyCatalogTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ComputePropertyCatalogTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ComputePropertyCatalogTier = value ?? null; }
-
-        /// <summary>The compute properties of the ingestion service</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string ComputePropertyIngestionTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ComputePropertyIngestionTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ComputePropertyIngestionTier = value ?? null; }
-
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
@@ -44,37 +36,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IResourceInternal)__trackedResource).Id; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentity _identity;
+        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentity _identity;
 
         /// <summary>The managed service identities assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentity()); set => this._identity = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentity()); set => this._identity = value; }
 
-        /// <summary>
-        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
+        /// <summary>The type of managed identity assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; }
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityInternal)Identity).Type = value ?? null; }
 
-        /// <summary>
-        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
+        /// <summary>The identities assigned to this resource by the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).TenantId; }
-
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).Type = value ?? null; }
-
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inherited)]
@@ -88,22 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.CatalogUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).CatalogUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).CatalogUri = value ?? null; }
 
         /// <summary>Internal Acessors for Identity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
-
-        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
-
-        /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for ManagedStorageResourceId</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.ManagedStorageResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ManagedStorageResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ManagedStorageResourceId = value ?? null /* arrayOf */; }
-
-        /// <summary>Internal Acessors for PremiumConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.PremiumConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PremiumConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PremiumConfiguration = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for PremiumConfigurationComputeProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.PremiumConfigurationComputeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PremiumConfigurationComputeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PremiumConfigurationComputeProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
@@ -153,14 +115,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IResourceInternal)__trackedResource).Name; }
-
-        /// <summary>The database tier for the geocatalog</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string PremiumConfigurationDatabaseTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PremiumConfigurationDatabaseTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PremiumConfigurationDatabaseTier = value ?? null; }
-
-        /// <summary>The capacity of managed storage in Petabytes (minimum 5)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public int? PremiumConfigurationManagedStorageCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PremiumConfigurationManagedStorageCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PremiumConfigurationManagedStorageCapacity = value ?? default(int); }
 
         /// <summary>Private endpoint connections to this GeoCatalog.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
@@ -292,85 +246,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         SerializedName = @"catalogUri",
         PossibleTypes = new [] { typeof(string) })]
         string CatalogUri { get;  }
-        /// <summary>The compute properties of the catalog service</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"The compute properties of the catalog service",
-        SerializedName = @"catalogTier",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string ComputePropertyCatalogTier { get; set; }
-        /// <summary>The compute properties of the ingestion service</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"The compute properties of the ingestion service",
-        SerializedName = @"ingestionTier",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string ComputePropertyIngestionTier { get; set; }
-        /// <summary>
-        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
-        SerializedName = @"principalId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityPrincipalId { get;  }
-        /// <summary>
-        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityTenantId { get;  }
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
+        /// <summary>The type of managed identity assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        Description = @"The type of managed identity assigned to this resource.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
         string IdentityType { get; set; }
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
+        /// <summary>The identities assigned to this resource by the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        Description = @"The identities assigned to this resource by the user.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
@@ -382,29 +280,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         SerializedName = @"managedStorageResourceIds",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ManagedStorageResourceId { get;  }
-        /// <summary>The database tier for the geocatalog</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"The database tier for the geocatalog",
-        SerializedName = @"databaseTier",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string PremiumConfigurationDatabaseTier { get; set; }
-        /// <summary>The capacity of managed storage in Petabytes (minimum 5)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"The capacity of managed storage in Petabytes (minimum 5)",
-        SerializedName = @"managedStorageCapacity",
-        PossibleTypes = new [] { typeof(int) })]
-        int? PremiumConfigurationManagedStorageCapacity { get; set; }
         /// <summary>Private endpoint connections to this GeoCatalog.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
@@ -480,7 +355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         Description = @"Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Premium")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic")]
         string Tier { get; set; }
 
     }
@@ -495,47 +370,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         string AutoGeneratedDomainNameLabelScope { get; set; }
         /// <summary>The URI of the catalog management UI.</summary>
         string CatalogUri { get; set; }
-        /// <summary>The compute properties of the catalog service</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string ComputePropertyCatalogTier { get; set; }
-        /// <summary>The compute properties of the ingestion service</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string ComputePropertyIngestionTier { get; set; }
         /// <summary>The managed service identities assigned to this resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentity Identity { get; set; }
-        /// <summary>
-        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
-        string IdentityPrincipalId { get; set; }
-        /// <summary>
-        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
-        string IdentityTenantId { get; set; }
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentity Identity { get; set; }
+        /// <summary>The type of managed identity assigned to this resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
         string IdentityType { get; set; }
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>The identities assigned to this resource by the user.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
         System.Collections.Generic.List<string> ManagedStorageResourceId { get; set; }
-        /// <summary>
-        /// Premium tier configuration. Only valid when `tier` is `Premium`; must be omitted for Basic catalogs. The server will return
-        /// a validation error if provided with a Basic tier catalog.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPremiumConfiguration PremiumConfiguration { get; set; }
-        /// <summary>The compute properties of the geocatalog</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogComputeProperties PremiumConfigurationComputeProperty { get; set; }
-        /// <summary>The database tier for the geocatalog</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        string PremiumConfigurationDatabaseTier { get; set; }
-        /// <summary>The capacity of managed storage in Petabytes (minimum 5)</summary>
-        int? PremiumConfigurationManagedStorageCapacity { get; set; }
         /// <summary>Private endpoint connections to this GeoCatalog.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
@@ -559,7 +402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         /// <summary>
         /// Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Premium")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic")]
         string Tier { get; set; }
 
     }

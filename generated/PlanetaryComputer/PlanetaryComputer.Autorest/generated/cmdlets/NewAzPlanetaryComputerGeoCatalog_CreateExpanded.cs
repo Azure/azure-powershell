@@ -87,30 +87,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PlanetaryComputer Client => Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Module.Instance.ClientAPI;
 
-        /// <summary>The compute properties of the catalog service</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The compute properties of the catalog service")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The compute properties of the catalog service",
-        SerializedName = @"catalogTier",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        public string ComputePropertyCatalogTier { get => _resourceBody.ComputePropertyCatalogTier ?? null; set => _resourceBody.ComputePropertyCatalogTier = value; }
-
-        /// <summary>The compute properties of the ingestion service</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The compute properties of the ingestion service")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The compute properties of the ingestion service",
-        SerializedName = @"ingestionTier",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        public string ComputePropertyIngestionTier { get => _resourceBody.ComputePropertyIngestionTier ?? null; set => _resourceBody.ComputePropertyIngestionTier = value; }
-
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
@@ -121,9 +97,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
-        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _resourceBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+        /// <summary>The managed identity type of the GeoCatalog.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The managed identity type of the GeoCatalog. Use None to remove identities or UserAssigned for user-assigned identities.")]
+        [global::System.Management.Automation.ValidateSet("None", "UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
+        public string IdentityType { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -174,29 +152,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.HttpPipeline Pipeline { get; set; }
-
-        /// <summary>The database tier for the geocatalog</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The database tier for the geocatalog")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The database tier for the geocatalog",
-        SerializedName = @"databaseTier",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
-        public string PremiumConfigurationDatabaseTier { get => _resourceBody.PremiumConfigurationDatabaseTier ?? null; set => _resourceBody.PremiumConfigurationDatabaseTier = value; }
-
-        /// <summary>The capacity of managed storage in Petabytes (minimum 5)</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The capacity of managed storage in Petabytes (minimum 5)")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The capacity of managed storage in Petabytes (minimum 5)",
-        SerializedName = @"managedStorageCapacity",
-        PossibleTypes = new [] { typeof(int) })]
-        public int PremiumConfigurationManagedStorageCapacity { get => _resourceBody.PremiumConfigurationManagedStorageCapacity ?? default(int); set => _resourceBody.PremiumConfigurationManagedStorageCapacity = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -282,7 +237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         Description = @"Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic", "Premium")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Basic")]
         public string Tier { get => _resourceBody.Tier ?? null; set => _resourceBody.Tier = value; }
 
         /// <summary>
@@ -507,24 +462,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         {
             if (this.UserAssignedIdentity?.Length > 0)
             {
-                // calculate UserAssignedIdentity
                 _resourceBody.IdentityUserAssignedIdentity.Clear();
-                foreach( var id in this.UserAssignedIdentity )
+                foreach (var id in this.UserAssignedIdentity)
                 {
                     _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.UserAssignedIdentity());
                 }
             }
-            // calculate IdentityType
-            if (this.UserAssignedIdentity?.Length > 0)
+            if (this.IdentityType != null)
             {
-                if ("SystemAssigned".Equals(_resourceBody.IdentityType, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
-                }
-                else
-                {
-                    _resourceBody.IdentityType = "UserAssigned";
-                }
+                _resourceBody.IdentityType = this.IdentityType;
+            }
+            else if (true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity"))
+            {
+                _resourceBody.IdentityType = this.UserAssignedIdentity?.Length > 0 ? "UserAssigned" : "None";
+            }
+            if ("None".Equals(_resourceBody.IdentityType, StringComparison.OrdinalIgnoreCase))
+            {
+                _resourceBody.IdentityUserAssignedIdentity = null;
             }
         }
 

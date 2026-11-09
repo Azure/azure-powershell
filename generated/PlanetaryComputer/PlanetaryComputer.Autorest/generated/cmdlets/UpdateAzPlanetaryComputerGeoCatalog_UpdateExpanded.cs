@@ -83,9 +83,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
-        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+        /// <summary>The managed identity type of the GeoCatalog.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The managed identity type of the GeoCatalog. Use None to remove identities or UserAssigned for user-assigned identities.")]
+        [global::System.Management.Automation.ValidateSet("None", "UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
+        public string IdentityType { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -411,39 +413,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
 
         private void PreProcessManagedIdentityParametersWithGetResult()
         {
-            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _resourceBody?.IdentityType?.Contains("SystemAssigned"));
-            bool supportsUserAssignedIdentity = false;
             if (this.UserAssignedIdentity?.Length > 0)
             {
-                // calculate UserAssignedIdentity
                 _resourceBody.IdentityUserAssignedIdentity.Clear();
-                foreach( var id in this.UserAssignedIdentity )
+                foreach (var id in this.UserAssignedIdentity)
                 {
                     _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.UserAssignedIdentity());
                 }
             }
-            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
-                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _resourceBody.IdentityType?.Contains("UserAssigned");
-            if (!supportsUserAssignedIdentity)
+            if (this.IdentityType != null)
+            {
+                _resourceBody.IdentityType = this.IdentityType;
+            }
+            else if (true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity"))
+            {
+                _resourceBody.IdentityType = this.UserAssignedIdentity?.Length > 0 ? "UserAssigned" : "None";
+            }
+            if ("None".Equals(_resourceBody.IdentityType, StringComparison.OrdinalIgnoreCase))
             {
                 _resourceBody.IdentityUserAssignedIdentity = null;
-            }
-            // calculate IdentityType
-            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
-            {
-                _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
-            }
-            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
-            {
-                _resourceBody.IdentityType = "UserAssigned";
-            }
-            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
-            {
-                _resourceBody.IdentityType = "SystemAssigned";
-            }
-            else
-            {
-                _resourceBody.IdentityType = "None";
             }
         }
 
