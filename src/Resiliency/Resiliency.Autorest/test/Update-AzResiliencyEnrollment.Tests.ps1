@@ -15,27 +15,44 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzResiliencyEnrollment
 }
 
 Describe 'Update-AzResiliencyEnrollment' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $parameters = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName; Name = $env.enrollmentName }
+        $usagePlanIdentity = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
+        $identity = $usagePlanIdentity + @{ EnrollmentName = $env.enrollmentName }
+        function Assert-UpdatedEnrollment([object]$Enrollment) {
+            $Enrollment.Name | Should -Be $env.enrollmentName
+            $Enrollment.ServiceGroupId | Should -Be $env.serviceGroupId
+            $Enrollment.ProvisioningState | Should -Be 'Succeeded'
+        }
     }
 
-    It 'UpdateViaIdentityUsagePlanExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $enrollment = Invoke-ResiliencyWithRetry { Update-AzResiliencyEnrollment @parameters -ServiceGroupId $env.serviceGroupId }
+        Assert-UpdatedEnrollment $enrollment
     }
 
-    It 'UpdateViaIdentityUsagePlan' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityUsagePlanExpanded' {
+        $enrollment = Invoke-ResiliencyWithRetry { Update-AzResiliencyEnrollment -UsagePlanInputObject $usagePlanIdentity -Name $env.enrollmentName -ServiceGroupId $env.serviceGroupId }
+        Assert-UpdatedEnrollment $enrollment
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityUsagePlan' {
+        $enrollment = Invoke-ResiliencyWithRetry { Update-AzResiliencyEnrollment -UsagePlanInputObject $usagePlanIdentity -Name $env.enrollmentName -Resource @{ ServiceGroupId = $env.serviceGroupId } }
+        Assert-UpdatedEnrollment $enrollment
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $enrollment = Invoke-ResiliencyWithRetry { Update-AzResiliencyEnrollment @parameters -Resource @{ ServiceGroupId = $env.serviceGroupId } }
+        Assert-UpdatedEnrollment $enrollment
     }
 
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $enrollment = Invoke-ResiliencyWithRetry { Update-AzResiliencyEnrollment -InputObject $identity -ServiceGroupId $env.serviceGroupId }
+        Assert-UpdatedEnrollment $enrollment
+    }
+
+    It 'UpdateViaIdentity' {
+        $enrollment = Invoke-ResiliencyWithRetry { Update-AzResiliencyEnrollment -InputObject $identity -Resource @{ ServiceGroupId = $env.serviceGroupId } }
+        Assert-UpdatedEnrollment $enrollment
     }
 }

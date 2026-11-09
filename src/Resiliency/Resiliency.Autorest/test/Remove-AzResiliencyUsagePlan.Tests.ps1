@@ -15,11 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzResiliencyUsagePlan'
 }
 
 Describe 'Remove-AzResiliencyUsagePlan' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $planParameters = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName }
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $name = "$($env.usagePlanName)-rm1"
+        $null = New-AzResiliencyUsagePlan @planParameters -Name $name -Location global -PlanType Standard
+        Remove-AzResiliencyUsagePlan @planParameters -Name $name -PassThru | Should -BeTrue
+        @(Get-AzResiliencyUsagePlan @planParameters).Name | Should -Not -Contain $name
+    }
+
+    It 'DeleteViaIdentity' {
+        $name = "$($env.usagePlanName)-rm2"
+        $plan = New-AzResiliencyUsagePlan @planParameters -Name $name -Location global -PlanType Standard
+        Remove-AzResiliencyUsagePlan -InputObject $plan -PassThru | Should -BeTrue
+        @(Get-AzResiliencyUsagePlan @planParameters).Name | Should -Not -Contain $name
     }
 }

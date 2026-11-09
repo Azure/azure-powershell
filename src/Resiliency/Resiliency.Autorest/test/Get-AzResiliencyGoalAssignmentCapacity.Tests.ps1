@@ -15,35 +15,61 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzResiliencyGoalAssignmen
 }
 
 Describe 'Get-AzResiliencyGoalAssignmentCapacity' {
-    It 'GetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $goalParameters = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
+        $goalIdentity = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
+        $body = @{ resourceIds = @($env.vmId) }
+        # The service returns the recommendation as an operation-status record whose properties are a JSON-encoded
+        # string; the module decodes it (dcabe291). For this VM the service returns no capacities or recommendations,
+        # so the lists are empty: assert they were decoded (an empty list, not null) and that there is no agent error.
+        function Assert-Capacity([object]$Result) {
+            $Result | Should -Not -BeNullOrEmpty
+            $null -ne $Result.ResourceCapacity | Should -BeTrue -Because 'resourceCapacities is decoded from the string-encoded properties'
+            $null -ne $Result.Recommendation | Should -BeTrue -Because 'recommendations is decoded from the string-encoded properties'
+            $Result.AgentError | Should -BeNullOrEmpty
+        }
     }
 
-    It 'GetViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpanded' {
+        $result = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignmentCapacity @goalParameters -ResourceId $env.vmId }
+        Assert-Capacity $result
     }
 
-    It 'GetViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaJsonString' {
+        $json = ConvertTo-Json $body
+        $result = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignmentCapacity @goalParameters -JsonString $json }
+        Assert-Capacity $result
     }
 
-    It 'GetViaIdentityServiceGroupExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaJsonFilePath' {
+        $jsonFilePath = Join-Path $TestDrive 'recommendCapacity.json'
+        ConvertTo-Json $body | Set-Content $jsonFilePath
+        $result = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignmentCapacity @goalParameters -JsonFilePath $jsonFilePath }
+        Assert-Capacity $result
     }
 
-    It 'GetViaIdentityServiceGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityServiceGroupExpanded' {
+        $result = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignmentCapacity -ServiceGroupInputObject @{ ServiceGroupName = $env.serviceGroupName } -GoalAssignmentName $env.goalAssignmentName -ResourceId $env.vmId }
+        Assert-Capacity $result
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityServiceGroup' {
+        $result = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignmentCapacity -ServiceGroupInputObject @{ ServiceGroupName = $env.serviceGroupName } -GoalAssignmentName $env.goalAssignmentName -Body @{ ResourceId = @($env.vmId) } }
+        Assert-Capacity $result
     }
 
-    It 'GetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $result = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignmentCapacity @goalParameters -Body @{ ResourceId = @($env.vmId) } }
+        Assert-Capacity $result
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityExpanded' {
+        $result = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignmentCapacity -InputObject $goalIdentity -ResourceId $env.vmId }
+        Assert-Capacity $result
+    }
+
+    It 'GetViaIdentity' {
+        $result = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignmentCapacity -InputObject $goalIdentity -Body @{ ResourceId = @($env.vmId) } }
+        Assert-Capacity $result
     }
 }

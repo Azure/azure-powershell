@@ -15,27 +15,52 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzResiliencyUsagePlan'
 }
 
 Describe 'Update-AzResiliencyUsagePlan' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $planParameters = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; Name = $env.usagePlanName }
+        $identity = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
+        # Users run Update- without -NoWait: the cmdlet waits for the PATCH (202) and returns the usage plan read from the
+        # resource itself (final-state-via: original-uri, feffbf3a05). Assert the returned plan. UpdateViaIdentity covers
+        # the -NoWait path, which returns the operation target and is verified by polling the plan.
+        function Assert-UsagePlan([object]$Plan, [string]$Value) {
+            $Plan.Name | Should -Be $env.usagePlanName
+            $Plan.PlanType | Should -Be 'Standard'
+            $Plan.ProvisioningState | Should -Be 'Succeeded'
+            $Plan.Tag['scenario'] | Should -Be $Value
+        }
     }
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $plan = Update-AzResiliencyUsagePlan @planParameters -Tag @{ scenario = 'UpdateExpanded' }
+        Assert-UsagePlan $plan 'UpdateExpanded'
     }
 
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonString' {
+        $json = @{ tags = @{ scenario = 'UpdateViaJsonString' } } | ConvertTo-Json
+        $plan = Update-AzResiliencyUsagePlan @planParameters -JsonString $json
+        Assert-UsagePlan $plan 'UpdateViaJsonString'
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonFilePath' {
+        $jsonFilePath = Join-Path $TestDrive 'usagePlanUpdate.json'
+        @{ tags = @{ scenario = 'UpdateViaJsonFilePath' } } | ConvertTo-Json | Set-Content $jsonFilePath
+        $plan = Update-AzResiliencyUsagePlan @planParameters -JsonFilePath $jsonFilePath
+        Assert-UsagePlan $plan 'UpdateViaJsonFilePath'
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $plan = Update-AzResiliencyUsagePlan @planParameters -Property @{ Tag = @{ scenario = 'Update' } }
+        Assert-UsagePlan $plan 'Update'
     }
 
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $plan = Update-AzResiliencyUsagePlan -InputObject $identity -Tag @{ scenario = 'UpdateViaIdentityExpanded' }
+        Assert-UsagePlan $plan 'UpdateViaIdentityExpanded'
+    }
+
+    It 'UpdateViaIdentity' {
+        $operation = Update-AzResiliencyUsagePlan -InputObject $identity -Property @{ Tag = @{ scenario = 'UpdateViaIdentity' } } -NoWait
+        $operation.Target | Should -Match '/operationStatuses/'
+        $plan = Wait-ResiliencySucceeded -Command { Get-AzResiliencyUsagePlan @planParameters } -Until { param($p) $p.Tag['scenario'] -eq 'UpdateViaIdentity' }
+        Assert-UsagePlan $plan 'UpdateViaIdentity'
     }
 }

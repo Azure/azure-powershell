@@ -15,19 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzResiliencyGoalAssignmen
 }
 
 Describe 'Get-AzResiliencyGoalAssignment' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $serviceGroupIdentity = @{ ServiceGroupName = $env.serviceGroupName }
+        function Assert-GoalAssignment([object]$Goal) {
+            $Goal.Name | Should -Be $env.goalAssignmentName
+            $Goal.RequireZonalResiliency | Should -BeTrue
+            $Goal.ProvisioningState | Should -Be 'Succeeded'
+        }
     }
 
-    It 'GetViaIdentityServiceGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $goals = @(Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignment -ServiceGroupName $env.serviceGroupName })
+        $goals.Name | Should -Contain $env.goalAssignmentName
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityServiceGroup' {
+        $goal = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignment -ServiceGroupInputObject $serviceGroupIdentity -Name $env.goalAssignmentName }
+        Assert-GoalAssignment $goal
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $goal = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignment -ServiceGroupName $env.serviceGroupName -Name $env.goalAssignmentName }
+        Assert-GoalAssignment $goal
+    }
+
+    It 'GetViaIdentity' {
+        $identity = $serviceGroupIdentity + @{ GoalAssignmentName = $env.goalAssignmentName }
+        $goal = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignment -InputObject $identity }
+        Assert-GoalAssignment $goal
     }
 }

@@ -15,23 +15,38 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzResiliencyGoalResource'
 }
 
 Describe 'Get-AzResiliencyGoalResource' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $goalParameters = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
+        $goalIdentity = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
+        function Assert-GoalResource([object]$Resource) {
+            $Resource.Name | Should -Be $env.goalResourceName
+            $Resource.ResourceArmId | Should -Be $env.vmId
+        }
     }
 
-    It 'GetViaIdentityServiceGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $resources = @(Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalResource @goalParameters })
+        $resources.ResourceArmId | Should -Contain $env.vmId
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityServiceGroup' {
+        $resource = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalResource -ServiceGroupInputObject @{ ServiceGroupName = $env.serviceGroupName } -GoalAssignmentName $env.goalAssignmentName -Name $env.goalResourceName }
+        Assert-GoalResource $resource
     }
 
-    It 'GetViaIdentityGoalAssignment' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $resource = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalResource @goalParameters -Name $env.goalResourceName }
+        Assert-GoalResource $resource
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityGoalAssignment' {
+        $resource = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalResource -GoalAssignmentInputObject $goalIdentity -Name $env.goalResourceName }
+        Assert-GoalResource $resource
+    }
+
+    It 'GetViaIdentity' {
+        $identity = $goalIdentity + @{ GoalResourceName = $env.goalResourceName }
+        $resource = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalResource -InputObject $identity }
+        Assert-GoalResource $resource
     }
 }

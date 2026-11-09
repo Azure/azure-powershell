@@ -15,15 +15,40 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzResiliencyGoalAssign
 }
 
 Describe 'Remove-AzResiliencyGoalAssignment' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        # Only one goal assignment may exist per service group, so each scenario creates and deletes its own goal.
+        function New-TestGoalAssignment([string]$Name) {
+            $goal = Invoke-ResiliencyWithRetry { New-AzResiliencyGoalAssignment -ServiceGroupName $env.goalServiceGroupName -Name $Name -RequireZonalResiliency }
+            $goal.ProvisioningState | Should -Be 'Succeeded'
+            return $goal
+        }
+        function Assert-GoalRemoved([string]$Name) {
+            $deadline = (Get-Date).AddMinutes(15)
+            while (@(Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignment -ServiceGroupName $env.goalServiceGroupName }).Name -contains $Name -and (Get-Date) -lt $deadline) {
+                Start-TestSleep -Seconds 15
+            }
+            @(Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalAssignment -ServiceGroupName $env.goalServiceGroupName }).Name | Should -Not -Contain $Name
+        }
     }
 
-    It 'DeleteViaIdentityServiceGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $name = "$($env.goalAssignmentName)-rm1"
+        $null = New-TestGoalAssignment $name
+        Invoke-ResiliencyWithRetry { Remove-AzResiliencyGoalAssignment -ServiceGroupName $env.goalServiceGroupName -Name $name -PassThru } | Should -BeTrue
+        Assert-GoalRemoved $name
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentityServiceGroup' {
+        $name = "$($env.goalAssignmentName)-rm2"
+        $null = New-TestGoalAssignment $name
+        Invoke-ResiliencyWithRetry { Remove-AzResiliencyGoalAssignment -ServiceGroupInputObject @{ ServiceGroupName = $env.goalServiceGroupName } -Name $name -PassThru } | Should -BeTrue
+        Assert-GoalRemoved $name
+    }
+
+    It 'DeleteViaIdentity' {
+        $name = "$($env.goalAssignmentName)-rm3"
+        $goal = New-TestGoalAssignment $name
+        Invoke-ResiliencyWithRetry { Remove-AzResiliencyGoalAssignment -InputObject $goal -PassThru } | Should -BeTrue
+        Assert-GoalRemoved $name
     }
 }

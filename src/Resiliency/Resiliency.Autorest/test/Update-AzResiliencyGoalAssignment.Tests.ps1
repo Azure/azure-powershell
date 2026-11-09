@@ -15,35 +15,78 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzResiliencyGoalAssign
 }
 
 Describe 'Update-AzResiliencyGoalAssignment' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $goalParameters = @{ ServiceGroupName = $env.serviceGroupName; Name = $env.goalAssignmentName }
+        $serviceGroupIdentity = @{ ServiceGroupName = $env.serviceGroupName }
+        $goalIdentity = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
+        $body = @{ properties = @{ requireZonalResiliency = $true } }
+        $operationInProgress = 'Conflict|\(409\)'
+        # Users run Update- without -NoWait: the cmdlet waits for the PATCH (202) to finish and returns the goal
+        # assignment read from the resource itself (final-state-via: original-uri), so these scenarios assert the
+        # returned object.
+        function Assert-GoalAssignment([object]$Goal) {
+            $Goal.Name | Should -Be $env.goalAssignmentName
+            $Goal.RequireZonalResiliency | Should -BeTrue
+            $Goal.ProvisioningState | Should -Be 'Succeeded'
+        }
+        # UpdateViaIdentity covers the -NoWait path: it returns the operation, which is followed with
+        # Get-AzResiliencyOperationStatus before the goal assignment itself is verified.
+        function Assert-GoalUpdatedAsync([object]$Operation) {
+            $Operation.Target | Should -Match '/operationStatuses/'
+            $statusOperation = Get-ResiliencyOperationFromUrl $Operation.Target
+            $deadline = (Get-Date).AddMinutes(20)
+            do {
+                $status = Invoke-ResiliencyWithRetry { Get-AzResiliencyOperationStatus -Location $statusOperation.Location -OperationId $statusOperation.OperationId }
+                if ($status.Status -notin 'Accepted', 'Running', 'InProgress') {
+                    break
+                }
+                Start-TestSleep -Seconds 10
+            } while ((Get-Date) -lt $deadline)
+            $status.Status | Should -Be 'Succeeded'
+            Assert-GoalAssignment (Wait-ResiliencySucceeded -Command { Get-AzResiliencyGoalAssignment @goalParameters })
+        }
     }
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $goal = Invoke-ResiliencyWithRetry -AlsoRetryOn $operationInProgress { Update-AzResiliencyGoalAssignment @goalParameters -RequireZonalResiliency }
+        Assert-GoalAssignment $goal
     }
 
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonString' {
+        $json = $body | ConvertTo-Json -Depth 5
+        $goal = Invoke-ResiliencyWithRetry -AlsoRetryOn $operationInProgress { Update-AzResiliencyGoalAssignment @goalParameters -JsonString $json }
+        Assert-GoalAssignment $goal
     }
 
-    It 'UpdateViaIdentityServiceGroupExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonFilePath' {
+        $jsonFilePath = Join-Path $TestDrive 'goalAssignmentUpdate.json'
+        $body | ConvertTo-Json -Depth 5 | Set-Content $jsonFilePath
+        $goal = Invoke-ResiliencyWithRetry -AlsoRetryOn $operationInProgress { Update-AzResiliencyGoalAssignment @goalParameters -JsonFilePath $jsonFilePath }
+        Assert-GoalAssignment $goal
     }
 
-    It 'UpdateViaIdentityServiceGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityServiceGroupExpanded' {
+        $goal = Invoke-ResiliencyWithRetry -AlsoRetryOn $operationInProgress { Update-AzResiliencyGoalAssignment -ServiceGroupInputObject $serviceGroupIdentity -Name $env.goalAssignmentName -RequireZonalResiliency }
+        Assert-GoalAssignment $goal
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityServiceGroup' {
+        $goal = Invoke-ResiliencyWithRetry -AlsoRetryOn $operationInProgress { Update-AzResiliencyGoalAssignment -ServiceGroupInputObject $serviceGroupIdentity -Name $env.goalAssignmentName -Property @{ RequireZonalResiliency = $true } }
+        Assert-GoalAssignment $goal
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $goal = Invoke-ResiliencyWithRetry -AlsoRetryOn $operationInProgress { Update-AzResiliencyGoalAssignment @goalParameters -Property @{ RequireZonalResiliency = $true } }
+        Assert-GoalAssignment $goal
     }
 
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $goal = Invoke-ResiliencyWithRetry -AlsoRetryOn $operationInProgress { Update-AzResiliencyGoalAssignment -InputObject $goalIdentity -RequireZonalResiliency }
+        Assert-GoalAssignment $goal
+    }
+
+    It 'UpdateViaIdentity' {
+        $operation = Invoke-ResiliencyWithRetry -AlsoRetryOn $operationInProgress { Update-AzResiliencyGoalAssignment -InputObject $goalIdentity -Property @{ RequireZonalResiliency = $true } -NoWait }
+        Assert-GoalUpdatedAsync $operation
     }
 }

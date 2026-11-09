@@ -15,19 +15,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzResiliencyUsagePlan'))
 }
 
 Describe 'Get-AzResiliencyUsagePlan' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $plans = @(Get-AzResiliencyUsagePlan -SubscriptionId $env.SubscriptionId)
+        $plans.Name | Should -Contain $env.usagePlanName
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $plan = Get-AzResiliencyUsagePlan -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -Name $env.usagePlanName
+        $plan.Name | Should -Be $env.usagePlanName
+        $plan.Location | Should -Be 'global'
+        $plan.PlanType | Should -Be 'Standard'
+        $plan.ProvisioningState | Should -Be 'Succeeded'
     }
 
-    It 'ListByResourceGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListByResourceGroup' {
+        $plans = @(Get-AzResiliencyUsagePlan -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName)
+        $plans.Name | Should -Contain $env.usagePlanName
+        $plans.ResourceGroupName | Should -Contain $env.resourceGroupName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $identity = @{ SubscriptionId = $env.SubscriptionId; ResourceGroupName = $env.resourceGroupName; UsagePlanName = $env.usagePlanName }
+        $plan = Get-AzResiliencyUsagePlan -InputObject $identity
+        $plan.Name | Should -Be $env.usagePlanName
+        $plan.PlanType | Should -Be 'Standard'
     }
 }
