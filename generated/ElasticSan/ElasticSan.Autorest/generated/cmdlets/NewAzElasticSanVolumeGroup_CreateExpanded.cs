@@ -335,7 +335,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         Description = @"Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.",
         SerializedName = @"reservedIops",
         PossibleTypes = new [] { typeof(int) })]
-        public int ReservedIop { get => _parametersBody.ReservedIop ?? default(int); set => _parametersBody.ReservedIop = value; }
+        [global::System.Management.Automation.Alias("ReservedIop")]
+        public int ReservedIops { get => _parametersBody.ReservedIops ?? default(int); set => _parametersBody.ReservedIops = value; }
 
         /// <summary>
         /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.

@@ -166,14 +166,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         public string QualityOfService { get => this._qualityOfService; set => this._qualityOfService = value; }
 
-        /// <summary>Backing field for <see cref="ReservedIop" /> property.</summary>
-        private int? _reservedIop;
+        /// <summary>Backing field for <see cref="ReservedIops" /> property.</summary>
+        private int? _reservedIops;
 
         /// <summary>
         /// Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public int? ReservedIop { get => this._reservedIop; set => this._reservedIop = value; }
+        public int? ReservedIops { get => this._reservedIops; set => this._reservedIops = value; }
 
         /// <summary>Backing field for <see cref="ReservedMBps" /> property.</summary>
         private int? _reservedMBps;
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.",
         SerializedName = @"reservedIops",
         PossibleTypes = new [] { typeof(int) })]
-        int? ReservedIop { get; set; }
+        int? ReservedIops { get; set; }
         /// <summary>
         /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
         /// </summary>
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>
         /// Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
         /// </summary>
-        int? ReservedIop { get; set; }
+        int? ReservedIops { get; set; }
         /// <summary>
         /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
         /// </summary>

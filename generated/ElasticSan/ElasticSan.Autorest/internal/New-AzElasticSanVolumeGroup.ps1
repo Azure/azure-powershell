@@ -39,6 +39,11 @@ $useridentity = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -Na
 New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType UserAssigned -IdentityUserAssignedIdentityId $useridentity.Id -Encryption EncryptionAtRestWithCustomerManagedKey -KeyName mykey -KeyVaultUri "https://mykeyvault.vault.azure.net:443" -EncryptionUserAssignedIdentity $useridentity.Id -ProtocolType Iscsi
 .Example
 New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
+.Example
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name mygeneralpurposegroup -ProtocolType Iscsi -QualityOfService GeneralPurpose
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name myperformancegroup -ProtocolType Iscsi -QualityOfService PerformanceCritical -ReservedIops 10000 -ReservedMBps 400
+.Example
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myencryptedgroup -ProtocolType Iscsi -EncryptionInTransit
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -212,10 +217,11 @@ param(
     ${QualityOfService},
 
     [Parameter()]
+    [Alias('ReservedIop')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int32]
     # Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
-    ${ReservedIop},
+    ${ReservedIops},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]

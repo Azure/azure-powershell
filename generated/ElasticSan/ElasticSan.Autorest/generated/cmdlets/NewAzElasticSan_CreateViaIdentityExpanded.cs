@@ -274,7 +274,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         Description = @"Total Provisioned IOPS of the Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.",
         SerializedName = @"totalIops",
         PossibleTypes = new [] { typeof(long) })]
-        public long TotalIop { get => _parametersBody.TotalIops ?? default(long); set => _parametersBody.TotalIops = value; }
+        [global::System.Management.Automation.Alias("TotalIop")]
+        public long TotalIops { get => _parametersBody.TotalIops ?? default(long); set => _parametersBody.TotalIops = value; }
 
         /// <summary>
         /// Total Provisioned MBps Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only
@@ -380,6 +381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
             clone.InvocationInformation = this.InvocationInformation;
             clone.Proxy = this.Proxy;
             clone.Pipeline = this.Pipeline;
+            clone.InputObject = this.InputObject;
             clone.AsJob = this.AsJob;
             clone.Break = this.Break;
             clone.ProxyCredential = this.ProxyCredential;

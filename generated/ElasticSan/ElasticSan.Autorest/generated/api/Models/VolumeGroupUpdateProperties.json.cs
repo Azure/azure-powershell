@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             AddIf( null != this._enforceDataIntegrityCheckForIscsi ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonBoolean((bool)this._enforceDataIntegrityCheckForIscsi) : null, "enforceDataIntegrityCheckForIscsi" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
             {
-                AddIf( null != this._reservedIop ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((int)this._reservedIop) : null, "reservedIops" ,container.Add );
+                AddIf( null != this._reservedIops ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((int)this._reservedIops) : null, "reservedIops" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
             {

@@ -214,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
-        public int? ReservedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)Property).ReservedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)Property).ReservedIop = value ?? default(int); }
+        public int? ReservedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)Property).ReservedIops; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)Property).ReservedIops = value ?? default(int); }
 
         /// <summary>
         /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.",
         SerializedName = @"reservedIops",
         PossibleTypes = new [] { typeof(int) })]
-        int? ReservedIop { get; set; }
+        int? ReservedIops { get; set; }
         /// <summary>
         /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
         /// </summary>
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>
         /// Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
         /// </summary>
-        int? ReservedIop { get; set; }
+        int? ReservedIops { get; set; }
         /// <summary>
         /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
         /// </summary>

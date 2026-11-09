@@ -21,6 +21,8 @@ Update a Elastic San.
 Update a Elastic San.
 .Example
 $elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 5 -ExtendedCapacitySizeTib 20 -Tag @{"tag3" = "value3"} -CapacityUnitScaleUpLimitTiB 20 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 5 -AutoScalePolicyEnforcement Disabled
+.Example
+Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsanv2 -TotalSizeTiB 20 -TotalIops 100000 -TotalMBps 4000
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -121,11 +123,12 @@ param(
     ${Tag},
 
     [Parameter()]
+    [Alias('TotalIop')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Total Provisioned IOPS of the Elastic San appliance.
     # Supported only for ElasticSanVersion V2.
-    ${TotalIop},
+    ${TotalIops},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
