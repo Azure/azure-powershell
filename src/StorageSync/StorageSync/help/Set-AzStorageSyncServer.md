@@ -27,9 +27,9 @@ Set-AzStorageSyncServer [-InputObject] <PSRegisteredServer> [-Identity] [-AsJob]
 ```
 
 ## DESCRIPTION
-This command registers a server to a storage sync service, the top-level resource for Azure File Sync. A trust relationship between server and storage sync service is created that ensures secure data transfer and management channels. PowerShell or the Azure portal can then be used to configure what syncs on this server. A server can only be registered to a single storage sync service. If servers ever need to participate in syncing the same set of files, register them to the same storage sync service.
-The command must be run locally on the server that is to be registered - either executed directly or via a remote PowerShell session. A remote computer object cannot be accepted.
-When using the Identity parameter, run the command from an elevated PowerShell session. On an Azure Arc-enabled server, the local identity endpoint only issues tokens to local Administrators or members of the Hybrid agent extension applications group.
+This command repairs a registered server when the server-to-service relationship that uses a managed identity is broken. A broken relationship typically results in authentication errors. It often occurs when the server's managed identity changes, such as when Azure Arc is deleted and recreated or when the managed identity on an Azure VM is turned off and back on.
+
+When you use the Identity parameter, run the command locally from an elevated PowerShell session. On an Azure Arc-enabled server, the local identity endpoint only issues tokens to local Administrators or members of the Hybrid agent extension applications group.
 
 ## EXAMPLES
 
