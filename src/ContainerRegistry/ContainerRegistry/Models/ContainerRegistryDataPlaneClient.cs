@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     public class ContainerRegistryDataPlaneClient
     {
         internal const string RegistryNamePattern =
-            @"\A(?:[a-zA-Z0-9]{5,50}|[a-zA-Z0-9]{5,46}-[a-zA-Z0-9]{16})\z";
+            @"\A(?=.{5,63}\z)[a-zA-Z0-9]{5,50}(?:-[a-zA-Z0-9]+)?\z";
 
         private const string _defaultGrantType = "access_token";
         private const string _defaultScope = "registry:catalog:*";
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (RegistryName == null || !Regex.IsMatch(RegistryName, RegistryNamePattern))
             {
                 throw new AzPSArgumentException(
-                    "Specify a registry name of 5-50 ASCII letters or digits, or a DNL label with a 5-46 character alphanumeric prefix followed by a hyphen and a 16-character alphanumeric hash.",
+                    "Specify a registry name of 5-50 ASCII letters or digits, optionally followed by one hyphen and a nonempty ASCII alphanumeric suffix. The complete label must not exceed 63 characters or include the login-server domain.",
                     nameof(RegistryName));
             }
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private string UseFallbackLoginServer(string loginServer, string reason)
         {
             WarningLogger?.Invoke(
-                $"{reason} Using the supplied registry name or DNL label with the environment suffix. For a DNL-protected registry, supply the complete label including its hash.");
+                $"{reason} Using the supplied registry name with the environment suffix. If the registry uses a hyphenated login-server label, supply that complete label without the domain suffix.");
             return loginServer;
         }
 

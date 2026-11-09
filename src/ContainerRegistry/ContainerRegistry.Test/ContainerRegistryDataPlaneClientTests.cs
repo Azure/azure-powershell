@@ -71,7 +71,16 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test
         [Theory]
         [InlineData("MyRegistry-0123456789ABCDEF")]
         [InlineData("abcde-0123456789abcdef")]
-        public void ExplicitDnlLabelDoesNotInvokeDiscovery(string label)
+        [InlineData("myregistry-microsoft")]
+        [InlineData("MyRegistry-MiCrOsOfT")]
+        [InlineData("abcde-microsoft")]
+        [InlineData("myregistry-on")]
+        [InlineData("myregistry-Custom42")]
+        [InlineData("abcde-x")]
+        [InlineData("abcde-0123456789abcde")]
+        [InlineData("abcde-0123456789abcdef0")]
+        [InlineData("myregistry-microsoftx")]
+        public void ExplicitLoginServerLabelDoesNotInvokeDiscovery(string label)
         {
             var client = CreateClient();
             client.SetEndPoint(label);
@@ -95,8 +104,18 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test
             "abc-de",
             "abcd-" + new string('a', 16),
             new string('a', 47) + "-" + new string('b', 16),
-            "abcde-" + new string('a', 15),
-            "abcde-" + new string('a', 17),
+            "abcde-",
+            "-abcde",
+            "abcde--suffix",
+            "abcde-suffix-",
+            "abcde-" + new string('a', 58),
+            "abcd-microsoft",
+            new string('a', 51) + "-microsoft",
+            "abcde-microsoft-microsoft",
+            "abcde-microsoft.azurecr.io",
+            "abcde-microsoft/path",
+            "abcde-microsoft\n",
+            "abcde-micro\u017Foft",
             "abc_de",
             "abcde.azurecr.io",
             "https://abcde.azurecr.io",
@@ -141,6 +160,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test
         [Theory]
         [InlineData("IMAGE123", "image123.azurecr.io")]
         [InlineData("IMAGE123-0123456789ABCDEF", "image123-0123456789abcdef.azurecr.io")]
+        [InlineData("IMAGE123-MICROSOFT", "image123-microsoft.azurecr.io")]
         public void EndpointFormattingIsIndependentOfCurrentCulture(string name, string expectedServer)
         {
             var originalCulture = CultureInfo.CurrentCulture;
@@ -161,15 +181,31 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test
             }
         }
 
-        [Fact]
-        public void DnlLabelLengthBoundaryIsEnforcedWithoutDiscovery()
+        [Theory]
+        [InlineData(5, 57)]
+        [InlineData(46, 16)]
+        [InlineData(47, 15)]
+        [InlineData(50, 12)]
+        public void LoginServerLabelLengthBoundaryIsEnforcedWithoutDiscovery(int prefixLength, int suffixLength)
         {
             var client = CreateClient();
-            string label = new string('A', 46) + "-" + new string('B', 16);
+            string label = new string('A', prefixLength) + "-" + new string('B', suffixLength);
+            client.SetEndPoint(label);
+            Assert.Equal(label.ToLowerInvariant() + ".azurecr.io", client.GetEndPoint());
+            Assert.Throws<AzPSArgumentException>(() => client.SetEndPoint(label + "B"));
+            Assert.Equal(0, factoryCalls);
+        }
+
+        [Fact]
+        public void LoginServerPrefixLengthBoundaryIsEnforcedWithoutDiscovery()
+        {
+            var client = CreateClient();
+            string label = new string('A', 50) + "-x";
             client.SetEndPoint(label);
             Assert.Equal(label.ToLowerInvariant() + ".azurecr.io", client.GetEndPoint());
             Assert.Throws<AzPSArgumentException>(() => client.SetEndPoint("A" + label));
             Assert.Equal(0, factoryCalls);
+            Assert.Empty(warnings);
         }
 
         [Fact]
@@ -209,13 +245,15 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test
             managementClient.Verify(clientMock => clientMock.Dispose(), Times.Once());
         }
 
-        [Fact]
-        public void ExplicitDnlLabelDoesNotUseCachedPlainNameResolution()
+        [Theory]
+        [InlineData("myregistry-0123456789abcdef")]
+        [InlineData("myregistry-microsoft")]
+        public void ExplicitLoginServerLabelDoesNotUseCachedPlainNameResolution(string label)
         {
             var client = CreateClient();
             client.SetEndPoint(RegistryName);
-            client.SetEndPoint("myregistry-0123456789abcdef");
-            Assert.Equal("myregistry-0123456789abcdef.azurecr.io", client.GetEndPoint());
+            client.SetEndPoint(label);
+            Assert.Equal(label + ".azurecr.io", client.GetEndPoint());
             client.SetEndPoint(RegistryName);
             Assert.Equal(LoginServer, client.GetEndPoint());
             Assert.Equal(1, factoryCalls);
@@ -370,10 +408,13 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void LoginConsumersUseDiscoveredServer(bool exposeToken)
+        [InlineData(false, LoginServer)]
+        [InlineData(true, LoginServer)]
+        [InlineData(false, "myregistry-microsoft.azurecr.io")]
+        [InlineData(true, "myregistry-microsoft.azurecr.io")]
+        public void LoginConsumersUseDiscoveredServer(bool exposeToken, string loginServer)
         {
+            SetupProperties(new JObject { ["loginServer"] = loginServer });
             var client = CreateClient();
             var session = InitialSessionState.CreateDefault();
             session.Commands.Add(new SessionStateCmdletEntry(
@@ -401,7 +442,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test
                     Assert.Single(output);
                     if (exposeToken)
                     {
-                        Assert.Equal(LoginServer, output[0].Properties["loginServer"].Value);
+                        Assert.Equal(loginServer, output[0].Properties["loginServer"].Value);
                         Assert.IsType<System.Security.SecureString>(output[0].Properties["accessToken"].Value);
                     }
                     else
@@ -409,7 +450,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test
                         var items = Assert.IsType<List<object>>(output[0].BaseObject);
                         var capture = PSObject.AsPSObject(Assert.Single(items));
                         var arguments = Assert.IsType<object[]>(capture.Properties["Arguments"].Value);
-                        Assert.Equal(LoginServer, arguments[1]);
+                        Assert.Equal(loginServer, arguments[1]);
                         Assert.Equal("--password-stdin", arguments[4]);
                     }
                     Assert.Equal(1, factoryCalls);

@@ -74,11 +74,21 @@ Describe 'Connect-AzContainerRegistry.Unit' {
         @{ Label = 'leading space'; RegistryName = ' abcde' }
         @{ Label = 'trailing space'; RegistryName = 'abcde ' }
         @{ Label = 'embedded space'; RegistryName = 'abc de' }
-        @{ Label = 'hyphen'; RegistryName = 'abc-de' }
-        @{ Label = 'short DNL prefix'; RegistryName = ('abcd-' + ('a' * 16)) }
-        @{ Label = 'long DNL prefix'; RegistryName = (('a' * 47) + '-' + ('b' * 16)) }
-        @{ Label = 'short DNL hash'; RegistryName = ('abcde-' + ('a' * 15)) }
-        @{ Label = 'long DNL hash'; RegistryName = ('abcde-' + ('a' * 17)) }
+        @{ Label = 'short prefix'; RegistryName = 'abc-de' }
+        @{ Label = 'four-character prefix'; RegistryName = ('abcd-' + ('a' * 16)) }
+        @{ Label = '64-character label'; RegistryName = (('a' * 47) + '-' + ('b' * 16)) }
+        @{ Label = 'long suffix'; RegistryName = ('abcde-' + ('a' * 58)) }
+        @{ Label = 'missing suffix'; RegistryName = 'abcde-' }
+        @{ Label = 'leading hyphen'; RegistryName = '-abcde' }
+        @{ Label = 'double hyphen'; RegistryName = 'abcde--suffix' }
+        @{ Label = 'trailing hyphen'; RegistryName = 'abcde-suffix-' }
+        @{ Label = 'short legacy prefix'; RegistryName = 'abcd-microsoft' }
+        @{ Label = 'long legacy prefix'; RegistryName = (('a' * 51) + '-microsoft') }
+        @{ Label = 'repeated legacy suffix'; RegistryName = 'abcde-microsoft-microsoft' }
+        @{ Label = 'legacy login server'; RegistryName = 'abcde-microsoft.azurecr.io' }
+        @{ Label = 'legacy path'; RegistryName = 'abcde-microsoft/path' }
+        @{ Label = 'legacy trailing newline'; RegistryName = "abcde-microsoft`n" }
+        @{ Label = 'non-ASCII legacy suffix'; RegistryName = ('abcde-micro' + [char]0x017F + 'oft') }
         @{ Label = 'underscore'; RegistryName = 'abc_de' }
         @{ Label = 'login server'; RegistryName = 'abcde.azurecr.io' }
         @{ Label = 'URL'; RegistryName = 'https://abcde.azurecr.io' }
@@ -116,6 +126,16 @@ Describe 'Connect-AzContainerRegistry.Unit' {
             @{ Label = 'mixed case'; RegistryName = 'MyRegistry123'; ExpectedServer = 'myregistry123.azurecr.io' }
             @{ Label = 'DNL label'; RegistryName = 'MyRegistry-0123456789ABCDEF'; ExpectedServer = 'myregistry-0123456789abcdef.azurecr.io' }
             @{ Label = 'maximum DNL label'; RegistryName = (('A' * 46) + '-' + ('B' * 16)); ExpectedServer = (('a' * 46) + '-' + ('b' * 16) + '.azurecr.io') }
+            @{ Label = 'legacy label'; RegistryName = 'MyRegistry-MiCrOsOfT'; ExpectedServer = 'myregistry-microsoft.azurecr.io' }
+            @{ Label = 'minimum legacy prefix'; RegistryName = 'abcde-microsoft'; ExpectedServer = 'abcde-microsoft.azurecr.io' }
+            @{ Label = 'maximum legacy prefix'; RegistryName = (('A' * 50) + '-microsoft'); ExpectedServer = (('a' * 50) + '-microsoft.azurecr.io') }
+            @{ Label = 'short legacy suffix'; RegistryName = 'myregistry-on'; ExpectedServer = 'myregistry-on.azurecr.io' }
+            @{ Label = 'custom suffix'; RegistryName = 'myregistry-Custom42'; ExpectedServer = 'myregistry-custom42.azurecr.io' }
+            @{ Label = 'one-character suffix'; RegistryName = 'abcde-X'; ExpectedServer = 'abcde-x.azurecr.io' }
+            @{ Label = '15-character suffix'; RegistryName = ('abcde-' + ('A' * 15)); ExpectedServer = ('abcde-' + ('a' * 15) + '.azurecr.io') }
+            @{ Label = '17-character suffix'; RegistryName = ('abcde-' + ('A' * 17)); ExpectedServer = ('abcde-' + ('a' * 17) + '.azurecr.io') }
+            @{ Label = 'maximum suffix'; RegistryName = ('abcde-' + ('A' * 57)); ExpectedServer = ('abcde-' + ('a' * 57) + '.azurecr.io') }
+            @{ Label = '50-character prefix at label limit'; RegistryName = (('A' * 50) + '-' + ('B' * 12)); ExpectedServer = (('a' * 50) + '-' + ('b' * 12) + '.azurecr.io') }
         ) {
             param($Label, $RegistryName, $ExpectedServer)
 
@@ -129,6 +149,8 @@ Describe 'Connect-AzContainerRegistry.Unit' {
 
     It 'Exposes the selected endpoint for <Label>' -TestCases @(
         @{ Label = 'DNL label'; Cloud = 'AzureCloud'; Name = 'myregistry-0123456789abcdef'; ExpectedServer = 'myregistry-0123456789abcdef.azurecr.io' }
+        @{ Label = 'legacy label'; Cloud = 'AzureCloud'; Name = 'myregistry-microsoft'; ExpectedServer = 'myregistry-microsoft.azurecr.io' }
+        @{ Label = 'custom label in sovereign cloud'; Cloud = 'AzureChinaCloud'; Name = 'myregistry-custom42'; ExpectedServer = 'myregistry-custom42.azurecr.cn' }
         @{ Label = 'sovereign cloud'; Cloud = 'AzureChinaCloud'; Name = 'myregistry'; ExpectedServer = 'myregistry.azurecr.cn' }
     ) {
         param($Label, $Cloud, $Name, $ExpectedServer)
