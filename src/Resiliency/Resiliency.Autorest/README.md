@@ -69,6 +69,15 @@ directive:
     transform: >-
       $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
 
+  # UsagePlans PATCH declares final-state-via: location, but the Location target is the
+  # operation status, so Update-AzResiliencyUsagePlan (without -NoWait) returned a
+  # UsagePlan whose Name was the operation ID and whose Tag/PlanType were empty.
+  # Read the final state from the usage plan itself (original-uri).
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureResilienceManagement/usagePlans/{usagePlanName}"].patch
+    transform: >-
+      $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+
   # While an operation is still running the service returns HTTP 202 with the
   # operation-status body, but the spec allows only 200, so
   # Get-AzResiliencyOperationStatus failed instead of showing Status = Accepted.
