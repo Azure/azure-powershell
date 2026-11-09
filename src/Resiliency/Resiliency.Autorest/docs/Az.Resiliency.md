@@ -61,9 +61,6 @@ Get a RecoveryPlan
 ### [Get-AzResiliencyRecoveryResource](Get-AzResiliencyRecoveryResource.md)
 Get a RecoveryResource
 
-### [Get-AzResiliencyUnifiedResilienceItem](Get-AzResiliencyUnifiedResilienceItem.md)
-Get a UnifiedResilienceItem
-
 ### [Get-AzResiliencyUsagePlan](Get-AzResiliencyUsagePlan.md)
 Get a UsagePlan
 

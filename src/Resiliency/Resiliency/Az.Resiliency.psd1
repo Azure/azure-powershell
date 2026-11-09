@@ -80,7 +80,6 @@ FunctionsToExport = 'Add-AzResiliencyDrillRunNote', 'Complete-AzResiliencyDrillR
                'Get-AzResiliencyRecoveryJob', 
                'Get-AzResiliencyRecoveryJobResource', 
                'Get-AzResiliencyRecoveryPlan', 'Get-AzResiliencyRecoveryResource', 
-               'Get-AzResiliencyUnifiedResilienceItem', 
                'Get-AzResiliencyUsagePlan', 'Invoke-AzResiliencyDrillRunFailover', 
                'Invoke-AzResiliencyDrillRunReprotect', 
                'Invoke-AzResiliencyRecoveryJobRetry', 

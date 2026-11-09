@@ -193,4 +193,8 @@ directive:
       verb: Test
       subject: RecoveryPlanTestFailoverCleanupValidation
     remove: true
+  - where:
+      verb: Get
+      subject: UnifiedResilienceItem
+    remove: true
 ```

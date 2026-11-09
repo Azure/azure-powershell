@@ -189,8 +189,5 @@ Get a RecoveryJobResource
 
 ## Shared
 
-### [Get-AzResiliencyUnifiedResilienceItem](Get-AzResiliencyUnifiedResilienceItem.md)
-Get a UnifiedResilienceItem
-
 ### [Get-AzResiliencyOperationStatus](Get-AzResiliencyOperationStatus.md)
 Returns the current status of an async operation.
