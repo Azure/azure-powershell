@@ -338,7 +338,7 @@ function Initialize-ResiliencyGoalFixture {
     }
 }
 
-function setupEnv() {
+function setupResiliencyEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
@@ -482,7 +482,7 @@ function Save-ResiliencySanitizedRecordings {
     }
 }
 
-function cleanupEnv() {
+function cleanupResiliencyEnv() {
     if ($TestMode -eq 'playback') {
         return
     }
@@ -516,3 +516,5 @@ function cleanupEnv() {
         }
     }
 }
+
+. (Join-Path $PSScriptRoot 'ROTestSetup.ps1')
