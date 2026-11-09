@@ -5,6 +5,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzResiliencyRecoveryPlan'
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
+  $ROScenarioEnvironmentDirectory = Join-Path $PSScriptRoot 'RecoveryPlans\Historical'
+  $env = Get-ROScenarioEnvironment $ROScenarioEnvironmentDirectory
+  $PSDefaultParameterValues['*:Tenant'] = $env.Tenant
   $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzResiliencyRecoveryPlan.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
@@ -15,19 +18,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzResiliencyRecoveryPlan'
 }
 
 Describe 'Get-AzResiliencyRecoveryPlan' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityServiceGroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $fixtureEnv = $env
+        if ($TestMode -eq 'playback' -and $env.priorPassingSetup) { $fixtureEnv = $env.priorPassingSetup }
+        $plans = @(Get-AzResiliencyRecoveryPlan -ServiceGroupName $fixtureEnv.recoveryServiceGroupName -ErrorAction Stop)
+        if ($TestMode -eq 'playback') { $plans.Count | Should -Be @($fixtureEnv.initialPlanNames).Count }
+        @($plans | Select-Object -ExpandProperty Id -Unique).Count | Should -Be $plans.Count
+        @($plans | Select-Object -ExpandProperty Name -Unique).Count | Should -Be $plans.Count
+        foreach ($plan in $plans) {
+            $plan.Name | Should -Not -BeNullOrEmpty
+            $plan.Id | Should -Be "/providers/Microsoft.Management/serviceGroups/$($fixtureEnv.recoveryServiceGroupName)/providers/Microsoft.AzureResilienceManagement/recoveryPlans/$($plan.Name)"
+            $plan.PlanType | Should -BeIn @('Zonal', 'Regional')
+            $plan.ProvisioningState | Should -Not -BeNullOrEmpty
+        }
     }
 }
