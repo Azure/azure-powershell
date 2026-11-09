@@ -19,10 +19,17 @@
 Create ElasticSan.
 .Description
 Create ElasticSan.
+For V2, omitted autoscale settings default to Enabled, an increase of 1 TiB and an unused-capacity threshold of 1 TiB.
+If CapacityUnitScaleUpLimitTiB is omitted, the command queries Get-AzElasticSanSkuList for the target subscription, Location and SkuName, and caps five times TotalSizeTiB at elasticSanMaxTotalCapacityTiB.
+The command fails before creating the SAN if this lookup fails or does not provide an unambiguous positive capacity limit.
+Explicit autoscale values are preserved, except Disabled and None are rejected for V2.
+V1 behavior is unchanged.
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -AvailabilityZone 1 -Tag @{tag1="value1";tag2="value2"} -AutoScalePolicyEnforcement Enabled -CapacityUnitScaleUpLimitTiB 30 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 6
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
+.Example
+New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsanv2 -Location eastus -SkuName 'ElasticSAN_LRS' -Version V2 -TotalSizeTiB 20 -TotalIops 100000 -TotalMBps 4000
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -83,7 +90,7 @@ param(
     ${Location},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # The sku name.
@@ -94,24 +101,30 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Enable or Disable scale up setting on Elastic San Appliance.
+    # Defaults to Enabled for V2.
+    # Disabled and None are not supported when Version is V2.
     ${AutoScalePolicyEnforcement},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Maximum scale up size on Elastic San appliance in TiB.
+    # For V2, defaults to the smaller of five times TotalSizeTiB and the regional maximum total capacity for SkuName.
+    # When omitted for V2, Get-AzElasticSanSkuList is called for the target subscription and Location.
     ${CapacityUnitScaleUpLimitTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Unit to increase Capacity Unit on Elastic San appliance in TiB.
+    # Defaults to 1 for V2.
     ${IncreaseCapacityUnitByTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Unused size on Elastic San appliance in TiB.
+    # Defaults to 1 for V2.
     ${UnusedSizeTiB},
 
     [Parameter()]
@@ -125,14 +138,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Base size of the Elastic San appliance in TiB.
-    # Default value is 20.
+    # Defaults to 20 for V1.
     ${BaseSizeTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Extended size of the Elastic San appliance in TiB.
-    # Default value is 0.
+    # Defaults to 0 for V1.
     ${ExtendedCapacitySizeTiB},
 
     [Parameter()]
@@ -156,6 +169,37 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Alias('TotalIop')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total provisioned IOPS of the Elastic San appliance.
+    # Required for V2; read-only for V1.
+    ${TotalIops},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total provisioned throughput of the Elastic San appliance in MBps.
+    # Required for V2; read-only for V1.
+    ${TotalMBps},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total size of the Elastic San appliance in TiB.
+    # Required for V2; read-only for V1.
+    ${TotalSizeTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("V1", "V2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Elastic San appliance version.
+    # Defaults to V1 if not specified.
+    # V2 requires TotalSizeTiB, TotalIops and TotalMBps; V1 capacity defaults are not added for V2.
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

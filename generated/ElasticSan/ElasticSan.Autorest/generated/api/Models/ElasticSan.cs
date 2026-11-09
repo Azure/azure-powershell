@@ -71,8 +71,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).Sku = value ?? null /* model class */; }
 
-        /// <summary>Internal Acessors for TotalReservedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalReservedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalReservedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalReservedIop = value ?? default(int); }
+        /// <summary>Internal Acessors for TotalReservedIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalReservedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalReservedIops; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalReservedIops = value ?? default(int); }
 
         /// <summary>Internal Acessors for TotalReservedMBps</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanInternal.TotalReservedMBps { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalReservedMBps; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalReservedMBps = value ?? default(int); }
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 
         /// <summary>Total IOPS reserved by all the volume groups under an ElasticSan</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
-        public int? TotalReservedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalReservedIop; }
+        public int? TotalReservedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)Property).TotalReservedIops; }
 
         /// <summary>Total MBps reserved by all the volume groups under an ElasticSan</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"Total IOPS reserved by all the volume groups under an ElasticSan",
         SerializedName = @"totalReservedIops",
         PossibleTypes = new [] { typeof(int) })]
-        int? TotalReservedIop { get;  }
+        int? TotalReservedIops { get;  }
         /// <summary>Total MBps reserved by all the volume groups under an ElasticSan</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         long? TotalMBps { get; set; }
         /// <summary>Total IOPS reserved by all the volume groups under an ElasticSan</summary>
-        int? TotalReservedIop { get; set; }
+        int? TotalReservedIops { get; set; }
         /// <summary>Total MBps reserved by all the volume groups under an ElasticSan</summary>
         int? TotalReservedMBps { get; set; }
         /// <summary>

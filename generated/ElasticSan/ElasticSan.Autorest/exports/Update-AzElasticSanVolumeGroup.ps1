@@ -39,6 +39,8 @@ $useridentity2 = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -N
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType UserAssigned -IdentityUserAssignedIdentityId $useridentity2.Id -EncryptionUserAssignedIdentity $useridentity2.Id
 .Example
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
+.Example
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name myperformancegroup -ReservedIops 20000 -ReservedMBps 800
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -181,11 +183,26 @@ param(
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Type of storage target
     ${ProtocolType},
+
+    [Parameter()]
+    [Alias('ReservedIop')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int32]
+    # Reserved IOPS for the volume group.
+    # Applicable to PerformanceCritical volume groups only.
+    ${ReservedIops},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int32]
+    # Reserved throughput in MBps for the volume group.
+    # Applicable to PerformanceCritical volume groups only.
+    ${ReservedMBps},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

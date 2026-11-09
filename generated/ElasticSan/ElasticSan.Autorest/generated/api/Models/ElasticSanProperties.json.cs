@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
             {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)_version;}
             {_usedCapacityGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("usedCapacityGiB"), out var __jsonUsedCapacityGiB) ? (long?)__jsonUsedCapacityGiB : _usedCapacityGiB;}
-            {_totalReservedIop = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("totalReservedIops"), out var __jsonTotalReservedIops) ? (int?)__jsonTotalReservedIops : _totalReservedIop;}
+            {_totalReservedIops = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("totalReservedIops"), out var __jsonTotalReservedIops) ? (int?)__jsonTotalReservedIops : _totalReservedIops;}
             {_totalReservedMBps = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("totalReservedMBps"), out var __jsonTotalReservedMBps) ? (int?)__jsonTotalReservedMBps : _totalReservedMBps;}
             AfterFromJson(json);
         }
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._totalReservedIop ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((int)this._totalReservedIop) : null, "totalReservedIops" ,container.Add );
+                AddIf( null != this._totalReservedIops ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((int)this._totalReservedIops) : null, "totalReservedIops" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
             {

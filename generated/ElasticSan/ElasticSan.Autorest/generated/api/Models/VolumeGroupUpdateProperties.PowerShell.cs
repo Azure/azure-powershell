@@ -150,9 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).EnforceDataIntegrityCheckForIscsi = (bool?) content.GetValueForProperty("EnforceDataIntegrityCheckForIscsi",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).EnforceDataIntegrityCheckForIscsi, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("ReservedIop"))
+            if (content.Contains("ReservedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).ReservedIop = (int?) content.GetValueForProperty("ReservedIop",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).ReservedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).ReservedIops = (int?) content.GetValueForProperty("ReservedIops",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).ReservedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ReservedMBps"))
             {
@@ -247,9 +247,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).EnforceDataIntegrityCheckForIscsi = (bool?) content.GetValueForProperty("EnforceDataIntegrityCheckForIscsi",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).EnforceDataIntegrityCheckForIscsi, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("ReservedIop"))
+            if (content.Contains("ReservedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).ReservedIop = (int?) content.GetValueForProperty("ReservedIop",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).ReservedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).ReservedIops = (int?) content.GetValueForProperty("ReservedIops",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)this).ReservedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ReservedMBps"))
             {

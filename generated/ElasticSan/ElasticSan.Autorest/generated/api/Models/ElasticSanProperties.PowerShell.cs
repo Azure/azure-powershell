@@ -162,9 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).UsedCapacityGiB = (long?) content.GetValueForProperty("UsedCapacityGiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).UsedCapacityGiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("TotalReservedIop"))
+            if (content.Contains("TotalReservedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).TotalReservedIop = (int?) content.GetValueForProperty("TotalReservedIop",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).TotalReservedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).TotalReservedIops = (int?) content.GetValueForProperty("TotalReservedIops",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).TotalReservedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("TotalReservedMBps"))
             {
@@ -275,9 +275,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).UsedCapacityGiB = (long?) content.GetValueForProperty("UsedCapacityGiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).UsedCapacityGiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("TotalReservedIop"))
+            if (content.Contains("TotalReservedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).TotalReservedIop = (int?) content.GetValueForProperty("TotalReservedIop",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).TotalReservedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).TotalReservedIops = (int?) content.GetValueForProperty("TotalReservedIops",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal)this).TotalReservedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("TotalReservedMBps"))
             {

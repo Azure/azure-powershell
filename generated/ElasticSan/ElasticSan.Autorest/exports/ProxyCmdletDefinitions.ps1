@@ -3957,6 +3957,8 @@ Update a Elastic San.
 Update a Elastic San.
 .Example
 $elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 5 -ExtendedCapacitySizeTib 20 -Tag @{"tag3" = "value3"} -CapacityUnitScaleUpLimitTiB 20 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 5 -AutoScalePolicyEnforcement Disabled
+.Example
+Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsanv2 -TotalSizeTiB 20 -TotalIops 100000 -TotalMBps 4000
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -4057,11 +4059,12 @@ param(
     ${Tag},
 
     [Parameter()]
+    [Alias('TotalIop')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Total Provisioned IOPS of the Elastic San appliance.
     # Supported only for ElasticSanVersion V2.
-    ${TotalIop},
+    ${TotalIops},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
@@ -4478,10 +4481,17 @@ end {
 Create ElasticSan.
 .Description
 Create ElasticSan.
+For V2, omitted autoscale settings default to Enabled, an increase of 1 TiB and an unused-capacity threshold of 1 TiB.
+If CapacityUnitScaleUpLimitTiB is omitted, the command queries Get-AzElasticSanSkuList for the target subscription, Location and SkuName, and caps five times TotalSizeTiB at elasticSanMaxTotalCapacityTiB.
+The command fails before creating the SAN if this lookup fails or does not provide an unambiguous positive capacity limit.
+Explicit autoscale values are preserved, except Disabled and None are rejected for V2.
+V1 behavior is unchanged.
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -AvailabilityZone 1 -Tag @{tag1="value1";tag2="value2"} -AutoScalePolicyEnforcement Enabled -CapacityUnitScaleUpLimitTiB 30 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 6
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
+.Example
+New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsanv2 -Location eastus -SkuName 'ElasticSAN_LRS' -Version V2 -TotalSizeTiB 20 -TotalIops 100000 -TotalMBps 4000
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -4542,7 +4552,7 @@ param(
     ${Location},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # The sku name.
@@ -4553,24 +4563,30 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Enable or Disable scale up setting on Elastic San Appliance.
+    # Defaults to Enabled for V2.
+    # Disabled and None are not supported when Version is V2.
     ${AutoScalePolicyEnforcement},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Maximum scale up size on Elastic San appliance in TiB.
+    # For V2, defaults to the smaller of five times TotalSizeTiB and the regional maximum total capacity for SkuName.
+    # When omitted for V2, Get-AzElasticSanSkuList is called for the target subscription and Location.
     ${CapacityUnitScaleUpLimitTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Unit to increase Capacity Unit on Elastic San appliance in TiB.
+    # Defaults to 1 for V2.
     ${IncreaseCapacityUnitByTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Unused size on Elastic San appliance in TiB.
+    # Defaults to 1 for V2.
     ${UnusedSizeTiB},
 
     [Parameter()]
@@ -4584,14 +4600,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Base size of the Elastic San appliance in TiB.
-    # Default value is 20.
+    # Defaults to 20 for V1.
     ${BaseSizeTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Extended size of the Elastic San appliance in TiB.
-    # Default value is 0.
+    # Defaults to 0 for V1.
     ${ExtendedCapacitySizeTiB},
 
     [Parameter()]
@@ -4615,6 +4631,37 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Alias('TotalIop')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total provisioned IOPS of the Elastic San appliance.
+    # Required for V2; read-only for V1.
+    ${TotalIops},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total provisioned throughput of the Elastic San appliance in MBps.
+    # Required for V2; read-only for V1.
+    ${TotalMBps},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total size of the Elastic San appliance in TiB.
+    # Required for V2; read-only for V1.
+    ${TotalSizeTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("V1", "V2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Elastic San appliance version.
+    # Defaults to V1 if not specified.
+    # V2 requires TotalSizeTiB, TotalIops and TotalMBps; V1 capacity defaults are not added for V2.
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4914,6 +4961,11 @@ $useridentity = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -Na
 New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType UserAssigned -IdentityUserAssignedIdentityId $useridentity.Id -Encryption EncryptionAtRestWithCustomerManagedKey -KeyName mykey -KeyVaultUri "https://mykeyvault.vault.azure.net:443" -EncryptionUserAssignedIdentity $useridentity.Id -ProtocolType Iscsi
 .Example
 New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
+.Example
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name mygeneralpurposegroup -ProtocolType Iscsi -QualityOfService GeneralPurpose
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name myperformancegroup -ProtocolType Iscsi -QualityOfService PerformanceCritical -ReservedIops 10000 -ReservedMBps 400
+.Example
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myencryptedgroup -ProtocolType Iscsi -EncryptionInTransit
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -5005,6 +5057,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # A boolean indicating whether or not encryption in transit is enabled.
+    # Supported only for ISCSI protocol.
+    ${EncryptionInTransit},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Boolean]
     # A boolean indicating whether or not Data Integrity Check is enabled
     ${EnforceDataIntegrityCheckForIscsi},
@@ -5056,11 +5115,34 @@ param(
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Type of storage target
     ${ProtocolType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("GeneralPurpose", "PerformanceCritical")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Quality of service tier for the volume group.
+    # Applicable to V2 Elastic SANs only.
+    ${QualityOfService},
+
+    [Parameter()]
+    [Alias('ReservedIop')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int32]
+    # Reserved IOPS for the volume group.
+    # Applicable to PerformanceCritical volume groups only.
+    ${ReservedIops},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int32]
+    # Reserved throughput in MBps for the volume group.
+    # Applicable to PerformanceCritical volume groups only.
+    ${ReservedMBps},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5489,6 +5571,8 @@ $useridentity2 = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -N
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType UserAssigned -IdentityUserAssignedIdentityId $useridentity2.Id -EncryptionUserAssignedIdentity $useridentity2.Id
 .Example
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
+.Example
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name myperformancegroup -ReservedIops 20000 -ReservedMBps 800
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -5631,11 +5715,26 @@ param(
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Type of storage target
     ${ProtocolType},
+
+    [Parameter()]
+    [Alias('ReservedIop')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int32]
+    # Reserved IOPS for the volume group.
+    # Applicable to PerformanceCritical volume groups only.
+    ${ReservedIops},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int32]
+    # Reserved throughput in MBps for the volume group.
+    # Applicable to PerformanceCritical volume groups only.
+    ${ReservedMBps},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

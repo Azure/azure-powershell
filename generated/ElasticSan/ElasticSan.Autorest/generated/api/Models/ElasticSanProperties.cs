@@ -69,8 +69,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Sku()); set { {_sku = value;} } }
 
-        /// <summary>Internal Acessors for TotalReservedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.TotalReservedIop { get => this._totalReservedIop; set { {_totalReservedIop = value;} } }
+        /// <summary>Internal Acessors for TotalReservedIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.TotalReservedIops { get => this._totalReservedIops; set { {_totalReservedIops = value;} } }
 
         /// <summary>Internal Acessors for TotalReservedMBps</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.TotalReservedMBps { get => this._totalReservedMBps; set { {_totalReservedMBps = value;} } }
@@ -142,12 +142,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         public long? TotalMBps { get => this._totalMBps; set => this._totalMBps = value; }
 
-        /// <summary>Backing field for <see cref="TotalReservedIop" /> property.</summary>
-        private int? _totalReservedIop;
+        /// <summary>Backing field for <see cref="TotalReservedIops" /> property.</summary>
+        private int? _totalReservedIops;
 
         /// <summary>Total IOPS reserved by all the volume groups under an ElasticSan</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public int? TotalReservedIop { get => this._totalReservedIop; }
+        public int? TotalReservedIops { get => this._totalReservedIops; }
 
         /// <summary>Backing field for <see cref="TotalReservedMBps" /> property.</summary>
         private int? _totalReservedMBps;
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"Total IOPS reserved by all the volume groups under an ElasticSan",
         SerializedName = @"totalReservedIops",
         PossibleTypes = new [] { typeof(int) })]
-        int? TotalReservedIop { get;  }
+        int? TotalReservedIops { get;  }
         /// <summary>Total MBps reserved by all the volume groups under an ElasticSan</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         long? TotalMBps { get; set; }
         /// <summary>Total IOPS reserved by all the volume groups under an ElasticSan</summary>
-        int? TotalReservedIop { get; set; }
+        int? TotalReservedIops { get; set; }
         /// <summary>Total MBps reserved by all the volume groups under an ElasticSan</summary>
         int? TotalReservedMBps { get; set; }
         /// <summary>

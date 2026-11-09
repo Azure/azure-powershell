@@ -39,6 +39,8 @@ $useridentity2 = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -N
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType UserAssigned -IdentityUserAssignedIdentityId $useridentity2.Id -EncryptionUserAssignedIdentity $useridentity2.Id
 .Example
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
+.Example
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name myperformancegroup -ReservedIops 20000 -ReservedMBps 800
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -199,10 +201,11 @@ param(
     ${ProtocolType},
 
     [Parameter()]
+    [Alias('ReservedIop')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int32]
     # Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
-    ${ReservedIop},
+    ${ReservedIops},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
