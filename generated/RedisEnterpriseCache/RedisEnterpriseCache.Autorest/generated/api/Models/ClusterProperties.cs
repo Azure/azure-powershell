@@ -58,6 +58,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
         public string KeyEncryptionKeyIdentityUserAssignedIdentityResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionInternal)Encryption).KeyEncryptionKeyIdentityUserAssignedIdentityResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionInternal)Encryption).KeyEncryptionKeyIdentityUserAssignedIdentityResourceId = value ?? null; }
 
+        /// <summary>Backing field for <see cref="MaintenanceConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration _maintenanceConfiguration;
+
+        /// <summary>Cluster-level maintenance configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration MaintenanceConfiguration { get => (this._maintenanceConfiguration = this._maintenanceConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceConfiguration()); set => this._maintenanceConfiguration = value; }
+
+        /// <summary>Custom maintenance windows that apply to the cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow> MaintenanceConfigurationMaintenanceWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfigurationInternal)MaintenanceConfiguration).MaintenanceWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfigurationInternal)MaintenanceConfiguration).MaintenanceWindow = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for CustomerManagedKeyEncryptionKeyIdentity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionCustomerManagedKeyEncryptionKeyIdentity Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal.CustomerManagedKeyEncryptionKeyIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionInternal)Encryption).CustomerManagedKeyEncryptionKeyIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionInternal)Encryption).CustomerManagedKeyEncryptionKeyIdentity = value ?? null /* model class */; }
 
@@ -69,6 +80,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 
         /// <summary>Internal Acessors for HostName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal.HostName { get => this._hostName; set { {_hostName = value;} } }
+
+        /// <summary>Internal Acessors for MaintenanceConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal.MaintenanceConfiguration { get => (this._maintenanceConfiguration = this._maintenanceConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceConfiguration()); set { {_maintenanceConfiguration = value;} } }
+
+        /// <summary>Internal Acessors for MigratedEndpoint</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal.MigratedEndpoint { get => this._migratedEndpoint; set { {_migratedEndpoint = value;} } }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal.PrivateEndpointConnection { get => this._privateEndpointConnection; set { {_privateEndpointConnection = value;} } }
@@ -84,6 +101,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 
         /// <summary>Internal Acessors for ResourceState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal.ResourceState { get => this._resourceState; set { {_resourceState = value;} } }
+
+        /// <summary>Backing field for <see cref="MigratedEndpoint" /> property.</summary>
+        private string _migratedEndpoint;
+
+        /// <summary>
+        /// The endpoint of the source resource that is currently pointing to this resource as a result of an ACR/ACRE to AMR migration.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
+        public string MigratedEndpoint { get => this._migratedEndpoint; }
 
         /// <summary>Backing field for <see cref="MinimumTlsVersion" /> property.</summary>
         private string _minimumTlsVersion;
@@ -212,6 +238,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         SerializedName = @"userAssignedIdentityResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string KeyEncryptionKeyIdentityUserAssignedIdentityResourceId { get; set; }
+        /// <summary>Custom maintenance windows that apply to the cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Custom maintenance windows that apply to the cluster.",
+        SerializedName = @"maintenanceWindows",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow> MaintenanceConfigurationMaintenanceWindow { get; set; }
+        /// <summary>
+        /// The endpoint of the source resource that is currently pointing to this resource as a result of an ACR/ACRE to AMR migration.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The endpoint of the source resource that is currently pointing to this resource as a result of an ACR/ACRE to AMR migration.",
+        SerializedName = @"migratedEndpoint",
+        PossibleTypes = new [] { typeof(string) })]
+        string MigratedEndpoint { get;  }
         /// <summary>
         /// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS
         /// 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency
@@ -329,6 +379,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
         /// </summary>
         string KeyEncryptionKeyIdentityUserAssignedIdentityResourceId { get; set; }
+        /// <summary>Cluster-level maintenance configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration MaintenanceConfiguration { get; set; }
+        /// <summary>Custom maintenance windows that apply to the cluster.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow> MaintenanceConfigurationMaintenanceWindow { get; set; }
+        /// <summary>
+        /// The endpoint of the source resource that is currently pointing to this resource as a result of an ACR/ACRE to AMR migration.
+        /// </summary>
+        string MigratedEndpoint { get; set; }
         /// <summary>
         /// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS
         /// 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency
