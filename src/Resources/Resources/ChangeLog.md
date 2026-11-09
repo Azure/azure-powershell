@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `10.0.3` to `10.0.10`.
 
 ## Version 10.2.2
 * Expanded deployment stack What-If create/delete details, including potential changes; removed redundant headers and aligned JSON formatting with Azure CLI [Azure/azure-cli#34156](https://github.com/Azure/azure-cli/pull/34156).
