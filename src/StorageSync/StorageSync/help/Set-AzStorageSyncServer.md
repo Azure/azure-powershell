@@ -35,7 +35,7 @@ When you use the Identity parameter, run the command locally from an elevated Po
 
 ### Example 1
 ```powershell
-Set-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -ServerId "00000000-0000-0000-0000-000000000000" -Identity
+Set-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -ServerId "<guid>" -Identity
 ```
 
 This command configures the specified registered server to use its system-assigned managed identity. Run the command locally from an elevated PowerShell session on that registered server.

@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated the `Set-AzStorageSyncServer` help description to explain that the cmdlet repairs a server whose managed identity relationship with its storage sync service is broken
+* Updated the `Set-AzStorageSyncServer` help description to explain that the cmdlet repairs a server whose managed identity relationship with its storage sync service is broken, and updated the example to use a placeholder for `ServerId`
 
 ## Version 2.7.1
 * Preserved `Set-AzStorageSyncServer` identity token errors and added server-specific guidance.
