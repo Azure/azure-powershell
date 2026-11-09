@@ -136,6 +136,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).AccessKeysAuthentication = (string) content.GetValueForProperty("AccessKeysAuthentication",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).AccessKeysAuthentication, global::System.Convert.ToString);
             }
+            if (content.Contains("NotifyKeyspaceEvents"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).NotifyKeyspaceEvents = (string) content.GetValueForProperty("NotifyKeyspaceEvents",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).NotifyKeyspaceEvents, global::System.Convert.ToString);
+            }
             if (content.Contains("PersistenceAofEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).PersistenceAofEnabled = (bool?) content.GetValueForProperty("PersistenceAofEnabled",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).PersistenceAofEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -228,6 +232,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("AccessKeysAuthentication"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).AccessKeysAuthentication = (string) content.GetValueForProperty("AccessKeysAuthentication",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).AccessKeysAuthentication, global::System.Convert.ToString);
+            }
+            if (content.Contains("NotifyKeyspaceEvents"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).NotifyKeyspaceEvents = (string) content.GetValueForProperty("NotifyKeyspaceEvents",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdateInternal)this).NotifyKeyspaceEvents, global::System.Convert.ToString);
             }
             if (content.Contains("PersistenceAofEnabled"))
             {
