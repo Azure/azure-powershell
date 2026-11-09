@@ -24,7 +24,9 @@ function setupEnv {
         'Update-AzResiliencyRecoveryPlanResource', 'Test-AzResiliencyRecoveryPlanReadiness',
         'Test-AzResiliencyRecoveryPlanOperationValidation', 'Test-AzResiliencyRecoveryPlanReprotectValidation',
         'Invoke-AzResiliencyRecoveryPlanReprotect', 'Invoke-AzResiliencyRecoveryJobRetry',
-        'Invoke-AzResiliencyRecoveryPlanFailover'
+        'Invoke-AzResiliencyRecoveryPlanFailover', 'Resume-AzResiliencyRecoveryJob',
+        'Invoke-AzResiliencyRecoveryPlanFinalize', 'Test-AzResiliencyRecoveryPlanFailoverValidation',
+        'Remove-AzResiliencyRecoveryPlan'
     )
     $selected = @($TestName | Where-Object { $_ -in $names })
     if ($selected.Count -eq 0) {
@@ -33,8 +35,16 @@ function setupEnv {
         return
     }
     if ($selected.Count -ne $TestName.Count) { throw 'Record recovery-plan scenarios separately from unrelated area fixtures.' }
-    if ('Invoke-AzResiliencyRecoveryPlanFailover' -in $selected -and $selected.Count -ne 1) {
-        throw 'Record Failover separately to preserve its independent environment provenance.'
+    $independentEnvironments = @{
+        'Invoke-AzResiliencyRecoveryPlanFailover' = 'Failover'
+        'Resume-AzResiliencyRecoveryJob' = 'Resume'
+        'Invoke-AzResiliencyRecoveryPlanFinalize' = 'Finalize'
+        'Test-AzResiliencyRecoveryPlanFailoverValidation' = 'FailoverValidation'
+        'Remove-AzResiliencyRecoveryPlan' = 'Remove'
+    }
+    $independent = @($selected | Where-Object { $independentEnvironments.ContainsKey($_) })
+    if ($independent.Count -and $selected.Count -ne 1) {
+        throw 'Record this operation separately to preserve its independent environment provenance.'
     }
     Assert-ROPlanOwnershipAvailable
     if ([string]::IsNullOrWhiteSpace($env:RESILIENCY_TEST_SHARED_SERVICE_GROUP)) {
@@ -49,7 +59,7 @@ function setupEnv {
     $env.Tenant = $context.Tenant.Id
     $env.reuseSharedSetup = $true
     $env.recoveryServiceGroupName = $env:RESILIENCY_TEST_SHARED_SERVICE_GROUP
-    $kind = if ('Invoke-AzResiliencyRecoveryPlanFailover' -in $selected) { 'Failover' } else { 'Historical' }
+    $kind = if ($independent.Count) { $independentEnvironments[$independent[0]] } else { 'Historical' }
     $ROScenarioEnvironmentDirectory = Join-Path $PSScriptRoot "RecoveryPlans\$kind"
     Initialize-ROScenarioRegistry
     if ($env:RESILIENCY_RECORD_FRESH_SCENARIO) {
