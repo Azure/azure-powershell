@@ -19,21 +19,26 @@ Describe 'Update-AzResiliencyGoalResource' {
         $goalParameters = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
         $goalIdentity = @{ ServiceGroupName = $env.serviceGroupName; GoalAssignmentName = $env.goalAssignmentName }
         $serviceGroupIdentity = @{ ServiceGroupName = $env.serviceGroupName }
+        # The goal resource ID is assigned by the service when the VM is discovered, so look it up by the VM's ARM ID.
+        $goalResource = @(Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalResource @goalParameters }) | Where-Object { $_.ResourceArmId -eq $env.vmId } | Select-Object -First 1
+        $goalResourceId = $goalResource.Id
+        $goalResourceName = $goalResource.Name
+        # The service identifies each updated item by the goal resource's own ARM ID, so every update carries Id.
         function Get-ResourceUpdate([string]$Participation) {
-            return @{ ResourceArmId = $env.vmId; ZonalResiliencyGoalParticipation = $Participation }
+            return @{ Id = $goalResourceId; ResourceArmId = $env.vmId; ZonalResiliencyGoalParticipation = $Participation }
         }
         function Get-UpdateJson([string]$Participation) {
-            return @{ resources = @(@{ properties = @{ resourceArmId = $env.vmId; zonalResiliency = @{ goalParticipation = $Participation } } }) } | ConvertTo-Json -Depth 10
+            return @{ resources = @(@{ id = $goalResourceId; properties = @{ resourceArmId = $env.vmId; zonalResiliency = @{ goalParticipation = $Participation } } }) } | ConvertTo-Json -Depth 10
         }
-        # Every scenario toggles the VM's participation. The updateGoal operation can stay in progress for a long time,
-        # so updates are sent with -NoWait (retrying while a previous POST is still active) and the goal resource is polled.
+        # Every scenario toggles the VM's participation. Updates are sent with -NoWait (retrying while a previous POST on
+        # the goal assignment is still active) and the goal resource is polled until it reflects the change.
         function Invoke-GoalResourceUpdate([scriptblock]$Command) {
             $null = Invoke-ResiliencyWithRetry -AlsoRetryOn 'InvalidResourceOperation|Conflict' $Command
         }
         function Assert-Participation([string]$Participation) {
             $deadline = (Get-Date).AddMinutes(20)
             do {
-                $resource = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalResource @goalParameters -Name $env.goalResourceName }
+                $resource = Invoke-ResiliencyWithRetry { Get-AzResiliencyGoalResource @goalParameters -Name $goalResourceName }
                 if ($resource.ZonalResiliencyGoalParticipation -eq $Participation) {
                     break
                 }
@@ -44,52 +49,44 @@ Describe 'Update-AzResiliencyGoalResource' {
         }
     }
 
-    # Skipped: goal-assignment POST LROs (refreshGoalResources/updateGoal) on the fixture goal stay 'Accepted' for 85+ min and block further POSTs with 409 InvalidResourceOperation (correlation 745784c7-64ba-4294-bf0b-362178823ae2); cannot be recorded until the service fixes this.
-    It 'UpdateViaIdentity' -skip {
+    It 'UpdateViaIdentity' {
         Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -InputObject $goalIdentity -Body @{ Resource = @(Get-ResourceUpdate 'Excluded') } -NoWait }
         Assert-Participation 'Excluded'
     }
 
-    # Skipped: goal-assignment POST LROs (refreshGoalResources/updateGoal) on the fixture goal stay 'Accepted' for 85+ min and block further POSTs with 409 InvalidResourceOperation (correlation 745784c7-64ba-4294-bf0b-362178823ae2); cannot be recorded until the service fixes this.
-    It 'UpdateViaJsonString' -skip {
+    It 'UpdateViaJsonString' {
         Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -JsonString (Get-UpdateJson 'Included') -NoWait }
         Assert-Participation 'Included'
     }
 
-    # Skipped: goal-assignment POST LROs (refreshGoalResources/updateGoal) on the fixture goal stay 'Accepted' for 85+ min and block further POSTs with 409 InvalidResourceOperation (correlation 745784c7-64ba-4294-bf0b-362178823ae2); cannot be recorded until the service fixes this.
-    It 'UpdateViaJsonFilePath' -skip {
+    It 'UpdateViaJsonFilePath' {
         $jsonFilePath = Join-Path $TestDrive 'goalResources.json'
         Get-UpdateJson 'Excluded' | Set-Content $jsonFilePath
         Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -JsonFilePath $jsonFilePath -NoWait }
         Assert-Participation 'Excluded'
     }
 
-    # Skipped: goal-assignment POST LROs (refreshGoalResources/updateGoal) on the fixture goal stay 'Accepted' for 85+ min and block further POSTs with 409 InvalidResourceOperation (correlation 745784c7-64ba-4294-bf0b-362178823ae2); cannot be recorded until the service fixes this.
-    It 'UpdateViaIdentityServiceGroupExpanded' -skip {
+    It 'UpdateViaIdentityServiceGroupExpanded' {
         Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -ServiceGroupInputObject $serviceGroupIdentity -GoalAssignmentName $env.goalAssignmentName -Resource @(Get-ResourceUpdate 'Included') -NoWait }
         Assert-Participation 'Included'
     }
 
-    # Skipped: goal-assignment POST LROs (refreshGoalResources/updateGoal) on the fixture goal stay 'Accepted' for 85+ min and block further POSTs with 409 InvalidResourceOperation (correlation 745784c7-64ba-4294-bf0b-362178823ae2); cannot be recorded until the service fixes this.
-    It 'UpdateViaIdentityServiceGroup' -skip {
+    It 'UpdateViaIdentityServiceGroup' {
         Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -ServiceGroupInputObject $serviceGroupIdentity -GoalAssignmentName $env.goalAssignmentName -Body @{ Resource = @(Get-ResourceUpdate 'Excluded') } -NoWait }
         Assert-Participation 'Excluded'
     }
 
-    # Skipped: goal-assignment POST LROs (refreshGoalResources/updateGoal) on the fixture goal stay 'Accepted' for 85+ min and block further POSTs with 409 InvalidResourceOperation (correlation 745784c7-64ba-4294-bf0b-362178823ae2); cannot be recorded until the service fixes this.
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -Resource @(Get-ResourceUpdate 'Included') -NoWait }
         Assert-Participation 'Included'
     }
 
-    # Skipped: goal-assignment POST LROs (refreshGoalResources/updateGoal) on the fixture goal stay 'Accepted' for 85+ min and block further POSTs with 409 InvalidResourceOperation (correlation 745784c7-64ba-4294-bf0b-362178823ae2); cannot be recorded until the service fixes this.
-    It 'Update' -skip {
+    It 'Update' {
         Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource @goalParameters -Body @{ Resource = @(Get-ResourceUpdate 'Excluded') } -NoWait }
         Assert-Participation 'Excluded'
     }
 
-    # Skipped: goal-assignment POST LROs (refreshGoalResources/updateGoal) on the fixture goal stay 'Accepted' for 85+ min and block further POSTs with 409 InvalidResourceOperation (correlation 745784c7-64ba-4294-bf0b-362178823ae2); cannot be recorded until the service fixes this.
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         Invoke-GoalResourceUpdate { Update-AzResiliencyGoalResource -InputObject $goalIdentity -Resource @(Get-ResourceUpdate 'Included') -NoWait }
         Assert-Participation 'Included'
     }
