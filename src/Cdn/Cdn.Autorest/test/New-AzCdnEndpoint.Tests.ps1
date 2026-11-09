@@ -1,8 +1,8 @@
 if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnEndpoint'))
 {
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadCdnEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadCdnEnv.ps1'
   }
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzCdnEndpoint.Recording.json'
@@ -22,11 +22,11 @@ Describe 'New-AzCdnEndpoint' {
     }
 
     AfterAll {
-        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ErrorAction SilentlyContinue
     }
 
     It 'CreateExpanded' {
-        $endpoint = New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $script:location -Origin $script:origin
+        $endpoint = New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $script:location -Origin $script:origin
         $endpoint.Name | Should -Be $script:endpointName
         $endpoint.Location | Should -Be $script:location
         $endpoint.Origin.Name | Should -Be $script:origin.Name
