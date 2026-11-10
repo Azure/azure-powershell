@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated module generation from AutoRest to TypeSpec.
 
 ## Version 0.1.1
 * Upgraded API version to `2026-02-01`.
@@ -26,4 +27,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.DurableTask
-
