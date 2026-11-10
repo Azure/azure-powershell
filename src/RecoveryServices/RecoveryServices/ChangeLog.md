@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed `Set-AzRecoveryServicesAsrVaultContext` failing with "Object reference not set to an instance of an object" for vaults without extended info
+    - The cmdlet now creates the vault extended info when the service reports it does not exist, as it did before version 7.10.0
 
 ## Version 7.16.0
 * Supported SQL instance snapshot backup features.
