@@ -44,3 +44,6 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("5.5.4")]
 [assembly: AssemblyFileVersion("5.5.4")]
+#if !SIGN
+[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.AssemblyLoading.Test")]
+#endif
