@@ -1041,6 +1041,10 @@
     "alias": "RedHatOpenShiftHcp"
   },
   {
+    "module": "NetworkSecurity",
+    "alias": "NetworkSecurity"
+  },
+  {
     "module": "AIInfraOptimization",
     "alias": "AIInfraOptimization"
   },
