@@ -115,6 +115,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryDiskEncryptionSetId { get; set; }
 
         /// <summary>
+        /// Gets or sets the replica confidential disk encryption set ARM Id (CMK confidential VM disks only).
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false,
+            HelpMessage = "Specifies the replica confidential disk encryption set ARM Id used to create the seed disk. Applicable only to CMK confidential VM disks.")]
+        [ValidateNotNullOrEmpty]
+        public string ReplicaConfidentialDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target confidential disk encryption set ARM Id (CMK confidential VM disks only).
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false,
+            HelpMessage = "Specifies the target confidential disk encryption set ARM Id applied to the failed-over disk. Applicable only to CMK confidential VM disks.")]
+        [ValidateNotNullOrEmpty]
+        public string TargetConfidentialDiskEncryptionSetId { get; set; }
+
+        /// <summary>
         /// Gets or sets DiskEncryptionVaultId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
@@ -244,6 +260,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             KeyEncryptionKeyUrl = this.KeyEncryptionKeyUrl,
                             KeyEncryptionVaultId = this.KeyEncryptionVaultId,
                             RecoveryDiskEncryptionSetId = this.RecoveryDiskEncryptionSetId,
+                            ReplicaConfidentialDiskEncryptionSetId = this.ReplicaConfidentialDiskEncryptionSetId,
+                            TargetConfidentialDiskEncryptionSetId = this.TargetConfidentialDiskEncryptionSetId,
                             FailoverDiskName = this.FailoverDiskName,
                             TfoDiskName = this.TfoDiskName,
                             RecoveryNetworkAccessPolicy = this.RecoveryNetworkAccessPolicy,

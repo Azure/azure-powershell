@@ -2791,6 +2791,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryDiskEncryptionSetId;
 
         /// <summary>
+        /// Gets or sets the replica confidential disk encryption set ARM Id (CMK confidential VM disks only).
+        /// </summary>
+        public string ReplicaConfidentialDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target confidential disk encryption set ARM Id (CMK confidential VM disks only).
+        /// </summary>
+        public string TargetConfidentialDiskEncryptionSetId { get; set; }
+
+        /// <summary>
         /// Gets or sets DiskEncryptionVaultId.
         /// </summary>
         public string DiskEncryptionVaultId { get; set; }
@@ -2929,6 +2939,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryNetworkAccessPolicy = disk.RecoveryNetworkAccessPolicy;
             this.RecoveryDiskAccessId = disk.RecoveryDiskAccessId;
             this.RecoveryPublicNetworkAccess = disk.RecoveryPublicNetworkAccess;
+            this.ReplicaConfidentialDiskEncryptionSetId =
+                disk.ConfidentialDiskEncryptionInfo?.RecoveryReplicaConfidentialDiskEncryptionSetId;
+            this.TargetConfidentialDiskEncryptionSetId =
+                disk.ConfidentialDiskEncryptionInfo?.RecoveryTargetConfidentialDiskEncryptionSetId;
         }
 
         /// <summary>
@@ -2996,6 +3010,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the recovery disk encryption set Id.
         /// </summary>
         public string RecoveryDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential disk encryption set ARM Id used for the replica disk.
+        /// Applicable to CMK confidential VM disks.
+        /// </summary>
+        public string ReplicaConfidentialDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential disk encryption set ARM Id used for the target disk
+        /// after failover. Applicable to CMK confidential VM disks.
+        /// </summary>
+        public string TargetConfidentialDiskEncryptionSetId { get; set; }
 
         /// <summary>
         /// Gets or sets the network access policy for the recovery managed disk.

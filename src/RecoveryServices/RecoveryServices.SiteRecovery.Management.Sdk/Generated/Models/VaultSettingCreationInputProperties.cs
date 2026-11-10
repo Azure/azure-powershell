@@ -29,11 +29,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="vmwareToAzureProviderType">VMware to Azure provider type.
         /// </param>
-        public VaultSettingCreationInputProperties(string migrationSolutionId = default(string), string vmwareToAzureProviderType = default(string))
+
+        /// <param name="recoveryNetworkConfigAutoSync">The vault level policy controlling whether the A2A recovery network
+        /// configuration is automatically kept in sync with the source virtual
+        /// machine. If the property is omitted from the request body, the policy is
+        /// set to `Disabled`.
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
+        public VaultSettingCreationInputProperties(string migrationSolutionId = default(string), string vmwareToAzureProviderType = default(string), string recoveryNetworkConfigAutoSync = default(string))
 
         {
             this.MigrationSolutionId = migrationSolutionId;
             this.VmwareToAzureProviderType = vmwareToAzureProviderType;
+            this.RecoveryNetworkConfigAutoSync = recoveryNetworkConfigAutoSync;
             CustomInit();
         }
 
@@ -54,5 +61,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmwareToAzureProviderType")]
         public string VmwareToAzureProviderType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the vault level policy controlling whether the A2A recovery
+        /// network configuration is automatically kept in sync with the source virtual
+        /// machine. If the property is omitted from the request body, the policy is
+        /// set to `Disabled`. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryNetworkConfigAutoSync")]
+        public string RecoveryNetworkConfigAutoSync {get; set; }
     }
 }

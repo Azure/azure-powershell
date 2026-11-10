@@ -61,6 +61,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         public bool? GenerateClientRequestId { get; set;}
 
         /// <summary>
+        /// Gets the IReplicationEligibilityResultsOperations
+        /// </summary>
+        public virtual IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; private set; }
+        /// <summary>
         /// Gets the IOperations
         /// </summary>
         public virtual IOperations Operations { get; private set; }
@@ -180,10 +184,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationVaultSettingOperations
         /// </summary>
         public virtual IReplicationVaultSettingOperations ReplicationVaultSetting { get; private set; }
-        /// <summary>
-        /// Gets the IReplicationEligibilityResultsOperations
-        /// </summary>
-        public virtual IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; private set; }
         /// <summary>
         /// Initializes a new instance of the SiteRecoveryManagementClient class.
         /// </summary>
@@ -422,6 +422,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         private void Initialize()
         {
+            this.ReplicationEligibilityResults = new ReplicationEligibilityResultsOperations(this);
             this.Operations = new Operations(this);
             this.ReplicationAlertSettings = new ReplicationAlertSettingsOperations(this);
             this.ReplicationAppliances = new ReplicationAppliancesOperations(this);
@@ -452,9 +453,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             this.SupportedOperatingSystems = new SupportedOperatingSystemsOperations(this);
             this.ReplicationVaultHealth = new ReplicationVaultHealthOperations(this);
             this.ReplicationVaultSetting = new ReplicationVaultSettingOperations(this);
-            this.ReplicationEligibilityResults = new ReplicationEligibilityResultsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-02-01";
+            this.ApiVersion = "2026-11-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
