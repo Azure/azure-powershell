@@ -1,0 +1,1601 @@
+{
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$PUT+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"recoveryGroupsSetting\": {\r\n      \"defaultGroup\": {\r\n        \"properties\": {\r\n          \"groupUniqueId\": \"b63759e8-a10c-4731-bb81-8808a77bf008\",\r\n          \"orderId\": 0,\r\n          \"description\": \"Default recovery group\"\r\n        }\r\n      }\r\n    },\r\n    \"planType\": \"Zonal\",\r\n    \"planDescription\": \"Recorded PowerShell recovery plan\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "421"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Accept-Ranges": [
+          "bytes"
+        ],
+        "ETag": [
+          "\"0300efbe-0000-2300-0000-6aedd29c0000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-azure-ref": [
+          "20261106T131402Z-16995f4f7c625lvphC1IADdb5w0000001mc00000000066en"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/bbbf6550-e4bc-4456-9e97-70977aa53052*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "bbbf6550-e4bc-4456-9e97-70977aa53052"
+        ],
+        "x-ms-correlation-request-id": [
+          "edf798ca-9943-45be-97b3-0a03547283ca"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131404Z:edf798ca-9943-45be-97b3-0a03547283ca"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 09DA9770A34C41F9BE5ACB8151351C8C Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:13:58Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:14:04 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "913"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"name\":\"ropsrec-472frz81ksjw\",\"type\":\"microsoft.azureresiliencemanagement/recoveryplans\",\"systemData\":{\"createdBy\":\"test@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-06T13:13:59.6193265Z\",\"lastModifiedBy\":\"test@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-06T13:13:59.6193265Z\"},\"identity\":{\"principalId\":\"00000000-0000-0000-0000-000000001003\",\"tenantId\":\"00000000-0000-0000-0000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"recoveryGroupsSetting\":{\"defaultGroup\":{\"properties\":{\"groupUniqueId\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"orderId\":0,\"description\":\"Default recovery group\"}}},\"planType\":\"Zonal\",\"planDescription\":\"Recorded PowerShell recovery plan\",\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/bbbf6550-e4bc-4456-9e97-70977aa53052*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/bbbf6550-e4bc-4456-9e97-70977aa53052*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-8c0aa10aca857ac1238511b7dfdebb8e-1dcf29ec34819371-00"
+        ],
+        "x-ms-unique-id": [
+          "3"
+        ],
+        "x-ms-client-request-id": [
+          "7d004f99-7145-4680-bd0d-85b5624cceeb"
+        ],
+        "CommandName": [
+          "New-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "New-AzResiliencyRecoveryPlan_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"5300ac4b-0000-3300-0000-6aedd2b50000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-request-id": [
+          "656512fd-7cf8-4675-bb44-df8a0d0c8598"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b257045-9b34-474b-9233-cceb2b32f071"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131435Z:0b257045-9b34-474b-9233-cceb2b32f071"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6058609E419A491CB6A5B5FEE3E13880 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:14:35Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:14:35 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "595"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/bbbf6550-e4bc-4456-9e97-70977aa53052*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"name\":\"bbbf6550-e4bc-4456-9e97-70977aa53052*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"resourceId\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-06T13:14:02.8285374Z\",\"endTime\":\"2026-11-06T13:14:24.1909226Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "traceparent": [
+          "00-8c0aa10aca857ac1238511b7dfdebb8e-1dcf29ec34819371-00"
+        ],
+        "x-ms-unique-id": [
+          "4"
+        ],
+        "x-ms-client-request-id": [
+          "7d004f99-7145-4680-bd0d-85b5624cceeb"
+        ],
+        "CommandName": [
+          "New-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "New-AzResiliencyRecoveryPlan_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"030001bf-0000-2300-0000-6aedd2b00000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "f82f0b39-15ce-4f8b-93cb-e9566ac7b4b5"
+        ],
+        "x-ms-correlation-request-id": [
+          "3559f342-37c3-4b38-b170-9f7f5ef5b85e"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131435Z:3559f342-37c3-4b38-b170-9f7f5ef5b85e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F725D27353E44AA4B83A683F4D4DAEBC Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:14:35Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:14:35 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1403"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"name\":\"ropsrec-472frz81ksjw\",\"type\":\"microsoft.azureresiliencemanagement/recoveryplans\",\"systemData\":{\"createdBy\":\"test@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-06T13:13:59.6193265Z\",\"lastModifiedBy\":\"test@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-06T13:13:59.6193265Z\"},\"identity\":{\"principalId\":\"00000000-0000-0000-0000-000000001003\",\"tenantId\":\"00000000-0000-0000-0000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"planType\":\"Zonal\",\"planState\":\"Warning\",\"planDescription\":\"Recorded PowerShell recovery plan\",\"recoveryGroupsSetting\":{\"defaultGroup\":{\"properties\":{\"groupUniqueId\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"orderId\":0,\"description\":\"Default recovery group\",\"preActions\":null,\"postActions\":null},\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw/recoveryGroups/b63759e8-a10c-4731-bb81-8808a77bf008\",\"name\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"type\":\"Microsoft.AzureResilienceManagement/recoveryPlans/recoveryGroups\"},\"additionalGroups\":null},\"latestFailoverStatus\":null,\"latestValidationStatus\":null,\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "27336f17-e9df-4a26-9230-a530fcf1ce4a"
+        ],
+        "CommandName": [
+          "Get-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Get-AzResiliencyRecoveryPlan_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-5ac1a139aa57d78f48b09ed47f0e9988-93407047913a7664-00"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"030001bf-0000-2300-0000-6aedd2b00000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "db8cecf1-9f32-4ce0-a20c-cd2d4fba867a"
+        ],
+        "x-ms-correlation-request-id": [
+          "8f6d1ca2-4334-42ab-b7cf-9c78e6264534"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131436Z:8f6d1ca2-4334-42ab-b7cf-9c78e6264534"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C0BD7EC952D5477E89D9A1AFEE0414BC Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:14:35Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:14:36 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1403"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"name\":\"ropsrec-472frz81ksjw\",\"type\":\"microsoft.azureresiliencemanagement/recoveryplans\",\"systemData\":{\"createdBy\":\"test@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-06T13:13:59.6193265Z\",\"lastModifiedBy\":\"test@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-06T13:13:59.6193265Z\"},\"identity\":{\"principalId\":\"00000000-0000-0000-0000-000000001003\",\"tenantId\":\"00000000-0000-0000-0000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"planType\":\"Zonal\",\"planState\":\"Warning\",\"planDescription\":\"Recorded PowerShell recovery plan\",\"recoveryGroupsSetting\":{\"defaultGroup\":{\"properties\":{\"groupUniqueId\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"orderId\":0,\"description\":\"Default recovery group\",\"preActions\":null,\"postActions\":null},\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw/recoveryGroups/b63759e8-a10c-4731-bb81-8808a77bf008\",\"name\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"type\":\"Microsoft.AzureResilienceManagement/recoveryPlans/recoveryGroups\"},\"additionalGroups\":null},\"latestFailoverStatus\":null,\"latestValidationStatus\":null,\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans?api-version=2026-10-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "6"
+        ],
+        "x-ms-client-request-id": [
+          "10eb1e81-b2f6-4ff2-a34a-f0789d3a53eb"
+        ],
+        "CommandName": [
+          "Get-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Get-AzResiliencyRecoveryPlan_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-813db632ac8cc676c77ee9a2df42d047-63dbc4f0a474b543-00"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "85e76e16-801f-4c78-9547-6eb3bb894c56"
+        ],
+        "x-ms-correlation-request-id": [
+          "37e79095-aee9-4d85-ad9c-e26e07893d08"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2198"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131436Z:37e79095-aee9-4d85-ad9c-e26e07893d08"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 64A22DE6314E413EA00B9FE4F9B7C159 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:14:36Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:14:36 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1276"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"name\":\"ropsrec-472frz81ksjw\",\"type\":\"microsoft.azureresiliencemanagement/recoveryplans\",\"systemData\":{\"createdBy\":\"test@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-06T13:13:59.6193265Z\",\"lastModifiedBy\":\"test@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-06T13:13:59.6193265Z\"},\"identity\":{\"principalId\":\"00000000-0000-0000-0000-000000001003\",\"tenantId\":\"00000000-0000-0000-0000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"planType\":\"Zonal\",\"planState\":\"Warning\",\"planDescription\":\"Recorded PowerShell recovery plan\",\"recoveryGroupsSetting\":{\"defaultGroup\":{\"properties\":{\"groupUniqueId\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"orderId\":0,\"description\":\"Default recovery group\"},\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw/recoveryGroups/b63759e8-a10c-4731-bb81-8808a77bf008\",\"name\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"type\":\"Microsoft.AzureResilienceManagement/recoveryPlans/recoveryGroups\"}}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "7"
+        ],
+        "x-ms-client-request-id": [
+          "e1120a0e-2b1e-4ae0-8db1-d79366a3e274"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyRecoveryPlan_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-b933e1acd0aef153513dd99334de9bce-f1e16143505410c8-00"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "ETag": [
+          "\"030001bf-0000-2300-0000-6aedd2b00000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "348c704a-13a6-4540-88e2-7dda13b13ab1"
+        ],
+        "x-ms-correlation-request-id": [
+          "73c5df1b-aebc-4dc9-8661-d66beaa55dd4"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131438Z:73c5df1b-aebc-4dc9-8661-d66beaa55dd4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D2803645D8114B84BA3672B4BE838585 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:14:36Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:14:37 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1403"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"name\":\"ropsrec-472frz81ksjw\",\"type\":\"microsoft.azureresiliencemanagement/recoveryplans\",\"systemData\":{\"createdBy\":\"test@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-06T13:13:59.6193265Z\",\"lastModifiedBy\":\"test@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-06T13:13:59.6193265Z\"},\"identity\":{\"principalId\":\"00000000-0000-0000-0000-000000001003\",\"tenantId\":\"00000000-0000-0000-0000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"planType\":\"Zonal\",\"planState\":\"Warning\",\"planDescription\":\"Recorded PowerShell recovery plan\",\"recoveryGroupsSetting\":{\"defaultGroup\":{\"properties\":{\"groupUniqueId\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"orderId\":0,\"description\":\"Default recovery group\",\"preActions\":null,\"postActions\":null},\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw/recoveryGroups/b63759e8-a10c-4731-bb81-8808a77bf008\",\"name\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"type\":\"Microsoft.AzureResilienceManagement/recoveryPlans/recoveryGroups\"},\"additionalGroups\":null},\"latestFailoverStatus\":null,\"latestValidationStatus\":null,\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$PUT+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01+7": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"recoveryGroupsSetting\": {\r\n      \"defaultGroup\": {\r\n        \"properties\": {\r\n          \"groupUniqueId\": \"b63759e8-a10c-4731-bb81-8808a77bf008\",\r\n          \"orderId\": 0,\r\n          \"description\": \"Default recovery group\"\r\n        }\r\n      }\r\n    },\r\n    \"planType\": \"Zonal\",\r\n    \"planDescription\": \"Updated recorded PowerShell recovery plan\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "429"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Accept-Ranges": [
+          "bytes"
+        ],
+        "ETag": [
+          "\"030013bf-0000-2300-0000-6aedd2c00000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-azure-ref": [
+          "20261106T131439Z-16995f4f7c6zx5l6hC1IAD7w7800000019z0000000002018"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/4d6d0a89-ea3d-46f7-b341-5ba9bd82a0b4*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "4d6d0a89-ea3d-46f7-b341-5ba9bd82a0b4"
+        ],
+        "x-ms-correlation-request-id": [
+          "df1c7c0f-d694-4c55-9279-fc0cf151d26f"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131440Z:df1c7c0f-d694-4c55-9279-fc0cf151d26f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 0366CCB653C74390B98D8A49243207B7 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:14:38Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:14:40 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1249"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"name\":\"ropsrec-472frz81ksjw\",\"type\":\"microsoft.azureresiliencemanagement/recoveryplans\",\"systemData\":{\"createdBy\":\"test@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-06T13:13:59.6193265Z\",\"lastModifiedBy\":\"test@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-06T13:14:38.4734158Z\"},\"identity\":{\"principalId\":\"00000000-0000-0000-0000-000000001003\",\"tenantId\":\"00000000-0000-0000-0000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Accepted\",\"recoveryGroupsSetting\":{\"defaultGroup\":{\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw/recoveryGroups/b63759e8-a10c-4731-bb81-8808a77bf008\",\"name\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"type\":\"Microsoft.AzureResilienceManagement/recoveryPlans/recoveryGroups\",\"properties\":{\"groupUniqueId\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"orderId\":0,\"description\":\"Default recovery group\"}}},\"planType\":\"Zonal\",\"planDescription\":\"Updated recorded PowerShell recovery plan\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/4d6d0a89-ea3d-46f7-b341-5ba9bd82a0b4*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/4d6d0a89-ea3d-46f7-b341-5ba9bd82a0b4*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-7a717b57e561a03ce0fa64874abf8e47-cb7e7e5d34a6b7a2-00"
+        ],
+        "x-ms-unique-id": [
+          "9"
+        ],
+        "x-ms-client-request-id": [
+          "e1120a0e-2b1e-4ae0-8db1-d79366a3e274"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyRecoveryPlan_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"5300a651-0000-3300-0000-6aedd2d80000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-request-id": [
+          "5b86be88-522b-4ee0-beec-0b9cb353d7b1"
+        ],
+        "x-ms-correlation-request-id": [
+          "f6c3cae7-bbb8-4496-b05b-107b1ee56129"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131511Z:f6c3cae7-bbb8-4496-b05b-107b1ee56129"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9C285C2674324960B4FDC6DCC61D133A Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:15:11Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:15:11 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "595"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/4d6d0a89-ea3d-46f7-b341-5ba9bd82a0b4*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"name\":\"4d6d0a89-ea3d-46f7-b341-5ba9bd82a0b4*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"resourceId\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-06T13:14:39.4395116Z\",\"endTime\":\"2026-11-06T13:14:57.0887975Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "traceparent": [
+          "00-7a717b57e561a03ce0fa64874abf8e47-cb7e7e5d34a6b7a2-00"
+        ],
+        "x-ms-unique-id": [
+          "10"
+        ],
+        "x-ms-client-request-id": [
+          "e1120a0e-2b1e-4ae0-8db1-d79366a3e274"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyRecoveryPlan_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"030024bf-0000-2300-0000-6aedd2d10000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "fb8e769a-fbab-4778-a388-fe861d96e639"
+        ],
+        "x-ms-correlation-request-id": [
+          "35bcbf56-9cf7-4975-9da0-853ff29efee2"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2198"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131511Z:35bcbf56-9cf7-4975-9da0-853ff29efee2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5F78CE00A36F401F976C2BDCF0158353 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:15:11Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:15:11 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1409"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"name\":\"ropsrec-472frz81ksjw\",\"type\":\"microsoft.azureresiliencemanagement/recoveryplans\",\"systemData\":{\"createdBy\":\"test@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-06T13:13:59.6193265Z\",\"lastModifiedBy\":\"test@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-06T13:14:38.4734158Z\"},\"identity\":{\"principalId\":\"00000000-0000-0000-0000-000000001003\",\"tenantId\":\"00000000-0000-0000-0000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"planType\":\"Zonal\",\"planState\":\"Warning\",\"planDescription\":\"Updated recorded PowerShell recovery plan\",\"recoveryGroupsSetting\":{\"defaultGroup\":{\"properties\":{\"groupUniqueId\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"orderId\":0,\"description\":\"Default recovery group\",\"preActions\":null,\"postActions\":null},\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw/recoveryGroups/b63759e8-a10c-4731-bb81-8808a77bf008\",\"name\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"type\":\"Microsoft.AzureResilienceManagement/recoveryPlans/recoveryGroups\"},\"additionalGroups\":[]},\"latestFailoverStatus\":null,\"latestValidationStatus\":null,\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "11"
+        ],
+        "x-ms-client-request-id": [
+          "a592486a-348c-48f7-8f2c-362c3063575e"
+        ],
+        "CommandName": [
+          "Get-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Get-AzResiliencyRecoveryPlan_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-512a6261d8f6b3e30232a7627fddfa85-bd5ab88f5066778e-00"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"030024bf-0000-2300-0000-6aedd2d10000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "d22b8ebc-609d-4d0d-b93e-d9d2835870bf"
+        ],
+        "x-ms-correlation-request-id": [
+          "15be568c-fc32-4a43-9a40-a84438f5f80e"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2197"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131512Z:15be568c-fc32-4a43-9a40-a84438f5f80e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 8CE23A9618A44BEE97CB9040657564C0 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:15:11Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:15:11 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1409"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"name\":\"ropsrec-472frz81ksjw\",\"type\":\"microsoft.azureresiliencemanagement/recoveryplans\",\"systemData\":{\"createdBy\":\"test@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-06T13:13:59.6193265Z\",\"lastModifiedBy\":\"test@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-06T13:14:38.4734158Z\"},\"identity\":{\"principalId\":\"00000000-0000-0000-0000-000000001003\",\"tenantId\":\"00000000-0000-0000-0000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"planType\":\"Zonal\",\"planState\":\"Warning\",\"planDescription\":\"Updated recorded PowerShell recovery plan\",\"recoveryGroupsSetting\":{\"defaultGroup\":{\"properties\":{\"groupUniqueId\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"orderId\":0,\"description\":\"Default recovery group\",\"preActions\":null,\"postActions\":null},\"id\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw/recoveryGroups/b63759e8-a10c-4731-bb81-8808a77bf008\",\"name\":\"b63759e8-a10c-4731-bb81-8808a77bf008\",\"type\":\"Microsoft.AzureResilienceManagement/recoveryPlans/recoveryGroups\"},\"additionalGroups\":[]},\"latestFailoverStatus\":null,\"latestValidationStatus\":null,\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$DELETE+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01+11": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "12"
+        ],
+        "x-ms-client-request-id": [
+          "50e8a413-48c4-4481-bb3e-32ede8c9a8e2"
+        ],
+        "CommandName": [
+          "Remove-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Remove-AzResiliencyRecoveryPlan_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-a5c2768643612bd4e76fe6bd80865e68-701d31ccf08d65ea-00"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Accept-Ranges": [
+          "bytes"
+        ],
+        "ETag": [
+          "\"03002ebf-0000-2300-0000-6aedd2e20000\""
+        ],
+        "Location": [
+          "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01"
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-azure-ref": [
+          "20261106T131513Z-16b94c8dd677q6srhC1BL1nyts00000017c000000000qn1g"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c"
+        ],
+        "x-ms-correlation-request-id": [
+          "e1986075-a148-445b-8991-f910d2df9b1c"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131514Z:e1986075-a148-445b-8991-f910d2df9b1c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9DBAA978D5984359ACCF1F91D3F85614 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:15:12Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:15:14 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-a5c2768643612bd4e76fe6bd80865e68-701d31ccf08d65ea-00"
+        ],
+        "x-ms-unique-id": [
+          "13"
+        ],
+        "x-ms-client-request-id": [
+          "50e8a413-48c4-4481-bb3e-32ede8c9a8e2"
+        ],
+        "CommandName": [
+          "Remove-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Remove-AzResiliencyRecoveryPlan_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"53000553-0000-3300-0000-6aedd2e20000\""
+        ],
+        "Location": [
+          "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01"
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "473a09e2-a621-426c-abed-6d3e8dbf75cb"
+        ],
+        "x-ms-correlation-request-id": [
+          "091421b0-7f6b-4762-a9e6-6040de4615cf"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131545Z:091421b0-7f6b-4762-a9e6-6040de4615cf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 641715EE1C394DCB911ED67B9405D42D Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:15:45Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:15:45 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "535"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"name\":\"f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"resourceId\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"status\":\"Deleting\",\"startTime\":\"2026-11-06T13:15:13.5634145Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-a5c2768643612bd4e76fe6bd80865e68-701d31ccf08d65ea-00"
+        ],
+        "x-ms-unique-id": [
+          "14"
+        ],
+        "x-ms-client-request-id": [
+          "50e8a413-48c4-4481-bb3e-32ede8c9a8e2"
+        ],
+        "CommandName": [
+          "Remove-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Remove-AzResiliencyRecoveryPlan_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"53000553-0000-3300-0000-6aedd2e20000\""
+        ],
+        "Location": [
+          "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01"
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "4dc53da1-4002-43ec-a41a-e68ca70dd0c7"
+        ],
+        "x-ms-correlation-request-id": [
+          "7646a84c-e94f-482b-9ac7-3ebc759f04c9"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131616Z:7646a84c-e94f-482b-9ac7-3ebc759f04c9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: FB0A9DD3834B4347B08407C5AE2B3B5A Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:16:15Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:16:15 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "535"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"name\":\"f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"resourceId\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"status\":\"Deleting\",\"startTime\":\"2026-11-06T13:15:13.5634145Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-a5c2768643612bd4e76fe6bd80865e68-701d31ccf08d65ea-00"
+        ],
+        "x-ms-unique-id": [
+          "15"
+        ],
+        "x-ms-client-request-id": [
+          "50e8a413-48c4-4481-bb3e-32ede8c9a8e2"
+        ],
+        "CommandName": [
+          "Remove-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Remove-AzResiliencyRecoveryPlan_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"5300f760-0000-3300-0000-6aedd32c0000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-request-id": [
+          "726cce86-6748-4725-8f21-5d31f5965222"
+        ],
+        "x-ms-correlation-request-id": [
+          "684718a6-6e13-4951-923b-b3586f1eb49a"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131646Z:684718a6-6e13-4951-923b-b3586f1eb49a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 72FA54585116484296DA44D0106BD343 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:16:46Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:16:46 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "554"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/eastus2euap/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"name\":\"f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"resourceId\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-06T13:15:13.5634145Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-a5c2768643612bd4e76fe6bd80865e68-701d31ccf08d65ea-00"
+        ],
+        "x-ms-unique-id": [
+          "16"
+        ],
+        "x-ms-client-request-id": [
+          "50e8a413-48c4-4481-bb3e-32ede8c9a8e2"
+        ],
+        "CommandName": [
+          "Remove-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Remove-AzResiliencyRecoveryPlan_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"5300f760-0000-3300-0000-6aedd32c0000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-request-id": [
+          "1453045a-ff25-45c1-a198-5765be02fd53"
+        ],
+        "x-ms-correlation-request-id": [
+          "ba481bec-fc61-4413-91a0-c7ecad45034b"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131647Z:ba481bec-fc61-4413-91a0-c7ecad45034b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 98FC361A87374BD5AF49C201ED4F9128 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:16:46Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:16:46 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "554"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"name\":\"f60a39f2-0440-4bb1-bbca-c27ea4cd2a1c*ACA99AB9EC0EAA720FA07FBF892CB033F291B2B93AE167522A56E081182300F4\",\"resourceId\":\"/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans/ropsrec-472frz81ksjw\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-06T13:15:13.5634145Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzResiliencyRecoveryPlan+[NoContext]+CreatesReadsUpdatesAndDeletesAnOwnedPlanInSharedSetup+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans?api-version=2026-10-01+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "17"
+        ],
+        "x-ms-client-request-id": [
+          "72aedae0-4855-4c1f-82ae-e993ab50b9a1"
+        ],
+        "CommandName": [
+          "Get-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Get-AzResiliencyRecoveryPlan_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-ca8e4cd02e0661cd2430dc87b56c9225-6a6494e6d3050d75-00"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "ef54d5ee-03c7-4929-a3cc-2af287c54868"
+        ],
+        "x-ms-correlation-request-id": [
+          "a099644c-e5ea-4a1e-ae8c-10448cc44fa1"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2198"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T131647Z:a099644c-e5ea-4a1e-ae8c-10448cc44fa1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F8085B62E45C4BC2894832565C6C2069 Ref B: SG2AA1070306034 Ref C: 2026-11-06T13:16:47Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 13:16:47 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}
