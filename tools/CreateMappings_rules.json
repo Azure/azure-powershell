@@ -1041,6 +1041,10 @@
     "alias": "RedHatOpenShiftHcp"
   },
   {
+    "module": "AIInfraOptimization",
+    "alias": "AIInfraOptimization"
+  },
+  {  
     "module": "Resiliency",
     "alias": "Resiliency"
   }
