@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed an issue where `New-AzOperationalInsightsWorkspace` and `Set-AzOperationalInsightsWorkspace` incorrectly rejected the `SkuCapacity` parameter when `Sku` was set to `CapacityReservation`
 
 ## Version 3.4.1
 * Updated `PSIdentity` conversions to explicitly use the Operational Insights SDK `Identity` model.
