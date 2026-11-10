@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             this.WrappedWebsitesClient = AzureSession.Instance.ClientFactory.CreateArmClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
+            // The service can return azureStorageAccounts.*.type values (e.g. "FileShare") that are not defined
+            // in the AzureStorageType enum. Without this, deserializing such a response throws instead of
+            // leaving the unrecognized Type unset. See GitHub issue #29979.
+            this.WrappedWebsitesClient.DeserializationSettings.ContractResolver = new AzureStorageTypeContractResolver();
+            this.WrappedWebsitesClient.DeserializationSettings.Converters.Insert(0, new AzureStorageTypeJsonConverter());
         }
         public WebSiteManagementClient WrappedWebsitesClient
         {
