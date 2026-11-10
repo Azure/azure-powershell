@@ -115,6 +115,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.PfsGroup.PFS1,
             MNM.PfsGroup.PFS2,
             MNM.PfsGroup.PFS2048,
+            MNM.PfsGroup.PFS14,
             MNM.PfsGroup.PFS24,
             MNM.PfsGroup.ECP256,
             MNM.PfsGroup.ECP384,
