@@ -176,6 +176,16 @@ function New-AzRedisEnterpriseCacheDatabase {
         ${AccessKeysAuthentication},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [System.String]
+        # Specifies which keyspace events should trigger notifications.
+        # Default is an empty string, meaning this feature is disabled.
+        # When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+        # For example, 'AKE' enables all standard events.
+        # See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+        ${NotifyKeyspaceEvents},
+
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Azure')]

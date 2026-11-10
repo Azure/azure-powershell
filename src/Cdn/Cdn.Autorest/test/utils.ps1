@@ -31,9 +31,18 @@ function Start-TestSleep {
 }
 
 $env = @{}
-if ($UsePreviousConfigForRecord) {
-    $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
-    $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
+$script:cdnTestResourceGroupCreated = $false
+$configurationFile = 'env.json'
+if (($Live -or $TestMode -eq 'live') -and -not $Record) {
+    $configurationFile = 'localEnv.json'
+}
+if (Test-Path (Join-Path $PSScriptRoot $configurationFile)) {
+    $previousEnv = Get-Content (Join-Path $PSScriptRoot $configurationFile) | ConvertFrom-Json
+    $previousEnv.psobject.properties | ForEach-Object {
+        if ($UsePreviousConfigForRecord -or $_.Name -in @('ClassicCdnProfileResourceId', 'EdgeActionResourceId')) {
+            $env[$_.Name] = $_.Value
+        }
+    }
 }
 # Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
 # example: $val = $env.AddWithCache('key', $val, $true)
@@ -51,6 +60,16 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.location = 'westus'
 
+    if ($env.ClassicCdnProfileResourceId -notmatch '^/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/Microsoft\.Cdn/profiles/([^/]+)$') {
+        throw 'Configure ClassicCdnProfileResourceId with an existing Classic CDN profile before recording.'
+    }
+    if ($Matches[1] -ne $subId) {
+        throw 'ClassicCdnProfileResourceId must belong to the current test subscription.'
+    }
+    $env.ClassicCdnResourceGroupName = $Matches[2]
+    $env.ClassicCdnProfileName = $Matches[3]
+    Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ErrorAction Stop | Out-Null
+
     # If UsePreviousConfigForRecord is set, reuse existing resources from env.json
     # This allows re-running individual failed tests without recreating all resources
     if ($UsePreviousConfigForRecord -and $env.ResourceGroupName) {
@@ -66,14 +85,11 @@ function setupEnv() {
         # Resource group was deleted (e.g. by cleanupEnv), recreate with same names from env.json
         Write-Host -ForegroundColor Yellow "Resource group '$($env.ResourceGroupName)' no longer exists. Recreating with same names..."
         $resourceGroupName = $env.ResourceGroupName
-        $classicCdnProfileName = $env.ClassicCdnProfileName
         $frontDoorCdnProfileName = $env.FrontDoorCdnProfileName
 
         New-AzResourceGroup -Name $resourceGroupName -Location $env.location
+        $script:cdnTestResourceGroupCreated = $true
         Write-Host -ForegroundColor Green "Recreated resource group: $resourceGroupName"
-
-        New-AzCdnProfile -SkuName "Standard_Microsoft" -Name $classicCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
-        Write-Host -ForegroundColor Green "Recreated Classic CDN profile: $classicCdnProfileName"
 
         New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global -IdentityType SystemAssigned | Out-Null
         Write-Host -ForegroundColor Green "Recreated FrontDoor CDN profile: $frontDoorCdnProfileName"
@@ -85,15 +101,9 @@ function setupEnv() {
     $resourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 4)
     Write-Host -ForegroundColor Green "Start to create test group $($resourceGroupName)"
     New-AzResourceGroup -Name $resourceGroupName -Location $env.location
+    $script:cdnTestResourceGroupCreated = $true
     Write-Host -ForegroundColor Green "test group $($resourceGroupName) created"
     $env.Add("ResourceGroupName", $resourceGroupName)
-
-    # Create CDN profile with Standard_Microsoft SKU (used by CDN endpoint/origin/originGroup tests)
-    $classicCdnProfileName = 'p-' + (RandomString -allChars $false -len 6)
-    Write-Host -ForegroundColor Green "Start to create Standard_Microsoft SKU profile: $($classicCdnProfileName)"
-    New-AzCdnProfile -SkuName "Standard_Microsoft" -Name $classicCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
-    $env.Add("ClassicCdnProfileName", $classicCdnProfileName)
-    Write-Host -ForegroundColor Green "Standard_Microsoft SKU profile created."
 
     # Create FrontDoor CDN profile with Standard_AzureFrontDoor SKU
     $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6)
@@ -113,6 +123,8 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Write-Host -ForegroundColor Green "Clean resources created for testing."
-    Remove-AzResourceGroup -Name $env.ResourceGroupName
+    if ($script:cdnTestResourceGroupCreated -and $env.ResourceGroupName -ne $env.ClassicCdnResourceGroupName) {
+        Write-Host -ForegroundColor Green "Clean resources created for testing."
+        Remove-AzResourceGroup -Name $env.ResourceGroupName -Force
+    }
 }

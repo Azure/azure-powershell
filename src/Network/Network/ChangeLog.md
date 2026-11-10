@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
 
 ## Version 8.4.0
 * Updated replication vault Private Link to API 2026-05-01 and Network SDK to 2026-03-01/2026-01-01.
