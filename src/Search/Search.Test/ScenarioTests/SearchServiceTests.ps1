@@ -14,6 +14,43 @@
 
 <#
 .SYNOPSIS
+Test Serverless creation and knowledge retrieval billing-plan updates
+#>
+function Test-NewAzSearchServiceServerless
+{
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$svcName = $rgname + "-service"
+
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $loc
+
+		$service = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku Serverless -Location $loc -KnowledgeRetrievalMode Free
+		Assert-NotNull $service
+		Assert-AreEqual "Serverless" $service.Sku
+		Assert-AreEqual "Free" $service.KnowledgeRetrievalMode
+
+		Set-AzSearchService -ResourceId $service.Id -KnowledgeRetrievalMode Standard
+		$service = Get-AzSearchService -ResourceId $service.Id
+		Assert-AreEqual "Standard" $service.KnowledgeRetrievalMode
+
+		$service | Set-AzSearchService -PublicNetworkAccess Enabled
+		$service = Get-AzSearchService -ResourceId $service.Id
+		Assert-AreEqual "Standard" $service.KnowledgeRetrievalMode
+
+		Set-AzSearchService -ResourceGroupName $rgname -Name $svcName -KnowledgeRetrievalMode Free
+		$service = Get-AzSearchService -ResourceId $service.Id
+		Assert-AreEqual "Free" $service.KnowledgeRetrievalMode
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
 Test New-AzSearchService
 #>
 function Test-NewAzSearchService
@@ -457,7 +494,7 @@ function Test-NewAzSearchServicePublicNetworkAccessDisabled
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -1168,7 +1205,7 @@ function Test-ManageAzSearchSharedPrivateLinkResources
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West Central US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -1180,12 +1217,12 @@ function Test-ManageAzSearchSharedPrivateLinkResources
 		New-AzResourceGroup -Name $rgname -Location $loc
 
 		$resource1 = "blob-pe"
-		$storageAccount1 = "pssweanzmd"
+		$storageAccount1 = $rgname + "sa1"
 		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId1 = $resourceObj1.Id
 
 		$resource2 = "blob-pe2"
-		$storageAccount2 = "pslnuvtdhp"
+		$storageAccount2 = $rgname + "sa2"
 		$resourceObj2 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount2 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId2 = $resourceObj2.Id
 
@@ -1271,7 +1308,18 @@ function Test-ManageAzSearchSharedPrivateLinkResources
 	finally
     {
         # Cleanup
-        Clean-ResourceGroup $rgname
+        try
+        {
+            if ($newSearchService)
+            {
+                Get-AzSearchSharedPrivateLinkResource -ResourceGroupName $rgname -ServiceName $svcName -ErrorAction Stop `
+                | Remove-AzSearchSharedPrivateLinkResource -Force -ErrorAction Stop
+            }
+        }
+        finally
+        {
+            Clean-ResourceGroup $rgname
+        }
     }
 }
 
@@ -1284,7 +1332,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourcePipeline
 # Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West Central US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -1296,12 +1344,12 @@ function Test-ManageAzSearchSharedPrivateLinkResourcePipeline
 		New-AzResourceGroup -Name $rgname -Location $loc
 
 		$resource1 = "blob-pe"
-		$storageAccount1 = "pstalexsmn"
+		$storageAccount1 = $rgname + "sa1"
 		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId1 = $resourceObj1.Id
 
 		$resource2 = "blob-pe2"
-		$storageAccount2 = "psotjpehnm"
+		$storageAccount2 = $rgname + "sa2"
 		$resourceObj2 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount2 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId2 = $resourceObj2.Id
 
@@ -1385,7 +1433,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 # Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West Central US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -1398,8 +1446,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 
 		$resource1 = "blob-pe"
 
-		# A random name
-		$storageAccount1 = "psjiuxstbg"
+		$storageAccount1 = $rgname + "sa1"
 		$resourceObj1 = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $storageAccount1 -SkuName Standard_LRS -Kind StorageV2 -Location (Get-StorageLocation) -AllowSharedKeyAccess $false
 		$resourceId1 = $resourceObj1.Id
 
@@ -1439,6 +1486,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 				break
 			}
 		} 
+
 		$stopwatch.Stop()
 
 		# List all the shared private link resources of the service

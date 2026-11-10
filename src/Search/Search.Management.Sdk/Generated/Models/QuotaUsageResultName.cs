@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// The name of the SKU supported by Azure AI Search.
+    /// The SKU name information, including its identifier and localized display
+    /// name.
     /// </summary>
     public partial class QuotaUsageResultName
     {

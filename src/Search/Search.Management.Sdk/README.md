@@ -23,9 +23,9 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: ede2366d262175182edacdb02bdf4b58b881fe70
+commit: b339d04156b39ad2275e44d78ce2b035acd8a19d
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/search/resource-manager/Microsoft.Search/stable/2025-05-01/search.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/search/resource-manager/Microsoft.Search/Search/stable/2026-11-01/search.json
 
 output-folder: Generated
 
