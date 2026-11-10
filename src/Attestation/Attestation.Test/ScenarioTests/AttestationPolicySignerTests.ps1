@@ -27,6 +27,7 @@ function Test-GetAttestationPolicySigners
 	{
 	    $rgName = Create-ResourceGroup
 		$attestationCreated = New-AzAttestationProvider -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySigningCertificateKeyPath .\SamplePolicySignerFiles\cert1.pem
+		Wait-AttestationProviderDns $attestationCreated
 
 		Assert-NotNull $attestationCreated
 		Assert-AreEqual $attestationProviderName $attestationCreated.Name
@@ -74,6 +75,7 @@ function Test-AddAttestationPolicySigner
 	{
 	    $rgName = Create-ResourceGroup
 		$attestationCreated = New-AzAttestationProvider -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySigningCertificateKeyPath .\SamplePolicySignerFiles\cert1.pem
+		Wait-AttestationProviderDns $attestationCreated
 
 		Assert-NotNull $attestationCreated
 		Assert-AreEqual $attestationProviderName $attestationCreated.Name
@@ -110,6 +112,7 @@ function Test-RemoveAttestationPolicySigner
 	{
 	    $rgName = Create-ResourceGroup
 		$attestationCreated = New-AzAttestationProvider -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySigningCertificateKeyPath .\SamplePolicySignerFiles\cert1.pem
+		Wait-AttestationProviderDns $attestationCreated
 
 		Assert-NotNull $attestationCreated
 		Assert-AreEqual $attestationProviderName $attestationCreated.Name
@@ -134,6 +137,52 @@ function Test-RemoveAttestationPolicySigner
 
 	finally
 	{
+		Clean-ResourceGroup $rgName.ResourceGroupName
+	}
+}
+
+<#
+.SYNOPSIS
+Test Add-AzAttestationPolicySigner and Remove-AzAttestationPolicySigner with signer tokens in the current format
+("policyCertificate" claim) and the earlier format ("maa-policyCertificate" claim)
+#>
+function Test-AddRemoveAttestationPolicySignerCurrentFormat
+{
+	$unknownRGName = getAssetName
+	$attestationProviderName = getAssetName
+	$location = "East US"
+	$signer = New-PolicySigningCertificate "AttestationPolicySigner"
+	$newSigner = New-PolicySigningCertificate "AttestationNewPolicySigner"
+	$signerPemPath = Join-Path ([System.IO.Path]::GetTempPath()) "$attestationProviderName.pem"
+
+	try
+	{
+		Export-PemCertificate $signer.Certificate $signerPemPath
+	    $rgName = Create-ResourceGroup
+		$attestationCreated = New-AzAttestationProvider -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySigningCertificateKeyPath $signerPemPath
+		Wait-AttestationProviderDns $attestationCreated
+		Assert-NotNull $attestationCreated
+
+		# Current format
+		$addToken = New-PolicyCertificateJwt $signer $newSigner.Certificate
+		$policySigners = Add-AzAttestationPolicySigner -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Signer $addToken -WarningVariable addWarnings
+		Assert-AreEqual 2 $policySigners.CertificateCount
+		Assert-AreEqual 0 $addWarnings.Count
+
+		$removeToken = New-PolicyCertificateJwt $signer $newSigner.Certificate
+		$policySigners = Remove-AzAttestationPolicySigner -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Signer $removeToken
+		Assert-AreEqual 1 $policySigners.CertificateCount
+
+		# Earlier format, which is sent to the earlier API version with a warning
+		$legacyAddToken = New-PolicyCertificateJwt $signer $newSigner.Certificate "maa-policyCertificate"
+		$policySigners = Add-AzAttestationPolicySigner -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Signer $legacyAddToken -WarningVariable legacyWarnings
+		Assert-AreEqual 2 $policySigners.CertificateCount
+		Assert-True { $legacyWarnings.Count -gt 0 }
+	}
+
+	finally
+	{
+		Remove-Item $signerPemPath -ErrorAction SilentlyContinue
 		Clean-ResourceGroup $rgName.ResourceGroupName
 	}
 }

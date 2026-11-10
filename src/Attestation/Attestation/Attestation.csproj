@@ -12,8 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Attestation" Version="0.10.0-preview" />
-    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="5.7.0" />
+    <PackageReference Include="Azure.Security.Attestation" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

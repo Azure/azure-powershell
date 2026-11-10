@@ -35,7 +35,10 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             {
                 if (_attestationDataPlaneClient == null)
                 {
-                    _attestationDataPlaneClient = new AttestationDataServiceClient(AzureSession.Instance.AuthenticationFactory, DefaultContext);
+                    _attestationDataPlaneClient = new AttestationDataServiceClient(AzureSession.Instance.AuthenticationFactory, DefaultContext)
+                    {
+                        WarningWriter = WriteWarning
+                    };
                 }
                 return _attestationDataPlaneClient;
             }

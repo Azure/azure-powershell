@@ -30,8 +30,12 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetAttestationPolicy");
         }
 
+        /// <summary>
+        /// The data plane cmdlets use the Azure.Security.Attestation SDK, whose requests the test framework
+        /// does not record, so the data plane tests run live only.
+        /// </summary>
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGetDefaultProviderPolicy()
         {
             TestRunner.RunTestScript("Test-GetDefaultProviderPolicy");
@@ -45,27 +49,21 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         }
 
         /// <summary>
-        /// This test is categorized as LiveOnly since the Set-AzAttestationPolicy cmdlet retrieves and validates
-        /// a signed JWT token from the service.  A playback of a recording will result in failure, since the
-        /// recorded JWT will have expired since the recording was generated.
-        ///
-        /// On a related note, if one does try to create a recording of this test case, currently there's a
-        /// conflict for the following two libraries used by the authentication code in this DLL
-        /// (Microsoft.Azure.PowerShell.Cmdlets.Attestation.Test.dll) and the DLL used to implement the
-        /// PowerShell cmdlets (Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll).  This DLL requires
-        /// version 5.1.2 (indirectly through Microsoft.Rest.ClientRuntime.Azure.TestFramework) and the cmdlet
-        /// DLL requires version 5.6.0 (indirectly through Microsoft.IdentityModel.JsonWebTokens.
-        ///     * Microsoft.IdentityModel.Tokens.dll
-        ///     * Microsoft.IdentityModel.Logging.dll
-        ///
-        /// A work-around to record tests is to copy the 5.6.0 versions of the DLL's into the bin directory
-        /// holding the Microsoft.Azure.PowerShell.Cmdlets.Attestation.Test.dll.
+        /// Set-AzAttestationPolicy validates the signed token the service returns, so a recording fails
+        /// validation once the recorded token expires.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestSetAttestationPolicy()
         {
             TestRunner.RunTestScript("Test-SetAttestationPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSetAttestationPolicyLegacyFormats()
+        {
+            TestRunner.RunTestScript("Test-SetAttestationPolicyLegacyFormats");
         }
     }
 }
