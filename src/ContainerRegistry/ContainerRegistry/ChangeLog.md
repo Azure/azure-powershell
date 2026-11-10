@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Validated registry names and login-server labels before container registry data-plane requests.
+    - Accepted a single hyphen followed by a variable-length ASCII alphanumeric suffix, up to 63 characters in total.
+    - Used explicit hyphenated labels, including Domain Name Label (DNL) and legacy labels, directly without Azure Resource Manager discovery.
+* Updated `Connect-AzContainerRegistry` credential handling.
+    - Passed credentials as data rather than executable PowerShell.
+* Updated container registry login-server discovery.
+    - Used Azure Resource Manager when available; otherwise warned and used the input with the environment suffix.
+    - Reused successful discovery results for the same registry and context within the client.
+* Updated `Connect-AzContainerRegistry -ExposeToken`.
+    - Returned the same login server used for authentication.
 
 ## Version 5.2.0
 * Added Change Safety support for additional cmdlets.
