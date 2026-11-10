@@ -271,7 +271,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
             else
             {
-                if (!BicepSemanticVersion.TryParse(version, out targetVersion))
+                // Accept an optional leading "v"/"V" in -Version (as GitHub release tags use,
+                // e.g. "v0.26.0", and as 'az bicep install --version' also accepts), for
+                // parity. A 'bicep.version' config value is not normalized this
+                // way - it goes through BicepVersionConstraint/BicepVersionComparator instead,
+                // never through this code path.
+                var normalizedVersion = version.StartsWith("v", StringComparison.OrdinalIgnoreCase)
+                    ? version.Substring(1)
+                    : version;
+
+                if (!BicepSemanticVersion.TryParse(normalizedVersion, out targetVersion))
                 {
                     throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionInvalidFormat, version));
                 }
