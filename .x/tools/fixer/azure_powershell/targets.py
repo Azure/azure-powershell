@@ -91,3 +91,12 @@ def infer_ps_target(text=None, pr_files=None, token=None):
         if target["kind"] != "unknown":
             return target
     return {"kind": "unknown", "name": None, "repo": None}
+
+
+def _live_test_target(text, pr_files, module=None, target_kind=None, token=None):
+    """Resolve the service and target type for the live-test runner."""
+    if not module:
+        resolved = infer_ps_target(text=text, pr_files=pr_files, token=token)
+        if resolved["kind"] == "psmodule":
+            module = resolved["name"]
+    return {"module": module, "target_kind": target_kind or "psmodule"}
