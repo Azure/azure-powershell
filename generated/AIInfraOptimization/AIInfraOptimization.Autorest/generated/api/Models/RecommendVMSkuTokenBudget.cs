@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
 
         /// <summary>
         /// The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and
-        /// the two must total from 1 through 131072.
+        /// the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Origin(Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.PropertyOrigin.Owned)]
         public int? MaxOutputToken { get => this._maxOutputToken; set => this._maxOutputToken = value; }
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
 
         /// <summary>
         /// The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the
-        /// two must total from 1 through 131072.
+        /// two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Origin(Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.PropertyOrigin.Owned)]
         public int? PromptToken { get => this._promptToken; set => this._promptToken = value; }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
     {
         /// <summary>
         /// The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and
-        /// the two must total from 1 through 131072.
+        /// the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Runtime.Info(
         Required = false,
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and the two must total from 1 through 131072.",
+        Description = @"The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and the two must total from 1 through 2147483647 without exceeding the model's maximum context length.",
         SerializedName = @"maxOutputTokens",
         PossibleTypes = new [] { typeof(int) })]
         int? MaxOutputToken { get; set; }
         /// <summary>
         /// The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the
-        /// two must total from 1 through 131072.
+        /// two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Runtime.Info(
         Required = false,
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the two must total from 1 through 131072.",
+        Description = @"The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the two must total from 1 through 2147483647 without exceeding the model's maximum context length.",
         SerializedName = @"promptTokens",
         PossibleTypes = new [] { typeof(int) })]
         int? PromptToken { get; set; }
@@ -77,12 +77,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
     {
         /// <summary>
         /// The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and
-        /// the two must total from 1 through 131072.
+        /// the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         int? MaxOutputToken { get; set; }
         /// <summary>
         /// The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the
-        /// two must total from 1 through 131072.
+        /// two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         int? PromptToken { get; set; }
 
