@@ -39,7 +39,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-FIREWALLRULE <IFirewallRule[]>: The complete set of firewall rules for the cluster. Omitting this parameter preserves existing rules. An empty array clears all rules, and a non-empty array replaces all rules. At most 250 rules are supported, and non-empty rules require public network access to be enabled. Firewall rules cannot be changed together with scaling or encryption settings.
+FIREWALLRULE <IFirewallRule[]>: The complete set of firewall rules for the cluster. Omitting this parameter preserves existing rules. An empty array clears all rules, and a non-empty array replaces all rules. At most 250 rules are supported, and non-empty rules require public network access to be enabled. Disabling public network access also clears existing rules. With public network access enabled, an empty rule set allows all public traffic; it does not deny all traffic. Firewall rules cannot be changed together with scaling or encryption settings.
   Name <String>: The name of the firewall rule, unique within the cluster ignoring case. Must be 1-80 characters and contain only letters, numbers, hyphens, or underscores.
   SourceAddressPrefix <String>: An IPv4 address (for example, "203.0.113.1"), IPv4 CIDR prefix (for example, "203.0.113.0/24"), or Azure service tag (for example, "AzureCloud"). IPv6 addresses are not supported.
 

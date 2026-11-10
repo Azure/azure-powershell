@@ -344,6 +344,8 @@ The complete set of firewall rules for the cluster.
 A supplied array replaces all existing rules; omitting the parameter or supplying an empty array clears all rules.
 At most 250 rules are supported.
 Non-empty rules require public network access to be enabled.
+Disabling public network access also clears existing rules.
+With public network access enabled, an empty rule set allows all public traffic; it does not deny all traffic.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule[]

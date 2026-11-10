@@ -269,7 +269,7 @@ directive:
       subject: ^$
       parameter-name: FirewallRule
     set:
-      parameter-description: The complete set of firewall rules for the cluster. Omitting this parameter preserves existing rules. An empty array clears all rules, and a non-empty array replaces all rules. At most 250 rules are supported, and non-empty rules require public network access to be enabled. Firewall rules cannot be changed together with scaling or encryption settings.
+      parameter-description: The complete set of firewall rules for the cluster. Omitting this parameter preserves existing rules. An empty array clears all rules, and a non-empty array replaces all rules. At most 250 rules are supported, and non-empty rules require public network access to be enabled. Disabling public network access also clears existing rules. With public network access enabled, an empty rule set allows all public traffic; it does not deny all traffic. Firewall rules cannot be changed together with scaling or encryption settings.
 
   # Remove unused variants
   - where:

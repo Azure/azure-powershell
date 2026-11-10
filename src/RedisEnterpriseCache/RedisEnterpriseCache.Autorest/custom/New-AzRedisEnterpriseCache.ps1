@@ -49,9 +49,9 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
   Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
 
-FIREWALLRULE <IFirewallRule[]>: The complete set of firewall rules for the cluster. A supplied array replaces all existing rules; omitting the parameter or supplying an empty array clears all rules. At most 250 rules are supported. Non-empty rules require public network access to be enabled.
-  Name <String>: The name of the firewall rule, unique within the cluster ignoring case.
-  SourceAddressPrefix <String>: An IPv4 address, IPv4 CIDR prefix, or Azure service tag.
+FIREWALLRULE <IFirewallRule[]>: The complete set of firewall rules for the cluster. A supplied array replaces all existing rules; omitting the parameter or supplying an empty array clears all rules. At most 250 rules are supported. Non-empty rules require public network access to be enabled. Disabling public network access also clears existing rules. With public network access enabled, an empty rule set allows all public traffic; it does not deny all traffic.
+  Name <String>: The name of the firewall rule, unique within the cluster ignoring case. Must be 1-80 characters and contain only letters, numbers, hyphens, or underscores.
+  SourceAddressPrefix <String>: An IPv4 address (for example, "203.0.113.1"), IPv4 CIDR prefix (for example, "203.0.113.0/24"), or Azure service tag (for example, "AzureCloud"). IPv6 addresses are not supported.
 
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
@@ -234,6 +234,8 @@ function New-AzRedisEnterpriseCache {
         # The complete set of firewall rules for the cluster.
         # A supplied array replaces all existing rules; omitting the parameter or supplying an empty array clears all rules.
         # At most 250 rules are supported. Non-empty rules require public network access to be enabled.
+        # Disabling public network access also clears existing rules.
+        # With public network access enabled, an empty rule set allows all public traffic; it does not deny all traffic.
         ${FirewallRule},
 
         [Parameter()]
