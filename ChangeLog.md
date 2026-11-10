@@ -1,7 +1,3 @@
-## Upcoming Release
-#### Az.ArtifactSigning
-* Updated `System.Security.Cryptography.Pkcs` to `8.0.2` to address CVE-2026-84008.
-
 ## 16.5.0 - November 2026
 #### Az.Accounts 5.5.4
 * Fixed 'Get-AzAccessToken -ResourceUrl' help; replaced Azure AD Graph with Microsoft Graph.
