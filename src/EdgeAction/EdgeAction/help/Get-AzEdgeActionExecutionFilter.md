@@ -78,7 +78,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: List, Get, GetViaIdentityEdgeAction, GetViaIdentity
 Aliases: AzureRMContext, AzureCredential
 
 Required: False

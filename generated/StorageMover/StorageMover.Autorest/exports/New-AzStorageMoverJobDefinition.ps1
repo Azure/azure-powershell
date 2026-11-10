@@ -21,6 +21,8 @@ Create a Job Definition resource, which contains configuration for a single unit
 Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 .Example
 New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AgentName myAgent -SourceName myNfsEndpoint -TargetName myContainerEndpoint -CopyMode "Additive" -Description "job definition"
+.Example
+New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -JobType CloudToCloud -CopyMode Additive -SourceName mySourceEndpoint -TargetName partnerTargetEndpoint -IsCrossTenantJob -CrossTenantEndpointTenantId "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz" -CrossTenantEndpointResourceId "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.StorageMover/storageMovers/partnerStorageMover/endpoints/partnerTargetEndpoint"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
@@ -160,6 +162,25 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Full ARM resource ID of the cross-tenant (foreign) endpoint.
+    # On thesource-tenant copy this is the TARGET endpoint; on thetarget-tenant copy this is the SOURCE endpoint.
+    ${CrossTenantEndpointResourceId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The Azure AD tenant ID of the cross-tenant source endpoint.
+    # Required when`isCrossTenantJob` is true.
+    # Cannot be modified after the Job Definition iscreated.
+    ${CrossTenantEndpointTenantId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SaveVerifyFileMD5", "SaveFileMD5", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
@@ -200,11 +221,30 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("OnPremToCloud", "CloudToCloud")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates that this Job Definition is a cross-tenant job where thecounterpart endpoint resides in a different Azure AD tenant.
+    # When true,`crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must beprovided.
+    # Defaults to false.
+    # Cannot be modified after the Job Definition iscreated.
+    ${IsCrossTenantJob},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("OnPremToCloud", "CloudToCloud", "OnPremToCloudAgentLess")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # The type of the Job.
     ${JobType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.DateTime]
+    # The last time the mover was synchronized.
+    ${MoverSyncedUntil},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
@@ -251,7 +291,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # Type of schedule — Monthly, Weekly, or Daily
@@ -269,6 +309,14 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Repeat interval used for sub-daily schedules.
+    ${ScheduleRepeatInterval},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.DateTime]
     # Specific one-time execution date and time
     ${ScheduleStartDate},
@@ -280,6 +328,14 @@ param(
     [System.String]
     # The subpath to use when reading from the source Endpoint.
     ${SourceSubpath},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The synchronization mode for the Job Definition.
+    ${SyncMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]

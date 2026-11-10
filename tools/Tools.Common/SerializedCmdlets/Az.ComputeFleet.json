@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ComputeFleet",
-  "ModuleVersion": "0.2.0",
+  "ModuleVersion": "0.3.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -23,36 +23,34 @@
               "VMAttribute": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributes",
               "AdditionalLocationProfile": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile]",
               "VMSizesProfile": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile]",
-              "ZoneAllocationPolicyZonePreference": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference]",
               "Zone": "System.Collections.Generic.List`1[System.String]",
               "AdditionalVirtualMachineCapabilityHibernationEnabled": "System.Nullable`1[System.Boolean]",
-              "AdditionalVirtualMachineCapabilityUltraSsdEnabled": "System.Nullable`1[System.Boolean]",
               "SpotPriorityProfileMaintain": "System.Nullable`1[System.Boolean]",
+              "AdditionalVirtualMachineCapabilityUltraSsdEnabled": "System.Nullable`1[System.Boolean]",
               "TimeCreated": "System.Nullable`1[System.DateTime]",
               "ComputeProfilePlatformFaultDomainCount": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileMinCapacity": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
-              "RegularPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
               "RegularPriorityProfileMinCapacity": "System.Nullable`1[System.Int32]",
+              "RegularPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileMaxPricePerVM": "System.Nullable`1[System.Single]",
-              "IdentityPrincipalId": "System.String",
-              "IdentityTenantId": "System.String",
-              "VMNamePrefix": "System.String",
-              "IdentityType": "System.String",
-              "UniqueId": "System.String",
-              "CapacityType": "System.String",
-              "Mode": "System.String",
               "PlanPublisher": "System.String",
-              "PlanVersion": "System.String",
+              "VMNamePrefix": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "UniqueId": "System.String",
+              "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
+              "CapacityType": "System.String",
               "SpotPriorityProfileEvictionPolicy": "System.String",
-              "PlanProduct": "System.String",
+              "Mode": "System.String",
               "SpotPriorityProfileAllocationStrategy": "System.String",
-              "ComputeProfileComputeApiVersion": "System.String",
-              "PlanPromotionCode": "System.String",
-              "RegularPriorityProfileAllocationStrategy": "System.String",
-              "ZoneAllocationPolicyDistributionStrategy": "System.String",
               "PlanName": "System.String",
-              "ProvisioningState": "System.String"
+              "ComputeProfileComputeApiVersion": "System.String",
+              "RegularPriorityProfileAllocationStrategy": "System.String",
+              "ProvisioningState": "System.String",
+              "PlanProduct": "System.String",
+              "PlanPromotionCode": "System.String",
+              "PlanVersion": "System.String"
             }
           },
           "ParameterSets": [
@@ -1005,8 +1003,11 @@
               "Message": "System.String",
               "Name": "System.String",
               "OperationStatus": "System.String",
+              "Priority": "System.String",
               "Target": "System.String",
-              "Type": "System.String"
+              "Type": "System.String",
+              "VMSize": "System.String",
+              "Zone": "System.String"
             }
           },
           "ParameterSets": [
@@ -1704,36 +1705,34 @@
               "VMAttribute": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributes",
               "AdditionalLocationProfile": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile]",
               "VMSizesProfile": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile]",
-              "ZoneAllocationPolicyZonePreference": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference]",
               "Zone": "System.Collections.Generic.List`1[System.String]",
               "AdditionalVirtualMachineCapabilityHibernationEnabled": "System.Nullable`1[System.Boolean]",
-              "AdditionalVirtualMachineCapabilityUltraSsdEnabled": "System.Nullable`1[System.Boolean]",
               "SpotPriorityProfileMaintain": "System.Nullable`1[System.Boolean]",
+              "AdditionalVirtualMachineCapabilityUltraSsdEnabled": "System.Nullable`1[System.Boolean]",
               "TimeCreated": "System.Nullable`1[System.DateTime]",
               "ComputeProfilePlatformFaultDomainCount": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileMinCapacity": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
-              "RegularPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
               "RegularPriorityProfileMinCapacity": "System.Nullable`1[System.Int32]",
+              "RegularPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileMaxPricePerVM": "System.Nullable`1[System.Single]",
-              "IdentityPrincipalId": "System.String",
-              "IdentityTenantId": "System.String",
-              "VMNamePrefix": "System.String",
-              "IdentityType": "System.String",
-              "UniqueId": "System.String",
-              "CapacityType": "System.String",
-              "Mode": "System.String",
               "PlanPublisher": "System.String",
-              "PlanVersion": "System.String",
+              "VMNamePrefix": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "UniqueId": "System.String",
+              "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
+              "CapacityType": "System.String",
               "SpotPriorityProfileEvictionPolicy": "System.String",
-              "PlanProduct": "System.String",
+              "Mode": "System.String",
               "SpotPriorityProfileAllocationStrategy": "System.String",
-              "ComputeProfileComputeApiVersion": "System.String",
-              "PlanPromotionCode": "System.String",
-              "RegularPriorityProfileAllocationStrategy": "System.String",
-              "ZoneAllocationPolicyDistributionStrategy": "System.String",
               "PlanName": "System.String",
-              "ProvisioningState": "System.String"
+              "ComputeProfileComputeApiVersion": "System.String",
+              "RegularPriorityProfileAllocationStrategy": "System.String",
+              "ProvisioningState": "System.String",
+              "PlanProduct": "System.String",
+              "PlanPromotionCode": "System.String",
+              "PlanVersion": "System.String"
             }
           },
           "ParameterSets": [
@@ -2108,25 +2107,6 @@
             "Name": "System.String[]",
             "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "ElementType": "System.String"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ZoneAllocationPolicyDistributionStrategy",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ZoneAllocationPolicyZonePreference",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[], Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2975,37 +2955,6 @@
                   "Name": "System.String[]",
                   "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "ElementType": "System.String"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyDistributionStrategy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyZonePreference",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[], Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4487,36 +4436,34 @@
               "VMAttribute": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributes",
               "AdditionalLocationProfile": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile]",
               "VMSizesProfile": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile]",
-              "ZoneAllocationPolicyZonePreference": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference]",
               "Zone": "System.Collections.Generic.List`1[System.String]",
               "AdditionalVirtualMachineCapabilityHibernationEnabled": "System.Nullable`1[System.Boolean]",
-              "AdditionalVirtualMachineCapabilityUltraSsdEnabled": "System.Nullable`1[System.Boolean]",
               "SpotPriorityProfileMaintain": "System.Nullable`1[System.Boolean]",
+              "AdditionalVirtualMachineCapabilityUltraSsdEnabled": "System.Nullable`1[System.Boolean]",
               "TimeCreated": "System.Nullable`1[System.DateTime]",
               "ComputeProfilePlatformFaultDomainCount": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileMinCapacity": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
-              "RegularPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
               "RegularPriorityProfileMinCapacity": "System.Nullable`1[System.Int32]",
+              "RegularPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileMaxPricePerVM": "System.Nullable`1[System.Single]",
-              "IdentityPrincipalId": "System.String",
-              "IdentityTenantId": "System.String",
-              "VMNamePrefix": "System.String",
-              "IdentityType": "System.String",
-              "UniqueId": "System.String",
-              "CapacityType": "System.String",
-              "Mode": "System.String",
               "PlanPublisher": "System.String",
-              "PlanVersion": "System.String",
+              "VMNamePrefix": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "UniqueId": "System.String",
+              "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
+              "CapacityType": "System.String",
               "SpotPriorityProfileEvictionPolicy": "System.String",
-              "PlanProduct": "System.String",
+              "Mode": "System.String",
               "SpotPriorityProfileAllocationStrategy": "System.String",
-              "ComputeProfileComputeApiVersion": "System.String",
-              "PlanPromotionCode": "System.String",
-              "RegularPriorityProfileAllocationStrategy": "System.String",
-              "ZoneAllocationPolicyDistributionStrategy": "System.String",
               "PlanName": "System.String",
-              "ProvisioningState": "System.String"
+              "ComputeProfileComputeApiVersion": "System.String",
+              "RegularPriorityProfileAllocationStrategy": "System.String",
+              "ProvisioningState": "System.String",
+              "PlanProduct": "System.String",
+              "PlanPromotionCode": "System.String",
+              "PlanVersion": "System.String"
             }
           },
           "ParameterSets": [
@@ -4894,25 +4841,6 @@
             "Name": "System.String[]",
             "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "ElementType": "System.String"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ZoneAllocationPolicyDistributionStrategy",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ZoneAllocationPolicyZonePreference",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[], Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5774,37 +5702,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyDistributionStrategy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyZonePreference",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[], Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "Name",
                 "AliasList": [
                   "FleetName"
@@ -6489,36 +6386,34 @@
               "VMAttribute": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributes",
               "AdditionalLocationProfile": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile]",
               "VMSizesProfile": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile]",
-              "ZoneAllocationPolicyZonePreference": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference]",
               "Zone": "System.Collections.Generic.List`1[System.String]",
               "AdditionalVirtualMachineCapabilityHibernationEnabled": "System.Nullable`1[System.Boolean]",
-              "AdditionalVirtualMachineCapabilityUltraSsdEnabled": "System.Nullable`1[System.Boolean]",
               "SpotPriorityProfileMaintain": "System.Nullable`1[System.Boolean]",
+              "AdditionalVirtualMachineCapabilityUltraSsdEnabled": "System.Nullable`1[System.Boolean]",
               "TimeCreated": "System.Nullable`1[System.DateTime]",
               "ComputeProfilePlatformFaultDomainCount": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileMinCapacity": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
-              "RegularPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
               "RegularPriorityProfileMinCapacity": "System.Nullable`1[System.Int32]",
+              "RegularPriorityProfileCapacity": "System.Nullable`1[System.Int32]",
               "SpotPriorityProfileMaxPricePerVM": "System.Nullable`1[System.Single]",
-              "IdentityPrincipalId": "System.String",
-              "IdentityTenantId": "System.String",
-              "VMNamePrefix": "System.String",
-              "IdentityType": "System.String",
-              "UniqueId": "System.String",
-              "CapacityType": "System.String",
-              "Mode": "System.String",
               "PlanPublisher": "System.String",
-              "PlanVersion": "System.String",
+              "VMNamePrefix": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "UniqueId": "System.String",
+              "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
+              "CapacityType": "System.String",
               "SpotPriorityProfileEvictionPolicy": "System.String",
-              "PlanProduct": "System.String",
+              "Mode": "System.String",
               "SpotPriorityProfileAllocationStrategy": "System.String",
-              "ComputeProfileComputeApiVersion": "System.String",
-              "PlanPromotionCode": "System.String",
-              "RegularPriorityProfileAllocationStrategy": "System.String",
-              "ZoneAllocationPolicyDistributionStrategy": "System.String",
               "PlanName": "System.String",
-              "ProvisioningState": "System.String"
+              "ComputeProfileComputeApiVersion": "System.String",
+              "RegularPriorityProfileAllocationStrategy": "System.String",
+              "ProvisioningState": "System.String",
+              "PlanProduct": "System.String",
+              "PlanPromotionCode": "System.String",
+              "PlanVersion": "System.String"
             }
           },
           "ParameterSets": [
@@ -6903,25 +6798,6 @@
             "Name": "System.String[]",
             "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "ElementType": "System.String"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ZoneAllocationPolicyDistributionStrategy",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ZoneAllocationPolicyZonePreference",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[], Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7576,37 +7452,6 @@
                   "Name": "System.String[]",
                   "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "ElementType": "System.String"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyDistributionStrategy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyZonePreference",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[], Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8310,37 +8155,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyDistributionStrategy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyZonePreference",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[], Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRMContext",
@@ -9002,37 +8816,6 @@
                   "Name": "System.String[]",
                   "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "ElementType": "System.String"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyDistributionStrategy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ZoneAllocationPolicyZonePreference",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[], Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9753,23 +9536,6 @@
       "Properties": {
         "Rank": "System.Nullable`1[System.Int32]",
         "Name": "System.String"
-      }
-    },
-    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference, Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference, Az.ComputeFleet.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Rank": "System.Nullable`1[System.Int32]",
-        "Zone": "System.String"
       }
     },
     "System.Nullable`1[System.Single]": {

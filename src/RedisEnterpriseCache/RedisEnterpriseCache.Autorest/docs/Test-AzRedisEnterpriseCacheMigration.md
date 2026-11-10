@@ -1,0 +1,229 @@
+---
+external help file:
+Module Name: Az.RedisEnterpriseCache
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/test-azredisenterprisecachemigration
+schema: 2.0.0
+---
+
+# Test-AzRedisEnterpriseCacheMigration
+
+## SYNOPSIS
+Validates whether an Azure Cache for Redis Basic, Standard, or Premium cache can be migrated to Azure Managed Redis.
+
+## SYNTAX
+
+### ValidateExpanded (Default)
+```
+Test-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
+ -SourceResourceId <String> [-SubscriptionId <String>] [-SkipDataMigration] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaJsonFilePath
+```
+Test-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaJsonString
+```
+Test-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Validates whether an Azure Cache for Redis Basic, Standard, or Premium cache can be migrated to Azure Managed Redis.
+
+## EXAMPLES
+
+### Example 1: Validate a migration before starting
+```powershell
+$sourceResourceId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/rg1/providers/Microsoft.Cache/redis/cache1"
+$result = Test-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1" -SourceResourceId $sourceResourceId -SkipDataMigration
+$result.IsValid
+$result.Warning.Disparity | Format-List Category, Message
+```
+
+```output
+False
+
+Category : Clustering Mode
+Message  : The target resource has a clustering policy, but the source resource is not clustered. Please ensure your client library is
+           cluster-aware before migration, or select a target resource without a clustering policy.
+```
+
+Validates the migration and displays the clustering mismatch that must be resolved or explicitly accepted with `-ForceMigrate` when starting the migration.
+
+## PARAMETERS
+
+### -ClusterName
+The name of the Redis Enterprise cluster.
+Name must be 1-60 characters long.
+Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+There can be no leading nor trailing nor consecutive hyphens
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipDataMigration
+Sets whether the data is migrated from source to target or not.
+The default value is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ValidateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceResourceId
+The resource ID of the source Azure Cache for Redis Basic, Standard, or Premium cache to validate.
+This is the resource ID of the Azure Cache for Redis.
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse
+
+## NOTES
+
+## RELATED LINKS

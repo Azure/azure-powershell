@@ -44,11 +44,9 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LicenseName <String>]: The name of the license.
   [LicenseProfileName <String>]: The name of the license profile.
-  [Location <String>]: The location of the Extension being received.
+  [Location <String>]: The name of the Azure region.
   [MachineName <String>]: The name of the hybrid machine.
-  [MetadataName <String>]: Name of the HybridIdentityMetadata.
   [Name <String>]: The name of the hybrid machine.
-  [OSType <String>]: Defines the os type.
   [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
@@ -57,7 +55,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The version of the Extension being received.
 
 INSTALLPATCHESINPUT <IMachineInstallPatchesParameters>: Input for InstallPatches as directly received by the API
@@ -71,6 +69,8 @@ INSTALLPATCHESINPUT <IMachineInstallPatchesParameters>: Input for InstallPatches
   [WindowParameterKbNumbersToExclude <List<String>>]: Kbs to exclude in the patch operation
   [WindowParameterKbNumbersToInclude <List<String>>]: Kbs to include in the patch operation
   [WindowParameterMaxPatchPublishDate <DateTime?>]: This is used to install patches that were published on or before this given max published date.
+  [WindowParameterPatchNameMasksToExclude <List<String>>]: This is used to exclude patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are not supported.
+  [WindowParameterPatchNameMasksToInclude <List<String>>]: This is used to include patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are not supported.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/install-azconnectedmachinepatch
 #>
@@ -95,6 +95,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Install')]
@@ -105,6 +106,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='InstallViaIdentity', Mandatory, ValueFromPipeline)]
@@ -203,6 +205,26 @@ param(
     # This is used to install patches that were published on or before this given max published date.
     ${WindowParameterMaxPatchPublishDate},
 
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String[]]
+    # This is used to exclude patches that match the given patch name masks.
+    # Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list.
+    # Null, empty and only whitespaces strings as inputs values are not supported.
+    ${WindowParameterPatchNameMasksToExclude},
+
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String[]]
+    # This is used to include patches that match the given patch name masks.
+    # Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list.
+    # Null, empty and only whitespaces strings as inputs values are not supported.
+    ${WindowParameterPatchNameMasksToInclude},
+
     [Parameter(ParameterSetName='InstallViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
@@ -283,6 +305,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -310,8 +340,6 @@ begin {
             InstallViaJsonString = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallViaJsonString';
         }
         if (('Install', 'InstallExpanded', 'InstallViaJsonFilePath', 'InstallViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -325,6 +353,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

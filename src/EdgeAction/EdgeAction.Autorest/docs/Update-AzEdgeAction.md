@@ -8,21 +8,26 @@ schema: 2.0.0
 # Update-AzEdgeAction
 
 ## SYNOPSIS
-Update a EdgeAction
+Update the tags of an Edge Action.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags; the current expanded serializer omits `-Tag @{}`.
+Null tags are rejected.
+Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-SkuName <String>]
- [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzEdgeAction -InputObject <IEdgeActionIdentity> [-SkuName <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEdgeAction -InputObject <IEdgeActionIdentity>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -39,7 +44,11 @@ Update-AzEdgeAction -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-Update a EdgeAction
+Update the tags of an Edge Action.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags. The current expanded serializer omits `-Tag @{}`, producing an empty PATCH that the service rejects.
+Null tags are rejected.
+Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 
 ## EXAMPLES
 
@@ -55,6 +64,13 @@ myEdgeAction global   Succeeded         Standard Standard
 ```
 
 Updates the specified edge action with the provided tags.
+
+### Example 2: Clear all tags with an explicit JSON body
+```powershell
+Update-AzEdgeAction -ResourceGroupName "myResourceGroup" -Name "myEdgeAction" -JsonString '{"tags":{}}'
+```
+
+Removes all tags from the edge action. Use the JSON parameter set for this operation: the current expanded serializer omits an empty `-Tag @{}` object, producing an empty PATCH that the service rejects.
 
 ## PARAMETERS
 
@@ -180,36 +196,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
-The name of the SKU
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuTier
-The tier of the SKU
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -228,6 +214,8 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
+For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -286,4 +274,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

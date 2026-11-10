@@ -54,7 +54,7 @@ The operation to Upgrade Machine Extensions.
 ### Example 1: Update an extension in a machine to a specific version
 ```powershell
 $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}}
-Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
+Update-AzConnectedExtension -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -ExtensionTarget $target
 ```
 
 ```output
@@ -234,6 +234,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

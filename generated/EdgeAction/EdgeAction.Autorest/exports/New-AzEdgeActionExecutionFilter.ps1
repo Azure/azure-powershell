@@ -45,8 +45,10 @@ RESOURCE <IEdgeActionExecutionFilter>: Concrete tracked resource types can be cr
   [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [AzureAsyncOperation <String>]: 
   [ExecutionFilterIdentifierHeaderName <String>]: Custom Header Key associated with the execution filter
   [ExecutionFilterIdentifierHeaderValue <String>]: Custom Header Value associated with the execution filter
+  [RetryAfter <Int32?>]: 
   [VersionId <String>]: The referenced versionId of the edgeaction version
 .Link
 https://learn.microsoft.com/powershell/module/az.edgeaction/new-azedgeactionexecutionfilter

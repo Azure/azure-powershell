@@ -20,13 +20,28 @@ Create an existing (overwrite/recreate  with potential downtime) cache cluster
 .Description
 Create an existing (overwrite/recreate  with potential downtime) cache cluster
 .Example
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -PublicNetworkAccess "Enabled"
 .Example
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -PublicNetworkAccess "Enabled" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
 .Example
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -NoDatabase
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -PublicNetworkAccess "Enabled" -NoDatabase
 .Example
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"}'
+$subscriptionId = (Get-AzContext).Subscription.Id
+$cache1Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache1/databases/default`"}"
+New-AzRedisEnterpriseCache -Name "Cache1" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database
+.Example
+$subscriptionId = (Get-AzContext).Subscription.Id
+$cache1Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache1/databases/default`"}"
+$cache2Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache2/databases/default`"}"
+New-AzRedisEnterpriseCache -Name "Cache2" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database,$cache2Database
+.Example
+$windows = @(
+    @{Type="Weekly"; ScheduleDayOfWeek="Saturday"; StartHourUtc=0; Duration="PT10H"}
+    @{Type="Weekly"; ScheduleDayOfWeek="Wednesday"; StartHourUtc=0; Duration="PT10H"}
+)
+$cache = New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -MaintenanceConfigurationMaintenanceWindow $windows
+$cache | Format-List Name, SkuName, ProvisioningState, ResourceState
+$cache.MaintenanceConfigurationMaintenanceWindow | Format-Table Type, ScheduleDayOfWeek, StartHourUtc, Duration
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
@@ -42,11 +57,16 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MAINTENANCECONFIGURATIONMAINTENANCEWINDOW <IMaintenanceWindow[]>: Custom maintenance windows that apply to the cluster.
+  Duration <String>: Duration in ISO-8601 format, for example 'PT5H'.
+  StartHourUtc <Int32>: Start hour (0-23) in UTC when the maintenance window begins.
+  [ScheduleDayOfWeek <String>]: Day of week. Required when the maintenance window type is 'Weekly'.
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
 #>
@@ -81,6 +101,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -161,6 +182,14 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[]]
+    # Custom maintenance windows that apply to the cluster.
+    ${MaintenanceConfigurationMaintenanceWindow},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
     [System.String]
@@ -203,7 +232,7 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
     [System.String[]]
-    # The Availability Zones where this cluster will be deployed.
+    # The availability zones.
     ${Zone},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]

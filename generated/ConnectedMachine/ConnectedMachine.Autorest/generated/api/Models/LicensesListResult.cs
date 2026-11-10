@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>The List license operation response.</summary>
+    /// <summary>Paged collection of License items</summary>
     public partial class LicensesListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensesListResult,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensesListResultInternal
@@ -16,16 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of license profile.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense> _value;
 
-        /// <summary>The list of licenses.</summary>
+        /// <summary>The License items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense> Value { get => this._value; set => this._value = value; }
 
@@ -35,45 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         }
     }
-    /// The List license operation response.
+    /// Paged collection of License items
     public partial interface ILicensesListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of license profile.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of license profile.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The list of licenses.</summary>
+        /// <summary>The License items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The list of licenses.",
+        Description = @"The License items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense> Value { get; set; }
 
     }
-    /// The List license operation response.
+    /// Paged collection of License items
     internal partial interface ILicensesListResultInternal
 
     {
-        /// <summary>
-        /// The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of license profile.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The list of licenses.</summary>
+        /// <summary>The License items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense> Value { get; set; }
 
     }

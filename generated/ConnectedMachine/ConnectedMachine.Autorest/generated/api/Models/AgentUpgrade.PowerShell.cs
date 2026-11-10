@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("LastAttemptTimestamp"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)this).LastAttemptTimestamp = (string) content.GetValueForProperty("LastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)this).LastAttemptTimestamp, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)this).LastAttemptTimestamp = (global::System.DateTime?) content.GetValueForProperty("LastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)this).LastAttemptTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("LastAttemptStatus"))
             {
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("LastAttemptTimestamp"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)this).LastAttemptTimestamp = (string) content.GetValueForProperty("LastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)this).LastAttemptTimestamp, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)this).LastAttemptTimestamp = (global::System.DateTime?) content.GetValueForProperty("LastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)this).LastAttemptTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("LastAttemptStatus"))
             {

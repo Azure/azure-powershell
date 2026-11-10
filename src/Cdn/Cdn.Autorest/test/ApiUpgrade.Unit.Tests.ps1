@@ -1,0 +1,285 @@
+Describe 'ApiUpgrade.Unit' {
+    BeforeAll {
+        if (-not ('CdnApiUpgradeTestTransport' -as [type])) {
+            # SDK continuations can invoke the transport on a thread without a PowerShell runspace.
+            $references = @(
+                [System.Net.Http.HttpResponseMessage].Assembly.Location,
+                [System.Net.HttpStatusCode].Assembly.Location
+            )
+            if ($PSVersionTable.PSEdition -eq 'Core') {
+                $references += 'System.Collections'
+            }
+            Add-Type -ReferencedAssemblies $references -TypeDefinition @'
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+
+public sealed class CdnApiUpgradeTestTransport
+{
+    public readonly List<Dictionary<string, object>> Requests = new List<Dictionary<string, object>>();
+    public string ResponseJson;
+
+    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, object listener)
+    {
+        Requests.Add(new Dictionary<string, object> {
+            { "Method", request.Method.Method },
+            { "Uri", request.RequestUri },
+            { "Body", request.Content == null ? null : request.Content.ReadAsStringAsync().GetAwaiter().GetResult() }
+        });
+        var response = new HttpResponseMessage(HttpStatusCode.OK);
+        response.Content = new StringContent(ResponseJson, Encoding.UTF8, "application/json");
+        response.RequestMessage = request;
+        return Task.FromResult(response);
+    }
+}
+'@
+        }
+    }
+
+    It 'Keeps <Resource> requests on <ApiVersion>' -TestCases @(
+        @{ Resource = 'ClassicProfile'; ApiVersion = '2026-10-01' },
+        @{ Resource = 'AfdProfile'; ApiVersion = '2026-10-01' },
+        @{ Resource = 'ClassicEndpoint'; ApiVersion = '2026-10-01' },
+        @{ Resource = 'AfdEndpoint'; ApiVersion = '2026-10-01' }
+    ) {
+        param($Resource, $ApiVersion)
+        $transport = [CdnApiUpgradeTestTransport]::new()
+        $transport.ResponseJson = '{"name":"offline","location":"Global","properties":{}}'
+        $requests = $transport.Requests
+        $send = [System.Delegate]::CreateDelegate(
+            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync], $transport,
+            $transport.GetType().GetMethod('SendAsync'))
+        $terminal = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncTerminalFactory]::new($send)
+        $listener = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventListener]::new()
+        $client = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn]::new()
+        $task = switch ($Resource) {
+            'ClassicProfile' { $client.ProfilesGetWithResult('offline', 'offline', 'offline', $listener, $terminal) }
+            'AfdProfile' { $client.ProfilesGetWithResult('offline', 'offline', 'offline', $listener, $terminal) }
+            'ClassicEndpoint' { $client.EndpointsGetWithResult('offline', 'offline', 'offline', 'offline', $listener, $terminal) }
+            'AfdEndpoint' { $client.AfdEndpointsGetWithResult('offline', 'offline', 'offline', 'offline', $listener, $terminal) }
+        }
+        $null = $task.GetAwaiter().GetResult()
+        $requests.Count | Should Be 1
+        $requests[0].Uri.Query | Should Be "?api-version=$ApiVersion"
+    }
+
+    It 'Preserves Change Safety and asynchronous parameters on <Command> with the shared profile client' -TestCases @(
+        @{ Command = 'New-AzCdnProfile' },
+        @{ Command = 'Update-AzCdnProfile' },
+        @{ Command = 'Remove-AzCdnProfile' }
+    ) {
+        param($Command)
+        $parameters = (Get-Command -Name $Command -Module Az.Cdn).Parameters
+        foreach ($name in @('AcquirePolicyToken', 'ChangeReference', 'NoWait', 'AsJob')) {
+            $parameters.Keys | Should Contain $name
+        }
+    }
+
+    It 'Adds canonical ClientResponse completion without removing existing invocation points' {
+        $property = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction].GetProperty('ParameterInvocationPoint')
+        $completer = $property.GetCustomAttributes($false) |
+            Where-Object { $_ -is [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute] }
+        $values = @($completer.ScriptBlock.Invoke('', '', '', $null, @{}) |
+            ForEach-Object CompletionText)
+        foreach ($value in @('clientRequest', 'originRequest', 'originResponse', 'clientResponse',
+                'ClientRequest', 'OriginRequest', 'ClientResponse')) {
+            ($values -ccontains $value) | Should Be $true
+        }
+    }
+
+    It 'Round-trips ClientResponse as a polymorphic rule action' {
+        $action = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeAction]::new()
+        $action.ParameterInvocationPoint = 'ClientResponse'
+        $action.ParameterTypeName = 'DeliveryRuleEdgeActionParameters'
+        $action.ReferenceId = '/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Cdn/edgeActions/offline'
+        $rule = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::new()
+        $rule.Order = 1
+        $rule.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+        $rule.Action.Add($action)
+        $json = $rule.ToJsonString()
+        (($json | ConvertFrom-Json).properties.actions[0].parameters.invocationPoint -ceq 'ClientResponse') | Should Be $true
+        ($json | ConvertFrom-Json).properties.actions[0].parameters.edgeActionReference.id | Should Be $action.ReferenceId
+        $roundTrip = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::FromJsonString($json)
+        ($roundTrip.Action[0] -is [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeAction]) | Should Be $true
+        ($roundTrip.Action[0].ParameterInvocationPoint -ceq 'ClientResponse') | Should Be $true
+        $roundTrip.Action[0].ReferenceId | Should Be $action.ReferenceId
+    }
+
+    It 'Does not expose legacy secret-backed URL signing models or the secret object cmdlet' {
+        $models = @([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn].Assembly.GetTypes() |
+            Where-Object { $_.Namespace -eq 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models' } |
+            ForEach-Object Name)
+        foreach ($name in @('UrlSigningKeyParameters', 'IUrlSigningKeyParameters',
+                'AfdUrlSigningAction', 'IAfdUrlSigningAction',
+                'AfdUrlSigningActionParameters', 'IAfdUrlSigningActionParameters')) {
+            $models | Should Not Contain $name
+        }
+        @(Get-Command -Name New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject `
+            -Module Az.Cdn -ErrorAction SilentlyContinue).Count | Should Be 0
+    }
+
+    It 'Uses October API and canonical ClientResponse in rule <Operation> requests and responses' -TestCases @(
+        @{ Operation = 'Create'; Method = 'PUT' },
+        @{ Operation = 'Update'; Method = 'PATCH' },
+        @{ Operation = 'Get'; Method = 'GET' }
+    ) {
+        param($Operation, $Method)
+        $responseJson = '{"properties":{"order":1,"actions":[{"name":"EdgeAction","parameters":{"typeName":"DeliveryRuleEdgeActionParameters","invocationPoint":"ClientResponse","edgeActionReference":{"id":"/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Cdn/edgeActions/offline"}}}]}}'
+        $transport = [CdnApiUpgradeTestTransport]::new()
+        $transport.ResponseJson = $responseJson
+        $requests = $transport.Requests
+        $send = [System.Delegate]::CreateDelegate(
+            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync], $transport,
+            $transport.GetType().GetMethod('SendAsync'))
+        $terminal = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncTerminalFactory]::new($send)
+        $listener = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventListener]::new()
+        $client = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn]::new()
+        $action = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeAction]::new()
+        $action.ParameterInvocationPoint = 'ClientResponse'
+        $action.ParameterTypeName = 'DeliveryRuleEdgeActionParameters'
+        $action.ReferenceId = '/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Cdn/edgeActions/offline'
+        if ($Operation -eq 'Create') {
+            $body = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::new()
+            $body.Order = 1
+            $body.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+            $body.Action.Add($action)
+            $task = $client.RulesCreateWithResult('offline', 'offline', 'offline', 'offline', 'offline', $body, $listener, $terminal)
+        } elseif ($Operation -eq 'Update') {
+            $body = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RuleUpdateParameters]::new()
+            $body.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+            $body.Action.Add($action)
+            $task = $client.RulesUpdateWithResult('offline', 'offline', 'offline', 'offline', 'offline', $body, $listener, $terminal)
+        } else {
+            $task = $client.RulesGetWithResult('offline', 'offline', 'offline', 'offline', 'offline', $listener, $terminal)
+        }
+        $result = $task.GetAwaiter().GetResult()
+        $requests.Count | Should BeGreaterThan 0
+        $requests[0].Method | Should Be $Method
+        foreach ($request in $requests) {
+            $request.Uri.Query | Should Match 'api-version=2026-10-01'
+        }
+        if ($Operation -ne 'Get') {
+            $payload = $requests[0].Body | ConvertFrom-Json
+            ($payload.properties.actions[0].parameters.invocationPoint -ceq 'ClientResponse') | Should Be $true
+            $payload.properties.actions[0].parameters.edgeActionReference.id | Should Be $action.ReferenceId
+        }
+        ($result.Action[0] -is [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeAction]) | Should Be $true
+        ($result.Action[0].ParameterInvocationPoint -ceq 'ClientResponse') | Should Be $true
+        $result.Action[0].ReferenceId | Should Be $action.ReferenceId
+    }
+
+    It 'Exposes and serializes custom server TLS groups including PQC' {
+        $tls = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject `
+            -CertificateType ManagedCertificate -ServerTlsGroupPolicy Custom `
+            -ServerTlsGroup X25519MLKEM768, SecP256r1MLKEM768
+        $json = $tls.ToJsonString() | ConvertFrom-Json
+        $json.serverTlsGroupPolicy | Should Be 'Custom'
+        $json.serverTlsGroups.Count | Should Be 2
+        $json.serverTlsGroups[0] | Should Be 'X25519MLKEM768'
+        $json.serverTlsGroups[1] | Should Be 'SecP256r1MLKEM768'
+    }
+
+    It 'Preserves mTLS creation and update parameters and serialization' {
+        foreach ($name in @('New-AzFrontDoorCdnCustomDomain', 'Update-AzFrontDoorCdnCustomDomain')) {
+            (Get-Command $name).Parameters.ContainsKey('MtlSettingScenario') | Should Be $true
+        }
+        $mtls = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainMtlsParameters]::new()
+        $mtls.Scenario = 'ClientCertificateRequiredAndValidated'
+        ($mtls.ToJsonString() | ConvertFrom-Json).scenario | Should Be 'ClientCertificateRequiredAndValidated'
+    }
+
+    It 'Preserves MSI token destination headers in origin authentication' {
+        foreach ($name in @('New-AzFrontDoorCdnOriginGroup', 'Update-AzFrontDoorCdnOriginGroup')) {
+            (Get-Command $name).Parameters.ContainsKey('AuthenticationTokenDestinationHeader') | Should Be $true
+        }
+        $authentication = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginAuthenticationProperties]::new()
+        $authentication.Type = 'SystemAssignedIdentity'
+        $authentication.Scope = 'https://storage.azure.com/.default'
+        $authentication.TokenDestinationHeader = 'X-Origin-Authorization'
+        $json = $authentication.ToJsonString() | ConvertFrom-Json
+        $json.type | Should Be 'SystemAssignedIdentity'
+        $json.tokenDestinationHeader | Should Be 'X-Origin-Authorization'
+        $json.scope | Should Be 'https://storage.azure.com/.default'
+    }
+
+    It 'Preserves profile-level and route-level WAF policy settings' {
+        $route = New-AzFrontDoorCdnResourceReferenceObject -Id '/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Cdn/profiles/offline/afdEndpoints/endpoint/routes/route'
+        $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject `
+            -PatternsToMatch '/*' -Route $route
+        $parameters = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject `
+            -IsProfileLevel $true -Association $association `
+            -WafPolicyId '/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies/offline'
+        $json = $parameters.ToJsonString() | ConvertFrom-Json
+        $json.isProfileLevel | Should Be $true
+        $json.associations[0].routes[0].id | Should Be $route.Id
+        $json.associations[0].patternsToMatch[0] | Should Be '/*'
+        $json.wafPolicy.id | Should Match '/frontDoorWebApplicationFirewallPolicies/offline$'
+    }
+
+    It 'Exposes and serializes origin certificate subject validation' {
+        foreach ($name in @('New-AzFrontDoorCdnOrigin', 'Update-AzFrontDoorCdnOrigin')) {
+            $command = Get-Command $name
+            $command.Parameters.ContainsKey('CertificateNameCheckValidationMode') | Should Be $true
+            $command.Parameters.ContainsKey('CustomCertificateSubject') | Should Be $true
+        }
+        $origin = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOrigin]::new()
+        $origin.HostName = 'origin.contoso.com'
+        $origin.EnforceCertificateNameCheck = $true
+        $origin.CertificateNameCheckValidationMode = 'CustomCertificateSubject'
+        $origin.CustomCertificateSubject = @('origin.contoso.com', '*.contoso.com')
+        $json = $origin.ToJsonString() | ConvertFrom-Json
+        $json.properties.enforceCertificateNameCheck | Should Be $true
+        $json.properties.certificateNameCheckValidationMode | Should Be 'CustomCertificateSubject'
+        $json.properties.customCertificateSubjects.Count | Should Be 2
+        $json.properties.customCertificateSubjects[1] | Should Be '*.contoso.com'
+    }
+
+    It 'Retains the other URL signing object cmdlets' {
+        foreach ($name in @('New-AzCdnUrlSigningActionObject',
+                'New-AzFrontDoorCdnRuleUrlSigningActionObject')) {
+            (Get-Command $name -Module Az.Cdn -ErrorAction Stop).Name | Should Be $name
+        }
+    }
+
+    It 'Does not expose preview-only authentication policy or gRPC probe features' {
+        @(Get-Command -Module Az.Cdn | Where-Object Name -Match 'AuthPolicy').Count | Should Be 0
+        @([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn].Assembly.GetTypes() | Where-Object {
+            $_.Namespace -eq 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models' -and $_.Name -match 'AuthPolicy'
+        }).Count | Should Be 0
+        $parameter = (Get-Command New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject).Parameters['ProbeProtocol']
+        $completer = $parameter.Attributes |
+            Where-Object { $_ -is [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute] }
+        $protocols = @($completer.ScriptBlock.Invoke('', '', '', $null, @{}) | ForEach-Object CompletionText)
+        $protocols | Should Contain 'Http'
+        $protocols | Should Contain 'Https'
+        $protocols | Should Not Contain 'Grpc'
+    }
+
+    It 'Does not expose retired standalone EdgeAction cmdlets' {
+        $removed = @(
+            'Add-AzCdnEdgeActionAttachment',
+            'Deploy-AzCdnEdgeActionVersionCode',
+            'Get-AzCdnEdgeAction',
+            'Get-AzCdnEdgeActionExecutionFilter',
+            'Get-AzCdnEdgeActionVersion',
+            'Get-AzCdnEdgeActionVersionCode',
+            'New-AzCdnEdgeAction',
+            'New-AzCdnEdgeActionExecutionFilter',
+            'New-AzCdnEdgeActionVersion',
+            'Remove-AzCdnEdgeAction',
+            'Remove-AzCdnEdgeActionAttachment',
+            'Remove-AzCdnEdgeActionExecutionFilter',
+            'Remove-AzCdnEdgeActionVersion',
+            'Update-AzCdnEdgeAction',
+            'Update-AzCdnEdgeActionExecutionFilter',
+            'Update-AzCdnEdgeActionVersion'
+        )
+        $actual = @(Get-Command -Module Az.Cdn | Where-Object Name -Match '-AzCdnEdgeAction')
+        $actual.Count | Should Be 0
+        foreach ($name in $removed) {
+            @(Get-Command -Name $name -Module Az.Cdn -ErrorAction SilentlyContinue).Count | Should Be 0
+        }
+    }
+}

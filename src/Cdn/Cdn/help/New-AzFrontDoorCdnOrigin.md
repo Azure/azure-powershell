@@ -15,63 +15,69 @@ Create a new origin within the specified origin group.
 ### CreateExpanded (Default)
 ```
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>] [-EnabledState <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>]
+ [-CertificateNameCheckValidationMode <String>] [-CustomCertificateSubject <String[]>] [-EnabledState <String>]
  [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
  [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
  [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
  [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfileExpanded
 ```
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
- [-AzureOriginId <String>] [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>]
- [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
+ [-AzureOriginId <String>] [-CertificateNameCheckValidationMode <String>]
+ [-CustomCertificateSubject <String[]>] [-EnabledState <String>] [-EnforceCertificateNameCheck]
+ [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
  [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
  [-SharedPrivateLinkResourcePrivateLinkLocation <String>] [-SharedPrivateLinkResourceRequestMessage <String>]
  [-SharedPrivateLinkResourceStatus <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfile
 ```
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
  -Origin <IAfdOrigin> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityOriginGroupExpanded
 ```
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupInputObject <ICdnIdentity> [-AzureOriginId <String>]
- [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
- [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ [-CertificateNameCheckValidationMode <String>] [-CustomCertificateSubject <String[]>] [-EnabledState <String>]
+ [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
+ [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
  [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
  [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityOriginGroup
 ```
 New-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupInputObject <ICdnIdentity> -Origin <IAfdOrigin>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +100,21 @@ Create an AzureFrontDoor origin under the AzureFrontDoor origin group
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -114,6 +135,54 @@ Resource ID.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateNameCheckValidationMode
+The validation mode for certificate name check.
+Only applicable when enforceCertificateNameCheck is true.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomCertificateSubject
+The list of custom certificate subjects to validate against.
+Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'.
+Must contain 1 or 2 entries.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityOriginGroupExpanded
 Aliases:
 

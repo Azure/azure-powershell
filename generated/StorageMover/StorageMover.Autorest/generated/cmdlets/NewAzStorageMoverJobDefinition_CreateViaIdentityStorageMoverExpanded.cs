@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"create a Job Definition resource, which contains configuration for a single unit of managed data transfer.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}", ApiVersion = "2025-12-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}", ApiVersion = "2026-05-01")]
     public partial class NewAzStorageMoverJobDefinition_CreateViaIdentityStorageMoverExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IContext
@@ -99,6 +99,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Additive", "Mirror")]
         public string CopyMode { get => _jobDefinitionBody.CopyMode ?? null; set => _jobDefinitionBody.CopyMode = value; }
+
+        /// <summary>
+        /// Full ARM resource ID of the cross-tenant (foreign) endpoint. On thesource-tenant copy this is the TARGET endpoint; on
+        /// thetarget-tenant copy this is the SOURCE endpoint.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Full ARM resource ID of the cross-tenant (foreign) endpoint. On thesource-tenant copy this is the TARGET endpoint; on thetarget-tenant copy this is the SOURCE endpoint.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Full ARM resource ID of the cross-tenant (foreign) endpoint. On thesource-tenant copy this is the TARGET endpoint; on thetarget-tenant copy this is the SOURCE endpoint.",
+        SerializedName = @"crossTenantEndpointResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string CrossTenantEndpointResourceId { get => _jobDefinitionBody.CrossTenantEndpointResourceId ?? null; set => _jobDefinitionBody.CrossTenantEndpointResourceId = value; }
+
+        /// <summary>
+        /// The Azure AD tenant ID of the cross-tenant source endpoint. Required when`isCrossTenantJob` is true. Cannot be modified
+        /// after the Job Definition iscreated.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure AD tenant ID of the cross-tenant source endpoint. Required when`isCrossTenantJob` is true. Cannot be modified after the Job Definition iscreated.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Azure AD tenant ID of the cross-tenant source endpoint. Required when`isCrossTenantJob` is true. Cannot be modified after the Job Definition iscreated.",
+        SerializedName = @"crossTenantEndpointTenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string CrossTenantEndpointTenantId { get => _jobDefinitionBody.CrossTenantEndpointTenantId ?? null; set => _jobDefinitionBody.CrossTenantEndpointTenantId = value; }
 
         /// <summary>The checksum validation mode for the job definition.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The checksum validation mode for the job definition.")]
@@ -182,6 +210,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>
+        /// Indicates that this Job Definition is a cross-tenant job where thecounterpart endpoint resides in a different Azure AD
+        /// tenant. When true,`crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must beprovided. Defaults to false.
+        /// Cannot be modified after the Job Definition iscreated.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates that this Job Definition is a cross-tenant job where thecounterpart endpoint resides in a different Azure AD tenant. When true,`crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must beprovided. Defaults to false. Cannot be modified after the Job Definition iscreated.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates that this Job Definition is a cross-tenant job where thecounterpart endpoint resides in a different Azure AD tenant. When true,`crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must beprovided. Defaults to false. Cannot be modified after the Job Definition iscreated.",
+        SerializedName = @"isCrossTenantJob",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter IsCrossTenantJob { get => _jobDefinitionBody.IsCrossTenantJob ?? default(global::System.Management.Automation.SwitchParameter); set => _jobDefinitionBody.IsCrossTenantJob = value; }
+
         /// <summary>The type of the Job.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of the Job.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
@@ -191,7 +234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         Description = @"The type of the Job.",
         SerializedName = @"jobType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("OnPremToCloud", "CloudToCloud")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("OnPremToCloud", "CloudToCloud", "OnPremToCloudAgentLess")]
         public string JobType { get => _jobDefinitionBody.JobType ?? null; set => _jobDefinitionBody.JobType = value; }
 
         /// <summary>
@@ -201,6 +244,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>The last time the mover was synchronized.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The last time the mover was synchronized.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The last time the mover was synchronized.",
+        SerializedName = @"moverSyncedUntil",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime MoverSyncedUntil { get => _jobDefinitionBody.MoverSyncedUntil ?? default(global::System.DateTime); set => _jobDefinitionBody.MoverSyncedUntil = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -318,7 +372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         Description = @"Type of schedule — Monthly, Weekly, or Daily",
         SerializedName = @"frequency",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
         public string ScheduleFrequency { get => _jobDefinitionBody.ScheduleFrequency ?? null; set => _jobDefinitionBody.ScheduleFrequency = value; }
 
         /// <summary>Whether the schedule is currently active</summary>
@@ -331,6 +385,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         SerializedName = @"isActive",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter ScheduleIsActive { get => _jobDefinitionBody.ScheduleIsActive ?? default(global::System.Management.Automation.SwitchParameter); set => _jobDefinitionBody.ScheduleIsActive = value; }
+
+        /// <summary>Repeat interval used for sub-daily schedules.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Repeat interval used for sub-daily schedules.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Repeat interval used for sub-daily schedules.",
+        SerializedName = @"repeatInterval",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ScheduleRepeatInterval { get => _jobDefinitionBody.ScheduleRepeatInterval ?? null; set => _jobDefinitionBody.ScheduleRepeatInterval = value; }
 
         /// <summary>Specific one-time execution date and time</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specific one-time execution date and time")]
@@ -372,6 +437,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Path)]
         public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity StorageMoverInputObject { get => this._storageMoverInputObject; set => this._storageMoverInputObject = value; }
+
+        /// <summary>The synchronization mode for the Job Definition.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The synchronization mode for the Job Definition.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The synchronization mode for the Job Definition.",
+        SerializedName = @"syncMode",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SyncMode { get => _jobDefinitionBody.SyncMode ?? null; set => _jobDefinitionBody.SyncMode = value; }
 
         /// <summary>The name of the target Endpoint.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the target Endpoint.")]

@@ -14,7 +14,7 @@
   "datasourceType": "Microsoft.DocumentDB/databaseAccounts",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "AlternateLocation" ],
-  "itemLevelRecoveyEnabled": false,
+  "itemLevelRecoveryEnabled": true,
   "fileNamePrefixDisabled": false,
   "addBackupDatasourceParametersList": false,
   "backupConfigurationRequired": false,

@@ -101,6 +101,14 @@ param(
     ${Description},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]

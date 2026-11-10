@@ -30,4 +30,10 @@ Describe 'New-AzStorageMoverAzNfsFileShareEndpoint' {
         $endpoint.Property.FileShareName | Should -Be "testfs"
         $endpoint.Property.StorageAccountResourceId | Should -Be $env.StoraccId
     }
+
+    It 'CreateExpandedWithEndpointKindRequest' {
+        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
+        $endpoint = New-AzStorageMoverAzNfsFileShareEndpoint -Name "nfssharekind" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -StorageAccountResourceId $env.EndpointStorageAccountId -FileShareName "testfs" -EndpointKind Target
+        ($endpoint.Property.ToJsonString() | ConvertFrom-Json).endpointKind | Should -Be "Target"
+    }
 }

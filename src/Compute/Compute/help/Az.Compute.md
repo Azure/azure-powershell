@@ -149,6 +149,9 @@ Gets the specified gallery inVMAccessControlProfile or a list of gallery inVMAcc
 ### [Get-AzGalleryInVMAccessControlProfileVersion](Get-AzGalleryInVMAccessControlProfileVersion.md)
 Gets the specified version of a gallery inVMAccessControlProfile or a list of versions from the specified gallery inVMAccessControlProfile.
 
+### [Get-AzGallerySoftDeletedImageVersion](Get-AzGallerySoftDeletedImageVersion.md)
+Get soft-deleted image versions from an Azure Compute Gallery.
+
 ### [Get-AzHost](Get-AzHost.md)
 Get or list hosts.
 
@@ -521,6 +524,9 @@ This Cmdlet can remove Restore Point Collection
 ### [Remove-AzSnapshot](Remove-AzSnapshot.md)
 Removes a snapshot.
 
+### [Remove-AzSnapshotImmutabilityPolicy](Remove-AzSnapshotImmutabilityPolicy.md)
+Expires an active Unlocked immutability policy on a snapshot.
+
 ### [Remove-AzSshKey](Remove-AzSshKey.md)
 Delete a SSH Public Key resource.
 
@@ -617,6 +623,9 @@ Restarts an Azure virtual machine.
 ### [Restart-AzVmss](Restart-AzVmss.md)
 Restarts the VMSS or a virtual machine within the VMSS.
 
+### [Restore-AzGalleryImageVersion](Restore-AzGalleryImageVersion.md)
+Restore a soft-deleted gallery image version.
+
 ### [Revoke-AzDiskAccess](Revoke-AzDiskAccess.md)
 Revokes an access to a disk.
 
@@ -655,6 +664,9 @@ Sets the disk encryption key properties on a snapshot object.
 
 ### [Set-AzSnapshotImageReference](Set-AzSnapshotImageReference.md)
 Sets the image reference properties on a snapshot object.
+
+### [Set-AzSnapshotImmutabilityPolicy](Set-AzSnapshotImmutabilityPolicy.md)
+Sets or updates a snapshot immutability policy.
 
 ### [Set-AzSnapshotKeyEncryptionKey](Set-AzSnapshotKeyEncryptionKey.md)
 Sets the key encryption key properties on a snapshot object.

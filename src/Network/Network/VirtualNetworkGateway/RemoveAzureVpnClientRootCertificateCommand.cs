@@ -84,6 +84,9 @@ namespace Microsoft.Azure.Commands.Network
 
             vnetGateway.VpnClientConfiguration.VpnClientRootCertificates.Remove(vpnClientRootCertificate);
 
+            // For VPN VirtualNetworkGateway with P2SVpnClientConfiguration set, fetch Radius server secrets using new Post API and backfill before calling PUT.
+            this.BackfillRadiusServerSecrets(vnetGateway);
+
             // Map to the sdk object
             var virtualnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
             virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(vnetGateway.Tag, validate: true);

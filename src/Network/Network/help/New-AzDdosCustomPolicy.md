@@ -14,13 +14,14 @@ Creates a DDoS custom policy.
 
 ```
 New-AzDdosCustomPolicy -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
- [-DetectionRule <PSDdosCustomPolicyDetectionRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-DetectionRule <PSDdosCustomPolicyDetectionRule[]>] [-MitigationRule <PSDdosCustomPolicyMitigationRule[]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzDdosCustomPolicy** cmdlet creates a DDoS custom policy with detection rules. A DDoS custom policy allows you to define custom detection thresholds for different types of traffic (TCP, UDP, TCP SYN).
+The **New-AzDdosCustomPolicy** cmdlet creates a DDoS custom policy with detection rules, mitigation rules, or both. Detection rules define custom detection thresholds. Mitigation rules define per-source rate limits and optional source-specific actions for TCP or UDP traffic.
 
 ## EXAMPLES
 
@@ -50,6 +51,14 @@ $policy = New-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy" -Loc
 ```
 
 This example creates a DDoS custom policy with tags for resource management.
+
+### Example 4: Create a mitigation-only DDoS custom policy
+```powershell
+$rule = New-AzDdosCustomPolicyMitigationRule -Name "tcpRule" -TrafficScope Tcp -TcpPacketsPerSecond 100000 -TcpConnectionsPerSecond 10000
+$policy = New-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy" -Location "eastus" -MitigationRule $rule
+```
+
+This example creates a DDoS custom policy that contains a TCP mitigation rule and no detection rules.
 
 ## PARAMETERS
 
@@ -140,6 +149,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MitigationRule
+Specifies DDoS mitigation rules for the policy. Use **New-AzDdosCustomPolicyMitigationRule** to create mitigation rules.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicyMitigationRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -236,3 +260,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzDdosCustomPolicy](./Remove-AzDdosCustomPolicy.md)
 
 [New-AzDdosCustomPolicyDetectionRule](./New-AzDdosCustomPolicyDetectionRule.md)
+
+[New-AzDdosCustomPolicyMitigationRule](./New-AzDdosCustomPolicyMitigationRule.md)

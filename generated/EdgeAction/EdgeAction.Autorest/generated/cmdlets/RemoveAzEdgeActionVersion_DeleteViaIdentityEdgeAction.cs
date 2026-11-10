@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"Delete a EdgeActionVersion")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}", ApiVersion = "2026-10-01")]
     public partial class RemoveAzEdgeActionVersion_DeleteViaIdentityEdgeAction : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
                     if (EdgeActionInputObject?.Id != null)
                     {
                         this.EdgeActionInputObject.Id += $"/versions/{(global::System.Uri.EscapeDataString(this.Version.ToString()))}";
-                        await this.Client.EdgeActionVersionsDeleteViaIdentity(EdgeActionInputObject.Id, onNoContent, onOk, onDefault, this, Pipeline);
+                        await this.Client.EdgeActionVersionsDeleteViaIdentity(EdgeActionInputObject.Id, onOk, onNoContent, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("EdgeActionInputObject has null value for EdgeActionInputObject.EdgeActionName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, EdgeActionInputObject) );
                         }
-                        await this.Client.EdgeActionVersionsDelete(EdgeActionInputObject.SubscriptionId ?? null, EdgeActionInputObject.ResourceGroupName ?? null, EdgeActionInputObject.EdgeActionName ?? null, Version, onNoContent, onOk, onDefault, this, Pipeline);
+                        await this.Client.EdgeActionVersionsDelete(EdgeActionInputObject.SubscriptionId ?? null, EdgeActionInputObject.ResourceGroupName ?? null, EdgeActionInputObject.EdgeActionName ?? null, Version, onOk, onNoContent, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

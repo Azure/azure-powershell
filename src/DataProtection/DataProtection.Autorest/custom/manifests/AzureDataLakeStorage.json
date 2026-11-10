@@ -14,7 +14,7 @@
   "datasourceType": "Microsoft.Storage/storageAccounts/adlsBlobServices",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "AlternateLocation" ],
-  "itemLevelRecoveyEnabled": true,
+  "itemLevelRecoveryEnabled": true,
   "fileNamePrefixDisabled": false,
   "addBackupDatasourceParametersList": true,
   "backupConfigurationRequired": false,

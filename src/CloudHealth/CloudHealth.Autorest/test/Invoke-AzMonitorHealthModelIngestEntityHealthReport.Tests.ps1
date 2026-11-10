@@ -89,7 +89,7 @@ Describe 'Invoke-AzMonitorHealthModelIngestEntityHealthReport' {
         $capturedRequests.Count | Should -Be 1
         (@($capturedRequests | ForEach-Object { $_.Method }) -join ',') | Should -Be 'POST'
 
-        $ingestUri = "https://management.azure.com/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.CloudHealth/healthmodels/$($env.HealthModelName)/entities/$($env.EntityName)/ingestHealthReport?api-version=2026-09-01-preview"
+        $ingestUri = "https://management.azure.com/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.CloudHealth/healthmodels/$($env.HealthModelName)/entities/$($env.EntityName)/ingestHealthReport?api-version=2026-11-01"
         $capturedRequests[0].RequestUri | Should -Be $ingestUri
         $capturedRequests[0].ContentType | Should -Match '^application/json'
 

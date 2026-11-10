@@ -7,19 +7,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>The List Compute Operation operation response.</summary>
+    /// <summary>The List of Operations.</summary>
     public partial class OperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResult,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal
     {
 
+        /// <summary>Internal Acessors for NextLink</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
+
         /// <summary>Internal Acessors for Value</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal.Value { get => this._value; set { {_value = value;} } }
+
+        /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
+        private string _nextLink;
+
+        /// <summary>The URL to get the next set of results.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string NextLink { get => this._nextLink; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue> _value;
 
-        /// <summary>The list of compute operations</summary>
+        /// <summary>The list of operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue> Value { get => this._value; }
 
@@ -29,28 +39,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         }
     }
-    /// The List Compute Operation operation response.
+    /// The List of Operations.
     public partial interface IOperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
-        /// <summary>The list of compute operations</summary>
+        /// <summary>The URL to get the next set of results.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The list of compute operations",
+        Description = @"The URL to get the next set of results.",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get;  }
+        /// <summary>The list of operations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The list of operations.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue> Value { get;  }
 
     }
-    /// The List Compute Operation operation response.
+    /// The List of Operations.
     internal partial interface IOperationListResultInternal
 
     {
-        /// <summary>The list of compute operations</summary>
+        /// <summary>The URL to get the next set of results.</summary>
+        string NextLink { get; set; }
+        /// <summary>The list of operations.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue> Value { get; set; }
 
     }

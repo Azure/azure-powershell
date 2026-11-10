@@ -1,91 +1,189 @@
 {
-  "Get-AzMonitorHealthModelAuthenticationSetting+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/authenticationsettings?api-version=2026-09-01-preview+1": {
+  "Get-AzMonitorHealthModelAuthenticationSetting+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings?api-version=2026-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/authenticationsettings?api-version=2026-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings?api-version=2026-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000016" ],
-        "CommandName": [ "Get-AzMonitorHealthModelAuthenticationSetting" ],
-        "FullCommandName": [ "Get-AzMonitorHealthModelAuthenticationSetting_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "34"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000257"
+        ],
+        "CommandName": [
+          "Get-AzMonitorHealthModelAuthenticationSetting"
+        ],
+        "FullCommandName": [
+          "Get-AzMonitorHealthModelAuthenticationSetting_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000017" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000018" ],
-        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000019" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052006Z:00000000-0000-4000-8000-000000000019" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AD8E540475E249D3A39EA15BABA10FF8 Ref B: GVA201070812029 Ref C: 2026-09-10T05:20:06Z" ],
-        "Date": [ "Thu, 10 Sep 2026 05:20:06 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000387"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000114"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000100"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "248"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151721Z:00000000-0000-4000-8000-000000000100"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9C281D0DD55D4D4A85D6030063CCC049 Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:21Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:20 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "716" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "716"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-a9skjo/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-a9skjo/authenticationsettings/azps-auth-shared-a9skjo\",\"name\":\"azps-auth-shared-a9skjo\",\"type\":\"Microsoft.CloudHealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:17:53.0785934Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:17:53.2538954Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared auth setting\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-r3wz6p/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-shared-r3wz6p\",\"name\":\"azps-auth-shared-r3wz6p\",\"type\":\"Microsoft.CloudHealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:15:07.0601889Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:15:07.5281666Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared auth setting\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzMonitorHealthModelAuthenticationSetting+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/authenticationsettings/azps-auth-shared-a9skjo?api-version=2026-09-01-preview+1": {
+  "Get-AzMonitorHealthModelAuthenticationSetting+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-shared-r3wz6p?api-version=2026-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/authenticationsettings/azps-auth-shared-a9skjo?api-version=2026-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-shared-r3wz6p?api-version=2026-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000020" ],
-        "CommandName": [ "Get-AzMonitorHealthModelAuthenticationSetting" ],
-        "FullCommandName": [ "Get-AzMonitorHealthModelAuthenticationSetting_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "35"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000105"
+        ],
+        "CommandName": [
+          "Get-AzMonitorHealthModelAuthenticationSetting"
+        ],
+        "FullCommandName": [
+          "Get-AzMonitorHealthModelAuthenticationSetting_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000021" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000022" ],
-        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000023" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "247" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3747" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052006Z:00000000-0000-4000-8000-000000000023" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8A28C4299310457BB3EDAF52020D894F Ref B: GVA201070812029 Ref C: 2026-09-10T05:20:06Z" ],
-        "Date": [ "Thu, 10 Sep 2026 05:20:06 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000006"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000214"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000127"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "248"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151721Z:00000000-0000-4000-8000-000000000127"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9F84652F3CAD40F6B37ED4FB993B69DC Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:21Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:21 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "704" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "704"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-a9skjo/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-a9skjo/authenticationsettings/azps-auth-shared-a9skjo\",\"name\":\"azps-auth-shared-a9skjo\",\"type\":\"Microsoft.CloudHealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:17:53.0785934Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:17:53.2538954Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared auth setting\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-r3wz6p/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-shared-r3wz6p\",\"name\":\"azps-auth-shared-r3wz6p\",\"type\":\"Microsoft.CloudHealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:15:07.0601889Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:15:07.5281666Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared auth setting\"}}",
       "isContentBase64": false
     }
   }
