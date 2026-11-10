@@ -754,6 +754,7 @@ configuration:
             - cRui861
             - skapur12
             - wanghoppe
+            - mskeyansong
             - Azure/act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
