@@ -1,0 +1,224 @@
+{
+  "resourceType": "cloudAccounts/storages",
+  "apiVersion": "2026-09-30",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.commvault"
+  },
+  "commands": [
+    {
+      "name": "Disable-AzCommvaultStorageComplianceLock",
+      "description": "Disable compliance lock on the storage.\nInitiates an out-of-band multi-person authorization (MPA) email approval workflow on the partner side.\nThe storage compliance lock status transitions to 'DisablementPending' immediately; once the MPA approval completes, the status becomes 'Disabled' (observable via the refresh action).",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/storages/{storageName}/disableComplianceLock",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/disable-azcommvaultstoragecompliancelock"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-ResourceGroupName <String>",
+              "-StorageName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Disable compliance lock on the storage. Initiates an out-of-band multi-person authorization (MPA) email approval workflow on the partner side. The storage compliance lock status transitions to 'DisablementPending' immediately; once the MPA approval completes, the status becomes 'Disabled' (observable via the refresh action).",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StorageName",
+              "value": "[Path.storageName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Enable-AzCommvaultStorageComplianceLock",
+      "description": "Enable compliance lock on the storage.\nSynchronous operation.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/storages/{storageName}/enableComplianceLock",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/enable-azcommvaultstoragecompliancelock"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-ResourceGroupName <String>",
+              "-StorageName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Enable compliance lock on the storage. Synchronous operation.",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StorageName",
+              "value": "[Path.storageName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzCommvaultStorage",
+      "description": "Get a Storage",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/storages/{storageName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/get-azcommvaultstorage"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Storage",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.storageName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzCommvaultStorage",
+      "description": "Delete a Storage",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/storages/{storageName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/remove-azcommvaultstorage"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Storage",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.storageName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sync-AzCommvaultStorage",
+      "description": "Refresh storage state from partner.\nFetches latest compliance lock status from Commvault and refresh the ARM resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/storages/{storageName}/refresh",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/sync-azcommvaultstorage"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Refresh storage state from partner. Fetches latest compliance lock status from Commvault and refresh the ARM resource.",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.storageName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

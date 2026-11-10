@@ -1041,6 +1041,10 @@
     "alias": "RedHatOpenShiftHcp"
   },
   {
+    "alias": "Commvault",
+    "module": "Commvault"
+  },
+  {
     "module": "NetworkSecurity",
     "alias": "NetworkSecurity"
   },

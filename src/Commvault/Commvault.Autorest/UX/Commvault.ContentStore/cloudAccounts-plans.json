@@ -1,0 +1,95 @@
+{
+  "resourceType": "cloudAccounts/plans",
+  "apiVersion": "2026-09-30",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.commvault"
+  },
+  "commands": [
+    {
+      "name": "Get-AzCommvaultPlan",
+      "description": "Get a CommvaultPlan",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/plans/{planName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/get-azcommvaultplan"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a CommvaultPlan",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.planName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzCommvaultPlan",
+      "description": "Delete a CommvaultPlan",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/plans/{planName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/remove-azcommvaultplan"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a CommvaultPlan",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.planName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
