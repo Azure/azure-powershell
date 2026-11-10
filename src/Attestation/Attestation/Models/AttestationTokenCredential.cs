@@ -13,48 +13,51 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Azure.Core;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Attestation.Models
 {
     /// <summary>
     /// Supplies tokens for the Azure Attestation data plane from the current Azure PowerShell context.
     /// </summary>
+    /// <remarks>
+    /// Tokens come from <see cref="IAuthenticationFactory.GetServiceClientCredentials(IAzureContext, string)"/>,
+    /// as they did before this module used Azure.Core, so every account type is handled the same way.
+    /// </remarks>
     internal class AttestationTokenCredential : TokenCredential
     {
-        private readonly IAccessToken _accessToken;
+        private static readonly Uri AttestationUri = new Uri("https://attest.azure.net");
+
+        private readonly ServiceClientCredentials _credentials;
 
         public AttestationTokenCredential(IAuthenticationFactory authFactory, IAzureContext context)
         {
             if (authFactory == null)
                 throw new ArgumentNullException(nameof(authFactory));
-            if (context?.Account == null)
-                throw new ArgumentException(nameof(context));
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
 
-            _accessToken = authFactory.Authenticate(
-                context.Account,
-                context.Environment,
-                context.Tenant?.Id,
-                null,
-                ShowDialog.Never,
-                null,
-                AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId);
+            _credentials = authFactory.GetServiceClientCredentials(context, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId);
         }
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            string token = null;
-            _accessToken.AuthorizeRequest((tokenType, tokenValue) => token = tokenValue);
-            return new AccessToken(token, DateTimeOffset.UtcNow);
+            return GetTokenAsync(requestContext, cancellationToken).AsTask().GetAwaiter().GetResult();
         }
 
-        public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
+        public override async ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            return new ValueTask<AccessToken>(GetToken(requestContext, cancellationToken));
+            using (var request = new HttpRequestMessage(HttpMethod.Get, AttestationUri))
+            {
+                await _credentials.ProcessHttpRequestAsync(request, cancellationToken).ConfigureAwait(false);
+                return new AccessToken(request.Headers.Authorization?.Parameter, DateTimeOffset.UtcNow);
+            }
         }
     }
 }
