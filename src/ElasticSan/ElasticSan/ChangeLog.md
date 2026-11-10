@@ -20,6 +20,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.1
 * Added autoscale defaults when creating V2 SANs with `New-AzElasticSan`.
     - Defaulted enforcement to Enabled, the capacity increase to 1 TiB and the unused-capacity threshold to 1 TiB.
     - Queried the selected SKU in the target region to cap the default scale-up limit at the smaller of five times provisioned size and the regional maximum total capacity.

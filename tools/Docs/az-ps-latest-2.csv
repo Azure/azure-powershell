@@ -29,7 +29,7 @@ pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.7.16.0.zip;sourceType=sa]Az.RecoveryServices,7.16.0
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedHatOpenShiftHcp.0.1.0.zip;sourceType=sa]Az.RedHatOpenShiftHcp,0.1.0
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.12.0.zip;sourceType=sa]Az.RedisCache,1.12.0
-pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.2.0.0.zip;sourceType=sa]Az.RedisEnterpriseCache,2.0.0
+pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.2.1.0.zip;sourceType=sa]Az.RedisEnterpriseCache,2.1.0
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relationships.0.1.1.zip;sourceType=sa]Az.Relationships,0.1.1
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.3.1.0.zip;sourceType=sa]Az.Relay,3.1.0
 pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.14.1.zip;sourceType=sa]Az.Reservations,0.14.1
