@@ -1,5 +1,5 @@
 @{
-  GUID = '9570a2dc-64ee-44f7-98d7-7a705803aa39'
+  GUID = '14995ab3-8dd3-4201-b5f5-9dc94eac60d4'
   RootModule = './Az.Storage.psm1'
   ModuleVersion = '5.9.1'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Storage.private.dll'
   FormatsToProcess = './Az.Storage.format.ps1xml'
-  FunctionsToExport = 'Get-AzStorageAccountMigration', 'Get-AzStorageAdvancedPlatformMetricsRule', 'Get-AzStorageBlobAccessPointConfiguration', 'Get-AzStorageContextCache', 'Get-AzStorageContextCacheContainer', 'Get-AzStorageFileServiceUsage', 'Get-AzStorageNetworkSecurityPerimeterConfiguration', 'Get-AzStorageSku', 'Get-AzStorageTaskAssignment', 'Get-AzStorageTaskAssignmentInstancesReport', 'Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration', 'New-AzStorageAdvancedPlatformMetricsRule', 'New-AzStorageBlobAccessPointConfiguration', 'New-AzStorageContextCache', 'New-AzStorageContextCacheContainer', 'New-AzStorageTaskAssignment', 'Remove-AzStorageAdvancedPlatformMetricsRule', 'Remove-AzStorageBlobAccessPointConfiguration', 'Remove-AzStorageContextCache', 'Remove-AzStorageContextCacheContainer', 'Remove-AzStorageTaskAssignment', 'Set-AzStorageAdvancedPlatformMetricsRule', 'Set-AzStorageContextCache', 'Set-AzStorageContextCacheContainer', 'Start-AzStorageAccountMigration', 'Test-AzStorageBlobAccessPointConfigurationConnection', 'Test-AzStorageBlobAccessPointConnection', 'Test-AzStorageContextCacheNameAvailability', 'Update-AzStorageAdvancedPlatformMetricsRule', 'Update-AzStorageBlobAccessPointConfiguration', 'Update-AzStorageContextCache', 'Update-AzStorageContextCacheContainer', 'Update-AzStorageTaskAssignment'
+  FunctionsToExport = 'Get-AzStorageAccountMigration', 'Get-AzStorageFileServiceUsage', 'Get-AzStorageNetworkSecurityPerimeterConfiguration', 'Get-AzStorageSku', 'Get-AzStorageTaskAssignment', 'Get-AzStorageTaskAssignmentInstancesReport', 'Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration', 'New-AzStorageTaskAssignment', 'Remove-AzStorageTaskAssignment', 'Start-AzStorageAccountMigration', 'Update-AzStorageTaskAssignment'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Storage'

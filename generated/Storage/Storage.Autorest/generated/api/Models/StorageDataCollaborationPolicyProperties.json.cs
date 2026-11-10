@@ -78,7 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             {_allowStorageConnector = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("allowStorageConnectors"), out var __jsonAllowStorageConnectors) ? (bool?)__jsonAllowStorageConnectors : _allowStorageConnector;}
-            {_allowBlobAccessPoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("allowBlobAccessPoints"), out var __jsonAllowBlobAccessPoints) ? (bool?)__jsonAllowBlobAccessPoints : _allowBlobAccessPoint;}
             {_allowStorageDataShare = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("allowStorageDataShares"), out var __jsonAllowStorageDataShares) ? (bool?)__jsonAllowStorageDataShares : _allowStorageDataShare;}
             {_allowCrossTenantDataSharing = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("allowCrossTenantDataSharing"), out var __jsonAllowCrossTenantDataSharing) ? (bool?)__jsonAllowCrossTenantDataSharing : _allowCrossTenantDataSharing;}
             AfterFromJson(json);
@@ -106,7 +105,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return container;
             }
             AddIf( null != this._allowStorageConnector ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._allowStorageConnector) : null, "allowStorageConnectors" ,container.Add );
-            AddIf( null != this._allowBlobAccessPoint ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._allowBlobAccessPoint) : null, "allowBlobAccessPoints" ,container.Add );
             AddIf( null != this._allowStorageDataShare ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._allowStorageDataShare) : null, "allowStorageDataShares" ,container.Add );
             AddIf( null != this._allowCrossTenantDataSharing ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._allowCrossTenantDataSharing) : null, "allowCrossTenantDataSharing" ,container.Add );
             AfterToJson(ref container);

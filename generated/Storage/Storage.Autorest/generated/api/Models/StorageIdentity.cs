@@ -22,20 +22,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string AccountName { get => this._accountName; set => this._accountName = value; }
 
-        /// <summary>Backing field for <see cref="AdvancedPlatformMetricsRuleType" /> property.</summary>
-        private string _advancedPlatformMetricsRuleType;
-
-        /// <summary>The type of the advanced platform metrics rule.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string AdvancedPlatformMetricsRuleType { get => this._advancedPlatformMetricsRuleType; set => this._advancedPlatformMetricsRuleType = value; }
-
-        /// <summary>Backing field for <see cref="BlobAccessPointConfigurationName" /> property.</summary>
-        private string _blobAccessPointConfigurationName;
-
-        /// <summary>The name of the Blob Access Point configuration.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string BlobAccessPointConfigurationName { get => this._blobAccessPointConfigurationName; set => this._blobAccessPointConfigurationName = value; }
-
         /// <summary>Backing field for <see cref="BlobInventoryPolicyName" /> property.</summary>
         private string _blobInventoryPolicyName;
 
@@ -62,20 +48,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string ContainerName { get => this._containerName; set => this._containerName = value; }
-
-        /// <summary>Backing field for <see cref="ContextCacheContainerName" /> property.</summary>
-        private string _contextCacheContainerName;
-
-        /// <summary>The name of the context cache container</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string ContextCacheContainerName { get => this._contextCacheContainerName; set => this._contextCacheContainerName = value; }
-
-        /// <summary>Backing field for <see cref="ContextCacheName" /> property.</summary>
-        private string _contextCacheName;
-
-        /// <summary>The name of the context cache</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string ContextCacheName { get => this._contextCacheName; set => this._contextCacheName = value; }
 
         /// <summary>Backing field for <see cref="DataShareName" /> property.</summary>
         private string _dataShareName;
@@ -248,29 +220,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
         string AccountName { get; set; }
-        /// <summary>The type of the advanced platform metrics rule.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The type of the advanced platform metrics rule.",
-        SerializedName = @"advancedPlatformMetricsRuleType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("ContainerLevelCapacityMetrics")]
-        string AdvancedPlatformMetricsRuleType { get; set; }
-        /// <summary>The name of the Blob Access Point configuration.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the Blob Access Point configuration.",
-        SerializedName = @"blobAccessPointConfigurationName",
-        PossibleTypes = new [] { typeof(string) })]
-        string BlobAccessPointConfigurationName { get; set; }
         /// <summary>
         /// The name of the storage account blob inventory policy. It should always be 'default'
         /// </summary>
@@ -311,28 +260,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"containerName",
         PossibleTypes = new [] { typeof(string) })]
         string ContainerName { get; set; }
-        /// <summary>The name of the context cache container</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the context cache container",
-        SerializedName = @"contextCacheContainerName",
-        PossibleTypes = new [] { typeof(string) })]
-        string ContextCacheContainerName { get; set; }
-        /// <summary>The name of the context cache</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the context cache",
-        SerializedName = @"contextCacheName",
-        PossibleTypes = new [] { typeof(string) })]
-        string ContextCacheName { get; set; }
         /// <summary>The name of the Storage DataShare.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -559,11 +486,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// in length and use numbers and lower-case letters only.
         /// </summary>
         string AccountName { get; set; }
-        /// <summary>The type of the advanced platform metrics rule.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("ContainerLevelCapacityMetrics")]
-        string AdvancedPlatformMetricsRuleType { get; set; }
-        /// <summary>The name of the Blob Access Point configuration.</summary>
-        string BlobAccessPointConfigurationName { get; set; }
         /// <summary>
         /// The name of the storage account blob inventory policy. It should always be 'default'
         /// </summary>
@@ -577,10 +499,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// and followed by a letter or number.
         /// </summary>
         string ContainerName { get; set; }
-        /// <summary>The name of the context cache container</summary>
-        string ContextCacheContainerName { get; set; }
-        /// <summary>The name of the context cache</summary>
-        string ContextCacheName { get; set; }
         /// <summary>The name of the Storage DataShare.</summary>
         string DataShareName { get; set; }
         /// <summary>Name of the deleted storage account.</summary>

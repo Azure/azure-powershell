@@ -47,13 +47,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeter> NetworkSecurityPerimeter { get => this._networkSecurityPerimeter; }
 
-        /// <summary>Backing field for <see cref="ServiceTag" /> property.</summary>
-        private System.Collections.Generic.List<string> _serviceTag;
-
-        /// <summary>Service Tags for inbound rules</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<string> ServiceTag { get => this._serviceTag; set => this._serviceTag = value; }
-
         /// <summary>Backing field for <see cref="Subscription" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesSubscriptionsItem> _subscription;
 
@@ -116,17 +109,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"networkSecurityPerimeters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeter) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeter> NetworkSecurityPerimeter { get;  }
-        /// <summary>Service Tags for inbound rules</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Service Tags for inbound rules",
-        SerializedName = @"serviceTags",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> ServiceTag { get; set; }
         /// <summary>Subscriptions for inbound rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -153,8 +135,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         System.Collections.Generic.List<string> FullyQualifiedDomainName { get; set; }
         /// <summary>NetworkSecurityPerimeters for inbound rules</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeter> NetworkSecurityPerimeter { get; set; }
-        /// <summary>Service Tags for inbound rules</summary>
-        System.Collections.Generic.List<string> ServiceTag { get; set; }
         /// <summary>Subscriptions for inbound rules</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesSubscriptionsItem> Subscription { get; set; }
 

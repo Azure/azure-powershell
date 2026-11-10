@@ -77,8 +77,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             {_sasExpirationPeriod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sasExpirationPeriod"), out var __jsonSasExpirationPeriod) ? (string)__jsonSasExpirationPeriod : (string)_sasExpirationPeriod;}
             {_expirationAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("expirationAction"), out var __jsonExpirationAction) ? (string)__jsonExpirationAction : (string)_expirationAction;}
-            {_requireUserBoundUserDelegationSas = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("requireUserBoundUserDelegationSas"), out var __jsonRequireUserBoundUserDelegationSas) ? (bool?)__jsonRequireUserBoundUserDelegationSas : _requireUserBoundUserDelegationSas;}
-            {_requireUserBoundUserDelegationSasAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("requireUserBoundUserDelegationSasAction"), out var __jsonRequireUserBoundUserDelegationSasAction) ? (string)__jsonRequireUserBoundUserDelegationSasAction : (string)_requireUserBoundUserDelegationSasAction;}
             AfterFromJson(json);
         }
 
@@ -103,8 +101,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             AddIf( null != (((object)this._sasExpirationPeriod)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._sasExpirationPeriod.ToString()) : null, "sasExpirationPeriod" ,container.Add );
             AddIf( null != (((object)this._expirationAction)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._expirationAction.ToString()) : null, "expirationAction" ,container.Add );
-            AddIf( null != this._requireUserBoundUserDelegationSas ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._requireUserBoundUserDelegationSas) : null, "requireUserBoundUserDelegationSas" ,container.Add );
-            AddIf( null != (((object)this._requireUserBoundUserDelegationSasAction)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._requireUserBoundUserDelegationSasAction.ToString()) : null, "requireUserBoundUserDelegationSasAction" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

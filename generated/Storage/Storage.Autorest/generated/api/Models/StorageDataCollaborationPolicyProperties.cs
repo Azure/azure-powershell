@@ -13,15 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal
     {
 
-        /// <summary>Backing field for <see cref="AllowBlobAccessPoint" /> property.</summary>
-        private bool? _allowBlobAccessPoint;
-
-        /// <summary>
-        /// Indicates whether Blob Access Point configurations are allowed to be created or managed on the storage account.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public bool? AllowBlobAccessPoint { get => this._allowBlobAccessPoint; set => this._allowBlobAccessPoint = value; }
-
         /// <summary>Backing field for <see cref="AllowCrossTenantDataSharing" /> property.</summary>
         private bool? _allowCrossTenantDataSharing;
 
@@ -61,19 +52,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     public partial interface IStorageDataCollaborationPolicyProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Indicates whether Blob Access Point configurations are allowed to be created or managed on the storage account.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Indicates whether Blob Access Point configurations are allowed to be created or managed on the storage account.",
-        SerializedName = @"allowBlobAccessPoints",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? AllowBlobAccessPoint { get; set; }
         /// <summary>
         /// Indicates whether cross-entra tenant data sharing is allowed on the storage account.
         /// </summary>
@@ -119,10 +97,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     internal partial interface IStorageDataCollaborationPolicyPropertiesInternal
 
     {
-        /// <summary>
-        /// Indicates whether Blob Access Point configurations are allowed to be created or managed on the storage account.
-        /// </summary>
-        bool? AllowBlobAccessPoint { get; set; }
         /// <summary>
         /// Indicates whether cross-entra tenant data sharing is allowed on the storage account.
         /// </summary>

@@ -117,14 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).ExpirationAction = (string) content.GetValueForProperty("ExpirationAction",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).ExpirationAction, global::System.Convert.ToString);
             }
-            if (content.Contains("RequireUserBoundUserDelegationSas"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).RequireUserBoundUserDelegationSas = (bool?) content.GetValueForProperty("RequireUserBoundUserDelegationSas",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).RequireUserBoundUserDelegationSas, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("RequireUserBoundUserDelegationSasAction"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).RequireUserBoundUserDelegationSasAction = (string) content.GetValueForProperty("RequireUserBoundUserDelegationSasAction",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).RequireUserBoundUserDelegationSasAction, global::System.Convert.ToString);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -149,14 +141,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ExpirationAction"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).ExpirationAction = (string) content.GetValueForProperty("ExpirationAction",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).ExpirationAction, global::System.Convert.ToString);
-            }
-            if (content.Contains("RequireUserBoundUserDelegationSas"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).RequireUserBoundUserDelegationSas = (bool?) content.GetValueForProperty("RequireUserBoundUserDelegationSas",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).RequireUserBoundUserDelegationSas, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("RequireUserBoundUserDelegationSasAction"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).RequireUserBoundUserDelegationSasAction = (string) content.GetValueForProperty("RequireUserBoundUserDelegationSasAction",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal)this).RequireUserBoundUserDelegationSasAction, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

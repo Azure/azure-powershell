@@ -124,10 +124,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).MigrationName = (string) content.GetValueForProperty("MigrationName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).MigrationName, global::System.Convert.ToString);
             }
-            if (content.Contains("ContextCacheName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContextCacheName = (string) content.GetValueForProperty("ContextCacheName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContextCacheName, global::System.Convert.ToString);
-            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).Location, global::System.Convert.ToString);
@@ -135,18 +131,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("DeletedAccountName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DeletedAccountName = (string) content.GetValueForProperty("DeletedAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DeletedAccountName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ContextCacheContainerName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContextCacheContainerName = (string) content.GetValueForProperty("ContextCacheContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContextCacheContainerName, global::System.Convert.ToString);
-            }
-            if (content.Contains("AdvancedPlatformMetricsRuleType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AdvancedPlatformMetricsRuleType = (string) content.GetValueForProperty("AdvancedPlatformMetricsRuleType",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AdvancedPlatformMetricsRuleType, global::System.Convert.ToString);
-            }
-            if (content.Contains("BlobAccessPointConfigurationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).BlobAccessPointConfigurationName = (string) content.GetValueForProperty("BlobAccessPointConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).BlobAccessPointConfigurationName, global::System.Convert.ToString);
             }
             if (content.Contains("ContainerName"))
             {
@@ -241,10 +225,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).MigrationName = (string) content.GetValueForProperty("MigrationName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).MigrationName, global::System.Convert.ToString);
             }
-            if (content.Contains("ContextCacheName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContextCacheName = (string) content.GetValueForProperty("ContextCacheName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContextCacheName, global::System.Convert.ToString);
-            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).Location, global::System.Convert.ToString);
@@ -252,18 +232,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("DeletedAccountName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DeletedAccountName = (string) content.GetValueForProperty("DeletedAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DeletedAccountName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ContextCacheContainerName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContextCacheContainerName = (string) content.GetValueForProperty("ContextCacheContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContextCacheContainerName, global::System.Convert.ToString);
-            }
-            if (content.Contains("AdvancedPlatformMetricsRuleType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AdvancedPlatformMetricsRuleType = (string) content.GetValueForProperty("AdvancedPlatformMetricsRuleType",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AdvancedPlatformMetricsRuleType, global::System.Convert.ToString);
-            }
-            if (content.Contains("BlobAccessPointConfigurationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).BlobAccessPointConfigurationName = (string) content.GetValueForProperty("BlobAccessPointConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).BlobAccessPointConfigurationName, global::System.Convert.ToString);
             }
             if (content.Contains("ContainerName"))
             {

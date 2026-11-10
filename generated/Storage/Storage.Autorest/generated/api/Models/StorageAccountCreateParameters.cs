@@ -92,13 +92,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public bool? AllowBlobPublicAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).AllowBlobPublicAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).AllowBlobPublicAccess = value ?? default(bool); }
 
         /// <summary>
-        /// Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false
-        /// for this property.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public bool? AllowCrossTenantDelegationSas { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).AllowCrossTenantDelegationSas; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).AllowCrossTenantDelegationSas = value ?? default(bool); }
-
-        /// <summary>
         /// Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if
         /// object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false
         /// for new accounts to follow best security practices by default.
@@ -147,12 +140,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public bool? CustomDomainUseSubDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).CustomDomainUseSubDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).CustomDomainUseSubDomainName = value ?? default(bool); }
-
-        /// <summary>
-        /// Indicates whether Blob Access Point configurations are allowed to be created or managed on the storage account.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public bool? DataCollaborationPolicyPropertyAllowBlobAccessPoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).DataCollaborationPolicyPropertyAllowBlobAccessPoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).DataCollaborationPolicyPropertyAllowBlobAccessPoint = value ?? default(bool); }
 
         /// <summary>
         /// Indicates whether cross-entra tenant data sharing is allowed on the storage account.
@@ -417,9 +404,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for SkuTier</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier = value ?? null; }
 
-        /// <summary>Internal Acessors for TurboTier</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITurboTier Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal.TurboTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).TurboTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).TurboTier = value ?? null /* model class */; }
-
         /// <summary>
         /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
         /// Minimum TLS version 1.3 version is not supported.
@@ -507,20 +491,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string SasPolicyExpirationAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyExpirationAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyExpirationAction = value ?? null; }
 
-        /// <summary>
-        /// Indicates whether user delegation SAS (shared access signature) tokens are required to be bound to a specific user. The
-        /// default interpretation is false for this property.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public bool? SasPolicyRequireUserBoundUserDelegationSas { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyRequireUserBoundUserDelegationSas; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyRequireUserBoundUserDelegationSas = value ?? default(bool); }
-
-        /// <summary>
-        /// The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by
-        /// requireUserBoundUserDelegationSas.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string SasPolicyRequireUserBoundUserDelegationSasAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyRequireUserBoundUserDelegationSasAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyRequireUserBoundUserDelegationSasAction = value ?? null; }
-
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string SasPolicySasExpirationPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicySasExpirationPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicySasExpirationPeriod = value ?? null; }
@@ -562,17 +532,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountCreateParametersTags()); set => this._tag = value; }
-
-        /// <summary>Indicates whether Turbo Tier is enabled or disabled.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string TurboTierStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).TurboTierStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).TurboTierStatus = value ?? null; }
-
-        /// <summary>
-        /// The target fill percentage used for placement. The valid range is 10 to 100. When status is Enabled and this property
-        /// is omitted, the default value is 20.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? TurboTierTargetPercent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).TurboTierTargetPercent; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).TurboTierTargetPercent = value ?? default(int); }
 
         /// <summary>Backing field for <see cref="Zone" /> property.</summary>
         private System.Collections.Generic.List<string> _zone;
@@ -744,20 +703,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? AllowBlobPublicAccess { get; set; }
         /// <summary>
-        /// Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false
-        /// for this property.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property.",
-        SerializedName = @"allowCrossTenantDelegationSas",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? AllowCrossTenantDelegationSas { get; set; }
-        /// <summary>
         /// Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if
         /// object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false
         /// for new accounts to follow best security practices by default.
@@ -866,19 +811,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"useSubDomainName",
         PossibleTypes = new [] { typeof(bool) })]
         bool? CustomDomainUseSubDomainName { get; set; }
-        /// <summary>
-        /// Indicates whether Blob Access Point configurations are allowed to be created or managed on the storage account.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Indicates whether Blob Access Point configurations are allowed to be created or managed on the storage account.",
-        SerializedName = @"allowBlobAccessPoints",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? DataCollaborationPolicyPropertyAllowBlobAccessPoint { get; set; }
         /// <summary>
         /// Indicates whether cross-entra tenant data sharing is allowed on the storage account.
         /// </summary>
@@ -1426,35 +1358,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Log", "Block")]
         string SasPolicyExpirationAction { get; set; }
-        /// <summary>
-        /// Indicates whether user delegation SAS (shared access signature) tokens are required to be bound to a specific user. The
-        /// default interpretation is false for this property.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Indicates whether user delegation SAS (shared access signature) tokens are required to be bound to a specific user. The default interpretation is false for this property.",
-        SerializedName = @"requireUserBoundUserDelegationSas",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? SasPolicyRequireUserBoundUserDelegationSas { get; set; }
-        /// <summary>
-        /// The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by
-        /// requireUserBoundUserDelegationSas.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by requireUserBoundUserDelegationSas.",
-        SerializedName = @"requireUserBoundUserDelegationSasAction",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("None", "Log", "Block")]
-        string SasPolicyRequireUserBoundUserDelegationSasAction { get; set; }
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -1531,32 +1434,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersTags Tag { get; set; }
-        /// <summary>Indicates whether Turbo Tier is enabled or disabled.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Indicates whether Turbo Tier is enabled or disabled.",
-        SerializedName = @"status",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        string TurboTierStatus { get; set; }
-        /// <summary>
-        /// The target fill percentage used for placement. The valid range is 10 to 100. When status is Enabled and this property
-        /// is omitted, the default value is 20.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The target fill percentage used for placement. The valid range is 10 to 100. When status is Enabled and this property is omitted, the default value is 20.",
-        SerializedName = @"targetPercent",
-        PossibleTypes = new [] { typeof(int) })]
-        int? TurboTierTargetPercent { get; set; }
         /// <summary>
         /// Optional. Gets or sets the pinned logical availability zone for the storage account.
         /// </summary>
@@ -1637,11 +1514,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         bool? AllowBlobPublicAccess { get; set; }
         /// <summary>
-        /// Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false
-        /// for this property.
-        /// </summary>
-        bool? AllowCrossTenantDelegationSas { get; set; }
-        /// <summary>
         /// Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if
         /// object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false
         /// for new accounts to follow best security practices by default.
@@ -1704,10 +1576,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         bool? CustomDomainUseSubDomainName { get; set; }
         /// <summary>Data Collaboration policy for the storage account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyProperties DataCollaborationPolicyProperty { get; set; }
-        /// <summary>
-        /// Indicates whether Blob Access Point configurations are allowed to be created or managed on the storage account.
-        /// </summary>
-        bool? DataCollaborationPolicyPropertyAllowBlobAccessPoint { get; set; }
         /// <summary>
         /// Indicates whether cross-entra tenant data sharing is allowed on the storage account.
         /// </summary>
@@ -1904,17 +1772,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Log", "Block")]
         string SasPolicyExpirationAction { get; set; }
-        /// <summary>
-        /// Indicates whether user delegation SAS (shared access signature) tokens are required to be bound to a specific user. The
-        /// default interpretation is false for this property.
-        /// </summary>
-        bool? SasPolicyRequireUserBoundUserDelegationSas { get; set; }
-        /// <summary>
-        /// The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by
-        /// requireUserBoundUserDelegationSas.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("None", "Log", "Block")]
-        string SasPolicyRequireUserBoundUserDelegationSasAction { get; set; }
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         string SasPolicySasExpirationPeriod { get; set; }
         /// <summary>Required. Gets or sets the SKU name.</summary>
@@ -1939,16 +1796,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// a length no greater than 128 characters and a value with a length no greater than 256 characters.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersTags Tag { get; set; }
-        /// <summary>Configures Turbo Tier for the storage account.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITurboTier TurboTier { get; set; }
-        /// <summary>Indicates whether Turbo Tier is enabled or disabled.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        string TurboTierStatus { get; set; }
-        /// <summary>
-        /// The target fill percentage used for placement. The valid range is 10 to 100. When status is Enabled and this property
-        /// is omitted, the default value is 20.
-        /// </summary>
-        int? TurboTierTargetPercent { get; set; }
         /// <summary>
         /// Optional. Gets or sets the pinned logical availability zone for the storage account.
         /// </summary>

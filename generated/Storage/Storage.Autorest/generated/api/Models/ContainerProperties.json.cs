@@ -68,7 +68,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_immutabilityPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("immutabilityPolicy"), out var __jsonImmutabilityPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ImmutabilityPolicyProperties.FromJson(__jsonImmutabilityPolicy) : _immutabilityPolicy;}
             {_legalHold = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("legalHold"), out var __jsonLegalHold) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LegalHoldProperties.FromJson(__jsonLegalHold) : _legalHold;}
             {_immutableStorageWithVersioning = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("immutableStorageWithVersioning"), out var __jsonImmutableStorageWithVersioning) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ImmutableStorageWithVersioning.FromJson(__jsonImmutableStorageWithVersioning) : _immutableStorageWithVersioning;}
-            {_blobAccessPointConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("blobAccessPointConfiguration"), out var __jsonBlobAccessPointConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobAccessPointConfigurationConnection.FromJson(__jsonBlobAccessPointConfiguration) : _blobAccessPointConfiguration;}
             {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("version"), out var __jsonVersion) ? (string)__jsonVersion : (string)_version;}
             {_deleted = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("deleted"), out var __jsonDeleted) ? (bool?)__jsonDeleted : _deleted;}
             {_deletedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("deletedTime"), out var __jsonDeletedTime) ? global::System.DateTime.TryParse((string)__jsonDeletedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonDeletedTimeValue) ? __jsonDeletedTimeValue : _deletedTime : _deletedTime;}
@@ -128,10 +127,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 AddIf( null != this._legalHold ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._legalHold.ToJson(null,serializationMode) : null, "legalHold" ,container.Add );
             }
             AddIf( null != this._immutableStorageWithVersioning ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._immutableStorageWithVersioning.ToJson(null,serializationMode) : null, "immutableStorageWithVersioning" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._blobAccessPointConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._blobAccessPointConfiguration.ToJson(null,serializationMode) : null, "blobAccessPointConfiguration" ,container.Add );
-            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._version)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._version.ToString()) : null, "version" ,container.Add );
