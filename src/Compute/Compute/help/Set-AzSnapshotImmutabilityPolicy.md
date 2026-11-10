@@ -37,7 +37,7 @@ Set-AzSnapshotImmutabilityPolicy -PolicyType <String> -DurationInDays <Int32> [-
 ## DESCRIPTION
 The **Set-AzSnapshotImmutabilityPolicy** cmdlet applies or updates deletion protection on an existing managed disk snapshot. Unlocked policies can be shortened or extended. Active Locked policies can only be extended; they cannot be removed or changed to Unlocked.
 
-Duration is total retention from the service-assigned start, not additional days from now. Same-type active updates retain that start. Changing Unlocked to Locked or replacing an expired policy creates a new start. Shortening Unlocked retention can immediately expire protection.
+Duration is total retention from the service-assigned start, not additional days from now. Active-policy updates, including changing Unlocked to Locked, retain that start. Replacing an expired policy creates a new start. Reducing an Unlocked policy's duration, including when locking it, can immediately expire protection.
 
 Unlocked updates require `Microsoft.Compute/snapshots/updateImmutabilityPolicy/action`; Locked updates require `Microsoft.Compute/snapshots/updateImmutabilityPolicyLock/action`. Both require snapshot read permission. Every Locked update requires acknowledgement because applying or extending Locked retention cannot be undone before expiry.
 
@@ -84,7 +84,7 @@ Get-AzSnapshot -ResourceGroupName "rg-backup" -SnapshotName "snapshot-01" |
     Set-AzSnapshotImmutabilityPolicy -PolicyType Locked -DurationInDays 14 -WhatIf
 ```
 
-This command previews a Locked policy without changing the snapshot.
+This command previews a Locked policy without changing the snapshot. Locking an active Unlocked policy retains its original start; the requested duration is measured from that start.
 
 ### Example 6: Run an Unlocked update as a job
 ```powershell

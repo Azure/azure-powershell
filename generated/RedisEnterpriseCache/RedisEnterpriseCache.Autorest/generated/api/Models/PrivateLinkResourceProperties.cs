@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Backing field for <see cref="RequiredZoneName" /> property.</summary>
         private System.Collections.Generic.List<string> _requiredZoneName;
 
-        /// <summary>The private link resource Private link DNS zone name.</summary>
+        /// <summary>The private link resource private link DNS zone name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> RequiredZoneName { get => this._requiredZoneName; set => this._requiredZoneName = value; }
 
@@ -72,14 +72,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         SerializedName = @"requiredMembers",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> RequiredMember { get;  }
-        /// <summary>The private link resource Private link DNS zone name.</summary>
+        /// <summary>The private link resource private link DNS zone name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The private link resource Private link DNS zone name.",
+        Description = @"The private link resource private link DNS zone name.",
         SerializedName = @"requiredZoneNames",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> RequiredZoneName { get; set; }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         string GroupId { get; set; }
         /// <summary>The private link resource required member names.</summary>
         System.Collections.Generic.List<string> RequiredMember { get; set; }
-        /// <summary>The private link resource Private link DNS zone name.</summary>
+        /// <summary>The private link resource private link DNS zone name.</summary>
         System.Collections.Generic.List<string> RequiredZoneName { get; set; }
 
     }

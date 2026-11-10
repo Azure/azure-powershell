@@ -252,14 +252,31 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Theory]
-        [InlineData("Unlocked", false)]
-        [InlineData("Locked", true)]
+        [InlineData(false, 14, false)]
+        [InlineData(null, 14, false)]
+        [InlineData(false, 1, true)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewPolicyRequiresNewServiceStart(string previousType, bool expired)
+        public void LockingUnlockedPolicyRetainsOriginalStart(bool? previousExpired, int duration, bool expired)
         {
-            DateTime oldStart = DateTime.UtcNow.AddDays(expired ? -10 : -1);
+            DateTime start = DateTime.UtcNow.AddDays(-2);
+            var harness = new PolicyHarness(Policy("Unlocked", 7, start, previousExpired),
+                Policy("Locked", duration, start, expired));
+
+            harness.Set("Locked", duration).ExecuteCmdlet();
+
+            harness.VerifyMutation("Locked", duration);
+            harness.VerifyOutput(duration, expired);
+        }
+
+        [Theory]
+        [InlineData("Unlocked")]
+        [InlineData("Locked")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ExpiredPolicyReplacementRequiresNewServiceStart(string previousType)
+        {
+            DateTime oldStart = DateTime.UtcNow.AddDays(-10);
             DateTime newStart = DateTime.UtcNow;
-            var harness = new PolicyHarness(Policy(previousType, 7, oldStart, expired), Policy("Locked", 7, newStart));
+            var harness = new PolicyHarness(Policy(previousType, 7, oldStart, true), Policy("Locked", 7, newStart));
 
             harness.Set("Locked", 7).ExecuteCmdlet();
 
@@ -368,7 +385,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             DateTime start = DateTime.UtcNow.AddHours(-1);
             var previous = Policy(previousType, 7, start);
-            var persisted = Policy("Locked", 7, previousType == "Unlocked" ? start : start.AddMinutes(1));
+            var persisted = Policy("Locked", 7, start.AddMinutes(1));
             if (missingExpiry)
             {
                 persisted = new ImmutabilityPolicy(7, "Locked", start, null, false);
@@ -477,7 +494,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             DateTime start = DateTime.UtcNow.AddHours(-1);
             var harness = new PolicyHarness(Policy("Unlocked", 7, start),
-                Policy(remove ? "Unlocked" : "Locked", remove ? 0 : 7, remove ? start : DateTime.UtcNow, remove));
+                Policy(remove ? "Unlocked" : "Locked", remove ? 0 : 7, start, remove));
             int foregroundThread = Thread.CurrentThread.ManagedThreadId;
             harness.Runtime.Setup(runtime => runtime.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             harness.Runtime.Setup(runtime => runtime.ShouldContinue(It.IsAny<string>(), It.IsAny<string>()))

@@ -1,0 +1,350 @@
+---
+external help file: Az.Resiliency-help.xml
+Module Name: Az.Resiliency
+online version: https://learn.microsoft.com/powershell/module/az.resiliency/test-azresiliencyrecoveryplanfailovervalidation
+schema: 2.0.0
+---
+
+# Test-AzResiliencyRecoveryPlanFailoverValidation
+
+## SYNOPSIS
+This action checks if the recovery orchestration plan is eligible for failover operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
+
+## SYNTAX
+
+### TestExpanded (Default)
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> [-ExecutionConfigurationUserConsent <String>]
+ [-FailoverRequestPropertySelectedResourceId <String[]>] [-FailoverRequestPropertySourceLocation <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### TestViaJsonString
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaJsonFilePath
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentityServiceGroupExpanded
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
+ [-ExecutionConfigurationUserConsent <String>] [-FailoverRequestPropertySelectedResourceId <String[]>]
+ [-FailoverRequestPropertySourceLocation <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentityServiceGroup
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IFailoverRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Test
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -Body <IFailoverRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentityExpanded
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-ExecutionConfigurationUserConsent <String>] [-FailoverRequestPropertySelectedResourceId <String[]>]
+ [-FailoverRequestPropertySourceLocation <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentity
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IFailoverRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+## DESCRIPTION
+This action checks if the recovery orchestration plan is eligible for failover operation, ensuring it meets the necessary criteria and provides a list of qualified and unqualified resources.
+
+## EXAMPLES
+
+### Example 1: Validate a failover
+```powershell
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName contoso-recovery-plan -ServiceGroupName contoso-sg -OperationId (New-Guid).Guid -FailoverRequestPropertySourceLocation eastus2-az2
+```
+
+Validates a failover of the recovery plan away from zone 2 of East US 2.
+`-OperationId` is a client-generated GUID that identifies this long-running operation.
+
+## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Body
+Failover post action request.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IFailoverRequest
+Parameter Sets: TestViaIdentityServiceGroup, Test, TestViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExecutionConfigurationUserConsent
+User consent for performing recovery action.
+
+```yaml
+Type: System.String
+Parameter Sets: TestExpanded, TestViaIdentityServiceGroupExpanded, TestViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FailoverRequestPropertySelectedResourceId
+Selected recovery resource Ids to be processed.
+If not provided, all qualified resources based on the source location(s) will be processed.
+
+```yaml
+Type: System.String[]
+Parameter Sets: TestExpanded, TestViaIdentityServiceGroupExpanded, TestViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FailoverRequestPropertySourceLocation
+Source locations from where resources to be failed-over.
+
+```yaml
+Type: System.String[]
+Parameter Sets: TestExpanded, TestViaIdentityServiceGroupExpanded, TestViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
+Parameter Sets: TestViaIdentityExpanded, TestViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Test operation
+
+```yaml
+Type: System.String
+Parameter Sets: TestViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Test operation
+
+```yaml
+Type: System.String
+Parameter Sets: TestViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OperationId
+A GUID that represents the Long Running OperationId.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryPlanName
+The name of the recovery orchestration plan.
+
+```yaml
+Type: System.String
+Parameter Sets: TestExpanded, TestViaJsonString, TestViaJsonFilePath, TestViaIdentityServiceGroupExpanded, TestViaIdentityServiceGroup, Test
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
+Parameter Sets: TestViaIdentityServiceGroupExpanded, TestViaIdentityServiceGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ServiceGroupName
+The name of the service group.
+
+```yaml
+Type: System.String
+Parameter Sets: TestExpanded, TestViaJsonString, TestViaJsonFilePath, Test
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IFailoverRequest
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IValidateForRecoveryOperationBaseResponse
+
+## NOTES
+
+## RELATED LINKS

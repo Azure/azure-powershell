@@ -26,7 +26,7 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
  [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
- [-EnableSubvolume] [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
+ [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-IsLargeVolume] [-AcceptGrowCapacityPoolForShortTermCloneSplit <String>]
  [-DesiredRansomwareProtectionState <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
@@ -47,7 +47,7 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
  [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
- [-EnableSubvolume] [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
+ [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-IsLargeVolume] [-AcceptGrowCapacityPoolForShortTermCloneSplit <String>]
  [-DesiredRansomwareProtectionState <String>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
@@ -385,21 +385,6 @@ The desired state of the Advanced Ransomware Protection (ARP) feature. Possible 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSubvolume
-Flag indicating whether subvolume operations are enabled on the volume (Enabled, Disabled)
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

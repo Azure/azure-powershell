@@ -71,6 +71,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         public PSNetAppFilesAccountEncryption Encryption { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "LDAP server, search, transport security, and bind authentication settings for the account.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
+
+        [Parameter(
             ParameterSetName = FieldsParameterSet,
             Mandatory = false,
             HelpMessage = "The encryption keySource (provider). Possible values: Microsoft.NetApp, Microsoft.KeyVault")]
@@ -180,7 +186,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 ActiveDirectories = ActiveDirectory?.ConvertFromPs(),
                 Tags = tagPairs,
                 Encryption = Encryption?.ConvertFromPs(),
-                NfsV4IdDomain = NfsV4IdDomain
+                NfsV4IdDomain = NfsV4IdDomain,
+                LdapConfiguration = LdapConfiguration?.ConvertFromPs()
             };
             if (IdentityType != null && IdentityType.Contains("UserAssigned"))
             {
