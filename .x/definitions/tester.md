@@ -51,6 +51,12 @@ For `Azure/azure-powershell`, use the profile's
 changed `<Service>.Test` files. Do not apply Azure CLI's `azdev test --live`
 conventions to PowerShell.
 
+Review coverage can also include AutoRest/Pester `test/*.Tests.ps1` and
+`*.Recording.json` artifacts. That does not extend this workflow's execution
+surface: use only `changed_ps_test_files` for dispatch selection, never the
+broader review coverage file list. Report Pester validation separately using
+available CI evidence; a TestFx neutral skip is not proof that Pester ran.
+
 1. **Run for each Copilot complete inflight PR head SHA** — do not gate on draft state or "new test files". A PR is ready when timeline shows Copilot finished work ("Copilot finished work on behalf of ...").
 
 2. **Before dispatch, verify PR readiness from timeline**
