@@ -62,6 +62,10 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
+        [Parameter(HelpMessage = "The preferred VM size. Azure may deploy a compatible alternative.")]
+        [AllowEmptyString]
+        public string PreferredVMSize { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = false)]
         public Hashtable Tag { get; set; }
 
@@ -254,6 +258,7 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
                         HardwareProfile = this.VM.HardwareProfile,
+                        FlexProfile = this.VM.FlexProfile,
                         StorageProfile = this.VM.StorageProfile,
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
@@ -287,6 +292,18 @@ namespace Microsoft.Azure.Commands.Compute
                         ScheduledEventsPolicy = this.VM.ScheduledEventsPolicy,
                         ResiliencyProfile = this.VM.ResiliencyProfile
                     };
+
+                    if (this.IsParameterBound(c => c.PreferredVMSize))
+                    {
+                        parameters.FlexProfile = new FlexProfile(this.PreferredVMSize);
+                        parameters.HardwareProfile = new HardwareProfile(
+                            vmSizeProperties: this.VM.HardwareProfile?.VmSizeProperties == null ? null : new VMSizeProperties
+                            {
+                                VCPUsAvailable = this.VM.HardwareProfile.VmSizeProperties.VCPUsAvailable,
+                                VCPUsPerCore = this.VM.HardwareProfile.VmSizeProperties.VCPUsPerCore
+                            },
+                            processorMode: this.VM.HardwareProfile?.ProcessorMode);
+                    }
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
                     {

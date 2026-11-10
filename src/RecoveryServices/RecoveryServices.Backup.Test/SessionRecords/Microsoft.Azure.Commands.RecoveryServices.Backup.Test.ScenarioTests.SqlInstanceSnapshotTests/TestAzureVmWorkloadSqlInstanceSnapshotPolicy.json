@@ -1,0 +1,899 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxP2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "c02f17ba-f812-4c79-8cac-e13ee0ca078e"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "40619f63-249e-4c5c-9721-41fce5b9e49e"
+        ],
+        "x-ms-client-request-id": [
+          "c02f17ba-f812-4c79-8cac-e13ee0ca078e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "40619f63-249e-4c5c-9721-41fce5b9e49e"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095918Z:40619f63-249e-4c5c-9721-41fce5b9e49e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 2B7322EFAE394D27920018F39EEF7274 Ref B: SG2AA1070305054 Ref C: 2026-10-23T09:59:18Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:17 GMT"
+        ],
+        "Content-Length": [
+          "1127"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastasia\",\r\n  \"name\": \"SQLSnapGABBVault1\",\r\n  \"etag\": \"W/\\\"datetime'2026-10-23T09%3A52%3A02.6176825Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"LocallyRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies?api-version=2026-10-01&$filter=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMTAtMDEmJGZpbHRlcj0=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "f1bc41d2-5ddd-439c-8288-388c8b519aca"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "786cc7a4-50d7-4084-9ec5-a1256935dcb6"
+        ],
+        "x-ms-client-request-id": [
+          "f1bc41d2-5ddd-439c-8288-388c8b519aca"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/98576a89-d610-4fa7-a12b-3175d523896b"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "786cc7a4-50d7-4084-9ec5-a1256935dcb6"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095919Z:786cc7a4-50d7-4084-9ec5-a1256935dcb6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 2FE5C11EF4AE414497D897D04A9650DC Ref B: SG2AA1070306036 Ref C: 2026-10-23T09:59:19Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:19 GMT"
+        ],
+        "Content-Length": [
+          "12709"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/HourlyLogBackup\",\r\n      \"name\": \"HourlyLogBackup\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2026-09-28T17:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2026-09-28T17:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 30,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 60\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/DefaultPolicy\",\r\n      \"name\": \"DefaultPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V1\",\r\n        \"instantRPDetails\": {},\r\n        \"instantAccessSnapshotEnabled\": false,\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2026-09-28T17:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2026-09-28T17:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"instantRpRetentionRangeInDays\": 2,\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapOnly-PS\",\r\n      \"name\": \"SqlInst-SnapOnly-PS\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLInstance\",\r\n        \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"SnapshotFull\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2026-10-14T21:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2026-10-14T21:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 180,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              },\r\n              \"weeklySchedule\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"retentionTimes\": [\r\n                  \"2026-10-14T21:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 104,\r\n                  \"durationType\": \"Weeks\"\r\n                }\r\n              },\r\n              \"monthlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2026-10-14T21:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 60,\r\n                  \"durationType\": \"Months\"\r\n                }\r\n              },\r\n              \"yearlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"monthsOfYear\": [\r\n                  \"January\"\r\n                ],\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2026-10-14T21:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 10,\r\n                  \"durationType\": \"Years\"\r\n                }\r\n              }\r\n            },\r\n            \"snapshotBackupAdditionalDetails\": {\r\n              \"instantRpRetentionRangeInDays\": 5,\r\n              \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n              \"userAssignedManagedIdentityDetails\": {\r\n                \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n                \"identityName\": \"testmi\",\r\n                \"userAssignedIdentityProperties\": {\r\n                  \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n                  \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n                }\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/DefaultBackupPolicy-mums2i50\",\r\n      \"name\": \"DefaultBackupPolicy-mums2i50\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLInstance\",\r\n        \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n        \"settings\": {\r\n          \"timeZone\": \"India Standard Time\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"SnapshotFull\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Hourly\",\r\n              \"hourlySchedule\": {\r\n                \"interval\": 6,\r\n                \"scheduleWindowStartTime\": \"2026-09-29T08:00:00Z\",\r\n                \"scheduleWindowDuration\": 6\r\n              },\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2026-09-29T08:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 180,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              },\r\n              \"weeklySchedule\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"retentionTimes\": [\r\n                  \"2026-09-29T08:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 104,\r\n                  \"durationType\": \"Weeks\"\r\n                }\r\n              },\r\n              \"monthlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"Second\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2026-09-29T08:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 60,\r\n                  \"durationType\": \"Months\"\r\n                }\r\n              },\r\n              \"yearlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"monthsOfYear\": [\r\n                  \"January\"\r\n                ],\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"Last\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2026-09-29T08:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 10,\r\n                  \"durationType\": \"Years\"\r\n                }\r\n              }\r\n            },\r\n            \"snapshotBackupAdditionalDetails\": {\r\n              \"instantRpRetentionRangeInDays\": 5,\r\n              \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n              \"userAssignedManagedIdentityDetails\": {\r\n                \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourcegroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n                \"identityName\": \"testmi\",\r\n                \"userAssignedIdentityProperties\": {\r\n                  \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n                  \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 120\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 15,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapLog-CLI\",\r\n      \"name\": \"SqlInst-SnapLog-CLI\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLInstance\",\r\n        \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"SnapshotFull\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2026-10-15T02:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2026-10-15T02:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 7,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              }\r\n            },\r\n            \"snapshotBackupAdditionalDetails\": {\r\n              \"instantRpRetentionRangeInDays\": 5,\r\n              \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n              \"userAssignedManagedIdentityDetails\": {\r\n                \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n                \"identityName\": \"testmi\",\r\n                \"userAssignedIdentityProperties\": {\r\n                  \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n                  \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 60\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 7,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapOnly-CLI\",\r\n      \"name\": \"SqlInst-SnapOnly-CLI\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLInstance\",\r\n        \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"SnapshotFull\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2026-10-15T02:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2026-10-15T02:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 7,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              }\r\n            },\r\n            \"snapshotBackupAdditionalDetails\": {\r\n              \"instantRpRetentionRangeInDays\": 5,\r\n              \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n              \"userAssignedManagedIdentityDetails\": {\r\n                \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n                \"identityName\": \"testmi\",\r\n                \"userAssignedIdentityProperties\": {\r\n                  \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n                  \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n                }\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/EnhancedPolicy\",\r\n      \"name\": \"EnhancedPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"instantAccessSnapshotEnabled\": false,\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Hourly\",\r\n          \"hourlySchedule\": {\r\n            \"interval\": 4,\r\n            \"scheduleWindowStartTime\": \"2026-09-28T08:00:00Z\",\r\n            \"scheduleWindowDuration\": 12\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2026-09-28T08:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"instantRpRetentionRangeInDays\": 2,\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapLog-PS\",\r\n      \"name\": \"SqlInst-SnapLog-PS\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLInstance\",\r\n        \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"SnapshotFull\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2026-10-14T21:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2026-10-14T21:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 180,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              },\r\n              \"weeklySchedule\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"retentionTimes\": [\r\n                  \"2026-10-14T21:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 104,\r\n                  \"durationType\": \"Weeks\"\r\n                }\r\n              },\r\n              \"monthlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2026-10-14T21:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 60,\r\n                  \"durationType\": \"Months\"\r\n                }\r\n              },\r\n              \"yearlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"monthsOfYear\": [\r\n                  \"January\"\r\n                ],\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2026-10-14T21:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 10,\r\n                  \"durationType\": \"Years\"\r\n                }\r\n              }\r\n            },\r\n            \"snapshotBackupAdditionalDetails\": {\r\n              \"instantRpRetentionRangeInDays\": 5,\r\n              \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n              \"userAssignedManagedIdentityDetails\": {\r\n                \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n                \"identityName\": \"testmi\",\r\n                \"userAssignedIdentityProperties\": {\r\n                  \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n                  \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 120\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 15,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapLog-PS-Scenario?api-version=2026-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFBvbGljaWVzL1NxbEluc3QtU25hcExvZy1QUy1TY2VuYXJpbz9hcGktdmVyc2lvbj0yMDI2LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "78f971bd-15c8-4956-9b1e-2468190324c5"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/50ccc802-df9c-425e-98e3-5cad197f2f36"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "b5d894cd-54e4-48e9-a0e9-f54296a52bff"
+        ],
+        "x-ms-client-request-id": [
+          "78f971bd-15c8-4956-9b1e-2468190324c5"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "b5d894cd-54e4-48e9-a0e9-f54296a52bff"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095921Z:b5d894cd-54e4-48e9-a0e9-f54296a52bff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B4124B01B9D948B7A0FC8C2918BDA0CD Ref B: SG2AA1040512042 Ref C: 2026-10-23T09:59:21Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:20 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapLog-PS-Scenario?api-version=2026-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFBvbGljaWVzL1NxbEluc3QtU25hcExvZy1QUy1TY2VuYXJpbz9hcGktdmVyc2lvbj0yMDI2LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "78f971bd-15c8-4956-9b1e-2468190324c5"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "80cadd7b-6bfb-44fe-a3e2-bc188677c4e2"
+        ],
+        "x-ms-client-request-id": [
+          "78f971bd-15c8-4956-9b1e-2468190324c5"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/f963d852-2024-4a13-898f-59b3d65006ec"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "80cadd7b-6bfb-44fe-a3e2-bc188677c4e2"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095923Z:80cadd7b-6bfb-44fe-a3e2-bc188677c4e2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A238F8770BA441DBB948A7F323C73B2F Ref B: SG2AA1040512042 Ref C: 2026-10-23T09:59:23Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:23 GMT"
+        ],
+        "Content-Length": [
+          "2328"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapLog-PS-Scenario\",\r\n  \"name\": \"SqlInst-SnapLog-PS-Scenario\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLInstance\",\r\n    \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"SnapshotFull\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2026-10-23T17:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"snapshotBackupAdditionalDetails\": {\r\n          \"instantRpRetentionRangeInDays\": 5,\r\n          \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n          \"userAssignedManagedIdentityDetails\": {\r\n            \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n            \"identityName\": \"testmi\",\r\n            \"userAssignedIdentityProperties\": {\r\n              \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n              \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi?api-version=2023-01-31",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBmZmQwNzczLTkwYzUtNDcyYy04MDdkLTBjMGExMDYwNWI5ZC9yZXNvdXJjZUdyb3Vwcy9BenVyZUJhY2t1cFJHX1NRTEluc3RTbmFwc2hvdEdBQkIvcHJvdmlkZXJzL01pY3Jvc29mdC5NYW5hZ2VkSWRlbnRpdHkvdXNlckFzc2lnbmVkSWRlbnRpdGllcy90ZXN0bWk/YXBpLXZlcnNpb249MjAyMy0wMS0zMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "78f971bd-15c8-4956-9b1e-2468190324c5"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.114"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "7dc3562a-e807-49b3-b7ca-9debb8ecbca0"
+        ],
+        "x-ms-correlation-request-id": [
+          "7dc3562a-e807-49b3-b7ca-9debb8ecbca0"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095922Z:7dc3562a-e807-49b3-b7ca-9debb8ecbca0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 87ABE07A279345FA9A3632D030730E76 Ref B: SG2AA1070303036 Ref C: 2026-10-23T09:59:21Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:22 GMT"
+        ],
+        "Content-Length": [
+          "447"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourcegroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n  \"name\": \"testmi\",\r\n  \"type\": \"Microsoft.ManagedIdentity/userAssignedIdentities\",\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\",\r\n    \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi?api-version=2023-01-31",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBmZmQwNzczLTkwYzUtNDcyYy04MDdkLTBjMGExMDYwNWI5ZC9yZXNvdXJjZUdyb3Vwcy9BenVyZUJhY2t1cFJHX1NRTEluc3RTbmFwc2hvdEdBQkIvcHJvdmlkZXJzL01pY3Jvc29mdC5NYW5hZ2VkSWRlbnRpdHkvdXNlckFzc2lnbmVkSWRlbnRpdGllcy90ZXN0bWk/YXBpLXZlcnNpb249MjAyMy0wMS0zMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "64403920-6b7b-4c8d-9d20-6aa4155f8d4e"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.114"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "72eae2a0-8fc3-4c34-8e76-256dc4014eae"
+        ],
+        "x-ms-correlation-request-id": [
+          "72eae2a0-8fc3-4c34-8e76-256dc4014eae"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095925Z:72eae2a0-8fc3-4c34-8e76-256dc4014eae"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 0E961463F4FB4BEB9ECE82EB478FEE90 Ref B: SG2AA1070306036 Ref C: 2026-10-23T09:59:24Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:25 GMT"
+        ],
+        "Content-Length": [
+          "447"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourcegroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n  \"name\": \"testmi\",\r\n  \"type\": \"Microsoft.ManagedIdentity/userAssignedIdentities\",\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\",\r\n    \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapLog-PS-Scenario?api-version=2026-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFBvbGljaWVzL1NxbEluc3QtU25hcExvZy1QUy1TY2VuYXJpbz9hcGktdmVyc2lvbj0yMDI2LTEwLTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "78f971bd-15c8-4956-9b1e-2468190324c5"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "3442"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLInstance\",\r\n    \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"SnapshotFull\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2026-10-23T17:30:00Z\"\r\n          ]\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"snapshotBackupAdditionalDetails\": {\r\n          \"instantRpRetentionRangeInDays\": 5,\r\n          \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n          \"userAssignedManagedIdentityDetails\": {\r\n            \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n            \"identityName\": \"testmi\",\r\n            \"userAssignedIdentityProperties\": {\r\n              \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n              \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "c9788608-f064-4cc2-a4f0-0960f5462850"
+        ],
+        "x-ms-client-request-id": [
+          "78f971bd-15c8-4956-9b1e-2468190324c5"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/8fafd4b8-000e-49a9-bc9d-4385cc297b16"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "c9788608-f064-4cc2-a4f0-0960f5462850"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095923Z:c9788608-f064-4cc2-a4f0-0960f5462850"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 92527A6B2670431A8C2BDB1E7B6F3AA0 Ref B: SG2AA1040512042 Ref C: 2026-10-23T09:59:22Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:22 GMT"
+        ],
+        "Content-Length": [
+          "2328"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapLog-PS-Scenario\",\r\n  \"name\": \"SqlInst-SnapLog-PS-Scenario\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLInstance\",\r\n    \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"SnapshotFull\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2026-10-23T17:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"snapshotBackupAdditionalDetails\": {\r\n          \"instantRpRetentionRangeInDays\": 5,\r\n          \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n          \"userAssignedManagedIdentityDetails\": {\r\n            \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n            \"identityName\": \"testmi\",\r\n            \"userAssignedIdentityProperties\": {\r\n              \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n              \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapOnly-PS-Scenario?api-version=2026-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFBvbGljaWVzL1NxbEluc3QtU25hcE9ubHktUFMtU2NlbmFyaW8/YXBpLXZlcnNpb249MjAyNi0xMC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "64403920-6b7b-4c8d-9d20-6aa4155f8d4e"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/fc6fbd5f-4a45-4cc9-82a5-50c4732ae239"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "a4f96857-69d9-48a5-a1af-97c3a3b09d12"
+        ],
+        "x-ms-client-request-id": [
+          "64403920-6b7b-4c8d-9d20-6aa4155f8d4e"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "a4f96857-69d9-48a5-a1af-97c3a3b09d12"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095924Z:a4f96857-69d9-48a5-a1af-97c3a3b09d12"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6F7A68B14C284E8E8308F292543330A2 Ref B: SG2AA1070306052 Ref C: 2026-10-23T09:59:24Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:24 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapOnly-PS-Scenario?api-version=2026-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFBvbGljaWVzL1NxbEluc3QtU25hcE9ubHktUFMtU2NlbmFyaW8/YXBpLXZlcnNpb249MjAyNi0xMC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "64403920-6b7b-4c8d-9d20-6aa4155f8d4e"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "0d35f223-9e8a-4e46-8d38-f9ad39c27a1c"
+        ],
+        "x-ms-client-request-id": [
+          "64403920-6b7b-4c8d-9d20-6aa4155f8d4e"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/dfd7a8dd-7579-4180-aec2-3e2909d5f591"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "0d35f223-9e8a-4e46-8d38-f9ad39c27a1c"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095927Z:0d35f223-9e8a-4e46-8d38-f9ad39c27a1c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5E8A8BDB04274A83973DA6CAC344F6E8 Ref B: SG2AA1070306052 Ref C: 2026-10-23T09:59:27Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:27 GMT"
+        ],
+        "Content-Length": [
+          "2098"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapOnly-PS-Scenario\",\r\n  \"name\": \"SqlInst-SnapOnly-PS-Scenario\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLInstance\",\r\n    \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"SnapshotFull\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2026-10-23T17:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"snapshotBackupAdditionalDetails\": {\r\n          \"instantRpRetentionRangeInDays\": 5,\r\n          \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n          \"userAssignedManagedIdentityDetails\": {\r\n            \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n            \"identityName\": \"testmi\",\r\n            \"userAssignedIdentityProperties\": {\r\n              \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n              \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapOnly-PS-Scenario?api-version=2026-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFBvbGljaWVzL1NxbEluc3QtU25hcE9ubHktUFMtU2NlbmFyaW8/YXBpLXZlcnNpb249MjAyNi0xMC0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "64403920-6b7b-4c8d-9d20-6aa4155f8d4e"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "3047"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLInstance\",\r\n    \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"SnapshotFull\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2026-10-23T17:30:00Z\"\r\n          ]\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"snapshotBackupAdditionalDetails\": {\r\n          \"instantRpRetentionRangeInDays\": 5,\r\n          \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n          \"userAssignedManagedIdentityDetails\": {\r\n            \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n            \"identityName\": \"testmi\",\r\n            \"userAssignedIdentityProperties\": {\r\n              \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n              \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "14afd010-7dcf-4ced-a01a-8378e4fa0b55"
+        ],
+        "x-ms-client-request-id": [
+          "64403920-6b7b-4c8d-9d20-6aa4155f8d4e"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/f9c580a2-b230-4cd6-bc3c-b4610b8704b6"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "14afd010-7dcf-4ced-a01a-8378e4fa0b55"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095927Z:14afd010-7dcf-4ced-a01a-8378e4fa0b55"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: DFDFE7DBCB5147E09CFDDA6966CA7453 Ref B: SG2AA1070306052 Ref C: 2026-10-23T09:59:25Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:26 GMT"
+        ],
+        "Content-Length": [
+          "2098"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapOnly-PS-Scenario\",\r\n  \"name\": \"SqlInst-SnapOnly-PS-Scenario\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLInstance\",\r\n    \"vmWorkloadPolicyType\": \"SnapshotV2\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"SnapshotFull\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2026-10-23T17:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 180,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          },\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2026-10-23T17:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"snapshotBackupAdditionalDetails\": {\r\n          \"instantRpRetentionRangeInDays\": 5,\r\n          \"instantRPDetails\": \"AzureBackupRG_SQLInstSnapshotGABB\",\r\n          \"userAssignedManagedIdentityDetails\": {\r\n            \"identityArmId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testmi\",\r\n            \"identityName\": \"testmi\",\r\n            \"userAssignedIdentityProperties\": {\r\n              \"clientId\": \"15dd94db-eb1c-49bd-a81c-e64173040532\",\r\n              \"principalId\": \"8801af6a-826d-4f1d-90a6-2018bc628f88\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapLog-PS-Scenario?api-version=2026-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFBvbGljaWVzL1NxbEluc3QtU25hcExvZy1QUy1TY2VuYXJpbz9hcGktdmVyc2lvbj0yMDI2LTEwLTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "ede4dd20-736f-407e-9aaa-9366e00605d8"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "ae179cc1-b3d8-4ec8-aa28-226f5396a284"
+        ],
+        "x-ms-client-request-id": [
+          "ede4dd20-736f-407e-9aaa-9366e00605d8"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/05d3918f-617d-4730-8525-a9eacd73a217"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae179cc1-b3d8-4ec8-aa28-226f5396a284"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095928Z:ae179cc1-b3d8-4ec8-aa28-226f5396a284"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E0786E05CCD147ACB3F853DE8FF54E2E Ref B: SG2AA1040520025 Ref C: 2026-10-23T09:59:28Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:27 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupPolicies/SqlInst-SnapOnly-PS-Scenario?api-version=2026-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFBvbGljaWVzL1NxbEluc3QtU25hcE9ubHktUFMtU2NlbmFyaW8/YXBpLXZlcnNpb249MjAyNi0xMC0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "fee7f43c-19d3-4af7-a014-4a47160704b3"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "8fb1a9b2-fb01-45d6-9c1d-dd8adca673c4"
+        ],
+        "x-ms-client-request-id": [
+          "fee7f43c-19d3-4af7-a014-4a47160704b3"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/46069c9b-c776-464f-b3b6-f3162e5cdefc"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "8fb1a9b2-fb01-45d6-9c1d-dd8adca673c4"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095929Z:8fb1a9b2-fb01-45d6-9c1d-dd8adca673c4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F52F8D12487B4496B2AD52A368B6D242 Ref B: SG2AA1070301036 Ref C: 2026-10-23T09:59:28Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:59:29 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0ffd0773-90c5-472c-807d-0c0a10605b9d"
+  }
+}

@@ -90,17 +90,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
-            // need to the location in order to call
-            var getResponse = BatchManagementClient.BatchAccount.Get(resourceGroupName, accountName);
-
             AutoStorageBaseProperties autoStorage = (autoStorageAccountId == null) ? null : new AutoStorageBaseProperties
             {
                 StorageAccountId = autoStorageAccountId
             };
 
-            var response = BatchManagementClient.BatchAccount.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
+            // Use the update operation (PATCH): it changes only the settings that are sent. The create operation (PUT)
+            // replaces the whole account and resets every setting it isn't sent to its default.
+            var response = BatchManagementClient.BatchAccount.Update(resourceGroupName, accountName, new BatchAccountUpdateParameters()
             {
-                Location = getResponse.Location,
                 Tags = tagDictionary,
                 AutoStorage = autoStorage
             });

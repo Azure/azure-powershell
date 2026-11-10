@@ -27,15 +27,17 @@ Set-AzStorageSyncServer [-InputObject] <PSRegisteredServer> [-Identity] [-AsJob]
 ```
 
 ## DESCRIPTION
-This command registers a server to a storage sync service, the top-level resource for Azure File Sync. A trust relationship between server and storage sync service is created that ensures secure data transfer and management channels. PowerShell or the Azure portal can then be used to configure what syncs on this server. A server can only be registered to a single storage sync service. If servers ever need to participate in syncing the same set of files, register them to the same storage sync service.
-The command must be run locally on the server that is to be registered - either executed directly or via a remote PowerShell session. A remote computer object cannot be accepted.
-When using the Identity parameter, run the command from an elevated PowerShell session. On an Azure Arc-enabled server, the local identity endpoint only issues tokens to local Administrators or members of the Hybrid agent extension applications group.
+This command patches a server's managed identity. This command will update the server managed identity used to describe the server identity to the storage sync service. This is meant to be used in troubleshooting scenarios, or when the managed identity has been externally updated and Azure File Sync needs to be updated to reflect these changes. When calling this command, the server's applicationId is replaced with the new one provided, re-establishing the trust relationship between this server and its storage sync service.
+
+This cmdlet is used to repair a server where the server to service relationship established using a managed identity has been broken. This issue typically results in authentication errors and often occurs when the server's managed identity has changed, such as when Azure Arc was deleted and recreated or when the managed identity on an Azure VM was toggled off and back on.
+
+The command must be run locally on the server that is to be patched - either executed directly or via a remote PowerShell session. A remote computer object cannot be accepted. When using the Identity parameter, run the command from an elevated PowerShell session. On an Azure Arc-enabled server, the local identity endpoint only issues tokens to local Administrators or members of the Hybrid agent extension applications group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Set-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -ServerId "00000000-0000-0000-0000-000000000000" -Identity
+Set-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -ServerId "<guid>" -Identity
 ```
 
 This command configures the specified registered server to use its system-assigned managed identity. Run the command locally from an elevated PowerShell session on that registered server.

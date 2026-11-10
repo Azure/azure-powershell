@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdap
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Rest.Azure.OData;
 using Newtonsoft.Json;
 using System;
@@ -76,13 +77,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 item = (AzureWorkloadSAPHanaDatabaseProtectedItem)ProviderData[ItemParams.Item];                
             }
+            else if (itemBase is AzureWorkloadSQLInstanceProtectedItem)
+            {
+                item = (AzureWorkloadSQLInstanceProtectedItem)ProviderData[ItemParams.Item];
+            }
             else
             {
                 item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];                
             }
             
-            AzureVmWorkloadSQLDatabaseProtectedItem properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
-
             return EnableOrModifyProtection(disableWithRetentionData: true);
 
         }
@@ -103,6 +106,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 item = (AzureWorkloadSAPHanaDatabaseProtectedItem)ProviderData[ItemParams.Item];
                 ValidateAzureWorkloadSAPHanaDatabaseDisableProtectionRequest(itemBase);
+            }
+            else if (itemBase is AzureWorkloadSQLInstanceProtectedItem)
+            {
+                item = (AzureWorkloadSQLInstanceProtectedItem)ProviderData[ItemParams.Item];
+                ValidateAzureWorkloadDisableProtectionRequest(itemBase);
             }
             else
             {
@@ -326,7 +334,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             bool UseSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
-            string dataSourceType = (workloadType == CmdletModel.WorkloadType.SAPHanaDatabase) ? DataSourceType.SAPHanaDatabase : DataSourceType.SQLDataBase;
+            // Effective workload: prefer explicit -WorkloadType, else derive from the provided policy.
+            CmdletModel.WorkloadType effectiveWorkloadType = (workloadType != 0) ? workloadType :
+                (policy != null ? policy.WorkloadType : 0);
+            string dataSourceType = (effectiveWorkloadType == CmdletModel.WorkloadType.SAPHanaDatabase) ? DataSourceType.SAPHanaDatabase :
+                (effectiveWorkloadType == CmdletModel.WorkloadType.MSSQLInstance) ? DataSourceType.SQLInstance : DataSourceType.SQLDataBase;
             
             List<CrrModel.ProtectedItemResource> protectedItemsCrr = null;
             List<ProtectedItemResource> protectedItems = null;
@@ -349,18 +361,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 resourceGroupName,
                 (itemModel, protectedItemGetResponse) =>
                 {
-                    AzureWorkloadSQLDatabaseProtectedItemExtendedInfo extendedInfo = new AzureWorkloadSQLDatabaseProtectedItemExtendedInfo();
-                    var serviceClientExtendedInfo = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
-                    if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                    AzureItemExtendedInfo extendedInfo = itemModel is AzureWorkloadSQLInstanceProtectedItem ?
+                        (AzureItemExtendedInfo)new AzureWorkloadSQLInstanceProtectedItemExtendedInfo() :
+                        new AzureWorkloadSQLDatabaseProtectedItemExtendedInfo();
+                    var serviceClientItem = (AzureVmWorkloadProtectedItem)protectedItemGetResponse.Properties;
+                    var serviceClientExtendedInfo = serviceClientItem.ExtendedInfo;
+                    if (serviceClientExtendedInfo != null)
                     {
                         extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState;
+                        extendedInfo.RecoveryPointCount = serviceClientExtendedInfo.RecoveryPointCount ?? 0;
                     }
-                    extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
-                    extendedInfo.RecoveryPointCount =
-                        (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
-                            serviceClientExtendedInfo.RecoveryPointCount : 0);
-                    ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).LatestRecoveryPoint = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).LastRecoveryPoint;
-                    ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).ExtendedInfo = extendedInfo;
+                    ((AzureItem)itemModel).LatestRecoveryPoint = serviceClientItem.LastRecoveryPoint;
+                    ((AzureItem)itemModel).ExtendedInfo = extendedInfo;
                 });                
             }
             else
@@ -382,18 +395,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     resourceGroupName,
                     (itemModel, protectedItemGetResponse) =>
                     {
-                        AzureWorkloadSQLDatabaseProtectedItemExtendedInfo extendedInfo = new AzureWorkloadSQLDatabaseProtectedItemExtendedInfo();
-                        var serviceClientExtendedInfo = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
-                        if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                        var serviceClientExtendedInfo = ((AzureVmWorkloadProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
+                        AzureItemExtendedInfo extendedInfo = (itemModel is AzureWorkloadSQLInstanceProtectedItem) ?
+                            (AzureItemExtendedInfo)new AzureWorkloadSQLInstanceProtectedItemExtendedInfo() :
+                            new AzureWorkloadSQLDatabaseProtectedItemExtendedInfo();
+                        if (serviceClientExtendedInfo != null)
                         {
-                            extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                            if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                            {
+                                extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                            }
+                            extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
+                            extendedInfo.RecoveryPointCount =
+                                (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
+                                    serviceClientExtendedInfo.RecoveryPointCount : 0);
                         }
-                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
-                        extendedInfo.RecoveryPointCount =
-                            (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
-                                serviceClientExtendedInfo.RecoveryPointCount : 0);
-                        ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).LatestRecoveryPoint = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).LastRecoveryPoint;
-                        ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).ExtendedInfo = extendedInfo;
+                        ((AzureItem)itemModel).LatestRecoveryPoint = ((AzureVmWorkloadProtectedItem)protectedItemGetResponse.Properties).LastRecoveryPoint;
+                        ((AzureItem)itemModel).ExtendedInfo = extendedInfo;
                     });
             }
             
@@ -402,7 +420,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 itemModels = itemModels.Where(itemModel =>
                 {
-                    return ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).ProtectionStatus == protectionStatus;
+                    return ((AzureItem)itemModel).ProtectionStatus == protectionStatus;
                 }).ToList();
             }
 
@@ -411,18 +429,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 itemModels = itemModels.Where(itemModel =>
                 {
-                    return ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).ProtectionState == status;
+                    return ((AzureItem)itemModel).ProtectionState == status;
                 }).ToList();
             }
 
             // 5. Filter by workload type
             if (workloadType != 0)
             {
+                // SQL Instance protected items carry WorkloadType MSSQL; compare against that.
+                CmdletModel.WorkloadType compareWorkloadType =
+                    (workloadType == CmdletModel.WorkloadType.MSSQLInstance) ? CmdletModel.WorkloadType.MSSQL : workloadType;
                 itemModels = itemModels.Where(itemModel =>
                 {
-                    return itemModel.WorkloadType == workloadType;
+                    return itemModel.WorkloadType == compareWorkloadType;
                 }).ToList();
-            }           
+            }
 
             return itemModels;
         }
@@ -471,7 +492,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             DateTime? expiryDateTime = (DateTime?)ProviderData[ItemParams.ExpiryDateTimeUTC];
             string backupType = ProviderData[ItemParams.BackupType].ToString();
             bool enableCompression = (bool)ProviderData[ItemParams.EnableCompression];
-            AzureWorkloadSQLDatabaseProtectedItem azureWorkloadProtectedItem = item as AzureWorkloadSQLDatabaseProtectedItem;
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             AzureWorkloadBackupRequest azureWorkloadBackupRequest = new AzureWorkloadBackupRequest();
             azureWorkloadBackupRequest.RecoveryPointExpiryTimeInUtc = expiryDateTime;
@@ -480,8 +500,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             triggerBackupRequest.Properties = azureWorkloadBackupRequest;
 
             return ServiceClientAdapter.TriggerBackup(
-               IdUtils.GetValueByName(azureWorkloadProtectedItem.Id, IdUtils.IdNames.ProtectionContainerName),
-               IdUtils.GetValueByName(azureWorkloadProtectedItem.Id, IdUtils.IdNames.ProtectedItemName),
+               IdUtils.GetValueByName(item.Id, IdUtils.IdNames.ProtectionContainerName),
+               IdUtils.GetValueByName(item.Id, IdUtils.IdNames.ProtectedItemName),
                triggerBackupRequest,
                vaultName: vaultName,
                resourceGroupName: vaultResourceGroupName);
@@ -506,7 +526,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
 
-            if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
+            // Route to the point-in-time request when a point in time is supplied. SQL Instance snapshot
+            // point-in-time restore passes the actual snapshot recovery point (its id goes in the request
+            // URL) together with -PointInTime (the log replay target in the body), so a real recovery point
+            // with ContainerName set must still produce an AzureWorkloadSQLPointInTimeRestoreRequest.
+            bool hasPointInTime = wLRecoveryConfig.PointInTime != default(DateTime);
+            if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null && !hasPointInTime)
             {
                 AzureWorkloadSQLRestoreRequest azureWorkloadSQLRestoreRequest =
                     new AzureWorkloadSQLRestoreRequest();
@@ -519,13 +544,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureWorkloadSQLRestoreRequest.RecoveryType =
                     string.Compare(wLRecoveryConfig.RestoreRequestType, "Original WL Restore") == 0 ?
                     RecoveryType.OriginalLocation : RecoveryType.AlternateLocation;
+
+                bool isInstanceSnapshotRestore =
+                    string.Compare(wLRecoveryConfig.RecoveryMode, "SnapshotAttachAndRecover") == 0 ||
+                    string.Compare(wLRecoveryConfig.RecoveryMode, "SnapshotAttach") == 0 ||
+                    string.Compare(wLRecoveryConfig.RecoveryMode, "RecoveryUsingSnapshot") == 0;
                 if (azureWorkloadSQLRestoreRequest.RecoveryType == RecoveryType.AlternateLocation)
                 {
                     azureWorkloadSQLRestoreRequest.TargetInfo = new TargetRestoreInfo()
                     {
                         OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
                         OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
-                        DatabaseName = wLRecoveryConfig.TargetInstance + "/" + wLRecoveryConfig.RestoredDBName,
+                        // SQL Instance snapshot restore targets the instance; the database name defaults to
+                        // "<targetInstance>/*_restored_<timestamp>" and can be overridden verbatim via
+                        // -TargetInstanceDatabaseName (e.g. "mssqlserver/*_lh_20261012_230309").
+                        DatabaseName = isInstanceSnapshotRestore ?
+                            (string.IsNullOrEmpty(wLRecoveryConfig.TargetInstanceDatabaseName) ?
+                                wLRecoveryConfig.TargetInstance + "/" + wLRecoveryConfig.RestoredDBName :
+                                wLRecoveryConfig.TargetInstanceDatabaseName) :
+                            wLRecoveryConfig.TargetInstance + "/" + wLRecoveryConfig.RestoredDBName,
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
@@ -550,6 +587,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         TargetDirectoryForFileRestore = wLRecoveryConfig.FilePath
                     };
                 }
+                if (isInstanceSnapshotRestore)
+                {
+                    ApplyInstanceSnapshotRestoreDetails(azureWorkloadSQLRestoreRequest, wLRecoveryConfig);
+                }
+                if (wLRecoveryConfig.DisksToDetachOnClash != null && wLRecoveryConfig.DisksToDetachOnClash.Count > 0)
+                {
+                    azureWorkloadSQLRestoreRequest.SnapshotRestoreParameters = new SnapshotRestoreParameters()
+                    {
+                        DisksToDetachOnClash = wLRecoveryConfig.DisksToDetachOnClash
+                    };
+                }
                 triggerRestoreRequest.Properties = azureWorkloadSQLRestoreRequest;
             }
             else
@@ -565,13 +613,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType =
                     string.Compare(wLRecoveryConfig.RestoreRequestType, "Original WL Restore") == 0 ?
                     RecoveryType.OriginalLocation : RecoveryType.AlternateLocation;
+
+                bool isInstancePitSnapshotRestore =
+                    string.Compare(wLRecoveryConfig.RecoveryMode, "SnapshotAttachAndRecover") == 0 ||
+                    string.Compare(wLRecoveryConfig.RecoveryMode, "SnapshotAttach") == 0 ||
+                    string.Compare(wLRecoveryConfig.RecoveryMode, "RecoveryUsingSnapshot") == 0;
                 if (azureWorkloadSQLPointInTimeRestoreRequest.RecoveryType == RecoveryType.AlternateLocation)
                 {
                     azureWorkloadSQLPointInTimeRestoreRequest.TargetInfo = new TargetRestoreInfo()
                     {
                         OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
                         OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
-                        DatabaseName = wLRecoveryConfig.TargetInstance + "/" + wLRecoveryConfig.RestoredDBName,
+                        // SQL Instance snapshot restore targets the instance; the database name defaults to
+                        // "<targetInstance>/*_restored_<timestamp>" and can be overridden verbatim via
+                        // -TargetInstanceDatabaseName (e.g. "mssqlserver/*_lh_20261013_011600").
+                        DatabaseName = isInstancePitSnapshotRestore && !string.IsNullOrEmpty(wLRecoveryConfig.TargetInstanceDatabaseName) ?
+                            wLRecoveryConfig.TargetInstanceDatabaseName :
+                            wLRecoveryConfig.TargetInstance + "/" + wLRecoveryConfig.RestoredDBName,
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLPointInTimeRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
@@ -599,6 +657,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 azureWorkloadSQLPointInTimeRestoreRequest.PointInTime = wLRecoveryConfig.PointInTime;
+                if (isInstancePitSnapshotRestore)
+                {
+                    ApplyInstanceSnapshotRestoreDetails(azureWorkloadSQLPointInTimeRestoreRequest, wLRecoveryConfig);
+                }
+                if (wLRecoveryConfig.DisksToDetachOnClash != null && wLRecoveryConfig.DisksToDetachOnClash.Count > 0)
+                {
+                    azureWorkloadSQLPointInTimeRestoreRequest.SnapshotRestoreParameters = new SnapshotRestoreParameters()
+                    {
+                        DisksToDetachOnClash = wLRecoveryConfig.DisksToDetachOnClash
+                    };
+                }
                 triggerRestoreRequest.Properties = azureWorkloadSQLPointInTimeRestoreRequest;
             }
 
@@ -722,6 +791,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ((AzureVmWorkloadPolicy)policy).IsCompression,
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadModifyPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                    azureVmWorkloadModifyPolicy.VMWorkloadPolicyType = ((AzureVmWorkloadPolicy)policy).VMWorkloadPolicyType;
                     azureVmWorkloadModifyPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                     azureVmWorkloadModifyPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy, isSmartTieringEnabled);
                     azureVmWorkloadModifyPolicy.MakePolicyConsistent = true;
@@ -774,6 +844,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ((AzureVmWorkloadPolicy)policy).IsCompression,
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                    azureVmWorkloadProtectionPolicy.VMWorkloadPolicyType = ((AzureVmWorkloadPolicy)policy).VMWorkloadPolicyType;
                     azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                     azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy, isSmartTieringEnabled);
                     serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
@@ -816,10 +887,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     ((SQLSchedulePolicy)schedulePolicy).IsCompression,
                     ((SQLSchedulePolicy)schedulePolicy).IsCompression);
                 azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(workloadType.ToString());
+                bool isSnapshotInstancePolicy = workloadType == CmdletModel.WorkloadType.MSSQLInstance;
+                if (isSnapshotInstancePolicy)
+                {
+                    azureVmWorkloadProtectionPolicy.VMWorkloadPolicyType = VMWorkloadPolicyType.SnapshotV2;
+                }
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy(
                                                     (SQLRetentionPolicy)retentionPolicy,
-                                                    (SQLSchedulePolicy)schedulePolicy, tieringDetails, isSmartTieringEnabled);
+                                                    (SQLSchedulePolicy)schedulePolicy, tieringDetails, isSmartTieringEnabled, isSnapshotInstancePolicy);
+
+                if (isSnapshotInstancePolicy)
+                {
+                    string backupSnapshotResourceGroup = ProviderData.ContainsKey(PolicyParams.BackupSnapshotResourceGroup) ?
+                        (string)ProviderData[PolicyParams.BackupSnapshotResourceGroup] : null;
+                    int? instantRpRetentionRangeInDays = ProviderData.ContainsKey(PolicyParams.InstantRPRetentionRangeInDays) ?
+                        (int?)ProviderData[PolicyParams.InstantRPRetentionRangeInDays] : null;
+                    string userAssignedIdentityId = ProviderData.ContainsKey(PolicyParams.UserAssignedIdentityId) ?
+                        (string)ProviderData[PolicyParams.UserAssignedIdentityId] : null;
+
+                    if (!string.IsNullOrEmpty(backupSnapshotResourceGroup) ||
+                        instantRpRetentionRangeInDays != null ||
+                        !string.IsNullOrEmpty(userAssignedIdentityId))
+                    {
+                        SubProtectionPolicy snapshotFullSubPolicy = azureVmWorkloadProtectionPolicy.SubProtectionPolicy
+                            .FirstOrDefault(subPolicy => string.Compare(subPolicy.PolicyType, "SnapshotFull") == 0);
+                        if (snapshotFullSubPolicy != null)
+                        {
+                            snapshotFullSubPolicy.SnapshotBackupAdditionalDetails = new SnapshotBackupAdditionalDetails()
+                            {
+                                InstantRpRetentionRangeInDays = instantRpRetentionRangeInDays,
+                                InstantRpDetails = backupSnapshotResourceGroup,
+                                UserAssignedManagedIdentityDetails = BuildUserAssignedManagedIdentityDetails(userAssignedIdentityId)
+                            };
+                        }
+                    }
+                }
                 serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
             }
 
@@ -857,12 +960,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             AzureItem item;
             AzureVmWorkloadProtectedItem properties;
+            List<string> childDatabaseNameList = ProviderData.ContainsKey(ItemParams.ChildDatabaseNameList) &&
+                ProviderData[ItemParams.ChildDatabaseNameList] != null ?
+                new List<string>((string[])ProviderData[ItemParams.ChildDatabaseNameList]) : null;
+            bool isSqlInstanceItem = itemBase is AzureWorkloadSQLInstanceProtectedItem;
+            bool isSqlInstanceSnapshotProtection = (policy != null && policy.WorkloadType == CmdletModel.WorkloadType.MSSQLInstance)
+                || isSqlInstanceItem;
             if (itemBase != null && itemBase.WorkloadType == CmdletModel.WorkloadType.SAPHanaDatabase)
             {
                 item = ProviderData.ContainsKey(ItemParams.Item) ?
                 (AzureWorkloadSAPHanaDatabaseProtectedItem)ProviderData[ItemParams.Item] : null;
 
                 properties = new AzureVmWorkloadSAPHanaDatabaseProtectedItem();
+            }
+            else if (isSqlInstanceSnapshotProtection)
+            {
+                item = ProviderData.ContainsKey(ItemParams.Item) ?
+                (AzureWorkloadSQLInstanceProtectedItem)ProviderData[ItemParams.Item] : null;
+
+                AzureVmWorkloadSQLInstanceProtectedItem sqlInstanceProperties = new AzureVmWorkloadSQLInstanceProtectedItem();
+                sqlInstanceProperties.ChildDatabaseNameList = childDatabaseNameList;
+                properties = sqlInstanceProperties;
             }
             else
             {
@@ -977,16 +1095,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
             string workloadType = (string)ProviderData[ContainerParams.ContainerType];
             string vmResourceGroupName = (string)ProviderData[ContainerParams.ResourceGroupName];
+            string resourceId = (string)ProviderData[ContainerParams.ResourceId];
             ContainerBase containerBase =
                 (ContainerBase)ProviderData[ContainerParams.Container];
             AzureVmWorkloadContainer container = (AzureVmWorkloadContainer)ProviderData[ContainerParams.Container];
 
+            if (container == null && string.IsNullOrEmpty(resourceId))
+            {
+                throw new ArgumentException(Resources.VirtualMachineIdIsEmptyOrNull);
+            }
+
             ProtectionContainerResource protectionContainerResource = null;
 
             //Trigger Discovery
-            ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
-                q => q.BackupManagementType
-                    == ServiceClientModel.BackupManagementType.AzureWorkload);
+            string containerSubscriptionId = ProviderData.ContainsKey(ContainerParams.ContainerSubscriptionId) ?
+                (string)ProviderData[ContainerParams.ContainerSubscriptionId] : null;
+            ODataQuery<BMSRefreshContainersQueryObject> queryParam = string.IsNullOrEmpty(containerSubscriptionId) ?
+                new ODataQuery<BMSRefreshContainersQueryObject>(
+                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureWorkload) :
+                new ODataQuery<BMSRefreshContainersQueryObject>(
+                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureWorkload &&
+                         q.ContainerSubscriptionId == containerSubscriptionId);
             AzureWorkloadProviderHelper.RefreshContainer(vaultName, vaultResourceGroupName, queryParam);
 
             List<ProtectableContainerResource> unregisteredVmContainers =
@@ -995,17 +1124,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Logger.Instance.WriteDebug("containerName: "+ containerName + ",  vmResourceGroupName: " + vmResourceGroupName
                 + ", unregisteredVMContainers.Count: " + unregisteredVmContainers?.Count);
 
-            ProtectableContainerResource unregisteredVmContainer = unregisteredVmContainers.Find(
+            ProtectableContainerResource unregisteredVmContainer = container == null ? unregisteredVmContainers.Find(
                 vmContainer => {
-                    string[] containerNameSplit = vmContainer.Name.Split(';');
-                    int containerNameSplitLen = containerNameSplit.Length;
-                    bool vmNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 1], containerName.Split(';').Last(), true) == 0;
-                    bool rgNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 2], vmResourceGroupName, true) == 0;
+                    bool resourceIdMatch = string.Equals(vmContainer.Properties?.ContainerId, resourceId,
+                        StringComparison.OrdinalIgnoreCase);
 
-                    Logger.Instance.WriteDebug("Unregistered Container Name: " + vmContainer.Name + ", vmNameMatch: " + vmNameMatch + ", rgNameMatch: " + rgNameMatch);
+                    Logger.Instance.WriteDebug("Unregistered Container Name: " + vmContainer.Name + ", resourceIdMatch: " + resourceIdMatch);
 
-                    return vmNameMatch && rgNameMatch;
-                });
+                    return resourceIdMatch;
+                }) : null;
 
             if (unregisteredVmContainer != null || container != null)
             {
@@ -1026,7 +1153,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
-                throw new ArgumentException(string.Format(Resources.AzureWorkloadAlreadyRegisteredException));
+                throw new ArgumentException(string.Format(Resources.AzureWorkloadContainerNotDiscovered, resourceId));
             }
         }
 
@@ -1094,9 +1221,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         private void ValidateAzureVmWorkloadType(CmdletModel.WorkloadType type)
         {
-            if (type != CmdletModel.WorkloadType.MSSQL && type != CmdletModel.WorkloadType.SAPHanaDatabase)
+            if (type != CmdletModel.WorkloadType.MSSQL && type != CmdletModel.WorkloadType.SAPHanaDatabase &&
+                type != CmdletModel.WorkloadType.MSSQLInstance)
             {
-                string expectedWorkloadType = CmdletModel.WorkloadType.MSSQL.ToString() + " or " + CmdletModel.WorkloadType.SAPHanaDatabase.ToString();
+                string expectedWorkloadType = CmdletModel.WorkloadType.MSSQL.ToString() + ", " + CmdletModel.WorkloadType.MSSQLInstance.ToString() + " or " + CmdletModel.WorkloadType.SAPHanaDatabase.ToString();
                 throw new ArgumentException(string.Format(Resources.UnExpectedWorkLoadTypeException,
                                             expectedWorkloadType,
                                             type.ToString()));
@@ -1111,6 +1239,96 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                             CmdletModel.ContainerType.AzureVMAppContainer.ToString(),
                                             type.ToString()));
             }
+        }
+
+        /// <summary>
+        /// Applies the SQL Instance snapshot-specific restore fields (recovery mode, target resource group,
+        /// user-assigned managed identity, SnapshotAttach target info trimming, and customer-supplied drive
+        /// remapping) to a SQL restore request. Shared by the full restore and point-in-time restore paths
+        /// (AzureWorkloadSQLPointInTimeRestoreRequest derives from AzureWorkloadSQLRestoreRequest).
+        /// </summary>
+        private void ApplyInstanceSnapshotRestoreDetails(
+            AzureWorkloadSQLRestoreRequest request,
+            AzureWorkloadRecoveryConfig wLRecoveryConfig)
+        {
+            string resolvedRecoveryMode = string.IsNullOrEmpty(wLRecoveryConfig.RecoveryMode) ?
+                "SnapshotAttachAndRecover" : wLRecoveryConfig.RecoveryMode;
+            request.RecoveryMode = resolvedRecoveryMode;
+            if (!string.IsNullOrEmpty(wLRecoveryConfig.TargetResourceGroupName))
+            {
+                request.TargetResourceGroupName = wLRecoveryConfig.TargetResourceGroupName;
+            }
+            request.UserAssignedManagedIdentityDetails =
+                BuildUserAssignedManagedIdentityDetails(wLRecoveryConfig.UserAssignedIdentityId);
+
+            // SnapshotAttach only mounts the snapshot disks; it does not recover a database, so the
+            // targetInfo carries only the containerId (plus an optional targetDirectoryMapping), no
+            // databaseName / overwriteOption. Original location restore does not pass targetInfo at all
+            // (the ALR branch sets it for ALR).
+            if (string.Compare(resolvedRecoveryMode, "SnapshotAttach") == 0 && request.TargetInfo != null)
+            {
+                request.TargetInfo = new TargetRestoreInfo()
+                {
+                    ContainerId = request.TargetInfo.ContainerId,
+                    TargetDirectoryMapping = wLRecoveryConfig.TargetDirectoryMapping
+                };
+            }
+
+            // The customer supplies the target drive paths (source volume path -> target path) on the
+            // recovery config for snapshot restore. Only send the volume remappings that have a target
+            // path set; both original and alternate location restore support drive remapping on clash.
+            // ShouldUseAlternateTargetLocation stays driven by the restore target (original vs. alternate
+            // location) and is not affected by drive remapping.
+            if (wLRecoveryConfig.targetPhysicalPath != null)
+            {
+                List<SQLDataDirectoryMapping> remappedPaths = wLRecoveryConfig.targetPhysicalPath
+                    .Where(p => !string.IsNullOrEmpty(p.TargetPath)).ToList();
+                if (remappedPaths.Count > 0)
+                {
+                    request.AlternateDirectoryPaths = remappedPaths;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Builds the full user-assigned managed identity details (ARM id, name, clientId, principalId)
+        /// by resolving the identity resource via ARM. The service validates clientId/principalId, so they
+        /// are looked up from the identity's ARM id rather than being inferred.
+        /// </summary>
+        /// <param name="identityArmId">ARM id of the user-assigned managed identity.</param>
+        /// <returns>Populated UserAssignedManagedIdentityDetails, or null when no identity is provided.</returns>
+        private UserAssignedManagedIdentityDetails BuildUserAssignedManagedIdentityDetails(string identityArmId)
+        {
+            if (string.IsNullOrEmpty(identityArmId))
+            {
+                return null;
+            }
+
+            GenericResource identityResource = ServiceClientAdapter.GetUserAssignedIdentityResource(identityArmId);
+            string clientId = null;
+            string principalId = null;
+            if (identityResource != null && identityResource.Properties != null)
+            {
+                Newtonsoft.Json.Linq.JObject identityProperties = Newtonsoft.Json.Linq.JObject.FromObject(identityResource.Properties);
+                clientId = (string)identityProperties["clientId"];
+                principalId = (string)identityProperties["principalId"];
+            }
+
+            if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(principalId))
+            {
+                throw new ArgumentException(string.Format(Resources.AzureWorkloadSQLInstanceSnapshotIdentityResolutionFailed, identityArmId));
+            }
+
+            return new UserAssignedManagedIdentityDetails()
+            {
+                IdentityArmId = identityArmId,
+                IdentityName = identityArmId.Split('/').Last(),
+                UserAssignedIdentityProperties = new UserAssignedIdentityProperties()
+                {
+                    ClientId = clientId,
+                    PrincipalId = principalId
+                }
+            };
         }
 
         private void ValidateAzureWorkloadBackupManagementType(
@@ -1157,7 +1375,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private void ValidateAzureWorkloadDisableProtectionRequest(ItemBase itemBase)
         {
 
-            if (itemBase == null || (itemBase.GetType() != typeof(AzureWorkloadSQLDatabaseProtectedItem) && itemBase.GetType() != typeof(AzureWorkloadSAPHanaDatabaseProtectedItem)))
+            if (itemBase == null || (itemBase.GetType() != typeof(AzureWorkloadSQLDatabaseProtectedItem) && itemBase.GetType() != typeof(AzureWorkloadSAPHanaDatabaseProtectedItem) && itemBase.GetType() != typeof(AzureWorkloadSQLInstanceProtectedItem)))
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
                                             typeof(AzureWorkloadSQLDatabaseProtectedItem).ToString()));
