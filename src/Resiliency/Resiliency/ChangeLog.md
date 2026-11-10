@@ -19,5 +19,6 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.0
 * First preview release for module Az.Resiliency
     - Added 55 cmdlets for drills, goal assignments, recovery plans and usage plans based on api-version `2026-10-01`
