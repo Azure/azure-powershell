@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string ResourceType { get; set; }
 
+        public string ProviderNamespace => ResourceIdentifier.GetProviderFromResourceType(ResourceType);
+
         public string ExtensionResourceType { get; set; }
 
         public Sku Sku { get; set; }

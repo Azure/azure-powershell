@@ -36,7 +36,7 @@ Get-AzResource [-Name <String>] [-ResourceType <String>] [-ODataQuery <String>] 
 
 ## DESCRIPTION
 
-The **Get-AzResource** cmdlet gets Azure resources.
+The **Get-AzResource** cmdlet gets Azure resources. Each result includes a read-only `ProviderNamespace` property derived from the `ResourceType` property. This property can be used to pipe resources into resource provider cmdlets.
 
 ## EXAMPLES
 

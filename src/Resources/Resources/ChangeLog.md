@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added a read-only ProviderNamespace property to Get-AzResource results to support direct piping to resource provider cmdlets. [#10271]
 * Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `10.0.3` to `10.0.10`.
 
 ## Version 10.2.2
