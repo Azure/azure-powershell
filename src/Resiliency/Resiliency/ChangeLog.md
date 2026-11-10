@@ -1,3 +1,23 @@
+<!--
+    Please leave this section at the top of the change log.
+
+    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
+
+    ## Upcoming Release
+    * Overview of change #1
+        - Additional information about change #1
+    * Overview of change #2
+        - Additional information about change #2
+        - Additional information about change #2
+    * Overview of change #3
+    * Overview of change #4
+        - Additional information about change #4
+
+    ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
+    * Overview of change #1
+        - Additional information about change #1
+-->
 ## Upcoming Release
-* Initial GA release of Az.Resiliency module for api-version `2026-10-01`.
-* 55 cmdlets across drill, goal-assignment, recovery-plan, and usage-plan resource types.
+
+* First preview release for module Az.Resiliency
+    - Added 55 cmdlets for drills, goal assignments, recovery plans and usage plans based on api-version `2026-10-01`
