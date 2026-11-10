@@ -48,9 +48,17 @@ Describe 'New-AzStorageMoverS3WithHmacEndpoint' {
         $s3endpoint.Property.Description | Should -Be "s3 other source"
     }
 
+}
+
+Describe 'New-AzStorageMoverS3WithHmacEndpoint PythonParity' -Tag @('PythonParity', 'Offline') {
     It 'CreateExpandedWithEndpointKindRequest' {
-        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
-        $endpoint = New-AzStorageMoverS3WithHmacEndpoint -Name "s3kind" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -SourceUri "https://s3.example.com/bucket" -SourceType "MINIO" -EndpointKind Source
-        ($endpoint.Property.ToJsonString() | ConvertFrom-Json).endpointKind | Should -Be "Source"
+        $capture = Invoke-StorageMoverTestRequest -Response @{ properties = @{ endpointType = 'S3WithHMAC' } } -Command {
+            param($pipeline)
+            New-AzStorageMoverS3WithHmacEndpoint -Name 's3kind' -SubscriptionId $env.SubscriptionId -ResourceGroupName 'rg' -StorageMoverName 'mover' -SourceUri 'https://s3.example.com/bucket' -SourceType MINIO -EndpointKind Source -HttpPipelinePrepend $pipeline
+        }
+        $request = $capture.Requests[0].Content | ConvertFrom-Json
+        $request.properties.endpointKind | Should -Be 'Source'
+        $request.properties.sourceType | Should -Be 'MINIO'
+        $request.identity.type | Should -Be 'SystemAssigned'
     }
 }

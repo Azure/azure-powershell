@@ -113,19 +113,201 @@ Describe 'New-AzStorageMoverJobDefinition' {
         $job.TargetResourceId | Should -Be $env.PartnerEndpointId
     }
 
+}
+
+Describe 'New-AzStorageMoverJobDefinition RequestContract' -Tag @('PythonParity', 'Offline') {
     It 'CreateExpandedSyncAndHourlyRequest' {
-        # Hourly schedules and synchronization settings are not recorded live yet, so this checks the request model offline.
-        $jobDefinition = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.JobDefinition]::New()
-        $jobDefinition.JobType = "OnPremToCloudAgentLess"
-        $jobDefinition.ScheduleFrequency = "Hourly"
-        $jobDefinition.ScheduleRepeatInterval = "PT1H"
-        $jobDefinition.SyncMode = "SnapshotBased"
-        $jobDefinition.MoverSyncedUntil = [datetime]::new(2026, 5, 1, 0, 0, 0, [System.DateTimeKind]::Utc)
-        $request = ($jobDefinition.ToJsonString() | ConvertFrom-Json).properties
+        $syncedUntil = [datetime]::new(2026, 5, 1, 0, 0, 0, [System.DateTimeKind]::Utc)
+        $response = @{
+            name = 'job'
+            properties = @{
+                sourceName = 'source'; targetName = 'target'; copyMode = 'Additive'
+                jobType = 'OnPremToCloudAgentLess'; syncMode = 'SnapshotBased'
+                dataIntegrityValidation = 'SaveVerifyFileMD5'
+                moverSyncedUntil = '2026-05-01T00:00:00Z'
+                schedule = @{ frequency = 'Hourly'; repeatInterval = '4h'; isActive = $true }
+            }
+        }
+        $capture = Invoke-StorageMoverTestRequest -Response $response -Command {
+            param($pipeline)
+            New-AzStorageMoverJobDefinition -SubscriptionId $env.SubscriptionId -ResourceGroupName 'rg' -StorageMoverName 'mover' -ProjectName 'project' -Name 'job' -SourceName 'source' -TargetName 'target' -CopyMode Additive -JobType OnPremToCloudAgentLess -ScheduleFrequency Hourly -ScheduleRepeatInterval '4h' -ScheduleIsActive -SyncMode SnapshotBased -DataIntegrityValidation SaveVerifyFileMD5 -MoverSyncedUntil $syncedUntil -HttpPipelinePrepend $pipeline
+        }
+        $capture.Requests.Count | Should -Be 1
+        $capture.Requests[0].Method | Should -Be 'PUT'
+        $capture.Requests[0].Uri.AbsolutePath | Should -Be "/subscriptions/$($env.SubscriptionId)/resourceGroups/rg/providers/Microsoft.StorageMover/storageMovers/mover/projects/project/jobDefinitions/job"
+        $capture.Requests[0].Uri.Query | Should -Be '?api-version=2026-05-01'
+        $request = ($capture.Requests[0].Content | ConvertFrom-Json).properties
         $request.jobType | Should -Be "OnPremToCloudAgentLess"
         $request.schedule.frequency | Should -Be "Hourly"
-        $request.schedule.repeatInterval | Should -Be "PT1H"
+        $request.schedule.repeatInterval | Should -Be "4h"
+        $request.schedule.isActive | Should -Be $true
         $request.syncMode | Should -Be "SnapshotBased"
-        $request.moverSyncedUntil | Should -Not -BeNullOrEmpty
+        $request.dataIntegrityValidation | Should -Be 'SaveVerifyFileMD5'
+        ([datetime]$request.moverSyncedUntil).ToUniversalTime() | Should -Be $syncedUntil
+        $capture.Result.JobType | Should -Be 'OnPremToCloudAgentLess'
+        $capture.Result.ScheduleRepeatInterval | Should -Be '4h'
+        $capture.Result.SyncMode | Should -Be 'SnapshotBased'
+        $capture.Result.DataIntegrityValidation | Should -Be 'SaveVerifyFileMD5'
+        $capture.Result.MoverSyncedUntil.ToUniversalTime() | Should -Be $syncedUntil
+    }
+}
+
+Describe 'New-AzStorageMoverJobDefinition PythonParity' -Tag 'PythonParity' {
+    It 'Create<Frequency>Schedule' -TestCases @(
+        @{ Frequency = 'Weekly'; CopyMode = 'Additive'; Hour = 2 },
+        @{ Frequency = 'Daily'; CopyMode = 'Mirror'; Hour = 0 },
+        @{ Frequency = 'Onetime'; CopyMode = 'Additive'; Hour = 10 }
+    ) {
+        param($Frequency, $CopyMode, $Hour)
+        $context = $null
+        try {
+            $context = New-StorageMoverTestContext -Name "sm-$($Frequency.ToLowerInvariant())" -JobEndpoints
+            $parameters = @{
+                ProjectName = 'project'; Name = 'scheduled'; SourceName = 'source'; TargetName = 'target'
+                CopyMode = $CopyMode; ScheduleFrequency = $Frequency; ScheduleIsActive = $true
+                ExecutionTimeHour = $Hour; ScheduleStartDate = [datetime]$env.ScenarioScheduleStartDate
+            }
+            if ($Frequency -ne 'Onetime') {
+                $parameters.ScheduleEndDate = [datetime]$env.ScenarioScheduleEndDate
+            }
+            if ($Frequency -eq 'Weekly') {
+                $parameters.ScheduleDaysOfWeek = @('Monday', 'Wednesday', 'Friday')
+                $parameters.DataIntegrityValidation = 'None'
+            } elseif ($Frequency -eq 'Daily') {
+                $parameters.PreservePermission = $true
+                $parameters.DataIntegrityValidation = 'None'
+            }
+            $job = New-AzStorageMoverJobDefinition @context @parameters
+            $job.CopyMode | Should -Be $CopyMode
+            $job.ScheduleFrequency | Should -Be $Frequency
+            $job.ScheduleIsActive | Should -Be $true
+            $job.ExecutionTimeHour | Should -Be $Hour
+            if ($Frequency -eq 'Weekly') {
+                $job.DataIntegrityValidation | Should -Be 'None'
+                @($job.ScheduleDaysOfWeek).Count | Should -Be 3
+                foreach ($day in $parameters.ScheduleDaysOfWeek) {
+                    $job.ScheduleDaysOfWeek | Should -Contain $day
+                }
+            } elseif ($Frequency -eq 'Daily') {
+                $job.PreservePermission | Should -Be $true
+                $job.DataIntegrityValidation | Should -Be 'None'
+            }
+            $job = Get-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'scheduled'
+            $job.ScheduleFrequency | Should -Be $Frequency
+            $job.CopyMode | Should -Be $CopyMode
+            Remove-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'scheduled'
+            Invoke-StorageMoverTestFailure -Code ResourceNotFound -Command {
+                Get-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'scheduled' -ErrorAction Stop
+            }
+        } finally {
+            Remove-StorageMoverTestContext -Context $context
+        }
+    }
+
+    It 'CreateGetPartiallyUpdateAndDeleteHourlySchedule' {
+        $context = $null
+        try {
+            $context = New-StorageMoverTestContext -Name 'sm-hourly' -Location eastus2euap -Project
+            $accountId = "/subscriptions/$($context.SubscriptionId)/resourceGroups/$($context.ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/testaccount"
+            foreach ($kind in @('Source', 'Target')) {
+                New-AzStorageMoverAzSmbFileShareEndpoint @context -Name $kind.ToLowerInvariant() -StorageAccountResourceId $accountId -FileShareName "$($kind.ToLowerInvariant())share" -EndpointKind $kind | Out-Null
+            }
+            $parameters = @{
+                ProjectName = 'project'; Name = 'scheduled'; SourceName = 'source'; TargetName = 'target'
+                CopyMode = 'Additive'; JobType = 'CloudToCloud'; ScheduleFrequency = 'Hourly'
+                ScheduleRepeatInterval = '4h'; ScheduleIsActive = $true; ExecutionTimeHour = 9; ExecutionTimeMinute = 0
+                ScheduleStartDate = [datetime]$env.ScenarioScheduleStartDate
+                ScheduleEndDate = [datetime]$env.ScenarioScheduleEndDate
+            }
+            $job = New-AzStorageMoverJobDefinition @context @parameters
+            $job.ScheduleFrequency | Should -Be 'Hourly'
+            $job.ScheduleRepeatInterval | Should -Be '4h'
+            $job.ScheduleIsActive | Should -Be $true
+            $job = Get-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'scheduled'
+            $job.ScheduleRepeatInterval | Should -Be '4h'
+
+            $job = Update-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'scheduled' -ScheduleRepeatInterval '6h'
+            $job.ScheduleFrequency | Should -Be 'Hourly'
+            $job.ScheduleRepeatInterval | Should -Be '6h'
+            $job.ScheduleIsActive | Should -Be $true
+            $job = Update-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'scheduled' -ScheduleIsActive:$false
+            $job.ScheduleIsActive | Should -Be $false
+            $job.ScheduleRepeatInterval | Should -Be '6h'
+            $job = Get-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'scheduled'
+            $job.ScheduleIsActive | Should -Be $false
+            $job.ScheduleFrequency | Should -Be 'Hourly'
+
+            $parameters.Name = 'invalid'
+            $parameters.ScheduleRepeatInterval = '5h'
+            Invoke-StorageMoverTestFailure -Command { New-AzStorageMoverJobDefinition @context @parameters -ErrorAction Stop }
+            Remove-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'scheduled'
+        } finally {
+            Remove-StorageMoverTestContext -Context $context
+        }
+    }
+
+    It 'RejectInvalidCrossTenantJobs' {
+        $context = $null
+        try {
+            $context = New-StorageMoverTestContext -Name 'sm-cross-tenant-validation' -Location westcentralus -Project
+            $partnerSubscription = '22222222-2222-2222-2222-222222222222'
+            $partnerAccount = "/subscriptions/$partnerSubscription/resourceGroups/partner-rg/providers/Microsoft.Storage/storageAccounts/partnersa"
+            New-AzStorageMoverAzStorageContainerEndpoint @context -Name 'source' -StorageAccountResourceId $env.ScenarioStorageAccountId -BlobContainerName 'testcontainer' -EndpointKind Source -EnableCrossTenantTransfer -AllowedStorageAccount $partnerAccount | Out-Null
+            $parameters = @{
+                ProjectName = 'project'; SourceName = 'source'; TargetName = 'partner-target'
+                CopyMode = 'Additive'; JobType = 'CloudToCloud'; IsCrossTenantJob = $true
+                CrossTenantEndpointTenantId = '11111111-2222-3333-4444-555555555555'
+                CrossTenantEndpointResourceId = "/subscriptions/$partnerSubscription/resourceGroups/partner-rg/providers/Microsoft.StorageMover/storageMovers/partner-mover/endpoints/partner-target"
+            }
+            foreach ($missing in @('CrossTenantEndpointTenantId', 'CrossTenantEndpointResourceId', 'IsCrossTenantJob')) {
+                $invalid = $parameters.Clone()
+                $invalid.Name = "missing-$($missing.ToLowerInvariant())"
+                $invalid.Remove($missing)
+                Invoke-StorageMoverTestFailure -Command { New-AzStorageMoverJobDefinition @context @invalid -ErrorAction Stop }
+            }
+            $invalid = $parameters.Clone()
+            $invalid.Name = 'invalid-job-type'
+            $invalid.JobType = 'OnPremToCloud'
+            Invoke-StorageMoverTestFailure -Command { New-AzStorageMoverJobDefinition @context @invalid -ErrorAction Stop }
+            $invalid = $parameters.Clone()
+            $invalid.Name = 'same-subscription'
+            $invalid.CrossTenantEndpointResourceId = "/subscriptions/$($context.SubscriptionId)/resourceGroups/$($context.ResourceGroupName)/providers/Microsoft.StorageMover/storageMovers/$($context.StorageMoverName)/endpoints/partner-target"
+            Invoke-StorageMoverTestFailure -Command { New-AzStorageMoverJobDefinition @context @invalid -ErrorAction Stop }
+            @(Get-AzStorageMoverJobDefinition @context -ProjectName 'project').Count | Should -Be 0
+        } finally {
+            Remove-StorageMoverTestContext -Context $context
+        }
+    }
+
+    It 'CreateAgentlessJobWithConnectionAndRejectMissingConnection' {
+        $context = $null
+        $connectionCreated = $false
+        try {
+            $context = New-StorageMoverTestContext -Name 'sm-agentless' -Location eastus2euap -Project
+            New-AzStorageMoverSmbEndpoint @context -Name 'source' -Host '10.0.0.1' -ShareName 'testshare' -CredentialsUsernameUri 'https://examples-azureKeyVault.vault.azure.net/secrets/username' -CredentialsPasswordUri 'https://examples-azureKeyVault.vault.azure.net/secrets/password' | Out-Null
+            $accountId = "/subscriptions/$($context.SubscriptionId)/resourceGroups/$($context.ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/testaccount"
+            New-AzStorageMoverAzSmbFileShareEndpoint @context -Name 'target' -StorageAccountResourceId $accountId -FileShareName 'testshare' | Out-Null
+            $parameters = @{ ProjectName = 'project'; Name = 'agentless'; SourceName = 'source'; TargetName = 'target'; CopyMode = 'Additive'; JobType = 'OnPremToCloudAgentLess' }
+            Invoke-StorageMoverTestFailure -Command { New-AzStorageMoverJobDefinition @context @parameters -ErrorAction Stop }
+
+            $connection = New-AzStorageMoverConnection @context -Name 'agentless' -PrivateLinkServiceId $env.ScenarioAgentlessPrivateLinkServiceId
+            $connectionCreated = $true
+            $connection.Status | Should -BeIn @('Pending', 'Approved')
+            $parameters.Connection = @($connection.Id)
+            $job = New-AzStorageMoverJobDefinition @context @parameters
+            $job.JobType | Should -Be 'OnPremToCloudAgentLess'
+            $job.Connection | Should -Contain $connection.Id
+            $job.AgentName | Should -BeNullOrEmpty
+            $job = Get-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'agentless'
+            $job.JobType | Should -Be 'OnPremToCloudAgentLess'
+            $job.Connection | Should -Contain $connection.Id
+            Remove-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'agentless'
+        } finally {
+            try {
+                if ($connectionCreated) { Remove-AzStorageMoverConnection @context -Name 'agentless' }
+            } finally {
+                Remove-StorageMoverTestContext -Context $context
+            }
+        }
     }
 }

@@ -30,6 +30,274 @@ function Start-TestSleep {
     }
 }
 
+function Invoke-StorageMoverTestRequest {
+    param([scriptblock]$Command, [hashtable]$Response, [int]$StatusCode = 200)
+
+    $state = @{
+        Requests = [System.Collections.Generic.List[object]]::new()
+        Response = $Response
+        StatusCode = $StatusCode
+    }
+    $step = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep]{
+        param($request, $callback, $next)
+        $content = if ($null -ne $request.Content) { $request.Content.ReadAsStringAsync().GetAwaiter().GetResult() }
+        $state.Requests.Add([pscustomobject]@{
+            Method = $request.Method.Method
+            Uri = $request.RequestUri
+            Content = $content
+        })
+        $responseMessage = [System.Net.Http.HttpResponseMessage]::new($state.StatusCode)
+        $responseMessage.RequestMessage = $request
+        $responseMessage.Content = [System.Net.Http.StringContent]::new(
+            ($state.Response | ConvertTo-Json -Depth 20), [System.Text.Encoding]::UTF8, 'application/json')
+        [System.Threading.Tasks.Task[System.Net.Http.HttpResponseMessage]]::FromResult($responseMessage)
+    }.GetNewClosure()
+
+    $previousPlaybackMode = $env:AzPSAutorestTestPlaybackMode
+    try {
+        $env:AzPSAutorestTestPlaybackMode = 'true'
+        $result = & $Command $step
+    } finally {
+        $env:AzPSAutorestTestPlaybackMode = $previousPlaybackMode
+    }
+    [pscustomobject]@{ Result = $result; Requests = $state.Requests.ToArray() }
+}
+
+function Invoke-StorageMoverTestArmRequest {
+    param([string]$Method, [string]$Path, [hashtable]$Body, [switch]$IgnoreNotFound)
+
+    $parameters = @{ Method = $Method; Uri = "https://management.azure.com$Path"; ErrorAction = 'Stop' }
+    if ($Body) {
+        $parameters.Payload = $Body | ConvertTo-Json -Depth 20
+    }
+    $response = Invoke-AzRestMethod @parameters
+    if ($IgnoreNotFound -and $response.StatusCode -eq 404) {
+        return
+    }
+    if ($response.StatusCode -lt 200 -or $response.StatusCode -ge 300) {
+        throw "ARM $Method $Path returned $($response.StatusCode): $($response.Content)"
+    }
+    if ($response.Content) {
+        $response.Content | ConvertFrom-Json
+    }
+}
+
+function New-StorageMoverScenarioPipeline {
+    param($Recorder, [string]$Mode)
+
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep]{
+        param($request, $callback, $next)
+        $actualContent = if ($null -ne $request.Content) { $request.Content.ReadAsStringAsync().GetAwaiter().GetResult() }
+        $responseTask = $Recorder.SendAsync($request, $callback, $next)
+        if ($Mode -eq 'playback') {
+            # The generated recorder matches URIs but does not compare request bodies.
+            $response = $responseTask.GetAwaiter().GetResult()
+            $recordedContent = if ($null -ne $response.RequestMessage.Content) {
+                $response.RequestMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult()
+            }
+            $equal = [string]::IsNullOrWhiteSpace($actualContent) -and [string]::IsNullOrWhiteSpace($recordedContent)
+            if (-not [string]::IsNullOrWhiteSpace($actualContent) -and -not [string]::IsNullOrWhiteSpace($recordedContent)) {
+                $equal = [Newtonsoft.Json.Linq.JToken]::DeepEquals(
+                    [Newtonsoft.Json.Linq.JToken]::Parse($actualContent),
+                    [Newtonsoft.Json.Linq.JToken]::Parse($recordedContent))
+            }
+            if (-not $equal) {
+                throw "Playback request body differs from the recording for $($request.Method) $($request.RequestUri)."
+            }
+        }
+        $responseTask
+    }.GetNewClosure()
+}
+
+function Initialize-StorageMoverScenarioEnvironment {
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $suffix = RandomString $false 8
+    $sharedSubscriptionId = ($env.MultiCloudConnectorId -split '/')[2]
+    $sharedPrefix = "/subscriptions/$sharedSubscriptionId"
+    $fixtures = @{
+        ScenarioSubscriptionId = $subscriptionId
+        ScenarioResourceGroupName = "sm-ps-parity-$suffix"
+        ScenarioRunId = [guid]::NewGuid().ToString()
+        ScenarioScheduleStartDate = [datetime]::UtcNow.Date.AddDays(1).ToString('o')
+        ScenarioScheduleEndDate = [datetime]::UtcNow.Date.AddDays(30).ToString('o')
+        ScenarioMultiCloudConnectorId = $env.MultiCloudConnectorId
+        ScenarioPublicS3BucketId = $env.AwsS3BucketId
+        ScenarioPrivateS3BucketId = "$sharedPrefix/resourceGroups/aws_640698235822/providers/Microsoft.AWSConnector/s3Buckets/e2e-sm-rp-private-bucket"
+        ScenarioStorageAccountId = "$sharedPrefix/resourceGroups/CP_Mover_IN_WCUS/providers/Microsoft.Storage/storageAccounts/cpmoveraccount"
+        ScenarioPrivateLinkServiceId = "$sharedPrefix/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.Network/privateLinkServices/E2E-VPC-PLS-E2ETest.Test.WCUS"
+        ScenarioAgentlessPrivateLinkServiceId = "$sharedPrefix/resourceGroups/E2E-Management-RGsyn/providers/Microsoft.Network/privateLinkServices/E2E-VPC-PLS-E2ETest.Test.ECY"
+        ScenarioPublicContainerName = "ps-public-$suffix"
+        ScenarioPrivateContainerName = "ps-private-$suffix"
+        ScenarioPublicRoleAssignmentName = [guid]::NewGuid().ToString()
+        ScenarioPrivateRoleAssignmentName = [guid]::NewGuid().ToString()
+    }
+    foreach ($key in $fixtures.Keys) {
+        $env[$key] = $fixtures[$key]
+    }
+    $path = "/subscriptions/$subscriptionId/resourceGroups/$($fixtures.ScenarioResourceGroupName)?api-version=2022-09-01"
+    $existing = Invoke-AzRestMethod -Method GET -Uri "https://management.azure.com$path" -ErrorAction Stop
+    if ($existing.StatusCode -ne 404) {
+        throw "Refusing to reuse scenario resource group $($fixtures.ScenarioResourceGroupName)."
+    }
+    Invoke-StorageMoverTestArmRequest -Method PUT -Path $path -Body @{
+        location = 'eastus'
+        tags = @{ testSuite = 'Az.StorageMover.PythonParity'; runId = $fixtures.ScenarioRunId }
+    } | Out-Null
+    $fixtures
+}
+
+function New-StorageMoverTestContext {
+    param([string]$Name, [string]$Location = 'eastus', [switch]$Project, [switch]$JobEndpoints)
+
+    $context = @{
+        SubscriptionId = $env.ScenarioSubscriptionId
+        ResourceGroupName = $env.ScenarioResourceGroupName
+        StorageMoverName = $Name
+        HttpPipelinePrepend = (New-StorageMoverScenarioPipeline -Recorder $Mock -Mode $TestMode)
+    }
+    New-AzStorageMover -SubscriptionId $context.SubscriptionId -ResourceGroupName $context.ResourceGroupName -Name $Name -Location $Location -HttpPipelinePrepend $context.HttpPipelinePrepend | Out-Null
+    if ($Project -or $JobEndpoints) {
+        New-AzStorageMoverProject @context -Name 'project' | Out-Null
+    }
+    if ($JobEndpoints) {
+        New-AzStorageMoverNfsEndpoint @context -Name 'source' -Host '10.0.0.1' -Export '/' -NfsVersion NFSv3 -EndpointKind Source | Out-Null
+        $accountId = "/subscriptions/$($context.SubscriptionId)/resourceGroups/$($context.ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/testaccount"
+        New-AzStorageMoverAzStorageContainerEndpoint @context -Name 'target' -StorageAccountResourceId $accountId -BlobContainerName 'testcontainer' -EndpointKind Target | Out-Null
+    }
+    $context
+}
+
+function Remove-StorageMoverTestContext {
+    param([hashtable]$Context)
+
+    if ($Context) {
+        Remove-AzStorageMover -SubscriptionId $Context.SubscriptionId -ResourceGroupName $Context.ResourceGroupName -Name $Context.StorageMoverName -Force -HttpPipelinePrepend $Context.HttpPipelinePrepend
+    }
+}
+
+function Invoke-StorageMoverTestFailure {
+    param([scriptblock]$Command, [string]$Code = 'InvalidRequestPropertyValue')
+
+    $failure = $null
+    try {
+        & $Command | Out-Null
+    } catch {
+        $failure = $_
+    }
+    $failure | Should -Not -BeNullOrEmpty
+    ($failure.FullyQualifiedErrorId + ' ' + $failure.Exception.Message + ' ' + [string]$failure.ErrorDetails) |
+        Should -Match ([regex]::Escape($Code))
+}
+
+function Invoke-StorageMoverTransferScenario {
+    param([switch]$PrivateSource)
+
+    $context = $null
+    $containerName = $env.ScenarioPublicContainerName
+    $roleName = $env.ScenarioPublicRoleAssignmentName
+    $bucketId = $env.ScenarioPublicS3BucketId
+    $moverName = 'sm-public-transfer'
+    if ($PrivateSource) {
+        $containerName = $env.ScenarioPrivateContainerName
+        $roleName = $env.ScenarioPrivateRoleAssignmentName
+        $bucketId = $env.ScenarioPrivateS3BucketId
+        $moverName = 'sm-private-transfer'
+    }
+    $containerId = "$($env.ScenarioStorageAccountId)/blobServices/default/containers/$containerName"
+    $roleId = "$containerId/providers/Microsoft.Authorization/roleAssignments/$roleName"
+    $connectionCreated = $false
+    $containerCreated = $false
+    $roleCreated = $false
+    try {
+        $context = New-StorageMoverTestContext -Name $moverName -Location westcentralus -Project
+        $jobParameters = @{ ProjectName = 'project'; Name = 'job'; SourceName = 'source'; TargetName = 'target'; CopyMode = 'Additive'; JobType = 'CloudToCloud' }
+        if ($PrivateSource) {
+            $connection = New-AzStorageMoverConnection @context -Name 'private' -PrivateLinkServiceId $env.ScenarioPrivateLinkServiceId
+            $connectionCreated = $true
+            $connection.PrivateEndpointResourceId | Should -Not -BeNullOrEmpty
+            if ($TestMode -ne 'playback') {
+                $privateEndpointConnection = $null
+                for ($attempt = 0; $attempt -lt 10; $attempt++) {
+                    $connections = Invoke-StorageMoverTestArmRequest -Method GET -Path "$($env.ScenarioPrivateLinkServiceId)/privateEndpointConnections?api-version=2024-05-01"
+                    $privateEndpointConnection = $connections.value | Where-Object { $_.properties.privateEndpoint.id -eq $connection.PrivateEndpointResourceId }
+                    if ($privateEndpointConnection) { break }
+                    Start-TestSleep -Seconds 15
+                }
+                $privateEndpointConnection | Should -Not -BeNullOrEmpty
+                Invoke-StorageMoverTestArmRequest -Method PUT -Path "$($privateEndpointConnection.id)?api-version=2024-05-01" -Body @{
+                    properties = @{ privateLinkServiceConnectionState = @{ status = 'Approved'; description = 'Approved by Az.StorageMover scenario test'; actionsRequired = 'None' } }
+                } | Out-Null
+            }
+            for ($attempt = 0; $attempt -lt 10; $attempt++) {
+                $connection = Get-AzStorageMoverConnection @context -Name 'private'
+                if ($connection.Status -eq 'Approved') { break }
+                Start-TestSleep -Seconds 30
+            }
+            $connection.Status | Should -Be 'Approved'
+            $jobParameters.Connection = @($connection.Id)
+        }
+
+        $source = New-AzStorageMoverMultiCloudConnectorEndpoint @context -Name 'source' -MultiCloudConnectorId $env.ScenarioMultiCloudConnectorId -AWSS3BucketId $bucketId -EndpointKind Source
+        $source.Property.EndpointKind | Should -Be 'Source'
+        $target = New-AzStorageMoverAzStorageContainerEndpoint @context -Name 'target' -StorageAccountResourceId $env.ScenarioStorageAccountId -BlobContainerName $containerName -EndpointKind Target
+        $target.IdentityPrincipalId | Should -Not -BeNullOrEmpty
+        if ($TestMode -ne 'playback') {
+            $existingContainer = Invoke-StorageMoverTestArmRequest -Method GET -Path "$containerId`?api-version=2023-05-01" -IgnoreNotFound
+            if ($existingContainer) { throw "Refusing to reuse container $containerName." }
+            Invoke-StorageMoverTestArmRequest -Method PUT -Path "$containerId`?api-version=2023-05-01" -Body @{
+                properties = @{ metadata = @{ azstoragemoverparityrunid = $env.ScenarioRunId } }
+            } | Out-Null
+            $containerCreated = $true
+            $sharedSubscriptionId = ($env.ScenarioStorageAccountId -split '/')[2]
+            Invoke-StorageMoverTestArmRequest -Method PUT -Path "$roleId`?api-version=2022-04-01" -Body @{
+                properties = @{
+                    roleDefinitionId = "/subscriptions/$sharedSubscriptionId/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe"
+                    principalId = $target.IdentityPrincipalId
+                    principalType = 'ServicePrincipal'
+                }
+            } | Out-Null
+            $roleCreated = $true
+        }
+
+        $job = New-AzStorageMoverJobDefinition @context @jobParameters
+        $job.SourceName | Should -Be 'source'
+        $job.TargetName | Should -Be 'target'
+        $job.CopyMode | Should -Be 'Additive'
+        $job = Get-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'job'
+        $job.JobType | Should -Be 'CloudToCloud'
+        $jobs = Get-AzStorageMoverJobDefinition @context -ProjectName 'project'
+        @($jobs.Name) | Should -Contain 'job'
+
+        $started = Start-AzStorageMoverJobDefinition @context -ProjectName 'project' -JobDefinitionName 'job'
+        $started.JobRunResourceId1 | Should -Not -BeNullOrEmpty
+        $runName = $started.JobRunResourceId1.TrimEnd('/').Split('/')[-1]
+        for ($attempt = 0; $attempt -lt 60; $attempt++) {
+            $run = Get-AzStorageMoverJobRun @context -ProjectName 'project' -JobDefinitionName 'job' -Name $runName
+            if ($run.Status -in @('Succeeded', 'Failed', 'Canceled', 'Cancelled', 'PartialSucceeded')) { break }
+            Start-TestSleep -Seconds 30
+        }
+        $run.Status | Should -Be 'Succeeded'
+        $run.SourceName | Should -Be 'source'
+        $run.TargetName | Should -Be 'target'
+        $runs = Get-AzStorageMoverJobRun @context -ProjectName 'project' -JobDefinitionName 'job'
+        @($runs.Name) | Should -Contain $runName
+        Remove-AzStorageMoverJobDefinition @context -ProjectName 'project' -Name 'job'
+    } finally {
+        $cleanupFailures = @()
+        foreach ($cleanup in @(
+            { if ($roleCreated) { Invoke-StorageMoverTestArmRequest -Method DELETE -Path "$roleId`?api-version=2022-04-01" -IgnoreNotFound | Out-Null } },
+            { if ($containerCreated) { Invoke-StorageMoverTestArmRequest -Method DELETE -Path "$containerId`?api-version=2023-05-01" -IgnoreNotFound | Out-Null } },
+            { if ($connectionCreated) { Remove-AzStorageMoverConnection @context -Name 'private' } },
+            { Remove-StorageMoverTestContext -Context $context }
+        )) {
+            try { & $cleanup } catch { $cleanupFailures += $_ }
+        }
+        if ($cleanupFailures.Count) {
+            throw ($cleanupFailures -join [Environment]::NewLine)
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -182,9 +450,22 @@ function setupEnv() {
         $env.PartnerEndpointName = ($env.PartnerEndpointId -split '/')[-1]
     }
 
+    $scenarioFixtures = Initialize-StorageMoverScenarioEnvironment
+    foreach ($key in $scenarioFixtures.Keys) {
+        $env[$key] = $scenarioFixtures[$key]
+    }
+
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
+    if ($env.ScenarioResourceGroupName) {
+        $groupPath = "/subscriptions/$($env.ScenarioSubscriptionId)/resourceGroups/$($env.ScenarioResourceGroupName)?api-version=2022-09-01"
+        $group = Invoke-StorageMoverTestArmRequest -Method GET -Path $groupPath -IgnoreNotFound
+        if ($group -and $group.tags.runId -eq $env.ScenarioRunId) {
+            Invoke-StorageMoverTestArmRequest -Method DELETE -Path $groupPath | Out-Null
+        }
+    }
+
     # Delete the storage mover and storage account created for the cross-tenant job definition scenario.
     if ($env.CrossTenantStoMoverName) {
         Remove-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $env.CrossTenantStoMoverName -Force -ErrorAction SilentlyContinue
