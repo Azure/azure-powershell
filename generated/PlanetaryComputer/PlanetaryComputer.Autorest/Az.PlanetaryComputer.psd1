@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.PlanetaryComputer.private.dll'
   FormatsToProcess = './Az.PlanetaryComputer.format.ps1xml'
-  FunctionsToExport = 'Get-AzPlanetaryComputerGeoCatalog', 'New-AzPlanetaryComputerGeoCatalog', 'Remove-AzPlanetaryComputerGeoCatalog', 'Update-AzPlanetaryComputerGeoCatalog'
+  FunctionsToExport = 'Get-AzPlanetaryComputerGeoCatalog', 'Get-AzPlanetaryComputerGeoCatalogPrivateEndpointConnection', 'Get-AzPlanetaryComputerGeoCatalogPrivateLink', 'New-AzPlanetaryComputerGeoCatalog', 'New-AzPlanetaryComputerGeoCatalogPrivateEndpointConnection', 'Remove-AzPlanetaryComputerGeoCatalog', 'Remove-AzPlanetaryComputerGeoCatalogPrivateEndpointConnection', 'Update-AzPlanetaryComputerGeoCatalog', 'Update-AzPlanetaryComputerGeoCatalogPrivateEndpointConnection'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'PlanetaryComputer'

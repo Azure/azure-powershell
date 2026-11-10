@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalog))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Description(@"create a GeoCatalog")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}", ApiVersion = "2026-04-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}", ApiVersion = "2026-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.NotSuggestDefaultParameterSet]
     public partial class NewAzPlanetaryComputerGeoCatalog_CreateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IEventListener,

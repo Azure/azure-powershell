@@ -15,15 +15,15 @@ Update a GeoCatalog
 ### UpdateExpanded (Default)
 ```
 Update-AzPlanetaryComputerGeoCatalog -CatalogName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>]
+ [-SubscriptionId <String>] [-IdentityType <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzPlanetaryComputerGeoCatalog -InputObject <IPlanetaryComputerIdentity>
- [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+Update-AzPlanetaryComputerGeoCatalog -InputObject <IPlanetaryComputerIdentity> [-IdentityType <String>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -106,11 +106,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
+### -IdentityType
+The managed identity type of the GeoCatalog.
+Use None to remove identities or UserAssigned for user-assigned identities.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -141,6 +142,21 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public network access is allowed for the GeoCatalog.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -259,4 +275,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file: Az.PlanetaryComputer-help.xml
+external help file:
 Module Name: Az.PlanetaryComputer
 online version: https://learn.microsoft.com/powershell/module/az.planetarycomputer/update-azplanetarycomputergeocatalog
 schema: 2.0.0
@@ -15,17 +15,16 @@ Update a GeoCatalog
 ### UpdateExpanded (Default)
 ```
 Update-AzPlanetaryComputerGeoCatalog -CatalogName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-IdentityType <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzPlanetaryComputerGeoCatalog -InputObject <IPlanetaryComputerIdentity>
- [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzPlanetaryComputerGeoCatalog -InputObject <IPlanetaryComputerIdentity> [-IdentityType <String>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,11 +106,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
+### -IdentityType
+The managed identity type of the GeoCatalog.
+Use None to remove identities or UserAssigned for user-assigned identities.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,6 +142,21 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public network access is allowed for the GeoCatalog.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

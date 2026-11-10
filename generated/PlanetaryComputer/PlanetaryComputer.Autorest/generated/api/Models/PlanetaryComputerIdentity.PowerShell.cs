@@ -120,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).CatalogName = (string) content.GetValueForProperty("CatalogName",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).CatalogName, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -152,6 +156,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             if (content.Contains("CatalogName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).CatalogName = (string) content.GetValueForProperty("CatalogName",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).CatalogName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPlanetaryComputerIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

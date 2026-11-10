@@ -36,59 +36,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IResourceInternal)__trackedResource).Id; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentity _identity;
+        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentity _identity;
 
         /// <summary>The managed service identities assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentity()); set => this._identity = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentity()); set => this._identity = value; }
 
-        /// <summary>
-        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
+        /// <summary>The type of managed identity assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; }
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityInternal)Identity).Type = value ?? null; }
 
-        /// <summary>
-        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
+        /// <summary>The identities assigned to this resource by the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).TenantId; }
-
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).Type = value ?? null; }
-
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inherited)]
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
+        /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ManagedStorageResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ManagedStorageResourceId; }
+
         /// <summary>Internal Acessors for CatalogUri</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.CatalogUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).CatalogUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).CatalogUri = value ?? null; }
 
         /// <summary>Internal Acessors for Identity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentity()); set { {_identity = value;} } }
 
-        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
+        /// <summary>Internal Acessors for ManagedStorageResourceId</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.ManagedStorageResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ManagedStorageResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ManagedStorageResourceId = value ?? null /* arrayOf */; }
 
-        /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
+        /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogProperties Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ProvisioningState = value ?? null; }
+
+        /// <summary>Internal Acessors for State</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.State { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).State; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).State = value ?? null; }
+
+        /// <summary>Internal Acessors for StoppedSinceUtc</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogInternal.StoppedSinceUtc { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).StoppedSinceUtc; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).StoppedSinceUtc = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
@@ -124,6 +116,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IResourceInternal)__trackedResource).Name; }
 
+        /// <summary>Private endpoint connections to this GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PrivateEndpointConnection; }
+
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogProperties _property;
 
@@ -135,9 +131,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).ProvisioningState; }
 
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
+        public string PublicNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PublicNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).PublicNetworkAccess = value ?? null; }
+
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
+
+        /// <summary>
+        /// The lifecycle state of the GeoCatalog. An empty GeoCatalog may be stopped to reclaim capacity; customer data is retained
+        /// while stopped.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
+        public string State { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).State; }
+
+        /// <summary>
+        /// The UTC timestamp at which the GeoCatalog entered the `Stopped` state. Absent while the GeoCatalog is `Running`.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
+        public global::System.DateTime? StoppedSinceUtc { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal)Property).StoppedSinceUtc; }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -233,61 +246,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         SerializedName = @"catalogUri",
         PossibleTypes = new [] { typeof(string) })]
         string CatalogUri { get;  }
-        /// <summary>
-        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
-        SerializedName = @"principalId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityPrincipalId { get;  }
-        /// <summary>
-        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityTenantId { get;  }
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
+        /// <summary>The type of managed identity assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        Description = @"The type of managed identity assigned to this resource.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
         string IdentityType { get; set; }
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
+        /// <summary>The identities assigned to this resource by the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        Description = @"The identities assigned to this resource by the user.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The resource IDs of the managed storage accounts for the GeoCatalog.",
+        SerializedName = @"managedStorageResourceIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ManagedStorageResourceId { get;  }
+        /// <summary>Private endpoint connections to this GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Private endpoint connections to this GeoCatalog.",
+        SerializedName = @"privateEndpointConnections",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get;  }
         /// <summary>The status of the last operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
@@ -300,6 +303,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get;  }
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether or not public network access is allowed for the GeoCatalog.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// The lifecycle state of the GeoCatalog. An empty GeoCatalog may be stopped to reclaim capacity; customer data is retained
+        /// while stopped.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The lifecycle state of the GeoCatalog. An empty GeoCatalog may be stopped to reclaim capacity; customer data is retained while stopped.",
+        SerializedName = @"state",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Running", "Stopped")]
+        string State { get;  }
+        /// <summary>
+        /// The UTC timestamp at which the GeoCatalog entered the `Stopped` state. Absent while the GeoCatalog is `Running`.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The UTC timestamp at which the GeoCatalog entered the `Stopped` state. Absent while the GeoCatalog is `Running`.",
+        SerializedName = @"stoppedSinceUtc",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? StoppedSinceUtc { get;  }
         /// <summary>
         /// Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.
         /// </summary>
@@ -328,31 +371,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         /// <summary>The URI of the catalog management UI.</summary>
         string CatalogUri { get; set; }
         /// <summary>The managed service identities assigned to this resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentity Identity { get; set; }
-        /// <summary>
-        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
-        string IdentityPrincipalId { get; set; }
-        /// <summary>
-        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-        /// </summary>
-        string IdentityTenantId { get; set; }
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentity Identity { get; set; }
+        /// <summary>The type of managed identity assigned to this resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
         string IdentityType { get; set; }
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>The identities assigned to this resource by the user.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
+        System.Collections.Generic.List<string> ManagedStorageResourceId { get; set; }
+        /// <summary>Private endpoint connections to this GeoCatalog.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogProperties Property { get; set; }
         /// <summary>The status of the last operation.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// The lifecycle state of the GeoCatalog. An empty GeoCatalog may be stopped to reclaim capacity; customer data is retained
+        /// while stopped.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Running", "Stopped")]
+        string State { get; set; }
+        /// <summary>
+        /// The UTC timestamp at which the GeoCatalog entered the `Stopped` state. Absent while the GeoCatalog is `Running`.
+        /// </summary>
+        global::System.DateTime? StoppedSinceUtc { get; set; }
         /// <summary>
         /// Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.
         /// </summary>

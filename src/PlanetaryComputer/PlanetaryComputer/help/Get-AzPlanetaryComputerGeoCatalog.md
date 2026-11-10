@@ -1,5 +1,5 @@
 ---
-external help file: Az.PlanetaryComputer-help.xml
+external help file:
 Module Name: Az.PlanetaryComputer
 online version: https://learn.microsoft.com/powershell/module/az.planetarycomputer/get-azplanetarycomputergeocatalog
 schema: 2.0.0
@@ -21,7 +21,12 @@ Get-AzPlanetaryComputerGeoCatalog [-SubscriptionId <String[]>] [-DefaultProfile 
 ### Get
 ```
 Get-AzPlanetaryComputerGeoCatalog -CatalogName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPlanetaryComputerGeoCatalog -InputObject <IPlanetaryComputerIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -29,12 +34,6 @@ Get-AzPlanetaryComputerGeoCatalog -CatalogName <String> -ResourceGroupName <Stri
 ```
 Get-AzPlanetaryComputerGeoCatalog -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzPlanetaryComputerGeoCatalog -InputObject <IPlanetaryComputerIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +138,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False

@@ -29,11 +29,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
         public string CatalogUri { get => this._catalogUri; }
 
+        /// <summary>Backing field for <see cref="ManagedStorageResourceId" /> property.</summary>
+        private System.Collections.Generic.List<string> _managedStorageResourceId;
+
+        /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> ManagedStorageResourceId { get => this._managedStorageResourceId; }
+
         /// <summary>Internal Acessors for CatalogUri</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.CatalogUri { get => this._catalogUri; set { {_catalogUri = value;} } }
 
+        /// <summary>Internal Acessors for ManagedStorageResourceId</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.ManagedStorageResourceId { get => this._managedStorageResourceId; set { {_managedStorageResourceId = value;} } }
+
+        /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.PrivateEndpointConnection { get => this._privateEndpointConnection; set { {_privateEndpointConnection = value;} } }
+
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for State</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.State { get => this._state; set { {_state = value;} } }
+
+        /// <summary>Internal Acessors for StoppedSinceUtc</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogPropertiesInternal.StoppedSinceUtc { get => this._stoppedSinceUtc; set { {_stoppedSinceUtc = value;} } }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnection" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> _privateEndpointConnection;
+
+        /// <summary>Private endpoint connections to this GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get => this._privateEndpointConnection; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -41,6 +67,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         /// <summary>The status of the last operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="PublicNetworkAccess" /> property.</summary>
+        private string _publicNetworkAccess;
+
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
+        public string PublicNetworkAccess { get => this._publicNetworkAccess; set => this._publicNetworkAccess = value; }
+
+        /// <summary>Backing field for <see cref="State" /> property.</summary>
+        private string _state;
+
+        /// <summary>
+        /// The lifecycle state of the GeoCatalog. An empty GeoCatalog may be stopped to reclaim capacity; customer data is retained
+        /// while stopped.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
+        public string State { get => this._state; }
+
+        /// <summary>Backing field for <see cref="StoppedSinceUtc" /> property.</summary>
+        private global::System.DateTime? _stoppedSinceUtc;
+
+        /// <summary>
+        /// The UTC timestamp at which the GeoCatalog entered the `Stopped` state. Absent while the GeoCatalog is `Running`.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
+        public global::System.DateTime? StoppedSinceUtc { get => this._stoppedSinceUtc; }
 
         /// <summary>Backing field for <see cref="Tier" /> property.</summary>
         private string _tier;
@@ -86,6 +138,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         SerializedName = @"catalogUri",
         PossibleTypes = new [] { typeof(string) })]
         string CatalogUri { get;  }
+        /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The resource IDs of the managed storage accounts for the GeoCatalog.",
+        SerializedName = @"managedStorageResourceIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ManagedStorageResourceId { get;  }
+        /// <summary>Private endpoint connections to this GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Private endpoint connections to this GeoCatalog.",
+        SerializedName = @"privateEndpointConnections",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get;  }
         /// <summary>The status of the last operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
@@ -98,6 +172,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get;  }
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether or not public network access is allowed for the GeoCatalog.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// The lifecycle state of the GeoCatalog. An empty GeoCatalog may be stopped to reclaim capacity; customer data is retained
+        /// while stopped.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The lifecycle state of the GeoCatalog. An empty GeoCatalog may be stopped to reclaim capacity; customer data is retained while stopped.",
+        SerializedName = @"state",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Running", "Stopped")]
+        string State { get;  }
+        /// <summary>
+        /// The UTC timestamp at which the GeoCatalog entered the `Stopped` state. Absent while the GeoCatalog is `Running`.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The UTC timestamp at which the GeoCatalog entered the `Stopped` state. Absent while the GeoCatalog is `Running`.",
+        SerializedName = @"stoppedSinceUtc",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? StoppedSinceUtc { get;  }
         /// <summary>
         /// Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.
         /// </summary>
@@ -125,9 +239,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         string AutoGeneratedDomainNameLabelScope { get; set; }
         /// <summary>The URI of the catalog management UI.</summary>
         string CatalogUri { get; set; }
+        /// <summary>The resource IDs of the managed storage accounts for the GeoCatalog.</summary>
+        System.Collections.Generic.List<string> ManagedStorageResourceId { get; set; }
+        /// <summary>Private endpoint connections to this GeoCatalog.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>The status of the last operation.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// The lifecycle state of the GeoCatalog. An empty GeoCatalog may be stopped to reclaim capacity; customer data is retained
+        /// while stopped.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Running", "Stopped")]
+        string State { get; set; }
+        /// <summary>
+        /// The UTC timestamp at which the GeoCatalog entered the `Stopped` state. Absent while the GeoCatalog is `Running`.
+        /// </summary>
+        global::System.DateTime? StoppedSinceUtc { get; set; }
         /// <summary>
         /// Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.
         /// </summary>
