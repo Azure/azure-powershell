@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2026-04-16
+* Added RDP Shortpath and UDP transport parameters to `New-AzWvdHostPool` and `Update-AzWvdHostPool`
+    - `-AllowRdpShortPathWithPrivateLink`, `-DirectUdp`, `-PublicUdp`, `-RelayUdp`, `-ManagedPrivateUdp`
+* Added App Attach package parameters to `New-AzWvdAppAttachPackage` and `Update-AzWvdAppAttachPackage`
+    - Create: `-CustomData`, `-PackageOwnerName`, `-PackageLookbackUrl`, `-ImageIsPackageTimestamped`
+    - Update: `-CustomData`, `-PackageLookbackUrl`, `-Tag`
 
 ## Version 6.0.0
 * Upgraded API version to 2025-10-10

@@ -44,7 +44,7 @@ Describe 'Get-AzWvdDesktop' {
                                 -ResourceGroupName $env.ResourceGroup `
                                 -ApplicationGroupName $env.DesktopApplicationGroup `
                                 -Name 'SessionDesktop'
-                $desktop.Name | Should -Be 'ApplicationGroupPowershell1/SessionDesktop'
+                $desktop.Name | Should -Be "$($env.DesktopApplicationGroup)/SessionDesktop"
                 $desktop.FriendlyName | Should -Be 'SessionDesktop'
                 $desktop.Description | Should -Be 'The default Session Desktop'
         }
@@ -73,7 +73,7 @@ Describe 'Get-AzWvdDesktop' {
             $desktops = Get-AzWvdDesktop -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -ApplicationGroupName $env.DesktopApplicationGroup
-                $desktops[0].Name | Should -Be 'ApplicationGroupPowershell1/SessionDesktop'
+                $desktops[0].Name | Should -Be "$($env.DesktopApplicationGroup)/SessionDesktop"
                 $desktops[0].FriendlyName | Should -Be 'SessionDesktop'
                 $desktops[0].Description | Should -Be 'The default Session Desktop'
         }

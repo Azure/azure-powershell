@@ -51,7 +51,7 @@ Describe 'New-AzWvdApplication' {
                                 -IconPath 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe' `
                                 -CommandLineSetting 'Allow' `
                                 -ShowInPortal:$true
-            $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
+            $application.Name | Should -Be "$($env.RemoteApplicationGroup)/Paint"
             $application.FilePath | Should -Be 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
             $application.FriendlyName | Should -Be 'fri'
             $application.Description | Should -Be 'des'
@@ -64,7 +64,7 @@ Describe 'New-AzWvdApplication' {
                                 -ResourceGroupName $env.ResourceGroup `
                                 -GroupName $env.RemoteApplicationGroup `
                                 -Name 'Paint'
-            $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
+            $application.Name | Should -Be "$($env.RemoteApplicationGroup)/Paint"
             $application.FilePath | Should -Be 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
             $application.FriendlyName | Should -Be 'fri'
             $application.Description | Should -Be 'des'
@@ -98,7 +98,7 @@ Describe 'New-AzWvdApplication' {
                                 -ResourceGroupName $env.ResourceGroupPersistent `
                                 -GroupName $env.PersistentRemoteAppGroup `
                                 -Name 'Task manager 1'
-            $application.Name | Should -Be 'zhongjie-automated-RAG/Task manager 1'
+            $application.Name | Should -Be "$($env.PersistentRemoteAppGroup)/Task manager 1"
             $application.FilePath | Should -Be 'C:\Windows\system32\taskmgr.exe'
             $application.IconIndex | Should -Be -30651
             $application.IconPath | Should -Be 'C:\Windows\system32\Taskmgr.exe'
@@ -158,7 +158,7 @@ Describe 'New-AzWvdApplication' {
                 -GroupName $env.RemoteApplicationGroup `
                 -Name 'UnitTest-MSIX-Application'
 
-            $application.Name | Should -Be 'ApplicationGroupPowershell2/UnitTest-MSIX-Application'
+            $application.Name | Should -Be "$($env.RemoteApplicationGroup)/UnitTest-MSIX-Application"
             $application.FriendlyName | Should -Be 'friendlyname'
             $application.Description | Should -Be 'Unit Test MSIX Application'
             $application.IconIndex | Should -Be 0
@@ -231,7 +231,7 @@ Describe 'New-AzWvdApplication' {
                 -GroupName $env.DesktopApplicationGroup `
                 -Name UnitTest-MSIX-Application
 
-            $application.Name | Should -Be 'ApplicationGroupPowershell1/UnitTest-MSIX-Application'
+            $application.Name | Should -Be "$($env.DesktopApplicationGroup)/UnitTest-MSIX-Application"
             $application.FriendlyName | Should -Be 'friendlyname'
             $application.Description | Should -Be 'Unit Test MSIX Application'
             $application.IconIndex | Should -Be 0
@@ -264,5 +264,4 @@ Describe 'New-AzWvdApplication' {
         }
     }
 }
-
 
