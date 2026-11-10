@@ -134,12 +134,12 @@ options:
           subject: VMSkuRecommendation
           parameter-name: PromptTokenCount
         set:
-          parameter-description: The number of prompt, or input, tokens per inference request. Must be supplied together with MaxOutputTokenCount, and the two must total from 1 through 131072.
+          parameter-description: The number of prompt, or input, tokens per inference request. Must be supplied together with MaxOutputTokenCount, and the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
       - where:
           subject: VMSkuRecommendation
           parameter-name: MaxOutputTokenCount
         set:
-          parameter-description: The maximum number of generated output tokens per inference request. Must be supplied together with PromptTokenCount, and the two must total from 1 through 131072.
+          parameter-description: The maximum number of generated output tokens per inference request. Must be supplied together with PromptTokenCount, and the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
       - where:
           subject: VMSkuRecommendation
           parameter-name: ModelLayerCount
