@@ -25,25 +25,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the NetAppAccountPatch class.
         /// </summary>
 
-        /// <param name="location">Resource location
+        /// <param name="identity">The managed service identities assigned to this resource.
         /// </param>
 
-        /// <param name="id">Resource Id
-        /// </param>
-
-        /// <param name="name">Resource name
-        /// </param>
-
-        /// <param name="type">Resource type
-        /// </param>
-
-        /// <param name="tags">Resource tags
-        /// </param>
-
-        /// <param name="identity">The identity used for the resource.
-        /// </param>
-
-        /// <param name="provisioningState">Azure lifecycle management
+        /// <param name="tags">Resource tags.
         /// </param>
 
         /// <param name="activeDirectories">Active Directories
@@ -52,32 +37,22 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="encryption">Encryption settings
         /// </param>
 
-        /// <param name="disableShowmount">Shows the status of disableShowmount for all volumes under the
-        /// subscription, null equals false
-        /// </param>
-
         /// <param name="nfsV4IdDomain">Domain for NFSv4 user ID mapping. This property will be set for all NetApp
         /// accounts in the subscription and region and only affect non ldap NFSv4
         /// volumes.
         /// </param>
 
-        /// <param name="multiAdStatus">MultiAD Status for the account
-        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public NetAppAccountPatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), System.Collections.Generic.IList<ActiveDirectory> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), string nfsV4IdDomain = default(string), string multiAdStatus = default(string))
+        /// <param name="ldapConfiguration">LDAP Configuration for the account.
+        /// </param>
+        public NetAppAccountPatch(ManagedServiceIdentity identity = default(ManagedServiceIdentity), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<ActiveDirectoryPatch> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectoryPatch>), AccountEncryptionPatch encryption = default(AccountEncryptionPatch), string nfsV4IdDomain = default(string), LdapConfigurationPatch ldapConfiguration = default(LdapConfigurationPatch))
 
         {
-            this.Location = location;
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
-            this.Tags = tags;
             this.Identity = identity;
-            this.ProvisioningState = provisioningState;
+            this.Tags = tags;
             this.ActiveDirectories = activeDirectories;
             this.Encryption = encryption;
-            this.DisableShowmount = disableShowmount;
             this.NfsV4IdDomain = nfsV4IdDomain;
-            this.MultiAdStatus = multiAdStatus;
+            this.LdapConfiguration = ldapConfiguration;
             CustomInit();
         }
 
@@ -88,65 +63,28 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets or sets resource location
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets resource Id
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets resource name
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
-        /// Gets or sets resource tags
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
-
-        /// <summary>
-        /// Gets or sets the identity used for the resource.
+        /// Gets or sets the managed service identities assigned to this resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
-        /// Gets azure lifecycle management
+        /// Gets or sets resource tags.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets or sets active Directories
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.activeDirectories")]
-        public System.Collections.Generic.IList<ActiveDirectory> ActiveDirectories {get; set; }
+        public System.Collections.Generic.IList<ActiveDirectoryPatch> ActiveDirectories {get; set; }
 
         /// <summary>
         /// Gets or sets encryption settings
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.encryption")]
-        public AccountEncryption Encryption {get; set; }
-
-        /// <summary>
-        /// Gets shows the status of disableShowmount for all volumes under the
-        /// subscription, null equals false
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableShowmount")]
-        public bool? DisableShowmount {get; private set; }
+        public AccountEncryptionPatch Encryption {get; set; }
 
         /// <summary>
         /// Gets or sets domain for NFSv4 user ID mapping. This property will be set
@@ -157,10 +95,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string NfsV4IdDomain {get; set; }
 
         /// <summary>
-        /// Gets multiAD Status for the account Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// Gets or sets lDAP Configuration for the account.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.multiAdStatus")]
-        public string MultiAdStatus {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ldapConfiguration")]
+        public LdapConfigurationPatch LdapConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -169,11 +107,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
-
-
-
             if (this.Identity != null)
             {
                 this.Identity.Validate();
@@ -189,10 +122,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     }
                 }
             }
-            if (this.Encryption != null)
-            {
-                this.Encryption.Validate();
-            }
+
             if (this.NfsV4IdDomain != null)
             {
                 if (this.NfsV4IdDomain.Length > 255)
@@ -204,7 +134,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "NfsV4IdDomain", "^[a-zA-Z0-9][a-zA-Z0-9.-]{0,253}[a-zA-Z0-9]$");
                 }
             }
-
+            if (this.LdapConfiguration != null)
+            {
+                this.LdapConfiguration.Validate();
+            }
         }
     }
 }

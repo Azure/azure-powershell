@@ -105,7 +105,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Identity = netAppAccount.Identity.ConvertToPs(),
                 SystemData =  netAppAccount.SystemData?.ToPsSystemData(),
                 MultiAdStatus = netAppAccount.MultiAdStatus,
-                NfsV4IdDomain= netAppAccount.NfsV4IdDomain
+                NfsV4IdDomain= netAppAccount.NfsV4IdDomain,
+                LdapConfiguration = netAppAccount.LdapConfiguration?.ConvertToPs()
             };
         }
 
@@ -533,7 +534,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 PlacementRules = volume.PlacementRules?.ToPPSKeyValuePairs(),
                 SystemData = volume.SystemData?.ToPsSystemData(),
                 MaximumNumberOfFiles = volume.MaximumNumberOfFiles,
-                EnableSubvolumes = volume.EnableSubvolumes,
                 BreakthroughMode = volume.BreakthroughMode,
                 Encrypted = volume.Encrypted,
                 Zones = volume.Zones,
@@ -607,7 +607,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 PlacementRules = volume.PlacementRules?.ToPPSKeyValuePairs(),
                 SystemData = volume.SystemData?.ToPsSystemData(),
                 MaximumNumberOfFiles = volume.MaximumNumberOfFiles,
-                EnableSubvolumes = volume.EnableSubvolumes,
                 Encrypted = volume.Encrypted,
                 Zones = volume.Zones,
                 KeyVaultPrivateEndpointResourceId = volume.KeyVaultPrivateEndpointResourceId,

@@ -19,6 +19,7 @@ Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Na
  [-EncryptionKeySource <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
  [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>]
  [-FederatedClientId <String>] [-NfsV4IdDomain <String>] [-Tag <Hashtable>]
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -27,7 +28,8 @@ Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Na
 ```
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  -ResourceId <String> [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>]
- [-Encryption <PSNetAppFilesAccountEncryption>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-Encryption <PSNetAppFilesAccountEncryption>] [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +37,8 @@ Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Na
 ```
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
- -InputObject <PSNetAppFilesAccount> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ -InputObject <PSNetAppFilesAccount> [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +65,35 @@ ProvisioningState : Succeeded
 
 This command performs an update on the given account modifying the tags to those provided.
 
+### Example 2: Update LDAP search settings
+```powershell
+Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -LdapConfiguration @{
+    UserDN = "ou=users,dc=example,dc=com"
+    GroupDN = "ou=groups,dc=example,dc=com"
+    NetGroupDN = "ou=netgroups,dc=example,dc=com"
+}
+```
+
+Updates the account's LDAP search distinguished names without replacing the account.
+
 ## PARAMETERS
+
+### -LdapConfiguration
+LDAP settings to patch on the account. Accepts a PSNetAppFilesLdapConfiguration object or a hashtable. Properties are `Domain`, `LdapServers`, `SecureLdapType` (`None` or `LdapOverTLS`), `ServerCACertificate`, `CertificateCNHost`, `DnsServers`, `LdapPort`, `UserDN`, `GroupDN`, `NetGroupDN`, `BindAuthenticationLevel` (`Anonymous` or `Simple`), `BindDN`, and `BindPasswordAkvConfig`.
+
+`BindPasswordAkvConfig` contains `AzureKeyVaultUri`, `SecretName`, and `UserAssignedIdentity`; it references the Key Vault secret containing the bind password rather than accepting the password itself. Omitted properties are not sent in the patch. Use `Update-AzNetAppFilesAccountLdapBindPassword` to fetch the latest password after rotating that secret.
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ActiveDirectory
 A hashtable array which represents the active directories
@@ -215,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the resource
+The location of the resource. This parameter is retained for compatibility; account updates do not change the location, and the value is not sent in the PATCH request.
 
 ```yaml
 Type: System.String
