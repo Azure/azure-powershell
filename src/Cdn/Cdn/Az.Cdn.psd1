@@ -69,14 +69,11 @@ FormatsToProcess = 'Cdn.Autorest/Az.Cdn.format.ps1xml'
 NestedModules = @('Cdn.Autorest/Az.Cdn.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent', 
+FunctionsToExport = 'Clear-AzCdnEndpointContent',
                'Clear-AzFrontDoorCdnEndpointContent', 
-               'Deploy-AzCdnEdgeActionVersionCode', 
                'Disable-AzCdnCustomDomainCustomHttps', 
                'Enable-AzCdnCustomDomainCustomHttps', 
                'Enable-AzFrontDoorCdnProfileMigration', 'Get-AzCdnCustomDomain', 
-               'Get-AzCdnEdgeAction', 'Get-AzCdnEdgeActionExecutionFilter', 
-               'Get-AzCdnEdgeActionVersion', 'Get-AzCdnEdgeActionVersionCode', 
                'Get-AzCdnEdgeNode', 'Get-AzCdnEndpoint', 
                'Get-AzCdnEndpointResourceUsage', 'Get-AzCdnManagedRuleSet', 
                'Get-AzCdnOrigin', 'Get-AzCdnOriginGroup', 'Get-AzCdnProfile', 
@@ -115,8 +112,7 @@ FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent
                'New-AzCdnDeliveryRuleUrlFileExtensionConditionObject', 
                'New-AzCdnDeliveryRuleUrlFileNameConditionObject', 
                'New-AzCdnDeliveryRuleUrlPathConditionObject', 
-               'New-AzCdnEdgeAction', 'New-AzCdnEdgeActionExecutionFilter', 
-               'New-AzCdnEdgeActionVersion', 'New-AzCdnEndpoint', 
+               'New-AzCdnEndpoint',
                'New-AzCdnHealthProbeParametersObject', 
                'New-AzCdnLoadParametersObject', 
                'New-AzCdnManagedHttpsParametersObject', 
@@ -175,14 +171,10 @@ FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent
                'New-AzFrontDoorCdnSecretCustomerCertificateParametersObject', 
                'New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject', 
                'New-AzFrontDoorCdnSecretManagedCertificateParametersObject', 
-               'New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject', 
                'New-AzFrontDoorCdnSecurityPolicy', 
                'New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject', 
                'New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject', 
-               'Remove-AzCdnCustomDomain', 'Remove-AzCdnEdgeAction', 
-               'Remove-AzCdnEdgeActionAttachment', 
-               'Remove-AzCdnEdgeActionExecutionFilter', 
-               'Remove-AzCdnEdgeActionVersion', 'Remove-AzCdnEndpoint', 
+               'Remove-AzCdnCustomDomain', 'Remove-AzCdnEndpoint',
                'Remove-AzCdnOrigin', 'Remove-AzCdnOriginGroup', 
                'Remove-AzCdnProfile', 'Remove-AzFrontDoorCdnCustomDomain', 
                'Remove-AzFrontDoorCdnEndpoint', 'Remove-AzFrontDoorCdnOrigin', 
@@ -197,9 +189,7 @@ FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent
                'Test-AzFrontDoorCdnEndpointCustomDomain', 
                'Test-AzFrontDoorCdnEndpointNameAvailability', 
                'Test-AzFrontDoorCdnProfileHostNameAvailability', 
-               'Test-AzFrontDoorCdnProfileMigration', 'Update-AzCdnEdgeAction', 
-               'Update-AzCdnEdgeActionExecutionFilter', 
-               'Update-AzCdnEdgeActionVersion', 'Update-AzCdnEndpoint', 
+               'Test-AzFrontDoorCdnProfileMigration', 'Update-AzCdnEndpoint',
                'Update-AzCdnOrigin', 'Update-AzCdnOriginGroup', 
                'Update-AzCdnProfile', 'Update-AzFrontDoorCdnCustomDomain', 
                'Update-AzFrontDoorCdnCustomDomainValidationToken', 
@@ -272,4 +262,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

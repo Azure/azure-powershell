@@ -1,3 +1,10 @@
+## Upcoming Release
+#### Az.NetAppFiles
+* Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
+* Updated to API version 2026-08-01.
+* Added Lightweight Directory Access Protocol (LDAP) configuration to account create, set, update, and output.
+* Added `Update-AzNetAppFilesAccountLdapBindPassword` to refresh the LDAP bind password from Azure Key Vault.
+
 ## 16.5.0 - November 2026
 #### Az.Accounts 5.5.4
 * Fixed 'Get-AzAccessToken -ResourceUrl' help; replaced Azure AD Graph with Microsoft Graph.

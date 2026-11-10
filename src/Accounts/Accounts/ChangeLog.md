@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Upgraded `Azure.Core` dependency from 1.57.0 to 1.64.0.
+* Upgraded `System.ClientModel` dependency from 1.13.0 to 1.16.0.
+* Upgraded MSAL dependencies (`Microsoft.Identity.Client`, `Microsoft.Identity.Client.Extensions.Msal`, `Microsoft.Identity.Client.Broker`) from 4.84.0 to 4.90.0.
+* Upgraded `Microsoft.Identity.Client.NativeInterop` from 0.20.4 to 0.20.6.
+* Upgraded `System.Text.Json`, `System.Memory.Data`, `Microsoft.Bcl.AsyncInterfaces` and related .NET dependencies from 10.0.3 to 10.0.10.
+* Added `System.Net.ServerSentEvents` 10.0.10 as a dependency of `System.ClientModel`.
 
 ## Version 5.5.4
 * Fixed `Get-AzAccessToken -ResourceUrl` help; replaced Azure AD Graph with Microsoft Graph.

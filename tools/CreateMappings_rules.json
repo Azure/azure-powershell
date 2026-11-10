@@ -1043,5 +1043,13 @@
   {
     "module": "NetworkSecurity",
     "alias": "NetworkSecurity"
+  },
+  {
+    "module": "AIInfraOptimization",
+    "alias": "AIInfraOptimization"
+  },
+  {  
+    "module": "Resiliency",
+    "alias": "Resiliency"
   }
 ]

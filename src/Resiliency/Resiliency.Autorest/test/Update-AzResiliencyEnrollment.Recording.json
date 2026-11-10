@@ -1,0 +1,2282 @@
+{
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "98"
+        ],
+        "x-ms-client-request-id": [
+          "0adee33e-9c25-45f9-bc62-7da7b75e7d26"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"310074bf-0000-2300-0000-6aec23da0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/0750f58b-685a-4e7e-942d-e83c46cbcd9f"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "78d9d238-6986-4912-b88e-b5e373b2358c"
+        ],
+        "x-ms-correlation-request-id": [
+          "949bc611-9900-4b1a-a0f6-336e2a8d2ebc"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1098"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063631Z:949bc611-9900-4b1a-a0f6-336e2a8d2ebc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 22CBDD073CA642FEAA7B6D924A1BEA78 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:36:31Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:36:31 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "696"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:35:57.891955Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"serviceGroupId\": \"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "116"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Accept-Ranges": [
+          "bytes"
+        ],
+        "ETag": [
+          "\"3100c9bf-0000-2300-0000-6aec23f30000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/e4f75937-3ed1-4634-9fb5-68bd4863aa3e"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-azure-ref": [
+          "20261105T063634Z-16b94c8dd675dgrdhC1BL1g42w0000000xng00000000cygx"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/238a4e75-5104-4825-bee2-eddfe3f829fc*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "238a4e75-5104-4825-bee2-eddfe3f829fc"
+        ],
+        "x-ms-correlation-request-id": [
+          "30cdc6ad-5c61-4e38-a345-62fd812bb62e"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063636Z:30cdc6ad-5c61-4e38-a345-62fd812bb62e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E0CFC23A03924CF385CE261700042E39 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:36:31Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:36:35 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "676"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:36:34.2068854Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/238a4e75-5104-4825-bee2-eddfe3f829fc*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/238a4e75-5104-4825-bee2-eddfe3f829fc*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "100"
+        ],
+        "x-ms-client-request-id": [
+          "0adee33e-9c25-45f9-bc62-7da7b75e7d26"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0400db1b-0000-3300-0000-6aec24000000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-request-id": [
+          "795f1607-2fe4-40eb-b393-cbef0fb6b45a"
+        ],
+        "x-ms-correlation-request-id": [
+          "6b526a83-fdbc-4373-a578-d174be85a145"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063706Z:6b526a83-fdbc-4373-a578-d174be85a145"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1281EDF1D7E34FB48228C04655FC4AE4 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:37:06Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:37:06 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/238a4e75-5104-4825-bee2-eddfe3f829fc*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"name\":\"238a4e75-5104-4825-bee2-eddfe3f829fc*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-05T06:36:34.7252388Z\",\"endTime\":\"2026-11-05T06:36:44.1064607Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "101"
+        ],
+        "x-ms-client-request-id": [
+          "0adee33e-9c25-45f9-bc62-7da7b75e7d26"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"3100ffbf-0000-2300-0000-6aec23fc0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/9994c549-7a40-4bae-a08c-f9803dbb8818"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "2ba557b5-2da1-45c2-b17a-4f2c1ee85d58"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef0623fd-f7fc-44e5-80cf-fa0c7f3de23e"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063707Z:ef0623fd-f7fc-44e5-80cf-fa0c7f3de23e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3D37C39EC4864763A922572C81583C82 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:37:06Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:37:06 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:36:34.2068854Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityUsagePlanExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "102"
+        ],
+        "x-ms-client-request-id": [
+          "898d26ae-e096-41cf-a316-f9e70b9d5e06"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentityUsagePlanExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"3100ffbf-0000-2300-0000-6aec23fc0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/63a8e792-13a1-4a20-b5cf-8d7d91b44e95"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "5876163c-331c-4917-8787-c5ff1510fd1e"
+        ],
+        "x-ms-correlation-request-id": [
+          "e3b85429-40ca-4752-81d4-af10b6a550d1"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1098"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063707Z:e3b85429-40ca-4752-81d4-af10b6a550d1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D6A4C3B96EDB4894BAFB190C1FF2C116 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:37:07Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:37:07 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:36:34.2068854Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityUsagePlanExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"serviceGroupId\": \"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "116"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Accept-Ranges": [
+          "bytes"
+        ],
+        "ETag": [
+          "\"31004ec0-0000-2300-0000-6aec24150000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/d3098283-6618-473a-809f-aea7d6c2ab82"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-azure-ref": [
+          "20261105T063708Z-17449ff54665rn27hC1IADv37g00000013bg000000005uu0"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/3112b646-1a9b-483a-8e76-ad77ed6e97ab*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "3112b646-1a9b-483a-8e76-ad77ed6e97ab"
+        ],
+        "x-ms-correlation-request-id": [
+          "988ef91f-f894-453b-86b7-44c14b7181ac"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063709Z:988ef91f-f894-453b-86b7-44c14b7181ac"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 76A5799E76C64842A29C1C250E1E5636 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:37:07Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:37:09 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "676"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:37:08.4215912Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityUsagePlanExpanded+$GET+https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/3112b646-1a9b-483a-8e76-ad77ed6e97ab*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/3112b646-1a9b-483a-8e76-ad77ed6e97ab*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "105"
+        ],
+        "x-ms-client-request-id": [
+          "898d26ae-e096-41cf-a316-f9e70b9d5e06"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentityUsagePlanExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"04004726-0000-3300-0000-6aec243f0000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-request-id": [
+          "a5e499f8-e71b-4c50-8f50-6d2623a46a44"
+        ],
+        "x-ms-correlation-request-id": [
+          "d9fa77b7-711d-496d-bbb8-2c5a3a671f1a"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063811Z:d9fa77b7-711d-496d-bbb8-2c5a3a671f1a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E0EE4F845CC9444F8D56B7AAEB3FCBAE Ref B: PNQ241100401023 Ref C: 2026-11-05T06:38:11Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:38:10 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/3112b646-1a9b-483a-8e76-ad77ed6e97ab*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"name\":\"3112b646-1a9b-483a-8e76-ad77ed6e97ab*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-05T06:37:08.6979544Z\",\"endTime\":\"2026-11-05T06:37:34.4236575Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityUsagePlanExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "106"
+        ],
+        "x-ms-client-request-id": [
+          "898d26ae-e096-41cf-a316-f9e70b9d5e06"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentityUsagePlanExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"3100abc0-0000-2300-0000-6aec242e0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/1423ef02-0310-4809-b081-b851891cdc44"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "66c61ccb-abdf-4e20-ac9c-7ce8653c9c2c"
+        ],
+        "x-ms-correlation-request-id": [
+          "1888fe1f-2f3a-4095-a66e-4a54e8a85653"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063811Z:1888fe1f-2f3a-4095-a66e-4a54e8a85653"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: ED690F9244C64765BF1CC54CA069F03A Ref B: PNQ241100401023 Ref C: 2026-11-05T06:38:11Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:38:11 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:37:08.4215912Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityUsagePlan+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "107"
+        ],
+        "x-ms-client-request-id": [
+          "e47090c4-f5e9-4ea2-a1ff-78f270e45097"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentityUsagePlan"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"3100abc0-0000-2300-0000-6aec242e0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/d1967719-8692-4459-9bce-7bba17f7ef0a"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "02100728-7716-431f-87f1-d7a12a8bc7d3"
+        ],
+        "x-ms-correlation-request-id": [
+          "f7c43130-92b5-4bc2-a847-c9c4dabf3b2f"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1098"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063812Z:f7c43130-92b5-4bc2-a847-c9c4dabf3b2f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 43ABAEB7058D4CD7B6B46699783DA897 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:38:12Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:38:11 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:37:08.4215912Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityUsagePlan+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"serviceGroupId\": \"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "116"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Accept-Ranges": [
+          "bytes"
+        ],
+        "ETag": [
+          "\"310013c1-0000-2300-0000-6aec24560000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/9368b068-5cac-4320-baf3-451b6577108c"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-azure-ref": [
+          "20261105T063813Z-15656b5c7b6sh959hC1IADq16800000013pg000000000yzw"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/7e020738-584a-4b92-9671-539b9ebd4bbb*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "7e020738-584a-4b92-9671-539b9ebd4bbb"
+        ],
+        "x-ms-correlation-request-id": [
+          "79672c59-ce6c-4330-93cc-b1298b031071"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063814Z:79672c59-ce6c-4330-93cc-b1298b031071"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4C26EE12B0194F92B3376088564D547C Ref B: PNQ241100401023 Ref C: 2026-11-05T06:38:12Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:38:13 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "675"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:38:13.352793Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityUsagePlan+$GET+https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/7e020738-584a-4b92-9671-539b9ebd4bbb*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/7e020738-584a-4b92-9671-539b9ebd4bbb*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "109"
+        ],
+        "x-ms-client-request-id": [
+          "e47090c4-f5e9-4ea2-a1ff-78f270e45097"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentityUsagePlan"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0400642b-0000-3300-0000-6aec24630000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-request-id": [
+          "501f3a5b-31e0-491d-a651-c3fe7f158c37"
+        ],
+        "x-ms-correlation-request-id": [
+          "9c068a57-98a2-4dc6-9ba2-d5bb33043c05"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063844Z:9c068a57-98a2-4dc6-9ba2-d5bb33043c05"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4FCF8DF42EA04B8BA415A1B89DF23CD5 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:38:44Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:38:44 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/7e020738-584a-4b92-9671-539b9ebd4bbb*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"name\":\"7e020738-584a-4b92-9671-539b9ebd4bbb*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-05T06:38:13.6043186Z\",\"endTime\":\"2026-11-05T06:38:25.0792948Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityUsagePlan+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "110"
+        ],
+        "x-ms-client-request-id": [
+          "e47090c4-f5e9-4ea2-a1ff-78f270e45097"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentityUsagePlan"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"31003ec1-0000-2300-0000-6aec24610000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/9153394d-f111-491c-92dc-9cdbe8937336"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "d42856c5-bde7-4e6e-9e69-4c388ff8805a"
+        ],
+        "x-ms-correlation-request-id": [
+          "dffafdaf-bc54-442e-a70f-b362aee6dc36"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063846Z:dffafdaf-bc54-442e-a70f-b362aee6dc36"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 08B00C74265548A9BC099087C85C79ED Ref B: PNQ241100401023 Ref C: 2026-11-05T06:38:45Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:38:45 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "696"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:38:13.352793Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "111"
+        ],
+        "x-ms-client-request-id": [
+          "b8051d5f-d194-4e45-9289-1d1a81917fcd"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_Update"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"31003ec1-0000-2300-0000-6aec24610000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/b4ceb6e8-9247-4f8a-9cf9-813f99c7bdb1"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "289e77ef-f796-4d01-ac07-462da2061172"
+        ],
+        "x-ms-correlation-request-id": [
+          "1fbbd9e2-ea83-4f47-bd35-7adbdf0c05f9"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063846Z:1fbbd9e2-ea83-4f47-bd35-7adbdf0c05f9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C8FAED8883284C1FA1D8B17D28AD0B92 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:38:46Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:38:46 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "696"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:38:13.352793Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"serviceGroupId\": \"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "116"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Accept-Ranges": [
+          "bytes"
+        ],
+        "ETag": [
+          "\"310079c1-0000-2300-0000-6aec24780000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/7aa8973c-87e1-4b71-a1b7-8e9c386bd512"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-azure-ref": [
+          "20261105T063847Z-16b94c8dd677hhkkhC1BL1py2000000013q00000000005z9"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/082b9e3d-4529-4eed-8ff8-1ea9530ee202*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "082b9e3d-4529-4eed-8ff8-1ea9530ee202"
+        ],
+        "x-ms-correlation-request-id": [
+          "ab1b23f1-eca6-483a-9105-054656820b31"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063848Z:ab1b23f1-eca6-483a-9105-054656820b31"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1F4F376F027F4F41926B4AA8C5C74ED6 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:38:46Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:38:48 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "676"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:38:47.4511464Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+Update+$GET+https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/082b9e3d-4529-4eed-8ff8-1ea9530ee202*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/082b9e3d-4529-4eed-8ff8-1ea9530ee202*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "113"
+        ],
+        "x-ms-client-request-id": [
+          "b8051d5f-d194-4e45-9289-1d1a81917fcd"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_Update"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0400f330-0000-3300-0000-6aec24850000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-request-id": [
+          "aa5920b7-7b32-46e4-8a0c-ec8cf8cdd767"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a13a4bb-6dff-4fad-a840-ad41f9cdd6e1"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063919Z:2a13a4bb-6dff-4fad-a840-ad41f9cdd6e1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 553902C9EDA748AC9D6827392206696B Ref B: PNQ241100401023 Ref C: 2026-11-05T06:39:19Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:39:19 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/082b9e3d-4529-4eed-8ff8-1ea9530ee202*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"name\":\"082b9e3d-4529-4eed-8ff8-1ea9530ee202*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-05T06:38:47.7693289Z\",\"endTime\":\"2026-11-05T06:38:55.4672388Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "114"
+        ],
+        "x-ms-client-request-id": [
+          "b8051d5f-d194-4e45-9289-1d1a81917fcd"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_Update"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"310094c1-0000-2300-0000-6aec247f0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/78991f1b-be5a-4167-9c07-237c6ca9ffac"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "9e4b9310-7b36-47e0-8f77-bb2aec68031a"
+        ],
+        "x-ms-correlation-request-id": [
+          "82381fdd-6738-4c9b-ac13-74e4a6493393"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063920Z:82381fdd-6738-4c9b-ac13-74e4a6493393"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1AAF82F6C1FD4D0C856ADC664910758E Ref B: PNQ241100401023 Ref C: 2026-11-05T06:39:19Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:39:19 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:38:47.4511464Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "115"
+        ],
+        "x-ms-client-request-id": [
+          "0c738e61-0ffe-4966-b2cf-c28fd2856084"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentityExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"310094c1-0000-2300-0000-6aec247f0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/b7574d12-423a-4d02-bf92-b5cc1b1ae2da"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "f85c5d98-34eb-414f-886a-997dbd56825c"
+        ],
+        "x-ms-correlation-request-id": [
+          "ecc568b6-72e4-4e8e-861f-242800f5a082"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063920Z:ecc568b6-72e4-4e8e-861f-242800f5a082"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1767C2241705484885A4B74726C420EA Ref B: PNQ241100401023 Ref C: 2026-11-05T06:39:20Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:39:20 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:38:47.4511464Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"serviceGroupId\": \"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "116"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Accept-Ranges": [
+          "bytes"
+        ],
+        "ETag": [
+          "\"310017c2-0000-2300-0000-6aec249a0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/5c9b9ca8-d2ec-4069-a7ff-e6e21d9bc0b4"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-azure-ref": [
+          "20261105T063921Z-17449ff5466pgf6chC1IAD83p40000000xz00000000002mn"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/a355bc1d-d988-4841-9aa7-48b3342b9c2b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "a355bc1d-d988-4841-9aa7-48b3342b9c2b"
+        ],
+        "x-ms-correlation-request-id": [
+          "d68a80dc-14ad-4004-9939-d0c04c777850"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T063922Z:d68a80dc-14ad-4004-9939-d0c04c777850"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 45CAE410C0DE4940A09FABB6CDB22081 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:39:20Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:39:22 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "676"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:39:21.2052028Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/a355bc1d-d988-4841-9aa7-48b3342b9c2b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/a355bc1d-d988-4841-9aa7-48b3342b9c2b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "117"
+        ],
+        "x-ms-client-request-id": [
+          "0c738e61-0ffe-4966-b2cf-c28fd2856084"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentityExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"04003536-0000-3300-0000-6aec24a70000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-request-id": [
+          "6b5c9247-b651-443f-891e-6742f922394b"
+        ],
+        "x-ms-correlation-request-id": [
+          "19ebdddc-e51e-489d-8a49-7667bfcd2b35"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2200"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T064033Z:19ebdddc-e51e-489d-8a49-7667bfcd2b35"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5197ACE1FD114ABC99E6F3FBC8CB30D4 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:39:53Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:40:32 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "646"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/a355bc1d-d988-4841-9aa7-48b3342b9c2b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"name\":\"a355bc1d-d988-4841-9aa7-48b3342b9c2b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-05T06:39:21.520219Z\",\"endTime\":\"2026-11-05T06:39:29.7886658Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "118"
+        ],
+        "x-ms-client-request-id": [
+          "0c738e61-0ffe-4966-b2cf-c28fd2856084"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentityExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"31001fc2-0000-2300-0000-6aec24a10000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/924a8546-f4b2-4d44-96b8-21bebec07444"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "958249a6-216d-4a89-851b-6bdec73c5425"
+        ],
+        "x-ms-correlation-request-id": [
+          "796d0cd2-2411-4e62-a3d1-2bc2bd56b764"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T064033Z:796d0cd2-2411-4e62-a3d1-2bc2bd56b764"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 51627CEEA2A841E2BE4CAFC7678F475B Ref B: PNQ241100401023 Ref C: 2026-11-05T06:40:33Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:40:33 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:39:21.2052028Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentity+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "119"
+        ],
+        "x-ms-client-request-id": [
+          "d0f06896-52fd-41fe-a1e9-467dce68809b"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentity"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"31001fc2-0000-2300-0000-6aec24a10000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/0a6126ed-54dc-426a-b80e-0ed6cc9ecb53"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "d72cc043-d348-460c-a2a0-a404cdadd460"
+        ],
+        "x-ms-correlation-request-id": [
+          "799caa78-3b3d-4947-b9e4-5a0f2ffed5c9"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1098"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T064034Z:799caa78-3b3d-4947-b9e4-5a0f2ffed5c9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 40E743CB983641AAB0581BD0D28E6E66 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:40:34Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:40:33 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:39:21.2052028Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentity+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"serviceGroupId\": \"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "116"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Accept-Ranges": [
+          "bytes"
+        ],
+        "ETag": [
+          "\"310000c3-0000-2300-0000-6aec24e30000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/98847353-825d-4de0-a7e8-cadbb9e884e4"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-azure-ref": [
+          "20261105T064035Z-15656b5c7b6kz57bhC1IAD2qug0000000xc0000000003uap"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/50467168-aac0-478f-b355-f5f8da3fc02b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01"
+        ],
+        "x-ms-request-id": [
+          "50467168-aac0-478f-b355-f5f8da3fc02b"
+        ],
+        "x-ms-correlation-request-id": [
+          "a34e8735-0add-4660-bbee-4968b383ffcc"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T064035Z:a34e8735-0add-4660-bbee-4968b383ffcc"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F8E36E212526464BAC126C6938480F4B Ref B: PNQ241100401023 Ref C: 2026-11-05T06:40:34Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:40:35 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "676"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:40:34.9685249Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentity+$GET+https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/50467168-aac0-478f-b355-f5f8da3fc02b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/50467168-aac0-478f-b355-f5f8da3fc02b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "121"
+        ],
+        "x-ms-client-request-id": [
+          "d0f06896-52fd-41fe-a1e9-467dce68809b"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentity"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0400b643-0000-3300-0000-6aec24fa0000\""
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-request-id": [
+          "97c9bedd-2190-4ce4-9e42-4b249aea6b2a"
+        ],
+        "x-ms-correlation-request-id": [
+          "4726de5a-5ad4-4c40-a970-da89002a5e09"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T064106Z:4726de5a-5ad4-4c40-a970-da89002a5e09"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 96A4398759FE48E1BD8F21FEF3FC81C5 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:41:06Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:41:06 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "647"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureResilienceManagement/locations/EASTUS2EUAP/operationStatuses/50467168-aac0-478f-b355-f5f8da3fc02b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"name\":\"50467168-aac0-478f-b355-f5f8da3fc02b*9F0CAA9D433A0E67510EA04FAC720B743A4465E17070EBD5926EAD98E937B52E\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-05T06:40:35.2669184Z\",\"endTime\":\"2026-11-05T06:40:48.1807042Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzResiliencyEnrollment+[NoContext]+UpdateViaIdentity+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "122"
+        ],
+        "x-ms-client-request-id": [
+          "d0f06896-52fd-41fe-a1e9-467dce68809b"
+        ],
+        "CommandName": [
+          "Update-AzResiliencyEnrollment"
+        ],
+        "FullCommandName": [
+          "Update-AzResiliencyEnrollment_UpdateViaIdentity"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "ETag": [
+          "\"31002cc3-0000-2300-0000-6aec24f00000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000000,objectId=00000000-0000-0000-0000-000000000000/eastus2euap/adb2839b-cae3-4038-b790-8861dcb92cb8"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "3c6f4696-dfd9-44a1-9bb0-2053e5a471e7"
+        ],
+        "x-ms-correlation-request-id": [
+          "e27347b0-cab6-46b5-8f77-a7896b212c20"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261105T064107Z:e27347b0-cab6-46b5-8f77-a7896b212c20"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 72979274E35F47EEBD42CE54AC249E75 Ref B: PNQ241100401023 Ref C: 2026-11-05T06:41:06Z"
+        ],
+        "Date": [
+          "Thu, 05 Nov 2026 06:41:06 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "697"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pstest-resiliency-rg-z4knia/providers/Microsoft.AzureResilienceManagement/usagePlans/pstest-plan-z4knia/enrollments/pstest-enr-z4knia\",\"name\":\"pstest-enr-z4knia\",\"type\":\"microsoft.azureresiliencemanagement/usageplans/enrollments\",\"systemData\":{\"createdBy\":\"00000000-0000-0000-0000-000000000000\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-05T05:46:50.7640993Z\",\"lastModifiedBy\":\"00000000-0000-0000-0000-000000000000\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-05T06:40:34.9685249Z\"},\"properties\":{\"serviceGroupId\":\"/providers/Microsoft.Management/serviceGroups/pstest-sg-z4knia\",\"provisioningState\":\"Succeeded\",\"errorDetails\":null}}",
+      "isContentBase64": false
+    }
+  }
+}

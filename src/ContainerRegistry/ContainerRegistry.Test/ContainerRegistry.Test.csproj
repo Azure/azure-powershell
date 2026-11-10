@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>ContainerRegistry</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ContainerRegistry\ContainerRegistry.csproj" />
+  </ItemGroup>
+
+</Project>

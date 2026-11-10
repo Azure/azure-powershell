@@ -79,8 +79,7 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
                'Get-AzNetAppFilesBackupPolicy', 'Get-AzNetAppFilesPool', 
                'Get-AzNetAppFilesQuotaLimit', 'Get-AzNetAppFilesRegionInfo', 
                'Get-AzNetAppFilesReplicationStatus', 'Get-AzNetAppFilesSnapshot', 
-               'Get-AzNetAppFilesSnapshotPolicy', 'Get-AzNetAppFilesSubvolume', 
-               'Get-AzNetAppFilesSubvolumeMetadata', 'Get-AzNetAppFilesVolume', 
+               'Get-AzNetAppFilesSnapshotPolicy', 'Get-AzNetAppFilesVolume',
                'Get-AzNetAppFilesVolumeBackupStatus', 
                'Get-AzNetAppFilesVolumeGroup', 
                'Get-AzNetAppFilesVolumeGroupIdListForLDAPUser', 
@@ -93,14 +92,14 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
                'New-AzNetAppFilesExportPolicyObject', 
                'New-AzNetAppFilesExportPolicyRuleObject', 'New-AzNetAppFilesPool', 
                'New-AzNetAppFilesSnapshot', 'New-AzNetAppFilesSnapshotPolicy', 
-               'New-AzNetAppFilesSubvolume', 'New-AzNetAppFilesVolume', 
+               'New-AzNetAppFilesVolume',
                'New-AzNetAppFilesVolumeGroup', 'New-AzNetAppFilesVolumeQuotaRule', 
                'Remove-AzNetAppFilesAccount', 
                'Remove-AzNetAppFilesActiveDirectory', 'Remove-AzNetAppFilesBackup', 
                'Remove-AzNetAppFilesBackupPolicy', 'Remove-AzNetAppFilesPool', 
                'Remove-AzNetAppFilesReplication', 'Remove-AzNetAppFilesSnapshot', 
                'Remove-AzNetAppFilesSnapshotPolicy', 
-               'Remove-AzNetAppFilesSubvolume', 'Remove-AzNetAppFilesVolume', 
+               'Remove-AzNetAppFilesVolume',
                'Remove-AzNetAppFilesVolumeGroup', 
                'Remove-AzNetAppFilesVolumeQuotaRule', 
                'Reset-AzNetAppFilesVolumeCifsPassword', 
@@ -116,7 +115,7 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
                'Update-AzNetAppFilesActiveDirectory', 'Update-AzNetAppFilesBackup', 
                'Update-AzNetAppFilesBackupPolicy', 'Update-AzNetAppFilesPool', 
                'Update-AzNetAppFilesSnapshotPolicy', 
-               'Update-AzNetAppFilesSubvolume', 'Update-AzNetAppFilesVolume', 
+               'Update-AzNetAppFilesVolume',
                'Update-AzNetAppFilesVolumeQuotaRule', 
                'Get-AzNetAppFilesNetworkSiblingSet', 
                'Update-AzNetAppFilesNetworkSiblingSet', 
@@ -146,7 +145,8 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
                'New-AzNetAppFilesCache', 'Update-AzNetAppFilesCache', 
                'Remove-AzNetAppFilesCache', 
                'Get-AzNetAppFilesCachePeeringPassphrase', 
-               'Set-AzNetAppFilesCachePool', 'Reset-AzNetAppFilesCacheSmbPassword'
+               'Set-AzNetAppFilesCachePool', 'Reset-AzNetAppFilesCacheSmbPassword',
+               'Update-AzNetAppFilesAccountLdapBindPassword'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -155,18 +155,18 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
 AliasesToExport = 'Approve-AnfReplication', 'Get-AnfAccount', 'Get-AnfBackup', 
                'Get-AnfBackupPolicy', 'Get-AnfPool', 'Get-AnfQuotaLimit', 
                'Get-AnfRegionInfo', 'Get-AnfReplicationStatus', 'Get-AnfSnapshot', 
-               'Get-AnfSnapshotPolicy', 'Get-AnfSubvolume', 'Get-AnfVolume', 
+               'Get-AnfSnapshotPolicy', 'Get-AnfVolume',
                'Get-AnfVolumeBackupStatus', 'Get-AnfVolumeGroup', 
                'Get-AnfVolumeGroupIdListForLDAPUser', 'Get-AnfVolumeQuotaRule', 
                'Get-AnfVolumeReplication', 'Get-AnfVolumeRestoreStatus', 
                'Initialize-AnfReplication', 'New-AnfAccount', 'New-AnfBackup', 
                'New-AnfBackupPolicy', 'New-AnfPool', 'New-AnfSnapshot', 
-               'New-AnfSnapshotPolicy', 'New-AnfSubvolume', 'New-AnfVolume', 
+               'New-AnfSnapshotPolicy', 'New-AnfVolume',
                'New-AnfVolumeGroup', 'New-AnfVolumeQuotaRule', 'Remove-AnfAccount', 
                'Remove-AnfActiveDirectory', 'Remove-AnfBackup', 
                'Remove-AnfBackupPolicy', 'Remove-AnfPool', 'Remove-AnfReplication', 
                'Remove-AnfSnapshot', 'Remove-AnfSnapshotPolicy', 
-               'Remove-AnfSubvolume', 'Remove-AnfVolume', 'Remove-AnfVolumeGroup', 
+               'Remove-AnfVolume', 'Remove-AnfVolumeGroup',
                'Remove-AnfVolumeQuotaRule', 'Reset-AnfVolumeCifsPassword', 
                'Restore-AnfBackupFile', 'Restore-AnfReplication', 
                'Restore-AnfVolume', 'Resume-AnfReplication', 'Set-AnfAccount', 
@@ -175,7 +175,7 @@ AliasesToExport = 'Approve-AnfReplication', 'Get-AnfAccount', 'Get-AnfBackup',
                'Unlock-AnfVolumeFileLock', 'Update-AnfAccount', 
                'Update-AnfAccountCredential', 'Update-AnfActiveDirectory', 
                'Update-AnfBackup', 'Update-AnfBackupPolicy', 'Update-AnfPool', 
-               'Update-AnfSnapshotPolicy', 'Update-AnfSubvolume', 'Update-AnfVolume', 
+               'Update-AnfSnapshotPolicy', 'Update-AnfVolume',
                'Update-AnfVolumeQuotaRule', 'Get-AnfNetworkSiblingSet', 
                'Update-AnfNetworkSiblingSet', 'New-AnfBackupVault', 
                'Get-AnfBackupVault', 'Update-AnfBackupVault', 
@@ -194,7 +194,8 @@ AliasesToExport = 'Approve-AnfReplication', 'Get-AnfAccount', 'Get-AnfBackup',
                'Set-AnfBucketAkvCredential', 'Update-AnfBucketCertificate', 
                'Get-AnfCache', 'New-AnfCache', 'Update-AnfCache', 'Remove-AnfCache', 
                'Get-AnfCachePeeringPassphrase', 'Set-AnfCachePool', 
-               'Reset-AnfCacheSmbPassword'
+               'Reset-AnfCacheSmbPassword',
+               'Update-AnfAccountLdapBindPassword'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -247,4 +248,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
