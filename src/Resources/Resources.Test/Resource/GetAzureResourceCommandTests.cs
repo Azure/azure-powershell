@@ -110,6 +110,19 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsProviderNamespaceFromExtensionResourceId()
+        {
+            var extensionType = "Microsoft.Authorization/locks";
+            var extensionResourceId = $"{resourceId}/providers/{extensionType}/testLock";
+            var resource = new Resource<JToken> { Id = extensionResourceId, Name = "testLock" };
+            var result = new PSResource(resource);
+
+            Assert.Equal(resourceType, result.ResourceType);
+            Assert.Equal(extensionType, result.ExtensionResourceType);
+            Assert.Equal("Microsoft.Authorization", result.ProviderNamespace);
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsUpdatedProviderNamespaceWhenResourceTypeChanges()
         {
             var resource = new GenericResource(resourceId, resourceName, resourceType, location, tags, null, null, kind, null, null, null);
@@ -118,7 +131,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
             result.ResourceType = "Microsoft.Network/virtualNetworks";
 
             Assert.Equal("Microsoft.Network", result.ProviderNamespace);
+
+            result.ExtensionResourceType = "Microsoft.Authorization/locks";
+            Assert.Equal("Microsoft.Authorization", result.ProviderNamespace);
+
+            result.ExtensionResourceType = null;
+            Assert.Equal("Microsoft.Network", result.ProviderNamespace);
         }
+
         [Theory]
         [InlineData("Microsoft.Compute/virtualMachines", "Microsoft.Compute")]
         [InlineData("Microsoft.Sql/servers/databases", "Microsoft.Sql")]

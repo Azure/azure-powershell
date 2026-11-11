@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string ResourceType { get; set; }
 
-        public string ProviderNamespace => ResourceIdentifier.GetProviderFromResourceType(ResourceType);
+        public string ProviderNamespace => ResourceIdentifier.GetProviderFromResourceType(
+            string.IsNullOrEmpty(ExtensionResourceType) ? ResourceType : ExtensionResourceType);
 
         public string ExtensionResourceType { get; set; }
 
