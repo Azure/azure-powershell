@@ -228,7 +228,12 @@ function Remove-AzConnectedKubernetes {
         if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
             if ($PSCmdlet.ShouldProcess($PSBoundParameters)) {
                 Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
-                helm delete azure-arc --namespace $ReleaseInstallNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
+                Invoke-HelmDelete `
+                    -ReleaseName "azure-arc" `
+                    -ReleaseNamespace $ReleaseInstallNamespace `
+                    -KubeConfig $KubeConfig `
+                    -KubeContext $KubeContext `
+                    -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true)
             }
         }
         else {
