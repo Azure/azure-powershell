@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Storage management operations to API version 2026-09-01.
+* Added `PublishIpv6Endpoint` to `New-AzStorageAccount` and `Set-AzStorageAccount` to enable or disable IPv6 storage endpoint publishing.
+    - Exposed `DualStackEndpointPreference` on Storage account output, including `Get-AzStorageAccount` results.
+* Added per-service Shared Key controls, cross-tenant delegation SAS (shared access signature) controls, user-bound delegation SAS enforcement, Blob Access Point enablement, and Turbo Tier settings to `New-AzStorageAccount` and `Set-AzStorageAccount`.
+    - Disabling Turbo Tier omits an existing target percentage to avoid a service validation error.
+* Added commands to manage context caches, their managed identities and containers, and advanced platform metrics rules.
+    - Made `Get-AzStorageAdvancedPlatformMetricsRule` list rules by default and retrieve a specific rule through its resource identity.
+    - Aligned command discovery metadata with listing metrics rules and deleting the container-level capacity metrics rule.
+    - Made `Update-AzStorageContextCacheContainer` return the updated container after an asynchronous update.
+* Added commands to manage Blob Access Point configurations and test proposed or existing connections.
+    - Made `Update-AzStorageBlobAccessPointConfiguration` return the updated configuration after an asynchronous update.
+* Added Blob Access Point attachment parameters to `New-AzRmStorageContainer` and attachment details to container output.
+* Added file share guardrail limits and network security perimeter service tags to management output.
 
 ## Version 9.7.2
 * Fixed a path traversal issue in `Get-AzStorageBlobContent` and `Get-AzDataLakeGen2ItemContent` where a source blob/file name containing directory traversal segments (e.g. `../`) could write content outside the specified destination directory.

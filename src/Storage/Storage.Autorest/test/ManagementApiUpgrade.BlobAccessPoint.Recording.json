@@ -1,0 +1,1664 @@
+{
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$POST+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/testBlobAccessPointConfigurationProposedConnection?api-version=2026-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/testBlobAccessPointConfigurationProposedConnection?api-version=2026-09-01",
+      "Content": "{\r\n  \"source\": {\r\n    \"sourceType\": \"Qumulo\",\r\n    \"connection\": {\r\n      \"connectionType\": \"Endpoint\",\r\n      \"endpoint\": \"https://52.176.39.155:9000/gamibucket1\",\r\n      \"tlsVerification\": \"Skip\"\r\n    },\r\n    \"auth\": {\r\n      \"authType\": \"AccessKey\",\r\n      \"signingRegion\": \"us-east-1\",\r\n      \"accessKeyId\": \"REDACTED\",\r\n      \"secretAccessKey\": \"REDACTED\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "419"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/EASTUS/DataManagementRPOperationStatuses/77d2314e-aa0c-4d4a-ba5d-c376cfeaf88f*2D33C43F29C0E83D731973015A6D9360E36B2CA0D0F12D91BE842CE3150ECC55?api-version=2026-09-01&t=639293267893093721&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=iCBIXXdtgp9Dg2PJ15TcvhxdFDn0hvEvgyISP1iJLVbN6wzdGoxub10zKChoPpYS3t40bUDgK7JZS_VtmJz-r8aa_jppDzznTqCTzGVV2b1mXObA6c_H5jdHYffqBV5cksX26f25twAKzIx_Yr3FftXonFW4_cb4xf9ELsdizRaCshlvNWI-U3pBsJFDfyzHqG2f9zGe-ucuH1eqVICJy282A6JQX1gVwzSLOn14vzktiVqyC0TN3jGCafBNT134nd6FzDGf86rZo_HpRtwu6hWHcxYnpKR9ukYWy8kh2rKsGqJ0AalTjLkLC_a2gv6sss4RZ7yPwDFBOensokMIKw&h=Y7rg4E2UXtk90869ilRsnL7Dhr86yDc7DRqqge5dd_g"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/d4c1491b-c82e-4515-b764-448cc0fe00fe"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:d5685d4c-3e34-4c26-bea2-19446a0f4509"
+        ],
+        "mise-correlation-id": [
+          "1ebf303c-4b5f-4f02-a2a8-74730415b5af"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/EASTUS/DataManagementRPOperationStatuses/77d2314e-aa0c-4d4a-ba5d-c376cfeaf88f*2D33C43F29C0E83D731973015A6D9360E36B2CA0D0F12D91BE842CE3150ECC55?api-version=2026-09-01&t=639293267892937740&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=tY9M1QtK2dFYy8blRA1Sl9o7qzgqDCOF4_3oCjBlVHSsZxa3n1MDGR6vGtIOcvJdCkfeB563YYWAosgAODx5WnXohNjgXFZGRCLamjR5nTiRQ_1ytTe9BOSZ5lylQBdV2D6AK0CbeV2Oz2rSdhqODaa-vy4pPNvzIPGu9VNKkmj5_5faXd1Nu3RSRt40L0fF7v5yDsO4S1ChIq7wvVGRaGUGJO9Ay6WHTS-b2BRfHh-sS9GD8I0XL5DXzxUQrfYNhF9XzLrxs1-K8VbfLQqrk8rltfyjIcZVQGliomk2ucm0_eAXJA7kv48xGOa9ErURCKnxiIewh5onOYyyUcqGZw&h=bN5iLnA1gIE2xiwKkIblMkjowdd3QeAO9qrYBH2zzxw"
+        ],
+        "x-ms-request-id": [
+          "77d2314e-aa0c-4d4a-ba5d-c376cfeaf88f"
+        ],
+        "x-ms-correlation-request-id": [
+          "69cf2d04-1314-458f-acfe-9b795a3cc38e"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T181949Z:69cf2d04-1314-458f-acfe-9b795a3cc38e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: BD9DC47FD6BC4FDBB5DB955599BFD44E Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:19:48Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:19:49 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$PUT+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01",
+      "Content": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"properties\": {\r\n    \"source\": {\r\n      \"sourceType\": \"Qumulo\",\r\n      \"connection\": {\r\n        \"connectionType\": \"Endpoint\",\r\n        \"endpoint\": \"https://52.176.39.155:9000/gamibucket1\",\r\n        \"tlsVerification\": \"Skip\"\r\n      },\r\n      \"auth\": {\r\n        \"authType\": \"AccessKey\",\r\n        \"accessKeyId\": \"REDACTED\",\r\n        \"secretAccessKey\": \"REDACTED\",\r\n        \"signingRegion\": \"us-east-1\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "503"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0000cee2-0000-3300-0000-6aea25c60000\""
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/05429ef9-a45d-4cea-beb2-2095e3a5b0de"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:61609c23-b2e8-4886-9f17-aec09f71ab29"
+        ],
+        "mise-correlation-id": [
+          "e5ae863c-b576-4bc3-b981-ca41b0c18b04"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/037ecd7f-ef28-49e2-bd7a-02b554c4a3ca*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293267905716724&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=Y9EuNLpMnN9Pl48sbmZr6PXGbx4goDdT1Xpxf1dJcrFemy_Y9uTzaYnHMhUJQQmSwhkpFxfaP8li2Ft9Ddgude-v_D-O0ChgwoTTkOMBJYT6BtIc_Qwxoyt7aoCA9EV0PtTBEQADhVuFE4weNeJVgYwQRgN21cKtgUNfstjlrhBKnFOTx2yxzpYdV24g4pZoCGarTQXlSANuBAs3tc4aTQ9Z9gf18Q8CrvkYD-YAIsvDIo9f-cDMyF2i5Ei6BHyk4AYFPrJ49g0CgIQRbmLNWyLsMMJUokcI-GL6B3FpdGliLBwUpMGuEG3zWwdpIaMgGG0nPSmSkxQ6snOAmfFGgQ&h=xLwgJmjLUJAQ2QOYWB76xWqdkIEbi6C86Zzq4BGOwSs"
+        ],
+        "x-ms-async-operation-timeout": [
+          "P6D"
+        ],
+        "x-ms-request-id": [
+          "037ecd7f-ef28-49e2-bd7a-02b554c4a3ca"
+        ],
+        "x-ms-correlation-request-id": [
+          "4e0979bb-9b59-4af8-97fc-a5a7874fbcf4"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T181950Z:4e0979bb-9b59-4af8-97fc-a5a7874fbcf4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B2D33C3175594731B6609D2305648153 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:19:49Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:19:50 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1129"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"name\":\"point-qumulo-psrec8b5d5fab2dbap\",\"type\":\"microsoft.storage/storageaccounts/blobaccesspointconfigurations\",\"location\":\"centraluseuap\",\"tags\":{},\"systemData\":{\"createdBy\":\"nateprewitt@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-03T18:19:49.993543Z\",\"lastModifiedBy\":\"nateprewitt@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-03T18:19:49.993543Z\"},\"properties\":{\"uniqueId\":\"b649b6b2-1ac9-40e1-b5a8-0e813ec2fc50\",\"state\":null,\"description\":null,\"lastConnectionTestStatus\":null,\"lastConnectionTestTimestamp\":null,\"lastConnectionTestErrorMessage\":null,\"source\":{\"sourceType\":\"Qumulo\",\"connection\":{\"connectionType\":\"Endpoint\",\"endpoint\":\"https://52.176.39.155:9000/gamibucket1\",\"tlsVerification\":\"Skip\"},\"auth\":{\"authType\":\"AccessKey\",\"accessKeyId\":\"REDACTED\",\"signingRegion\":\"us-east-1\",\"hostOverride\":null}},\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/037ecd7f-ef28-49e2-bd7a-02b554c4a3ca*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293267905716724&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=Y9EuNLpMnN9Pl48sbmZr6PXGbx4goDdT1Xpxf1dJcrFemy_Y9uTzaYnHMhUJQQmSwhkpFxfaP8li2Ft9Ddgude-v_D-O0ChgwoTTkOMBJYT6BtIc_Qwxoyt7aoCA9EV0PtTBEQADhVuFE4weNeJVgYwQRgN21cKtgUNfstjlrhBKnFOTx2yxzpYdV24g4pZoCGarTQXlSANuBAs3tc4aTQ9Z9gf18Q8CrvkYD-YAIsvDIo9f-cDMyF2i5Ei6BHyk4AYFPrJ49g0CgIQRbmLNWyLsMMJUokcI-GL6B3FpdGliLBwUpMGuEG3zWwdpIaMgGG0nPSmSkxQ6snOAmfFGgQ&h=xLwgJmjLUJAQ2QOYWB76xWqdkIEbi6C86Zzq4BGOwSs+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/037ecd7f-ef28-49e2-bd7a-02b554c4a3ca*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293267905716724&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=Y9EuNLpMnN9Pl48sbmZr6PXGbx4goDdT1Xpxf1dJcrFemy_Y9uTzaYnHMhUJQQmSwhkpFxfaP8li2Ft9Ddgude-v_D-O0ChgwoTTkOMBJYT6BtIc_Qwxoyt7aoCA9EV0PtTBEQADhVuFE4weNeJVgYwQRgN21cKtgUNfstjlrhBKnFOTx2yxzpYdV24g4pZoCGarTQXlSANuBAs3tc4aTQ9Z9gf18Q8CrvkYD-YAIsvDIo9f-cDMyF2i5Ei6BHyk4AYFPrJ49g0CgIQRbmLNWyLsMMJUokcI-GL6B3FpdGliLBwUpMGuEG3zWwdpIaMgGG0nPSmSkxQ6snOAmfFGgQ&h=xLwgJmjLUJAQ2QOYWB76xWqdkIEbi6C86Zzq4BGOwSs",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "3"
+        ],
+        "x-ms-client-request-id": [
+          "f7cfa9cc-4284-45a2-a562-2f70bd8c18b6"
+        ],
+        "CommandName": [
+          "New-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "New-AzStorageBlobAccessPointConfiguration_Create"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"9200fc68-0000-3300-0000-6aea25c80000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/southcentralus/81fec66d-a68c-4351-bb2d-17bbe438503f"
+        ],
+        "x-ms-request-id": [
+          "224f9e8c-08de-4d97-8c75-608b12d03fc4"
+        ],
+        "x-ms-correlation-request-id": [
+          "287024e4-651f-433a-bd83-b57ed12d30f6"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20261103T182021Z:287024e4-651f-433a-bd83-b57ed12d30f6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 2716658F012546FFAA1062F7250153D8 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:20:21Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:20:21 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "748"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/037ecd7f-ef28-49e2-bd7a-02b554c4a3ca*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"name\":\"037ecd7f-ef28-49e2-bd7a-02b554c4a3ca*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"resourceId\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-03T18:19:50.2078066Z\",\"endTime\":\"2026-11-03T18:19:52.1969789Z\",\"percentComplete\":100.0,\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "4"
+        ],
+        "x-ms-client-request-id": [
+          "f7cfa9cc-4284-45a2-a562-2f70bd8c18b6"
+        ],
+        "CommandName": [
+          "New-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "New-AzStorageBlobAccessPointConfiguration_Create"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"5d01024c-0000-3400-0000-6aea25c80000\""
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:61609c23-b2e8-4886-9f17-aec09f71ab29"
+        ],
+        "mise-correlation-id": [
+          "50361485-ded6-41d7-9a1e-417bf7a3b6c7"
+        ],
+        "x-ms-request-id": [
+          "aef719d7-cc19-4926-bb3f-dc1aa2e83e17"
+        ],
+        "x-ms-correlation-request-id": [
+          "b476a655-d272-4b7a-9672-cf44e4c46d88"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182021Z:b476a655-d272-4b7a-9672-cf44e4c46d88"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 08A28AB8719A40D89AAB29334E0B09DB Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:20:21Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:20:21 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "973"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"name\":\"point-qumulo-psrec8b5d5fab2dbap\",\"type\":\"microsoft.storage/storageaccounts/blobaccesspointconfigurations\",\"location\":\"centraluseuap\",\"tags\":{},\"systemData\":{\"createdBy\":\"nateprewitt@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-03T18:19:49.993543Z\",\"lastModifiedBy\":\"nateprewitt@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-03T18:19:49.993543Z\"},\"properties\":{\"uniqueId\":\"b649b6b2-1ac9-40e1-b5a8-0e813ec2fc50\",\"source\":{\"sourceType\":\"Qumulo\",\"connection\":{\"connectionType\":\"Endpoint\",\"endpoint\":\"https://52.176.39.155:9000/gamibucket1\",\"tlsVerification\":\"Skip\"},\"auth\":{\"authType\":\"AccessKey\",\"accessKeyId\":\"REDACTED\",\"signingRegion\":\"us-east-1\"}},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "244e4ee7-4479-48df-b7f4-000fd909eed6"
+        ],
+        "CommandName": [
+          "Get-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Get-AzStorageBlobAccessPointConfiguration_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"5d01024c-0000-3400-0000-6aea25c80000\""
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:61609c23-b2e8-4886-9f17-aec09f71ab29"
+        ],
+        "mise-correlation-id": [
+          "095a10ff-1e8e-48dd-9631-bfae896c9a0a"
+        ],
+        "x-ms-request-id": [
+          "5a35f81f-c2e1-4f1e-b00f-b3995fa520ac"
+        ],
+        "x-ms-correlation-request-id": [
+          "6e7eb484-d140-4e6e-8467-043a96e7bd4a"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182021Z:6e7eb484-d140-4e6e-8467-043a96e7bd4a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: FE531CB56AE640598C6A7629C9308215 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:20:21Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:20:21 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "973"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"name\":\"point-qumulo-psrec8b5d5fab2dbap\",\"type\":\"microsoft.storage/storageaccounts/blobaccesspointconfigurations\",\"location\":\"centraluseuap\",\"tags\":{},\"systemData\":{\"createdBy\":\"nateprewitt@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-03T18:19:49.993543Z\",\"lastModifiedBy\":\"nateprewitt@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-03T18:19:49.993543Z\"},\"properties\":{\"uniqueId\":\"b649b6b2-1ac9-40e1-b5a8-0e813ec2fc50\",\"source\":{\"sourceType\":\"Qumulo\",\"connection\":{\"connectionType\":\"Endpoint\",\"endpoint\":\"https://52.176.39.155:9000/gamibucket1\",\"tlsVerification\":\"Skip\"},\"auth\":{\"authType\":\"AccessKey\",\"accessKeyId\":\"REDACTED\",\"signingRegion\":\"us-east-1\"}},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations?api-version=2026-09-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "6"
+        ],
+        "x-ms-client-request-id": [
+          "4cb97006-c665-4d33-9116-31a76e35b8e2"
+        ],
+        "CommandName": [
+          "Get-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Get-AzStorageBlobAccessPointConfiguration_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "05cc8788-0e34-4866-a598-e7aece133f92",
+          "6a43be75-5f9c-495a-9559-b3ab5c753800",
+          "57c6672c-afa7-4683-ac11-dca3920dcb71",
+          "dea16500-889a-4c6d-9d2a-5dfac987c950",
+          "9e6e2b39-c3ea-4708-8fd0-33dce48db6f2",
+          "19f3c321-7d26-43f3-bbd0-8c3eeaf075a9",
+          "2b79db24-920f-4d12-b271-95899fd46cc1",
+          "5ed1af26-cefe-45fc-ab26-b9ac0642c995",
+          "5eb8a407-1b61-4314-906b-ad6103fae6a2",
+          "fc13154f-a25d-4c39-92e9-6e077a380b70",
+          "d0b3ba72-e76a-4b34-9f1b-dc2ecf5ea1ce"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1098"
+        ],
+        "x-ms-request-id": [
+          "0e02119f-8ad5-48b3-861a-4d8a241f2750"
+        ],
+        "x-ms-correlation-request-id": [
+          "0e02119f-8ad5-48b3-861a-4d8a241f2750"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182022Z:0e02119f-8ad5-48b3-861a-4d8a241f2750"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 798129DF09F746A9A7A037335788AF48 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:20:22Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:20:22 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "985"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"name\":\"point-qumulo-psrec8b5d5fab2dbap\",\"type\":\"microsoft.storage/storageaccounts/blobaccesspointconfigurations\",\"location\":\"centraluseuap\",\"tags\":{},\"systemData\":{\"createdBy\":\"nateprewitt@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-03T18:19:49.993543Z\",\"lastModifiedBy\":\"nateprewitt@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-03T18:19:49.993543Z\"},\"properties\":{\"uniqueId\":\"b649b6b2-1ac9-40e1-b5a8-0e813ec2fc50\",\"source\":{\"sourceType\":\"Qumulo\",\"connection\":{\"connectionType\":\"Endpoint\",\"endpoint\":\"https://52.176.39.155:9000/gamibucket1\",\"tlsVerification\":\"Skip\"},\"auth\":{\"authType\":\"AccessKey\",\"accessKeyId\":\"REDACTED\",\"signingRegion\":\"us-east-1\"}},\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$PATCH+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01+7": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"updated\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "58"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "ETag": [
+          "\"0000d1e2-0000-3300-0000-6aea25e80000\""
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/21dc005f-ed22-4a1c-b37c-8d64ffbcaf1a*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268248573263&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=sswBaTyHULHOmF7HPB_Iu3_vuRuACsLYFg-NdjNGzjKrcd_sngNXETc5oT4W2ogMLLQ8FAe-2sWWwEjYlRVlo-uPcZAdgmd4qpG2Ud6tqtBl_a5N7C9kbvH10Cr9J3nGV4DihO-5GUUDN-VMij1RaJTJaboYeAetbt3KqADj-Pp_IOxcJbnAFgK7FdIzRfzspr27oVUskhXsLAZZyY8QiDjdatyyZSL-3-DwISsDddUv1A8sHJcmvfleEudRqFIBirm6mO3PPg8AEObgTmC-wp6JwvbNDvYGoaUx283oK_FdQ7RD4cgcqdcogwYVTA5bjNM0A-ok7fQdOcHEqHWn9A&h=e2NK6PMKp6az14ONNHj_FGPGqOju2s01YfVjD1mYong"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/91cd75ac-7119-4baf-88c5-6fbd2faa0a3d"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:61609c23-b2e8-4886-9f17-aec09f71ab29"
+        ],
+        "mise-correlation-id": [
+          "f2dcd30b-8d7e-4c52-b961-73b28eafe3f4"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/21dc005f-ed22-4a1c-b37c-8d64ffbcaf1a*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268248494471&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=op3xgGypo_ucbxJANvBuyUQjw5XF778DRmSJBH0NoCOat2PeIPIqTBXcGGTQYmqHBtYk-AK2KGfHa3euSMlEl-OWM3wgTh9XgIPDbgX6xKOcZK_RWHVRmbKTSepXYkGoX2LPldqWakOfmHXdQGD08Oub0PbXIEPnSp_VEXXg-ABl7WTlN-dHEFOSzjOZZ4OzLBdSxPeDd6uJ9NUtrbL-u-u1gIKYvfpumvh3yoPyiLsgVOI3JDLfBFzqdxvy1c1U6Npim14yPrM4upkouZIukopR3CDSTD4nvKlmRlbfQPkCUKUaHfrPE6GrCAW2LvpgZPrPEcW51vj_SS4fM2sQkw&h=YmepjMCo929irI08Mef4OOuhoqq2eaBW9vF1Q4hA4WI"
+        ],
+        "x-ms-async-operation-timeout": [
+          "P6D"
+        ],
+        "x-ms-request-id": [
+          "21dc005f-ed22-4a1c-b37c-8d64ffbcaf1a"
+        ],
+        "x-ms-correlation-request-id": [
+          "0e47bfaa-4101-4c7a-80ef-67c4a380570a"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182024Z:0e47bfaa-4101-4c7a-80ef-67c4a380570a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 7FD95F6411CE484EA0CFBA992231FC7F Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:20:23Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:20:24 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/21dc005f-ed22-4a1c-b37c-8d64ffbcaf1a*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268248494471&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=op3xgGypo_ucbxJANvBuyUQjw5XF778DRmSJBH0NoCOat2PeIPIqTBXcGGTQYmqHBtYk-AK2KGfHa3euSMlEl-OWM3wgTh9XgIPDbgX6xKOcZK_RWHVRmbKTSepXYkGoX2LPldqWakOfmHXdQGD08Oub0PbXIEPnSp_VEXXg-ABl7WTlN-dHEFOSzjOZZ4OzLBdSxPeDd6uJ9NUtrbL-u-u1gIKYvfpumvh3yoPyiLsgVOI3JDLfBFzqdxvy1c1U6Npim14yPrM4upkouZIukopR3CDSTD4nvKlmRlbfQPkCUKUaHfrPE6GrCAW2LvpgZPrPEcW51vj_SS4fM2sQkw&h=YmepjMCo929irI08Mef4OOuhoqq2eaBW9vF1Q4hA4WI+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/21dc005f-ed22-4a1c-b37c-8d64ffbcaf1a*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268248494471&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=op3xgGypo_ucbxJANvBuyUQjw5XF778DRmSJBH0NoCOat2PeIPIqTBXcGGTQYmqHBtYk-AK2KGfHa3euSMlEl-OWM3wgTh9XgIPDbgX6xKOcZK_RWHVRmbKTSepXYkGoX2LPldqWakOfmHXdQGD08Oub0PbXIEPnSp_VEXXg-ABl7WTlN-dHEFOSzjOZZ4OzLBdSxPeDd6uJ9NUtrbL-u-u1gIKYvfpumvh3yoPyiLsgVOI3JDLfBFzqdxvy1c1U6Npim14yPrM4upkouZIukopR3CDSTD4nvKlmRlbfQPkCUKUaHfrPE6GrCAW2LvpgZPrPEcW51vj_SS4fM2sQkw&h=YmepjMCo929irI08Mef4OOuhoqq2eaBW9vF1Q4hA4WI",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "8"
+        ],
+        "x-ms-client-request-id": [
+          "1585b5d9-4982-4733-bd59-f82227322826"
+        ],
+        "CommandName": [
+          "Update-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Update-AzStorageBlobAccessPointConfiguration_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"9200da6a-0000-3300-0000-6aea25ea0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/southcentralus/dc7aaa4e-b378-49ed-a2ce-9309ccc6883e"
+        ],
+        "x-ms-request-id": [
+          "d61e553d-a910-4320-89d7-851f0631cd72"
+        ],
+        "x-ms-correlation-request-id": [
+          "7fb32017-a5ca-417d-a175-46aa914419eb"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20261103T182055Z:7fb32017-a5ca-417d-a175-46aa914419eb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: DC2D0AFE354C43BEBFF1F3C361EEF8E8 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:20:55Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:20:55 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "748"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/21dc005f-ed22-4a1c-b37c-8d64ffbcaf1a*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"name\":\"21dc005f-ed22-4a1c-b37c-8d64ffbcaf1a*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"resourceId\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-03T18:20:23.9897991Z\",\"endTime\":\"2026-11-03T18:20:26.6385567Z\",\"percentComplete\":100.0,\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "9"
+        ],
+        "x-ms-client-request-id": [
+          "1585b5d9-4982-4733-bd59-f82227322826"
+        ],
+        "CommandName": [
+          "Update-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Update-AzStorageBlobAccessPointConfiguration_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"5d01ca4e-0000-3400-0000-6aea25ea0000\""
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:61609c23-b2e8-4886-9f17-aec09f71ab29"
+        ],
+        "mise-correlation-id": [
+          "b53b1de9-a2e6-4f9a-832b-2a6d687bda4a"
+        ],
+        "x-ms-request-id": [
+          "d0d2fa69-ebe0-41e4-a8ad-3795ddedb391"
+        ],
+        "x-ms-correlation-request-id": [
+          "47fc1f2d-aa8f-4be5-9cff-f0938b9f06cb"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182055Z:47fc1f2d-aa8f-4be5-9cff-f0938b9f06cb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: FE6183FF56FE493482CEAB7B234FB2F6 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:20:55Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:20:55 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1015"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"name\":\"point-qumulo-psrec8b5d5fab2dbap\",\"type\":\"microsoft.storage/storageaccounts/blobaccesspointconfigurations\",\"location\":\"centraluseuap\",\"tags\":{},\"systemData\":{\"createdBy\":\"nateprewitt@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-03T18:19:49.993543Z\",\"lastModifiedBy\":\"nateprewitt@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-03T18:20:23.7755583Z\"},\"properties\":{\"uniqueId\":\"b649b6b2-1ac9-40e1-b5a8-0e813ec2fc50\",\"state\":\"Active\",\"description\":\"updated\",\"source\":{\"sourceType\":\"Qumulo\",\"connection\":{\"connectionType\":\"Endpoint\",\"endpoint\":\"https://52.176.39.155:9000/gamibucket1\",\"tlsVerification\":\"Skip\"},\"auth\":{\"authType\":\"AccessKey\",\"accessKeyId\":\"REDACTED\",\"signingRegion\":\"us-east-1\"}},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$PATCH+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01+10": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"source\": {\r\n      \"sourceType\": \"Qumulo\",\r\n      \"connection\": {\r\n        \"connectionType\": \"Endpoint\",\r\n        \"tlsVerification\": \"Skip\"\r\n      },\r\n      \"auth\": {\r\n        \"authType\": \"AccessKey\",\r\n        \"accessKeyId\": \"REDACTED\",\r\n        \"secretAccessKey\": \"REDACTED\",\r\n        \"signingRegion\": \"us-east-1\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "408"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "ETag": [
+          "\"0000d4e2-0000-3300-0000-6aea26090000\""
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/e63e6ec8-1b82-4093-b2d9-d311fcbe434c*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268572599085&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=rfYas6jLYHyYs3-2pPgg4uWsu3HZrHYAsrRRmzsUkyWk9BcADMQsewK4cD30cQIkDRS2EeZQ-sAeUc2Ybry5IQg-bd6q2sjfTyyYieAs1q753U_EFzquGVoMoXkuk53B2bT8HGuwEB3mEHeQqnq9-emz30oztFyzuFSZW-uF025cnk1tV98p-TgLUSTWoDnn6wfx6NUVqt0l83W5Yi9DjC2eZ7jind8fhXQLD03cLviZkzjp5idp__7N2bcUwxbQ4vMavGwcvZUCNxcMOSduEZkuu5L4gNjns_WKhcmGljFB3MMzZCX9FBBTPN_TnOHYgffC7ahlrM7BYPS2djvO2w&h=0B69aTRAEla0mO7isCDC7A2ZBbKiB_Mdx8ZduUXtEWM"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/4f501750-0d5a-48da-926d-a122cf5aba0f"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:61609c23-b2e8-4886-9f17-aec09f71ab29"
+        ],
+        "mise-correlation-id": [
+          "5e4b9eef-d55d-4143-b3d3-b3d6092dbaa6"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/e63e6ec8-1b82-4093-b2d9-d311fcbe434c*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268572463567&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=utdphpd1NZBQxUFXQF9jcsllXk1uv9biTrQGiub9Qog9zK8RlDJ4uiZ_mTUH5ZvCpmGjgOj8fRqq0mSudMLdyT-ajxHfvNHLZiLZzIJvMh5m77umgh_p6IGbUiEf_Uznz7zb-wAa4d-mCyqi6-l5N9wAO1Ib1hJIERBoD8faHipOYed9nWtcOdBH-GvrabB-V8dFtdDL4ZYqpoUjv9cwIN-PjmJF-wpr4fZ2icK79bxlc6Lk4Yx4CMZNdWxjygd3QM-uCWk8A30dtvJH-Jvp9jRRtsvNQPcxstSPV-EQPBSP8BlVUYSImiDC6JAAFe67JkuLh-GatmhHeiHW3zDoCQ&h=q3oyJuz-hfuidIqOON0fRcceQOmvEeGRNcpVQ3hVE4k"
+        ],
+        "x-ms-async-operation-timeout": [
+          "P6D"
+        ],
+        "x-ms-request-id": [
+          "e63e6ec8-1b82-4093-b2d9-d311fcbe434c"
+        ],
+        "x-ms-correlation-request-id": [
+          "779c0b44-37f3-4cf0-b5a2-8f7a46e8d106"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182057Z:779c0b44-37f3-4cf0-b5a2-8f7a46e8d106"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B3CB457A50FE4CB6A83FC383E0B34235 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:20:55Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:20:57 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/e63e6ec8-1b82-4093-b2d9-d311fcbe434c*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268572463567&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=utdphpd1NZBQxUFXQF9jcsllXk1uv9biTrQGiub9Qog9zK8RlDJ4uiZ_mTUH5ZvCpmGjgOj8fRqq0mSudMLdyT-ajxHfvNHLZiLZzIJvMh5m77umgh_p6IGbUiEf_Uznz7zb-wAa4d-mCyqi6-l5N9wAO1Ib1hJIERBoD8faHipOYed9nWtcOdBH-GvrabB-V8dFtdDL4ZYqpoUjv9cwIN-PjmJF-wpr4fZ2icK79bxlc6Lk4Yx4CMZNdWxjygd3QM-uCWk8A30dtvJH-Jvp9jRRtsvNQPcxstSPV-EQPBSP8BlVUYSImiDC6JAAFe67JkuLh-GatmhHeiHW3zDoCQ&h=q3oyJuz-hfuidIqOON0fRcceQOmvEeGRNcpVQ3hVE4k+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/e63e6ec8-1b82-4093-b2d9-d311fcbe434c*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268572463567&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=utdphpd1NZBQxUFXQF9jcsllXk1uv9biTrQGiub9Qog9zK8RlDJ4uiZ_mTUH5ZvCpmGjgOj8fRqq0mSudMLdyT-ajxHfvNHLZiLZzIJvMh5m77umgh_p6IGbUiEf_Uznz7zb-wAa4d-mCyqi6-l5N9wAO1Ib1hJIERBoD8faHipOYed9nWtcOdBH-GvrabB-V8dFtdDL4ZYqpoUjv9cwIN-PjmJF-wpr4fZ2icK79bxlc6Lk4Yx4CMZNdWxjygd3QM-uCWk8A30dtvJH-Jvp9jRRtsvNQPcxstSPV-EQPBSP8BlVUYSImiDC6JAAFe67JkuLh-GatmhHeiHW3zDoCQ&h=q3oyJuz-hfuidIqOON0fRcceQOmvEeGRNcpVQ3hVE4k",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "11"
+        ],
+        "x-ms-client-request-id": [
+          "0cd418ad-780b-437b-b53f-cf8ec45af4ad"
+        ],
+        "CommandName": [
+          "Update-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Update-AzStorageBlobAccessPointConfiguration_Update"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"9200996c-0000-3300-0000-6aea260b0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/southcentralus/0178096d-fcec-4ba2-b058-d33a1685c1a0"
+        ],
+        "x-ms-request-id": [
+          "c81f86dc-9c05-4d91-be58-62f63d9b7a60"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a023511-9dfb-4ef2-8802-eeae26966c84"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20261103T182127Z:2a023511-9dfb-4ef2-8802-eeae26966c84"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: DA911ABA480646BC976A6796C7BA6DB3 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:21:27Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:21:27 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "746"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/e63e6ec8-1b82-4093-b2d9-d311fcbe434c*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"name\":\"e63e6ec8-1b82-4093-b2d9-d311fcbe434c*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"resourceId\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-03T18:20:56.482028Z\",\"endTime\":\"2026-11-03T18:20:59.011482Z\",\"percentComplete\":100.0,\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "12"
+        ],
+        "x-ms-client-request-id": [
+          "0cd418ad-780b-437b-b53f-cf8ec45af4ad"
+        ],
+        "CommandName": [
+          "Update-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Update-AzStorageBlobAccessPointConfiguration_Update"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"5d012d51-0000-3400-0000-6aea260b0000\""
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:61609c23-b2e8-4886-9f17-aec09f71ab29"
+        ],
+        "mise-correlation-id": [
+          "beb59750-1360-430f-a4e9-26c03a493ee4"
+        ],
+        "x-ms-request-id": [
+          "a3312fc2-1755-4901-a812-4d0bc24f9780"
+        ],
+        "x-ms-correlation-request-id": [
+          "2565ac75-bf01-46c0-ad6a-fbf25961bec7"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182128Z:2565ac75-bf01-46c0-ad6a-fbf25961bec7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 92D8570DF0984598A96927D2C08670CC Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:21:27Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:21:27 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1015"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"name\":\"point-qumulo-psrec8b5d5fab2dbap\",\"type\":\"microsoft.storage/storageaccounts/blobaccesspointconfigurations\",\"location\":\"centraluseuap\",\"tags\":{},\"systemData\":{\"createdBy\":\"nateprewitt@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-11-03T18:19:49.993543Z\",\"lastModifiedBy\":\"nateprewitt@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-11-03T18:20:56.0910714Z\"},\"properties\":{\"uniqueId\":\"b649b6b2-1ac9-40e1-b5a8-0e813ec2fc50\",\"state\":\"Active\",\"description\":\"updated\",\"source\":{\"sourceType\":\"Qumulo\",\"connection\":{\"connectionType\":\"Endpoint\",\"endpoint\":\"https://52.176.39.155:9000/gamibucket1\",\"tlsVerification\":\"Skip\"},\"auth\":{\"authType\":\"AccessKey\",\"accessKeyId\":\"REDACTED\",\"signingRegion\":\"us-east-1\"}},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$POST+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap/testExistingConnection?api-version=2026-09-01+13": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap/testExistingConnection?api-version=2026-09-01",
+      "Content": "{\r\n  \"uniqueId\": \"b649b6b2-1ac9-40e1-b5a8-0e813ec2fc50\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "58"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/0d0cc8ce-1319-462f-9ed4-a783c963c588"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:61609c23-b2e8-4886-9f17-aec09f71ab29"
+        ],
+        "mise-correlation-id": [
+          "b160fcc4-3204-4b1b-99a9-b3b48e483c7f"
+        ],
+        "x-ms-request-id": [
+          "005106e9-4a87-40a3-9b45-140af7a4faec"
+        ],
+        "x-ms-correlation-request-id": [
+          "6e498ae5-f023-4c67-8778-e9fbbd8860f2"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182129Z:6e498ae5-f023-4c67-8778-e9fbbd8860f2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 35F4F1C5A73848B2B0652EB5B022B0E9 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:21:28Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:21:29 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "110"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"methodName\":\"TestExistingConnection\",\"errorMessage\":null,\"requestId\":\"6e498ae5-f023-4c67-8778-e9fbbd8860f2\"}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$DELETE+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01+14": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "14"
+        ],
+        "x-ms-client-request-id": [
+          "20a569a7-4251-4a95-b000-fddd6f2231f0"
+        ],
+        "CommandName": [
+          "Remove-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Remove-AzStorageBlobAccessPointConfiguration_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "ETag": [
+          "\"0000d9e2-0000-3300-0000-6aea262b0000\""
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268911904521&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=l5EqW0rjAE5f9jBSuYtqCBlE3ROuMSae5cymbYwlStbYLeqG-ktBXlJaLpsQBuDUiLYizxdN9-dbsxXq3ytkXOE1UZfByxPqGYAiX0uQIqjCMGE7TWEaSnkVexk-JYkMKw6HS3TWjCcfBnUSWHWcqZwsZwvgcQb_K9fImpC37of6OtZX5ESlwZ89vkGnVE-Oow2IU1X-TYrx0iFeZ8A0uctIBRVKUA2gV69XgLC9lrrbulck1gC9Jxu-CPb0_KfGBypFcyT4rQ94kaalmRbqYBEpc_cL91Whxq8foKdI-sGmtsJ4KALv3WwCCMIWn6UH9d8SnAwVmqKC5zf6SXKrhA&h=vDJ1ZlqnDcnY_mi9Yc9GLIlaanB9jAGbTNQpLUcn8VA"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/6be88658-2dce-448d-98b8-1f60634a2637"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:61609c23-b2e8-4886-9f17-aec09f71ab29"
+        ],
+        "mise-correlation-id": [
+          "1e1d744e-5079-49b4-a52d-47db0e1f91ea"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268911845708&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=DJ6Qw3W-_jhJo-5njP8t3xF7NgylUsMKWjfp9hr60w3b32ACLqBP0IqpztqPKnxTD2tixCPQZGMbLL2H1YowNqn7c7w6rX_YA4JZE2RsmPTmq0GGua59go4XaFYnXPKS5QqEdTS99BLPNVMavN5HD_GWD3m667qTp4_gz8DLnQAwtP4zMGIBn7cKDeEe_1Wz3U493BD0SIKt0jEUr0_alOeNnLMX5jM9fassAXbZ0p2Q_Jaa-o0-vA4C7ZmA41epRvvEu6nirikeXh55anh5RrqJBrFL8n-OtwreWNmw-1RtjVV3fnhtNPvgiBvZ3t4YPVRRCulP_Jgt7fzRAC0jlQ&h=yAcDXjvgt3pwX8FlFPIpANMtFPUiqNxiQA9EEn5hUus"
+        ],
+        "x-ms-request-id": [
+          "5d20b1b1-f9e6-4cb9-91a3-67310b91a818"
+        ],
+        "x-ms-correlation-request-id": [
+          "df825070-7a6c-4858-a68a-643215b2cb2c"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182131Z:df825070-7a6c-4858-a68a-643215b2cb2c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1F64353D48DE4BCDBE47701CCD43FD81 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:21:30Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:21:31 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268911845708&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=DJ6Qw3W-_jhJo-5njP8t3xF7NgylUsMKWjfp9hr60w3b32ACLqBP0IqpztqPKnxTD2tixCPQZGMbLL2H1YowNqn7c7w6rX_YA4JZE2RsmPTmq0GGua59go4XaFYnXPKS5QqEdTS99BLPNVMavN5HD_GWD3m667qTp4_gz8DLnQAwtP4zMGIBn7cKDeEe_1Wz3U493BD0SIKt0jEUr0_alOeNnLMX5jM9fassAXbZ0p2Q_Jaa-o0-vA4C7ZmA41epRvvEu6nirikeXh55anh5RrqJBrFL8n-OtwreWNmw-1RtjVV3fnhtNPvgiBvZ3t4YPVRRCulP_Jgt7fzRAC0jlQ&h=yAcDXjvgt3pwX8FlFPIpANMtFPUiqNxiQA9EEn5hUus+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268911845708&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=DJ6Qw3W-_jhJo-5njP8t3xF7NgylUsMKWjfp9hr60w3b32ACLqBP0IqpztqPKnxTD2tixCPQZGMbLL2H1YowNqn7c7w6rX_YA4JZE2RsmPTmq0GGua59go4XaFYnXPKS5QqEdTS99BLPNVMavN5HD_GWD3m667qTp4_gz8DLnQAwtP4zMGIBn7cKDeEe_1Wz3U493BD0SIKt0jEUr0_alOeNnLMX5jM9fassAXbZ0p2Q_Jaa-o0-vA4C7ZmA41epRvvEu6nirikeXh55anh5RrqJBrFL8n-OtwreWNmw-1RtjVV3fnhtNPvgiBvZ3t4YPVRRCulP_Jgt7fzRAC0jlQ&h=yAcDXjvgt3pwX8FlFPIpANMtFPUiqNxiQA9EEn5hUus",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "15"
+        ],
+        "x-ms-client-request-id": [
+          "20a569a7-4251-4a95-b000-fddd6f2231f0"
+        ],
+        "CommandName": [
+          "Remove-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Remove-AzStorageBlobAccessPointConfiguration_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"9200666e-0000-3300-0000-6aea262c0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/southcentralus/40dc5ae0-a9d4-4318-ae4a-f46845a73c99"
+        ],
+        "x-ms-request-id": [
+          "7edc196a-c1aa-4281-a05c-7dd9774c34f3"
+        ],
+        "x-ms-correlation-request-id": [
+          "56ba70de-62bb-4856-87fe-5ffdefd08d76"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20261103T182201Z:56ba70de-62bb-4856-87fe-5ffdefd08d76"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 022CB3231FEE4A9FB7C277BAFBAA8C66 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:22:01Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:22:01 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "748"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"name\":\"5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"resourceId\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-03T18:21:30.9670266Z\",\"endTime\":\"2026-11-03T18:21:32.5308674Z\",\"percentComplete\":100.0,\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268911904521&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=l5EqW0rjAE5f9jBSuYtqCBlE3ROuMSae5cymbYwlStbYLeqG-ktBXlJaLpsQBuDUiLYizxdN9-dbsxXq3ytkXOE1UZfByxPqGYAiX0uQIqjCMGE7TWEaSnkVexk-JYkMKw6HS3TWjCcfBnUSWHWcqZwsZwvgcQb_K9fImpC37of6OtZX5ESlwZ89vkGnVE-Oow2IU1X-TYrx0iFeZ8A0uctIBRVKUA2gV69XgLC9lrrbulck1gC9Jxu-CPb0_KfGBypFcyT4rQ94kaalmRbqYBEpc_cL91Whxq8foKdI-sGmtsJ4KALv3WwCCMIWn6UH9d8SnAwVmqKC5zf6SXKrhA&h=vDJ1ZlqnDcnY_mi9Yc9GLIlaanB9jAGbTNQpLUcn8VA+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A?api-version=2026-09-01&t=639293268911904521&c=MIIH9TCCBt2gAwIBAgIRAI0Qfjr_aZI6pq4fIIlgPtswDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjEwMjIxODE0MDZaFw0yNzAxMTgwMDE0MDZaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwDgBt_gFC6GYARTtnxRLgDp88IO0j7Sa2295IlTXaonAG6i3zE9P0nCkqEsWOast7c6OWdjvS2X7xfp4mo8-eyh0G5EgyDsNe2n6W-TaC1GHs0gRrMNDpzakLNvHIwf6HBWkd5j0Scls11C-vXE1blFGOeE4a6VQ7VJC_9EXFWDxjxBnqkBnByL1laZBejugDqGoQMrFW6RE5Mc8Sys7d6v8AEJUswkW6DM5SIJLBVApjJx6MC5KfE-LL39CruRpnLuaoUbZOmos7RDKaGZgQTEzCMLasgMJOLcpJ0fy70WJoZN66MnVG6i1Qp7vskUzYycBvcESUCJXGpbVKcIxIQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUf2_IiMEkSbPr5vtamaxSg-GOIvIwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS8xMi9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzEyL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvMTIvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAkBaardoHC7PMqLDUkEG2fFt8birSi-gvlFtxjLHn-ywq_xPKllJtuZCcnO7cV4DhK6mmkVCU4AATmZ6K75Tisi6NpADS32ecsxV039vcKWhM6wAxEn9kpnqqPkgWyEd-20kf9uGlQx1ifcOziZhqtIgkax9fgKJWtNT-3nTQLFNr1jMBSfeqzb-nVmIrVxzQEP2RFA3n3WnKRa4dwgD9O8oZ7nIdteKs-j77AuhgbszRqsFJVTcinVUMaiQ4ITloLqQYdt-Y-rjExk-y9ifVa5Fjiog6j8rrT2eO_kkcc8dYUKRYWvR7niJo1tkLwwfF3k9zMCgQy_LPIr7bP4bKGQ&s=l5EqW0rjAE5f9jBSuYtqCBlE3ROuMSae5cymbYwlStbYLeqG-ktBXlJaLpsQBuDUiLYizxdN9-dbsxXq3ytkXOE1UZfByxPqGYAiX0uQIqjCMGE7TWEaSnkVexk-JYkMKw6HS3TWjCcfBnUSWHWcqZwsZwvgcQb_K9fImpC37of6OtZX5ESlwZ89vkGnVE-Oow2IU1X-TYrx0iFeZ8A0uctIBRVKUA2gV69XgLC9lrrbulck1gC9Jxu-CPb0_KfGBypFcyT4rQ94kaalmRbqYBEpc_cL91Whxq8foKdI-sGmtsJ4KALv3WwCCMIWn6UH9d8SnAwVmqKC5zf6SXKrhA&h=vDJ1ZlqnDcnY_mi9Yc9GLIlaanB9jAGbTNQpLUcn8VA",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "16"
+        ],
+        "x-ms-client-request-id": [
+          "20a569a7-4251-4a95-b000-fddd6f2231f0"
+        ],
+        "CommandName": [
+          "Remove-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Remove-AzStorageBlobAccessPointConfiguration_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"9200666e-0000-3300-0000-6aea262c0000\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/southcentralus/b9c7ee4b-fe8d-4a9c-baa7-b7c2e4de23d9"
+        ],
+        "x-ms-request-id": [
+          "585d5e59-8267-4f53-9b1a-96f9d7a2a869"
+        ],
+        "x-ms-correlation-request-id": [
+          "2166eb56-da51-4d9f-a09c-017fa152ea40"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHCENTRALUS:20261103T182202Z:2166eb56-da51-4d9f-a09c-017fa152ea40"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A5509C449A4E4B479135FCF200A5353E Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:22:01Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:22:02 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "748"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/providers/Microsoft.Storage/locations/CENTRALUSEUAP/DataManagementRPOperationStatuses/5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"name\":\"5d20b1b1-f9e6-4cb9-91a3-67310b91a818*6259C7CD7289A52055BB9178C269F7ABCA993922762896A3BE86BA8A0D4EB65A\",\"resourceId\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations/point-qumulo-psrec8b5d5fab2dbap\",\"status\":\"Succeeded\",\"startTime\":\"2026-11-03T18:21:30.9670266Z\",\"endTime\":\"2026-11-03T18:21:32.5308674Z\",\"percentComplete\":100.0,\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "ManagementApiUpgrade.BlobAccessPoint+[NoContext]+Runs configuration and connection-test operations for Qumulo+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations?api-version=2026-09-01+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2dbap/blobAccessPointConfigurations?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "17"
+        ],
+        "x-ms-client-request-id": [
+          "23c3abd6-bf66-4e22-870e-87b094b46c87"
+        ],
+        "CommandName": [
+          "Get-AzStorageBlobAccessPointConfiguration"
+        ],
+        "FullCommandName": [
+          "Get-AzStorageBlobAccessPointConfiguration_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v15.1.0",
+          "PSVersion/v7.4.22",
+          "Az.Storage/9.7.2"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "b9be2820-7fad-426b-a463-ed128bd931c6",
+          "62c05d91-ace4-47d8-97b5-5649d0957266",
+          "9ec48c2f-0fb2-480d-8c6a-2568af4360a7",
+          "71855e3f-e230-48fc-a0bf-65e4952212aa",
+          "ce910ba6-8b95-4144-aadf-59a0a5fb7611",
+          "a11417d6-4a3a-4725-a7ae-caea9106dd80",
+          "8a7edcfc-bc84-4684-857d-f59cd454f3eb",
+          "0871d5f8-62d9-42ec-b21c-ba2921091e26",
+          "c4680c04-eb94-42f5-8575-ea0bbc2272d0",
+          "d5f76be7-987f-4023-840f-ea310a104b75",
+          "833e2c55-98d4-4485-ad9a-bbe8ff01ba50"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "0b8976b7-37a0-4425-aa9f-fb1472c5cde1"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b8976b7-37a0-4425-aa9f-fb1472c5cde1"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261103T182203Z:0b8976b7-37a0-4425-aa9f-fb1472c5cde1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 23D0C613723F44CBA85DE04897BA4EF8 Ref B: SN4AA2022302023 Ref C: 2026-11-03T18:22:02Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 18:22:03 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

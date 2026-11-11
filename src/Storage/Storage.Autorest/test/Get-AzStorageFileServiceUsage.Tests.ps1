@@ -17,10 +17,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageFileServiceUsage
 Describe 'Get-AzStorageFileServiceUsage' {
     It 'Get' {
 
-        $usage = Get-AzStorageFileServiceUsage -ResourceGroupName $env.ResourceGroupName -StorageAccountName $env.FilePV2AccountName
+        $resourceGroupName = $env.ResourceGroupName
+        $scope = @{
+            ResourceGroupName = $resourceGroupName
+            StorageAccountName = $env.FilePV2AccountName
+        }
+        if ($null -ne $env.ManagementApi) {
+            $fixture = Get-StorageManagementFixture FileServiceUsage
+            $resourceGroupName = $fixture.ResourceGroupName
+            $scope.ResourceGroupName = $resourceGroupName
+            $scope.StorageAccountName = $fixture.AccountName
+            $scope.SubscriptionId = Get-StorageManagementFixture SubscriptionId
+        }
+        $usage = Get-AzStorageFileServiceUsage @scope
 
         $usage.Name | should -Be "default"
-        $usage.ResourceGroupName | should -Be $env.ResourceGroupName
+        $usage.ResourceGroupName | should -Be $resourceGroupName
         $usage.BurstingConstantBurstFloorIops | should -BeGreaterThan 0
         $usage.BurstingConstantBurstIoScalar | should -BeGreaterThan 0
         $usage.BurstingConstantBurstTimeframeSecond | should -BeGreaterThan 0
@@ -30,6 +42,8 @@ Describe 'Get-AzStorageFileServiceUsage' {
         $usage.FileShareLimitMinProvisionedBandwidthMiBPerSec | should -BeGreaterThan 0
         $usage.FileShareLimitMinProvisionedIops | should -BeGreaterThan 0
         $usage.FileShareLimitMinProvisionedStorageGiB | should -BeGreaterThan 0
+        $usage.FileShareLimitGuardrailIoScalar | Should -BeGreaterThan 0
+        $usage.FileShareLimitGuardrailBandwidthScalar | Should -BeGreaterThan 0
         $usage.FileShareRecommendationBandwidthScalar | should -BeGreaterThan 0
         $usage.FileShareRecommendationBaseBandwidthMiBPerSec | should -BeGreaterThan 0
         $usage.FileShareRecommendationBaseIops | should -BeGreaterThan 0

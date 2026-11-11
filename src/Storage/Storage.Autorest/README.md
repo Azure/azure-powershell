@@ -23,21 +23,23 @@ AutoRest does not generate authentication code for the module. Authentication is
 For information on how to develop for `Az.Storage`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
+## Run Generation
+
+```powershell
+npx autorest@3.8.0 --version:3.9.7 --use:@autorest/powershell@4.0.754 --use:@autorest/modelerfour@4.26.0
+```
+
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: da92baf3b3a2a8ff09a977b44cb6f65f8d8d735b
+commit: 548d44095be067632e36c74969cce42472ed1431
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-08-01/openapi.json
-  # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storage.json
-  # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/file.json
-  # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storageTaskAssignments.json
-  # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/networkSecurityPerimeter.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/Storage/stable/2026-09-01/openapi.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1
@@ -48,7 +50,80 @@ nested-object-to-string: true
 identity-correction-for-post: true 
 
 directive:
+  # Access Point PATCH Location points to operation status, not the updated resource.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}"].patch
+    transform: $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+  # Container PATCH responses omit Location; retrieve the resource after async polling completes.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}"].patch
+    transform: $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+  # Prevent automatic singularization from truncating the context-cache noun.
   - where:
+      subject: ^ContextCach$
+    set:
+      subject: ContextCache
+  # Keep the availability check consistent with the context-cache noun.
+  - where:
+      subject: ^ContextCachNameAvailability$
+    set:
+      subject: ContextCacheNameAvailability
+  # Avoid the generator's EName abbreviation for the context-cache resource name.
+  - where:
+      subject: ^ContextCache$
+      parameter-name: EName
+    set:
+      parameter-name: Name
+  # The resource is a metrics rule, not an individual metric.
+  - where:
+      subject: ^AdvancedPlatformMetric$
+    set:
+      subject: AdvancedPlatformMetricsRule
+  # List rules by default; the singleton GET remains available through its resource identity.
+  - where:
+      subject: ^AdvancedPlatformMetricsRule$
+      verb: Get
+      variant: ^Get$
+    remove: true
+  # Distinguish testing a stored configuration from testing a proposed connection.
+  - where:
+      subject: ^BlobAccessPointConfigurationExistingConnection$
+    set:
+      subject: BlobAccessPointConfigurationConnection
+  # Avoid repeating Test and ProposedConnection in the action noun.
+  - where:
+      subject: ^BlobAccessPointConnectionTestProposedConnection$
+    set:
+      subject: BlobAccessPointConnection
+  # Keep the storage-account identity model distinct from the common ARM identity used by context caches.
+  - from: managedidentity.json
+    where: $.definitions.UserAssignedIdentity
+    transform: $["x-ms-client-name"] = "ContextCacheUserAssignedIdentity";
+  # Preserve the public tracked-resource update type name.
+  - from: openapi.json
+    where: $.definitions.TrackedResourceUpdate
+    transform: $["x-ms-client-name"] = "AzureResourceManagerCommonTypesTrackedResourceUpdate";
+  # Name the tag dictionary explicitly to preserve existing public model property types.
+  - from: openapi.json
+    where: $.definitions
+    transform: |
+      const tags = $.TrackedResourceUpdate.properties.tags;
+      $.AzureResourceManagerCommonTypesTrackedResourceUpdateTags = tags;
+      $.TrackedResourceUpdate.properties.tags = {
+        "$ref": "#/definitions/AzureResourceManagerCommonTypesTrackedResourceUpdateTags",
+        description: tags.description
+      };
+  # AutoRest does not turn the schema's TTL bounds into PowerShell parameter validation.
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('public int TimeToLive', '[System.Management.Automation.ValidateRangeAttribute(1,30)]\n        public int TimeToLive');
+  # Display Access Point objects without write-only credentials; request serialization still includes them.
+  - from: source-file-csharp
+    where: $
+    transform: if ($.includes('partial class BlobAccessPoint')) { $ = $.replace('return ToJsonString();', 'return ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead)?.ToString();'); }
+  # Complex polymorphic Access Point bodies need object and JSON variants as well as expanded inputs.
+  - where:
+      subject: ^(?!BlobAccessPoint).*
       variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
     remove: true
   - where:
@@ -116,9 +191,11 @@ directive:
       property-name: StorageAccountLimitMaxProvisionedIop
     set:
       property-name: StorageAccountLimitMaxProvisionedIops
+  # Generate Blob Access Point commands alongside the handwritten Blob cmdlets.
   - where:
-      subject: .*Blob.*|.*Table.*|.*Queue.*|^Connector.*|^DataShare$|^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
+      subject: ^(?!BlobAccessPoint).*Blob.*|.*Table.*|.*Queue.*|^Connector.*|^DataShare$|^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
     remove: true  
+  # Preserve the existing task-assignment command surface.
   - where:
       verb: Stop
       subject: StorageTaskAssignment

@@ -1,0 +1,95 @@
+{
+  "resourceType": "contextCaches/contextCacheContainers",
+  "apiVersion": "2026-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storage"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageContextCacheContainer",
+      "description": "Get a container in a Context Cache.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/get-azstoragecontextcachecontainer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ContextCacheName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a container in a Context Cache.",
+          "parameters": [
+            {
+              "name": "-ContextCacheName",
+              "value": "[Path.contextCacheName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.contextCacheContainerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStorageContextCacheContainer",
+      "description": "Delete a container from a Context Cache.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragecontextcachecontainer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ContextCacheName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a container from a Context Cache.",
+          "parameters": [
+            {
+              "name": "-ContextCacheName",
+              "value": "[Path.contextCacheName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.contextCacheContainerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

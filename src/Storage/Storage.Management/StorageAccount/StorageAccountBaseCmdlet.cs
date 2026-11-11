@@ -142,6 +142,44 @@ namespace Microsoft.Azure.Commands.Management.Storage
             return returnAccessTier;
         }
 
+        protected static string NormalizePolicyViolationAction(string action)
+        {
+            if (action == null)
+            {
+                return null;
+            }
+            if (string.Equals(action, PolicyViolationAction.None, StringComparison.OrdinalIgnoreCase))
+            {
+                return PolicyViolationAction.None;
+            }
+            if (string.Equals(action, PolicyViolationAction.Log, StringComparison.OrdinalIgnoreCase))
+            {
+                return PolicyViolationAction.Log;
+            }
+            if (string.Equals(action, PolicyViolationAction.Block, StringComparison.OrdinalIgnoreCase))
+            {
+                return PolicyViolationAction.Block;
+            }
+            throw new ArgumentException("The policy action must be None, Log, or Block.", nameof(action));
+        }
+
+        protected static string NormalizeTurboTierStatus(string status)
+        {
+            if (status == null)
+            {
+                return null;
+            }
+            if (string.Equals(status, TurboTierStatus.Enabled, StringComparison.OrdinalIgnoreCase))
+            {
+                return TurboTierStatus.Enabled;
+            }
+            if (string.Equals(status, TurboTierStatus.Disabled, StringComparison.OrdinalIgnoreCase))
+            {
+                return TurboTierStatus.Disabled;
+            }
+            throw new ArgumentException("The Turbo Tier status must be Enabled or Disabled.", nameof(status));
+        }
+
         protected static Encryption ParseEncryption(bool storageEncryption = false, bool keyVaultEncryption = false, string keyName = null, string keyVersion = null, string keyVaultUri = null)
         {
             Encryption accountEncryption = new Encryption();

@@ -561,6 +561,87 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowSharedKeyAccess = null;
 
+        [Parameter(HelpMessage = "Allow Shared Key authorization for the Blob service.")]
+        public bool AllowSharedKeyAccessForBlob
+        {
+            get => allowSharedKeyAccessForBlob.GetValueOrDefault();
+            set => allowSharedKeyAccessForBlob = value;
+        }
+        private bool? allowSharedKeyAccessForBlob;
+
+        [Parameter(HelpMessage = "Allow Shared Key authorization for the File service.")]
+        public bool AllowSharedKeyAccessForFile
+        {
+            get => allowSharedKeyAccessForFile.GetValueOrDefault();
+            set => allowSharedKeyAccessForFile = value;
+        }
+        private bool? allowSharedKeyAccessForFile;
+
+        [Parameter(HelpMessage = "Allow Shared Key authorization for the Queue service.")]
+        public bool AllowSharedKeyAccessForQueue
+        {
+            get => allowSharedKeyAccessForQueue.GetValueOrDefault();
+            set => allowSharedKeyAccessForQueue = value;
+        }
+        private bool? allowSharedKeyAccessForQueue;
+
+        [Parameter(HelpMessage = "Allow Shared Key authorization for the Table service.")]
+        public bool AllowSharedKeyAccessForTable
+        {
+            get => allowSharedKeyAccessForTable.GetValueOrDefault();
+            set => allowSharedKeyAccessForTable = value;
+        }
+        private bool? allowSharedKeyAccessForTable;
+
+        [Parameter(HelpMessage = "Allow user delegation shared access signatures from another Microsoft Entra tenant.")]
+        public bool AllowCrossTenantDelegationSas
+        {
+            get => allowCrossTenantDelegationSas.GetValueOrDefault();
+            set => allowCrossTenantDelegationSas = value;
+        }
+        private bool? allowCrossTenantDelegationSas;
+
+        [Parameter(HelpMessage = "Publish IPv6 storage endpoints. When omitted, the service default is used.")]
+        public bool PublishIpv6Endpoint
+        {
+            get => publishIpv6Endpoint.GetValueOrDefault();
+            set => publishIpv6Endpoint = value;
+        }
+        private bool? publishIpv6Endpoint;
+
+        [Parameter(HelpMessage = "Require user-bound user delegation shared access signatures. Specify SasExpirationPeriod to create the SAS policy.")]
+        public bool RequireUserBoundUserDelegationSas
+        {
+            get => requireUserBoundUserDelegationSas.GetValueOrDefault();
+            set => requireUserBoundUserDelegationSas = value;
+        }
+        private bool? requireUserBoundUserDelegationSas;
+
+        [Parameter(HelpMessage = "Action when a user delegation shared access signature is not user-bound: None, Log, or Block.")]
+        [ValidateSet("None", "Log", "Block")]
+        public string RequireUserBoundUserDelegationSasAction { get; set; }
+
+        [Parameter(HelpMessage = "Allow Blob Access Points on this storage account.")]
+        public bool AllowBlobAccessPoints
+        {
+            get => allowBlobAccessPoints.GetValueOrDefault();
+            set => allowBlobAccessPoints = value;
+        }
+        private bool? allowBlobAccessPoints;
+
+        [Parameter(HelpMessage = "Enable or disable Turbo Tier on the storage account.")]
+        [ValidateSet("Enabled", "Disabled")]
+        public string TurboTierStatus { get; set; }
+
+        [Parameter(HelpMessage = "Turbo Tier target fill percentage, from 10 to 100. When enabled and omitted, the service default is 20.")]
+        [ValidateRange(10, 100)]
+        public int TurboTierTargetPercent
+        {
+            get => turboTierTargetPercent.GetValueOrDefault();
+            set => turboTierTargetPercent = value;
+        }
+        private int? turboTierTargetPercent;
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable NFS 3.0 protocol support if sets to true")]
@@ -958,6 +1039,43 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                 }
                 createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), SasExpirationAction);
+            }
+
+            if (requireUserBoundUserDelegationSas != null || RequireUserBoundUserDelegationSasAction != null)
+            {
+                if (createParameters.SasPolicy == null)
+                {
+                    throw new ArgumentException("Specify -SasExpirationPeriod when creating a user-bound SAS policy.");
+                }
+                createParameters.SasPolicy.RequireUserBoundUserDelegationSas = requireUserBoundUserDelegationSas;
+                createParameters.SasPolicy.RequireUserBoundUserDelegationSasAction = NormalizePolicyViolationAction(RequireUserBoundUserDelegationSasAction);
+            }
+            if (allowSharedKeyAccessForBlob != null || allowSharedKeyAccessForFile != null ||
+                allowSharedKeyAccessForQueue != null || allowSharedKeyAccessForTable != null)
+            {
+                createParameters.AllowSharedKeyAccessForServices = new StorageAccountSharedKeyAccessProperties(
+                    blob: allowSharedKeyAccessForBlob.HasValue ? new ServiceSharedKeyAccessProperties(allowSharedKeyAccessForBlob) : null,
+                    file: allowSharedKeyAccessForFile.HasValue ? new ServiceSharedKeyAccessProperties(allowSharedKeyAccessForFile) : null,
+                    queue: allowSharedKeyAccessForQueue.HasValue ? new ServiceSharedKeyAccessProperties(allowSharedKeyAccessForQueue) : null,
+                    table: allowSharedKeyAccessForTable.HasValue ? new ServiceSharedKeyAccessProperties(allowSharedKeyAccessForTable) : null);
+            }
+            if (allowCrossTenantDelegationSas != null)
+            {
+                createParameters.AllowCrossTenantDelegationSas = allowCrossTenantDelegationSas;
+            }
+            if (publishIpv6Endpoint != null)
+            {
+                createParameters.DualStackEndpointPreference = new DualStackEndpointPreference(publishIpv6Endpoint);
+            }
+            if (allowBlobAccessPoints != null)
+            {
+                createParameters.DataCollaborationPolicyProperties = new StorageDataCollaborationPolicyProperties(
+                    allowBlobAccessPoints: allowBlobAccessPoints);
+            }
+            if (TurboTierStatus != null || turboTierTargetPercent != null)
+            {
+                createParameters.TurboTier = new TurboTier(
+                    NormalizeTurboTierStatus(TurboTierStatus), turboTierTargetPercent);
             }
 
             if (keyExpirationPeriodInDay != null)
