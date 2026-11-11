@@ -40,6 +40,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRuleProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRuleInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NspAccessRuleProperties()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for ServiceTag</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRuleInternal.ServiceTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)Property).ServiceTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)Property).ServiceTag = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for Subscription</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesSubscriptionsItem> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRuleInternal.Subscription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)Property).Subscription; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)Property).Subscription = value ?? null /* arrayOf */; }
 
@@ -60,6 +63,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Properties of Access Rule</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRuleProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NspAccessRuleProperties()); }
+
+        /// <summary>Service Tags for inbound rules</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ServiceTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)Property).ServiceTag; }
 
         /// <summary>Subscriptions for inbound rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -131,6 +138,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"networkSecurityPerimeters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeter) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeter> NetworkSecurityPerimeter { get;  }
+        /// <summary>Service Tags for inbound rules</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Service Tags for inbound rules",
+        SerializedName = @"serviceTags",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ServiceTag { get;  }
         /// <summary>Subscriptions for inbound rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -161,6 +179,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeter> NetworkSecurityPerimeter { get; set; }
         /// <summary>Properties of Access Rule</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRuleProperties Property { get; set; }
+        /// <summary>Service Tags for inbound rules</summary>
+        System.Collections.Generic.List<string> ServiceTag { get; set; }
         /// <summary>Subscriptions for inbound rules</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesSubscriptionsItem> Subscription { get; set; }
 

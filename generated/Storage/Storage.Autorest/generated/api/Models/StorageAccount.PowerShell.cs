@@ -197,6 +197,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).KeyPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyPolicy) content.GetValueForProperty("KeyPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).KeyPolicy, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyPolicyTypeConverter.ConvertFrom);
             }
+            if (content.Contains("TurboTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTier = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITurboTier) content.GetValueForProperty("TurboTier",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTier, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.TurboTierTypeConverter.ConvertFrom);
+            }
             if (content.Contains("RoutingPreference"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).RoutingPreference = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRoutingPreference) content.GetValueForProperty("RoutingPreference",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).RoutingPreference, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.RoutingPreferenceTypeConverter.ConvertFrom);
@@ -381,6 +385,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).AccountMigrationInProgress = (bool?) content.GetValueForProperty("AccountMigrationInProgress",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).AccountMigrationInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("AllowCrossTenantDelegationSas"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).AllowCrossTenantDelegationSas = (bool?) content.GetValueForProperty("AllowCrossTenantDelegationSas",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).AllowCrossTenantDelegationSas, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("PrimaryEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).PrimaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("PrimaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).PrimaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
@@ -404,6 +412,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("KeyCreationTimeKey2"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).KeyCreationTimeKey2 = (global::System.DateTime?) content.GetValueForProperty("KeyCreationTimeKey2",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).KeyCreationTimeKey2, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("TurboTierStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTierStatus = (string) content.GetValueForProperty("TurboTierStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTierStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("TurboTierTargetPercent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTierTargetPercent = (int?) content.GetValueForProperty("TurboTierTargetPercent",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTierTargetPercent, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("NetworkRuleSetBypass"))
             {
@@ -460,6 +476,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("SasPolicySasExpirationPeriod"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicySasExpirationPeriod = (string) content.GetValueForProperty("SasPolicySasExpirationPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicySasExpirationPeriod, global::System.Convert.ToString);
+            }
+            if (content.Contains("SasPolicyRequireUserBoundUserDelegationSas"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicyRequireUserBoundUserDelegationSas = (bool?) content.GetValueForProperty("SasPolicyRequireUserBoundUserDelegationSas",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicyRequireUserBoundUserDelegationSas, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SasPolicyRequireUserBoundUserDelegationSasAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicyRequireUserBoundUserDelegationSasAction = (string) content.GetValueForProperty("SasPolicyRequireUserBoundUserDelegationSasAction",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicyRequireUserBoundUserDelegationSasAction, global::System.Convert.ToString);
             }
             if (content.Contains("KeyPolicyKeyExpirationPeriodInDay"))
             {
@@ -592,6 +616,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("DataCollaborationPolicyPropertyAllowStorageConnector"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).DataCollaborationPolicyPropertyAllowStorageConnector = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowStorageConnector",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).DataCollaborationPolicyPropertyAllowStorageConnector, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DataCollaborationPolicyPropertyAllowBlobAccessPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).DataCollaborationPolicyPropertyAllowBlobAccessPoint = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowBlobAccessPoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).DataCollaborationPolicyPropertyAllowBlobAccessPoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("DataCollaborationPolicyPropertyAllowStorageDataShare"))
             {
@@ -758,6 +786,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).KeyPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyPolicy) content.GetValueForProperty("KeyPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).KeyPolicy, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyPolicyTypeConverter.ConvertFrom);
             }
+            if (content.Contains("TurboTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTier = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITurboTier) content.GetValueForProperty("TurboTier",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTier, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.TurboTierTypeConverter.ConvertFrom);
+            }
             if (content.Contains("RoutingPreference"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).RoutingPreference = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRoutingPreference) content.GetValueForProperty("RoutingPreference",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).RoutingPreference, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.RoutingPreferenceTypeConverter.ConvertFrom);
@@ -942,6 +974,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).AccountMigrationInProgress = (bool?) content.GetValueForProperty("AccountMigrationInProgress",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).AccountMigrationInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("AllowCrossTenantDelegationSas"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).AllowCrossTenantDelegationSas = (bool?) content.GetValueForProperty("AllowCrossTenantDelegationSas",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).AllowCrossTenantDelegationSas, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("PrimaryEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).PrimaryEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints) content.GetValueForProperty("PrimaryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).PrimaryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EndpointsTypeConverter.ConvertFrom);
@@ -965,6 +1001,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("KeyCreationTimeKey2"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).KeyCreationTimeKey2 = (global::System.DateTime?) content.GetValueForProperty("KeyCreationTimeKey2",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).KeyCreationTimeKey2, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("TurboTierStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTierStatus = (string) content.GetValueForProperty("TurboTierStatus",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTierStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("TurboTierTargetPercent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTierTargetPercent = (int?) content.GetValueForProperty("TurboTierTargetPercent",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).TurboTierTargetPercent, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("NetworkRuleSetBypass"))
             {
@@ -1021,6 +1065,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("SasPolicySasExpirationPeriod"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicySasExpirationPeriod = (string) content.GetValueForProperty("SasPolicySasExpirationPeriod",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicySasExpirationPeriod, global::System.Convert.ToString);
+            }
+            if (content.Contains("SasPolicyRequireUserBoundUserDelegationSas"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicyRequireUserBoundUserDelegationSas = (bool?) content.GetValueForProperty("SasPolicyRequireUserBoundUserDelegationSas",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicyRequireUserBoundUserDelegationSas, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SasPolicyRequireUserBoundUserDelegationSasAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicyRequireUserBoundUserDelegationSasAction = (string) content.GetValueForProperty("SasPolicyRequireUserBoundUserDelegationSasAction",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).SasPolicyRequireUserBoundUserDelegationSasAction, global::System.Convert.ToString);
             }
             if (content.Contains("KeyPolicyKeyExpirationPeriodInDay"))
             {
@@ -1153,6 +1205,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("DataCollaborationPolicyPropertyAllowStorageConnector"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).DataCollaborationPolicyPropertyAllowStorageConnector = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowStorageConnector",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).DataCollaborationPolicyPropertyAllowStorageConnector, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DataCollaborationPolicyPropertyAllowBlobAccessPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).DataCollaborationPolicyPropertyAllowBlobAccessPoint = (bool?) content.GetValueForProperty("DataCollaborationPolicyPropertyAllowBlobAccessPoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal)this).DataCollaborationPolicyPropertyAllowBlobAccessPoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("DataCollaborationPolicyPropertyAllowStorageDataShare"))
             {

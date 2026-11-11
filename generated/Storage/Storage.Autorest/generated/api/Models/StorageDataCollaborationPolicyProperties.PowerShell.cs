@@ -118,6 +118,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowStorageConnector = (bool?) content.GetValueForProperty("AllowStorageConnector",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowStorageConnector, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("AllowBlobAccessPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowBlobAccessPoint = (bool?) content.GetValueForProperty("AllowBlobAccessPoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowBlobAccessPoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("AllowStorageDataShare"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowStorageDataShare = (bool?) content.GetValueForProperty("AllowStorageDataShare",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowStorageDataShare, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -146,6 +150,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("AllowStorageConnector"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowStorageConnector = (bool?) content.GetValueForProperty("AllowStorageConnector",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowStorageConnector, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AllowBlobAccessPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowBlobAccessPoint = (bool?) content.GetValueForProperty("AllowBlobAccessPoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyPropertiesInternal)this).AllowBlobAccessPoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("AllowStorageDataShare"))
             {
