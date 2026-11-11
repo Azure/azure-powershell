@@ -12,7 +12,7 @@ Get a ExascaleDbStorageVault
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzOracleExascaleDbStorageVault [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -30,7 +30,7 @@ Get-AzOracleExascaleDbStorageVault -InputObject <IOracleIdentity> [-DefaultProfi
  [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzOracleExascaleDbStorageVault -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -129,7 +129,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
