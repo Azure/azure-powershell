@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.5.5
 * Fixed `Method not found` errors on PowerShell 7.6 when a module uses an Azure SDK whose models implement `IJsonModel`.
     - Az.Accounts now uses the runtime copy of a shared .NET assembly, such as `System.Text.Json`, when it is the same version or newer than the copy Az.Accounts ships, so only one copy is loaded.
 * Upgraded `Azure.Core` dependency from 1.57.0 to 1.64.0.
