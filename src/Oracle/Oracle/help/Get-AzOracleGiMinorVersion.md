@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoraclegiminorversion
 schema: 2.0.0
@@ -15,33 +15,31 @@ Get a GiMinorVersion
 ### List (Default)
 ```
 Get-AzOracleGiMinorVersion -Giversionname <String> -Location <String> [-SubscriptionId <String[]>]
- [-ShapeFamily <String>] [-Zone <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityLocation
-```
-Get-AzOracleGiMinorVersion -Giversionname <String> -Name <String> -LocationInputObject <IOracleIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-IsGiVersionForProvisioning] [-Shape <String>] [-ShapeFamily <String>] [-SortOrder <String>]
+ [-Zone <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzOracleGiMinorVersion -Giversionname <String> -Location <String> -Name <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityGiVersion
-```
-Get-AzOracleGiMinorVersion -Name <String> -GiVersionInputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzOracleGiMinorVersion -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
+Get-AzOracleGiMinorVersion -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityGiVersion
+```
+Get-AzOracleGiMinorVersion -GiVersionInputObject <IOracleIdentity> -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityLocation
+```
+Get-AzOracleGiMinorVersion -Giversionname <String> -LocationInputObject <IOracleIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +56,7 @@ Get-AzOracleGiVersion -Location "eastus"  -Shape "EXADATA"
 Name     SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----     ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
 
-25.1.1.0.0.250121
+25.1.1.0.0.250121                                                                                                                                              
 ```
 
 Get a list of the Grid Infrastructure Versions by location.
@@ -102,7 +100,7 @@ GiVersion name
 
 ```yaml
 Type: System.String
-Parameter Sets: List, GetViaIdentityLocation, Get
+Parameter Sets: Get, GetViaIdentityLocation, List
 Aliases:
 
 Required: True
@@ -127,12 +125,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IsGiVersionForProvisioning
+If true, filters the results to GI minor versions supported during VM cluster provisioning.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -162,10 +175,25 @@ The name of the GiMinorVersion
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityLocation, Get, GetViaIdentityGiVersion
+Parameter Sets: Get, GetViaIdentityGiVersion, GetViaIdentityLocation
 Aliases: GiMinorVersionName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Shape
+If provided, filters the results to the set of GI minor versions supported for the given shape.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,13 +215,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SortOrder
+Sort order for the returned GI minor versions.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -232,3 +275,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

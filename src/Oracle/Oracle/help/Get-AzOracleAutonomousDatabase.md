@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoracleautonomousdatabase
 schema: 2.0.0
@@ -14,8 +14,7 @@ Get a AutonomousDatabase
 
 ### List (Default)
 ```
-Get-AzOracleAutonomousDatabase [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzOracleAutonomousDatabase [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,16 +23,16 @@ Get-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-Subs
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
-```
-Get-AzOracleAutonomousDatabase -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzOracleAutonomousDatabase -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzOracleAutonomousDatabase -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +96,7 @@ Type                                          : oracle.database/autonomousdataba
 UsedDataStorageSizeInGb                       : 
 UsedDataStorageSizeInTb                       : 
 VnetId                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
-WhitelistedIP                                 :
+WhitelistedIP                                 : 
 ```
 
 Get an Autonomous Database resource by name and resource group name.
@@ -173,7 +172,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -197,3 +196,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

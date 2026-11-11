@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/new-azoracleautonomousdatabasebackup
 schema: 2.0.0
@@ -15,23 +15,23 @@ Create a AutonomousDatabaseBackup
 ### CreateExpanded (Default)
 ```
 New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>] [-RetentionPeriodInDay <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>]
+ [-RetentionPeriodInDay <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -261,3 +261,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

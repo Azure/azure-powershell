@@ -27,15 +27,17 @@ For information on how to develop for `Az.Oracle`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ```yaml
-commit: 0a626b790148b419c9b0bbbc7f4db746d4d886e4
+commit: 1dff338d5b268e5de638b7dcf5e286108b76b9c1
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/oracle/resource-manager/readme.md
+  - $(repo)/specification/oracle/resource-manager/Oracle.Database/OracleDatabase/readme.md
 
 try-require: 
   - $(repo)/specification/oracle/resource-manager/readme.md
+  - $(repo)/specification/oracle/resource-manager/Oracle.Database/OracleDatabase/readme.md
 
-module-version: 0.1.0
+module-version: 0.2.0
 title: Oracle
 subject-prefix: $(service-name)
  

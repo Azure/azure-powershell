@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoracleautonomousdatabaseversion
 schema: 2.0.0
@@ -18,23 +18,22 @@ Get-AzOracleAutonomousDatabaseVersion -Location <String> [-SubscriptionId <Strin
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityLocation
-```
-Get-AzOracleAutonomousDatabaseVersion -Autonomousdbversionsname <String> -LocationInputObject <IOracleIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzOracleAutonomousDatabaseVersion -Autonomousdbversionsname <String> -Location <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzOracleAutonomousDatabaseVersion -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityLocation
+```
+Get-AzOracleAutonomousDatabaseVersion -Autonomousdbversionsname <String>
+ -LocationInputObject <IOracleIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +51,7 @@ Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataL
 ---- ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
 19c                                                                                                                                                 
 19c                                                                                                                                                 
-19c
+19c                                                                                                                                                                          
 ```
 
 Get a list of the Autonomous Database Versions by location.
@@ -65,7 +64,7 @@ AutonomousDbVersion name
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityLocation, Get
+Parameter Sets: Get, GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -111,7 +110,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -142,7 +141,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -166,3 +165,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

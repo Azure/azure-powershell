@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoraclegiversion
 schema: 2.0.0
@@ -15,8 +15,7 @@ Get a GiVersion
 ### List (Default)
 ```
 Get-AzOracleGiVersion -Location <String> [-SubscriptionId <String[]>] [-Shape <String>]
- [-ShapeAttribute <String>] [-Zone <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ShapeAttribute <String>] [-Zone <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -25,15 +24,14 @@ Get-AzOracleGiVersion -Location <String> -Name <String> [-SubscriptionId <String
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityLocation
-```
-Get-AzOracleGiVersion -Name <String> -LocationInputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
-Get-AzOracleGiVersion -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
+Get-AzOracleGiVersion -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityLocation
+```
+Get-AzOracleGiVersion -LocationInputObject <IOracleIdentity> -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -51,7 +49,7 @@ Get-AzOracleGiVersion -Location "eastus"
 Name     SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----     ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
 19.0.0.0                                                                                                                                                
-23.0.0.0
+23.0.0.0                                                                                                                                                
 ```
 
 Get a list of the Grid Infrastructure Versions by location.
@@ -95,7 +93,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -171,7 +169,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -210,3 +208,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
