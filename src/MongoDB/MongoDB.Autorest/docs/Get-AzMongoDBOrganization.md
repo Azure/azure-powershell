@@ -12,7 +12,7 @@ Get a OrganizationResource
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzMongoDBOrganization [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> [-Subscript
 Get-AzMongoDBOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzMongoDBOrganization -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -157,7 +157,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
