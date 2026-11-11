@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             return Task.FromResult(authHeader);
         }
 
+        internal string GetAccessToken()
+        {
+            return GetBatchAadToken();
+        }
+
         protected virtual string GetBatchAadToken()
         {
             string batchEndpoint;
