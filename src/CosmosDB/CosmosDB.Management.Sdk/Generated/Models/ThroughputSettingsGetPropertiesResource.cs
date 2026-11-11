@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// autoscale) that can be specified
         /// </param>
 
+        /// <param name="throughputBuckets">Array of throughput bucket limits to be applied to the Cosmos DB container
+        /// </param>
+
         /// <param name="rid">A system generated property. A unique identifier.
         /// </param>
 
@@ -52,9 +55,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="etag">A system generated property representing the resource etag required for
         /// optimistic concurrency control.
         /// </param>
-        public ThroughputSettingsGetPropertiesResource(int? throughput = default(int?), AutoscaleSettingsResource autoscaleSettings = default(AutoscaleSettingsResource), string minimumThroughput = default(string), string offerReplacePending = default(string), string instantMaximumThroughput = default(string), string softAllowedMaximumThroughput = default(string), string rid = default(string), double? ts = default(double?), string etag = default(string))
+        public ThroughputSettingsGetPropertiesResource(int? throughput = default(int?), AutoscaleSettingsResource autoscaleSettings = default(AutoscaleSettingsResource), string minimumThroughput = default(string), string offerReplacePending = default(string), string instantMaximumThroughput = default(string), string softAllowedMaximumThroughput = default(string), System.Collections.Generic.IList<ThroughputBucketResource> throughputBuckets = default(System.Collections.Generic.IList<ThroughputBucketResource>), string rid = default(string), double? ts = default(double?), string etag = default(string))
 
-        : base(throughput, autoscaleSettings, minimumThroughput, offerReplacePending, instantMaximumThroughput, softAllowedMaximumThroughput)
+        : base(throughput, autoscaleSettings, minimumThroughput, offerReplacePending, instantMaximumThroughput, softAllowedMaximumThroughput, throughputBuckets)
         {
             this.Rid = rid;
             this.Ts = ts;

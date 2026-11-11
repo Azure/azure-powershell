@@ -29,11 +29,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// policies.
         /// </param>
 
+        /// <param name="backupRetentionLockExpirationTimestamp">The UTC timestamp until which changes that reduce backup retention are
+        /// locked.
+        /// While active, this timestamp can only be extended.
+        /// </param>
+
         /// <param name="continuousModeProperties">Configuration values for continuous mode backup
         /// </param>
-        public ContinuousModeBackupPolicy(BackupPolicyMigrationState migrationState = default(BackupPolicyMigrationState), ContinuousModeProperties continuousModeProperties = default(ContinuousModeProperties))
+        public ContinuousModeBackupPolicy(BackupPolicyMigrationState migrationState = default(BackupPolicyMigrationState), System.DateTime? backupRetentionLockExpirationTimestamp = default(System.DateTime?), ContinuousModeProperties continuousModeProperties = default(ContinuousModeProperties))
 
-        : base(migrationState)
+        : base(migrationState, backupRetentionLockExpirationTimestamp)
         {
             this.ContinuousModeProperties = continuousModeProperties;
             CustomInit();
