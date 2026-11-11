@@ -277,6 +277,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         }
 
         [Theory]
+        [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG", "Microsoft.Resources")]
         [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM", "Microsoft.Compute")]
         [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Sql/servers/server1/databases/db1", "Microsoft.Sql")]
         [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM/providers/Microsoft.Authorization/locks/testLock", "Microsoft.Authorization")]
@@ -320,12 +321,33 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         [Theory]
         [InlineData("not-a-resource-id")]
-        [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG")]
         [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RejectsInvalidResourceIdBeforeCallingAzure(string resourceId)
         {
             this.cmdlet.ResourceId = new[] { resourceId };
+            this.cmdlet.MyInvocation.BoundParameters.Add("ResourceId", this.cmdlet.ResourceId);
+            this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ResourceIdParameterSet;
+
+            Assert.Throws<System.ArgumentException>(() => this.cmdlet.ExecuteCmdlet());
+
+            this.providerOperationsMock.Verify(
+                f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()),
+                Times.Never());
+            this.providerOperationsMock.Verify(
+                f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()),
+                Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsMixedResourceIdsBeforeCallingAzure()
+        {
+            this.cmdlet.ResourceId = new[]
+            {
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG",
+                "not-a-resource-id"
+            };
             this.cmdlet.MyInvocation.BoundParameters.Add("ResourceId", this.cmdlet.ResourceId);
             this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ResourceIdParameterSet;
 

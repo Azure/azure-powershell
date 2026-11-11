@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Common.ArgumentCompleters;
-    using AzureResourceIdentifier = Azure.Core.ResourceIdentifier;
+    using AzureResourceIdentifier = global::Azure.Core.ResourceIdentifier;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
@@ -117,7 +117,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private static string GetProviderNamespaceFromResourceId(string resourceId)
         {
             if (string.IsNullOrWhiteSpace(resourceId) ||
-                resourceId.IndexOf("/providers/", StringComparison.OrdinalIgnoreCase) < 0 ||
                 !AzureResourceIdentifier.TryParse(resourceId, out var identifier) ||
                 string.IsNullOrWhiteSpace(identifier.ResourceType.Namespace))
             {
