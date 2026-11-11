@@ -14,6 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Batch.Common;
+using Microsoft.Azure.Commands.Batch.Track2;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -22,6 +23,7 @@ using System;
 using System.Linq;
 using System.Text;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using RequestFailedException = Azure.RequestFailedException;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -58,32 +60,18 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (ex?.RequestInformation != null)
                 {
-                    StringBuilder sb = new StringBuilder();
-                    sb.AppendLine($"HttpStatusCode: " + ex.RequestInformation.HttpStatusCode);
-                    sb.AppendLine($"StatusMessage: " + ex.RequestInformation.HttpStatusMessage);
-                    sb.AppendLine($"ClientRequestId: {ex.RequestInformation.ClientRequestId}");
-                    sb.AppendLine($"RequestId: {ex.RequestInformation.ServiceRequestId}");
+                    throw WithRequestDetails(ex);
+                }
 
-                    if (ex.RequestInformation.BatchError != null)
-                    {
-                        sb.AppendLine();
-                        sb.AppendLine($"Error code: {ex.RequestInformation.BatchError.Code}");
-                        if (ex.RequestInformation.BatchError.Message != null)
-                        {
-                            sb.AppendLine($"Message: {ex.RequestInformation.BatchError.Message.Value}");
-                        }
-
-                        if (ex.RequestInformation.BatchError.Values != null && ex.RequestInformation.BatchError.Values.Any())
-                        {
-                            sb.AppendLine("Error details:");
-                            foreach (var item in ex.RequestInformation.BatchError.Values)
-                            {
-                                sb.AppendLine($"{item.Key}: {item.Value}");
-                            }
-                        }
-                    }
-
-                    throw new BatchException(ex.RequestInformation, sb.ToString(), ex.InnerException);
+                throw;
+            }
+            catch (RequestFailedException ex)
+            {
+                // Track 2 (Azure.Compute.Batch) errors are shown as the same BatchException Track 1 gives today.
+                BatchException batchException = Track2Errors.ToBatchException(ex);
+                if (batchException != null)
+                {
+                    throw WithRequestDetails(batchException);
                 }
 
                 throw;
@@ -103,6 +91,39 @@ namespace Microsoft.Azure.Commands.Batch
 
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Puts the status, the request ids and the Batch error details in the message of a service error.
+        /// </summary>
+        private static BatchException WithRequestDetails(BatchException ex)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"HttpStatusCode: " + ex.RequestInformation.HttpStatusCode);
+            sb.AppendLine($"StatusMessage: " + ex.RequestInformation.HttpStatusMessage);
+            sb.AppendLine($"ClientRequestId: {ex.RequestInformation.ClientRequestId}");
+            sb.AppendLine($"RequestId: {ex.RequestInformation.ServiceRequestId}");
+
+            if (ex.RequestInformation.BatchError != null)
+            {
+                sb.AppendLine();
+                sb.AppendLine($"Error code: {ex.RequestInformation.BatchError.Code}");
+                if (ex.RequestInformation.BatchError.Message != null)
+                {
+                    sb.AppendLine($"Message: {ex.RequestInformation.BatchError.Message.Value}");
+                }
+
+                if (ex.RequestInformation.BatchError.Values != null && ex.RequestInformation.BatchError.Values.Any())
+                {
+                    sb.AppendLine("Error details:");
+                    foreach (var item in ex.RequestInformation.BatchError.Values)
+                    {
+                        sb.AppendLine($"{item.Key}: {item.Value}");
+                    }
+                }
+            }
+
+            return new BatchException(ex.RequestInformation, sb.ToString(), ex.InnerException);
         }
 
         /// <summary>
