@@ -344,10 +344,14 @@ namespace Microsoft.Azure.Commands.Common
         {
             IAzureContextContainer profile;
             var contextConverter = new AzureContextConverter();
-            if (invocationInfo.BoundParameters.ContainsKey("DefaultContext")
-                && contextConverter.CanConvertFrom(invocationInfo.BoundParameters["DefaultContext"], typeof(IAzureContextContainer)))
+            var boundParameters = invocationInfo?.BoundParameters;
+            // Generated cmdlets bind the context as "DefaultProfile"; "DefaultContext" is kept for compatibility.
+            object passedContext = null;
+            if (boundParameters != null
+                && (boundParameters.TryGetValue("DefaultProfile", out passedContext) || boundParameters.TryGetValue("DefaultContext", out passedContext))
+                && contextConverter.CanConvertFrom(passedContext, typeof(IAzureContextContainer)))
             {
-                profile = contextConverter.ConvertFrom(invocationInfo.BoundParameters["DefaultContext"], typeof(IAzureContextContainer), CultureInfo.InvariantCulture, true) as IAzureContextContainer;
+                profile = contextConverter.ConvertFrom(passedContext, typeof(IAzureContextContainer), CultureInfo.InvariantCulture, true) as IAzureContextContainer;
             }
             else
             {
