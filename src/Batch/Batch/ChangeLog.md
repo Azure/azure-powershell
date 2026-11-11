@@ -24,6 +24,7 @@
     - Added `Azure.Compute.Batch` 1.0.0 as a dependency.
     - Added a conversion that shows `Azure.Compute.Batch` errors the same way as today's errors.
     - Added helpers that keep `-MaxCount`, `-Select` and `-Expand` working the same way with `Azure.Compute.Batch`.
+    - Added workarounds for three `Azure.Compute.Batch` 1.0.0 issues until a newer version fixes them: counts and sizes the service sends as numbers, registry server addresses, and VM extension settings that aren't text.
 
 ## Version 4.1.1
 * Fixed module load conflict by aligning `Microsoft.ApplicationInsights` to the common 2.18.0 dependency version, resolving "Assembly with same name is already loaded" error.

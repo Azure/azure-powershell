@@ -16,6 +16,7 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Commands.Batch.Track2;
+using Microsoft.Azure.Commands.Batch.Track2.Workarounds;
 using Microsoft.Azure.Commands.Batch.Utils;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Rest;
@@ -269,6 +270,7 @@ namespace Microsoft.Azure.Commands.Batch
             options.Retry.MaxRetries = 6;
             options.Retry.NetworkTimeout = BatchRequestTimeoutPolicy.RequestTimeout;
             options.AddPolicy(new BatchRequestTimeoutPolicy(), HttpPipelinePosition.PerCall);
+            options.AddPolicy(new BatchWorkaroundsPolicy(), HttpPipelinePosition.PerCall);
             options.AddPolicy(new BatchUserAgentPolicy(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue.ToString()), HttpPipelinePosition.PerRetry);
             return options;
         }
