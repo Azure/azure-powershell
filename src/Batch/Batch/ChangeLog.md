@@ -26,6 +26,7 @@
     - Added helpers that keep `-MaxCount`, `-Select` and `-Expand` working the same way with `Azure.Compute.Batch`.
     - Added workarounds for three `Azure.Compute.Batch` 1.0.0 issues until a newer version fixes them: counts and sizes the service sends as numbers, registry server addresses, and VM extension settings that aren't text.
     - Added the mapping between `Azure.Compute.Batch` and the PS objects that several cmdlets share (start task, resource files, user identity, container settings, application packages, metadata).
+    - Added reading statistics in full precision: `Azure.Compute.Batch` 1.0.0 keeps only about 7 digits of 16 statistics values.
 
 ## Version 4.1.1
 * Fixed module load conflict by aligning `Microsoft.ApplicationInsights` to the common 2.18.0 dependency version, resolving "Assembly with same name is already loaded" error.

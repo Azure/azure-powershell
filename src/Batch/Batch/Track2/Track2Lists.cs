@@ -16,6 +16,7 @@ using Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.Batch.Track2
 {
@@ -48,6 +49,28 @@ namespace Microsoft.Azure.Commands.Batch.Track2
             }
 
             IEnumerable<TOut> mapped = items.Select(map);
+            return Limit(mapped, maxCount, logMaxCount);
+        }
+
+        /// <summary>
+        /// Like <see cref="WithMaxCount{TIn, TOut}(Pageable{TIn}, Func{TIn, TOut}, int, Action)"/>, for items that also
+        /// need values from the service's answer as it was sent (<see cref="Track2RawJson"/>): the map gets each item's
+        /// JSON too.
+        /// </summary>
+        internal static IEnumerable<TOut> WithMaxCount<TIn, TOut>(
+            Pageable<TIn> items, Func<TIn, JsonElement?, TOut> map, int maxCount, Action logMaxCount = null)
+        {
+            if (map == null)
+            {
+                throw new ArgumentNullException(nameof(map));
+            }
+
+            IEnumerable<TOut> mapped = Track2RawJson.WithJson(items).Select(item => map(item.Key, item.Value));
+            return Limit(mapped, maxCount, logMaxCount);
+        }
+
+        private static IEnumerable<TOut> Limit<TOut>(IEnumerable<TOut> mapped, int maxCount, Action logMaxCount)
+        {
             if (maxCount <= 0)
             {
                 return mapped;
