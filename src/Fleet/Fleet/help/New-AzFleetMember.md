@@ -15,9 +15,9 @@ Create a FleetMember
 ### CreateExpanded (Default)
 ```
 New-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] -ClusterResourceId <String> [-Group <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-ClusterResourceId <String>] [-Group <String>]
+ [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -37,15 +37,15 @@ New-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String>
 ### CreateViaIdentityFleetExpanded
 ```
 New-AzFleetMember -Name <String> -FleetInputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- -ClusterResourceId <String> [-Group <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClusterResourceId <String>] [-Group <String>] [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzFleetMember -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- -ClusterResourceId <String> [-Group <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClusterResourceId <String>] [-Group <String>] [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +104,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityFleetExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -247,6 +247,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Label
+The labels for the fleet member.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityFleetExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Fleet member resource.
 
@@ -295,6 +310,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
