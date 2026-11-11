@@ -177,6 +177,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitMaxProvisionedBandwidthMiBPerSec = (int?) content.GetValueForProperty("FileShareLimitMaxProvisionedBandwidthMiBPerSec",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitMaxProvisionedBandwidthMiBPerSec, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("FileShareLimitGuardrailIoScalar"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitGuardrailIoScalar = (double?) content.GetValueForProperty("FileShareLimitGuardrailIoScalar",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitGuardrailIoScalar, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("FileShareLimitGuardrailBandwidthScalar"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitGuardrailBandwidthScalar = (double?) content.GetValueForProperty("FileShareLimitGuardrailBandwidthScalar",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitGuardrailBandwidthScalar, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
             if (content.Contains("FileShareRecommendationBaseBandwidthMiBPerSec"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareRecommendationBaseBandwidthMiBPerSec = (int?) content.GetValueForProperty("FileShareRecommendationBaseBandwidthMiBPerSec",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareRecommendationBaseBandwidthMiBPerSec, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -321,6 +329,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("FileShareLimitMaxProvisionedBandwidthMiBPerSec"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitMaxProvisionedBandwidthMiBPerSec = (int?) content.GetValueForProperty("FileShareLimitMaxProvisionedBandwidthMiBPerSec",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitMaxProvisionedBandwidthMiBPerSec, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FileShareLimitGuardrailIoScalar"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitGuardrailIoScalar = (double?) content.GetValueForProperty("FileShareLimitGuardrailIoScalar",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitGuardrailIoScalar, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("FileShareLimitGuardrailBandwidthScalar"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitGuardrailBandwidthScalar = (double?) content.GetValueForProperty("FileShareLimitGuardrailBandwidthScalar",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal)this).FileShareLimitGuardrailBandwidthScalar, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
             }
             if (content.Contains("FileShareRecommendationBaseBandwidthMiBPerSec"))
             {
