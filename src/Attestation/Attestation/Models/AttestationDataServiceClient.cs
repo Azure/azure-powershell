@@ -57,6 +57,12 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         private const string JwtContentType = "text/plain";
         private const string JsonContentType = "application/json";
 
+        /// <summary>
+        /// Allowed difference, in seconds, between the local clock and the attestation service's clock when validating
+        /// service tokens. Matches the 5 minute default these cmdlets used before; the SDK default is 5 seconds.
+        /// </summary>
+        internal const long TokenTimeValidationSlack = 300;
+
         private readonly Management.Attestation.AttestationManagementClient _attestationControlPlaneClient;
         private readonly IAuthenticationFactory _authFactory;
         private readonly IAzureContext _context;
@@ -363,7 +369,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         private AttestationClientOptions CreateClientOptions()
         {
-            var options = new AttestationClientOptions();
+            var options = new AttestationClientOptions(tokenOptions: new AttestationTokenValidationOptions { TimeValidationSlack = TokenTimeValidationSlack });
             if (_transport != null)
                 options.Transport = _transport;
             return options;
@@ -427,7 +433,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         private void ValidateServiceToken(string endpoint, AttestationToken token)
         {
             var signers = new AttestationClient(new Uri(endpoint), Credential, CreateClientOptions()).GetSigningCertificates().Value;
-            var validationOptions = new AttestationTokenValidationOptions { ExpectedIssuer = endpoint };
+            var validationOptions = new AttestationTokenValidationOptions { ExpectedIssuer = endpoint, TimeValidationSlack = TokenTimeValidationSlack };
             if (!token.ValidateToken(validationOptions, signers))
                 throw new InvalidOperationException(Resources.InvalidServiceToken);
         }

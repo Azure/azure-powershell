@@ -229,6 +229,32 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AcceptsServiceTokensFromClockAheadWithinTolerance()
+        {
+            _service.ClockOffset = TimeSpan.FromMinutes(2);
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+
+            // Covers tokens validated by the SDK clients and by the module.
+            _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text");
+            _client.GetPolicySigners("provider", "rg", null);
+            _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT");
+            Assert.Equal(PolicyText, new PSPolicy(_client.GetPolicy("provider", "rg", null, "TdxVm")).Text);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsServiceTokensFromClockAheadBeyondTolerance()
+        {
+            _service.ClockOffset = TimeSpan.FromSeconds(AttestationDataServiceClient.TokenTimeValidationSlack).Add(TimeSpan.FromMinutes(5));
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+
+            Assert.ThrowsAny<Exception>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"));
+            Assert.ThrowsAny<Exception>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"));
+            Assert.ThrowsAny<Exception>(() => _client.GetPolicy("provider", "rg", null, "TdxVm"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportsServiceError()
         {
             _service.ErrorResponse = new JObject { ["error"] = new JObject { ["code"] = "PolicyParsingError", ["message"] = "Invalid policy was specified" } };
@@ -309,6 +335,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public string LastPolicyUpdateToken { get; private set; }
 
             public bool SignWithUnknownKey { get; set; }
+
+            /// <summary>
+            /// Difference between the service's clock and the local clock.
+            /// </summary>
+            public TimeSpan ClockOffset { get; set; }
 
             public JObject ErrorResponse { get; set; }
 
@@ -407,7 +438,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
             private string CreateServiceToken(JObject claims)
             {
-                var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+                var now = DateTimeOffset.UtcNow.Add(ClockOffset).ToUnixTimeSeconds();
                 claims["iss"] = Endpoint;
                 claims["iat"] = now;
                 claims["nbf"] = now;
