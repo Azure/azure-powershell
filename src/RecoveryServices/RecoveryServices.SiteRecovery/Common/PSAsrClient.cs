@@ -197,29 +197,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             catch (Exception exception)
             {
-                CloudException cloudException = exception as CloudException;
-
-                if (!string.IsNullOrEmpty(cloudException?.Response?.Content))
+                if (!IsResourceExtendedInfoNotFound(exception))
                 {
-                    rpError.Error error = JsonConvert.DeserializeObject<rpError.Error>(cloudException.Response.Content);
-
-                    if (error.ErrorCode.Equals(
-                        RpErrorCode.ResourceExtendedInfoNotFound.ToString(),
-                        StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        extendedInformation = new VaultExtendedInfoResource();
-                        extendedInformation.IntegrityKey = Utilities.GenerateRandomKey(128);
-                        extendedInformation.Algorithm = CryptoAlgorithm.None.ToString();
-                        extendedInformation = this.recoveryServicesVaultClient.VaultExtendedInfo.CreateOrUpdateWithHttpMessagesAsync(
-                                                vaultResourceGroupName,
-                                                vaultName,
-                                                extendedInformation,
-                                                GetRequestHeaders(false)).Result.Body;
-                    }
+                    throw;
                 }
+
+                extendedInformation = new VaultExtendedInfoResource();
+                extendedInformation.IntegrityKey = Utilities.GenerateRandomKey(128);
+                extendedInformation.Algorithm = CryptoAlgorithm.None.ToString();
+                extendedInformation = this.recoveryServicesVaultClient.VaultExtendedInfo.CreateOrUpdateWithHttpMessagesAsync(
+                                        vaultResourceGroupName,
+                                        vaultName,
+                                        extendedInformation,
+                                        GetRequestHeaders(false)).Result.Body;
             }
 
             return extendedInformation;
+        }
+
+        /// <summary>
+        ///     Checks whether the exception thrown while fetching the vault extended info indicates
+        ///     that the extended info has not been created for the vault yet.
+        /// </summary>
+        /// <param name="exception">Exception thrown by the vault extended info GET call.</param>
+        /// <returns>True if the service returned ResourceExtendedInfoNotFound, false otherwise.</returns>
+        public static bool IsResourceExtendedInfoNotFound(Exception exception)
+        {
+            // The Recovery Services management SDK throws CloudErrorRecoveryServiceException;
+            // CloudException is kept for older SDK versions.
+            string responseContent =
+                (exception as CloudErrorRecoveryServiceException)?.Response?.Content ??
+                (exception as CloudException)?.Response?.Content;
+
+            if (string.IsNullOrEmpty(responseContent))
+            {
+                return false;
+            }
+
+            try
+            {
+                rpError.Error error = JsonConvert.DeserializeObject<rpError.Error>(responseContent);
+
+                return string.Equals(
+                    error?.ErrorCode,
+                    RpErrorCode.ResourceExtendedInfoNotFound.ToString(),
+                    StringComparison.InvariantCultureIgnoreCase);
+            }
+            catch (JsonException)
+            {
+                return false;
+            }
         }
 
         public static string GetJobIdFromReponseLocation(
