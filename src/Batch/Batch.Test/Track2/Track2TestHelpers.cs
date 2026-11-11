@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
@@ -31,7 +32,8 @@ using Track2BatchClientOptions = Azure.Compute.Batch.BatchClientOptions;
 namespace Microsoft.Azure.Commands.Batch.Test.Track2
 {
     /// <summary>
-    /// A BatchAccountContext whose Track 2 client sends its requests to a test handler instead of the network.
+    /// A BatchAccountContext whose Track 1 and Track 2 clients send their requests to a test handler instead of the
+    /// network.
     /// </summary>
     internal class Track2TestContext : BatchAccountContext
     {
@@ -53,6 +55,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
             options.Retry.MaxRetries = 0;
             return options;
         }
+
+        protected override BatchServiceClient CreateBatchRestClient(string url, ServiceClientCredentials creds, DelegatingHandler handler = default(DelegatingHandler))
+        {
+            return base.CreateBatchRestClient(url, creds, new ForwardingHandler(this.handler));
+        }
+    }
+
+    /// <summary>
+    /// Sends the Track 1 client's requests to the test handler.
+    /// </summary>
+    internal class ForwardingHandler : DelegatingHandler
+    {
+        private readonly HttpMessageInvoker target;
+
+        public ForwardingHandler(HttpMessageHandler target)
+        {
+            this.target = new HttpMessageInvoker(target, disposeHandler: false);
+        }
+
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            return this.target.SendAsync(request, cancellationToken);
+        }
     }
 
     /// <summary>
@@ -65,11 +90,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
 
         public List<RecordedRequest> Requests { get; } = new List<RecordedRequest>();
 
-        public RecordingHandler On(string methodAndPathPrefix, HttpStatusCode status, string json = null, IDictionary<string, string> headers = null)
+        public RecordingHandler On(string methodAndPathPrefix, HttpStatusCode status, string json = null, IDictionary<string, string> headers = null, string reasonPhrase = null)
         {
             this.routes.Add(new KeyValuePair<string, Func<HttpRequestMessage, HttpResponseMessage>>(methodAndPathPrefix, request =>
             {
                 HttpResponseMessage response = new HttpResponseMessage(status) { RequestMessage = request };
+                if (reasonPhrase != null)
+                {
+                    response.ReasonPhrase = reasonPhrase;
+                }
                 response.Content = new StringContent(json ?? string.Empty, Encoding.UTF8, "application/json");
                 if (headers != null)
                 {
