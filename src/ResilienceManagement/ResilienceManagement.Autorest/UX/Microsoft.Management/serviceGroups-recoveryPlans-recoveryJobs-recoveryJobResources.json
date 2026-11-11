@@ -1,0 +1,52 @@
+{
+  "resourceType": "serviceGroups/recoveryPlans/recoveryJobs/recoveryJobResources",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceManagementRecoveryJobResource",
+      "description": "Get a RecoveryJobResource",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/recoveryJobs/{recoveryJobName}/recoveryJobResources/{recoveryJobResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/get-azresiliencemanagementrecoveryjobresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-RecoveryJobName <String>",
+              "-RecoveryPlanName <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a RecoveryJobResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.recoveryJobResourceName]"
+            },
+            {
+              "name": "-RecoveryJobName",
+              "value": "[Path.recoveryJobName]"
+            },
+            {
+              "name": "-RecoveryPlanName",
+              "value": "[Path.recoveryPlanName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
