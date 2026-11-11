@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         private readonly Management.Attestation.AttestationManagementClient _attestationControlPlaneClient;
         private readonly IAuthenticationFactory _authFactory;
         private readonly IAzureContext _context;
+        private readonly HttpPipelineTransport _transport;
+        private readonly Func<string, string, bool, string, string> _dataPlaneUriResolver;
         private TokenCredential _credential;
         private static readonly Dictionary<(string, string), string> DataPlaneUriLookup = new Dictionary<(string, string), string>();
         private static readonly Dictionary<string, string> DefaultProviderDataPlaneUriLookup = new Dictionary<string, string>();
@@ -76,6 +78,16 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             _authFactory = authFactory;
             _context = context;
             _attestationControlPlaneClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Attestation.AttestationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+        }
+
+        /// <summary>
+        /// Creates a client that sends requests with the given transport to the endpoint the resolver returns. Used by tests.
+        /// </summary>
+        internal AttestationDataServiceClient(TokenCredential credential, HttpPipelineTransport transport, Func<string, string, bool, string, string> dataPlaneUriResolver)
+        {
+            _credential = credential ?? throw new ArgumentNullException(nameof(credential));
+            _transport = transport ?? throw new ArgumentNullException(nameof(transport));
+            _dataPlaneUriResolver = dataPlaneUriResolver ?? throw new ArgumentNullException(nameof(dataPlaneUriResolver));
         }
 
         private TokenCredential Credential => _credential ?? (_credential = new AttestationTokenCredential(_authFactory, _context));
@@ -346,7 +358,15 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         private AttestationAdministrationClient CreateAdministrationClient(string endpoint)
         {
-            return new AttestationAdministrationClient(new Uri(endpoint), Credential, new AttestationClientOptions());
+            return new AttestationAdministrationClient(new Uri(endpoint), Credential, CreateClientOptions());
+        }
+
+        private AttestationClientOptions CreateClientOptions()
+        {
+            var options = new AttestationClientOptions();
+            if (_transport != null)
+                options.Transport = _transport;
+            return options;
         }
 
         /// <summary>
@@ -376,7 +396,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         private string SendRequest(string endpoint, RequestMethod method, string path, string apiVersion, string legacyTee, string contentType, string content)
         {
-            var pipeline = HttpPipelineBuilder.Build(new AttestationClientOptions(), new BearerTokenAuthenticationPolicy(Credential, AttestationScope));
+            var pipeline = HttpPipelineBuilder.Build(CreateClientOptions(), new BearerTokenAuthenticationPolicy(Credential, AttestationScope));
 
             using (HttpMessage message = pipeline.CreateMessage())
             {
@@ -406,7 +426,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         private void ValidateServiceToken(string endpoint, AttestationToken token)
         {
-            var signers = new AttestationClient(new Uri(endpoint), Credential, new AttestationClientOptions()).GetSigningCertificates().Value;
+            var signers = new AttestationClient(new Uri(endpoint), Credential, CreateClientOptions()).GetSigningCertificates().Value;
             var validationOptions = new AttestationTokenValidationOptions { ExpectedIssuer = endpoint };
             if (!token.ValidateToken(validationOptions, signers))
                 throw new InvalidOperationException(Resources.InvalidServiceToken);
@@ -434,6 +454,9 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         private string GetDataPlaneUri(string name, string resourceGroupName, bool isDefaultProvider, string location, bool refreshCache)
         {
+            if (_dataPlaneUriResolver != null)
+                return _dataPlaneUriResolver(name, resourceGroupName, isDefaultProvider, location);
+
             if (isDefaultProvider)
             {
                 if (refreshCache)
