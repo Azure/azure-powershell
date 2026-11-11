@@ -19,6 +19,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using JObject = Newtonsoft.Json.Linq.JObject;
 using JsonConvert = Newtonsoft.Json.JsonConvert;
+using JsonDocument = System.Text.Json.JsonDocument;
 using JsonValueKind = System.Text.Json.JsonValueKind;
 using JTokenType = Newtonsoft.Json.Linq.JTokenType;
 using NewtonsoftFormatting = Newtonsoft.Json.Formatting;
@@ -55,11 +56,24 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
 
         /// <summary>
         /// A stand-in URL for text the service must get exactly as typed (<see cref="ToExactUrl"/>); the request step
-        /// sends the text instead. ".invalid" never resolves.
+        /// sends the text instead, but only in the properties in <see cref="ExactUrlProperties"/>. ".invalid" never
+        /// resolves.
         /// </summary>
         internal const string ExactUrlPrefix = "https://exact-text.azure-powershell.invalid/";
 
-        /// <summary>Marks a setting value that is JSON (a number, true/false, a list or an object), not text.</summary>
+        /// <summary>
+        /// The request properties that can carry a stand-in URL (<see cref="ToExactUrl"/>). Add a property here before
+        /// using ToExactUrl for it.
+        /// </summary>
+        internal static readonly ISet<string> ExactUrlProperties = new HashSet<string>(StringComparer.Ordinal)
+        {
+            "registryServer", "httpUrl", "storageContainerUrl",
+        };
+
+        /// <summary>
+        /// Marks a VM extension setting value given as JSON: a number, true/false, a list, an object, or text that
+        /// itself starts with this marker (as a JSON string), so any text can be told apart from a marked value.
+        /// </summary>
         internal const string JsonSettingPrefix = "azure-powershell-json:";
 
         // How Track 1 (Microsoft.Azure.Batch 16.3.1) reads JSON, so settings come back as the same objects.
@@ -93,7 +107,10 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
             return new Uri(ExactUrlPrefix + base64Url);
         }
 
-        /// <summary>VM extension settings for Azure.Compute.Batch: text stays text, other JSON values are marked.</summary>
+        /// <summary>
+        /// VM extension settings for Azure.Compute.Batch: text stays text; other JSON values, and text that starts with
+        /// <see cref="JsonSettingPrefix"/>, are marked.
+        /// </summary>
         internal static IDictionary<string, string> ToSettings(JObject settings)
         {
             if (settings == null)
@@ -106,7 +123,7 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
             {
                 JTokenType type = setting.Value.Type;
                 result[setting.Name] = type == JTokenType.Null ? null
-                    : type == JTokenType.String ? (string)setting.Value
+                    : type == JTokenType.String && !IsMarked((string)setting.Value) ? (string)setting.Value
                     : JsonSettingPrefix + setting.Value.ToString(NewtonsoftFormatting.None);
             }
 
@@ -132,13 +149,14 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
                 }
 
                 json.Append(JsonConvert.ToString(setting.Key)).Append(':');
+                string marked = setting.Value != null && IsMarked(setting.Value) ? setting.Value.Substring(JsonSettingPrefix.Length) : null;
                 if (setting.Value == null)
                 {
                     json.Append("null");
                 }
-                else if (setting.Value.StartsWith(JsonSettingPrefix, StringComparison.Ordinal))
+                else if (marked != null && IsJson(marked))
                 {
-                    json.Append(setting.Value, JsonSettingPrefix.Length, setting.Value.Length - JsonSettingPrefix.Length);
+                    json.Append(marked);
                 }
                 else
                 {
@@ -191,7 +209,7 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
                     {
                         foreach (KeyValuePair<string, JsonNode> setting in settings.ToList())
                         {
-                            if (setting.Value != null && setting.Value.GetValueKind() != JsonValueKind.String)
+                            if (setting.Value != null && (setting.Value.GetValueKind() != JsonValueKind.String || IsMarked(setting.Value.GetValue<string>())))
                             {
                                 settings[setting.Key] = JsonValue.Create(JsonSettingPrefix + setting.Value.ToJsonString());
                                 changed = true;
@@ -218,6 +236,8 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
             return changed;
         }
 
+        // Only the properties the mappers fill with a stand-in URL, and the values of extension settings, are decoded;
+        // other text is sent as it is, even if it happens to look like a marker.
         private static bool FixRequest(JsonNode node)
         {
             bool changed = false;
@@ -230,10 +250,14 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
                         continue;
                     }
 
-                    if (TryRestore(property.Value, out JsonNode restored))
+                    if (ExactUrlProperties.Contains(property.Key) && TryRestoreUrl(property.Value, out JsonNode url))
                     {
-                        item[property.Key] = restored;
+                        item[property.Key] = url;
                         changed = true;
+                    }
+                    else if (ExtensionSettings.Contains(property.Key) && property.Value is JsonObject settings)
+                    {
+                        changed |= RestoreSettings(settings);
                     }
                     else
                     {
@@ -243,21 +267,11 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
             }
             else if (node is JsonArray items)
             {
-                for (int i = 0; i < items.Count; i++)
+                foreach (JsonNode value in items)
                 {
-                    if (items[i] == null)
+                    if (value != null)
                     {
-                        continue;
-                    }
-
-                    if (TryRestore(items[i], out JsonNode restored))
-                    {
-                        items[i] = restored;
-                        changed = true;
-                    }
-                    else
-                    {
-                        changed |= FixRequest(items[i]);
+                        changed |= FixRequest(value);
                     }
                 }
             }
@@ -265,30 +279,69 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
             return changed;
         }
 
-        private static bool TryRestore(JsonNode value, out JsonNode restored)
+        private static bool TryRestoreUrl(JsonNode value, out JsonNode restored)
         {
             restored = null;
-            if (value.GetValueKind() != JsonValueKind.String)
+            string text = value.GetValueKind() == JsonValueKind.String ? value.GetValue<string>() : null;
+            if (text == null || !text.StartsWith(ExactUrlPrefix, StringComparison.Ordinal))
             {
                 return false;
             }
 
-            string text = value.GetValue<string>();
-            if (text.StartsWith(ExactUrlPrefix, StringComparison.Ordinal))
+            string base64 = text.Substring(ExactUrlPrefix.Length).Replace('-', '+').Replace('_', '/');
+            base64 = base64.PadRight(base64.Length + ((4 - (base64.Length % 4)) % 4), '=');
+            try
             {
-                string base64 = text.Substring(ExactUrlPrefix.Length).Replace('-', '+').Replace('_', '/');
-                base64 = base64.PadRight(base64.Length + ((4 - (base64.Length % 4)) % 4), '=');
                 restored = JsonValue.Create(Encoding.UTF8.GetString(Convert.FromBase64String(base64)));
                 return true;
             }
-
-            if (text.StartsWith(JsonSettingPrefix, StringComparison.Ordinal))
+            catch (FormatException)
             {
-                restored = JsonNode.Parse(text.Substring(JsonSettingPrefix.Length));
-                return true;
+                return false;
+            }
+        }
+
+        private static bool RestoreSettings(JsonObject settings)
+        {
+            bool changed = false;
+            foreach (KeyValuePair<string, JsonNode> setting in settings.ToList())
+            {
+                string text = setting.Value != null && setting.Value.GetValueKind() == JsonValueKind.String ? setting.Value.GetValue<string>() : null;
+                if (text == null || !IsMarked(text))
+                {
+                    continue;
+                }
+
+                try
+                {
+                    settings[setting.Key] = JsonNode.Parse(text.Substring(JsonSettingPrefix.Length));
+                    changed = true;
+                }
+                catch (STJsonException)
+                {
+                    // Not one of ours: send the text as it is.
+                }
             }
 
-            return false;
+            return changed;
+        }
+
+        private static bool IsMarked(string text)
+        {
+            return text.StartsWith(JsonSettingPrefix, StringComparison.Ordinal);
+        }
+
+        private static bool IsJson(string text)
+        {
+            try
+            {
+                JsonDocument.Parse(text).Dispose();
+                return true;
+            }
+            catch (STJsonException)
+            {
+                return false;
+            }
         }
 
         // Parses the JSON only when it has one of the hints, so most bodies are left as they are without parsing them.

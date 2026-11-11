@@ -209,6 +209,50 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
             Assert.Null(Track2Workarounds.FixRequest(Encoding.UTF8.GetBytes("{\"id\":\"pool1\",\"vmSize\":\"standard_d2s_v3\"}")));
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SettingTextThatLooksLikeTheMarkerStaysText()
+        {
+            // Review on #30433: a setting whose text starts with the marker must stay that text, both ways.
+            string settings = "{\"message\":\"" + Track2Workarounds.JsonSettingPrefix + "false\",\"other\":\"" + Track2Workarounds.JsonSettingPrefix + "not json\"}";
+            string pool = PoolJson("\"extensions\":[{\"name\":\"extension1\",\"publisher\":\"Microsoft.ManagedServices\",\"type\":\"ApplicationHealthLinux\",\"settings\":" + settings + "}]");
+            RecordingHandler handler = new RecordingHandler()
+                .On("GET /pools/pool1", HttpStatusCode.OK, pool)
+                .On("POST /pools", HttpStatusCode.Created);
+            Track2TestContext context = NewContext(handler);
+
+            T2.VMExtension read = context.Track2Client.GetPool("pool1").Value.VirtualMachineConfiguration.Extensions.Single();
+            object track1 = context.BatchOMClient.PoolOperations.GetPool("pool1").VirtualMachineConfiguration.Extensions.Single().Settings;
+            Assert.True(JToken.DeepEquals(Assert.IsAssignableFrom<JToken>(track1), Track2Workarounds.FromSettings(read.Settings)));
+
+            T2.VMExtension sent = new T2.VMExtension("extension1", "Microsoft.ManagedServices", "ApplicationHealthLinux");
+            foreach (KeyValuePair<string, string> setting in Track2Workarounds.ToSettings(JObject.Parse(settings)))
+            {
+                sent.Settings.Add(setting);
+            }
+
+            context.Track2Client.CreatePool(NewPool(vm => vm.Extensions.Add(sent)));
+            Assert.True(JToken.DeepEquals(JObject.Parse(settings), SentPool(handler).SelectToken("virtualMachineConfiguration.extensions[0].settings")));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void OnlyStandInUrlsAndExtensionSettingsAreDecoded()
+        {
+            // Review on #30433: text elsewhere (metadata, environment settings, other URLs) is sent as it is, even if it
+            // looks like a marker; a marked setting that isn't JSON is sent as it is too.
+            string standIn = Track2Workarounds.ToExactUrl("myregistry.azurecr.io").AbsoluteUri;
+            string request = "{\"metadata\":[{\"name\":\"a\",\"value\":\"" + Track2Workarounds.JsonSettingPrefix + "false\"}],"
+                + "\"startTask\":{\"commandLine\":\"cmd\",\"environmentSettings\":[{\"name\":\"b\",\"value\":\"" + standIn + "\"}]},"
+                + "\"virtualMachineConfiguration\":{\"extensions\":[{\"settings\":{\"c\":\"" + Track2Workarounds.JsonSettingPrefix + "not json\"}}]}}";
+
+            Assert.Null(Track2Workarounds.FixRequest(Encoding.UTF8.GetBytes(request)));
+
+            string decoded = Encoding.UTF8.GetString(Track2Workarounds.FixRequest(Encoding.UTF8.GetBytes(
+                "{\"registry\":{\"registryServer\":\"" + standIn + "\"},\"other\":\"" + standIn + "\"}")));
+            Assert.Equal("{\"registry\":{\"registryServer\":\"myregistry.azurecr.io\"},\"other\":\"" + standIn + "\"}", decoded);
+        }
+
         private static string Route(string kind)
         {
             switch (kind)
