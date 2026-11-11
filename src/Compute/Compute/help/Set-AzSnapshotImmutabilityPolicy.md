@@ -16,21 +16,21 @@ Sets or updates the time-bound deletion protection policy for a managed disk sna
 ```
 Set-AzSnapshotImmutabilityPolicy -PolicyType <String> -DurationInDays <Int32> -ResourceGroupName <String>
  [-Name] <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzSnapshotImmutabilityPolicy -PolicyType <String> -DurationInDays <Int32> [-ResourceId] <String> [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzSnapshotImmutabilityPolicy -PolicyType <String> -DurationInDays <Int32> [-InputObject] <PSSnapshot>
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -227,21 +227,6 @@ Aliases:
 Accepted values: Unlocked, Locked
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
