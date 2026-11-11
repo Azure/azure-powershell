@@ -1,0 +1,232 @@
+{
+  "New-AzAppNetwork+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-foth1y?api-version=2026-08-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-foth1y?api-version=2026-08-01-preview",
+      "Content": "{\n  \"location\": \"eastus2\",\n  \"identity\": {\n    \"type\": \"SystemAssigned\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "77" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3f49de0c-c08a-58b4-b2d3-68fbfbcf65a8\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=84d68597-df98-5a83-b522-cb0c637977ba/eastus2/b4a1bb22-b3c3-56f6-953a-59a047d3b9f5" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-envoy-upstream-service-time": [ "0" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7?api-version=2026-08-01-preview&t=REDACTEDd7fe5b6ea586fa5e&c=REDACTEDadbb22f819ba6fa4&s=REDACTED30e5d1532983844e&h=REDACTED03225a33cc26d7e6" ],
+        "x-ms-request-id": [ "a56d0516-0bba-5430-b09c-fe9b2c3d8f50" ],
+        "x-ms-correlation-request-id": [ "ec7031e4-b15e-5a6a-93ef-4b581166ed30" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20261027T203110Z:ec7031e4-b15e-5a6a-93ef-4b581166ed30" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E5E76E243DE34F39819FE1F9E06019D9 Ref B: CO6AA3150218047 Ref C: 2026-10-27T20:31:07Z" ],
+        "Date": [ "Tue, 27 Oct 2026 20:31:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "641" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-foth1y\",\"name\":\"applink-foth1y\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-27T20:31:08.1469289Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-27T20:31:08.1469289Z\"},\"identity\":{\"principalId\":\"c38d78eb-dac4-52b1-94da-f1e2702d7315\",\"tenantId\":\"11111111-1111-1111-1111-111111111111\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAppNetwork+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7?api-version=2026-08-01-preview&t=REDACTEDd7fe5b6ea586fa5e&c=REDACTEDadbb22f819ba6fa4&s=REDACTED30e5d1532983844e&h=REDACTED03225a33cc26d7e6+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7?api-version=2026-08-01-preview&t=REDACTEDd7fe5b6ea586fa5e&c=REDACTEDadbb22f819ba6fa4&s=REDACTED30e5d1532983844e&h=REDACTED03225a33cc26d7e6",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "dc4dc069-dd97-56c1-b151-4f8f528cb3cd" ],
+        "CommandName": [ "New-AzAppNetwork" ],
+        "FullCommandName": [ "New-AzAppNetwork_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"cc24d303-31ae-536d-b2bc-c86dce5055ee\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=84d68597-df98-5a83-b522-cb0c637977ba/westus2/40293020-de4d-5739-9522-0b0b99dfc62d" ],
+        "x-ms-request-id": [ "595b7200-4640-5f77-8e7d-a67bdc766a02" ],
+        "x-ms-correlation-request-id": [ "dd441b41-d220-5658-a2ff-3e3cfeffd15e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20261027T203140Z:dd441b41-d220-5658-a2ff-3e3cfeffd15e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9BEAC4023EE44A0D94F16D37AC36F67A Ref B: CO6AA3150218047 Ref C: 2026-10-27T20:31:40Z" ],
+        "Date": [ "Tue, 27 Oct 2026 20:31:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "557" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7\",\"name\":\"a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-foth1y\",\"status\":\"Accepted\",\"startTime\":\"2026-10-27T20:31:09.9468558Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAppNetwork+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7?api-version=2026-08-01-preview&t=REDACTEDd7fe5b6ea586fa5e&c=REDACTEDadbb22f819ba6fa4&s=REDACTED30e5d1532983844e&h=REDACTED03225a33cc26d7e6+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7?api-version=2026-08-01-preview&t=REDACTEDd7fe5b6ea586fa5e&c=REDACTEDadbb22f819ba6fa4&s=REDACTED30e5d1532983844e&h=REDACTED03225a33cc26d7e6",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "dc4dc069-dd97-56c1-b151-4f8f528cb3cd" ],
+        "CommandName": [ "New-AzAppNetwork" ],
+        "FullCommandName": [ "New-AzAppNetwork_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"cc24d303-31ae-536d-b2bc-c86dce5055ee\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=84d68597-df98-5a83-b522-cb0c637977ba/westus2/8ce12742-a571-538f-9642-1350b912ce5e" ],
+        "x-ms-request-id": [ "d809f35e-9684-516c-8503-37f90b14250f" ],
+        "x-ms-correlation-request-id": [ "e9ace6cc-8772-57c2-9b45-dfc82612a884" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20261027T203210Z:e9ace6cc-8772-57c2-9b45-dfc82612a884" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F5D2E030B0694A729878F5E3D7F17DFF Ref B: CO6AA3150218047 Ref C: 2026-10-27T20:32:10Z" ],
+        "Date": [ "Tue, 27 Oct 2026 20:32:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "557" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7\",\"name\":\"a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-foth1y\",\"status\":\"Accepted\",\"startTime\":\"2026-10-27T20:31:09.9468558Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAppNetwork+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7?api-version=2026-08-01-preview&t=REDACTEDd7fe5b6ea586fa5e&c=REDACTEDadbb22f819ba6fa4&s=REDACTED30e5d1532983844e&h=REDACTED03225a33cc26d7e6+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7?api-version=2026-08-01-preview&t=REDACTEDd7fe5b6ea586fa5e&c=REDACTEDadbb22f819ba6fa4&s=REDACTED30e5d1532983844e&h=REDACTED03225a33cc26d7e6",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "dc4dc069-dd97-56c1-b151-4f8f528cb3cd" ],
+        "CommandName": [ "New-AzAppNetwork" ],
+        "FullCommandName": [ "New-AzAppNetwork_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bd62d4ca-0848-5878-a536-2126091b8b5e\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=84d68597-df98-5a83-b522-cb0c637977ba/westus2/27c6e9b1-7ec6-50d4-9f30-f9335a4d6312" ],
+        "x-ms-request-id": [ "42bf6b40-29d5-5ca1-9988-b60fec987239" ],
+        "x-ms-correlation-request-id": [ "fab65253-f3cb-506f-a0e9-b7dc50b666c0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20261027T203240Z:fab65253-f3cb-506f-a0e9-b7dc50b666c0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8E89BEE6FD8448508284A42E5BAADDA5 Ref B: CO6AA3150218047 Ref C: 2026-10-27T20:32:40Z" ],
+        "Date": [ "Tue, 27 Oct 2026 20:32:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/locations/EASTUS2/operationStatuses/a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7\",\"name\":\"a56d0516-0bba-5430-b09c-fe9b2c3d8f50*859AE9D3153F48FC22A12C46118D2487CC9D7CA48262AE3526E0CD597F9882E7\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-foth1y\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-27T20:31:09.9468558Z\",\"endTime\":\"2026-10-27T20:32:07.6390018Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAppNetwork+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-foth1y?api-version=2026-08-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-foth1y?api-version=2026-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "dc4dc069-dd97-56c1-b151-4f8f528cb3cd" ],
+        "CommandName": [ "New-AzAppNetwork" ],
+        "FullCommandName": [ "New-AzAppNetwork_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ]
+      },
+      "ContentHeaders": {
+
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"30d8e919-e459-5d7e-93db-57aa21dabb9a\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a3dc7788-a7a9-53f9-852d-b8f8a27bda90" ],
+        "x-ms-correlation-request-id": [ "963954cd-e774-5669-ac4c-b82c1e7fc670" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20261027T203241Z:963954cd-e774-5669-ac4c-b82c1e7fc670" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A2FC94DB71514228A417EF570A3E2CD1 Ref B: CO6AA3150218047 Ref C: 2026-10-27T20:32:40Z" ],
+        "Date": [ "Tue, 27 Oct 2026 20:32:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "642" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-foth1y\",\"name\":\"applink-foth1y\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-27T20:31:08.1469289Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-27T20:31:08.1469289Z\"},\"identity\":{\"principalId\":\"c38d78eb-dac4-52b1-94da-f1e2702d7315\",\"tenantId\":\"11111111-1111-1111-1111-111111111111\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

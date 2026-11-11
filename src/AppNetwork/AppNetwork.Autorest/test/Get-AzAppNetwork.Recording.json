@@ -1,0 +1,139 @@
+{
+  "Get-AzAppNetwork+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/appLinks?api-version=2026-08-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AppLink/appLinks?api-version=2026-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "3eaa70bb-942a-5566-925f-d68a01ba0967" ],
+        "CommandName": [ "Get-AzAppNetwork" ],
+        "FullCommandName": [ "Get-AzAppNetwork_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "96f874a1-83c1-5177-afdd-fb0815b1f016", "350e5cd4-e80c-5db3-8ca9-e22e106d60cf", "47a47734-d964-5b13-9c9c-a4d29d2cec8e", "e141d39f-7aef-50c9-8724-d4e8bb58b65f", "23b5458e-919d-5aa1-8d99-3fa295277901", "4a7245ff-2296-543d-b5b3-b2f24c197ef3", "03ac559b-bc65-5e0b-b9be-21d1f7e606c3", "0c6d7965-fb7c-5eab-927f-930980c5e8df", "8fa023d6-9768-5748-8e67-172c32425eed", "652c00cb-f7d5-50a9-9962-7a13134b0453", "fb4aa53c-2814-52b9-9f29-2f03ab97823e", "06340024-ce45-5aa9-8bee-ea87cc202787", "f94e718e-a529-5bd3-9aa2-d65d32cbe24e", "cb29d723-e53b-5f37-879b-0942a22e7bab" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "fe4b3b68-3f21-58c9-a1c6-95a6b39fae0b" ],
+        "x-ms-correlation-request-id": [ "fe4b3b68-3f21-58c9-a1c6-95a6b39fae0b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20261027T203105Z:fe4b3b68-3f21-58c9-a1c6-95a6b39fae0b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9E8FD871A4BF41508B8D877175D68EBF Ref B: CO6AA3150218047 Ref C: 2026-10-27T20:31:04Z" ],
+        "Date": [ "Tue, 27 Oct 2026 20:31:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1940" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-6p590m\",\"name\":\"applink-6p590m\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-27T20:26:22.0716948Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-27T20:26:22.0716948Z\"},\"identity\":{\"principalId\":\"1df832bd-165f-5b5e-9f8b-a54012261f99\",\"tenantId\":\"11111111-1111-1111-1111-111111111111\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-t6mpf4\",\"name\":\"applink-t6mpf4\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-27T20:27:56.1358175Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-27T20:27:56.1358175Z\"},\"identity\":{\"principalId\":\"97ba89f6-d1f2-5c12-98f2-1d2be0b7d2a1\",\"tenantId\":\"11111111-1111-1111-1111-111111111111\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-07qbow\",\"name\":\"applink-07qbow\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-27T20:29:30.2578119Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-27T20:29:30.2578119Z\"},\"identity\":{\"principalId\":\"3f0f5f8b-12a8-5527-8734-f8d6592919d7\",\"tenantId\":\"11111111-1111-1111-1111-111111111111\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAppNetwork+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-6p590m?api-version=2026-08-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-6p590m?api-version=2026-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "f9df06e6-c9de-5f9a-8627-7ee7c7e42fcc" ],
+        "CommandName": [ "Get-AzAppNetwork" ],
+        "FullCommandName": [ "Get-AzAppNetwork_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"cabe9995-2b2a-57c3-a235-d038c0892b4d\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "35bc08d6-82b6-51a5-92f4-7f59ac35ab7f" ],
+        "x-ms-correlation-request-id": [ "1920543e-d7f2-5648-8870-a1f2b8fdb748" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20261027T203105Z:1920543e-d7f2-5648-8870-a1f2b8fdb748" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 29381FEFA0DD4B32913C6D5534AADDC8 Ref B: CO6AA3150218047 Ref C: 2026-10-27T20:31:05Z" ],
+        "Date": [ "Tue, 27 Oct 2026 20:31:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "642" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-6p590m\",\"name\":\"applink-6p590m\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-27T20:26:22.0716948Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-27T20:26:22.0716948Z\"},\"identity\":{\"principalId\":\"1df832bd-165f-5b5e-9f8b-a54012261f99\",\"tenantId\":\"11111111-1111-1111-1111-111111111111\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAppNetwork+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks?api-version=2026-08-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks?api-version=2026-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "188cb2cd-a778-51ae-b9f1-9137dc6a9261" ],
+        "CommandName": [ "Get-AzAppNetwork" ],
+        "FullCommandName": [ "Get-AzAppNetwork_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "ef2df428-66ff-5940-b104-c55057b543fe" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "e04d3684-30bc-5d18-a44c-4c489e27551a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "e04d3684-30bc-5d18-a44c-4c489e27551a" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20261027T203106Z:e04d3684-30bc-5d18-a44c-4c489e27551a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BE1EBFCB50C74FF6B624B571C5F71C5D Ref B: CO6AA3150218047 Ref C: 2026-10-27T20:31:06Z" ],
+        "Date": [ "Tue, 27 Oct 2026 20:31:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1940" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-6p590m\",\"name\":\"applink-6p590m\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-27T20:26:22.0716948Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-27T20:26:22.0716948Z\"},\"identity\":{\"principalId\":\"1df832bd-165f-5b5e-9f8b-a54012261f99\",\"tenantId\":\"11111111-1111-1111-1111-111111111111\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-t6mpf4\",\"name\":\"applink-t6mpf4\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-27T20:27:56.1358175Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-27T20:27:56.1358175Z\"},\"identity\":{\"principalId\":\"97ba89f6-d1f2-5c12-98f2-1d2be0b7d2a1\",\"tenantId\":\"11111111-1111-1111-1111-111111111111\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/appnetwork-test-m83q7z/providers/Microsoft.AppLink/appLinks/applink-07qbow\",\"name\":\"applink-07qbow\",\"type\":\"microsoft.applink/applinks\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-27T20:29:30.2578119Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-27T20:29:30.2578119Z\"},\"identity\":{\"principalId\":\"3f0f5f8b-12a8-5527-8734-f8d6592919d7\",\"tenantId\":\"11111111-1111-1111-1111-111111111111\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}
