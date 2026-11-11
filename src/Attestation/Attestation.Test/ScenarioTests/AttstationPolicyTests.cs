@@ -65,5 +65,12 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SetAttestationPolicyLegacyFormats");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSetResetAttestationPolicySigned()
+        {
+            TestRunner.RunTestScript("Test-SetResetAttestationPolicySigned");
+        }
     }
 }

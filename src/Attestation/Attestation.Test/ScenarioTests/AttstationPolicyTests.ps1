@@ -94,9 +94,61 @@ function Test-ResetAttestationPolicy
 		Assert-NotNull $getPolicy
         $resetPolicyResponse = Reset-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType -PassThru
 		Assert-AreEqual $resetPolicyResponse $true
+
+		# Change the TdxVm policy, then reset it and confirm the default policy is restored
+		$defaultPolicy = Get-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee TdxVm
+		$customPolicyText = 'version= 1.0;authorizationrules{=> deny();};issuancerules{};'
+		Set-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee TdxVm -Policy $customPolicyText
+		Assert-AreEqual $customPolicyText (Get-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee TdxVm).Text
+
+		$resetPolicyResponse = Reset-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee TdxVm -PassThru
+		Assert-AreEqual $resetPolicyResponse $true
+		Assert-AreEqual $defaultPolicy.Text (Get-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee TdxVm).Text
 	}
 	finally
 	{
+		Clean-ResourceGroup $rgName.ResourceGroupName
+	}
+}
+
+<#
+.SYNOPSIS
+Test Set-AzAttestationPolicy and Reset-AzAttestationPolicy with policy tokens signed by a policy signer of an attestation provider in the isolated trust model
+#>
+function Test-SetResetAttestationPolicySigned
+{
+	$unknownRGName = getAssetName
+	$attestationProviderName = getAssetName
+	$location = "East US"
+	$teeType = "TdxVm"
+	$signer = New-PolicySigningCertificate "AttestationPolicySigner"
+	$signerPemPath = Join-Path ([System.IO.Path]::GetTempPath()) "$attestationProviderName.pem"
+	$customPolicyText = 'version= 1.0;authorizationrules{=> deny();};issuancerules{};'
+
+	try
+	{
+		Export-PemCertificate $signer.Certificate $signerPemPath
+	    $rgName = Create-ResourceGroup
+		$attestationCreated = New-AzAttestationProvider -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySigningCertificateKeyPath $signerPemPath
+		Wait-AttestationProviderDns $attestationCreated
+		Assert-NotNull $attestationCreated
+
+		$defaultPolicy = Get-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType
+
+		# A provider in the isolated trust model only accepts policy changes signed by one of its policy signers
+		$signedPolicy = New-SignedJwt $signer (@{ AttestationPolicy = (ConvertTo-Base64Url $customPolicyText) } | ConvertTo-Json -Compress)
+		$setPolicyResponse = Set-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType -Policy $signedPolicy -PolicyFormat JWT -PassThru
+		Assert-AreEqual $setPolicyResponse $true
+		Assert-AreEqual $customPolicyText (Get-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType).Text
+
+		$signedReset = New-SignedJwt $signer
+		$resetPolicyResponse = Reset-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType -Policy $signedReset -PassThru
+		Assert-AreEqual $resetPolicyResponse $true
+		Assert-AreEqual $defaultPolicy.Text (Get-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Tee $teeType).Text
+	}
+	finally
+	{
+		Remove-Item $signerPemPath -ErrorAction SilentlyContinue
 		Clean-ResourceGroup $rgName.ResourceGroupName
 	}
 }

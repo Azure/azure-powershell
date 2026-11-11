@@ -123,15 +123,24 @@ function Export-PemCertificate($certificate, [string]$path)
 
 <#
 .SYNOPSIS
+Creates a JWT signed with the key of a policy signer. Without a body, creates the token used to reset a policy.
+#>
+function New-SignedJwt($signer, [string]$bodyJson)
+{
+	$header = ConvertTo-Base64Url (@{ alg = "RS256"; x5c = @([Convert]::ToBase64String($signer.Certificate.RawData)) } | ConvertTo-Json -Compress)
+	$body = if ($bodyJson) { ConvertTo-Base64Url $bodyJson } else { "" }
+	$signature = $signer.Key.SignData([System.Text.Encoding]::ASCII.GetBytes("$header.$body"), [System.Security.Cryptography.HashAlgorithmName]::SHA256, [System.Security.Cryptography.RSASignaturePadding]::Pkcs1)
+	return "$header.$body.$(ConvertTo-Base64Url $signature)"
+}
+
+<#
+.SYNOPSIS
 Creates a policy management token: a JWT signed by an existing policy signer whose body names a certificate
 in the given claim ("policyCertificate", or "maa-policyCertificate" for the earlier API version)
 #>
 function New-PolicyCertificateJwt($signer, $certificateToChange, [string]$claimName = "policyCertificate")
 {
-	$header = ConvertTo-Base64Url (@{ alg = "RS256"; x5c = @([Convert]::ToBase64String($signer.Certificate.RawData)) } | ConvertTo-Json -Compress)
 	$jwk = @{ kty = "RSA"; x5c = @([Convert]::ToBase64String($certificateToChange.RawData)) }
-	$body = ConvertTo-Base64Url (@{ $claimName = $jwk } | ConvertTo-Json -Compress -Depth 5)
-	$signature = $signer.Key.SignData([System.Text.Encoding]::ASCII.GetBytes("$header.$body"), [System.Security.Cryptography.HashAlgorithmName]::SHA256, [System.Security.Cryptography.RSASignaturePadding]::Pkcs1)
-	return "$header.$body.$(ConvertTo-Base64Url $signature)"
+	return New-SignedJwt $signer (@{ $claimName = $jwk } | ConvertTo-Json -Compress -Depth 5)
 }
 
