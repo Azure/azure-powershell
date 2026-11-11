@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.12.0
 * Removed unused MD5 calculations from disk and blob uploads and switched disk and blob upload lock names and deterministic Azure Enhanced Monitoring test IDs to SHA-256.
 * Added `Set-AzSnapshotImmutabilityPolicy` and `Remove-AzSnapshotImmutabilityPolicy`, and exposed typed immutability policy details consistently in snapshot results. [Azure/azure-powershell-cmdlet-review-pr#1579]
 * Added a preview message to `New-AzCapacityReservationGroup` indicating that the Open Capacity Reservation feature is in preview.
