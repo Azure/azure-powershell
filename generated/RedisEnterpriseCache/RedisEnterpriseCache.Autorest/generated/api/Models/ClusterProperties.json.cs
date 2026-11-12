@@ -71,12 +71,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {_maintenanceConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonObject>("maintenanceConfiguration"), out var __jsonMaintenanceConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceConfiguration.FromJson(__jsonMaintenanceConfiguration) : _maintenanceConfiguration;}
             {_highAvailability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("highAvailability"), out var __jsonHighAvailability) ? (string)__jsonHighAvailability : (string)_highAvailability;}
             {_minimumTlsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("minimumTlsVersion"), out var __jsonMinimumTlsVersion) ? (string)__jsonMinimumTlsVersion : (string)_minimumTlsVersion;}
+            {_firewallRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray>("firewallRules"), out var __jsonFirewallRules) ? If( __jsonFirewallRules as Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule) (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.FirewallRule.FromJson(__u) )) ))() : null : _firewallRule;}
             {_hostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("hostName"), out var __jsonHostName) ? (string)__jsonHostName : (string)_hostName;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_redundancyMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("redundancyMode"), out var __jsonRedundancyMode) ? (string)__jsonRedundancyMode : (string)_redundancyMode;}
             {_resourceState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("resourceState"), out var __jsonResourceState) ? (string)__jsonResourceState : (string)_resourceState;}
             {_redisVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("redisVersion"), out var __jsonRedisVersion) ? (string)__jsonRedisVersion : (string)_redisVersion;}
-            {_privateEndpointConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray>("privateEndpointConnections"), out var __jsonPrivateEndpointConnections) ? If( __jsonPrivateEndpointConnections as Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection) (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpointConnection.FromJson(__u) )) ))() : null : _privateEndpointConnection;}
+            {_privateEndpointConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray>("privateEndpointConnections"), out var __jsonPrivateEndpointConnections) ? If( __jsonPrivateEndpointConnections as Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection) (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpointConnection.FromJson(__p) )) ))() : null : _privateEndpointConnection;}
             {_migratedEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("migratedEndpoint"), out var __jsonMigratedEndpoint) ? (string)__jsonMigratedEndpoint : (string)_migratedEndpoint;}
             AfterFromJson(json);
         }
@@ -116,6 +117,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             AddIf( null != this._maintenanceConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) this._maintenanceConfiguration.ToJson(null,serializationMode) : null, "maintenanceConfiguration" ,container.Add );
             AddIf( null != (((object)this._highAvailability)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(this._highAvailability.ToString()) : null, "highAvailability" ,container.Add );
             AddIf( null != (((object)this._minimumTlsVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(this._minimumTlsVersion.ToString()) : null, "minimumTlsVersion" ,container.Add );
+            if (null != this._firewallRule)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.XNodeArray();
+                foreach( var __x in this._firewallRule )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("firewallRules",__w);
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._hostName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(this._hostName.ToString()) : null, "hostName" ,container.Add );
@@ -140,12 +150,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 if (null != this._privateEndpointConnection)
                 {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._privateEndpointConnection )
+                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.XNodeArray();
+                    foreach( var __s in this._privateEndpointConnection )
                     {
-                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                        AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                     }
-                    container.Add("privateEndpointConnections",__w);
+                    container.Add("privateEndpointConnections",__r);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeRead))

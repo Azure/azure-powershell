@@ -208,6 +208,9 @@
             <Label>AccessPolicyName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>AccessString</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -216,6 +219,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>AccessPolicyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AccessString</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -241,6 +247,40 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>ObjectId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.AccessPolicyAssignmentProvisioningError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.AccessPolicyAssignmentProvisioningError#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1087,6 +1127,34 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.FirewallRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.FirewallRule#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceAddressPrefix</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceAddressPrefix</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

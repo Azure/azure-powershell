@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Cmdlets;
     using System;
 
-    /// <summary>create an existing (overwrite/recreate with potential downtime) cache cluster</summary>
+    /// <summary>create an existing Redis Enterprise cluster.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzRedisEnterpriseCache_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"create an existing (overwrite/recreate  with potential downtime) cache cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"create an existing Redis Enterprise cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}", ApiVersion = "2026-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}", ApiVersion = "2026-10-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.NotSuggestDefaultParameterSet]
     public partial class NewAzRedisEnterpriseCache_CreateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener,

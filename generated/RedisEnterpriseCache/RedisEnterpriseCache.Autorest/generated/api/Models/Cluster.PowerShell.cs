@@ -184,6 +184,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
             }
+            if (content.Contains("FirewallRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).FirewallRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule>) content.GetValueForProperty("FirewallRule",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).FirewallRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.FirewallRuleTypeConverter.ConvertFrom));
+            }
             if (content.Contains("HostName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).HostName, global::System.Convert.ToString);
@@ -364,6 +368,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("MinimumTlsVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("FirewallRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).FirewallRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule>) content.GetValueForProperty("FirewallRule",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).FirewallRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFirewallRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.FirewallRuleTypeConverter.ConvertFrom));
             }
             if (content.Contains("HostName"))
             {

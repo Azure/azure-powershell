@@ -1,7 +1,7 @@
 @{
   GUID = '0b3b43eb-9078-4d06-8c79-d156a1410906'
   RootModule = './Az.RedisEnterpriseCache.psm1'
-  ModuleVersion = '2.1.0'
+  ModuleVersion = '2.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
