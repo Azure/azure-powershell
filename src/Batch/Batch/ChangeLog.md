@@ -20,6 +20,12 @@
 ## Upcoming Release
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Fixed `Set-AzBatchAccount` resetting account settings it doesn't change, such as public network access, allowed authentication modes and the auto-storage account. It now uses the update operation.
+* Started moving Az.Batch from `Microsoft.Azure.Batch` (Track 1) to `Azure.Compute.Batch` (Track 2). No cmdlet uses the new SDK yet.
+    - Added `Azure.Compute.Batch` 1.0.0 as a dependency.
+    - Added a conversion that shows `Azure.Compute.Batch` errors the same way as today's errors.
+    - Added helpers that keep `-MaxCount`, `-Select` and `-Expand` working the same way with `Azure.Compute.Batch`.
+    - Added workarounds for three `Azure.Compute.Batch` 1.0.0 issues until a newer version fixes them: counts and sizes the service sends as numbers, registry server addresses, and VM extension settings that aren't text.
+    - Added the mapping between `Azure.Compute.Batch` and the PS objects that several cmdlets share (start task, resource files, user identity, container settings, application packages, metadata).
 
 ## Version 4.1.1
 * Fixed module load conflict by aligning `Microsoft.ApplicationInsights` to the common 2.18.0 dependency version, resolving "Assembly with same name is already loaded" error.
