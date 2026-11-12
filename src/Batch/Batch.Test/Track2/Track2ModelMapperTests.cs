@@ -246,6 +246,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TheComparerChecksTypes()
+        {
+            // Review on #30434: collections of another type (or with items of another type) are a difference too.
+            Assert.Single(OutputComparer.Compare(new List<PSResourceFile>(), new PSResourceFile[0], "Items"));
+            Assert.Single(OutputComparer.Compare(new List<string>(), new List<int>(), "Items"));
+            Assert.Single(OutputComparer.Compare(new Dictionary<string, string>(), new Hashtable(), "Items"));
+            Assert.Single(OutputComparer.Compare(new List<object> { 1 }, new List<object> { 1L }, "Items"));
+            Assert.Empty(OutputComparer.Compare(new List<string> { "a" }, new List<string> { "a" }, "Items"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Rules()
         {
             Assert.Null(Track2ModelMapper.ToDateTimeOrNull(null));
