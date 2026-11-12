@@ -14,6 +14,7 @@
 
 using Azure.Core;
 using Azure.Core.Pipeline;
+using System;
 
 namespace Microsoft.Azure.Commands.Batch.Track2
 {
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Track2
         public override void OnSendingRequest(HttpMessage message)
         {
             string current = message.Request.Headers.TryGetValue(HttpHeader.Names.UserAgent, out string value) ? value : null;
-            if (current == null || !current.StartsWith(this.userAgent))
+            if (current == null || !current.StartsWith(this.userAgent, StringComparison.Ordinal))
             {
                 message.Request.Headers.SetValue(HttpHeader.Names.UserAgent, string.IsNullOrEmpty(current) ? this.userAgent : this.userAgent + " " + current);
             }

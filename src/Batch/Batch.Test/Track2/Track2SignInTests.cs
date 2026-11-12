@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
                 Assert.Equal("Bearer token-for-" + UsGovBatchResource, request.Authorization);
                 Assert.Equal("account.usgovvirginia.batch.usgovcloudapi.net", request.Uri.Host);
                 Assert.Contains("api-version=2025-06-01", request.Uri.Query);
-                Assert.StartsWith("AzurePowershell/", request.UserAgent);
+                Assert.StartsWith("AzurePowershell/", request.UserAgent, StringComparison.Ordinal);
                 Assert.Contains("azsdk-net-Compute.Batch/", request.UserAgent);
             }
             finally
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
 
                 context.Track2Client.GetPool("pool1");
 
-                Assert.StartsWith("SharedKey account:", service.Requests.Single().Authorization);
+                Assert.StartsWith("SharedKey account:", service.Requests.Single().Authorization, StringComparison.Ordinal);
                 Assert.Equal(0, signIn.Calls);
             }
             finally
