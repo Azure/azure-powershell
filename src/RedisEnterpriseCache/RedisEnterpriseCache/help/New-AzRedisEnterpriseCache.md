@@ -40,7 +40,7 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
 ```
 
 ## DESCRIPTION
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
+Creates or updates a cache cluster with an associated database.
 
 ## EXAMPLES
 
