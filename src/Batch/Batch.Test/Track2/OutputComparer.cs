@@ -101,6 +101,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
 
             if (a is IEnumerable listA && b is IEnumerable listB)
             {
+                if (ta != tb)
+                {
+                    differences.Add(string.Format("{0}: type track1={1} track2={2}", path, ta.FullName, tb.FullName));
+                }
+
                 List<object> itemsA = listA.Cast<object>().ToList();
                 List<object> itemsB = listB.Cast<object>().ToList();
                 if (itemsA.Count != itemsB.Count)
