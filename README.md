@@ -3,7 +3,7 @@
 # ![AzureIcon] ![PowershellIcon] Microsoft Azure PowerShell
 
 This repository contains PowerShell cmdlets for developers and administrators to develop, deploy,
-administer, and manage Microsoft Azure resources.
+administer, and manage Microsoft Azure resources. 
 
 The Az PowerShell module is preinstalled in [Azure Cloud Shell][AzureCloudShell].
 
