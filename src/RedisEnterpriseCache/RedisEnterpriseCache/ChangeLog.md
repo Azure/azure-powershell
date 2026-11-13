@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Marked the module as preview for the out-of-band release.
 * Upgraded code generator. See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 * Added support for preview API version 2026-10-01-preview
 * Added `FirewallRule` to `New-AzRedisEnterpriseCache` and `Update-AzRedisEnterpriseCache` for configuring Azure Managed Redis firewall rules
