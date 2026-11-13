@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.12.0
 * Added new cmdlets Get-AzSharedVMExtensionVersion and Set-AzSharedVMExtensionVersionDeprecation to read a published Shared VM Extension version and schedule it for deprecation.
 * Removed unused MD5 calculations from disk and blob uploads and switched disk and blob upload lock names and deterministic Azure Enhanced Monitoring test IDs to SHA-256.
 * Added `Set-AzSnapshotImmutabilityPolicy` and `Remove-AzSnapshotImmutabilityPolicy`, and exposed typed immutability policy details consistently in snapshot results. [Azure/azure-powershell-cmdlet-review-pr#1579]
