@@ -39,7 +39,7 @@ require:
 input-file:
   - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/stable/2026-09-01/redisenterprise.json
 
-module-version: 2.1.0
+module-version: 2.0.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
 
