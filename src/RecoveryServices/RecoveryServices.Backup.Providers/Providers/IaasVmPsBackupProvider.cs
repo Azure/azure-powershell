@@ -592,7 +592,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             IList<int?> restoreDiskLUNS;
             if(restoreOnlyOSDisk.IsPresent)
             {
-                restoreDiskLUNS = new List<int?>();
+                // The service identifies the OS disk by LUN -1, an empty list means restore all disks
+                restoreDiskLUNS = new List<int?>() { -1 };
             }
             else if(restoreDiskList != null)
             {

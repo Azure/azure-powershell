@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Updated `Restore-AzRecoveryServicesBackupItem` for Selective Disk Restore of Azure VMs (Virtual Machines)
+    - `-RestoreOnlyOSDisk` now sends LUN (Logical Unit Number) -1, which the service uses to identify the OS disk. Previously an empty disk list was sent, which the service treats as restore all disks.
+    - `-RestoreDiskList` restores only the disks specified. Use -1 for the OS disk and the disk LUN for data disks, for example -RestoreDiskList '-1','0','1'.
 
 ## Version 7.16.0
 * Supported SQL instance snapshot backup features.

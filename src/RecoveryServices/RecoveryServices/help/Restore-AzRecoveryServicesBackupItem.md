@@ -177,7 +177,7 @@ $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -
 $StartDate = (Get-Date).AddDays(-7)
 $EndDate = Get-Date
 $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
-$restoreDiskLUNs = ("0", "1")
+$restoreDiskLUNs = ("-1", "0", "1")
 $RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -RestoreDiskList $restoreDiskLUNs -VaultId $vault.ID -VaultLocation $vault.Location
 ```
 
@@ -192,7 +192,7 @@ The second command gets the Backup item of type AzureVM, of the name "V2VM", and
 The third command gets the date from seven days earlier, and then stores it in the $StartDate variable.
 The fourth command gets the current date, and then stores it in the $EndDate variable.
 The fifth command gets a list of recovery points for the specific backup item filtered by $StartDate and $EndDate.
-The sixth command stores the list of disks to be restored in the restoreDiskLUN variable.
+The sixth command stores the list of disks to be restored in the restoreDiskLUN variable. -1 selects the OS disk and 0 and 1 select the data disks at those LUNs. Omit -1 to restore only the data disks.
 The last command restores the given disks, of the specified LUNs, to the target Resource group Target_RG, and then provides the VM configuration information and the deployment template in the storage account DestAccount in the DestRG resource group.
 
 ### Example 4: Restore disks of a managed VM as unmanaged Disks
@@ -617,7 +617,7 @@ Accept wildcard characters: False
 ```
 
 ### -RestoreDiskList
-Specify which disks to recover of the backed up VM
+Specify which disks to recover of the backed up VM. Use the disk LUN for data disks and -1 for the OS disk. Only the specified disks are restored, so include -1 to restore the OS disk
 
 ```yaml
 Type: System.String[]
