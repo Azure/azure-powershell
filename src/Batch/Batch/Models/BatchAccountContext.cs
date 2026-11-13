@@ -241,14 +241,14 @@ namespace Microsoft.Azure.Commands.Batch
             this.Id = resource.Id;
             this.AccountEndpoint = accountEndpoint;
             this.Location = resource.Location;
-            this.State = resource.ProvisioningState.ToString();
+            this.State = resource.ProvisioningState.GetValueOrDefault().ToString();
             this.Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags);
             this.DedicatedCoreQuota = resource.DedicatedCoreQuota;
             this.LowPriorityCoreQuota = resource.LowPriorityCoreQuota;
-            this.DedicatedCoreQuotaPerVMFamilyEnforced = resource.DedicatedCoreQuotaPerVMFamilyEnforced;
+            this.DedicatedCoreQuotaPerVMFamilyEnforced = resource.DedicatedCoreQuotaPerVMFamilyEnforced.GetValueOrDefault();
             this.DedicatedCoreQuotaPerVMFamily = CreateQuotaHashTable(resource.DedicatedCoreQuotaPerVMFamily);
-            this.PoolQuota = resource.PoolQuota;
-            this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
+            this.PoolQuota = resource.PoolQuota.GetValueOrDefault();
+            this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota.GetValueOrDefault();
             this.PoolAllocationMode = resource.PoolAllocationMode;
             this.PublicNetworkAccess = resource.PublicNetworkAccess;
             this.Identity = resource.Identity;
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Commands.Batch
 
             foreach (var quota in quotas)
             {
-                result.Add(quota.Name, quota.CoreQuota);
+                result.Add(quota.Name, quota.CoreQuota.GetValueOrDefault());
             }
 
             return result;

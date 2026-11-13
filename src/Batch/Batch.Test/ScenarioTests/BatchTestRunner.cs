@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             }
 
             var client = context.GetServiceClient<BatchManagementClient>();
-            Subscription = client.SubscriptionId;
+            Subscription = client.SubscriptionId.ToString();
             BatchManagementClient = client;
             return client;
         }

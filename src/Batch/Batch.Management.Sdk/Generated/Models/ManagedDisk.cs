@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.Batch.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// The managed disk parameters.
+    /// </summary>
     public partial class ManagedDisk
     {
         /// <summary>
@@ -28,11 +31,16 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// can only be set for Confidential VMs and is required when using
         /// Confidential VMs.
         /// </param>
-        public ManagedDisk(StorageAccountType? storageAccountType = default(StorageAccountType?), VMDiskSecurityProfile securityProfile = default(VMDiskSecurityProfile))
+
+        /// <param name="diskEncryptionSet">Specifies the customer managed disk encryption set resource id for the
+        /// managed disk. It can be set only in UserSubscription mode.
+        /// </param>
+        public ManagedDisk(StorageAccountType? storageAccountType = default(StorageAccountType?), VMDiskSecurityProfile securityProfile = default(VMDiskSecurityProfile), DiskEncryptionSetParameters diskEncryptionSet = default(DiskEncryptionSetParameters))
 
         {
             this.StorageAccountType = storageAccountType;
             this.SecurityProfile = securityProfile;
+            this.DiskEncryptionSet = diskEncryptionSet;
             CustomInit();
         }
 
@@ -56,5 +64,30 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securityProfile")]
         public VMDiskSecurityProfile SecurityProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the customer managed disk encryption set resource id
+        /// for the managed disk. It can be set only in UserSubscription mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diskEncryptionSet")]
+        public DiskEncryptionSetParameters DiskEncryptionSet {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+            if (this.SecurityProfile != null)
+            {
+                this.SecurityProfile.Validate();
+            }
+            if (this.DiskEncryptionSet != null)
+            {
+                this.DiskEncryptionSet.Validate();
+            }
+        }
     }
 }

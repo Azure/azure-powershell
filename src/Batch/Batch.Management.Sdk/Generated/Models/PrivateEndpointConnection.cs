@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains information about a private link resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : AzureProxyResource
+    public partial class PrivateEndpointConnection : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
 
-        /// <param name="id">The ID of the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
@@ -51,12 +57,14 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </param>
 
         /// <param name="privateLinkServiceConnectionState">The private link service connection state of the private endpoint
-        /// connection
+        /// connection.
         /// </param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateEndpointConnectionProvisioningState provisioningState = default(PrivateEndpointConnectionProvisioningState), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateEndpointConnectionProvisioningState provisioningState = default(PrivateEndpointConnectionProvisioningState), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
-        : base(id, name, type, etag, tags)
+        : base(id, name, type, systemData)
         {
+            this.Etag = etag;
+            this.Tags = tags;
             this.PrivateEndpoint = privateEndpoint;
             this.ProvisioningState = provisioningState;
             this.GroupIds = groupIds;
@@ -69,6 +77,18 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets the ETag of the resource, used for concurrency statements.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the tags of the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets the private endpoint of the private endpoint connection.
@@ -90,7 +110,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <summary>
         /// Gets or sets the private link service connection state of the private
-        /// endpoint connection
+        /// endpoint connection.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkServiceConnectionState")]
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
@@ -102,6 +122,8 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </exception>
         public virtual void Validate()
         {
+
+
 
 
 

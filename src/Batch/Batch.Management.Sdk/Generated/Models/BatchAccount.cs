@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains information about an Azure Batch account.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BatchAccount : AzureResource
+    public partial class BatchAccount : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the BatchAccount class.
@@ -25,19 +25,25 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the BatchAccount class.
         /// </summary>
 
-        /// <param name="id">The ID of the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">The location of the resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="tags">The tags of the resource.
+        /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="identity">The identity of the Batch account.
@@ -63,7 +69,8 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="keyVaultReference">Identifies the Azure key vault associated with a Batch account.
         /// </param>
 
-        /// <param name="publicNetworkAccess">If not specified, the default value is &#39;enabled&#39;.
+        /// <param name="publicNetworkAccess">The network access type for operating on the resources in the Batch
+        /// account.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;</param>
 
         /// <param name="privateEndpointConnections">List of private endpoint connections associated with the Batch account
@@ -108,9 +115,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// to authenticate with the data plane. This does not affect authentication
         /// with the control plane.
         /// </param>
-        public BatchAccount(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), BatchAccountIdentity identity = default(BatchAccountIdentity), ProvisioningState provisioningState = default(ProvisioningState), NetworkProfile networkProfile = default(NetworkProfile), string accountEndpoint = default(string), string nodeManagementEndpoint = default(string), PoolAllocationMode? poolAllocationMode = default(PoolAllocationMode?), KeyVaultReference keyVaultReference = default(KeyVaultReference), PublicNetworkAccessType? publicNetworkAccess = default(PublicNetworkAccessType?), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), AutoStorageProperties autoStorage = default(AutoStorageProperties), EncryptionProperties encryption = default(EncryptionProperties), int? dedicatedCoreQuota = default(int?), int? lowPriorityCoreQuota = default(int?), System.Collections.Generic.IList<VirtualMachineFamilyCoreQuota> dedicatedCoreQuotaPerVMFamily = default(System.Collections.Generic.IList<VirtualMachineFamilyCoreQuota>), bool dedicatedCoreQuotaPerVMFamilyEnforced = default(bool), int poolQuota = default(int), int activeJobAndJobScheduleQuota = default(int), System.Collections.Generic.IList<AuthenticationMode?> allowedAuthenticationModes = default(System.Collections.Generic.IList<AuthenticationMode?>))
+        public BatchAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), BatchAccountIdentity identity = default(BatchAccountIdentity), ProvisioningState? provisioningState = default(ProvisioningState?), NetworkProfile networkProfile = default(NetworkProfile), string accountEndpoint = default(string), string nodeManagementEndpoint = default(string), PoolAllocationMode? poolAllocationMode = default(PoolAllocationMode?), KeyVaultReference keyVaultReference = default(KeyVaultReference), PublicNetworkAccessType? publicNetworkAccess = default(PublicNetworkAccessType?), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), AutoStorageProperties autoStorage = default(AutoStorageProperties), EncryptionProperties encryption = default(EncryptionProperties), int? dedicatedCoreQuota = default(int?), int? lowPriorityCoreQuota = default(int?), System.Collections.Generic.IList<VirtualMachineFamilyCoreQuota> dedicatedCoreQuotaPerVMFamily = default(System.Collections.Generic.IList<VirtualMachineFamilyCoreQuota>), bool? dedicatedCoreQuotaPerVMFamilyEnforced = default(bool?), int? poolQuota = default(int?), int? activeJobAndJobScheduleQuota = default(int?), System.Collections.Generic.IList<AuthenticationMode?> allowedAuthenticationModes = default(System.Collections.Generic.IList<AuthenticationMode?>))
 
-        : base(id, name, type, location, tags)
+        : base(location, id, name, type, systemData, tags)
         {
             this.Identity = identity;
             this.ProvisioningState = provisioningState;
@@ -149,7 +156,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Gets the provisioned state of the resource Possible values include: &#39;Invalid&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Cancelled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState ProvisioningState {get; private set; }
+        public ProvisioningState? ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets or sets the network profile only takes effect when publicNetworkAccess
@@ -184,7 +191,8 @@ namespace Microsoft.Azure.Management.Batch.Models
         public KeyVaultReference KeyVaultReference {get; private set; }
 
         /// <summary>
-        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
+        /// Gets or sets the network access type for operating on the resources in the
+        /// Batch account. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public PublicNetworkAccessType? PublicNetworkAccess {get; set; }
@@ -241,19 +249,19 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Virtual Machine family.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dedicatedCoreQuotaPerVMFamilyEnforced")]
-        public bool DedicatedCoreQuotaPerVMFamilyEnforced {get; private set; }
+        public bool? DedicatedCoreQuotaPerVMFamilyEnforced {get; private set; }
 
         /// <summary>
         /// Gets the pool quota for the Batch account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.poolQuota")]
-        public int PoolQuota {get; private set; }
+        public int? PoolQuota {get; private set; }
 
         /// <summary>
         /// Gets the active job and job schedule quota for the Batch account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.activeJobAndJobScheduleQuota")]
-        public int ActiveJobAndJobScheduleQuota {get; private set; }
+        public int? ActiveJobAndJobScheduleQuota {get; private set; }
 
         /// <summary>
         /// Gets list of allowed authentication modes for the Batch account that can be
@@ -268,8 +276,9 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (this.Identity != null)
             {
                 this.Identity.Validate();

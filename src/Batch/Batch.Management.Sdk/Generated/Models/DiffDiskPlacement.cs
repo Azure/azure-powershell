@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     public enum DiffDiskPlacement
     {
         /// <summary>
-        /// The Ephemeral OS Disk is stored on the VM cache.
+        /// The OS disk will be placed on the cache disk of the VM.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "CacheDisk")]
         CacheDisk

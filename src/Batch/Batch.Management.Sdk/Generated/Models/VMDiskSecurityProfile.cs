@@ -31,11 +31,18 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// NonPersistedTPM for not persisting firmware state in the VMGuestState blob.
         /// **Note**: It can be set for only Confidential VMs and required when using
         /// Confidential VMs.
-        /// Possible values include: &#39;NonPersistedTPM&#39;, &#39;VMGuestStateOnly&#39;</param>
-        public VMDiskSecurityProfile(string securityEncryptionType = default(string))
+        /// Possible values include: &#39;NonPersistedTPM&#39;, &#39;VMGuestStateOnly&#39;,
+        /// &#39;DiskWithVMGuestState&#39;</param>
+
+        /// <param name="diskEncryptionSet">Specifies the customer managed disk encryption set resource id for the
+        /// managed disk that is used for Customer Managed Key encrypted ConfidentialVM
+        /// OS Disk and VMGuest blob. It can be set only in UserSubscription mode.
+        /// </param>
+        public VMDiskSecurityProfile(string securityEncryptionType = default(string), DiskEncryptionSetParameters diskEncryptionSet = default(DiskEncryptionSetParameters))
 
         {
             this.SecurityEncryptionType = securityEncryptionType;
+            this.DiskEncryptionSet = diskEncryptionSet;
             CustomInit();
         }
 
@@ -50,9 +57,32 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// VMGuestStateOnly for encryption of just the VMGuestState blob, and
         /// NonPersistedTPM for not persisting firmware state in the VMGuestState blob.
         /// **Note**: It can be set for only Confidential VMs and required when using
-        /// Confidential VMs. Possible values include: &#39;NonPersistedTPM&#39;, &#39;VMGuestStateOnly&#39;
+        /// Confidential VMs. Possible values include: &#39;NonPersistedTPM&#39;, &#39;VMGuestStateOnly&#39;, &#39;DiskWithVMGuestState&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securityEncryptionType")]
         public string SecurityEncryptionType {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the customer managed disk encryption set resource id
+        /// for the managed disk that is used for Customer Managed Key encrypted
+        /// ConfidentialVM OS Disk and VMGuest blob. It can be set only in
+        /// UserSubscription mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diskEncryptionSet")]
+        public DiskEncryptionSetParameters DiskEncryptionSet {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+            if (this.DiskEncryptionSet != null)
+            {
+                this.DiskEncryptionSet.Validate();
+            }
+        }
     }
 }

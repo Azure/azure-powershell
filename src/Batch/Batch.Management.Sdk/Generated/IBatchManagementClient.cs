@@ -42,10 +42,9 @@ namespace Microsoft.Azure.Management.Batch
 
 
         /// <summary>
-        /// The Azure subscription ID. This is a GUID-formatted string (e.g.
-        /// 00000000-0000-0000-0000-000000000000)
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -70,19 +69,14 @@ namespace Microsoft.Azure.Management.Batch
 
 
         /// <summary>
+        /// Gets the IOperations
+        /// </summary>
+        IOperations Operations { get; }
+
+        /// <summary>
         /// Gets the IBatchAccountOperations
         /// </summary>
         IBatchAccountOperations BatchAccount { get; }
-
-        /// <summary>
-        /// Gets the IApplicationPackageOperations
-        /// </summary>
-        IApplicationPackageOperations ApplicationPackage { get; }
-
-        /// <summary>
-        /// Gets the IApplicationOperations
-        /// </summary>
-        IApplicationOperations Application { get; }
 
         /// <summary>
         /// Gets the ILocationOperations
@@ -90,24 +84,19 @@ namespace Microsoft.Azure.Management.Batch
         ILocationOperations Location { get; }
 
         /// <summary>
-        /// Gets the IOperations
+        /// Gets the IApplicationOperations
         /// </summary>
-        IOperations Operations { get; }
+        IApplicationOperations Application { get; }
 
         /// <summary>
-        /// Gets the ICertificateOperations
+        /// Gets the IApplicationPackageOperations
         /// </summary>
-        ICertificateOperations Certificate { get; }
+        IApplicationPackageOperations ApplicationPackage { get; }
 
         /// <summary>
-        /// Gets the IPrivateLinkResourceOperations
+        /// Gets the INetworkSecurityPerimeterOperations
         /// </summary>
-        IPrivateLinkResourceOperations PrivateLinkResource { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionOperations
-        /// </summary>
-        IPrivateEndpointConnectionOperations PrivateEndpointConnection { get; }
+        INetworkSecurityPerimeterOperations NetworkSecurityPerimeter { get; }
 
         /// <summary>
         /// Gets the IPoolOperations
@@ -115,9 +104,14 @@ namespace Microsoft.Azure.Management.Batch
         IPoolOperations Pool { get; }
 
         /// <summary>
-        /// Gets the INetworkSecurityPerimeterOperations
+        /// Gets the IPrivateEndpointConnectionOperations
         /// </summary>
-        INetworkSecurityPerimeterOperations NetworkSecurityPerimeter { get; }
+        IPrivateEndpointConnectionOperations PrivateEndpointConnection { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourceOperations
+        /// </summary>
+        IPrivateLinkResourceOperations PrivateLinkResource { get; }
 
     }
 }

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version from 2024-07-01 to 2025-06-01.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Fixed `Set-AzBatchAccount` resetting account settings it doesn't change, such as public network access, allowed authentication modes and the auto-storage account. It now uses the update operation.
 

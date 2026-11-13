@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="keyVaultReference">A reference to the Azure key vault associated with the Batch account.
         /// </param>
 
-        /// <param name="publicNetworkAccess">If not specified, the default value is &#39;enabled&#39;.
+        /// <param name="publicNetworkAccess">The network access type for operating on the resources in the Batch
+        /// account.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;</param>
 
         /// <param name="encryption">Configures how customer data is encrypted inside the Batch account. By
@@ -132,7 +133,8 @@ namespace Microsoft.Azure.Management.Batch.Models
         public KeyVaultReference KeyVaultReference {get; set; }
 
         /// <summary>
-        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
+        /// Gets or sets the network access type for operating on the resources in the
+        /// Batch account. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public PublicNetworkAccessType? PublicNetworkAccess {get; set; }

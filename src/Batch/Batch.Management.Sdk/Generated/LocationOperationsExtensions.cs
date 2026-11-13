@@ -13,6 +13,39 @@ namespace Microsoft.Azure.Management.Batch
     public static partial class LocationOperationsExtensions
     {
         /// <summary>
+        /// Checks whether the Batch account name is available in the specified region.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='locationName'>
+        /// The desired region for the name check.
+        /// </param>
+        public static CheckNameAvailabilityResult CheckNameAvailability(this ILocationOperations operations, string locationName, string name)
+        {
+                return ((ILocationOperations)operations).CheckNameAvailabilityAsync(locationName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Checks whether the Batch account name is available in the specified region.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='locationName'>
+        /// The desired region for the name check.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CheckNameAvailabilityResult> CheckNameAvailabilityAsync(this ILocationOperations operations, string locationName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(locationName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the Batch service quotas for the specified subscription at the given
         /// location.
         /// </summary>
@@ -90,39 +123,6 @@ namespace Microsoft.Azure.Management.Batch
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SupportedSku>> ListSupportedVirtualMachineSkusAsync(this ILocationOperations operations, string locationName, int? maxresults = default(int?), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSupportedVirtualMachineSkusWithHttpMessagesAsync(locationName, maxresults, filter, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Checks whether the Batch account name is available in the specified region.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='locationName'>
-        /// The desired region for the name check.
-        /// </param>
-        public static CheckNameAvailabilityResult CheckNameAvailability(this ILocationOperations operations, string locationName, string name)
-        {
-                return ((ILocationOperations)operations).CheckNameAvailabilityAsync(locationName, name).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Checks whether the Batch account name is available in the specified region.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='locationName'>
-        /// The desired region for the name check.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<CheckNameAvailabilityResult> CheckNameAvailabilityAsync(this ILocationOperations operations, string locationName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(locationName, name, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

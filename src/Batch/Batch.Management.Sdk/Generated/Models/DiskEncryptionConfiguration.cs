@@ -29,10 +29,17 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="targets">On Linux pool, only &#34;TemporaryDisk&#34; is supported; on Windows pool, &#34;OsDisk&#34;
         /// and &#34;TemporaryDisk&#34; must be specified.
         /// </param>
-        public DiskEncryptionConfiguration(System.Collections.Generic.IList<DiskEncryptionTarget> targets = default(System.Collections.Generic.IList<DiskEncryptionTarget>))
+
+        /// <param name="customerManagedKey">Customer Managed Key will encrypt OS Disk by EncryptionAtRest, and by
+        /// default we will encrypt the data disk as well. It can be used only when the
+        /// pool is configured with an identity and OsDisk is set as one of the targets
+        /// of DiskEncryption.
+        /// </param>
+        public DiskEncryptionConfiguration(System.Collections.Generic.IList<DiskEncryptionTarget?> targets = default(System.Collections.Generic.IList<DiskEncryptionTarget?>), DiskCustomerManagedKey customerManagedKey = default(DiskCustomerManagedKey))
 
         {
             this.Targets = targets;
+            this.CustomerManagedKey = customerManagedKey;
             CustomInit();
         }
 
@@ -47,6 +54,15 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// pool, &#34;OsDisk&#34; and &#34;TemporaryDisk&#34; must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targets")]
-        public System.Collections.Generic.IList<DiskEncryptionTarget> Targets {get; set; }
+        public System.Collections.Generic.IList<DiskEncryptionTarget?> Targets {get; set; }
+
+        /// <summary>
+        /// Gets or sets customer Managed Key will encrypt OS Disk by EncryptionAtRest,
+        /// and by default we will encrypt the data disk as well. It can be used only
+        /// when the pool is configured with an identity and OsDisk is set as one of
+        /// the targets of DiskEncryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customerManagedKey")]
+        public DiskCustomerManagedKey CustomerManagedKey {get; set; }
     }
 }

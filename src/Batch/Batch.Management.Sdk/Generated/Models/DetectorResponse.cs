@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains the information for a detector.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DetectorResponse : AzureProxyResource
+    public partial class DetectorResponse : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DetectorResponse class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the DetectorResponse class.
         /// </summary>
 
-        /// <param name="id">The ID of the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
@@ -42,10 +48,12 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="value">A base64 encoded string that represents the content of a detector.
         /// </param>
-        public DetectorResponse(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string value = default(string))
+        public DetectorResponse(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string value = default(string))
 
-        : base(id, name, type, etag, tags)
+        : base(id, name, type, systemData)
         {
+            this.Etag = etag;
+            this.Tags = tags;
             this.Value = value;
             CustomInit();
         }
@@ -55,6 +63,18 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets the ETag of the resource, used for concurrency statements.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the tags of the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets or sets a base64 encoded string that represents the content of a
