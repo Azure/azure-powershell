@@ -256,9 +256,31 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             _service.ClockOffset = TimeSpan.FromSeconds(AttestationDataServiceClient.TokenTimeValidationSlack).Add(TimeSpan.FromMinutes(5));
             var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
 
-            Assert.ThrowsAny<Exception>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"));
-            Assert.ThrowsAny<Exception>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"));
-            Assert.ThrowsAny<Exception>(() => _client.GetPolicy("provider", "rg", null, "TdxVm"));
+            const string reason = "Attestation token will not become valid before the slack time provided.";
+
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsServiceTokenIssuedByAnotherProvider()
+        {
+            _service.Issuer = "https://fabrikam.attest.azure.net";
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+            var updateJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText });
+            var reason = $"Unknown Issuer for attestation token. Expected {MockAttestationService.Endpoint}, found {_service.Issuer}";
+
+            // Covers tokens from the SDK clients, tokens returned for caller tokens, and the earlier API's update token.
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "SgxEnclave", updateJwt, "JWT"), "POST", "/operations/policy/updatepolicy", reason);
+            AssertRejectedAfterOneRequest(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
+            AssertRejectedAfterOneRequest(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
         }
 
         [Fact]
@@ -355,6 +377,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public string LastPolicyUpdateToken { get; private set; }
 
             public bool SignWithUnknownKey { get; set; }
+
+            /// <summary>
+            /// Issuer of the tokens the service returns. Defaults to the provider's endpoint.
+            /// </summary>
+            public string Issuer { get; set; } = Endpoint;
 
             /// <summary>
             /// Difference between the service's clock and the local clock.
@@ -459,7 +486,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             private string CreateServiceToken(JObject claims)
             {
                 var now = DateTimeOffset.UtcNow.Add(ClockOffset).ToUnixTimeSeconds();
-                claims["iss"] = Endpoint;
+                claims["iss"] = Issuer;
                 claims["iat"] = now;
                 claims["nbf"] = now;
                 claims["exp"] = now + 3600;
