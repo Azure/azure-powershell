@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 SetAzureAttestationPolicy.TextPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
             {
                 RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
-                    CreateAdministrationClient(endpoint).SetPolicy(attestationType, userSpecifiedPolicy));
+                    ValidateServiceToken(endpoint, CreateAdministrationClient(endpoint).SetPolicy(attestationType, userSpecifiedPolicy)));
             }
             else if (SetAzureAttestationPolicy.JwtPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             if (string.IsNullOrEmpty(policyJwt))
             {
                 RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
-                    CreateAdministrationClient(endpoint).ResetPolicy(attestationType));
+                    ValidateServiceToken(endpoint, CreateAdministrationClient(endpoint).ResetPolicy(attestationType)));
             }
             else if (HasUnencodedPolicy(policyJwt.Trim()))
             {
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             }
 
             var response = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
-                CreateAdministrationClient(endpoint).GetPolicyManagementCertificates(), isDefaultProvider, location);
+                ValidateServiceToken(endpoint, CreateAdministrationClient(endpoint).GetPolicyManagementCertificates()), isDefaultProvider, location);
 
             return response.Token.Serialize();
         }
@@ -367,9 +367,13 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             return new AttestationAdministrationClient(new Uri(endpoint), Credential, CreateClientOptions());
         }
 
+        /// <summary>
+        /// The SDK clients don't validate service tokens; every token is validated by <see cref="ValidateServiceToken"/>,
+        /// so validation failures can be told apart from other failures.
+        /// </summary>
         private AttestationClientOptions CreateClientOptions()
         {
-            var options = new AttestationClientOptions(tokenOptions: new AttestationTokenValidationOptions { TimeValidationSlack = TokenTimeValidationSlack });
+            var options = new AttestationClientOptions(tokenOptions: new AttestationTokenValidationOptions { ValidateToken = false });
             if (_transport != null)
                 options.Transport = _transport;
             return options;
@@ -430,12 +434,33 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             }
         }
 
+        private AttestationResponse<T> ValidateServiceToken<T>(string endpoint, AttestationResponse<T> response) where T : class
+        {
+            ValidateServiceToken(endpoint, response.Token);
+            return response;
+        }
+
+        /// <summary>
+        /// Checks that a token is signed by the provider, was issued by it, and is within its validity period.
+        /// </summary>
+        /// <exception cref="ServiceTokenValidationException">The token is not valid.</exception>
         private void ValidateServiceToken(string endpoint, AttestationToken token)
         {
             var signers = new AttestationClient(new Uri(endpoint), Credential, CreateClientOptions()).GetSigningCertificates().Value;
             var validationOptions = new AttestationTokenValidationOptions { ExpectedIssuer = endpoint, TimeValidationSlack = TokenTimeValidationSlack };
-            if (!token.ValidateToken(validationOptions, signers))
-                throw new InvalidOperationException(Resources.InvalidServiceToken);
+            bool isValid;
+            try
+            {
+                isValid = token.ValidateToken(validationOptions, signers);
+            }
+            // The SDK reports validation failures, such as an unknown signer or issuer, as System.Exception.
+            catch (Exception ex) when (ex.GetType() == typeof(Exception))
+            {
+                throw new ServiceTokenValidationException(ex.Message, ex);
+            }
+
+            if (!isValid)
+                throw new ServiceTokenValidationException(string.Empty);
         }
 
         private void WriteWarning(string message)
@@ -504,9 +529,10 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             {
                 return idempotentServiceCall(GetDataPlaneUri(name, resourceGroupName, isDefaultProvider, location, false));
             }
-            catch (Exception)
+            catch (Exception ex) when (!(ex is ServiceTokenValidationException))
             {
-                // Ignore this exception on purpose, since we'll retry below
+                // Ignore this exception on purpose, since we'll retry below. A token that fails validation is not
+                // retried: the provider was reached, and for a write the service has already applied the change.
             }
 
             try

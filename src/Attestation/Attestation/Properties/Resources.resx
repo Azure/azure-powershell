@@ -487,7 +487,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>The current credentials do not have access to Azure Active Directory. Please either use an ObjectId to refer to ActiveDirectory objects, or log in using credentials that have access to Azure Active Directory.</value>
   </data>
   <data name="InvalidServiceToken" xml:space="preserve">
-    <value>The token returned by the attestation service is not valid.</value>
+    <value>The token returned by the attestation service is not valid. {0}</value>
   </data>
   <data name="LegacyPolicyCertificateClaimWarning" xml:space="preserve">
     <value>The signer token uses the &apos;maa-policyCertificate&apos; claim, which only an earlier version of the Azure Attestation API accepts. This claim is deprecated and support for it will be removed in a future release. Create the signer token with the &apos;policyCertificate&apos; claim instead.</value>

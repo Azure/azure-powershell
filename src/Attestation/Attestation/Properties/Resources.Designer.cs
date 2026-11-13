@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Attestation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The token returned by the attestation service is not valid..
+        ///   Looks up a localized string similar to The token returned by the attestation service is not valid. {0}.
         /// </summary>
         internal static string InvalidServiceToken {
             get {

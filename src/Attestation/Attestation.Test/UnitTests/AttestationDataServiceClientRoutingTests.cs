@@ -222,9 +222,17 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
         {
             _service.SignWithUnknownKey = true;
             var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+            const string reason = "Could not find a certificate which was used to sign the token.";
 
-            Assert.ThrowsAny<Exception>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"));
-            Assert.ThrowsAny<Exception>(() => _client.GetPolicy("provider", "rg", null, "TdxVm"));
+            // A write the service has accepted must not be sent again when its response fails validation.
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
+            AssertRejectedAfterOneRequest(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
+            AssertRejectedAfterOneRequest(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
         }
 
         [Fact]
@@ -264,6 +272,18 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             Assert.Contains("400", exception.Message);
             Assert.Contains("PolicyParsingError", exception.Message);
             Assert.Contains("Invalid policy was specified", exception.Message);
+        }
+
+        private void AssertRejectedAfterOneRequest(Action call, string method, string path, string reason)
+        {
+            _service.Requests.Clear();
+
+            var exception = Assert.Throws<ServiceTokenValidationException>(call);
+
+            Assert.Contains(reason, exception.Message);
+            var request = Assert.Single(_service.ServiceRequests);
+            Assert.Equal(method, request.Method);
+            Assert.Equal(path, request.Path);
         }
 
         private static void AssertRequest(RecordedRequest request, string method, string path, string apiVersion, string tee, string contentType)
