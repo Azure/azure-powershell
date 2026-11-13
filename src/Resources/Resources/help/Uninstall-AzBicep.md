@@ -8,7 +8,7 @@ schema: 2.0.0
 # Uninstall-AzBicep
 
 ## SYNOPSIS
-Removes Azure PowerShell's entire managed Bicep installation.
+Removes the Bicep installation at Azure PowerShell's single managed Bicep installation location, matching `az bicep uninstall` semantics.
 
 ## SYNTAX
 
@@ -18,24 +18,26 @@ Uninstall-AzBicep [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-Progr
 ```
 
 ## DESCRIPTION
-The `Uninstall-AzBicep` cmdlet removes the entire managed Bicep installation directory, deleting every Bicep CLI version Azure PowerShell has cached, whether installed automatically to satisfy a `bicep.version` constraint or explicitly via `Install-AzBicep`. Subsequent Bicep operations will automatically re-download and re-cache any Bicep version they need.
+The `Uninstall-AzBicep` cmdlet removes the Bicep CLI installed at Azure PowerShell's single, default managed installation location, if one is present. Subsequent operations that rely on this location (for example, `Install-AzBicep` or `Get-AzBicepVersion`) will no longer find a version installed there until `Install-AzBicep` is run again.
+
+This cmdlet does not affect the separate, internal versioned cache that Azure PowerShell automatically manages to satisfy `bicep.version` constraints in `bicepconfig.json` files; that cache is not exposed or manageable through this cmdlet, and compiling pinned Bicep files will continue to work unaffected.
 
 ## EXAMPLES
 
-### Example 1: Remove all cached Bicep versions
+### Example 1: Remove the installed Bicep version
 ```powershell
 PS C:\> Uninstall-AzBicep
 ```
 
-This command removes Azure PowerShell's entire managed Bicep cache.
+This command removes the Bicep installation at Azure PowerShell's default managed location.
 
-### Example 2: Remove all cached Bicep versions and confirm the result
+### Example 2: Remove the installed Bicep version and confirm the result
 ```powershell
 PS C:\> Uninstall-AzBicep -PassThru
 True
 ```
 
-This command removes the managed Bicep cache and, because `-PassThru` is specified, returns `$true` if anything was removed, or `$false` if there was no managed installation to remove.
+This command removes the Bicep installation at the default managed location and, because `-PassThru` is specified, returns `$true` if a version was removed, or `$false` if there was no installation to remove.
 
 ## PARAMETERS
 

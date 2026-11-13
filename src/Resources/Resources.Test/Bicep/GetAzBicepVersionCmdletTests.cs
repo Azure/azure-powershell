@@ -14,7 +14,6 @@
 
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using FluentAssertions;
@@ -39,12 +38,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
         private readonly Mock<IDataStore> dataStoreMock;
         private readonly GetAzBicepVersionCmdlet cmdlet;
         private readonly string installationDirectory;
+        private readonly string installedPath;
+        private readonly string metadataPath;
 
         public GetAzBicepVersionCmdletTests()
         {
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
             this.dataStoreMock = new Mock<IDataStore>();
             this.installationDirectory = Path.Combine(FakeProfileDirectory, "bin");
+            this.installedPath = Path.Combine(this.installationDirectory, ExpectedFileName);
+            this.metadataPath = Path.Combine(this.installationDirectory, ".bicep-version");
 
             var installer = new BicepInstaller(Mock.Of<IBicepDownloader>(), this.dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
 
@@ -57,9 +60,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ExecuteCmdlet_writes_nothing_when_cache_is_empty()
+        public void ExecuteCmdlet_writes_nothing_when_nothing_is_installed()
         {
-            this.dataStoreMock.Setup(x => x.DirectoryExists(this.installationDirectory)).Returns(false);
+            this.dataStoreMock.Setup(x => x.FileExists(this.installedPath)).Returns(false);
 
             this.cmdlet.ExecuteCmdlet();
 
@@ -68,15 +71,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ExecuteCmdlet_writes_one_object_per_cached_version_in_ascending_order()
+        public void ExecuteCmdlet_writes_the_installed_version_from_the_default_slot()
         {
-            this.dataStoreMock.Setup(x => x.DirectoryExists(this.installationDirectory)).Returns(true);
-            this.dataStoreMock.Setup(x => x.GetDirectories(this.installationDirectory)).Returns(new[]
-            {
-                Path.Combine(this.installationDirectory, "bicep-0.30.1"),
-                Path.Combine(this.installationDirectory, "bicep-0.26.0"),
-                Path.Combine(this.installationDirectory, "not-a-version-dir"),
-            });
+            this.dataStoreMock.Setup(x => x.FileExists(this.installedPath)).Returns(true);
+            this.dataStoreMock.Setup(x => x.FileExists(this.metadataPath)).Returns(true);
+            this.dataStoreMock.Setup(x => x.ReadFileAsText(this.metadataPath)).Returns("0.30.1");
 
             var written = new List<PSBicepVersion>();
             this.commandRuntimeMock
@@ -85,10 +84,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 
             this.cmdlet.ExecuteCmdlet();
 
-            written.Should().HaveCount(2);
-            written.Select(v => v.Version).Should().ContainInOrder("0.26.0", "0.30.1");
-            written[0].Path.Should().Be(Path.Combine(this.installationDirectory, "bicep-0.26.0", ExpectedFileName));
-            written[1].Path.Should().Be(Path.Combine(this.installationDirectory, "bicep-0.30.1", ExpectedFileName));
+            written.Should().ContainSingle();
+            written[0].Version.Should().Be("0.30.1");
+            written[0].Path.Should().Be(this.installedPath);
         }
     }
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzBicepVersion
 
 ## SYNOPSIS
-Lists the Bicep CLI versions currently cached by Azure PowerShell's managed Bicep installer.
+Gets the version of the Bicep CLI currently installed at Azure PowerShell's single managed Bicep installation location, matching `az bicep version` semantics.
 
 ## SYNTAX
 
@@ -18,21 +18,22 @@ Get-AzBicepVersion [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <
 ```
 
 ## DESCRIPTION
-The `Get-AzBicepVersion` cmdlet lists the Bicep CLI versions that are currently cached in Azure PowerShell's managed, version-addressed installation directory. Each cached version was previously downloaded either automatically (for example, to satisfy a `bicep.version` constraint in a `bicepconfig.json` file) or explicitly via `Install-AzBicep`. For each cached version, this cmdlet returns the version number and the full path to its Bicep executable.
+The `Get-AzBicepVersion` cmdlet returns the version of the Bicep CLI currently installed at Azure PowerShell's single, default managed installation location, along with the full path to its executable. If no version has been installed there via `Install-AzBicep`, this cmdlet returns nothing.
+
+This cmdlet does not report on the separate, internal versioned cache that Azure PowerShell automatically manages to satisfy `bicep.version` constraints in `bicepconfig.json` files; that cache is not exposed or manageable through this cmdlet.
 
 ## EXAMPLES
 
-### Example 1: List all cached Bicep versions
+### Example 1: Get the currently installed Bicep version
 ```powershell
 PS C:\> Get-AzBicepVersion
 
 Version Path
 ------- ----
-0.29.47 C:\Users\contoso\.Azure\bin\bicep-0.29.47\bicep.exe
-0.30.23 C:\Users\contoso\.Azure\bin\bicep-0.30.23\bicep.exe
+0.30.23 C:\Users\contoso\.Azure\bin\bicep.exe
 ```
 
-This command lists every Bicep version currently cached by Azure PowerShell's managed installer, along with the executable path for each.
+This command returns the version of Bicep currently installed at the default managed location, along with its executable path.
 
 ## PARAMETERS
 

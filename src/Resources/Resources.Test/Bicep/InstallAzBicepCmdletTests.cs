@@ -23,12 +23,13 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 {
-    public class InstallAzBicepCmdletTests
+    public class InstallAzBicepCmdletTests : RMTestBase
     {
         private static readonly string FakeProfileDirectory = Path.Combine(Path.DirectorySeparatorChar.ToString(), "fake", "profile");
 
@@ -56,15 +57,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
             };
         }
 
-        private string VersionedPath(string version)
-            => Path.Combine(FakeProfileDirectory, "bin", "bicep-" + version, ExpectedFileName);
+        private string DefaultPath => Path.Combine(FakeProfileDirectory, "bin", ExpectedFileName);
+
+        private string MetadataPath => Path.Combine(FakeProfileDirectory, "bin", ".bicep-version");
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCmdlet_installs_latest_version_when_version_not_specified()
         {
             this.downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.30.1");
-            var expectedPath = this.VersionedPath("0.30.1");
+            var expectedPath = this.DefaultPath;
             this.dataStoreMock.Setup(x => x.FileExists(expectedPath)).Returns(false);
             this.downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(Encoding.UTF8.GetBytes("bits"));
 
@@ -73,6 +75,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
             this.downloaderMock.Verify(x => x.GetLatestReleaseTag(), Times.Once);
             this.downloaderMock.Verify(x => x.GetAvailableReleaseTags(), Times.Never);
             this.dataStoreMock.Verify(x => x.WriteFile(expectedPath, It.IsAny<byte[]>()), Times.Once);
+            this.dataStoreMock.Verify(x => x.WriteFile(this.MetadataPath, "0.30.1"), Times.Once);
         }
 
         [Fact]
@@ -81,7 +84,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
         {
             this.cmdlet.Version = "0.26.54";
             this.downloaderMock.Setup(x => x.GetAvailableReleaseTags()).Returns(new[] { "v0.26.54", "v0.25.0" });
-            var expectedPath = this.VersionedPath("0.26.54");
+            var expectedPath = this.DefaultPath;
             this.dataStoreMock.Setup(x => x.FileExists(expectedPath)).Returns(false);
             this.downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(Encoding.UTF8.GetBytes("bits"));
 
@@ -93,15 +96,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ExecuteCmdlet_is_no_op_when_requested_version_already_cached()
+        public void ExecuteCmdlet_is_no_op_when_requested_version_already_installed()
         {
             this.cmdlet.Version = "0.26.54";
-            this.downloaderMock.Setup(x => x.GetAvailableReleaseTags()).Returns(new[] { "v0.26.54" });
-            var expectedPath = this.VersionedPath("0.26.54");
+            var expectedPath = this.DefaultPath;
             this.dataStoreMock.Setup(x => x.FileExists(expectedPath)).Returns(true);
+            this.dataStoreMock.Setup(x => x.FileExists(this.MetadataPath)).Returns(true);
+            this.dataStoreMock.Setup(x => x.ReadFileAsText(this.MetadataPath)).Returns("0.26.54");
 
             this.cmdlet.ExecuteCmdlet();
 
+            this.downloaderMock.Verify(x => x.GetAvailableReleaseTags(), Times.Never);
             this.downloaderMock.Verify(x => x.DownloadFile(It.IsAny<string>()), Times.Never);
             this.dataStoreMock.Verify(x => x.WriteFile(It.IsAny<string>(), It.IsAny<byte[]>()), Times.Never);
         }
@@ -123,7 +128,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
         {
             this.cmdlet.PassThru = true;
             this.downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.30.1");
-            var expectedPath = this.VersionedPath("0.30.1");
+            var expectedPath = this.DefaultPath;
             this.dataStoreMock.Setup(x => x.FileExists(expectedPath)).Returns(false);
             this.downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(Encoding.UTF8.GetBytes("bits"));
 
@@ -144,7 +149,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
         public void ExecuteCmdlet_does_not_write_object_when_PassThru_is_not_set()
         {
             this.downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.30.1");
-            var expectedPath = this.VersionedPath("0.30.1");
+            var expectedPath = this.DefaultPath;
             this.dataStoreMock.Setup(x => x.FileExists(expectedPath)).Returns(false);
             this.downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(Encoding.UTF8.GetBytes("bits"));
 

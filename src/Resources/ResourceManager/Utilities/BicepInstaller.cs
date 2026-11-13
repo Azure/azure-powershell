@@ -36,6 +36,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// </summary>
         private const string VersionedDirectoryPrefix = "bicep-";
 
+        /// <summary>
+        /// Name of the sidecar metadata file, written alongside the unpinned/default Bicep
+        /// executable, that records which version is currently installed there. The default
+        /// install location has no version-bearing folder name (unlike the versioned cache), so
+        /// this file is the only way to answer "what version is installed?" without invoking the
+        /// binary itself.
+        /// </summary>
+        private const string InstalledVersionMetadataFileName = ".bicep-version";
+
         private readonly IBicepDownloader downloader;
         private readonly IDataStore dataStore;
         private readonly IProcessInvoker processInvoker;
@@ -65,6 +74,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// </summary>
         public string GetInstallationPath()
             => Path.Combine(GetInstallationDirectory(), IsWindows() ? "bicep.exe" : "bicep");
+
+        /// <summary>
+        /// The full path to the sidecar metadata file recording the version currently installed
+        /// at <see cref="GetInstallationPath"/>.
+        /// </summary>
+        private string GetInstalledVersionMetadataPath()
+            => Path.Combine(GetInstallationDirectory(), InstalledVersionMetadataFileName);
+
+        /// <summary>
+        /// Returns the version currently installed at the default (unpinned) location, backing
+        /// the 'Get-AzBicepVersion' cmdlet; or null if nothing is installed there, or its
+        /// recorded version is missing/unreadable.
+        /// </summary>
+        public BicepSemanticVersion GetInstalledVersion()
+        {
+            if (!dataStore.FileExists(GetInstallationPath()) || !dataStore.FileExists(GetInstalledVersionMetadataPath()))
+            {
+                return null;
+            }
+
+            BicepSemanticVersion version;
+            BicepSemanticVersion.TryParse(dataStore.ReadFileAsText(GetInstalledVersionMetadataPath()), out version);
+            return version;
+        }
 
         /// <summary>
         /// The cache directory for a specific installed Bicep version, e.g. "{bin}/bicep-0.26.0/".
@@ -171,7 +204,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 throw new AzPSApplicationException(string.Format(Properties.Resources.BicepDownloadFailed, ex.Message));
             }
 
-            DownloadAndInstall(releaseTag, installationPath);
+            BicepSemanticVersion installedVersion;
+            if (releaseTag == null || !TryParseReleaseTag(releaseTag, out installedVersion))
+            {
+                throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionNoMatchingReleaseFound, "latest", releaseTag));
+            }
+
+            DownloadAndInstall(releaseTag, installationPath, installedVersion);
 
             writeVerbose?.Invoke(string.Format(Properties.Resources.BicepAutoInstallComplete, releaseTag));
 
@@ -243,18 +282,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         /// <summary>
         /// Installs a specific Bicep version (or the latest available version, if
-        /// <paramref name="version"/> is null or empty) into the version-specific cache,
-        /// backing the 'Install-AzBicep' cmdlet. If the requested version is already cached,
-        /// this is a no-op .
+        /// <paramref name="version"/> is null or empty) into the single default/unpinned
+        /// location, backing the 'Install-AzBicep' cmdlet - matching 'az bicep install'
+        /// semantics. If the requested version is already installed there, this is a no-op;
+        /// otherwise, any previously installed version in that location is overwritten.
         /// </summary>
-        /// <returns>The installed (or already-cached) version.</returns>
+        /// <returns>The installed (or already-installed) version.</returns>
         public BicepSemanticVersion InstallVersion(string version, BicepUtility.OutputCallback writeVerbose = null)
         {
+            var installedVersion = GetInstalledVersion();
             string releaseTag;
             BicepSemanticVersion targetVersion;
 
             if (string.IsNullOrEmpty(version))
             {
+                if (installedVersion != null)
+                {
+                    writeVerbose?.Invoke(string.Format(Properties.Resources.BicepVersionAlreadyInstalled, installedVersion));
+                    return installedVersion;
+                }
+
                 try
                 {
                     releaseTag = downloader.GetLatestReleaseTag();
@@ -285,10 +332,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionInvalidFormat, version));
                 }
 
-                // Check the cache before making any network calls: if this exact version is
-                // already installed, there's no need to resolve/validate it against the list
-                // of available releases.
-                if (dataStore.FileExists(GetVersionedInstallationPath(targetVersion)))
+                // If this exact version is already installed, there's no need to resolve/
+                // validate it against the list of available releases or make any network calls.
+                if (installedVersion != null && installedVersion.CompareTo(targetVersion) == 0)
                 {
                     writeVerbose?.Invoke(string.Format(Properties.Resources.BicepVersionAlreadyInstalled, targetVersion));
                     return targetVersion;
@@ -324,71 +370,50 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 }
             }
 
-            var installationPath = GetVersionedInstallationPath(targetVersion);
-            if (dataStore.FileExists(installationPath))
-            {
-                writeVerbose?.Invoke(string.Format(Properties.Resources.BicepVersionAlreadyInstalled, targetVersion));
-                return targetVersion;
-            }
-
             writeVerbose?.Invoke(Properties.Resources.BicepAutoInstallStarting);
-            DownloadAndInstall(releaseTag, installationPath);
+            DownloadAndInstall(releaseTag, GetInstallationPath(), targetVersion);
             writeVerbose?.Invoke(string.Format(Properties.Resources.BicepAutoInstallComplete, releaseTag));
 
             return targetVersion;
         }
 
         /// <summary>
-        /// Removes all managed Bicep installations (the unpinned install and every cached
-        /// pinned version), backing the 'Uninstall-AzBicep' cmdlet. Only Bicep's own files/
-        /// subdirectories within the installation directory are removed; anything else that
-        /// happens to live alongside them in that directory is left untouched.
+        /// Removes the Bicep installation at the single default/unpinned location, backing the
+        /// 'Uninstall-AzBicep' cmdlet - matching 'az bicep uninstall' semantics. Anything else
+        /// that happens to live alongside it is left untouched - including the internal versioned
+        /// cache used automatically for pinned 'bicepconfig.json' compilation, which is not
+        /// managed by this cmdlet and is left in place.
         /// </summary>
         /// <returns>True if anything was removed; false if there was no managed installation to remove.</returns>
-        public bool UninstallAll(BicepUtility.OutputCallback writeVerbose = null)
+        public bool Uninstall(BicepUtility.OutputCallback writeVerbose = null)
         {
-            var baseDirectory = GetInstallationDirectory();
-            if (!dataStore.DirectoryExists(baseDirectory))
+            var installationPath = GetInstallationPath();
+            if (!dataStore.FileExists(installationPath))
             {
                 writeVerbose?.Invoke(Properties.Resources.BicepUninstallNothingInstalled);
                 return false;
             }
 
-            var removedAnything = false;
+            dataStore.DeleteFile(installationPath);
 
-            var unpinnedPath = GetInstallationPath();
-            if (dataStore.FileExists(unpinnedPath))
+            var metadataPath = GetInstalledVersionMetadataPath();
+            if (dataStore.FileExists(metadataPath))
             {
-                dataStore.DeleteFile(unpinnedPath);
-                removedAnything = true;
+                dataStore.DeleteFile(metadataPath);
             }
 
-            foreach (var directory in dataStore.GetDirectories(baseDirectory))
-            {
-                var name = Path.GetFileName(directory);
-                if (name != null && name.StartsWith(VersionedDirectoryPrefix, StringComparison.OrdinalIgnoreCase))
-                {
-                    dataStore.DeleteDirectory(directory);
-                    removedAnything = true;
-                }
-            }
-
-            if (!removedAnything)
-            {
-                writeVerbose?.Invoke(Properties.Resources.BicepUninstallNothingInstalled);
-                return false;
-            }
-
-            writeVerbose?.Invoke(string.Format(Properties.Resources.BicepUninstallComplete, baseDirectory));
+            writeVerbose?.Invoke(string.Format(Properties.Resources.BicepUninstallComplete, installationPath));
             return true;
         }
 
         /// <summary>
         /// Downloads the given release tag's asset for the current platform and writes it to
         /// <paramref name="installationPath"/>, creating the containing directory if needed and
-        /// marking the file executable on non-Windows platforms.
+        /// marking the file executable on non-Windows platforms. When <paramref name="installedVersion"/>
+        /// is provided (only applicable to the default/unpinned slot, whose file name doesn't already
+        /// encode a version), the sidecar metadata file is also written/overwritten to record it.
         /// </summary>
-        private void DownloadAndInstall(string releaseTag, string installationPath)
+        private void DownloadAndInstall(string releaseTag, string installationPath, BicepSemanticVersion installedVersion = null)
         {
             var installationDirectory = Path.GetDirectoryName(installationPath);
             if (!dataStore.DirectoryExists(installationDirectory))
@@ -415,6 +440,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             if (!IsWindows())
             {
                 processInvoker.Invoke(new ProcessInput { Executable = "chmod", Arguments = $"+x \"{installationPath}\"" });
+            }
+
+            if (installedVersion != null)
+            {
+                dataStore.WriteFile(GetInstalledVersionMetadataPath(), installedVersion.ToString());
             }
         }
 

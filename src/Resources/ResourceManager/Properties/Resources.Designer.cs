@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successfully removed all managed Bicep installations from &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Successfully removed the Bicep installation at &apos;{0}&apos;..
         /// </summary>
         internal static string BicepUninstallComplete {
             get {

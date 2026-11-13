@@ -19,8 +19,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
 {
     /// <summary>
-    /// Installs a specific (or the latest) version of the Bicep CLI into Azure PowerShell's
-    /// managed, version-addressed cache.
+    /// Installs a specific (or the latest) version of the Bicep CLI into the single default
+    /// (unpinned) managed location, matching 'az bicep install' semantics.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Install, AzureRMConstants.AzureRMPrefix + "Bicep", SupportsShouldProcess = true), OutputType(typeof(PSBicepVersion))]
     public class InstallAzBicepCmdlet : AzureRMCmdlet
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
                     WriteObject(new PSBicepVersion
                     {
                         Version = installedVersion.ToString(),
-                        Path = installer.GetVersionedInstallationPath(installedVersion)
+                        Path = installer.GetInstallationPath()
                     });
                 }
             }

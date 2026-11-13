@@ -14,14 +14,13 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
 {
     /// <summary>
-    /// Lists the Bicep CLI versions currently cached by Azure PowerShell's managed Bicep
-    /// installer, mirroring the Azure CLI's "az bicep version" (installed-version reporting).
+    /// Reports the Bicep CLI version currently installed at the single default (unpinned)
+    /// managed location, matching 'az bicep version' semantics.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "BicepVersion"), OutputType(typeof(PSBicepVersion))]
     public class GetAzBicepVersionCmdlet : AzureRMCmdlet
@@ -34,15 +33,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
         public override void ExecuteCmdlet()
         {
             var installer = this.Installer ?? BicepInstaller.Create();
-            var versions = new List<BicepSemanticVersion>(installer.GetInstalledVersions());
-            versions.Sort();
+            var version = installer.GetInstalledVersion();
 
-            foreach (var version in versions)
+            if (version != null)
             {
                 WriteObject(new PSBicepVersion
                 {
                     Version = version.ToString(),
-                    Path = installer.GetVersionedInstallationPath(version)
+                    Path = installer.GetInstallationPath()
                 });
             }
         }

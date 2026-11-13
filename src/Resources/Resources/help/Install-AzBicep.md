@@ -8,7 +8,7 @@ schema: 2.0.0
 # Install-AzBicep
 
 ## SYNOPSIS
-Installs a specific, or the latest, version of the Bicep CLI into Azure PowerShell's managed cache.
+Installs a specific, or the latest, version of the Bicep CLI into Azure PowerShell's single managed Bicep installation, matching `az bicep install` semantics.
 
 ## SYNTAX
 
@@ -19,7 +19,9 @@ Install-AzBicep [-Version <String>] [-PassThru] [-DefaultProfile <IAzureContextC
 ```
 
 ## DESCRIPTION
-The `Install-AzBicep` cmdlet downloads and caches a Bicep CLI release into Azure PowerShell's managed, version-addressed installation directory. If `-Version` is specified, that exact release is installed (or reused, if already cached). If `-Version` is omitted, the latest available release is installed. Installing a version with this cmdlet does not remove or replace any other versions already cached; multiple versions can coexist so that cmdlets pinned to different `bicep.version` constraints do not need to redownload Bicep each time.
+The `Install-AzBicep` cmdlet downloads a Bicep CLI release into Azure PowerShell's single, default managed installation location. If `-Version` is specified, that exact release is installed, overwriting whatever version (if any) was previously installed there; if that version is already installed, no download occurs. If `-Version` is omitted, the latest available release is installed, unless it is already installed. Only one version is kept in this location at a time.
+
+This cmdlet does not affect the separate, internal versioned cache that Azure PowerShell automatically manages to satisfy `bicep.version` constraints in `bicepconfig.json` files; that cache is not exposed or manageable through this cmdlet.
 
 ## EXAMPLES
 
@@ -28,7 +30,7 @@ The `Install-AzBicep` cmdlet downloads and caches a Bicep CLI release into Azure
 PS C:\> Install-AzBicep -Version 0.30.23
 ```
 
-This command downloads and caches Bicep CLI version 0.30.23. If this version is already cached, no download occurs.
+This command installs Bicep CLI version 0.30.23 into the default managed location. If that version is already installed there, no download occurs.
 
 ### Example 2: Install the latest Bicep version and return the result
 ```powershell
@@ -36,10 +38,10 @@ PS C:\> Install-AzBicep -PassThru
 
 Version Path
 ------- ----
-0.48.1  C:\Users\contoso\.Azure\bin\bicep-0.48.1\bicep.exe
+0.48.1  C:\Users\contoso\.Azure\bin\bicep.exe
 ```
 
-This command installs the latest available Bicep release and, because `-PassThru` is specified, returns the installed version and its executable path.
+This command installs the latest available Bicep release into the default managed location and, because `-PassThru` is specified, returns the installed version and its executable path.
 
 ## PARAMETERS
 
@@ -123,6 +125,7 @@ Accept wildcard characters: False
 The specific Bicep version to install (e.g.
 '0.26.54').
 If not specified, the latest available version is installed.
+This replaces whatever version is currently installed at the default managed location.
 
 ```yaml
 Type: String

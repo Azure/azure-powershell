@@ -19,7 +19,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
 {
     /// <summary>
-    /// Removes Azure PowerShell's entire managed Bicep installation (all cached versions).
+    /// Removes the Bicep installation at the single default (unpinned) managed location,
+    /// matching 'az bicep uninstall' semantics. The internal versioned cache used
+    /// automatically for pinned 'bicepconfig.json' compilation is not affected.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Uninstall, AzureRMConstants.AzureRMPrefix + "Bicep", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class UninstallAzBicepCmdlet : AzureRMCmdlet
@@ -36,9 +38,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
         {
             var installer = this.Installer ?? BicepInstaller.Create();
 
-            if (ShouldProcess(installer.GetInstallationDirectory(), "Uninstall all managed Bicep installations"))
+            if (ShouldProcess(installer.GetInstallationPath(), "Uninstall"))
             {
-                var wasUninstalled = installer.UninstallAll(this.WriteVerbose);
+                var wasUninstalled = installer.Uninstall(this.WriteVerbose);
 
                 if (this.PassThru.IsPresent)
                 {
