@@ -140,7 +140,7 @@ PrivateData = @{
         ReleaseNotes = '* Added support for the 2026-09-01 API, migration management, maintenance windows, keyspace notifications, and migrated endpoint unlink operations.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
