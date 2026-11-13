@@ -88,6 +88,21 @@ Algorithm  : none
 
 Gets the policy for Attestation Default Provider from Location *UK South* for Tee type *SgxEnclave*.
 
+### Example 3
+```powershell
+Get-AzAttestationPolicy -DefaultProvider -Location "East US" -Tee TdxVm
+```
+
+```output
+Text       : version= 1.0;authorizationrules{=> permit();};
+TextLength : 46
+Jwt        : eyJhbGciOiJub25lIn0.eyJBdHRlc3RhdGlvblBvbGljeSI6ImRtVnljMmx2YmowZ01TNHdPMkYxZEdodmNtbDZZWFJwYjI1eWRXeGxjM3M5UGlCd1pYSnRhWFFvS1R0OU93In0.
+JwtLength  : 136
+Algorithm  : none
+```
+
+Gets the policy for Attestation Default Provider from Location *East US* for Tee type *TdxVm*.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -182,8 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tee
-Specifies a type of Trusted Execution Environment.
-We support four types of environment: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave.
+Specifies a type of Trusted Execution Environment, for example SgxEnclave, OpenEnclave, TdxVm or Tpm. VBSEnclave is an earlier name for Tpm and is still accepted.
 
 ```yaml
 Type: System.String

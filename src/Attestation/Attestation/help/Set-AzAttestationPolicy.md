@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the policy document to set.  The policy format can be either Text or JSON Web Token (JWT).
+Specifies the policy document to set.  The policy format can be either Text or JSON Web Token (JWT). In a JWT, the "AttestationPolicy" claim holds the Base64Url encoded policy text. A policy that is not Base64Url encoded is still accepted for SgxEnclave, OpenEnclave and VBSEnclave, but that format is deprecated.
 
 ```yaml
 Type: System.String
@@ -157,8 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tee
-Specifies a type of Trusted Execution Environment.
-Four types of environment are supported: SgxEnclave, OpenEnclave, CyResComponent and VBSEnclave.
+Specifies a type of Trusted Execution Environment, for example SgxEnclave, OpenEnclave, TdxVm or Tpm. VBSEnclave is an earlier name for Tpm and is still accepted.
 
 ```yaml
 Type: System.String

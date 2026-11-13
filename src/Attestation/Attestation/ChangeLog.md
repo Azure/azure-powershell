@@ -20,6 +20,11 @@
 
 
 ## Upcoming Release
+* Added support for the `TdxVm` attestation type to `Get-AzAttestationPolicy`, `Set-AzAttestationPolicy` and `Reset-AzAttestationPolicy`.
+* Updated the policy and policy signer cmdlets to use the `Azure.Security.Attestation` SDK and Azure Attestation API version 2025-06-01.
+    - `-Tee VBSEnclave` is still accepted and manages the same policy as `Tpm`, its name in the current API version.
+    - Policy signer tokens that use the earlier `maa-policyCertificate` claim, and policy tokens whose `AttestationPolicy` claim is not Base64Url encoded, are still accepted with a deprecation warning.
+    - Removed `CyResComponent` from the `-Tee` argument completer because the service does not support it.
 
 ## Version 3.1.0
 * Added ChangeSafety Support
