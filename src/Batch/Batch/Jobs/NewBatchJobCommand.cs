@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSJobConstraints Constraints { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("JobManagerTask", "18.0.0", "5.0.0", ChangeDescription = "The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSJobManagerTask is being deprecated.")]
         [Parameter]
         [ValidateNotNullOrEmpty]
         public PSJobManagerTask JobManagerTask { get; set; }

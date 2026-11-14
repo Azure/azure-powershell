@@ -1,0 +1,42 @@
+{
+  "Test-AzRedisEnterpriseCacheMigration+[NoContext]+Reports a clustering warning for a non-clustered source+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ps-redisenterprise-rg-pe326rlg/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-n4r2t3gz/migrations/default/validate?api-version=2026-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ps-redisenterprise-rg-pe326rlg/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-n4r2t3gz/migrations/default/validate?api-version=2026-09-01",
+      "Content": "{\r\n  \"sourceResourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ps-redisenterprise-rg-pe326rlg/providers/Microsoft.Cache/redis/ps-oss-cache-5r32fati\",\r\n  \"skipDataMigration\": true\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "211" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=4a61ce1e-5539-4162-b647-101733293495/eastus2euap/f600481d-01d4-4ed0-b75a-6787f84333a5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-rp-server-mvid": [ "befcdd6f-a149-4099-bcc7-9def50676383" ],
+        "x-ms-request-id": [ "3be6b0ca-7579-4640-a101-def0924fb3da" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-correlation-request-id": [ "d524d5eb-4768-471d-b9cb-785c10dc4ab6" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261106T070604Z:d524d5eb-4768-471d-b9cb-785c10dc4ab6" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BC2A28E10A414D5D9B9F87749FF3101E Ref B: PNQ231110907040 Ref C: 2026-11-06T07:06:03Z" ],
+        "Date": [ "Fri, 06 Nov 2026 07:06:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "438" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"isValid\": false,\n  \"errors\": [\n    {\n      \"disparities\": []\n    }\n  ],\n  \"warnings\": [\n    {\n      \"disparities\": [\n        {\n          \"category\": \"Clustering Mode\",\n          \"message\": \"The target resource has a clustering policy, but the source resource is not clustered. Please ensure your client library is cluster-aware before migration, or select a target resource without a clustering policy.\"\n        }\n      ]\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  }
+}

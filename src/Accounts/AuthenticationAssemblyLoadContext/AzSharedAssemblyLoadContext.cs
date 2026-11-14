@@ -43,6 +43,12 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
             if (_assemblies.TryGetValue(requestedAssemblyName.Name, out var assembly)
                 && File.Exists(assembly.Path))
             {
+                if (RuntimeProvidedAssemblies.ShouldUseRuntimeCopy(requestedAssemblyName, assembly.Version))
+                {
+                    // Returning null makes the runtime load its own copy through the default context.
+                    return null;
+                }
+
                 var loadedAssembly = LoadFromAssemblyPath(assembly.Path);
                 var loadedAssemblyName = loadedAssembly.GetName();
                 if (IsAssemblyMatching(requestedAssemblyName, loadedAssemblyName))

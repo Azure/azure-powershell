@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.Network
 
             this.VirtualNetworkGateway.GatewayDefaultSite = null;
 
+            // For VPN VirtualNetworkGateway with P2SVpnClientConfiguration set, fetch Radius server secrets using new Post API and backfill before calling PUT.
+            this.BackfillRadiusServerSecrets(this.VirtualNetworkGateway);
+
             // Map to the sdk object
             var virtualnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
             virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);

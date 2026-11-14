@@ -32,11 +32,23 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// audit purposes and the &#39;Block&#39; action can be used to block and deny the
         /// usage of SAS tokens that do not adhere to the sas policy expiration period.
         /// Possible values include: &#39;Log&#39;, &#39;Block&#39;</param>
-        public SasPolicy(string sasExpirationPeriod, string expirationAction)
+
+        /// <param name="requireUserBoundUserDelegationSas">Indicates whether user delegation SAS (shared access signature) tokens are
+        /// required to be bound to a specific user. The default interpretation is
+        /// false for this property.
+        /// </param>
+
+        /// <param name="requireUserBoundUserDelegationSasAction">The action to perform when a user delegation SAS (shared access signature)
+        /// token is not bound to a user as required by
+        /// requireUserBoundUserDelegationSas.
+        /// Possible values include: &#39;None&#39;, &#39;Log&#39;, &#39;Block&#39;</param>
+        public SasPolicy(string sasExpirationPeriod, string expirationAction, bool? requireUserBoundUserDelegationSas = default(bool?), string requireUserBoundUserDelegationSasAction = default(string))
 
         {
             this.SasExpirationPeriod = sasExpirationPeriod;
             this.ExpirationAction = expirationAction;
+            this.RequireUserBoundUserDelegationSas = requireUserBoundUserDelegationSas;
+            this.RequireUserBoundUserDelegationSasAction = requireUserBoundUserDelegationSasAction;
             CustomInit();
         }
 
@@ -61,6 +73,22 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expirationAction")]
         public string ExpirationAction {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether user delegation SAS (shared access
+        /// signature) tokens are required to be bound to a specific user. The default
+        /// interpretation is false for this property.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requireUserBoundUserDelegationSas")]
+        public bool? RequireUserBoundUserDelegationSas {get; set; }
+
+        /// <summary>
+        /// Gets or sets the action to perform when a user delegation SAS (shared
+        /// access signature) token is not bound to a user as required by
+        /// requireUserBoundUserDelegationSas. Possible values include: &#39;None&#39;, &#39;Log&#39;, &#39;Block&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requireUserBoundUserDelegationSasAction")]
+        public string RequireUserBoundUserDelegationSasAction {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -77,6 +105,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ExpirationAction");
             }
+
 
 
         }

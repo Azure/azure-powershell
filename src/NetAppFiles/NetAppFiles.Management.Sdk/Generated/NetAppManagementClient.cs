@@ -145,6 +145,10 @@ namespace Microsoft.Azure.Management.NetApp
         /// </summary>
         public virtual INetAppResourceQuotaLimitsAccountOperations NetAppResourceQuotaLimitsAccount { get; private set; }
         /// <summary>
+        /// Gets the INetAppAccountsOperations
+        /// </summary>
+        public virtual INetAppAccountsOperations NetAppAccounts { get; private set; }
+        /// <summary>
         /// Gets the ISnapshotPoliciesOperations
         /// </summary>
         public virtual ISnapshotPoliciesOperations SnapshotPolicies { get; private set; }
@@ -411,10 +415,11 @@ namespace Microsoft.Azure.Management.NetApp
             this.VolumeQuotaRules = new VolumeQuotaRulesOperations(this);
             this.BackupsUnderAccount = new BackupsUnderAccountOperations(this);
             this.NetAppResourceQuotaLimitsAccount = new NetAppResourceQuotaLimitsAccountOperations(this);
+            this.NetAppAccounts = new NetAppAccountsOperations(this);
             this.SnapshotPolicies = new SnapshotPoliciesOperations(this);
             this.VolumeGroups = new VolumeGroupsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-05-01";
+            this.ApiVersion = "2026-08-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

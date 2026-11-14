@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Identity = netAppAccount.Identity?.ConvertToPs(),
                 DisableShowmount = netAppAccount.DisableShowmount,
                 Encryption = netAppAccount.Encryption?.ConvertToPs(),
+                LdapConfiguration = netAppAccount.LdapConfiguration?.ConvertToPs(),
                 SystemData = netAppAccount.SystemData?.ToPsSystemData(),
                 MultiAdStatus = netAppAccount.MultiAdStatus
             };
@@ -168,6 +169,53 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Identity = encryption.Identity?.ConvertFromPs(),
                 KeyVaultProperties = encryption.KeyVaultProperties?.ConvertFromPs(),
             };
+        }
+
+        public static AccountEncryptionPatch ConvertToPatch(this PSNetAppFilesAccountEncryption encryption)
+        {
+            return new AccountEncryptionPatch
+            {
+                KeySource = encryption.KeySource,
+                Identity = encryption.Identity == null ? null : new EncryptionIdentityPatch
+                {
+                    UserAssignedIdentity = encryption.Identity.UserAssignedIdentity,
+                    FederatedClientId = encryption.Identity.FederatedClientId
+                },
+                KeyVaultProperties = encryption.KeyVaultProperties == null ? null : new KeyVaultPropertiesPatch
+                {
+                    KeyName = encryption.KeyVaultProperties.KeyName,
+                    KeyVaultResourceId = encryption.KeyVaultProperties.KeyVaultResourceId,
+                    KeyVaultUri = encryption.KeyVaultProperties.KeyVaultUri
+                }
+            };
+        }
+
+        public static List<Management.NetApp.Models.ActiveDirectoryPatch> ConvertToPatch(this IList<Management.NetApp.Models.ActiveDirectory> activeDirectories)
+        {
+            return activeDirectories.Select(activeDirectory => new Management.NetApp.Models.ActiveDirectoryPatch
+            {
+                ActiveDirectoryId = activeDirectory.ActiveDirectoryId,
+                Username = activeDirectory.Username,
+                Password = activeDirectory.Password,
+                Domain = activeDirectory.Domain,
+                Dns = activeDirectory.Dns,
+                SmbServerName = activeDirectory.SmbServerName,
+                OrganizationalUnit = activeDirectory.OrganizationalUnit,
+                Site = activeDirectory.Site,
+                BackupOperators = activeDirectory.BackupOperators,
+                Administrators = activeDirectory.Administrators,
+                KdcIP = activeDirectory.KdcIP,
+                AdName = activeDirectory.AdName,
+                ServerRootCaCertificate = activeDirectory.ServerRootCaCertificate,
+                AesEncryption = activeDirectory.AesEncryption,
+                LdapSigning = activeDirectory.LdapSigning,
+                SecurityOperators = activeDirectory.SecurityOperators,
+                LdapOverTls = activeDirectory.LdapOverTls,
+                AllowLocalNfsUsersWithLdap = activeDirectory.AllowLocalNfsUsersWithLdap,
+                EncryptDcConnections = activeDirectory.EncryptDcConnections,
+                LdapSearchScope = activeDirectory.LdapSearchScope,
+                PreferredServersForLdapClient = activeDirectory.PreferredServersForLdapClient
+            }).ToList();
         }
 
         public static List<KeyVaultPrivateEndpoint> ConvertFromPs(this IList<PSANFKeyVaultPrivateEndpoint> keyVaultPrivateEndpoints)

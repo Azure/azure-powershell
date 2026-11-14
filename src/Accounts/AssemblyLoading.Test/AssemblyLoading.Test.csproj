@@ -12,6 +12,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\AssemblyLoading\AssemblyLoading.csproj" />
+	  <ProjectReference Include="..\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj" />
 	</ItemGroup>
 
 </Project>

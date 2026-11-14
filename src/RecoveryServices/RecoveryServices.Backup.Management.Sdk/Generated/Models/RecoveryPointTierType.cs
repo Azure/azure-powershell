@@ -11,53 +11,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     /// </summary>
 
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecoveryPointTierType
+    public static class RecoveryPointTierType
     {
-        [System.Runtime.Serialization.EnumMember(Value = "Invalid")]
-        Invalid,
-        [System.Runtime.Serialization.EnumMember(Value = "InstantRP")]
-        InstantRP,
-        [System.Runtime.Serialization.EnumMember(Value = "HardenedRP")]
-        HardenedRP,
-        [System.Runtime.Serialization.EnumMember(Value = "ArchivedRP")]
-        ArchivedRP
-    }
-    internal static class RecoveryPointTierTypeEnumExtension
-    {
-        internal static string ToSerializedValue(this RecoveryPointTierType? value)
-        {
-            return value == null ? null : ((RecoveryPointTierType)value).ToSerializedValue();
-        }
-        internal static string ToSerializedValue(this RecoveryPointTierType value)
-        {
-            switch( value )
-            {
-                case RecoveryPointTierType.Invalid:
-                    return "Invalid";
-                case RecoveryPointTierType.InstantRP:
-                    return "InstantRP";
-                case RecoveryPointTierType.HardenedRP:
-                    return "HardenedRP";
-                case RecoveryPointTierType.ArchivedRP:
-                    return "ArchivedRP";
-            }
-            return null;
-        }
-        internal static RecoveryPointTierType? ParseRecoveryPointTierType(this string value)
-        {
-            switch( value )
-            {
-                case "Invalid":
-                    return RecoveryPointTierType.Invalid;
-                case "InstantRP":
-                    return RecoveryPointTierType.InstantRP;
-                case "HardenedRP":
-                    return RecoveryPointTierType.HardenedRP;
-                case "ArchivedRP":
-                    return RecoveryPointTierType.ArchivedRP;
-            }
-            return null;
-        }
+        public const string Invalid = "Invalid";
+        public const string InstantRP = "InstantRP";
+        public const string HardenedRP = "HardenedRP";
+        public const string ArchivedRP = "ArchivedRP";
+        /// <summary>
+        /// Instant Access snapshot tier, retained for the policy&#39;s
+        /// instantAccessDurationMinutes.
+        /// </summary>
+        public const string IASnapshotRP = "IASnapshotRP";
     }
 }

@@ -1,8 +1,8 @@
 if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnProfile'))
 {
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadCdnEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadCdnEnv.ps1'
   }
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzCdnProfile.Recording.json'
@@ -15,14 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnProfile'))
 }
 
 Describe 'Remove-AzCdnProfile' {
-    BeforeAll {
-        $script:profileName = 'cdnpps01-rm'
-        New-AzCdnProfile -SkuName 'Standard_Microsoft' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+    It 'RejectsMissingProfile' {
+        $missingProfileName = 'cdnpps01-rm'
+        Get-AzCdnProfile -Name $missingProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ErrorAction SilentlyContinue | Should -BeNullOrEmpty
+        {
+            Remove-AzCdnProfile -Name $missingProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ErrorAction Stop
+        } | Should -Throw "The Resource 'Microsoft.Cdn/profiles/$missingProfileName' under resource group '$($env.ClassicCdnResourceGroupName)' was not found."
     }
 
-    It 'Delete' {
-        $res = Remove-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -PassThru
-        $res | Should -Be 'True'
+    # New disposable profiles cannot be provisioned; never delete the configured existing profile.
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

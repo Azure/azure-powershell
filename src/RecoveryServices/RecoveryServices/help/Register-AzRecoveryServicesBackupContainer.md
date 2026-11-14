@@ -15,15 +15,17 @@ The **Register-AzRecoveryServicesBackupContainer** cmdlet registers Azure worklo
 ### Register (Default)
 ```
 Register-AzRecoveryServicesBackupContainer [-ResourceId] <String>
- [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force]
+ [-ContainerSubscriptionId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ReRegister
 ```
 Register-AzRecoveryServicesBackupContainer [-Container] <ContainerBase>
- [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force]
+ [-ContainerSubscriptionId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureFileRegister
@@ -113,6 +115,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ContainerSubscriptionId
+Subscription ID of the subscription containing the containers to discover during registration, for cross-subscription container discovery. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: Register, ReRegister
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -159,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
+Full Azure Resource Manager ID of the virtual machine to register. The cmdlet matches the complete ID, including the subscription, resource group, and virtual machine name, against discovered workload containers. A virtual machine with the same name and resource-group name in a different subscription is not selected.
 
 ```yaml
 Type: System.String

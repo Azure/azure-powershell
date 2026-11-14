@@ -1404,6 +1404,10 @@
     {
       "file": "src\\EventHub\\EventHub.Autorest\\test\\New-AzEventHubGeoDRConfiguration.Recording.json",
       "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\ContainerRegistry\\ContainerRegistry.Autorest\\test\\Connect-AzContainerRegistry.Unit.Tests.ps1",
+      "_justification": "Synthetic usernames and passwords used in offline credential-handling unit tests. Docker is mocked; no live credentials are present."
     }
   ]
 }

@@ -18,7 +18,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 
@@ -60,10 +59,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                                                       {
                                                           using (dwr)
                                                           {
-                                                              var md5HashOfDataChunk = GetBase64EncodedMd5Hash(dwr.Data, (int)dwr.Range.Length);
                                                               using (var stream = new MemoryStream(dwr.Data, 0, (int)dwr.Range.Length))
                                                               {
-                                                                  b.Properties.ContentMD5 = md5HashOfDataChunk;
                                                                   b.WritePagesAsync(stream, dwr.Range.StartIndex, contentMD5: null)
                                                                             .ConfigureAwait(false).GetAwaiter().GetResult();
                                                               }
@@ -98,17 +95,6 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 }
             }
             return true;
-        }
-
-        private static string GetBase64EncodedMd5Hash(byte[] data, int length)
-        {
-            using (var hash = MD5.Create())
-            {
-                hash.TransformBlock(data, 0, length, null, 0);
-                hash.TransformFinalBlock(new byte[0], 0, 0);
-                var bytes = hash.Hash;
-                return Convert.ToBase64String(bytes);
-            }
         }
     }
 }

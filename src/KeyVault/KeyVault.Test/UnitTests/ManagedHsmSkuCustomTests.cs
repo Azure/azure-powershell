@@ -14,6 +14,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [InlineData(ManagedHsmSkuName.CustomB6, "B")]
         [InlineData(ManagedHsmSkuName.CustomC42, "C")]
         [InlineData(ManagedHsmSkuName.CustomC10, "C")]
+        [InlineData(ManagedHsmSkuName.StandardB1V2, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB5V2, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB10V2, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB15V2, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB20V2, "B")]
         public void CanInferFamilyFromSkuName(ManagedHsmSkuName skuSerializedValue, string expectedFamily)
         {
             // Act
@@ -30,6 +35,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [InlineData(ManagedHsmSkuName.CustomB6, "B")]
         [InlineData(ManagedHsmSkuName.CustomC42, "C")]
         [InlineData(ManagedHsmSkuName.CustomC10, "C")]
+        [InlineData(ManagedHsmSkuName.StandardB1V2, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB5V2, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB10V2, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB15V2, "B")]
+        [InlineData(ManagedHsmSkuName.StandardB20V2, "B")]
         public void CanCreateSkuWithCorrectFamily(ManagedHsmSkuName skuSerializedValue, string expectedFamily)
         {
 

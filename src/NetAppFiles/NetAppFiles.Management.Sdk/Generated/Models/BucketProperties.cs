@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of the resource
-        /// Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;,
-        /// &#39;Deleting&#39;, &#39;Moving&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Accepted&#39;,
+        /// &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;</param>
 
         /// <param name="status">The bucket credentials status. There states:
         /// &#34;NoCredentialsSet&#34;: Access and Secret key pair have not been generated.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public FileSystemUser FileSystemUser {get; set; }
 
         /// <summary>
-        /// Gets provisioning state of the resource Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;
+        /// Gets provisioning state of the resource Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

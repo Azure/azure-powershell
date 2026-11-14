@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.DataProtection",
-  "ModuleVersion": "3.1.0",
+  "ModuleVersion": "3.1.1",
   "Cmdlets": [
     {
       "VerbName": "Backup",

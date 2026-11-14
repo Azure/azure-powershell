@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <summary>
         /// Creates a subvolume in the path or clones the subvolume mentioned in the
         /// parentPath
+        /// Deprecated. This operation will be removed in a future API version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -150,6 +151,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <summary>
         /// Creates a subvolume in the path or clones the subvolume mentioned in the
         /// parentPath
+        /// Deprecated. This operation will be removed in a future API version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -353,6 +355,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <summary>
         /// Creates a subvolume in the path or clones the subvolume mentioned in the
         /// parentPath
+        /// Deprecated. This operation will be removed in a future API version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -380,6 +383,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <summary>
         /// Creates a subvolume in the path or clones the subvolume mentioned in the
         /// parentPath
+        /// Deprecated. This operation will be removed in a future API version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -60,8 +60,8 @@ function Test-BackupPolicyCrud
         $setDailyBackupsToKeep = 3
         $retrievedBackupPolicy = Set-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $setDailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep 
 
-        $setDailyBackupsToKeep = Get-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupPolicyName1
-        Assert-AreEqual $updatedDailyBackupsToKeep $getSetBackupPolicy.DailyBackupsToKeep
+        $getSetBackupPolicy = Get-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupPolicyName1
+        Assert-AreEqual $setDailyBackupsToKeep $getSetBackupPolicy.DailyBackupsToKeep
 
 
         $updatedDailyBackupsToKeep = 2

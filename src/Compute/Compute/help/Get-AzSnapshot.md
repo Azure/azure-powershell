@@ -20,6 +20,10 @@ Get-AzSnapshot [[-ResourceGroupName] <String>] [[-SnapshotName] <String>]
 ## DESCRIPTION
 The **Get-AzSnapshot** cmdlet gets the properties of a snapshot.
 
+The `ImmutabilityPolicy` property contains the policy type, total duration, service-assigned start and expiration times, and expired status. Absent policies and fields remain null; unrecognized policy type strings are preserved.
+
+This typed property is also returned by **New-AzSnapshot**, **Update-AzSnapshot**, and the policy commands. Policy expiry ends deletion protection without deleting the snapshot.
+
 ## EXAMPLES
 
 ### Example 1
@@ -145,6 +149,14 @@ Tags               : {}
 
 This command gets the properties of the snapshot named "SnapshotName1" in the resource group named "ResourceGroupName1"
 
+### Example 5
+```powershell
+Get-AzSnapshot -ResourceGroupName "ResourceGroupName1" -SnapshotName "SnapshotName1" |
+    Select-Object Name, ImmutabilityPolicy
+```
+
+This command displays the immutability policy returned for a snapshot, when one is present.
+
 ### Example 4
 ```powershell
 Get-AzSnapshot -SnapshotName "SnapshotName*"
@@ -263,3 +275,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Set-AzSnapshotImmutabilityPolicy](./Set-AzSnapshotImmutabilityPolicy.md)
+
+[Remove-AzSnapshotImmutabilityPolicy](./Remove-AzSnapshotImmutabilityPolicy.md)

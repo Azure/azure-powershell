@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.EdgeAction",
-  "ModuleVersion": "0.1.2",
+  "ModuleVersion": "1.0.0",
   "Cmdlets": [
     {
       "VerbName": "Deploy",
@@ -476,6 +476,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attachment": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "ProvisioningState": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String"
@@ -1426,6 +1428,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "ExecutionFilterIdentifierHeaderName": "System.String",
               "ExecutionFilterIdentifierHeaderValue": "System.String",
               "ProvisioningState": "System.String",
@@ -2449,6 +2453,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastPackageUpdateTime": "System.Nullable`1[System.DateTime]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "DeploymentType": "System.String",
               "IsDefaultVersion": "System.String",
               "ProvisioningState": "System.String",
@@ -4122,6 +4128,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attachment": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "ProvisioningState": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String"
@@ -5275,6 +5283,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "ExecutionFilterIdentifierHeaderName": "System.String",
               "ExecutionFilterIdentifierHeaderValue": "System.String",
               "ProvisioningState": "System.String",
@@ -5393,6 +5403,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "ExecutionFilterIdentifierHeaderName": "System.String",
               "ExecutionFilterIdentifierHeaderValue": "System.String",
               "ProvisioningState": "System.String",
@@ -6788,6 +6800,8 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LastUpdateTime": "System.Nullable`1[System.DateTime]",
+                    "RetryAfter": "System.Nullable`1[System.Int32]",
+                    "AzureAsyncOperation": "System.String",
                     "ExecutionFilterIdentifierHeaderName": "System.String",
                     "ExecutionFilterIdentifierHeaderValue": "System.String",
                     "ProvisioningState": "System.String",
@@ -6996,6 +7010,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastPackageUpdateTime": "System.Nullable`1[System.DateTime]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "DeploymentType": "System.String",
               "IsDefaultVersion": "System.String",
               "ProvisioningState": "System.String",
@@ -7105,6 +7121,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastPackageUpdateTime": "System.Nullable`1[System.DateTime]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "DeploymentType": "System.String",
               "IsDefaultVersion": "System.String",
               "ProvisioningState": "System.String",
@@ -8470,6 +8488,8 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LastPackageUpdateTime": "System.Nullable`1[System.DateTime]",
+                    "RetryAfter": "System.Nullable`1[System.Int32]",
+                    "AzureAsyncOperation": "System.String",
                     "DeploymentType": "System.String",
                     "IsDefaultVersion": "System.String",
                     "ProvisioningState": "System.String",
@@ -11958,6 +11978,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attachment": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "ProvisioningState": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String"
@@ -12013,24 +12035,6 @@
               "SubscriptionId": "System.String",
               "Version": "System.String"
             }
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "SkuName",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "SkuTier",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -12669,36 +12673,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "SkuName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SkuTier",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "Tag",
                 "Type": {
                   "Namespace": "System.Collections",
@@ -12897,36 +12871,6 @@
               "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": true,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SkuName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SkuTier",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
             {
@@ -13288,6 +13232,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "ExecutionFilterIdentifierHeaderName": "System.String",
               "ExecutionFilterIdentifierHeaderValue": "System.String",
               "ProvisioningState": "System.String",
@@ -13371,11 +13317,38 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "ExecutionFilterIdentifierHeaderName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ExecutionFilterIdentifierHeaderValue",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "Tag",
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "VersionId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -13386,6 +13359,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "Tag": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags",
               "ExecutionFilterIdentifierHeaderName": "System.String",
               "ExecutionFilterIdentifierHeaderValue": "System.String",
               "VersionId": "System.String"
@@ -14055,11 +14029,56 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ExecutionFilterIdentifierHeaderName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ExecutionFilterIdentifierHeaderValue",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Tag",
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "VersionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -14272,11 +14291,56 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ExecutionFilterIdentifierHeaderName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ExecutionFilterIdentifierHeaderValue",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Tag",
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "VersionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -14495,6 +14559,7 @@
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate",
                   "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
+                    "Tag": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags",
                     "ExecutionFilterIdentifierHeaderName": "System.String",
                     "ExecutionFilterIdentifierHeaderValue": "System.String",
                     "VersionId": "System.String"
@@ -14696,11 +14761,56 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ExecutionFilterIdentifierHeaderName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ExecutionFilterIdentifierHeaderValue",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Tag",
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "VersionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -15053,6 +15163,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastPackageUpdateTime": "System.Nullable`1[System.DateTime]",
+              "RetryAfter": "System.Nullable`1[System.Int32]",
+              "AzureAsyncOperation": "System.String",
               "DeploymentType": "System.String",
               "IsDefaultVersion": "System.String",
               "ProvisioningState": "System.String",
@@ -15136,6 +15248,24 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "DeploymentType",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "IsDefaultVersion",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "Tag",
           "Type": {
             "Namespace": "System.Collections",
@@ -15151,8 +15281,9 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "DeploymentType": "System.String",
-              "IsDefaultVersion": "System.String"
+              "Tag": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateTags",
+              "IsDefaultVersion": "System.String",
+              "DeploymentType": "System.String"
             }
           },
           "ValidateNotNullOrEmpty": false
@@ -15819,6 +15950,36 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DeploymentType",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IsDefaultVersion",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Tag",
                 "Type": {
                   "Namespace": "System.Collections",
@@ -16032,6 +16193,36 @@
               "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeploymentType",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IsDefaultVersion",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
             {
@@ -16259,8 +16450,9 @@
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate",
                   "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "DeploymentType": "System.String",
-                    "IsDefaultVersion": "System.String"
+                    "Tag": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateTags",
+                    "IsDefaultVersion": "System.String",
+                    "DeploymentType": "System.String"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
@@ -16455,6 +16647,36 @@
               "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DeploymentType",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IsDefaultVersion",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
             {
@@ -17043,6 +17265,14 @@
         "Id": "System.String"
       }
     },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int32]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Int32"
+      ]
+    },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.DateTime]",
@@ -17055,6 +17285,16 @@
       "Namespace": "System",
       "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateTags": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateTags",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateTags, Az.EdgeAction.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     }
   }
 }

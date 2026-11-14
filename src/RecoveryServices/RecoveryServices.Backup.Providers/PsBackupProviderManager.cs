@@ -172,6 +172,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 case WorkloadType.MSSQL:
                     providerType = PsBackupProviderTypes.AzureWorkload;
                     break;
+                case WorkloadType.MSSQLInstance:
+                    providerType = PsBackupProviderTypes.AzureWorkload;
+                    break;
                 default:
                     throw new ArgumentException(
                         string.Format(Resources.BackupManagementTypeRequiredForWorkloadType,
@@ -233,8 +236,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     psProviderType = PsBackupProviderTypes.AzureFiles;
                     break;
                 // same case for SAPHANA and MSSQL
-                case WorkloadType.SAPHanaDatabase: 
-                case WorkloadType.MSSQL:                
+                case WorkloadType.SAPHanaDatabase:
+                case WorkloadType.MSSQL:
+                case WorkloadType.MSSQLInstance:
                     if (backupManagementType.HasValue &&
                         backupManagementType != BackupManagementType.AzureWorkload)
                     {

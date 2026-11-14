@@ -28,7 +28,7 @@ For information on how to develop for `Az.KeyVault`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 9f0ad696cc186c2d16cb522abc0fbd4aa3854ca5
+commit: 3d13a66faf3cdca3fc4178de005faab79c7bcdad
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -36,7 +36,7 @@ require:
 input-file:
 # Key Vault migrated its control plane specification to TypeSpec, so a single emitted openapi.json
 # replaces the previous keyvault.json / managedHsm.json pair.
-  - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/KeyVault/stable/2026-02-01/openapi.json
+  - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/KeyVault/stable/2026-05-15/openapi.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 

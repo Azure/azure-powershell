@@ -149,5 +149,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
+For plain registry names, the cmdlet uses Azure Resource Manager to discover the login server, falling
+back to the supplied name and environment suffix if discovery fails. Successful discovery results are
+reused for the same registry and context within the client.
+
+Registry names must contain 5-50 ASCII letters or digits. An explicit login-server label may also
+include a single hyphen followed by a nonempty ASCII alphanumeric suffix, up to 63 characters in total.
+Suffixes are not restricted to a fixed length or a specific value.
+
+Explicit hyphenated labels, including Domain Name Label (DNL) labels such as `registry-<hash>` and
+legacy labels such as `registry-microsoft`, are used directly with the environment suffix, without
+ARM discovery. Supply only the label, not a URL or the full login-server domain.
 
 ## RELATED LINKS

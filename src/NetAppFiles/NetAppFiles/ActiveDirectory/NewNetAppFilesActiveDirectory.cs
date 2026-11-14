@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 anfAccount.ActiveDirectories.Add(activeDirectory);                    
                 var netAppAccountBody = new NetAppAccountPatch()
                 {                        
-                    ActiveDirectories = anfAccount.ActiveDirectories                        
+                    ActiveDirectories = anfAccount.ActiveDirectories.ConvertToPatch()
                 };
                 try
                 {

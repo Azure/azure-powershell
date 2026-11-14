@@ -77,11 +77,11 @@ function Test-VolumeQuotaRuleCrud
         Assert-AreEqual $quotaRuleType $retrievedQuotaRule.QuotaType
         
         # get first quotaRule and check
-        $getQuotaRule = Get-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1         
+        $getQuotaRule = Get-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -SubvolumeName $volQuotaRuleName1
         Assert-AreEqual $quotaRuleType $getQuotaRule.QuotaType
 
         # Update quotaRule and check
-        $updatedQuotaRule = Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1 -QuotaSize $quotaRuleSize2
+        $updatedQuotaRule = Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -SubvolumeName $volQuotaRuleName1 -QuotaSize $quotaRuleSize2
         Assert-AreEqual $quotaRuleSize2 $updatedQuotaRule.QuotaSize
         
         # create second quotaRule and check

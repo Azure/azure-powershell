@@ -1,0 +1,199 @@
+{
+  "resourceType": "cloudAccounts",
+  "apiVersion": "2026-09-30",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.commvault"
+  },
+  "commands": [
+    {
+      "name": "Get-AzCommvaultCloudAccountLatestLinkedSaaS",
+      "description": "Returns the latest SaaS linked to the cloud account.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/latestLinkedSaaS",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/get-azcommvaultcloudaccountlatestlinkedsaas"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns the latest SaaS linked to the cloud account.",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzCommvaultCloudAccount",
+      "description": "Get a CloudAccount",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/get-azcommvaultcloudaccount"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a CloudAccount",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzCommvaultRoleMapping",
+      "description": "Get a RoleMapping",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/roleMappings/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/get-azcommvaultrolemapping"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a RoleMapping",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzCommvaultCloudAccount",
+      "description": "Delete a CloudAccount",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/remove-azcommvaultcloudaccount"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a CloudAccount",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzCommvaultRoleMapping",
+      "description": "Delete a RoleMapping",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/roleMappings/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/remove-azcommvaultrolemapping"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a RoleMapping",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

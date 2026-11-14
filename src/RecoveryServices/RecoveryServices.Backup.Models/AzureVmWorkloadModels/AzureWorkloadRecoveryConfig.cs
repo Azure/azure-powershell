@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,6 +64,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Full RP on which log backups will be applied
         /// </summary>
         public RecoveryPointBase FullRP { get; set; }
+
+        /// <summary>
+        /// List of disk ARM IDs the customer should detach in case of filesystem clash during snapshot restore.
+        /// </summary>
+        public IList<string> DisksToDetachOnClash { get; set; }
+
+        /// <summary>
+        /// Target resource group name for the restore (used for SQL Instance snapshot restore).
+        /// </summary>
+        public string TargetResourceGroupName { get; set; }
+
+        /// <summary>
+        /// ARM ID of the user-assigned managed identity used for SQL Instance snapshot restore.
+        /// </summary>
+        public string UserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// Target database name used for SQL Instance snapshot restore (maps to targetInfo.databaseName).
+        /// May be the instance name (e.g. "mssqlserver") or an instance-qualified value
+        /// (e.g. "mssqlserver/&lt;database&gt;").
+        /// </summary>
+        public string TargetInstanceDatabaseName { get; set; }
+
+        /// <summary>
+        /// Target directory mapping used for SnapshotAttach restore (maps to targetInfo.targetDirectoryMapping,
+        /// e.g. { "all": "C:/temp" }).
+        /// </summary>
+        public IDictionary<string, string> TargetDirectoryMapping { get; set; }
 
 
         public AzureWorkloadRecoveryConfig(string targetServer, string targetInstance, string restoreRequestType,

@@ -14,11 +14,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
     {
 
         /// <summary>Backing field for <see cref="SasUri" /> property.</summary>
-        private System.Collections.Generic.List<string> _sasUri;
+        private System.Collections.Generic.List<System.Security.SecureString> _sasUri;
 
         /// <summary>SAS URIs for the target blobs to import from</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<string> SasUri { get => this._sasUri; set => this._sasUri = value; }
+        public System.Collections.Generic.List<System.Security.SecureString> SasUri { get => this._sasUri; set => this._sasUri = value; }
 
         /// <summary>Creates an new <see cref="ImportClusterParameters" /> instance.</summary>
         public ImportClusterParameters()
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         Update = true,
         Description = @"SAS URIs for the target blobs to import from",
         SerializedName = @"sasUris",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> SasUri { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Collections.Generic.List<System.Security.SecureString> SasUri { get; set; }
 
     }
     /// Parameters for a Redis Enterprise import operation.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 
     {
         /// <summary>SAS URIs for the target blobs to import from</summary>
-        System.Collections.Generic.List<string> SasUri { get; set; }
+        System.Collections.Generic.List<System.Security.SecureString> SasUri { get; set; }
 
     }
 }

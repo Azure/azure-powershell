@@ -267,6 +267,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             { ContainerParams.BackupManagementType, item.BackupManagementType.ToString() },
                             { ContainerParams.Container, null },
                             { ContainerParams.ResourceGroupName, vmResourceGroupParsed },
+                            { ContainerParams.ResourceId, item.SourceResourceId },
                         }, serviceClientAdapter);
 
                 IPsBackupProvider registerPsBackupProvider = registerProviderManager.GetProviderInstance(item.WorkloadType, item.BackupManagementType);
@@ -282,4 +283,3 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
-

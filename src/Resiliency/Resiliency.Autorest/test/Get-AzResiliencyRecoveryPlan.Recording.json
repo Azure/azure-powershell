@@ -1,0 +1,99 @@
+{
+  "Get-AzResiliencyRecoveryPlan+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/providers/Microsoft.Management/serviceGroups/rotest-sg-1/providers/Microsoft.AzureResilienceManagement/recoveryPlans?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "2"
+        ],
+        "x-ms-client-request-id": [
+          "24aa17b0-47e8-48ed-9319-767751ea933b"
+        ],
+        "CommandName": [
+          "Get-AzResiliencyRecoveryPlan"
+        ],
+        "FullCommandName": [
+          "Get-AzResiliencyRecoveryPlan_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v16.3.0",
+          "PSVersion/v7.6.9",
+          "Az.Resiliency/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "traceparent": [
+          "00-c3cdc8a9347fc5e0ba5f3708fca2b94c-fbc9463a6d2c05e6-00"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "cd990bac-c224-4281-9370-b1c10c44e4e4"
+        ],
+        "x-ms-correlation-request-id": [
+          "7f8d558c-5340-4cee-9495-c3fbfad7a29b"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20261106T125851Z:7f8d558c-5340-4cee-9495-c3fbfad7a29b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C2D4A179D1C24F3D998043D06D1AF59B Ref B: SG2AA1070303025 Ref C: 2026-11-06T12:58:50Z"
+        ],
+        "Date": [
+          "Fri, 06 Nov 2026 12:58:50 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 return;
             }
-            {_sasUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray>("sasUris"), out var __jsonSasUris) ? If( __jsonSasUris as Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _sasUri;}
+            {_sasUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray>("sasUris"), out var __jsonSasUris) ? If( __jsonSasUris as Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<System.Security.SecureString>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(System.Security.SecureString) (__u is Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString __t ? (System.Security.SecureString)(new System.Net.NetworkCredential("",(string)__t).SecurePassword) : null)) ))() : null : _sasUri;}
             AfterFromJson(json);
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.XNodeArray();
                 foreach( var __x in this._sasUri )
                 {
-                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(__x))) : null ,__w.Add);
                 }
                 container.Add("sasUris",__w);
             }

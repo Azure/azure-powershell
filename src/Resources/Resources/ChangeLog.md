@@ -26,6 +26,11 @@
 * Updated `Microsoft.Extensions.Caching.Memory` dependency from `2.2.0` to `10.0.3`.
 * Fixed `Update-AzPolicyAssignment` removing the existing overrides and resource selectors of a policy assignment when `-Override` or `-ResourceSelector` is not specified.
 * Fixed `Update-AzPolicyExemption` removing the existing resource selectors of a policy exemption when `-ResourceSelector` is not specified.
+* Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `10.0.3` to `10.0.10`.
+
+## Version 10.2.2
+* Expanded deployment stack What-If create/delete details, including potential changes; removed redundant headers and aligned JSON formatting with Azure CLI [Azure/azure-cli#34156](https://github.com/Azure/azure-cli/pull/34156).
+* Updated `Microsoft.Extensions.Caching.Memory` from 2.2.0 to 10.0.3.
 
 ## Version 10.2.1
 * Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly given a null value.

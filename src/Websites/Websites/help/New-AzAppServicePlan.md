@@ -17,7 +17,7 @@ Creates an Azure App Service plan in a given Geo location.
 ```
 New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [[-AseResourceId] <String>]
- [-PerSiteScaling <Boolean>] [-HyperV] [-AsJob] [-Tag <Hashtable>] [-Linux] [-ResourceGroupName] <String>
+ [-PerSiteScaling <Boolean>] [-AsyncScalingEnabled <Boolean>] [-HyperV] [-AsJob] [-Tag <Hashtable>] [-Linux] [-ResourceGroupName] <String>
  [-Name] <String> [-ManagedInstance] [-AssignIdentity <Boolean>] [-UserAssignedIdentityId <String[]>]
  [-DefaultIdentity <String>] [-RdpEnabled <Boolean>] [-VirtualNetworkSubnetId <String>]
  [-InstallScript <InstallScript[]>] [-StorageMount <StorageMount[]>] [-RegistryAdapter <RegistryAdapter[]>]
@@ -29,7 +29,7 @@ New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers]
 ```
 New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [[-AseResourceId] <String>]
- [-PerSiteScaling <Boolean>] [-AsJob] [-AppServicePlan] <PSAppServicePlan>
+ [-PerSiteScaling <Boolean>] [-AsyncScalingEnabled <Boolean>] [-AsJob] [-AppServicePlan] <PSAppServicePlan>
  [-AssignIdentity <Boolean>] [-UserAssignedIdentityId <String[]>] [-DefaultIdentity <String>]
  [-RdpEnabled <Boolean>] [-VirtualNetworkSubnetId <String>] [-InstallScript <InstallScript[]>]
  [-StorageMount <StorageMount[]>] [-RegistryAdapter <RegistryAdapter[]>]
@@ -39,6 +39,9 @@ New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers]
 
 ## DESCRIPTION
 The **New-AzAppServicePlan** cmdlet creates an Azure App Service plan in a given Geo location with the specified Tier, worker size, and number of workers.
+
+Use **-AsyncScalingEnabled $true** to allow asynchronous scaling when there are insufficient workers to scale synchronously.
+This setting requires a dedicated App Service plan and does not run the cmdlet in the background; use **-AsJob** for background execution.
 
 Use **-ManagedInstance** to create a Managed Instance plan for Windows applications that require operating system customization.
 Configure managed identities, installation scripts, storage mounts, registry adapters, plan-level virtual network integration, and Remote Desktop Protocol (RDP) access with the corresponding parameters.
@@ -112,6 +115,14 @@ New-AzAppServicePlan -ResourceGroupName "ContosoRG" -Name "ContosoManagedPlan" -
 This command configures an installation script, an Azure Files mount, and a registry adapter when creating the plan.
 The plan identity must have permission to access the script and the referenced Key Vault secrets.
 Hashtable values are converted to the corresponding configuration objects.
+
+### Example 6: Create an App Service plan with asynchronous scaling enabled
+```powershell
+New-AzAppServicePlan -ResourceGroupName "ContosoRG" -Name "ContosoASP" -Location "East US" -Tier "PremiumV3" -WorkerSize "Small" -NumberofWorkers 10 -AsyncScalingEnabled $true
+```
+
+This command creates a dedicated App Service plan that can scale asynchronously when there are insufficient workers to fulfill the request synchronously.
+The cmdlet waits for the operation to complete before returning the plan.
 
 ## PARAMETERS
 
@@ -211,6 +222,24 @@ User-assigned identities are configured separately with **-UserAssignedIdentityI
 
 ```yaml
 Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsyncScalingEnabled
+Enable or disable asynchronous scaling for a dedicated App Service plan.
+Set to true to allow an asynchronous operation when there are insufficient workers to scale synchronously, or false to allow only synchronous scaling.
+Omit this parameter to use the service default.
+This setting is independent of **-AsJob**.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

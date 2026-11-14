@@ -17,6 +17,9 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
@@ -83,6 +86,34 @@ namespace Microsoft.Azure.Commands.Network
             string result = ChildResourceHelp.NormalizeVirtualNetworkGatewayChildResourceIds(id, resourceGroupName, resourceName);
             result = result.Replace("virtualNetworkGatewayIpConfiguration", "ipConfigurations");
             return result;
+        }
+
+        /// <summary>
+        /// // Backfill Radius server secrets for VPN VirtualNetworkGateway b fetching Radius server secrets using new Post API before calling PUT.
+        /// </summary>
+        /// <param name="psVirtualNetworkGateway">Virtual Network Gateway resource</param>
+        public void BackfillRadiusServerSecrets(PSVirtualNetworkGateway psVirtualNetworkGateway)
+        {
+            if (psVirtualNetworkGateway.VpnClientConfiguration != null && psVirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes != null && psVirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(VpnAuthenticationType.Radius))
+            {
+                var radiusAuthServers = (List<RadiusAuthServer>)this.VirtualNetworkGatewayClient.ListRadiusSecrets(psVirtualNetworkGateway.ResourceGroupName, psVirtualNetworkGateway.Name).Value;
+
+                if (radiusAuthServers != null && radiusAuthServers.Any())
+                {
+                    if (!string.IsNullOrWhiteSpace(psVirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress) && string.IsNullOrWhiteSpace(psVirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret))
+                    {
+                        psVirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == psVirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress).RadiusServerSecret ?? "";
+                    }
+
+                    if (psVirtualNetworkGateway.VpnClientConfiguration.RadiusServers != null && psVirtualNetworkGateway.VpnClientConfiguration.RadiusServers.Any())
+                    {
+                        foreach (var radiusServer in psVirtualNetworkGateway.VpnClientConfiguration.RadiusServers)
+                        {
+                            radiusServer.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == radiusServer.RadiusServerAddress).RadiusServerSecret ?? "";
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -20,13 +20,28 @@ Creates a Redis Enterprise cache.
 .Description
 Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
 .Example
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -PublicNetworkAccess "Enabled"
 .Example
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -PublicNetworkAccess "Enabled" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
 .Example
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -NoDatabase
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -PublicNetworkAccess "Enabled" -NoDatabase
 .Example
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"}'
+$subscriptionId = (Get-AzContext).Subscription.Id
+$cache1Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache1/databases/default`"}"
+New-AzRedisEnterpriseCache -Name "Cache1" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database
+.Example
+$subscriptionId = (Get-AzContext).Subscription.Id
+$cache1Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache1/databases/default`"}"
+$cache2Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache2/databases/default`"}"
+New-AzRedisEnterpriseCache -Name "Cache2" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database,$cache2Database
+.Example
+$windows = @(
+    @{Type="Weekly"; ScheduleDayOfWeek="Saturday"; StartHourUtc=0; Duration="PT10H"}
+    @{Type="Weekly"; ScheduleDayOfWeek="Wednesday"; StartHourUtc=0; Duration="PT10H"}
+)
+$cache = New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -MaintenanceConfigurationMaintenanceWindow $windows
+$cache | Format-List Name, SkuName, ProvisioningState, ResourceState
+$cache.MaintenanceConfigurationMaintenanceWindow | Format-Table Type, ScheduleDayOfWeek, StartHourUtc, Duration
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster
@@ -37,6 +52,11 @@ To create the parameters described below, construct a hash table containing the 
 
 LINKEDDATABASE <ILinkedDatabase[]>: List of database resources to link with this database To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
   [Id <String>]: Resource ID of a database resource to link with this database.
+
+MAINTENANCECONFIGURATIONMAINTENANCEWINDOW <IMaintenanceWindow[]>: Custom maintenance windows that apply to the cluster.
+  Duration <String>: Duration in ISO-8601 format, for example 'PT5H'.
+  StartHourUtc <Int32>: Start hour (0-23) in UTC when the maintenance window begins.
+  [ScheduleDayOfWeek <String>]: Day of week. Required when the maintenance window type is 'Weekly'.
 
 MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at create time. To construct, see NOTES section for MODULE properties and create a hash table.
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
@@ -173,6 +193,16 @@ param(
     # Can be updated even after database is created.
     ${AccessKeysAuthentication},
 
+    [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # Specifies which keyspace events should trigger notifications on the default database.
+    # Default is an empty string, meaning this feature is disabled.
+    # When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+    # For example, 'AKE' enables all standard events.
+    # See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+    ${NotifyKeyspaceEvents},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
     [System.String]
@@ -196,6 +226,8 @@ param(
     [System.String]
     # Whether or not public network traffic can access the Redis cluster.
     # Only 'Enabled' or 'Disabled' can be set.
+    # Defaults to Enabled for new clusters and preserves the current value when updating an existing cluster.
+    # Null is only supported for clusters created with an older API version that do not have this property.
     ${PublicNetworkAccess},
 
     [Parameter()]
@@ -225,6 +257,13 @@ param(
     # User assigned identity to use for accessing key encryption key Url.
     # Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
     ${KeyEncryptionKeyIdentityUserAssignedIdentityResourceId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[]]
+    # Custom maintenance windows that apply to the cluster.
+    ${MaintenanceConfigurationMaintenanceWindow},
 
     [Parameter(ParameterSetName='CreateClusterWithDatabase')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]

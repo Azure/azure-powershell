@@ -76,6 +76,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IModule> Module { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)Property).Module; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)Property).Module = value ?? null /* arrayOf */; }
 
         /// <summary>
+        /// Specifies which keyspace events should trigger notifications. Default is an empty string, meaning this feature is disabled.
+        /// When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present. For example, 'AKE' enables all
+        /// standard events. See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
+        public string NotifyKeyspaceEvents { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)Property).NotifyKeyspaceEvents; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)Property).NotifyKeyspaceEvents = value ?? null; }
+
+        /// <summary>
         /// Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
@@ -239,6 +247,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IModule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IModule> Module { get; set; }
         /// <summary>
+        /// Specifies which keyspace events should trigger notifications. Default is an empty string, meaning this feature is disabled.
+        /// When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present. For example, 'AKE' enables all
+        /// standard events. See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies which keyspace events should trigger notifications. Default is an empty string, meaning this feature is disabled. When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present. For example, 'AKE' enables all standard events. See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.",
+        SerializedName = @"notifyKeyspaceEvents",
+        PossibleTypes = new [] { typeof(string) })]
+        string NotifyKeyspaceEvents { get; set; }
+        /// <summary>
         /// Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
@@ -380,6 +403,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// Optional set of redis modules to enable in this database - modules can only be added at creation time.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IModule> Module { get; set; }
+        /// <summary>
+        /// Specifies which keyspace events should trigger notifications. Default is an empty string, meaning this feature is disabled.
+        /// When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present. For example, 'AKE' enables all
+        /// standard events. See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+        /// </summary>
+        string NotifyKeyspaceEvents { get; set; }
         /// <summary>Persistence settings</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPersistence Persistence { get; set; }
         /// <summary>

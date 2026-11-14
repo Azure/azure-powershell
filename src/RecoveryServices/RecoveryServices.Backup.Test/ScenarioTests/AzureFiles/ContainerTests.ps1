@@ -217,13 +217,13 @@ function Test-AzureFSManagedIdentityRegisterAndReregister
 		-PlaybackValue "afs-msi-test-rg"
 	$vaultName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_VAULT_NAME" `
-		-PlaybackValue "afs-msi-test-vault"
+		-PlaybackValue "afs-msi-test-rsv"
 	$storageAccountName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_REGISTER_STORAGE_ACCOUNT" `
-		-PlaybackValue "afsmsiregistersa"
+		-PlaybackValue "afsmsipsreg1023"
 	$uamiId = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_UAMI_ID" `
-		-PlaybackValue "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-test-uami"
+		-PlaybackValue "/subscriptions/62e529e9-80b4-4271-a2a5-e9028b4530f0/resourcegroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-uami-primary"
 
 	$vault = Get-AzRecoveryServicesVault `
 		-ResourceGroupName $resourceGroupName `

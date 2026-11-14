@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzRedisEnterpriseCacheAccessPolicyAssignment
 
 ## SYNOPSIS
-Creates or updates a particular access policy assignment for a database
+Create a particular access policy assignment for a database
 
 ## SYNTAX
 
@@ -277,6 +277,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -350,4 +351,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

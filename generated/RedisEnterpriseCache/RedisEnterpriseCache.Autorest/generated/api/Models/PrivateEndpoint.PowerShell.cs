@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PowerShell;
 
-    /// <summary>The Private Endpoint resource.</summary>
+    /// <summary>The private endpoint resource.</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointTypeConverter))]
     public partial class PrivateEndpoint
     {
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             return ToJsonString();
         }
     }
-    /// The Private Endpoint resource.
+    /// The private endpoint resource.
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointTypeConverter))]
     public partial interface IPrivateEndpoint
 

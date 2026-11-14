@@ -38,7 +38,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="exportPolicy">Set of export policy rules
         /// </param>
 
-        /// <param name="protocolTypes">Set of protocol types, default NFSv3, CIFS for SMB protocol
+        /// <param name="protocolTypes">Specify the protocol types for the volume. Supported values are NFSv3,
+        /// NFSv4.1, and CIFS. For SMB volumes, specify CIFS.
+        /// The value SMB isn&#39;t supported in the protocolTypes property. Default: NFSv3
         /// </param>
 
         /// <param name="throughputMibps">Maximum throughput in MiB/s that can be achieved by this volume and this
@@ -157,7 +159,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public VolumePatchPropertiesExportPolicy ExportPolicy {get; set; }
 
         /// <summary>
-        /// Gets or sets set of protocol types, default NFSv3, CIFS for SMB protocol
+        /// Gets or sets specify the protocol types for the volume. Supported values
+        /// are NFSv3, NFSv4.1, and CIFS. For SMB volumes, specify CIFS.
+        /// The value SMB isn&#39;t supported in the protocolTypes property. Default: NFSv3
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protocolTypes")]
         public System.Collections.Generic.IList<string> ProtocolTypes {get; set; }

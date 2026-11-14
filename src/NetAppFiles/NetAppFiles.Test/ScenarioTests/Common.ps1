@@ -12,13 +12,19 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Use the browser-authenticated token cache for headless live recordings.
+if ($env:AZURE_TEST_MODE -eq "Record")
+{
+    Update-AzConfig -EnableLoginByWam $false -Scope Process | Out-Null
+}
+
 <#
 .SYNOPSIS
 Gets valid resource group name
 #>
 function Get-ResourceGroupName
 {
-    return getAssetName
+    return getAssetName -prefix ("anfrec" + [guid]::NewGuid().ToString("N").Substring(0, 12))
 }
 
 <#
@@ -127,5 +133,5 @@ Cleans the created resource groups
 #>
 function Clean-ResourceGroup($rgname)
 {
-	Remove-AzureRmResourceGroup -Name $rgname -Force
+	Remove-AzureRmResourceGroup -Name $rgname -Force -ErrorAction Stop
 }

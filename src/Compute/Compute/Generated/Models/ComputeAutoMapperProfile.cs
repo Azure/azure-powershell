@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.Snapshot, TO.PSSnapshotList>();
                 cfg.CreateMap<TO.PSSnapshotList, TO.PSSnapshot>();
                 cfg.CreateMap<TO.PSSnapshot, TO.PSSnapshotList>();
+                cfg.CreateMap<FROM.ImmutabilityPolicy, TO.PSSnapshotImmutabilityPolicy>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>()
@@ -158,7 +159,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.ResourceSku, TO.PSResourceSku>();
                 cfg.CreateMap<TO.PSResourceSku, FROM.ResourceSku>();
                 cfg.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
-                cfg.CreateMap<TO.PSSnapshot, FROM.Snapshot>();
+                cfg.CreateMap<TO.PSSnapshot, FROM.Snapshot>()
+                    .ForMember(c => c.ImmutabilityPolicy, o => o.Ignore());
                 cfg.CreateMap<FROM.RunCommandDocument, TO.PSRunCommandDocument>();
                 cfg.CreateMap<TO.PSRunCommandDocument, FROM.RunCommandDocument>();
                 cfg.CreateMap<FROM.RunCommandDocumentBase, TO.PSRunCommandDocumentBase>();

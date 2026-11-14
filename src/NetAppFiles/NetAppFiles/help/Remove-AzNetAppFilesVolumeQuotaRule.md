@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeObject
-The volume object containing the subvolume to remove
+The volume object containing the quota rule to remove
 
 ```yaml
 Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume

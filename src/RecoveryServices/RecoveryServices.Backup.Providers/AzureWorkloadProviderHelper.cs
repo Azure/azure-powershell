@@ -660,9 +660,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 List<SubProtectionPolicy> filteredSubProtectionPolicyLog = GetSubProtectionPolicyOfType(subProtectionPolicies, "Log");
                 List<SubProtectionPolicy> filteredSubProtectionPolicyDifferential = GetSubProtectionPolicyOfType(subProtectionPolicies, "Differential");
                 List<SubProtectionPolicy> filteredSubProtectionPolicyIncremental = GetSubProtectionPolicyOfType(subProtectionPolicies, "Incremental");
-                List<SubProtectionPolicy> filteredSubProtectionPolicyFull = GetSubProtectionPolicyOfType(subProtectionPolicies, "Full");
+                List<SubProtectionPolicy> filteredSubProtectionPolicyFull = subProtectionPolicies
+                    .Where(subPolicy => subPolicy.PolicyType == "Full" || subPolicy.PolicyType == "SnapshotFull")
+                    .ToList();
 
-                if (filteredSubProtectionPolicyLog != null && filteredSubProtectionPolicyLog[0] != null)
+                if (filteredSubProtectionPolicyLog.Count > 0)
                 {
                     ServiceClientModel.LogSchedulePolicy logPolicy = (ServiceClientModel.LogSchedulePolicy)(filteredSubProtectionPolicyLog[0].SchedulePolicy);
                     
@@ -671,7 +673,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         rpoTime = TimeSpan.FromMinutes((int)logPolicy.ScheduleFrequencyInMins).Ticks;
                     }
                 }
-                else if (filteredSubProtectionPolicyFull != null && filteredSubProtectionPolicyFull[0] != null && ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyFull[0].SchedulePolicy)).ScheduleRunFrequency.ToLower() == "daily")
+                else if (filteredSubProtectionPolicyFull.Count > 0 && ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyFull[0].SchedulePolicy)).ScheduleRunFrequency.ToLower() == "daily")
                 {
                     rpoTime = (TimeSpan.FromHours(hoursInOneDay)).Ticks;
                 }
@@ -679,21 +681,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     System.Collections.Generic.List<ServiceClientModel.DayOfWeek?> combinedScheduleRunDays = new List<ServiceClientModel.DayOfWeek?>();
 
-                    if(filteredSubProtectionPolicyFull != null && filteredSubProtectionPolicyFull[0] != null)
+                    if (filteredSubProtectionPolicyFull.Count > 0)
                     {
                         var scheduleRunDaysFull = ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyFull[0].SchedulePolicy)).ScheduleRunDays;
                         combinedScheduleRunDays.AddRange(scheduleRunDaysFull); 
                     }
-                    if (filteredSubProtectionPolicyDifferential != null && filteredSubProtectionPolicyDifferential[0] != null)
+                    if (filteredSubProtectionPolicyDifferential.Count > 0)
                     {
                         var scheduleRunDaysDifferential = ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyDifferential[0].SchedulePolicy)).ScheduleRunDays;
                         combinedScheduleRunDays.AddRange(scheduleRunDaysDifferential);
                     }
-                    if (filteredSubProtectionPolicyIncremental != null && filteredSubProtectionPolicyIncremental[0] != null)
+                    if (filteredSubProtectionPolicyIncremental.Count > 0)
                     {
                         var scheduleRunDaysIncremental = ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyIncremental[0].SchedulePolicy)).ScheduleRunDays;
                         combinedScheduleRunDays.AddRange(scheduleRunDaysIncremental);
                     }
+                    rpoTime = GetRpoForWeeklySchedule(combinedScheduleRunDays);
                 }
             }
             else if (policy.Properties.GetType() == typeof(ServiceClientModel.AzureFileShareProtectionPolicy))
@@ -972,6 +975,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             bool isReadyForMove = (bool)ProviderData[RecoveryPointParams.IsReadyForMove];
             RecoveryPointTier tier = (RecoveryPointTier)ProviderData[RecoveryPointParams.Tier];
 
+            bool getLatestRpOnly = ProviderData.ContainsKey(RecoveryPointParams.GetLatestRPOnly) ?
+                (bool)ProviderData[RecoveryPointParams.GetLatestRPOnly] : false;
+            string baseSnapshotRpId = ProviderData.ContainsKey(RecoveryPointParams.BaseSnapshotRPId) ?
+                (string)ProviderData[RecoveryPointParams.BaseSnapshotRPId] : null;
+            string baseRpDatasourceId = ProviderData.ContainsKey(RecoveryPointParams.BaseRPDatasourceId) ?
+                (string)ProviderData[RecoveryPointParams.BaseRPDatasourceId] : null;
+            string recoveryModeFilter = ProviderData.ContainsKey(RecoveryPointParams.RecoveryMode) ?
+                (string)ProviderData[RecoveryPointParams.RecoveryMode] : null;
+
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
@@ -986,6 +998,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     StartDate = startDate,
                     EndDate = endDate,
+                    GetLatestRpOnly = getLatestRpOnly ? (bool?)true : null,
+                    BaseSnapshotRpId = baseSnapshotRpId,
+                    BaseRpDatasourceId = baseRpDatasourceId,
+                    RecoveryMode = recoveryModeFilter,
                 });
             }
             else
@@ -995,7 +1011,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     StartDate = startDate,
                     EndDate = endDate,
                     RestorePointQueryType = restorePointQueryType,
-                    ExtendedInfo = true
+                    ExtendedInfo = true,
+                    GetLatestRpOnly = getLatestRpOnly ? (bool?)true : null,
+                    BaseSnapshotRpId = baseSnapshotRpId,
+                    BaseRpDatasourceId = baseRpDatasourceId,
+                    RecoveryMode = recoveryModeFilter,
                 });
             }
             
@@ -1073,6 +1093,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
             string restorePointQueryType = (string)ProviderData[RecoveryPointParams.RestorePointQueryType];
             bool secondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            string baseSnapshotRpId = ProviderData.ContainsKey(RecoveryPointParams.BaseSnapshotRPId) ?
+                (string)ProviderData[RecoveryPointParams.BaseSnapshotRPId] : null;
+            string baseRpDatasourceId = ProviderData.ContainsKey(RecoveryPointParams.BaseRPDatasourceId) ?
+                (string)ProviderData[RecoveryPointParams.BaseRPDatasourceId] : null;
+            string recoveryModeFilter = ProviderData.ContainsKey(RecoveryPointParams.RecoveryMode) ?
+                (string)ProviderData[RecoveryPointParams.RecoveryMode] : null;
 
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
@@ -1086,7 +1112,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ExtendedInfo = true,
                 StartDate = startDate,
                 EndDate = endDate,
-                RestorePointQueryType = restorePointQueryType
+                RestorePointQueryType = restorePointQueryType,
+                BaseSnapshotRpId = baseSnapshotRpId,
+                BaseRpDatasourceId = baseRpDatasourceId,
+                RecoveryMode = recoveryModeFilter
             });
 
             List<PointInTimeBase> timeRanges = new List<PointInTimeBase>();

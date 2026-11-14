@@ -16,6 +16,7 @@ Modifies a Storage account.
 ### StorageEncryption (Default)
 ```
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-PublishIpv6Endpoint <Boolean>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
@@ -23,44 +24,11 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-EnableSmbOAuth <Boolean>]
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
- [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>]
- [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
- [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### KeyvaultEncryption
-```
-Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
- [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> [-KeyVersion <String>]
- -KeyVaultUri <String> [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
- [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
- [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-EnableSmbOAuth <Boolean>]
- [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
- [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>]
- [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
- [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AzureActiveDirectoryKerberosForFile
-```
-Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
- [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-EnableLargeFileShare]
- [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
- [-EnableAzureActiveDirectoryKerberosForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
- [-ActiveDirectoryDomainGuid <String>] [-EnableSmbOAuth <Boolean>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
+ [-AllowSharedKeyAccessForBlob <Boolean>] [-AllowSharedKeyAccessForFile <Boolean>]
+ [-AllowSharedKeyAccessForQueue <Boolean>] [-AllowSharedKeyAccessForTable <Boolean>]
+ [-AllowCrossTenantDelegationSas <Boolean>] [-RequireUserBoundUserDelegationSas <Boolean>]
+ [-RequireUserBoundUserDelegationSasAction <String>] [-AllowBlobAccessPoints <Boolean>]
+ [-TurboTierStatus <String>] [-TurboTierTargetPercent <Int32>] [-SasExpirationPeriod <TimeSpan>]
  [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
@@ -69,9 +37,59 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### KeyvaultEncryption
+```
+Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-PublishIpv6Endpoint <Boolean>]
+ [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> [-KeyVersion <String>]
+ -KeyVaultUri <String> [-AssignIdentity] [-UserAssignedIdentityId <String>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
+ [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-EnableSmbOAuth <Boolean>]
+ [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
+ [-AllowSharedKeyAccessForBlob <Boolean>] [-AllowSharedKeyAccessForFile <Boolean>]
+ [-AllowSharedKeyAccessForQueue <Boolean>] [-AllowSharedKeyAccessForTable <Boolean>]
+ [-AllowCrossTenantDelegationSas <Boolean>] [-RequireUserBoundUserDelegationSas <Boolean>]
+ [-RequireUserBoundUserDelegationSasAction <String>] [-AllowBlobAccessPoints <Boolean>]
+ [-TurboTierStatus <String>] [-TurboTierTargetPercent <Int32>] [-SasExpirationPeriod <TimeSpan>]
+ [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
+ [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
+ [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureActiveDirectoryKerberosForFile
+```
+Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-PublishIpv6Endpoint <Boolean>]
+ [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-EnableLargeFileShare]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ [-EnableAzureActiveDirectoryKerberosForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
+ [-ActiveDirectoryDomainGuid <String>] [-EnableSmbOAuth <Boolean>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AllowSharedKeyAccessForBlob <Boolean>]
+ [-AllowSharedKeyAccessForFile <Boolean>] [-AllowSharedKeyAccessForQueue <Boolean>]
+ [-AllowSharedKeyAccessForTable <Boolean>] [-AllowCrossTenantDelegationSas <Boolean>]
+ [-RequireUserBoundUserDelegationSas <Boolean>] [-RequireUserBoundUserDelegationSasAction <String>]
+ [-AllowBlobAccessPoints <Boolean>] [-TurboTierStatus <String>] [-TurboTierTargetPercent <Int32>]
+ [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
+ [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ActiveDirectoryDomainServicesForFile
 ```
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-PublishIpv6Endpoint <Boolean>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
@@ -82,11 +100,15 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
  [-ActiveDirectoryAzureStorageSid <String>] [-ActiveDirectorySamAccountName <String>]
  [-ActiveDirectoryAccountType <String>] [-EnableSmbOAuth <Boolean>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
- [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AllowSharedKeyAccessForBlob <Boolean>]
+ [-AllowSharedKeyAccessForFile <Boolean>] [-AllowSharedKeyAccessForQueue <Boolean>]
+ [-AllowSharedKeyAccessForTable <Boolean>] [-AllowCrossTenantDelegationSas <Boolean>]
+ [-RequireUserBoundUserDelegationSas <Boolean>] [-RequireUserBoundUserDelegationSasAction <String>]
+ [-AllowBlobAccessPoints <Boolean>] [-TurboTierStatus <String>] [-TurboTierTargetPercent <Int32>]
+ [-SasExpirationPeriod <TimeSpan>] [-SasExpirationAction <String>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
+ [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
  [-EnableBlobGeoPriorityReplication <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -495,6 +517,34 @@ $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "myst
 
 This command updates a Storage account by setting AllowedCopyScope to All, which allows copy operations from any source.
 
+### Example 26: Change one service-specific authorization setting without resetting other policies
+```powershell
+Set-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -AllowSharedKeyAccessForBlob $false -RequireUserBoundUserDelegationSas $false -TurboTierTargetPercent 30
+```
+
+Disables Blob Shared Key authorization and the user-bound delegation signature requirement, and changes the Turbo Tier target.
+The cmdlet preserves other services' Shared Key settings, the existing SAS expiration period and enforcement action, and the existing Turbo Tier status.
+If the account does not already have a SAS expiration policy, also specify SasExpirationPeriod.
+
+### Example 27: Enable Blob Access Points
+```powershell
+Set-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -AllowBlobAccessPoints $true
+```
+
+Enables Blob Access Points without changing other existing collaboration policy settings.
+
+### Example 28: Enable or disable IPv6 endpoint publishing
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -PublishIpv6Endpoint $true
+$account.DualStackEndpointPreference.PublishIpv6Endpoint
+
+Set-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -PublishIpv6Endpoint $false
+```
+
+Enables IPv6 storage endpoint publishing, reads the updated preference, and then disables publishing.
+The subscription must have access to the IPv6 endpoint publishing feature.
+Updates that omit PublishIpv6Endpoint leave this setting unchanged.
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -638,8 +688,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowBlobAccessPoints
+Allow Blob Access Points on this storage account without changing other collaboration settings.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AllowBlobPublicAccess
 Allow or disallow anonymous access to all blobs or containers in the storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowCrossTenantDelegationSas
+Allow user delegation shared access signatures from another Microsoft Entra tenant.
 
 ```yaml
 Type: System.Boolean
@@ -685,6 +765,66 @@ Accept wildcard characters: False
 
 ### -AllowSharedKeyAccess
 Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Microsoft Entra ID. The default value is null, which is equivalent to true.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowSharedKeyAccessForBlob
+Allow Shared Key authorization for the Blob service.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowSharedKeyAccessForFile
+Allow Shared Key authorization for the File service.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowSharedKeyAccessForQueue
+Allow Shared Key authorization for the Queue service.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowSharedKeyAccessForTable
+Allow Shared Key authorization for the Table service.
 
 ```yaml
 Type: System.Boolean
@@ -1163,6 +1303,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublishIpv6Endpoint
+Specifies whether IPv6 storage endpoints are published. Set to true to enable publishing or false to disable it.
+When omitted, the property is not sent and the existing setting is unchanged.
+The subscription must have access to the IPv6 endpoint publishing feature.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublishMicrosoftEndpoint
 Indicates whether microsoft routing storage endpoints are to be published
 
@@ -1170,6 +1327,37 @@ Indicates whether microsoft routing storage endpoints are to be published
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequireUserBoundUserDelegationSas
+Require user-bound user delegation shared access signatures. Existing SAS expiration settings are preserved.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequireUserBoundUserDelegationSasAction
+Action when a user delegation shared access signature is not user-bound: None, Log, or Block.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, Log, Block
 
 Required: False
 Position: Named
@@ -1299,6 +1487,38 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TurboTierStatus
+Enable or disable Turbo Tier on the storage account.
+When disabling, the existing target percentage is not sent.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TurboTierTargetPercent
+Turbo Tier target fill percentage, from 10 to 100. Other Turbo Tier settings are preserved.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

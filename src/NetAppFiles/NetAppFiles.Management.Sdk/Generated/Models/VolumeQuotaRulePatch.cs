@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="provisioningState">Gets the status of the VolumeQuotaRule at the time the operation was
         /// called.
-        /// Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;,
-        /// &#39;Deleting&#39;, &#39;Moving&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Accepted&#39;,
+        /// &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;</param>
 
         /// <param name="quotaSizeInKiBs">Size of quota
         /// </param>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets gets the status of the VolumeQuotaRule at the time the operation was
-        /// called. Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;
+        /// called. Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }

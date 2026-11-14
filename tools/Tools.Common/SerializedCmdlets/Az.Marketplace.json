@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Marketplace",
-  "ModuleVersion": "0.6.0",
+  "ModuleVersion": "1.0.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore",
             "Name": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore.PSPrivateStore",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore.PSPrivateStore, Microsoft.Azure.PowerShell.Cmdlets.Marketplace, Version=0.5.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore.PSPrivateStore, Microsoft.Azure.PowerShell.Cmdlets.Marketplace, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Availability": "System.String",
               "PrivateStoreId": "System.String",
@@ -160,7 +160,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore",
             "Name": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore.PSPrivateStoreOffer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore.PSPrivateStoreOffer, Microsoft.Azure.PowerShell.Cmdlets.Marketplace, Version=0.5.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore.PSPrivateStoreOffer, Microsoft.Azure.PowerShell.Cmdlets.Marketplace, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SpecificPlanIdsLimitation": "System.Collections.Generic.IList`1[System.String]",
               "UniqueOfferId": "System.String",
@@ -608,7 +608,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore",
             "Name": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore.PSPrivateStoreOffer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore.PSPrivateStoreOffer, Microsoft.Azure.PowerShell.Cmdlets.Marketplace, Version=0.5.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Marketplace.Models.PrivateStore.PSPrivateStoreOffer, Microsoft.Azure.PowerShell.Cmdlets.Marketplace, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SpecificPlanIdsLimitation": "System.Collections.Generic.IList`1[System.String]",
               "UniqueOfferId": "System.String",

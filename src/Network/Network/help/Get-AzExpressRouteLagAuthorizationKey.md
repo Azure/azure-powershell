@@ -15,13 +15,13 @@ Gets the key for an ExpressRoute link aggregation group authorization.
 ### ByName (Default)
 ```
 Get-AzExpressRouteLagAuthorizationKey -ResourceGroupName <String> -ExpressRouteLagName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObject
 ```
 Get-AzExpressRouteLagAuthorizationKey -ExpressRouteLagObject <PSExpressRouteLag> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,21 +93,6 @@ Parameter Sets: (All)
 Aliases: AuthorizationName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

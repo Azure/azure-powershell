@@ -22,5 +22,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public const string Incremental = "Incremental";
         public const string SnapshotFull = "SnapshotFull";
         public const string SnapshotCopyOnlyFull = "SnapshotCopyOnlyFull";
+        /// <summary>
+        /// Snapshot restore point type
+        /// </summary>
+        public const string Snapshot = "Snapshot";
+        /// <summary>
+        /// Full, differential, and snapshot restore point types
+        /// </summary>
+        public const string FullDifferentialAndSnapshot = "FullDifferentialAndSnapshot";
     }
 }

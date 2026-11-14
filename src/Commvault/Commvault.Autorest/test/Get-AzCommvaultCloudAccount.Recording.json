@@ -1,0 +1,227 @@
+{
+  "Get-AzCommvaultCloudAccount+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Commvault.ContentStore/cloudAccounts?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Commvault.ContentStore/cloudAccounts?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "db73b466-567d-4ad7-a13c-90924d539e03" ],
+        "CommandName": [ "Get-AzCommvaultCloudAccount" ],
+        "FullCommandName": [ "Get-AzCommvaultCloudAccount_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "6e81adf4-f281-4e7b-bc4e-e75accea2781" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "f76869f0-c1df-4923-84d0-4e634e143d49" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "f76869f0-c1df-4923-84d0-4e634e143d49" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20261029T121428Z:f76869f0-c1df-4923-84d0-4e634e143d49" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EF8258D1832A4CEB8E9F0E0E32CDDE96 Ref B: PNQ241100403023 Ref C: 2026-10-29T12:14:25Z" ],
+        "Date": [ "Thu, 29 Oct 2026 12:14:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1548" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3\",\"name\":\"CCA-Test-Scus-11082026-3\",\"type\":\"commvault.contentstore/cloudaccounts\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-11T09:28:23.2590391Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-15T07:05:07.44028Z\"},\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/commvault-rg-test-14052026/providers/Microsoft.ManagedIdentity/userAssignedIdentities/CommvaultMI-2\":{\"clientId\":\"66666666-6666-6666-6666-666666666666\",\"principalId\":\"55555555-5555-5555-5555-555555555555\"}}},\"properties\":{\"marketplace\":{\"subscriptionId\":\"77777777-7777-7777-7777-777777777777\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"commvault\",\"offerId\":\"commvault-cloud-azure-native-service\",\"planId\":\"commvault-cloud-native-service-v2\",\"planName\":\"Commvault Cloud Azure Native Service v2\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"Test User\",\"lastName\":\"Test User\",\"emailAddress\":\"user@contoso.com\"},\"provisioningState\":\"Succeeded\",\"ssoUrl\":\"https://commvault.example.com/identity/initOpenIdAuthFlow.do?clientId=88888888-8888-8888-8888-888888888888\u0026tid=11111111-1111-1111-1111-111111111111\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzCommvaultCloudAccount+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "25d142c3-7ff0-453d-b871-ae6a209b44a4" ],
+        "CommandName": [ "Get-AzCommvaultCloudAccount" ],
+        "FullCommandName": [ "Get-AzCommvaultCloudAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"96005a55-0000-0300-0000-6ad07b360000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a07d09ac-b96d-4b32-a99a-5e4d9b723f45" ],
+        "x-ms-correlation-request-id": [ "88f9be51-3d7d-4f93-a1c4-5c16bf57bdca" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T121429Z:88f9be51-3d7d-4f93-a1c4-5c16bf57bdca" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A36C9D9877894773B28606253072CC5B Ref B: PNQ241100403023 Ref C: 2026-10-29T12:14:28Z" ],
+        "Date": [ "Thu, 29 Oct 2026 12:14:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3\",\"name\":\"CCA-Test-Scus-11082026-3\",\"type\":\"commvault.contentstore/cloudaccounts\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-11T09:28:23.2590391Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-15T07:05:07.44028Z\"},\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/commvault-rg-test-14052026/providers/Microsoft.ManagedIdentity/userAssignedIdentities/CommvaultMI-2\":{\"clientId\":\"66666666-6666-6666-6666-666666666666\",\"principalId\":\"55555555-5555-5555-5555-555555555555\"}}},\"properties\":{\"marketplace\":{\"subscriptionId\":\"77777777-7777-7777-7777-777777777777\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"commvault\",\"offerId\":\"commvault-cloud-azure-native-service\",\"planId\":\"commvault-cloud-native-service-v2\",\"planName\":\"Commvault Cloud Azure Native Service v2\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"Test User\",\"lastName\":\"Test User\",\"emailAddress\":\"user@contoso.com\"},\"provisioningState\":\"Succeeded\",\"ssoUrl\":\"https://commvault.example.com/identity/initOpenIdAuthFlow.do?clientId=88888888-8888-8888-8888-888888888888\u0026tid=11111111-1111-1111-1111-111111111111\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzCommvaultCloudAccount+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "71c3b4ba-266d-4f06-9b58-fe33d0765f59" ],
+        "CommandName": [ "Get-AzCommvaultCloudAccount" ],
+        "FullCommandName": [ "Get-AzCommvaultCloudAccount_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "b324b4b2-bed2-43f1-b668-b7207a7dc1f7" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "df760cc6-7147-4539-8e57-d75cc28bb251" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "df760cc6-7147-4539-8e57-d75cc28bb251" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T121430Z:df760cc6-7147-4539-8e57-d75cc28bb251" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 57B12CBE36DD43C39001F52AFEF7209A Ref B: PNQ241100403023 Ref C: 2026-10-29T12:14:29Z" ],
+        "Date": [ "Thu, 29 Oct 2026 12:14:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1548" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3\",\"name\":\"CCA-Test-Scus-11082026-3\",\"type\":\"commvault.contentstore/cloudaccounts\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-11T09:28:23.2590391Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-15T07:05:07.44028Z\"},\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/commvault-rg-test-14052026/providers/Microsoft.ManagedIdentity/userAssignedIdentities/CommvaultMI-2\":{\"clientId\":\"66666666-6666-6666-6666-666666666666\",\"principalId\":\"55555555-5555-5555-5555-555555555555\"}}},\"properties\":{\"marketplace\":{\"subscriptionId\":\"77777777-7777-7777-7777-777777777777\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"commvault\",\"offerId\":\"commvault-cloud-azure-native-service\",\"planId\":\"commvault-cloud-native-service-v2\",\"planName\":\"Commvault Cloud Azure Native Service v2\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"Test User\",\"lastName\":\"Test User\",\"emailAddress\":\"user@contoso.com\"},\"provisioningState\":\"Succeeded\",\"ssoUrl\":\"https://commvault.example.com/identity/initOpenIdAuthFlow.do?clientId=88888888-8888-8888-8888-888888888888\u0026tid=11111111-1111-1111-1111-111111111111\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzCommvaultCloudAccount+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "97a6c0f0-343b-490c-b1b3-50ebc3c9d3c3" ],
+        "CommandName": [ "Get-AzCommvaultCloudAccount" ],
+        "FullCommandName": [ "Get-AzCommvaultCloudAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"96005a55-0000-0300-0000-6ad07b360000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "acf86108-cf42-45f1-828e-89bb76538e98" ],
+        "x-ms-correlation-request-id": [ "c8836690-7280-49fc-bf4a-831b121e1c36" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T121431Z:c8836690-7280-49fc-bf4a-831b121e1c36" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EEFBDEE386C245CD99E55DAA8E3D5088 Ref B: PNQ241100403023 Ref C: 2026-10-29T12:14:30Z" ],
+        "Date": [ "Thu, 29 Oct 2026 12:14:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3\",\"name\":\"CCA-Test-Scus-11082026-3\",\"type\":\"commvault.contentstore/cloudaccounts\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-11T09:28:23.2590391Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-15T07:05:07.44028Z\"},\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/commvault-rg-test-14052026/providers/Microsoft.ManagedIdentity/userAssignedIdentities/CommvaultMI-2\":{\"clientId\":\"66666666-6666-6666-6666-666666666666\",\"principalId\":\"55555555-5555-5555-5555-555555555555\"}}},\"properties\":{\"marketplace\":{\"subscriptionId\":\"77777777-7777-7777-7777-777777777777\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"commvault\",\"offerId\":\"commvault-cloud-azure-native-service\",\"planId\":\"commvault-cloud-native-service-v2\",\"planName\":\"Commvault Cloud Azure Native Service v2\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"Test User\",\"lastName\":\"Test User\",\"emailAddress\":\"user@contoso.com\"},\"provisioningState\":\"Succeeded\",\"ssoUrl\":\"https://commvault.example.com/identity/initOpenIdAuthFlow.do?clientId=88888888-8888-8888-8888-888888888888\u0026tid=11111111-1111-1111-1111-111111111111\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzCommvaultCloudAccount+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3?api-version=2026-09-30+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "4da9806d-2a1a-4279-90d3-4199edee3d87" ],
+        "CommandName": [ "Get-AzCommvaultCloudAccount" ],
+        "FullCommandName": [ "Get-AzCommvaultCloudAccount_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"96005a55-0000-0300-0000-6ad07b360000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "78f64d61-7962-49c1-a0b6-1d7ef7e75155" ],
+        "x-ms-correlation-request-id": [ "e203143c-7479-4c7b-ae80-faf07071d99b" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T121431Z:e203143c-7479-4c7b-ae80-faf07071d99b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AC6432E25F5F4EC9B73969791733CD65 Ref B: PNQ241100403023 Ref C: 2026-10-29T12:14:31Z" ],
+        "Date": [ "Thu, 29 Oct 2026 12:14:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3\",\"name\":\"CCA-Test-Scus-11082026-3\",\"type\":\"commvault.contentstore/cloudaccounts\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-08-11T09:28:23.2590391Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-15T07:05:07.44028Z\"},\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/commvault-rg-test-14052026/providers/Microsoft.ManagedIdentity/userAssignedIdentities/CommvaultMI-2\":{\"clientId\":\"66666666-6666-6666-6666-666666666666\",\"principalId\":\"55555555-5555-5555-5555-555555555555\"}}},\"properties\":{\"marketplace\":{\"subscriptionId\":\"77777777-7777-7777-7777-777777777777\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"commvault\",\"offerId\":\"commvault-cloud-azure-native-service\",\"planId\":\"commvault-cloud-native-service-v2\",\"planName\":\"Commvault Cloud Azure Native Service v2\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"Test User\",\"lastName\":\"Test User\",\"emailAddress\":\"user@contoso.com\"},\"provisioningState\":\"Succeeded\",\"ssoUrl\":\"https://commvault.example.com/identity/initOpenIdAuthFlow.do?clientId=88888888-8888-8888-8888-888888888888\u0026tid=11111111-1111-1111-1111-111111111111\"}}",
+      "isContentBase64": false
+    }
+  }
+}

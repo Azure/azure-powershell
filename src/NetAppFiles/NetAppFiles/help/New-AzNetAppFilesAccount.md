@@ -15,6 +15,7 @@ Creates a new Azure NetApp Files (ANF) account.
 ```
 New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
  [-EncryptionKeySource <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
  [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>]
  [-FederatedClientId <String>] [-NfsV4IdDomain <String>] [-Tag <Hashtable>]
@@ -43,7 +44,46 @@ ProvisioningState : Succeeded
 
 This command creates the new ANF account "MyAnfAccount".
 
+### Example 2: Create an account with LDAP configuration
+```powershell
+$ldap = @{
+    Domain = "example.com"
+    LdapServers = @("10.0.0.4", "10.0.0.5")
+    SecureLdapType = "None"
+    BindAuthenticationLevel = "Anonymous"
+    UserDN = "ou=users,dc=example,dc=com"
+    GroupDN = "ou=groups,dc=example,dc=com"
+}
+New-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -Location "westus2" -LdapConfiguration $ldap
+```
+
+Creates an account using the specified LDAP servers and search distinguished names. For encrypted transport, use `LdapOverTLS` and supply the certificate and DNS settings described below.
+
 ## PARAMETERS
+
+### -LdapConfiguration
+LDAP server, search, transport security, and bind authentication settings for the account. Accepts a PSNetAppFilesLdapConfiguration object or a hashtable with these properties:
+
+- `Domain`, `LdapServers`: LDAP domain and server IPv4 addresses.
+- `SecureLdapType`: `None` or `LdapOverTLS`.
+- `ServerCACertificate`, `CertificateCNHost`, `DnsServers`: Base64-encoded LDAP server CA certificate, certificate common-name host, and DNS server IPv4 addresses for LDAP over TLS.
+- `LdapPort`: LDAP port; the service defaults to 389.
+- `UserDN`, `GroupDN`, `NetGroupDN`: Distinguished names that override the base search distinguished name.
+- `BindAuthenticationLevel`: `Anonymous` or `Simple`.
+- `BindDN`: Distinguished name used to bind to the LDAP server.
+- `BindPasswordAkvConfig`: Nested hashtable or PSNetAppFilesBindPasswordAkvConfig object with `AzureKeyVaultUri`, `SecretName`, and `UserAssignedIdentity`, identifying the Key Vault secret containing the bind password and the identity used to access it. Do not provide the password itself.
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ActiveDirectory
 A hashtable array which represents the active directories

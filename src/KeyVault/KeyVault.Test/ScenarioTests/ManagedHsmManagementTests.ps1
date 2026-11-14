@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,19 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-# @NOTE: Replace with Object id of operator of tests (populate with own value)
-$administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
+# @NOTE: Placeholder object id used as the initial administrator. The HSMs are never activated, so it does not need to resolve to a real principal.
+$administrator = "a1b2c3d4-0000-4000-8000-000000000001"
 
-# @NOTE: Replace with sub Id that operator has access to (populate with own value):
-$subscriptionId = "f758ac53-3e63-4317-a956-0997793808d7"
+$subscriptionId = (Get-AzContext).Subscription.Id
 
-# @NOTE: need to create a resource group to assign the managed identity to (populate with own values):
-$manangedRgName = "yash-rg"
-$managedRgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "East US"
-$identityName = "yashManagedIdentity01"
+# @NOTE: Pre-existing user assigned identity used by the managed identity tests (populate with own values when re-recording):
+$manangedRgName = "mhsm-test"
+$identityName = "ps-kv-test-uami"
 $userAssignedIdentity = "/subscriptions/$subscriptionId/resourceGroups/$manangedRgName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName"
 
 # @NOTE: Run these commands locally with above vars set
-# New-AzResourceGroup -Name $manangedRgName -Location $managedRgLocation
-# New-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $identityName -Location $hsmLocation
+# New-AzResourceGroup -Name $manangedRgName -Location "East US"
+# New-AzUserAssignedIdentity -ResourceGroupName $manangedRgName -Name $identityName -Location "East US"
 
 <#
 .SYNOPSIS
@@ -80,20 +78,50 @@ function Test-ManagedHsmCRUD {
 
 <#
 .SYNOPSIS
+Tests creating a managed HSM with the Standard_B1v2 SKU.
+#>
+function Test-ManagedHsmWithStandardB1v2Sku {
+    $rgName = getAssetName
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $hsmName = getAssetName
+    $hsmLocation = "eastus2euap"
+
+    New-AzResourceGroup -Name $rgName -Location $rgLocation
+
+    try {
+        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -Sku StandardB1V2 -SoftDeleteRetentionInDays 7
+        Assert-AreEqual $hsmName $hsm.Name
+        Assert-AreEqual "StandardB1V2" $hsm.Sku
+
+        $got = Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName
+        Assert-AreEqual "StandardB1V2" $got.Sku
+    }
+
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force
+        Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new managed HSM with UserAssignedIdentity.
 #>
 function Test-NewManagedHsmWithManagedServiceIdentity{
-    Write-Verbose "Admin username: $administrator"
+    $rgName = getAssetName
+    $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $hsmName = getAssetName
     $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East Asia"
-    
+
+    New-AzResourceGroup -Name $rgName -Location $rgLocation
+
     try {
-        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $manangedRgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 7 -UserAssignedIdentity $userAssignedIdentity
+        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 7 -UserAssignedIdentity $userAssignedIdentity
         
         Assert-NotNull $hsm
         Assert-AreEqual $userAssignedIdentity $hsm.Identity.UserAssignedIdentities[0] "Could not update managed HSM with userAssignedIdentity"
     }finally{        
-      Remove-AzResourceGroup -Name $manangedRgName -Force
+      Remove-AzResourceGroup -Name $rgName -Force
       Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
     }
 }

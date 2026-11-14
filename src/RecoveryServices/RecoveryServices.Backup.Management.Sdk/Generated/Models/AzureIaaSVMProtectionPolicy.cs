@@ -48,6 +48,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="instantRpRetentionRangeInDays">Instant RP retention policy range in days
         /// </param>
 
+        /// <param name="instantAccessSnapshotEnabled">Specifies whether Instant Access snapshot is enabled for the policy. If
+        /// false or omitted,
+        /// instantAccessDurationMinutes is ignored and no Instant Access snapshot is
+        /// retained.
+        /// </param>
+
+        /// <param name="instantAccessDurationMinutes">Duration in minutes for which the Instant Access snapshot is retained, when
+        /// instantAccessSnapshotEnabled
+        /// is true. Must be between 60 and 300 minutes; defaults to 300 minutes if not
+        /// specified.
+        /// </param>
+
         /// <param name="timeZone">TimeZone optional input as string. For example: TimeZone = &#34;Pacific
         /// Standard Time&#34;.
         /// </param>
@@ -57,7 +69,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="snapshotConsistencyType">
         /// Possible values include: &#39;OnlyCrashConsistent&#39;</param>
-        public AzureIaaSVMProtectionPolicy(int? protectedItemsCount = default(int?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), InstantRPAdditionalDetails instantRpDetails = default(InstantRPAdditionalDetails), SchedulePolicy schedulePolicy = default(SchedulePolicy), RetentionPolicy retentionPolicy = default(RetentionPolicy), System.Collections.Generic.IDictionary<string, TieringPolicy> tieringPolicy = default(System.Collections.Generic.IDictionary<string, TieringPolicy>), int? instantRpRetentionRangeInDays = default(int?), string timeZone = default(string), string policyType = default(string), string snapshotConsistencyType = default(string))
+        public AzureIaaSVMProtectionPolicy(int? protectedItemsCount = default(int?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), InstantRPAdditionalDetails instantRpDetails = default(InstantRPAdditionalDetails), SchedulePolicy schedulePolicy = default(SchedulePolicy), RetentionPolicy retentionPolicy = default(RetentionPolicy), System.Collections.Generic.IDictionary<string, TieringPolicy> tieringPolicy = default(System.Collections.Generic.IDictionary<string, TieringPolicy>), int? instantRpRetentionRangeInDays = default(int?), bool? instantAccessSnapshotEnabled = default(bool?), int? instantAccessDurationMinutes = default(int?), string timeZone = default(string), string policyType = default(string), string snapshotConsistencyType = default(string))
 
         : base(protectedItemsCount, resourceGuardOperationRequests)
         {
@@ -66,6 +78,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.RetentionPolicy = retentionPolicy;
             this.TieringPolicy = tieringPolicy;
             this.InstantRpRetentionRangeInDays = instantRpRetentionRangeInDays;
+            this.InstantAccessSnapshotEnabled = instantAccessSnapshotEnabled;
+            this.InstantAccessDurationMinutes = instantAccessDurationMinutes;
             this.TimeZone = timeZone;
             this.PolicyType = policyType;
             this.SnapshotConsistencyType = snapshotConsistencyType;
@@ -112,6 +126,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public int? InstantRpRetentionRangeInDays {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies whether Instant Access snapshot is enabled for the
+        /// policy. If false or omitted,
+        /// instantAccessDurationMinutes is ignored and no Instant Access snapshot is
+        /// retained.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "instantAccessSnapshotEnabled")]
+        public bool? InstantAccessSnapshotEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets duration in minutes for which the Instant Access snapshot is
+        /// retained, when instantAccessSnapshotEnabled
+        /// is true. Must be between 60 and 300 minutes; defaults to 300 minutes if not
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "instantAccessDurationMinutes")]
+        public int? InstantAccessDurationMinutes {get; set; }
+
+        /// <summary>
         /// Gets or sets timeZone optional input as string. For example: TimeZone =
         /// &#34;Pacific Standard Time&#34;.
         /// </summary>
@@ -129,5 +161,32 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotConsistencyType")]
         public string SnapshotConsistencyType {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+            if (this.InstantAccessDurationMinutes != null)
+            {
+                if (this.InstantAccessDurationMinutes > 300)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "InstantAccessDurationMinutes", 300);
+                }
+                if (this.InstantAccessDurationMinutes < 60)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "InstantAccessDurationMinutes", 60);
+                }
+            }
+
+
+
+        }
     }
 }

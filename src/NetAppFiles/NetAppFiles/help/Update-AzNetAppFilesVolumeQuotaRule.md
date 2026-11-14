@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF Subvolume
+The name of the ANF volume quota rule
 
 ```yaml
 Type: System.String
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeObject
-The volume object containing the subvolume to return
+The volume object containing the quota rule to update
 
 ```yaml
 Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume

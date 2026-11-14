@@ -38,7 +38,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="fullyQualifiedDomainNames">FQDN for outbound rules
         /// </param>
-        public NspAccessRuleProperties(string direction = default(string), System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<NspAccessRulePropertiesSubscriptionsItem> subscriptions = default(System.Collections.Generic.IList<NspAccessRulePropertiesSubscriptionsItem>), System.Collections.Generic.IList<NetworkSecurityPerimeter> networkSecurityPerimeters = default(System.Collections.Generic.IList<NetworkSecurityPerimeter>), System.Collections.Generic.IList<string> fullyQualifiedDomainNames = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="serviceTags">Service Tags for inbound rules
+        /// </param>
+        public NspAccessRuleProperties(string direction = default(string), System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<NspAccessRulePropertiesSubscriptionsItem> subscriptions = default(System.Collections.Generic.IList<NspAccessRulePropertiesSubscriptionsItem>), System.Collections.Generic.IList<NetworkSecurityPerimeter> networkSecurityPerimeters = default(System.Collections.Generic.IList<NetworkSecurityPerimeter>), System.Collections.Generic.IList<string> fullyQualifiedDomainNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> serviceTags = default(System.Collections.Generic.IList<string>))
 
         {
             this.Direction = direction;
@@ -46,6 +49,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.Subscriptions = subscriptions;
             this.NetworkSecurityPerimeters = networkSecurityPerimeters;
             this.FullyQualifiedDomainNames = fullyQualifiedDomainNames;
+            this.ServiceTags = serviceTags;
             CustomInit();
         }
 
@@ -84,5 +88,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "fullyQualifiedDomainNames")]
         public System.Collections.Generic.IList<string> FullyQualifiedDomainNames {get; private set; }
+
+        /// <summary>
+        /// Gets or sets service Tags for inbound rules
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceTags")]
+        public System.Collections.Generic.IList<string> ServiceTags {get; set; }
     }
 }

@@ -48,6 +48,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public bool PerSiteScaling { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enable or disable asynchronous scaling when there are insufficient workers to scale synchronously. Requires a dedicated App Service plan.")]
+        public bool? AsyncScalingEnabled { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
@@ -92,6 +95,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
             {
                 AppServicePlan.Sku.Size = AppServicePlan.Sku.Name;
                 AppServicePlan.Sku.Family = AppServicePlan.Sku.Name.Substring(0, 1);
+            }
+
+            if (AsyncScalingEnabled.HasValue)
+            {
+                AppServicePlan.AsyncScalingEnabled = AsyncScalingEnabled.Value;
             }
 
             if (AppServicePlan.IsCustomMode == true && AppServicePlan.PerSiteScaling == true)

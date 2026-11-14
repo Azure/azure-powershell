@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     providerType = ServiceClientModel.BackupManagementType.AzureStorage.ToString();
                     break;
                 case CmdletModel.WorkloadType.MSSQL:
+                case CmdletModel.WorkloadType.MSSQLInstance:
                     providerType = ServiceClientModel.BackupManagementType.AzureWorkload.ToString();
                     break;
                 default:
@@ -360,6 +361,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     break;
                 case CmdletModel.WorkloadType.MSSQL:
                     serviceClientWorkloadType = ServiceClientModel.WorkloadType.SQLDataBase.ToString();
+                    break;
+                case CmdletModel.WorkloadType.MSSQLInstance:
+                    serviceClientWorkloadType = ServiceClientModel.WorkloadType.SQLInstance.ToString();
                     break;
                 case CmdletModel.WorkloadType.AzureFiles:
                     serviceClientWorkloadType = ServiceClientModel.WorkloadType.AzureFileShare.ToString(); // this might cause some issue later, monitor for failures.

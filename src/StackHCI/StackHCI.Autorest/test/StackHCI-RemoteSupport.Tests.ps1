@@ -37,6 +37,9 @@ Describe 'StackHCI Remote Support Functions' {
 
             $result = Assert-IsObservabilityStackPresent
             $result | Should -Be $true
+            Assert-MockCalled Get-SetupLoggingDetails -Times 1 -Scope It -ParameterFilter {
+                $newSession -eq $false
+            }
         }
 
         It 'Should return false when RemoteSupportAgent service does not exist' {
@@ -343,26 +346,71 @@ Describe 'StackHCI Remote Support Functions' {
     }
 
     Context 'Get-AzStackHCILogsDirectory' {
-        It 'Should return logs directory path from helper' {
-            $mockSession = New-MockObject -Type 'System.Management.Automation.Runspaces.PSSession'
-            Mock New-PSSession { return $mockSession }
+        It 'Should use the current process for local invocation' {
+            Mock New-PSSession { }
             Mock Confirm-UserAcknowledgmentToUpgradeOS { }
             Mock Get-LogsDirectoryHelper { return 'C:\ProgramData\AzureStackHCI' }
             Mock Remove-PSSession { }
 
             $result = Get-AzStackHCILogsDirectory 6>&1
             $result | Should -BeLike '*C:\ProgramData\AzureStackHCI*'
+            Assert-MockCalled New-PSSession -Times 0 -Exactly -Scope It
+            Assert-MockCalled Confirm-UserAcknowledgmentToUpgradeOS -Times 1 -Exactly -Scope It -ParameterFilter {
+                $null -eq $ClusterNodeSession
+            }
+            Assert-MockCalled Get-LogsDirectoryHelper -Times 1 -Exactly -Scope It -ParameterFilter {
+                $null -eq $ClusterNodeSession
+            }
+            Assert-MockCalled Remove-PSSession -Times 0 -Exactly -Scope It
         }
 
-        It 'Should fallback to PWD when helper returns empty' {
-            $mockSession = New-MockObject -Type 'System.Management.Automation.Runspaces.PSSession'
-            Mock New-PSSession { return $mockSession }
+        It 'Should use local fallback paths when the helper returns empty' {
+            Mock New-PSSession { }
             Mock Confirm-UserAcknowledgmentToUpgradeOS { }
             Mock Get-LogsDirectoryHelper { return '' }
             Mock Remove-PSSession { }
 
             $result = Get-AzStackHCILogsDirectory 6>&1
             $result | Should -BeLike '*Logs directory*'
+            $result | Should -Contain "HCI Arc Enablement Logs directory path: $env:windir\Tasks\ArcForServers"
+            $result | Should -Contain "HCI Registration Logs directory path: $($PWD.Path)"
+            Assert-MockCalled New-PSSession -Times 0 -Exactly -Scope It
+            Assert-MockCalled Confirm-UserAcknowledgmentToUpgradeOS -Times 1 -Exactly -Scope It -ParameterFilter {
+                $null -eq $ClusterNodeSession
+            }
+            Assert-MockCalled Get-LogsDirectoryHelper -Times 1 -Exactly -Scope It -ParameterFilter {
+                $null -eq $ClusterNodeSession
+            }
+            Assert-MockCalled Remove-PSSession -Times 0 -Exactly -Scope It
+        }
+
+        It 'Should create and remove a session for remote invocation' {
+            $expectedSession = New-MockObject -Type 'System.Management.Automation.Runspaces.PSSession'
+            $expectedCredential = New-Object System.Management.Automation.PSCredential(
+                'contoso\admin',
+                (New-Object System.Security.SecureString)
+            )
+            Mock New-PSSession { return $expectedSession }
+            Mock Confirm-UserAcknowledgmentToUpgradeOS { }
+            Mock Get-LogsDirectoryHelper { return 'C:\ProgramData\AzureStackHCI' }
+            Mock Remove-PSSession { }
+
+            $result = Get-AzStackHCILogsDirectory -ComputerName 'node1' -Credential $expectedCredential 6>&1
+            $result | Should -BeLike '*C:\ProgramData\AzureStackHCI*'
+            Assert-MockCalled New-PSSession -Times 1 -Exactly -Scope It -ParameterFilter {
+                $ComputerName -eq 'node1' -and
+                    [object]::ReferenceEquals($Credential, $expectedCredential)
+            }
+            Assert-MockCalled Confirm-UserAcknowledgmentToUpgradeOS -Times 1 -Exactly -Scope It -ParameterFilter {
+                [object]::ReferenceEquals($ClusterNodeSession, $expectedSession)
+            }
+            Assert-MockCalled Get-LogsDirectoryHelper -Times 1 -Exactly -Scope It -ParameterFilter {
+                [object]::ReferenceEquals($ClusterNodeSession, $expectedSession)
+            }
+            Assert-MockCalled Remove-PSSession -Times 1 -Exactly -Scope It -ParameterFilter {
+                @($Session).Count -eq 1 -and
+                    [object]::ReferenceEquals(@($Session)[0], $expectedSession)
+            }
         }
 
         It 'Should have SupportsShouldProcess and expected parameters' {

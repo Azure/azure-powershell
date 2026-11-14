@@ -23,7 +23,7 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DisableCapacityReservationAssignment]
+ [-EnableAllInstancesDown <Boolean>] [-DisableCapacityReservationAssignment] [-PreferredVMSize <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DisableCapacityReservationAssignment]
+ [-EnableAllInstancesDown <Boolean>] [-DisableCapacityReservationAssignment] [-PreferredVMSize <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,12 +52,24 @@ Update-AzVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-OsDiskWri
  [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DisableCapacityReservationAssignment]
+ [-EnableAllInstancesDown <Boolean>] [-DisableCapacityReservationAssignment] [-PreferredVMSize <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Update-AzVM** cmdlet updates the state of an Azure virtual machine to the state of a virtual machine object.
+
+Use **PreferredVMSize** in any parameter set to set the preview `FlexProfile.PreferredVMSize`.
+Azure may deploy the preferred size or a compatible alternative based on capacity and placement.
+This parameter overrides `HardwareProfile.VmSize` in the outgoing request without mutating the input object's `HardwareProfile` or `FlexProfile`.
+When omitted, the input object's FlexProfile and `HardwareProfile.VmSize` are preserved in the request.
+
+To switch to FlexProfile by editing the object directly, set `FlexProfile.PreferredVMSize` and clear `HardwareProfile.VmSize` before calling **Update-AzVM**.
+To opt out, set `FlexProfile` to `$null` and specify a fixed `HardwareProfile.VmSize`; omit **PreferredVMSize**.
+For a GET-to-update round trip of an existing FlexProfile VM, the cmdlet preserves both FlexProfile and the service-reported `HardwareProfile.VmSize` in the request without changing the input object.
+
+FlexProfile is a preview feature that requires registration of the `Microsoft.Compute/FlexProfileEnabled` subscription feature and availability in the target region.
+Supported VM families vary by region. Azure validates unsupported placements and empty preferred-size strings.
 
 ## EXAMPLES
 
@@ -105,6 +117,49 @@ Update-AzVM -ResourceGroupName "myRG" -VM $vm -DisableCapacityReservationAssignm
 ```
 
 This example updates a virtual machine so that it is explicitly opted out from any capacity reservation assignment and consumes publicly available capacity instead.
+
+### Example 5: Update a VM to use a preferred size
+```powershell
+$vm = Get-AzVM -ResourceGroupName "myRG" -Name "myVM"
+Update-AzVM -ResourceGroupName "myRG" -VM $vm -PreferredVMSize "Standard_D4s_v5"
+```
+
+This example overrides the request's fixed size with FlexProfile without changing `$vm`.
+The subscription must be registered for the preview and the VM's region must support it.
+Retrieve the VM again to inspect the updated model.
+
+### Example 6: Switch to FlexProfile by editing the VM object
+```powershell
+$vm = Get-AzVM -ResourceGroupName "myRG" -Name "myVM"
+$vm.FlexProfile = [Microsoft.Azure.Management.Compute.Models.FlexProfile]::new("Standard_D4s_v5")
+$vm.HardwareProfile.VmSize = $null
+Update-AzVM -ResourceGroupName "myRG" -VM $vm
+```
+
+When switching a fixed-size VM by directly editing its model, clear **VmSize** so the request does not contain both a fixed size and FlexProfile.
+Using **PreferredVMSize** as in the previous example handles the outgoing request without these object edits.
+
+### Example 7: Preserve FlexProfile in a GET-to-update round trip
+```powershell
+$vm = Get-AzVM -ResourceGroupName "myRG" -Name "myFlexVM"
+$vm.Tags = @{ workload = "batch" }
+Update-AzVM -ResourceGroupName "myRG" -VM $vm
+```
+
+For an existing FlexProfile VM, this preserves its FlexProfile and service-reported `HardwareProfile.VmSize` while updating tags.
+Neither property is changed on `$vm`.
+Use the model view from **Get-AzVM** without **Status**.
+
+### Example 8: Opt out of FlexProfile and use a fixed size
+```powershell
+$vm = Get-AzVM -ResourceGroupName "myRG" -Name "myFlexVM"
+$vm.FlexProfile = $null
+$vm.HardwareProfile.VmSize = "Standard_D4s_v5"
+Update-AzVM -ResourceGroupName "myRG" -VM $vm
+```
+
+This example clears FlexProfile and requests a fixed size. Do not supply **PreferredVMSize** when opting out.
+Azure validates whether the requested size and placement are supported.
 
 ## PARAMETERS
 
@@ -387,6 +442,26 @@ Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
 
 ```yaml
 Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferredVMSize
+Specifies the preferred VM size for the preview FlexProfile, for example `Standard_D4s_v5`.
+Azure may choose a compatible alternative based on capacity and placement.
+In all parameter sets, this parameter overrides the outgoing request's `HardwareProfile.VmSize` and sets `FlexProfile.PreferredVMSize` without mutating the input object's hardware profile or FlexProfile.
+When omitted, both the input FlexProfile and **VmSize** are preserved in the request, including the service-reported size of an existing FlexProfile VM.
+To switch by editing the object directly, set FlexProfile and clear **VmSize**. To opt out, clear FlexProfile, set a fixed **VmSize**, and omit this parameter.
+This feature requires preview registration and regional availability. Azure validates unsupported placements and empty strings.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

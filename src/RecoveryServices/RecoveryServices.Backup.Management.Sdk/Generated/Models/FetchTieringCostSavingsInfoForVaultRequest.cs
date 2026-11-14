@@ -26,11 +26,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="sourceTierType">Source tier for the request
-        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;,
+        /// &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;</param>
 
         /// <param name="targetTierType">target tier for the request
-        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
-        public FetchTieringCostSavingsInfoForVaultRequest(RecoveryPointTierType sourceTierType, RecoveryPointTierType targetTierType)
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;,
+        /// &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;</param>
+        public FetchTieringCostSavingsInfoForVaultRequest(string sourceTierType, string targetTierType)
 
         : base(sourceTierType, targetTierType)
         {

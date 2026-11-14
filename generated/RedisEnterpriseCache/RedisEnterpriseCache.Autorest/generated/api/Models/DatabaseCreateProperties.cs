@@ -82,6 +82,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IModule> Module { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)__databaseProperties).Module; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)__databaseProperties).Module = value ?? null /* arrayOf */; }
 
+        /// <summary>
+        /// Specifies which keyspace events should trigger notifications. Default is an empty string, meaning this feature is disabled.
+        /// When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present. For example, 'AKE' enables all
+        /// standard events. See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public string NotifyKeyspaceEvents { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)__databaseProperties).NotifyKeyspaceEvents; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)__databaseProperties).NotifyKeyspaceEvents = value ?? null; }
+
         /// <summary>Persistence settings</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
         internal Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPersistence Persistence { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)__databaseProperties).Persistence; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)__databaseProperties).Persistence = value ?? null /* model class */; }

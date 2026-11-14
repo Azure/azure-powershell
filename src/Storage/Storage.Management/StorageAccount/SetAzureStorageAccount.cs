@@ -475,6 +475,87 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowSharedKeyAccess = null;
 
+        [Parameter(HelpMessage = "Allow Shared Key authorization for the Blob service.")]
+        public bool AllowSharedKeyAccessForBlob
+        {
+            get => allowSharedKeyAccessForBlob.GetValueOrDefault();
+            set => allowSharedKeyAccessForBlob = value;
+        }
+        private bool? allowSharedKeyAccessForBlob;
+
+        [Parameter(HelpMessage = "Allow Shared Key authorization for the File service.")]
+        public bool AllowSharedKeyAccessForFile
+        {
+            get => allowSharedKeyAccessForFile.GetValueOrDefault();
+            set => allowSharedKeyAccessForFile = value;
+        }
+        private bool? allowSharedKeyAccessForFile;
+
+        [Parameter(HelpMessage = "Allow Shared Key authorization for the Queue service.")]
+        public bool AllowSharedKeyAccessForQueue
+        {
+            get => allowSharedKeyAccessForQueue.GetValueOrDefault();
+            set => allowSharedKeyAccessForQueue = value;
+        }
+        private bool? allowSharedKeyAccessForQueue;
+
+        [Parameter(HelpMessage = "Allow Shared Key authorization for the Table service.")]
+        public bool AllowSharedKeyAccessForTable
+        {
+            get => allowSharedKeyAccessForTable.GetValueOrDefault();
+            set => allowSharedKeyAccessForTable = value;
+        }
+        private bool? allowSharedKeyAccessForTable;
+
+        [Parameter(HelpMessage = "Allow user delegation shared access signatures from another Microsoft Entra tenant.")]
+        public bool AllowCrossTenantDelegationSas
+        {
+            get => allowCrossTenantDelegationSas.GetValueOrDefault();
+            set => allowCrossTenantDelegationSas = value;
+        }
+        private bool? allowCrossTenantDelegationSas;
+
+        [Parameter(HelpMessage = "Publish IPv6 storage endpoints. When omitted, the existing setting is unchanged.")]
+        public bool PublishIpv6Endpoint
+        {
+            get => publishIpv6Endpoint.GetValueOrDefault();
+            set => publishIpv6Endpoint = value;
+        }
+        private bool? publishIpv6Endpoint;
+
+        [Parameter(HelpMessage = "Require user-bound user delegation shared access signatures. Existing SAS expiration settings are preserved.")]
+        public bool RequireUserBoundUserDelegationSas
+        {
+            get => requireUserBoundUserDelegationSas.GetValueOrDefault();
+            set => requireUserBoundUserDelegationSas = value;
+        }
+        private bool? requireUserBoundUserDelegationSas;
+
+        [Parameter(HelpMessage = "Action when a user delegation shared access signature is not user-bound: None, Log, or Block.")]
+        [ValidateSet("None", "Log", "Block")]
+        public string RequireUserBoundUserDelegationSasAction { get; set; }
+
+        [Parameter(HelpMessage = "Allow Blob Access Points on this storage account without changing other collaboration settings.")]
+        public bool AllowBlobAccessPoints
+        {
+            get => allowBlobAccessPoints.GetValueOrDefault();
+            set => allowBlobAccessPoints = value;
+        }
+        private bool? allowBlobAccessPoints;
+
+        [Parameter(HelpMessage = "Enable or disable Turbo Tier on the storage account. When disabling, the existing target percentage is not sent.")]
+        [ValidateSet("Enabled", "Disabled")]
+        public string TurboTierStatus { get; set; }
+
+        [Parameter(HelpMessage = "Turbo Tier target fill percentage, from 10 to 100. Other Turbo Tier settings are preserved.")]
+        [ValidateRange(10, 100)]
+        public int TurboTierTargetPercent
+        {
+            get => turboTierTargetPercent.GetValueOrDefault();
+            set => turboTierTargetPercent = value;
+        }
+        private int? turboTierTargetPercent;
+
         [Parameter(Mandatory = false, HelpMessage = "The SAS expiration period of this account, it is a timespan and accurate to seconds.")]
         public TimeSpan SasExpirationPeriod
         {
@@ -979,6 +1060,59 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
                         }
                         updateParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), SasExpirationAction);
+                    }
+
+                    if (updateParameters.SasPolicy != null || requireUserBoundUserDelegationSas != null ||
+                        RequireUserBoundUserDelegationSasAction != null)
+                    {
+                        var originalPolicy = this.OriginStorageAccountProperties.SasPolicy;
+                        var policy = updateParameters.SasPolicy ?? new SasPolicy(
+                            originalPolicy?.SasExpirationPeriod, originalPolicy?.ExpirationAction ?? ExpirationAction.Log);
+                        if (policy.SasExpirationPeriod == null)
+                        {
+                            throw new ArgumentException("Specify -SasExpirationPeriod when the account does not already have a SAS expiration policy.");
+                        }
+                        policy.RequireUserBoundUserDelegationSas = requireUserBoundUserDelegationSas ?? originalPolicy?.RequireUserBoundUserDelegationSas;
+                        policy.RequireUserBoundUserDelegationSasAction = RequireUserBoundUserDelegationSasAction == null
+                            ? originalPolicy?.RequireUserBoundUserDelegationSasAction
+                            : NormalizePolicyViolationAction(RequireUserBoundUserDelegationSasAction);
+                        updateParameters.SasPolicy = policy;
+                    }
+                    if (allowSharedKeyAccessForBlob != null || allowSharedKeyAccessForFile != null ||
+                        allowSharedKeyAccessForQueue != null || allowSharedKeyAccessForTable != null)
+                    {
+                        var originalAccess = this.OriginStorageAccountProperties.AllowSharedKeyAccessForServices;
+                        updateParameters.AllowSharedKeyAccessForServices = new StorageAccountSharedKeyAccessProperties(
+                            blob: allowSharedKeyAccessForBlob.HasValue ? new ServiceSharedKeyAccessProperties(allowSharedKeyAccessForBlob) : originalAccess?.Blob,
+                            file: allowSharedKeyAccessForFile.HasValue ? new ServiceSharedKeyAccessProperties(allowSharedKeyAccessForFile) : originalAccess?.File,
+                            queue: allowSharedKeyAccessForQueue.HasValue ? new ServiceSharedKeyAccessProperties(allowSharedKeyAccessForQueue) : originalAccess?.Queue,
+                            table: allowSharedKeyAccessForTable.HasValue ? new ServiceSharedKeyAccessProperties(allowSharedKeyAccessForTable) : originalAccess?.Table);
+                    }
+                    if (allowCrossTenantDelegationSas != null)
+                    {
+                        updateParameters.AllowCrossTenantDelegationSas = allowCrossTenantDelegationSas;
+                    }
+                    if (publishIpv6Endpoint != null)
+                    {
+                        updateParameters.DualStackEndpointPreference = new DualStackEndpointPreference(publishIpv6Endpoint);
+                    }
+                    if (allowBlobAccessPoints != null)
+                    {
+                        var originalCollaboration = this.OriginStorageAccountProperties.DataCollaborationPolicyProperties;
+                        updateParameters.DataCollaborationPolicyProperties = new StorageDataCollaborationPolicyProperties(
+                            allowStorageConnectors: originalCollaboration?.AllowStorageConnectors,
+                            allowBlobAccessPoints: allowBlobAccessPoints,
+                            allowStorageDataShares: originalCollaboration?.AllowStorageDataShares,
+                            allowCrossTenantDataSharing: originalCollaboration?.AllowCrossTenantDataSharing);
+                    }
+                    if (TurboTierStatus != null || turboTierTargetPercent != null)
+                    {
+                        var originalTurboTier = this.OriginStorageAccountProperties.TurboTier;
+                        var status = TurboTierStatus == null ? originalTurboTier?.Status : NormalizeTurboTierStatus(TurboTierStatus);
+                        // The service rejects a carried-forward target percentage when disabling Turbo Tier.
+                        var targetPercent = turboTierTargetPercent ?? (status == "Disabled" ? null : originalTurboTier?.TargetPercent);
+                        updateParameters.TurboTier = new TurboTier(
+                            status, targetPercent);
                     }
 
                     if (keyExpirationPeriodInDay != null)

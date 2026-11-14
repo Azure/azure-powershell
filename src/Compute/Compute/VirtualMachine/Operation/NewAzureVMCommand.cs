@@ -243,6 +243,12 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string Size { get; set; } = "Standard_D2s_v3";
 
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "The preferred VM size. Azure may deploy a compatible alternative. Cannot be used with Size.")]
+        [AllowEmptyString]
+        public string PreferredVMSize { get; set; }
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string AvailabilitySetName { get; set; }
@@ -545,6 +551,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.Size) && this.IsParameterBound(c => c.PreferredVMSize))
+            {
+                throw new ArgumentException("-Size and -PreferredVMSize cannot be used together.");
+            }
+
             if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
                 throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
@@ -699,7 +710,7 @@ namespace Microsoft.Azure.Commands.Compute
                     openPorts: _cmdlet.OpenPorts);
 
                 bool enableAcceleratedNetwork = Utils.DoesConfigSupportAcceleratedNetwork(_client,
-                    ImageAndOsType, _cmdlet.Size, Location, DefaultLocation);
+                    ImageAndOsType, _cmdlet.IsParameterBound(c => c.PreferredVMSize) ? _cmdlet.PreferredVMSize ?? string.Empty : _cmdlet.Size, Location, DefaultLocation);
 
                 ResourceConfig<NetworkInterface> networkInterface;
                 if (string.IsNullOrEmpty(publicIpAddress.Name))
@@ -804,7 +815,8 @@ namespace Microsoft.Azure.Commands.Compute
                         addProxyAgentExtension: _cmdlet.AddProxyAgentExtension ? true : (bool?)null,
                         scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
                         enableAllInstancesDown: _cmdlet.EnableAllInstancesDown,
-                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null
+                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null,
+                        flexProfile: _cmdlet.IsParameterBound(c => c.PreferredVMSize) ? new FlexProfile(_cmdlet.PreferredVMSize) : null
                     );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.
@@ -876,7 +888,7 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new Parameters(this, client, resourceClient);
             
             // Information message if the default Size value is used. 
-            if (!this.IsParameterBound(c => c.Size))
+            if (!this.IsParameterBound(c => c.Size) && !this.IsParameterBound(c => c.PreferredVMSize))
             {
                 WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
             }
@@ -1025,6 +1037,7 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
                         HardwareProfile = this.VM.HardwareProfile,
+                        FlexProfile = this.VM.FlexProfile,
                         StorageProfile = this.VM.StorageProfile,
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,

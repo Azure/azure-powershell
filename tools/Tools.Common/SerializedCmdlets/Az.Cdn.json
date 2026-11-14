@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Cdn",
-  "ModuleVersion": "6.2.0",
+  "ModuleVersion": "6.3.0",
   "Cmdlets": [
     {
       "VerbName": "Add",
@@ -29020,6 +29020,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin, Az.Cdn.private, Version=6.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "CustomCertificateSubject": "System.Collections.Generic.List`1[System.String]",
               "EnforceCertificateNameCheck": "System.Nullable`1[System.Boolean]",
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -29031,11 +29032,12 @@
               "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
               "SharedPrivateLinkResourceGroupId": "System.String",
               "ProvisioningState": "System.String",
-              "OriginHostHeader": "System.String",
               "OriginGroupName": "System.String",
+              "OriginHostHeader": "System.String",
               "HostName": "System.String",
               "EnabledState": "System.String",
               "DeploymentStatus": "System.String",
+              "CertificateNameCheckValidationMode": "System.String",
               "PrivateLinkId": "System.String",
               "Location": "System.String"
             }
@@ -69325,9 +69327,11 @@
             "Properties": {
               "CustomizedCipherSuiteSet": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet",
               "Secret": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference",
+              "ServerTlsGroup": "System.Collections.Generic.List`1[System.String]",
               "CertificateType": "System.String",
               "CipherSuiteSetType": "System.String",
-              "MinimumTlsVersion": "System.String"
+              "MinimumTlsVersion": "System.String",
+              "ServerTlsGroupPolicy": "System.String"
             }
           },
           "ValidateNotNullOrEmpty": false
@@ -70373,9 +70377,11 @@
                   "Properties": {
                     "CustomizedCipherSuiteSet": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet",
                     "Secret": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference",
+                    "ServerTlsGroup": "System.Collections.Generic.List`1[System.String]",
                     "CertificateType": "System.String",
                     "CipherSuiteSetType": "System.String",
-                    "MinimumTlsVersion": "System.String"
+                    "MinimumTlsVersion": "System.String",
+                    "ServerTlsGroupPolicy": "System.String"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
@@ -70713,9 +70719,11 @@
                   "Properties": {
                     "CustomizedCipherSuiteSet": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet",
                     "Secret": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference",
+                    "ServerTlsGroup": "System.Collections.Generic.List`1[System.String]",
                     "CertificateType": "System.String",
                     "CipherSuiteSetType": "System.String",
-                    "MinimumTlsVersion": "System.String"
+                    "MinimumTlsVersion": "System.String",
+                    "ServerTlsGroupPolicy": "System.String"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
@@ -71224,9 +71232,11 @@
             "Properties": {
               "CustomizedCipherSuiteSet": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet",
               "Secret": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference",
+              "ServerTlsGroup": "System.Collections.Generic.List`1[System.String]",
               "CertificateType": "System.String",
               "CipherSuiteSetType": "System.String",
-              "MinimumTlsVersion": "System.String"
+              "MinimumTlsVersion": "System.String",
+              "ServerTlsGroupPolicy": "System.String"
             },
             "Methods": [
               {
@@ -71375,6 +71385,25 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "ServerTlsGroup",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ServerTlsGroupPolicy",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ProgressAction",
           "AliasList": [
             "proga"
@@ -71465,6 +71494,37 @@
                   "Properties": {
                     "Id": "System.String"
                   }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerTlsGroup",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerTlsGroupPolicy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -73921,6 +73981,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin, Az.Cdn.private, Version=6.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "CustomCertificateSubject": "System.Collections.Generic.List`1[System.String]",
               "EnforceCertificateNameCheck": "System.Nullable`1[System.Boolean]",
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -73932,11 +73993,12 @@
               "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
               "SharedPrivateLinkResourceGroupId": "System.String",
               "ProvisioningState": "System.String",
-              "OriginHostHeader": "System.String",
               "OriginGroupName": "System.String",
+              "OriginHostHeader": "System.String",
               "HostName": "System.String",
               "EnabledState": "System.String",
               "DeploymentStatus": "System.String",
+              "CertificateNameCheckValidationMode": "System.String",
               "PrivateLinkId": "System.String",
               "Location": "System.String"
             }
@@ -74054,6 +74116,25 @@
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "CertificateNameCheckValidationMode",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "CustomCertificateSubject",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -74181,6 +74262,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin, Az.Cdn.private, Version=6.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "CustomCertificateSubject": "System.Collections.Generic.List`1[System.String]",
               "EnforceCertificateNameCheck": "System.Nullable`1[System.Boolean]",
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -74192,11 +74274,12 @@
               "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
               "SharedPrivateLinkResourceGroupId": "System.String",
               "ProvisioningState": "System.String",
-              "OriginHostHeader": "System.String",
               "OriginGroupName": "System.String",
+              "OriginHostHeader": "System.String",
               "HostName": "System.String",
               "EnabledState": "System.String",
               "DeploymentStatus": "System.String",
+              "CertificateNameCheckValidationMode": "System.String",
               "PrivateLinkId": "System.String",
               "Location": "System.String"
             }
@@ -75186,6 +75269,37 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateNameCheckValidationMode",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CustomCertificateSubject",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "EnabledState",
                 "Type": {
                   "Namespace": "System",
@@ -75645,6 +75759,7 @@
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin",
                   "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin, Az.Cdn.private, Version=6.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
+                    "CustomCertificateSubject": "System.Collections.Generic.List`1[System.String]",
                     "EnforceCertificateNameCheck": "System.Nullable`1[System.Boolean]",
                     "HttpPort": "System.Nullable`1[System.Int32]",
                     "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -75656,11 +75771,12 @@
                     "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
                     "SharedPrivateLinkResourceGroupId": "System.String",
                     "ProvisioningState": "System.String",
-                    "OriginHostHeader": "System.String",
                     "OriginGroupName": "System.String",
+                    "OriginHostHeader": "System.String",
                     "HostName": "System.String",
                     "EnabledState": "System.String",
                     "DeploymentStatus": "System.String",
+                    "CertificateNameCheckValidationMode": "System.String",
                     "PrivateLinkId": "System.String",
                     "Location": "System.String"
                   }
@@ -75948,6 +76064,37 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateNameCheckValidationMode",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CustomCertificateSubject",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -76411,6 +76558,37 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateNameCheckValidationMode",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CustomCertificateSubject",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "EnabledState",
                 "Type": {
                   "Namespace": "System",
@@ -76855,6 +77033,7 @@
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin",
                   "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin, Az.Cdn.private, Version=6.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
+                    "CustomCertificateSubject": "System.Collections.Generic.List`1[System.String]",
                     "EnforceCertificateNameCheck": "System.Nullable`1[System.Boolean]",
                     "HttpPort": "System.Nullable`1[System.Int32]",
                     "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -76866,11 +77045,12 @@
                     "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
                     "SharedPrivateLinkResourceGroupId": "System.String",
                     "ProvisioningState": "System.String",
-                    "OriginHostHeader": "System.String",
                     "OriginGroupName": "System.String",
+                    "OriginHostHeader": "System.String",
                     "HostName": "System.String",
                     "EnabledState": "System.String",
                     "DeploymentStatus": "System.String",
+                    "CertificateNameCheckValidationMode": "System.String",
                     "PrivateLinkId": "System.String",
                     "Location": "System.String"
                   }
@@ -151768,9 +151948,11 @@
             "Properties": {
               "CustomizedCipherSuiteSet": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet",
               "Secret": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference",
+              "ServerTlsGroup": "System.Collections.Generic.List`1[System.String]",
               "CertificateType": "System.String",
               "CipherSuiteSetType": "System.String",
-              "MinimumTlsVersion": "System.String"
+              "MinimumTlsVersion": "System.String",
+              "ServerTlsGroupPolicy": "System.String"
             }
           },
           "ValidateNotNullOrEmpty": false
@@ -152573,9 +152755,11 @@
                   "Properties": {
                     "CustomizedCipherSuiteSet": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet",
                     "Secret": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference",
+                    "ServerTlsGroup": "System.Collections.Generic.List`1[System.String]",
                     "CertificateType": "System.String",
                     "CipherSuiteSetType": "System.String",
-                    "MinimumTlsVersion": "System.String"
+                    "MinimumTlsVersion": "System.String",
+                    "ServerTlsGroupPolicy": "System.String"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
@@ -153159,9 +153343,11 @@
                   "Properties": {
                     "CustomizedCipherSuiteSet": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet",
                     "Secret": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference",
+                    "ServerTlsGroup": "System.Collections.Generic.List`1[System.String]",
                     "CertificateType": "System.String",
                     "CipherSuiteSetType": "System.String",
-                    "MinimumTlsVersion": "System.String"
+                    "MinimumTlsVersion": "System.String",
+                    "ServerTlsGroupPolicy": "System.String"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
@@ -153454,9 +153640,11 @@
                   "Properties": {
                     "CustomizedCipherSuiteSet": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet",
                     "Secret": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference",
+                    "ServerTlsGroup": "System.Collections.Generic.List`1[System.String]",
                     "CertificateType": "System.String",
                     "CipherSuiteSetType": "System.String",
-                    "MinimumTlsVersion": "System.String"
+                    "MinimumTlsVersion": "System.String",
+                    "ServerTlsGroupPolicy": "System.String"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
@@ -157252,6 +157440,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin, Az.Cdn.private, Version=6.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "CustomCertificateSubject": "System.Collections.Generic.List`1[System.String]",
               "EnforceCertificateNameCheck": "System.Nullable`1[System.Boolean]",
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
@@ -157263,11 +157452,12 @@
               "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
               "SharedPrivateLinkResourceGroupId": "System.String",
               "ProvisioningState": "System.String",
-              "OriginHostHeader": "System.String",
               "OriginGroupName": "System.String",
+              "OriginHostHeader": "System.String",
               "HostName": "System.String",
               "EnabledState": "System.String",
               "DeploymentStatus": "System.String",
+              "CertificateNameCheckValidationMode": "System.String",
               "PrivateLinkId": "System.String",
               "Location": "System.String"
             }
@@ -157417,6 +157607,25 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "CertificateNameCheckValidationMode",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "CustomCertificateSubject",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "EnabledState",
           "Type": {
             "Namespace": "System",
@@ -157540,21 +157749,23 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters, Az.Cdn.private, Version=6.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "CustomCertificateSubject": "System.Collections.Generic.List`1[System.String]",
               "EnforceCertificateNameCheck": "System.Nullable`1[System.Boolean]",
+              "Weight": "System.Nullable`1[System.Int32]",
               "HttpPort": "System.Nullable`1[System.Int32]",
               "HttpsPort": "System.Nullable`1[System.Int32]",
               "Priority": "System.Nullable`1[System.Int32]",
-              "Weight": "System.Nullable`1[System.Int32]",
-              "AzureOriginId": "System.String",
-              "EnabledState": "System.String",
-              "HostName": "System.String",
-              "OriginGroupName": "System.String",
-              "OriginHostHeader": "System.String",
-              "PrivateLinkId": "System.String",
-              "SharedPrivateLinkResourceGroupId": "System.String",
-              "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
               "SharedPrivateLinkResourceRequestMessage": "System.String",
-              "SharedPrivateLinkResourceStatus": "System.String"
+              "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
+              "SharedPrivateLinkResourceGroupId": "System.String",
+              "PrivateLinkId": "System.String",
+              "OriginGroupName": "System.String",
+              "SharedPrivateLinkResourceStatus": "System.String",
+              "HostName": "System.String",
+              "EnabledState": "System.String",
+              "CertificateNameCheckValidationMode": "System.String",
+              "OriginHostHeader": "System.String",
+              "AzureOriginId": "System.String"
             }
           },
           "ValidateNotNullOrEmpty": false
@@ -158348,6 +158559,37 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateNameCheckValidationMode",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CustomCertificateSubject",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "EnabledState",
                 "Type": {
                   "Namespace": "System",
@@ -158807,21 +159049,23 @@
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters",
                   "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters, Az.Cdn.private, Version=6.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
+                    "CustomCertificateSubject": "System.Collections.Generic.List`1[System.String]",
                     "EnforceCertificateNameCheck": "System.Nullable`1[System.Boolean]",
+                    "Weight": "System.Nullable`1[System.Int32]",
                     "HttpPort": "System.Nullable`1[System.Int32]",
                     "HttpsPort": "System.Nullable`1[System.Int32]",
                     "Priority": "System.Nullable`1[System.Int32]",
-                    "Weight": "System.Nullable`1[System.Int32]",
-                    "AzureOriginId": "System.String",
-                    "EnabledState": "System.String",
-                    "HostName": "System.String",
-                    "OriginGroupName": "System.String",
-                    "OriginHostHeader": "System.String",
-                    "PrivateLinkId": "System.String",
-                    "SharedPrivateLinkResourceGroupId": "System.String",
-                    "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
                     "SharedPrivateLinkResourceRequestMessage": "System.String",
-                    "SharedPrivateLinkResourceStatus": "System.String"
+                    "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
+                    "SharedPrivateLinkResourceGroupId": "System.String",
+                    "PrivateLinkId": "System.String",
+                    "OriginGroupName": "System.String",
+                    "SharedPrivateLinkResourceStatus": "System.String",
+                    "HostName": "System.String",
+                    "EnabledState": "System.String",
+                    "CertificateNameCheckValidationMode": "System.String",
+                    "OriginHostHeader": "System.String",
+                    "AzureOriginId": "System.String"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
@@ -159107,6 +159351,37 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateNameCheckValidationMode",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CustomCertificateSubject",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -159570,6 +159845,37 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateNameCheckValidationMode",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CustomCertificateSubject",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "EnabledState",
                 "Type": {
                   "Namespace": "System",
@@ -160014,21 +160320,23 @@
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters",
                   "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters, Az.Cdn.private, Version=6.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
+                    "CustomCertificateSubject": "System.Collections.Generic.List`1[System.String]",
                     "EnforceCertificateNameCheck": "System.Nullable`1[System.Boolean]",
+                    "Weight": "System.Nullable`1[System.Int32]",
                     "HttpPort": "System.Nullable`1[System.Int32]",
                     "HttpsPort": "System.Nullable`1[System.Int32]",
                     "Priority": "System.Nullable`1[System.Int32]",
-                    "Weight": "System.Nullable`1[System.Int32]",
-                    "AzureOriginId": "System.String",
-                    "EnabledState": "System.String",
-                    "HostName": "System.String",
-                    "OriginGroupName": "System.String",
-                    "OriginHostHeader": "System.String",
-                    "PrivateLinkId": "System.String",
-                    "SharedPrivateLinkResourceGroupId": "System.String",
-                    "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
                     "SharedPrivateLinkResourceRequestMessage": "System.String",
-                    "SharedPrivateLinkResourceStatus": "System.String"
+                    "SharedPrivateLinkResourcePrivateLinkLocation": "System.String",
+                    "SharedPrivateLinkResourceGroupId": "System.String",
+                    "PrivateLinkId": "System.String",
+                    "OriginGroupName": "System.String",
+                    "SharedPrivateLinkResourceStatus": "System.String",
+                    "HostName": "System.String",
+                    "EnabledState": "System.String",
+                    "CertificateNameCheckValidationMode": "System.String",
+                    "OriginHostHeader": "System.String",
+                    "AzureOriginId": "System.String"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
@@ -160273,6 +160581,37 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateNameCheckValidationMode",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CustomCertificateSubject",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -177794,9 +178133,11 @@
       "Properties": {
         "CustomizedCipherSuiteSet": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet",
         "Secret": "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference",
+        "ServerTlsGroup": "System.Collections.Generic.List`1[System.String]",
         "CertificateType": "System.String",
         "CipherSuiteSetType": "System.String",
-        "MinimumTlsVersion": "System.String"
+        "MinimumTlsVersion": "System.String",
+        "ServerTlsGroupPolicy": "System.String"
       }
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet": {

@@ -14,6 +14,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
     public static class NetAppProvisioningState
     {
         /// <summary>
+        /// Resource has been created.
+        /// </summary>
+        public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// Resource creation failed.
+        /// </summary>
+        public const string Failed = "Failed";
+        /// <summary>
+        /// Resource creation was canceled.
+        /// </summary>
+        public const string Canceled = "Canceled";
+        /// <summary>
         /// Resource has been Accepted
         /// </summary>
         public const string Accepted = "Accepted";
@@ -37,13 +49,5 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Resource is being Moved
         /// </summary>
         public const string Moving = "Moving";
-        /// <summary>
-        /// Resource has Failed
-        /// </summary>
-        public const string Failed = "Failed";
-        /// <summary>
-        /// Resource has Succeeded
-        /// </summary>
-        public const string Succeeded = "Succeeded";
     }
 }

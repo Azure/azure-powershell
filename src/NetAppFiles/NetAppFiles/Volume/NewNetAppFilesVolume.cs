@@ -28,7 +28,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
-    [CmdletOutputBreakingChangeWithVersion(typeof(NewAzureRmNetAppFilesVolume), "12.0.0", "7.0.0", DeprecatedOutputProperties = new String[] { "EnableSubvolumes" })]
     [Cmdlet(
         "New",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
@@ -294,13 +293,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [ValidateNotNullOrEmpty]
         public IList<PSKeyValuePairs> PlacementRule { get; set; }
 
-        private const String ChangeDesc = "EnableSubvolume is being deprecated and removed in a future release; there is no replacement.";
-        [CmdletParameterBreakingChangeWithVersion("EnableSubvolume", "12.0.0", "7.0.0", ChangeDescription = ChangeDesc)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Flag indicating whether subvolume operations are enabled on the volume (Enabled, Disabled)")]        
-        public SwitchParameter EnableSubvolume { get; set; }
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "Specifies whether the volume operates in Breakthrough Mode. Possible values include: 'Enabled', 'Disabled'")]
@@ -446,7 +438,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     ProximityPlacementGroup = ProximityPlacementGroup,
                     VolumeSpecName = VolumeSpecName,
                     PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
-                    EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
                     BreakthroughMode = BreakthroughMode,
                     EncryptionKeySource = EncryptionKeySource,
                     KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
@@ -523,7 +514,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 ProximityPlacementGroup = ProximityPlacementGroup,
                 VolumeSpecName = VolumeSpecName,
                 PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
-                EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
                 EncryptionKeySource = EncryptionKeySource,
                 KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
                 DeleteBaseSnapshot = DeleteBaseSnapshot,

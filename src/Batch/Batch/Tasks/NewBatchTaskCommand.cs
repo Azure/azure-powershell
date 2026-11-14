@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Alias("EnvironmentSetting")]
         public IDictionary EnvironmentSettings { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("AuthenticationTokenSettings", "18.0.0", "5.0.0", ChangeDescription = "The Batch service retired task authentication tokens on 30 September 2024, so this parameter is being deprecated without a replacement. See https://github.com/Azure/Batch/issues/140.")]
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         public PSAuthenticationTokenSettings AuthenticationTokenSettings { get; set; }
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSOutputFile[] OutputFile { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Tasks", "18.0.0", "5.0.0", ChangeDescription = "The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSCloudTask is being deprecated.")]
         [Parameter(ParameterSetName = JobObjectAndBulkAddParameterSet,
             HelpMessage = "The collection of tasks to add to a job.")]
         [Parameter(ParameterSetName = JobIdAndBulkAddParameterSet,

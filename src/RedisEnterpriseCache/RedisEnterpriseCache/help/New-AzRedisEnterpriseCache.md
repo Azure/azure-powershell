@@ -18,10 +18,11 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  -Location <String> -Sku <String> [-Capacity <Int32>] [-MinimumTlsVersion <String>] [-Zone <String[]>]
  [-Tag <Hashtable>] [-Module <IModule[]>] [-ClientProtocol <String>] [-Port <Int32>] [-EvictionPolicy <String>]
  [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>] [-ClusteringPolicy <String>]
- [-AccessKeysAuthentication <String>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
- [-HighAvailability <String>] [-PublicNetworkAccess <String>] [-EnableSystemAssignedIdentity]
- [-UserAssignedIdentity <String[]>] [-KeyEncryptionKeyIdentityType <String>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-AofPersistenceEnabled]
+ [-AccessKeysAuthentication <String>] [-NotifyKeyspaceEvents <String>]
+ [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>] [-PublicNetworkAccess <String>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-KeyEncryptionKeyIdentityType <String>]
+ [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
+ [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-AofPersistenceEnabled]
  [-AofPersistenceFrequency <String>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -34,8 +35,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-S
  [-Tag <Hashtable>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <String>]
  [-PublicNetworkAccess <String>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  [-KeyEncryptionKeyIdentityType <String>] [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-NoDatabase] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-MaintenanceConfigurationMaintenanceWindow <IMaintenanceWindow[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-NoDatabase] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +46,7 @@ Creates or updates an existing (overwrite/recreate, with potential downtime) cac
 
 ### Example 1: Create a Redis Enterprise cache
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -PublicNetworkAccess "Enabled"
 ```
 
 ```output
@@ -58,7 +59,7 @@ This command creates a Redis Enterprise cache named MyCache with an associated d
 
 ### Example 2: Create a Redis Enterprise cache using some optional parameters
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E20" -PublicNetworkAccess "Enabled" -Capacity 4 -MinimumTlsVersion "1.2" -Zone "1","2","3" -Tag @{"tag1" = "value1"} -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -AofPersistenceEnabled -AofPersistenceFrequency "1s"
 ```
 
 ```output
@@ -71,7 +72,7 @@ This command creates a Redis Enterprise cache named MyCache with an associated d
 
 ### Example 3: Advanced - Create a Redis Enterprise cache cluster without an associated database
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -NoDatabase
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -PublicNetworkAccess "Enabled" -NoDatabase
 ```
 
 ```output
@@ -82,18 +83,63 @@ East US  MyCache Microsoft.Cache/redisEnterprise      {}
 
 Warning: This command creates a Redis Enterprise cache cluster named MyCache without any associated database to hold data.
 
-### Example 4: Create a Redis Enterprise cache with a georeplicated database
+### Example 4: Create a cache in a new active geo-replication group
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"}'
+$subscriptionId = (Get-AzContext).Subscription.Id
+$cache1Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache1/databases/default`"}"
+New-AzRedisEnterpriseCache -Name "Cache1" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database
 ```
 
 ```output
-Location Name      Type                            Zone Database
--------- ----      ----                            ---- --------
-West US  MyCache   Microsoft.Cache/redisEnterprise      {default}
+Location Name   Type                            Zone Database
+-------- ----   ----                            ---- --------
+East US  Cache1 Microsoft.Cache/redisEnterprise      {default}
+
 ```
 
-This command creates a cache name MyCache with a georeplicated database named default
+This command creates Cache1 and adds it to a new active geo-replication group. The `-LinkedDatabase` value must include Cache1's own default database resource ID.
+
+### Example 5: Create a cache in an existing active geo-replication group
+```powershell
+$subscriptionId = (Get-AzContext).Subscription.Id
+$cache1Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache1/databases/default`"}"
+$cache2Database = "{id:`"/subscriptions/$subscriptionId/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/Cache2/databases/default`"}"
+New-AzRedisEnterpriseCache -Name "Cache2" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -GroupNickname "replicationGroup" -LinkedDatabase $cache1Database,$cache2Database
+```
+
+```output
+Location Name   Type                            Zone Database
+-------- ----   ----                            ---- --------
+West US  Cache2 Microsoft.Cache/redisEnterprise      {default}
+```
+
+This command creates Cache2 and adds it to the active geo-replication group containing Cache1. The `-LinkedDatabase` value includes the default database resource IDs for both caches.
+
+### Example 6: Create a Redis Enterprise cache with a maintenance window
+```powershell
+$windows = @(
+    @{Type="Weekly"; ScheduleDayOfWeek="Saturday"; StartHourUtc=0; Duration="PT10H"}
+    @{Type="Weekly"; ScheduleDayOfWeek="Wednesday"; StartHourUtc=0; Duration="PT10H"}
+)
+$cache = New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -MaintenanceConfigurationMaintenanceWindow $windows
+$cache | Format-List Name, SkuName, ProvisioningState, ResourceState
+$cache.MaintenanceConfigurationMaintenanceWindow | Format-Table Type, ScheduleDayOfWeek, StartHourUtc, Duration
+```
+
+```output
+Name              : MyCache
+SkuName           : Balanced_B10
+ProvisioningState : Succeeded
+ResourceState     : Running
+
+Type   ScheduleDayOfWeek StartHourUtc Duration
+----   ----------------- ------------ --------
+Weekly Saturday                     0 PT10H
+Weekly Wednesday                    0 PT10H
+```
+
+This command creates a Redis Enterprise cache named MyCache with custom maintenance windows on Saturdays and Wednesdays starting at midnight UTC for 10 hours.
+At least 2 maintenance windows are required.
 
 ## PARAMETERS
 
@@ -383,6 +429,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaintenanceConfigurationMaintenanceWindow
+Custom maintenance windows that apply to the cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MinimumTlsVersion
 The minimum TLS version for the cluster to support - default is 1.2
 Allowed values: 1.0, 1.1, 1.2
@@ -431,6 +492,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NotifyKeyspaceEvents
+Specifies which keyspace events should trigger notifications on the default database.
+Default is an empty string, meaning this feature is disabled.
+When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+For example, 'AKE' enables all standard events.
+See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateClusterWithDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -465,6 +545,8 @@ Accept wildcard characters: False
 ### -PublicNetworkAccess
 Whether or not public network traffic can access the Redis cluster.
 Only 'Enabled' or 'Disabled' can be set.
+Defaults to Enabled for new clusters and preserves the current value when updating an existing cluster.
+Null is only supported for clusters created with an older API version that do not have this property.
 
 ```yaml
 Type: System.String

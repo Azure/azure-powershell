@@ -14,6 +14,84 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IRecoveryPointsOperations
     {
         /// <summary>
+        /// Triggers fetching the additional details of a recovery point, which are not
+        /// returned by the recovery point GET
+        /// API. This is an asynchronous operation. Returns tracking headers which can
+        /// be tracked using the
+        /// GetRPExtendedInfoOperationResult API.
+        /// </summary>
+        /// <remarks>
+        /// Triggers fetching the additional details of a recovery point, which are not
+        /// returned by the recovery point GET
+        /// API. This is an asynchronous operation. Returns tracking headers which can
+        /// be tracked using the
+        /// GetRPExtendedInfoOperationResult API.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the backed up items.
+        /// </param>
+        /// <param name='parameters'>
+        /// Request payload containing the ARM id of the recovery point whose
+        /// additional details are to be fetched.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RPExtendedInfoResourceList,RecoveryPointsGetRpExtendedInfoHeaders>> GetRPExtendedInfoWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, GetRPExtendedInfoRequestResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns the additional details of the recovery points fetched by a prior
+        /// getRPExtendedInfo operation. Returns
+        /// 202 Accepted while the operation is still running.
+        /// </summary>
+        /// <remarks>
+        /// Returns the additional details of the recovery points fetched by a prior
+        /// getRPExtendedInfo operation. Returns
+        /// 202 Accepted while the operation is still running.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the backed up items.
+        /// </param>
+        /// <param name='operationId'>
+        /// OperationID which represents the prior getRPExtendedInfo operation whose
+        /// result needs to be fetched.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RPExtendedInfoResourceList,RecoveryPointsGetRpExtendedInfoOperationResultHeaders>> GetRPExtendedInfoOperationResultWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Lists the backup copies for the backed up item.
         /// </summary>
         /// <remarks>
@@ -94,6 +172,47 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPointResource>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Triggers fetching the additional details of a recovery point, which are not
+        /// returned by the recovery point GET
+        /// API. This is an asynchronous operation. Returns tracking headers which can
+        /// be tracked using the
+        /// GetRPExtendedInfoOperationResult API.
+        /// </summary>
+        /// <remarks>
+        /// Triggers fetching the additional details of a recovery point, which are not
+        /// returned by the recovery point GET
+        /// API. This is an asynchronous operation. Returns tracking headers which can
+        /// be tracked using the
+        /// GetRPExtendedInfoOperationResult API.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the backed up items.
+        /// </param>
+        /// <param name='parameters'>
+        /// Request payload containing the ARM id of the recovery point whose
+        /// additional details are to be fetched.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RPExtendedInfoResourceList,RecoveryPointsGetRpExtendedInfoHeaders>> BeginGetRPExtendedInfoWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, GetRPExtendedInfoRequestResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the backup copies for the backed up item.

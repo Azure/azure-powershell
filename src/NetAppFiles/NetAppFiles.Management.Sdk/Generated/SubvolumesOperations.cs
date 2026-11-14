@@ -609,6 +609,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <summary>
         /// Creates a subvolume in the path or clones the subvolume mentioned in the
         /// parentPath
+        /// Deprecated. This operation will be removed in a future API version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -740,6 +741,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <summary>
         /// Creates a subvolume in the path or clones the subvolume mentioned in the
         /// parentPath
+        /// Deprecated. This operation will be removed in a future API version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

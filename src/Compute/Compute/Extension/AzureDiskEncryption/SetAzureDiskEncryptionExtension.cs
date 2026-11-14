@@ -413,6 +413,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 DiagnosticsProfile = vmParameters.DiagnosticsProfile,
                 HardwareProfile = vmParameters.HardwareProfile,
+                FlexProfile = vmParameters.FlexProfile,
                 StorageProfile = vmParameters.StorageProfile,
                 NetworkProfile = vmParameters.NetworkProfile,
                 OsProfile = vmParameters.OsProfile,
@@ -448,6 +449,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 {
                     DiagnosticsProfile = vmParameters.DiagnosticsProfile,
                     HardwareProfile = vmParameters.HardwareProfile,
+                    FlexProfile = vmParameters.FlexProfile,
                     StorageProfile = vmParameters.StorageProfile,
                     NetworkProfile = vmParameters.NetworkProfile,
                     OsProfile = vmParameters.OsProfile,
@@ -470,6 +472,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 {
                     DiagnosticsProfile = vmParameters.DiagnosticsProfile,
                     HardwareProfile = vmParameters.HardwareProfile,
+                    FlexProfile = vmParameters.FlexProfile,
                     StorageProfile = vmParameters.StorageProfile,
                     NetworkProfile = vmParameters.NetworkProfile,
                     OsProfile = vmParameters.OsProfile,
