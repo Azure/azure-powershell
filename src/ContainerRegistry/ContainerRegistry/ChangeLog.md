@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.2.1
 * Validated registry names and login-server labels before container registry data-plane requests.
     - Accepted a single hyphen followed by a variable-length ASCII alphanumeric suffix, up to 63 characters in total.
     - Used explicit hyphenated labels, including Domain Name Label (DNL) and legacy labels, directly without Azure Resource Manager discovery.

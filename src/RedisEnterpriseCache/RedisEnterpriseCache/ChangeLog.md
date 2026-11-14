@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Upgraded code generator. See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 * Added support for API version 2026-09-01
 * Added `Get-AzRedisEnterpriseCacheMigration` cmdlet to get information about a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis
