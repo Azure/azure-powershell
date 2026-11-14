@@ -332,6 +332,14 @@ process {
         $calledParameters.NotScope = $existing.NotScope
     }
 
+    if (!$calledParameters.Override -and !($calledParameters.Override -is [array]) -and $existing.Override) {
+        $calledParameters.Override = $existing.Override
+    }
+
+    if (!$calledParameters.ResourceSelector -and !($calledParameters.ResourceSelector -is [array]) -and $existing.ResourceSelector) {
+        $calledParameters.ResourceSelector = $existing.ResourceSelector
+    }
+
     if (!$Location) {
         if ($_.Location) {
             $calledParameters.Location = $_.Location
