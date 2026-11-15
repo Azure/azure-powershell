@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.4.1
 * Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
 
 ## Version 8.4.0

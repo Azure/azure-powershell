@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.8.0
 * Updated Storage management operations to API version 2026-09-01.
 * Added `PublishIpv6Endpoint` to `New-AzStorageAccount` and `Set-AzStorageAccount` to enable or disable IPv6 storage endpoint publishing.
     - Exposed `DualStackEndpointPreference` on Storage account output, including `Get-AzStorageAccount` results.
