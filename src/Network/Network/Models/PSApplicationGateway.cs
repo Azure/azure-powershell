@@ -91,6 +91,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool? EnableFips { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableConfidentialCompute { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableRequestBuffering
         {
             get
