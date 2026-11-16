@@ -227,6 +227,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = " Whether Confidential Compute is enabled.")]
+        public SwitchParameter EnableConfidentialCompute { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = " Whether Request Buffering is enabled.")]
         public bool? EnableRequestBuffering { get; set; }
 
@@ -462,6 +467,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.EnableFIPS.IsPresent)
             {
                 applicationGateway.EnableFips = true;
+            }
+
+            if (this.EnableConfidentialCompute.IsPresent)
+            {
+                applicationGateway.EnableConfidentialCompute = true;
             }
 
             if (!string.Equals(applicationGateway.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(applicationGateway.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
