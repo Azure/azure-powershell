@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates a user-assigned deny assignment at the specified scope.
-By default, the deny assignment targets Everyone and requires at least one excluded principal.
+By default, the deny assignment targets Everyone, with optional excluded principals.
 Alternatively, use -PrincipalId and -PrincipalType to target a specific user or service principal.
 
 ## SYNTAX
@@ -17,7 +17,7 @@ Alternatively, use -PrincipalId and -PrincipalType to target a specific user or 
 ### EveryoneParameterSet (Default)
 ```
 New-AzDenyAssignment -DenyAssignmentName <String> [-Description <String>] -Scope <String> [-Action <String[]>]
- [-NotAction <String[]>] [-DataAction <String[]>] [-NotDataAction <String[]>] -ExcludePrincipalId <String[]>
+ [-NotAction <String[]>] [-DataAction <String[]>] [-NotDataAction <String[]>] [-ExcludePrincipalId <String[]>]
  [-ExcludePrincipalType <String[]>] [-DoNotApplyToChildScope] [-DenyAssignmentId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
@@ -42,7 +42,7 @@ New-AzDenyAssignment -Scope <String> -InputFile <String> [-DenyAssignmentId <Gui
 ## DESCRIPTION
 Use the New-AzDenyAssignment command to create a new user-assigned deny assignment at the specified scope.
 
-By default, the deny assignment targets all principals (Everyone) and requires at least one excluded principal via the ExcludePrincipalId parameter.
+By default, the deny assignment targets all principals (Everyone). Use the optional ExcludePrincipalId parameter to exclude specific principals.
 
 Alternatively, use -PrincipalId and -PrincipalType to target a specific user or service principal. In this mode, -ExcludePrincipalId is optional. Group type principals are not supported for user-assigned deny assignments.
 
@@ -89,7 +89,7 @@ New-AzDenyAssignment -Scope "/subscriptions/00000000-0000-0000-0000-000000000000
     -InputFile "C:\DenyAssignment.json"
 ```
 
-Creates a deny assignment using the definition in the specified JSON file. The input file must include DenyAssignmentName, Actions, and either ExcludePrincipalIds (Everyone mode) or PrincipalIds + PrincipalTypes (per-principal mode).
+Creates a deny assignment using the definition in the specified JSON file. ExcludePrincipalIds is optional in both modes and can be omitted, null, or an empty array. Include PrincipalIds and PrincipalTypes to target a specific user or service principal; otherwise, the deny assignment targets Everyone.
 
 ### Example 5: Create a deny assignment with multiple exclude principals
 ```powershell
@@ -101,6 +101,15 @@ New-AzDenyAssignment -DenyAssignmentName "Block writes" `
 ```
 
 Creates a deny assignment that denies write actions for everyone, excluding a user and a service principal.
+
+### Example 6: Create an Everyone deny assignment without excluded principals
+```powershell
+New-AzDenyAssignment -DenyAssignmentName "Block storage account writes" `
+    -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG" `
+    -Action "Microsoft.Storage/storageAccounts/write"
+```
+
+Creates a deny assignment at resource group scope that blocks storage account writes for Everyone without excluding any principals.
 
 ## PARAMETERS
 
@@ -240,23 +249,11 @@ Accept wildcard characters: False
 ```
 
 ### -ExcludePrincipalId
-Object IDs of principals to exclude from the deny assignment. Required when targeting Everyone. Optional when using -PrincipalId.
+Object IDs of principals to exclude from the deny assignment. Optional in both Everyone and per-principal modes.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: EveryoneParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String[]
-Parameter Sets: PerPrincipalParameterSet
+Parameter Sets: EveryoneParameterSet, PerPrincipalParameterSet
 Aliases:
 
 Required: False
