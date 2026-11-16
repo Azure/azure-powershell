@@ -49,6 +49,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
         // use it. Tag-specific "v"-stripping happens only in BicepInstaller.TryParseReleaseTag.
         [InlineData("v0.26.0")]
         [InlineData("V0.26.0")]
+        // Each component is numeric per the regex, but can still overflow Int32. TryParse must
+        // return false here rather than let int.Parse throw an unhandled OverflowException -
+        // a caller looping over many candidate strings (e.g. GetInstalledVersions scanning
+        // cached version directories) must be able to skip one bad entry without aborting.
+        [InlineData("2147483648.0.0")]
+        [InlineData("0.2147483648.0")]
+        [InlineData("0.0.2147483648")]
         public void TryParse_fails_for_invalid_versions(string input)
         {
             BicepSemanticVersion.TryParse(input, out var version).Should().BeFalse();

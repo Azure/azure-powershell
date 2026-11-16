@@ -14,6 +14,7 @@
 
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using FluentAssertions;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -293,6 +294,44 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             var resolver = new BicepConfigResolver(dataStoreMock.Object);
 
             resolver.ResolveVersionConstraint(configPath).Should().BeNull();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ResolveVersionConstraint_returns_explicit_empty_version_as_is_instead_of_falling_through()
+        {
+            // An explicit "version": "" is a malformed constraint, not "no opinion" - unlike a
+            // missing/null version, it must not be treated as absent (which would otherwise
+            // either silently inherit a base config's version or fall back to the unpinned
+            // executable). It's returned here as-is so BicepVersionConstraint.Parse can reject
+            // it with a diagnostic naming the malformed value and the config file.
+            var root = NewRoot();
+            var leafConfig = Path.Combine(root, "leaf", "bicepconfig.json");
+            var sharedConfig = Path.Combine(root, "shared", "bicepconfig.json");
+
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.FileExists(leafConfig)).Returns(true);
+            dataStoreMock.Setup(x => x.FileExists(sharedConfig)).Returns(true);
+            dataStoreMock.Setup(x => x.ReadFileAsText(leafConfig)).Returns("{ \"extends\": \"../shared/bicepconfig.json\", \"bicep\": { \"version\": \"\" } }");
+            dataStoreMock.Setup(x => x.ReadFileAsText(sharedConfig)).Returns("{ \"bicep\": { \"version\": \">=0.26.0\" } }");
+
+            var resolver = new BicepConfigResolver(dataStoreMock.Object);
+
+            resolver.ResolveVersionConstraint(leafConfig).Should().Be(string.Empty);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PathComparer_selects_platform_appropriate_comparer()
+        {
+            // Windows and macOS file systems are case-insensitive by default; Linux is not.
+            // Using the wrong comparer for cycle detection either merges distinct files on
+            // Linux (false-positive cycle) or fails to recognize a true cycle on Windows/macOS.
+            var expected = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX)
+                ? StringComparer.OrdinalIgnoreCase
+                : StringComparer.Ordinal;
+
+            BicepConfigResolver.PathComparer.Should().BeSameAs(expected);
         }
 
         [Fact]

@@ -115,7 +115,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         /// <summary>
         /// Enumerates the versions currently cached under the installation directory, by
-        /// scanning for "bicep-{version}" subdirectories.
+        /// scanning for "bicep-{version}" subdirectories. A directory is only counted if its
+        /// Bicep executable actually exists inside it - a failed or interrupted download can
+        /// leave behind an empty versioned directory, which must not be reported as installed
+        /// (otherwise later resolutions would be handed a nonexistent executable instead of
+        /// retrying the download).
         /// </summary>
         public IReadOnlyList<BicepSemanticVersion> GetInstalledVersions()
         {
@@ -136,7 +140,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 }
 
                 BicepSemanticVersion version;
-                if (BicepSemanticVersion.TryParse(name.Substring(VersionedDirectoryPrefix.Length), out version))
+                if (!BicepSemanticVersion.TryParse(name.Substring(VersionedDirectoryPrefix.Length), out version))
+                {
+                    continue;
+                }
+
+                if (dataStore.FileExists(GetVersionedInstallationPath(version)))
                 {
                     versions.Add(version);
                 }
@@ -296,12 +305,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
             if (string.IsNullOrEmpty(version))
             {
-                if (installedVersion != null)
-                {
-                    writeVerbose?.Invoke(string.Format(Properties.Resources.BicepVersionAlreadyInstalled, installedVersion));
-                    return installedVersion;
-                }
-
                 try
                 {
                     releaseTag = downloader.GetLatestReleaseTag();
@@ -314,6 +317,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 if (releaseTag == null || !TryParseReleaseTag(releaseTag, out targetVersion))
                 {
                     throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionNoMatchingReleaseFound, "latest", releaseTag));
+                }
+
+                // Only skip the download if what's already installed matches the latest release;
+                // otherwise, a newer release is available and must be installed (and -Version
+                // being omitted means "install the latest", not "keep whatever's already there").
+                if (installedVersion != null && installedVersion.CompareTo(targetVersion) == 0)
+                {
+                    writeVerbose?.Invoke(string.Format(Properties.Resources.BicepVersionAlreadyInstalled, installedVersion));
+                    return installedVersion;
                 }
             }
             else
@@ -439,7 +451,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
             if (!IsWindows())
             {
-                processInvoker.Invoke(new ProcessInput { Executable = "chmod", Arguments = $"+x \"{installationPath}\"" });
+                var chmodOutput = processInvoker.Invoke(new ProcessInput { Executable = "chmod", Arguments = $"+x \"{installationPath}\"" });
+                if (chmodOutput.ExitCode != 0)
+                {
+                    // Don't leave a non-executable binary cached as if the install succeeded -
+                    // that would be reused (and keep failing) on every later call.Remove it so the next attempt retries the download + chmod.
+                    dataStore.DeleteFile(installationPath);
+                    throw new AzPSApplicationException(string.Format(Properties.Resources.BicepDownloadFailed, chmodOutput.Stderr));
+                }
             }
 
             if (installedVersion != null)

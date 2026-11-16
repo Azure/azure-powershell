@@ -37,6 +37,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
         private static string ExpectedFileName => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep";
 
+        /// <summary>
+        /// A process invoker mock that succeeds for any invocation (including "chmod +x" on the
+        /// non-Windows install path), for tests that exercise a real download/install but aren't
+        /// specifically testing process-invocation behavior themselves.
+        /// </summary>
+        private static IProcessInvoker SucceedingProcessInvoker()
+        {
+            var mock = new Mock<IProcessInvoker>();
+            mock.Setup(x => x.Invoke(It.IsAny<ProcessInput>())).Returns(new ProcessOutput { ExitCode = 0, Stdout = "", Stderr = "" });
+            return mock.Object;
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetInstallationPath_combines_profile_directory_bin_and_platform_specific_file_name()
@@ -86,6 +98,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             dataStoreMock.Setup(x => x.DirectoryExists(installationDirectory)).Returns(false);
             downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.26.54");
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(fakeBytes);
+            processInvokerMock.Setup(x => x.Invoke(It.IsAny<ProcessInput>())).Returns(new ProcessOutput { ExitCode = 0, Stdout = "", Stderr = "" });
 
             var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, processInvokerMock.Object, FakeProfileDirectory);
 
@@ -143,7 +156,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.26.54");
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(new byte[] { 1 });
 
-            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
 
             installer.EnsureInstalled();
 
@@ -184,7 +197,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.26.54");
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(new byte[] { 1 });
 
-            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
 
             installer.EnsureInstalled();
 
@@ -206,6 +219,45 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             Assert.Throws<AzPSApplicationException>(() => installer.EnsureInstalled());
             dataStoreMock.Verify(x => x.WriteFile(It.IsAny<string>(), It.IsAny<byte[]>()), Times.Never);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EnsureInstalled_throws_and_deletes_binary_when_chmod_fails()
+        {
+            // Regression test: previously, a failed "chmod +x" (e.g. an unsupported filesystem,
+            // permissions issue) was silently ignored, leaving a non-executable binary cached as
+            // if the install had succeeded - which would then be reused (and keep failing) by
+            // every later call, with no way to retry. A failed chmod must now throw and remove
+            // the broken binary so the next call starts a fresh download.
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                // chmod is only invoked on non-Windows platforms; nothing to test here.
+                return;
+            }
+
+            var installationDirectory = Path.Combine(FakeProfileDirectory, "bin");
+            var expectedPath = Path.Combine(installationDirectory, ExpectedFileName);
+            var fakeBytes = Encoding.UTF8.GetBytes("fake-bicep-binary");
+
+            var downloaderMock = new Mock<IBicepDownloader>();
+            var dataStoreMock = new Mock<IDataStore>();
+            var processInvokerMock = new Mock<IProcessInvoker>();
+
+            dataStoreMock.Setup(x => x.FileExists(expectedPath)).Returns(false);
+            dataStoreMock.Setup(x => x.DirectoryExists(installationDirectory)).Returns(true);
+            downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.26.54");
+            downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(fakeBytes);
+            processInvokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == "chmod")))
+                .Returns(new ProcessOutput { ExitCode = 1, Stdout = "", Stderr = "chmod: changing permissions: Operation not permitted" });
+
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, processInvokerMock.Object, FakeProfileDirectory);
+
+            Assert.Throws<AzPSApplicationException>(() => installer.EnsureInstalled());
+
+            dataStoreMock.Verify(x => x.WriteFile(expectedPath, fakeBytes), Times.Once);
+            dataStoreMock.Verify(x => x.DeleteFile(expectedPath), Times.Once);
+            dataStoreMock.Verify(x => x.WriteFile(It.Is<string>(p => p.EndsWith(".bicep-version")), It.IsAny<string>()), Times.Never);
         }
 
         [Fact]
@@ -233,6 +285,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
                 Path.Combine(installationDirectory, "bicep-0.30.1"),
                 Path.Combine(installationDirectory, "not-a-version-dir"),
             });
+            dataStoreMock.Setup(x => x.FileExists(Path.Combine(installationDirectory, "bicep-0.26.0", ExpectedFileName))).Returns(true);
+            dataStoreMock.Setup(x => x.FileExists(Path.Combine(installationDirectory, "bicep-0.30.1", ExpectedFileName))).Returns(true);
 
             var installer = new BicepInstaller(Mock.Of<IBicepDownloader>(), dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
 
@@ -259,6 +313,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
                 Path.Combine(installationDirectory, "bicep-not-a-version"),
                 Path.Combine(installationDirectory, "bicep-"),
             });
+            dataStoreMock.Setup(x => x.FileExists(Path.Combine(installationDirectory, "bicep-0.26.0", ExpectedFileName))).Returns(true);
 
             var installer = new BicepInstaller(Mock.Of<IBicepDownloader>(), dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
 
@@ -266,6 +321,28 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             versions.Should().ContainSingle();
             versions.Should().Contain(v => v.ToString() == "0.26.0");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetInstalledVersions_skips_versioned_directory_whose_executable_is_missing()
+        {
+            // A versioned directory can exist without its executable if a previous download was
+            // interrupted or failed halfway through. Such a directory must not be reported as
+            // installed, so that a subsequent resolution retries the download instead of being
+            // handed a nonexistent executable path.
+            var installationDirectory = Path.Combine(FakeProfileDirectory, "bin");
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.DirectoryExists(installationDirectory)).Returns(true);
+            dataStoreMock.Setup(x => x.GetDirectories(installationDirectory)).Returns(new[]
+            {
+                Path.Combine(installationDirectory, "bicep-0.26.0"),
+            });
+            dataStoreMock.Setup(x => x.FileExists(It.IsAny<string>())).Returns(false);
+
+            var installer = new BicepInstaller(Mock.Of<IBicepDownloader>(), dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+
+            installer.GetInstalledVersions().Should().BeEmpty();
         }
 
         [Fact]
@@ -280,6 +357,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             var dataStoreMock = new Mock<IDataStore>();
             dataStoreMock.Setup(x => x.DirectoryExists(installationDirectory)).Returns(true);
             dataStoreMock.Setup(x => x.GetDirectories(installationDirectory)).Returns(new[] { cachedDirectory });
+            dataStoreMock.Setup(x => x.FileExists(expectedPath)).Returns(true);
 
             var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
             var constraint = BicepVersionConstraint.Parse(">=0.26.0", "bicepconfig.json");
@@ -306,7 +384,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             downloaderMock.Setup(x => x.GetAvailableReleaseTags()).Returns(new[] { "v0.32.0", "v0.30.1", "v0.25.0" });
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(fakeBytes);
 
-            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
             var constraint = BicepVersionConstraint.Parse("<=0.30.1", "bicepconfig.json");
 
             var result = installer.EnsureInstalled(constraint);
@@ -368,7 +446,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.26.54");
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(fakeBytes);
 
-            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
 
             var result = installer.InstallVersion(null);
 
@@ -387,6 +465,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             var metadataPath = Path.Combine(installationDirectory, ".bicep-version");
 
             var downloaderMock = new Mock<IBicepDownloader>();
+            downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.26.54");
+
             var dataStoreMock = new Mock<IDataStore>();
             dataStoreMock.Setup(x => x.FileExists(expectedPath)).Returns(true);
             dataStoreMock.Setup(x => x.FileExists(metadataPath)).Returns(true);
@@ -399,8 +479,42 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             result.ToString().Should().Be("0.26.54");
             dataStoreMock.Verify(x => x.WriteFile(It.IsAny<string>(), It.IsAny<byte[]>()), Times.Never);
-            downloaderMock.Verify(x => x.GetLatestReleaseTag(), Times.Never);
+            // Even though something's already installed, the latest release still must be looked
+            // up (and compared) so a stale install isn't mistaken for "already up to date".
+            downloaderMock.Verify(x => x.GetLatestReleaseTag(), Times.Once);
             verboseMessages.Should().Contain(string.Format(Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources.BicepVersionAlreadyInstalled, result));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void InstallVersion_with_no_version_downloads_newer_release_when_installed_version_is_stale()
+        {
+            // Regression test: previously, InstallVersion(null) would return immediately if
+            // anything was installed, without ever checking whether a newer release had been
+            // published - contradicting 'Install-AzBicep' help text/docs, which say omitting
+            // -Version installs the latest release.
+            var installationDirectory = Path.Combine(FakeProfileDirectory, "bin");
+            var expectedPath = Path.Combine(installationDirectory, ExpectedFileName);
+            var metadataPath = Path.Combine(installationDirectory, ".bicep-version");
+            var fakeBytes = Encoding.UTF8.GetBytes("fake-bicep-binary");
+
+            var downloaderMock = new Mock<IBicepDownloader>();
+            downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.30.1");
+            downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(fakeBytes);
+
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.FileExists(expectedPath)).Returns(true);
+            dataStoreMock.Setup(x => x.FileExists(metadataPath)).Returns(true);
+            dataStoreMock.Setup(x => x.ReadFileAsText(metadataPath)).Returns("0.26.54");
+
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
+
+            var result = installer.InstallVersion(null);
+
+            result.ToString().Should().Be("0.30.1");
+            dataStoreMock.Verify(x => x.WriteFile(expectedPath, fakeBytes), Times.Once);
+            dataStoreMock.Verify(x => x.WriteFile(metadataPath, "0.30.1"), Times.Once);
+            downloaderMock.Verify(x => x.GetAvailableReleaseTags(), Times.Never);
         }
 
         [Fact]
@@ -420,7 +534,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             downloaderMock.Setup(x => x.GetAvailableReleaseTags()).Returns(new[] { "v0.32.0", "v0.30.1", "v0.25.0" });
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(fakeBytes);
 
-            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
 
             var result = installer.InstallVersion("0.30.1");
 
@@ -448,7 +562,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             downloaderMock.Setup(x => x.GetAvailableReleaseTags()).Returns(new[] { "v0.32.0", "v0.30.1", "v0.25.0" });
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(fakeBytes);
 
-            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
 
             var result = installer.InstallVersion("0.30.1");
 
@@ -477,7 +591,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             downloaderMock.Setup(x => x.GetAvailableReleaseTags()).Returns(new[] { "v0.32.0", "v0.30.1", "v0.25.0" });
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(fakeBytes);
 
-            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
 
             var result = installer.InstallVersion(requestedVersion);
 

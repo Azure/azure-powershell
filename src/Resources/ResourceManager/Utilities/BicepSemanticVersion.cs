@@ -57,13 +57,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 return false;
             }
 
-            var minor = match.Groups["minor"].Success ? int.Parse(match.Groups["minor"].Value) : 0;
-            var patch = match.Groups["patch"].Success ? int.Parse(match.Groups["patch"].Value) : 0;
+            int major;
+            int minor = 0;
+            int patch = 0;
 
-            version = new BicepSemanticVersion(
-                int.Parse(match.Groups["major"].Value),
-                minor,
-                patch);
+            if (!int.TryParse(match.Groups["major"].Value, out major))
+            {
+                return false;
+            }
+
+            if (match.Groups["minor"].Success && !int.TryParse(match.Groups["minor"].Value, out minor))
+            {
+                return false;
+            }
+
+            if (match.Groups["patch"].Success && !int.TryParse(match.Groups["patch"].Value, out patch))
+            {
+                return false;
+            }
+
+            version = new BicepSemanticVersion(major, minor, patch);
             return true;
         }
 

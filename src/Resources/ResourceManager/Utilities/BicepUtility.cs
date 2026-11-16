@@ -191,11 +191,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         /// <summary>
         /// Checks whether the Bicep executable currently on the PATH satisfies the given
-        /// 'bicep.version' constraint, by invoking "bicep -v" and parsing its output.
+        /// 'bicep.version' constraint, by invoking "bicep -v" and parsing its output. Treats a
+        /// failed process launch (e.g. an incompatible or non-executable binary, which throws
+        /// from Process.Start) or a nonzero exit code the same as "unsatisfied", so the managed
+        /// installer fallback can still proceed instead of the exception escaping to the caller.
         /// </summary>
         private bool PathExecutableSatisfiesConstraint(BicepVersionConstraint constraint)
         {
-            var output = processInvoker.Invoke(new ProcessInput { Executable = BicepExecutable, Arguments = "-v" });
+            ProcessOutput output;
+            try
+            {
+                output = processInvoker.Invoke(new ProcessInput { Executable = BicepExecutable, Arguments = "-v" });
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            if (output.ExitCode != 0)
+            {
+                return false;
+            }
+
             var match = VersionNumberPattern.Match(output.Stdout ?? string.Empty);
 
             BicepSemanticVersion pathVersion;

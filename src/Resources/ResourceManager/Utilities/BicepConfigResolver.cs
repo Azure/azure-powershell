@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Minimal model of a bicepconfig.json file. Only the fields relevant to resolving the
@@ -88,15 +89,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         }
 
         /// <summary>
+        /// The comparer used to detect 'extends' cycles by full path. Windows and macOS have
+        /// case-insensitive file systems by default, but Linux does not; using a
+        /// case-insensitive comparer unconditionally would incorrectly treat two distinct,
+        /// case-differing paths on Linux as the same file and report a false cycle.
+        /// </summary>
+        internal static readonly StringComparer PathComparer = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX)
+            ? StringComparer.OrdinalIgnoreCase
+            : StringComparer.Ordinal;
+
+        /// <summary>
         /// Follows the 'extends' chain starting at the given config file, and returns the
         /// first non-null 'bicep.version' value found walking from the leaf config towards
-        /// the root. An explicit "version": null in an intermediate layer is treated as "no
-        /// opinion" and falls through to a deeper layer in the chain, matching Bicep's
-        /// config-merging semantics.
+        /// the root. An explicit "version": null (or an absent 'bicep' section) in an
+        /// intermediate layer is treated as "no opinion" and falls through to a deeper layer in
+        /// the chain, matching Bicep's config-merging semantics. An explicit "version": "" is
+        /// not treated as "no opinion" - it is returned as-is so the caller's constraint parser
+        /// reports it as the malformed value it is, rather than silently falling through.
         /// </summary>
         public string ResolveVersionConstraint(string configFilePath)
         {
-            var visited = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var visited = new HashSet<string>(PathComparer);
             var currentPath = Path.GetFullPath(configFilePath);
             var depth = 0;
 
@@ -119,9 +132,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
                 var config = ParseConfigFile(currentPath);
 
-                if (!string.IsNullOrEmpty(config.Bicep?.Version))
+                if (config.Bicep?.Version != null)
                 {
-                    // Note: this only captures the raw constraint string.
+                    // Note: this only captures the raw constraint string, including an explicit
+                    // "" - that's deliberately not treated as "no opinion" here, so the caller's
+                    // constraint parser rejects it as malformed instead of silently falling
+                    // through to a base config or the unpinned executable.
                     return config.Bicep.Version;
                 }
 
