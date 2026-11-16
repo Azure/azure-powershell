@@ -276,6 +276,178 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.VerifyListCallPatternAndReset();
         }
 
+        [Theory]
+        [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG", "Microsoft.Resources")]
+        [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM", "Microsoft.Compute")]
+        [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Sql/servers/server1/databases/db1", "Microsoft.Sql")]
+        [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM/providers/Microsoft.Authorization/locks/testLock", "Microsoft.Authorization")]
+        [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM/providers/Microsoft.Authorization/locks/testLock/providers/Microsoft.Insights/diagnosticSettings/diagnostic1", "Microsoft.Insights")]
+        [InlineData("/providers/Microsoft.Management/managementGroups/testGroup/providers/Microsoft.Authorization/roleAssignments/assignment1", "Microsoft.Authorization")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsResourceProviderByResourceId(string resourceId, string expectedProviderNamespace)
+        {
+            var provider = new Provider(
+                namespaceProperty: expectedProviderNamespace,
+                registrationState: ResourceManagerSdkClient.RegisteredStateName,
+                resourceTypes: new[]
+                {
+                    new ProviderResourceType
+                    {
+                        ResourceType = "testResources",
+                        Locations = new[] { "West US" }
+                    }
+                });
+
+            var page = new Page<Provider>();
+            page.SetItemValue<Provider>(new List<Provider> { provider });
+            this.providerOperationsMock
+                .Setup(f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(new AzureOperationResponse<IPage<Provider>> { Body = page }));
+            this.providerOperationsMock
+                .Setup(f => f.GetWithHttpMessagesAsync(expectedProviderNamespace, null, null, It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(new AzureOperationResponse<Provider> { Body = provider }));
+
+            this.cmdlet.ResourceId = new[] { resourceId };
+            this.cmdlet.MyInvocation.BoundParameters.Add("ResourceId", this.cmdlet.ResourceId);
+            this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ResourceIdParameterSet;
+
+            this.cmdlet.ExecuteCmdlet();
+
+            this.providerOperationsMock.Verify(
+                f => f.GetWithHttpMessagesAsync(expectedProviderNamespace, null, null, It.IsAny<CancellationToken>()),
+                Times.Once());
+            this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsDistinctResourceProvidersFromMultipleResourceIds()
+        {
+            const string subscription = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG";
+            var computeProvider = new Provider(
+                namespaceProperty: "Microsoft.Compute",
+                registrationState: ResourceManagerSdkClient.RegisteredStateName,
+                resourceTypes: new[]
+                {
+                    new ProviderResourceType { ResourceType = "virtualMachines", Locations = new[] { "West US" } }
+                });
+            var authorizationProvider = new Provider(
+                namespaceProperty: "Microsoft.Authorization",
+                registrationState: ResourceManagerSdkClient.RegisteredStateName,
+                resourceTypes: new[]
+                {
+                    new ProviderResourceType { ResourceType = "locks", Locations = new[] { "West US" } }
+                });
+
+            var page = new Page<Provider>();
+            page.SetItemValue<Provider>(new List<Provider> { computeProvider, authorizationProvider });
+            this.providerOperationsMock
+                .Setup(f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(new AzureOperationResponse<IPage<Provider>> { Body = page }));
+            this.providerOperationsMock
+                .Setup(f => f.GetWithHttpMessagesAsync("Microsoft.Compute", null, null, It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(new AzureOperationResponse<Provider> { Body = computeProvider }));
+            this.providerOperationsMock
+                .Setup(f => f.GetWithHttpMessagesAsync("Microsoft.Authorization", null, null, It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(new AzureOperationResponse<Provider> { Body = authorizationProvider }));
+
+            PSResourceProvider[] writtenProviders = null;
+            this.commandRuntimeMock
+                .Setup(f => f.WriteObject(It.IsAny<object>(), true))
+                .Callback((object value, bool enumerateCollection) =>
+                {
+                    writtenProviders = ((IEnumerable<PSResourceProvider>)value).ToArray();
+                });
+
+            this.cmdlet.ResourceId = new[]
+            {
+                subscription + "/providers/Microsoft.Compute/virtualMachines/vm1",
+                subscription + "/providers/Microsoft.Compute/virtualMachines/vm1/providers/Microsoft.Authorization/locks/lock1",
+                subscription + "/providers/microsoft.compute/virtualMachines/vm2"
+            };
+            this.cmdlet.MyInvocation.BoundParameters.Add("ResourceId", this.cmdlet.ResourceId);
+            this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ResourceIdParameterSet;
+
+            this.cmdlet.ExecuteCmdlet();
+
+            this.providerOperationsMock.Verify(
+                f => f.GetWithHttpMessagesAsync("Microsoft.Compute", null, null, It.IsAny<CancellationToken>()),
+                Times.Once());
+            this.providerOperationsMock.Verify(
+                f => f.GetWithHttpMessagesAsync("Microsoft.Authorization", null, null, It.IsAny<CancellationToken>()),
+                Times.Once());
+            this.providerOperationsMock.Verify(
+                f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()),
+                Times.Exactly(2));
+
+            Assert.NotNull(writtenProviders);
+            Assert.Equal(2, writtenProviders.Length);
+            Assert.Contains(writtenProviders, p => p.ProviderNamespace == "Microsoft.Compute" &&
+                p.ResourceTypes.Single().ResourceTypeName == "virtualMachines");
+            Assert.Contains(writtenProviders, p => p.ProviderNamespace == "Microsoft.Authorization" &&
+                p.ResourceTypes.Single().ResourceTypeName == "locks");
+            Assert.Equal(2, writtenProviders
+                .SelectMany(p => p.ResourceTypes.Select(t => p.ProviderNamespace + "/" + t.ResourceTypeName))
+                .Distinct(System.StringComparer.OrdinalIgnoreCase)
+                .Count());
+        }
+
+        [Theory]
+        [InlineData("not-a-resource-id")]
+        [InlineData("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsInvalidResourceIdBeforeCallingAzure(string resourceId)
+        {
+            this.cmdlet.ResourceId = new[] { resourceId };
+            this.cmdlet.MyInvocation.BoundParameters.Add("ResourceId", this.cmdlet.ResourceId);
+            this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ResourceIdParameterSet;
+
+            Assert.Throws<System.ArgumentException>(() => this.cmdlet.ExecuteCmdlet());
+
+            this.providerOperationsMock.Verify(
+                f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()),
+                Times.Never());
+            this.providerOperationsMock.Verify(
+                f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()),
+                Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsMixedResourceIdsBeforeCallingAzure()
+        {
+            this.cmdlet.ResourceId = new[]
+            {
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG",
+                "not-a-resource-id"
+            };
+            this.cmdlet.MyInvocation.BoundParameters.Add("ResourceId", this.cmdlet.ResourceId);
+            this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ResourceIdParameterSet;
+
+            Assert.Throws<System.ArgumentException>(() => this.cmdlet.ExecuteCmdlet());
+
+            this.providerOperationsMock.Verify(
+                f => f.ListWithHttpMessagesAsync(null, null, null, It.IsAny<CancellationToken>()),
+                Times.Never());
+            this.providerOperationsMock.Verify(
+                f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()),
+                Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ResourceIdDoesNotBindFromPipeline()
+        {
+            var parameter = typeof(GetAzureProviderCmdlet)
+                .GetProperty(nameof(GetAzureProviderCmdlet.ResourceId))
+                .GetCustomAttributes(typeof(ParameterAttribute), true)
+                .Cast<ParameterAttribute>()
+                .Single();
+
+            Assert.False(parameter.ValueFromPipeline);
+            Assert.False(parameter.ValueFromPipelineByPropertyName);
+        }
+
         /// <summary>
         /// Resets the calls on the mocks
         /// </summary>

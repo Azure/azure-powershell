@@ -25,6 +25,12 @@ Get-AzResourceProvider -ProviderNamespace <String[]> [-Location <String>] [-ApiV
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ResourceId
+```
+Get-AzResourceProvider -ResourceId <String[]> [-Location <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzResourceProvider** cmdlet gets an Azure resource provider.
 
@@ -230,6 +236,14 @@ DefaultApiVersion : 2022-03-02
 
 To get the default API version for a specific resource type, get the resource provider first then filter the resource type by name.
 
+### Example 5: Get the resource provider for a resource ID
+
+```powershell
+Get-AzResourceProvider -ResourceId (Get-AzVM -ResourceGroupName testRG -Name testVM).Id
+```
+
+This command gets the resource provider for a virtual machine using its full ARM resource ID. For extension resource IDs, the provider of the extension resource is used rather than the parent resource's provider.
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -320,6 +334,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Specifies one or more full Azure resource IDs to identify their resource providers. For an extension resource ID, the final resource's provider namespace is used. This parameter does not accept pipeline input; pass the resource ID explicitly.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

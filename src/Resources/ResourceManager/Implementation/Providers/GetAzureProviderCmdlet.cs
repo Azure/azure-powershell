@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Common.ArgumentCompleters;
+    using AzureResourceIdentifier = global::Azure.Core.ResourceIdentifier;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
@@ -37,6 +38,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public const string IndividualProviderParameterSet = "IndividualProvider";
 
         /// <summary>
+        /// The resource ID parameter set name.
+        /// </summary>
+        public const string ResourceIdParameterSet = "ResourceId";
+
+        /// <summary>
         /// The list parameter set name
         /// </summary>
         public  const string ListAvailableParameterSet = "ListAvailable";
@@ -47,6 +53,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider namespace.", ParameterSetName = GetAzureProviderCmdlet.IndividualProviderParameterSet)]
         [ValidateNotNullOrEmpty]
         public string[] ProviderNamespace { get; set; }
+
+        /// <summary>
+        /// Gets or sets the full ARM resource IDs used to identify resource providers.
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = "One or more full Azure resource IDs.", ParameterSetName = GetAzureProviderCmdlet.ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string[] ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the provider namespace
@@ -69,7 +82,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var providers = this.ListPSResourceProviders();
 
-            if (this.IsParameterBound(c => c.ProviderNamespace))
+            if (this.IsParameterBound(c => c.ProviderNamespace) || this.IsParameterBound(c => c.ResourceId))
             {
                 var expandedProviders = providers
                     .SelectMany(provider =>
@@ -101,17 +114,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
         }
 
+        private static string GetProviderNamespaceFromResourceId(string resourceId)
+        {
+            if (string.IsNullOrWhiteSpace(resourceId) ||
+                !AzureResourceIdentifier.TryParse(resourceId, out var identifier) ||
+                string.IsNullOrWhiteSpace(identifier.ResourceType.Namespace))
+            {
+                throw new ArgumentException($"Invalid Azure resource ID: '{resourceId}'.", nameof(ResourceId));
+            }
+
+            return identifier.ResourceType.Namespace;
+        }
+
         private PSResourceProvider[] ListPSResourceProviders()
         {
+            // Resolve IDs before issuing any API requests so malformed IDs fail fast.
+            string[] providerNamespaces = null;
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                providerNamespaces = this.ResourceId
+                    .Select(GetProviderNamespaceFromResourceId)
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .ToArray();
+            }
+            else if (this.IsParameterBound(c => c.ProviderNamespace))
+            {
+                providerNamespaces = this.ProviderNamespace;
+            }
+
             var allProviders = this.ResourceManagerSdkClient.ListResourceProviders(
                 providerName: null,
                 listAvailable: true);
 
             var providers = allProviders;
-            if (this.IsParameterBound(c => c.ProviderNamespace))
+            if (providerNamespaces != null)
             {
                 providers = new System.Collections.Generic.List<Management.ResourceManager.Models.Provider>();
-                foreach (var providerNamespace in this.ProviderNamespace)
+                foreach (var providerNamespace in providerNamespaces)
                 {
                     providers.AddRange(this.ResourceManagerSdkClient.ListResourceProviders(providerName: providerNamespace));
                 }
