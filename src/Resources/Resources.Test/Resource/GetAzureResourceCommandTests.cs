@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -19,6 +20,7 @@ using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
@@ -86,11 +88,70 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Equal(subscriptionId, actual.SubscriptionId);
             Assert.Equal(resourceGroupName, actual.ResourceGroupName);
             Assert.Equal(resourceType, actual.ResourceType);
+            Assert.Equal(provider, actual.ProviderNamespace);
+            Assert.Equal(provider, PSObject.AsPSObject(actual).Properties[nameof(PSResource.ProviderNamespace)].Value);
+            Assert.False(typeof(PSResource).GetProperty(nameof(PSResource.ProviderNamespace)).CanWrite);
             Assert.Equal(resourceType, actual.Type);
             Assert.Equal(resourceName, actual.Name);
             Assert.Equal(location, actual.Location);
             Assert.Equal(kind, actual.Kind);
             Assert.Equal(tags, actual.Tags);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsProviderNamespaceFromResourceId()
+        {
+            var resource = new Resource<JToken> { Id = resourceId, Name = resourceName };
+            var result = new PSResource(resource);
+
+            Assert.Equal(provider, result.ProviderNamespace);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsProviderNamespaceFromExtensionResourceId()
+        {
+            var extensionType = "Microsoft.Authorization/locks";
+            var extensionResourceId = $"{resourceId}/providers/{extensionType}/testLock";
+            var resource = new Resource<JToken> { Id = extensionResourceId, Name = "testLock" };
+            var result = new PSResource(resource);
+
+            Assert.Equal(resourceType, result.ResourceType);
+            Assert.Equal(extensionType, result.ExtensionResourceType);
+            Assert.Equal("Microsoft.Authorization", result.ProviderNamespace);
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsUpdatedProviderNamespaceWhenResourceTypeChanges()
+        {
+            var resource = new GenericResource(resourceId, resourceName, resourceType, location, tags, null, null, kind, null, null, null);
+            var result = new PSResource(resource);
+
+            result.ResourceType = "Microsoft.Network/virtualNetworks";
+
+            Assert.Equal("Microsoft.Network", result.ProviderNamespace);
+
+            result.ExtensionResourceType = "Microsoft.Authorization/locks";
+            Assert.Equal("Microsoft.Authorization", result.ProviderNamespace);
+
+            result.ExtensionResourceType = null;
+            Assert.Equal("Microsoft.Network", result.ProviderNamespace);
+        }
+
+        [Theory]
+        [InlineData("Microsoft.Compute/virtualMachines", "Microsoft.Compute")]
+        [InlineData("Microsoft.Sql/servers/databases", "Microsoft.Sql")]
+        [InlineData("Microsoft.Compute", "")]
+        [InlineData("", "")]
+        [InlineData(null, null)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsProviderNamespaceFromResourceType(string type, string expectedProviderNamespace)
+        {
+            var resource = new GenericResource(resourceId, resourceName, type, location, tags, null, null, kind, null, null, null);
+            var result = new PSResource(resource);
+
+            Assert.Equal(expectedProviderNamespace, result.ProviderNamespace);
         }
     }
 }

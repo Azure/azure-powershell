@@ -230,6 +230,16 @@ DefaultApiVersion : 2022-03-02
 
 To get the default API version for a specific resource type, get the resource provider first then filter the resource type by name.
 
+### Example 5: Get resource providers used by a resource group
+
+```powershell
+Get-AzResource -ResourceGroupName testRG |
+    Select-Object -Property ProviderNamespace -Unique |
+    Get-AzResourceProvider
+```
+
+This command retrieves the resource providers used by resources in the `testRG` resource group. The `ProviderNamespace` property of each resource is automatically bound to the `-ProviderNamespace` parameter of `Get-AzResourceProvider`. `Select-Object -Unique` avoids looking up the same provider more than once.
+
 ## PARAMETERS
 
 ### -ApiVersion
