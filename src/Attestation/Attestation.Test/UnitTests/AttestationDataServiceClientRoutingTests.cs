@@ -285,6 +285,22 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DoesNotResendWriteWhenSigningCertificatesCannotBeRetrieved()
+        {
+            _service.FailCertificateRequests = true;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportsServiceError()
         {
             _service.ErrorResponse = new JObject { ["error"] = new JObject { ["code"] = "PolicyParsingError", ["message"] = "Invalid policy was specified" } };
@@ -298,14 +314,29 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         private void AssertRejectedAfterOneRequest(Action call, string method, string path, string reason)
         {
-            _service.Requests.Clear();
-
-            var exception = Assert.Throws<ServiceTokenValidationException>(call);
+            var exception = AssertFailsAfterOneRequest<ServiceTokenValidationException>(call, method, path);
 
             Assert.Contains(reason, exception.Message);
+        }
+
+        private void AssertWriteSentOnceBeforeCertificatesFail(Action call, string method, string path)
+        {
+            var exception = AssertFailsAfterOneRequest<RestException>(call, method, path);
+
+            Assert.Contains("CertificatesUnavailable", exception.Message);
+            Assert.Single(_service.Requests, r => r.Path == "/certs");
+        }
+
+        private TException AssertFailsAfterOneRequest<TException>(Action call, string method, string path) where TException : Exception
+        {
+            _service.Requests.Clear();
+
+            var exception = Assert.Throws<TException>(call);
+
             var request = Assert.Single(_service.ServiceRequests);
             Assert.Equal(method, request.Method);
             Assert.Equal(path, request.Path);
+            return exception;
         }
 
         private static void AssertRequest(RecordedRequest request, string method, string path, string apiVersion, string tee, string contentType)
@@ -384,6 +415,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public string Issuer { get; set; } = Endpoint;
 
             /// <summary>
+            /// Makes requests for the provider's signing certificates fail.
+            /// </summary>
+            public bool FailCertificateRequests { get; set; }
+
+            /// <summary>
             /// Difference between the service's clock and the local clock.
             /// </summary>
             public TimeSpan ClockOffset { get; set; }
@@ -412,6 +448,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
                 if (recorded.Path == "/certs")
                 {
+                    if (FailCertificateRequests)
+                    {
+                        return Json(new JObject { ["error"] = new JObject { ["code"] = "CertificatesUnavailable", ["message"] = "Signing certificates are unavailable" } }, HttpStatusCode.BadRequest);
+                    }
+
                     return Json(new JObject
                     {
                         ["keys"] = new JArray(new JObject

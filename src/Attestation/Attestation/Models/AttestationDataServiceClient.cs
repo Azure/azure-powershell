@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             if (string.IsNullOrEmpty(policyFormat) ||
                 SetAzureAttestationPolicy.TextPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
             {
-                RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
-                    ValidateServiceToken(endpoint, CreateAdministrationClient(endpoint).SetPolicy(attestationType, userSpecifiedPolicy)));
+                SendWriteAndValidate(name, resourceGroupName, endpoint =>
+                    CreateAdministrationClient(endpoint).SetPolicy(attestationType, userSpecifiedPolicy).Token);
             }
             else if (SetAzureAttestationPolicy.JwtPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 }
                 else
                 {
-                    RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
+                    SendWriteAndValidate(name, resourceGroupName, endpoint =>
                         SendCallerToken(endpoint, RequestMethod.Put, $"/policies/{attestationType}", JwtContentType, policyJwt));
                 }
             }
@@ -152,8 +152,8 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
             if (string.IsNullOrEmpty(policyJwt))
             {
-                RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
-                    ValidateServiceToken(endpoint, CreateAdministrationClient(endpoint).ResetPolicy(attestationType)));
+                SendWriteAndValidate(name, resourceGroupName, endpoint =>
+                    CreateAdministrationClient(endpoint).ResetPolicy(attestationType).Token);
             }
             else if (HasUnencodedPolicy(policyJwt.Trim()))
             {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             }
             else
             {
-                RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
+                SendWriteAndValidate(name, resourceGroupName, endpoint =>
                     SendCallerToken(endpoint, RequestMethod.Post, $"/policies/{attestationType}:reset", JwtContentType, policyJwt.Trim()));
             }
         }
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             }
             else
             {
-                RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
+                SendWriteAndValidate(name, resourceGroupName, endpoint =>
                     SendCallerToken(endpoint, RequestMethod.Post, "/certificates:add", JsonContentType, CreatePolicyCertificateContent(signer)));
             }
 
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             }
             else
             {
-                RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
+                SendWriteAndValidate(name, resourceGroupName, endpoint =>
                     SendCallerToken(endpoint, RequestMethod.Post, "/certificates:remove", JsonContentType, CreatePolicyCertificateContent(signer)));
             }
 
@@ -380,14 +380,24 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         }
 
         /// <summary>
-        /// Sends a token created by the caller, which may be signed with the caller's own key, and validates the
-        /// token the service returns. The SDK's convenience methods for these operations take a signing key instead.
+        /// Sends a token created by the caller, which may be signed with the caller's own key, and returns the token
+        /// the service returns. The SDK's convenience methods for these operations take a signing key instead.
         /// </summary>
-        private object SendCallerToken(string endpoint, RequestMethod method, string path, string contentType, string content)
+        private AttestationToken SendCallerToken(string endpoint, RequestMethod method, string path, string contentType, string content)
         {
             var responseBody = SendRequest(endpoint, method, path, ServiceApiVersion, null, contentType, content);
-            ValidateServiceToken(endpoint, AttestationToken.Deserialize(ReadResponseToken(responseBody)));
-            return null;
+            return AttestationToken.Deserialize(ReadResponseToken(responseBody));
+        }
+
+        /// <summary>
+        /// Sends a write and validates the token the service returns. The token is validated after the retry, so a
+        /// failure while validating it, such as a failed request for the provider's signing certificates, doesn't
+        /// send the write again.
+        /// </summary>
+        private void SendWriteAndValidate(string name, string resourceGroupName, Func<string, AttestationToken> write)
+        {
+            var (endpoint, token) = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, e => (e, write(e)));
+            ValidateServiceToken(endpoint, token);
         }
 
         /// <summary>
@@ -446,7 +456,16 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         /// <exception cref="ServiceTokenValidationException">The token is not valid.</exception>
         private void ValidateServiceToken(string endpoint, AttestationToken token)
         {
-            var signers = new AttestationClient(new Uri(endpoint), Credential, CreateClientOptions()).GetSigningCertificates().Value;
+            IReadOnlyList<AttestationSigner> signers;
+            try
+            {
+                signers = new AttestationClient(new Uri(endpoint), Credential, CreateClientOptions()).GetSigningCertificates().Value;
+            }
+            catch (RequestFailedException ex)
+            {
+                throw ToRestException(ex);
+            }
+
             var validationOptions = new AttestationTokenValidationOptions { ExpectedIssuer = endpoint, TimeValidationSlack = TokenTimeValidationSlack };
             bool isValid;
             try
@@ -532,7 +551,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             catch (Exception ex) when (!(ex is ServiceTokenValidationException))
             {
                 // Ignore this exception on purpose, since we'll retry below. A token that fails validation is not
-                // retried: the provider was reached, and for a write the service has already applied the change.
+                // retried: the provider was reached and returned the token.
             }
 
             try
