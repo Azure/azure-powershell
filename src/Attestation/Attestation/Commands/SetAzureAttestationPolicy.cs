@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Attestation
             HelpMessage =
                 "Specifies a type of Trusted Execution Environment, for example SgxEnclave, OpenEnclave, TdxVm or Tpm. VBSEnclave is an earlier name for Tpm and is still accepted."
         )]
-        [PSArgumentCompleter("SgxEnclave", "OpenEnclave", "TdxVm", "VBSEnclave")]
+        [PSArgumentCompleter("SgxEnclave", "OpenEnclave", "TdxVm", "Tpm", "VBSEnclave")]
         [ValidateNotNullOrEmpty]
         public string Tee { get; set; }
         
