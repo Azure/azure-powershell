@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.0.0
 * Upgraded classic CDN to API version 2026-10-01, shared with Azure Front Door.
 * Removed standalone EdgeAction resource cmdlets, including attachment, execution filter, version and version-code operations. EdgeAction delivery-rule associations remain supported.
 * Removed `New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject` and the legacy `UrlSigningKey` secret and `AfdUrlSigning` rule action models. Other URL signing actions remain available.
