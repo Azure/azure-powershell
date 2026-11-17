@@ -45,11 +45,16 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         private readonly MockAttestationService _service = new MockAttestationService();
         private readonly List<string> _warnings = new List<string>();
+        private readonly List<(string Name, string ResourceGroupName, bool IsDefaultProvider, string Location)> _endpointLookups = new List<(string, string, bool, string)>();
         private readonly AttestationDataServiceClient _client;
 
         public AttestationDataServiceClientRoutingTests()
         {
-            _client = new AttestationDataServiceClient(new StaticTokenCredential(), _service.CreateTransport(), (name, resourceGroupName, isDefaultProvider, location) => MockAttestationService.Endpoint)
+            _client = new AttestationDataServiceClient(new StaticTokenCredential(), _service.CreateTransport(), (name, resourceGroupName, isDefaultProvider, location) =>
+            {
+                _endpointLookups.Add((name, resourceGroupName, isDefaultProvider, location));
+                return MockAttestationService.Endpoint;
+            })
             {
                 WarningWriter = _warnings.Add
             };
@@ -167,6 +172,18 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsDefaultProviderPolicy()
+        {
+            var policy = new PSPolicy(_client.GetPolicy(null, null, null, "TdxVm", true, "East US"));
+
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, "GET", "/policies/TdxVm", CurrentApiVersion, null, null);
+            Assert.Equal(PolicyText, policy.Text);
+            Assert.Equal((null, null, true, "East US"), Assert.Single(_endpointLookups));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsDefaultProviderPolicySigners()
         {
             var signers = new PSPolicySigners(_client.GetPolicySigners(null, null, null, true, "East US"));
@@ -174,6 +191,18 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             var request = Assert.Single(_service.ServiceRequests);
             AssertRequest(request, "GET", "/certificates", CurrentApiVersion, null, null);
             Assert.Equal(1, signers.CertificateCount);
+            Assert.Equal((null, null, true, "East US"), Assert.Single(_endpointLookups));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void LooksUpEndpointOfNamedProvider()
+        {
+            _client.GetPolicy("provider", "rg", null, "TdxVm");
+            _client.GetPolicySigners("provider", "rg", null);
+
+            Assert.Equal(2, _endpointLookups.Count);
+            Assert.All(_endpointLookups, lookup => Assert.Equal(("provider", "rg", false, string.Empty), lookup));
         }
 
         [Theory]
