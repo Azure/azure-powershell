@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
         /// Marks a VM extension setting value given as JSON: a number, true/false, a list, an object, or text that
         /// itself starts with this marker (as a JSON string), so any text can be told apart from a marked value. Setting
         /// names that start with the marker get the marker once more, and settings that aren't a JSON object (a list or a
-        /// single value) are kept as the only setting, named just the marker (<see cref="ToSettings"/>).
+        /// single value) or are an empty one are kept as the only setting, named just the marker (<see cref="ToSettings"/>).
         /// </summary>
         internal const string JsonSettingPrefix = "azure-powershell-json:";
 
@@ -112,8 +112,10 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
 
         /// <summary>
         /// VM extension settings for Azure.Compute.Batch: text stays text; other JSON values, and text that starts with
-        /// <see cref="JsonSettingPrefix"/>, are marked. Settings that aren't a JSON object become one marked setting named
-        /// <see cref="JsonSettingPrefix"/>; names that start with it get it once more, so they can't look like that.
+        /// <see cref="JsonSettingPrefix"/>, are marked. Settings that aren't a JSON object, or are an empty one, become one
+        /// marked setting named <see cref="JsonSettingPrefix"/> (Azure.Compute.Batch sends settings only once they have an
+        /// entry, but Track 1 sends an empty object too); names that start with it get it once more, so they can't look
+        /// like that.
         /// </summary>
         internal static IDictionary<string, string> ToSettings(JToken settings)
         {
@@ -122,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
                 return null;
             }
 
-            if (!(settings is JObject properties))
+            if (!(settings is JObject properties) || !properties.HasValues)
             {
                 return new Dictionary<string, string> { [JsonSettingPrefix] = JsonSettingPrefix + settings.ToString(NewtonsoftFormatting.None) };
             }
@@ -141,11 +143,13 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
 
         /// <summary>
         /// VM extension settings read by Azure.Compute.Batch, as Track 1 gives them for the same answer: an object, or for
-        /// settings that aren't a JSON object, a list or a single value.
+        /// settings that aren't a JSON object, a list or a single value; null when the service didn't send them.
         /// </summary>
         internal static object FromSettings(IDictionary<string, string> settings)
         {
-            if (settings == null)
+            // Azure.Compute.Batch keeps settings the service sent (even empty ones) as a Dictionary, and uses an empty
+            // dictionary of its own when they were left out or null, where Track 1 gives null.
+            if (settings == null || (settings.Count == 0 && !(settings is Dictionary<string, string>)))
             {
                 return null;
             }
