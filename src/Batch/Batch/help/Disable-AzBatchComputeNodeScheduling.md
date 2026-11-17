@@ -53,7 +53,7 @@ These commands disable task schedule on the compute node tvm-1783593343_34-20151
 To do this, the first command in the example creates an object reference to the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
 The second command then uses this object reference and the **Disable-AzBatchComputeNodeScheduling** cmdlet to connect to the pool myPool and disable task scheduling on node tvm-1783593343_34-20151117t222514z.
-Because the *DisableSchedulingOption* parameter was not included any tasks currently running on the compute node will be requeued.
+Because the *DisableSchedulingOption* parameter was not included, any tasks currently running on the compute node will be requeued.
 
 ### Example 2: Disable task scheduling on all compute nodes in a pool
 ```powershell
@@ -66,7 +66,7 @@ To perform this task, the first command in the example creates an object referen
 This object reference is stored in a variable named $context.
 The second command in the example then uses this object reference and **Get-AzBatchComputeNode** to return a collection of all the compute nodes found in Pool06.
 That collection is then piped to then **Disable-AzBatchComputeNodeScheduling** cmdlet to disable task scheduling on each compute node in the collection.
-Because the *DisableSchedulingOption* parameter was not included any tasks currently running on the compute nodes will be requeued.
+Because the *DisableSchedulingOption* parameter was not included, any tasks currently running on the compute nodes will be requeued.
 
 ## PARAMETERS
 
