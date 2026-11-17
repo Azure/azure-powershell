@@ -284,6 +284,9 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
+### [Invoke-AzComputePlacementScore](Invoke-AzComputePlacementScore.md)
+Generates placement scores for Compute VM SKUs.
+
 ### [Invoke-AzSpotPlacementScore](Invoke-AzSpotPlacementScore.md)
 Generates placement scores for Spot VM skus.
 
