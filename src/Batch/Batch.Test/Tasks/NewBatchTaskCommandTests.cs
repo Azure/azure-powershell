@@ -305,6 +305,43 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskCollectionSendsAnEnvironmentSettingWithoutAValue()
+        {
+            // An environment setting without a value used to make the cmdlets fail with a NullReferenceException.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.JobId = "job-collection";
+            cmdlet.Tasks = new[]
+            {
+                new PSCloudTask("task1", "cmd /c echo task1")
+                {
+                    EnvironmentSettings = new Dictionary<string, string> { { "A", "1" }, { "B", null } },
+                },
+            };
+
+            IList<TaskAddParameter> requestCollection = null;
+            Action<BatchRequest<
+                IList<TaskAddParameter>,
+                TaskAddCollectionOptions,
+                AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders>>> extractCollection =
+                (request) =>
+                {
+                    requestCollection = request.Parameters;
+                };
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(
+                responseToUse: BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.Tasks),
+                requestAction: extractCollection);
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            TaskAddParameter task = requestCollection.Single();
+            Assert.Equal(2, task.EnvironmentSettings.Count);
+            Assert.Equal("1", task.EnvironmentSettings.Single(s => s.Name == "A").Value);
+            Assert.Null(task.EnvironmentSettings.Single(s => s.Name == "B").Value);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewBatchTaskCollectionParametersTest()
         {
             string commandLine = "cmd /c dir /s";

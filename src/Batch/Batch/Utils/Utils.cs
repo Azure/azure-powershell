@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             List<Tom> omList = new List<Tom>();
             foreach (DictionaryEntry item in psDict)
             {
-                Tom omItem = mappingFunction(item.Key.ToString(), item.Value.ToString());
+                Tom omItem = mappingFunction(item.Key.ToString(), item.Value?.ToString());
                 omList.Add(omItem);
             }
             return omList;

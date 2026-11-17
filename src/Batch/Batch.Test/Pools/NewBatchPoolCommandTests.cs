@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -69,6 +70,37 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchPoolSendsAnEnvironmentSettingWithoutAValue()
+        {
+            // An environment setting without a value used to make the cmdlets fail with a NullReferenceException.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "testPool";
+            cmdlet.VirtualMachineSize = "small";
+            cmdlet.StartTask = new PSStartTask("cmd /c echo start task")
+            {
+                EnvironmentSettings = new Dictionary<string, string> { { "A", "1" }, { "B", null } },
+            };
+
+            PoolAddParameter requestParameters = null;
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolAddParameter,
+                PoolAddOptions,
+                AzureOperationHeaderResponse<PoolAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>())).Returns(true);
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(2, requestParameters.StartTask.EnvironmentSettings.Count);
+            Assert.Equal("1", requestParameters.StartTask.EnvironmentSettings.Single(s => s.Name == "A").Value);
+            Assert.Null(requestParameters.StartTask.EnvironmentSettings.Single(s => s.Name == "B").Value);
         }
 
         [Fact]
