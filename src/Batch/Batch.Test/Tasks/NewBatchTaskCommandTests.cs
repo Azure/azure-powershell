@@ -342,6 +342,62 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskCollectionKeepsTheIdentityOfResourceFiles()
+        {
+            // Resource files used to lose their identity reference when the cmdlets sent them.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.JobId = "job-collection";
+
+            const string identity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1";
+            cmdlet.Tasks = new[]
+            {
+                new PSCloudTask("task1", "cmd /c echo task1")
+                {
+                    ResourceFiles = new[]
+                    {
+                        new PSResourceFile(ResourceFile.FromUrl(
+                            "https://account.blob.core.windows.net/container/file.txt",
+                            new Microsoft.Azure.Batch.ComputeNodeIdentityReference { ResourceId = identity },
+                            filePath: "file.txt")),
+                    },
+                    MultiInstanceSettings = new PSMultiInstanceSettings("cmd /c echo coordinating", 2)
+                    {
+                        CommonResourceFiles = new List<PSResourceFile>()
+                        {
+                            new PSResourceFile(ResourceFile.FromStorageContainerUrl(
+                                "https://account.blob.core.windows.net/container",
+                                new Microsoft.Azure.Batch.ComputeNodeIdentityReference { ResourceId = identity },
+                                filePath: null,
+                                blobPrefix: null,
+                                fileMode: null)),
+                        },
+                    },
+                },
+            };
+
+            IList<TaskAddParameter> requestCollection = null;
+            Action<BatchRequest<
+                IList<TaskAddParameter>,
+                TaskAddCollectionOptions,
+                AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders>>> extractCollection =
+                (request) =>
+                {
+                    requestCollection = request.Parameters;
+                };
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(
+                responseToUse: BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.Tasks),
+                requestAction: extractCollection);
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            TaskAddParameter task = requestCollection.Single();
+            Assert.Equal(identity, task.ResourceFiles.Single().IdentityReference?.ResourceId);
+            Assert.Equal(identity, task.MultiInstanceSettings.CommonResourceFiles.Single().IdentityReference?.ResourceId);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewBatchTaskCollectionParametersTest()
         {
             string commandLine = "cmd /c dir /s";

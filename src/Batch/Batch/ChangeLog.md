@@ -21,6 +21,7 @@
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Fixed `Set-AzBatchAccount` resetting account settings it doesn't change, such as public network access, allowed authentication modes and the auto-storage account. It now uses the update operation.
 * Fixed `New-AzBatchPool`, `Set-AzBatchPool`, `New-AzBatchTask` and other cmdlets failing with "Object reference not set to an instance of an object" when an environment setting has no value.
+* Fixed `Set-AzBatchPool`, `New-AzBatchTask` and other cmdlets dropping the identity reference of resource files, which nodes use to download the files from Azure Storage.
 * Started moving Az.Batch from `Microsoft.Azure.Batch` (Track 1) to `Azure.Compute.Batch` (Track 2). No cmdlet uses the new SDK yet.
     - Added `Azure.Compute.Batch` 1.0.0 as a dependency.
 

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Rest.Azure;
@@ -24,6 +25,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
@@ -114,6 +116,83 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Contains(
                 requestParameters.Metadata,
                 metadata => metadata.Name == "meta1" && metadata.Value == cmdlet.Pool.Metadata["meta1"].ToString());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetBatchPoolKeepsTheIdentityOfStartTaskResourceFiles()
+        {
+            // The start task's resource files used to lose their identity reference, so new nodes couldn't download them.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            const string identity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1";
+            cmdlet.Pool = GetPoolFromTheService(context, new ProxyModels.StartTask
+            {
+                CommandLine = "cmd /c echo start task",
+                ResourceFiles = new List<ProxyModels.ResourceFile>
+                {
+                    new ProxyModels.ResourceFile
+                    {
+                        HttpUrl = "https://account.blob.core.windows.net/container/file.txt",
+                        FilePath = "file.txt",
+                        IdentityReference = new ProxyModels.ComputeNodeIdentityReference { ResourceId = identity },
+                    },
+                    new ProxyModels.ResourceFile
+                    {
+                        StorageContainerUrl = "https://account.blob.core.windows.net/container",
+                        IdentityReference = new ProxyModels.ComputeNodeIdentityReference { ResourceId = identity },
+                    },
+                    new ProxyModels.ResourceFile
+                    {
+                        HttpUrl = "https://account.blob.core.windows.net/container/other.txt",
+                        FilePath = "other.txt",
+                    },
+                },
+            });
+
+            PoolUpdatePropertiesParameter requestParameters = null;
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolUpdatePropertiesParameter,
+                PoolUpdatePropertiesOptions,
+                AzureOperationHeaderResponse<PoolUpdatePropertiesHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            IList<ProxyModels.ResourceFile> sentFiles = requestParameters.StartTask.ResourceFiles;
+            Assert.Equal(3, sentFiles.Count);
+            Assert.Equal("https://account.blob.core.windows.net/container/file.txt", sentFiles[0].HttpUrl);
+            Assert.Equal(identity, sentFiles[0].IdentityReference?.ResourceId);
+            Assert.Equal("https://account.blob.core.windows.net/container", sentFiles[1].StorageContainerUrl);
+            Assert.Equal(identity, sentFiles[1].IdentityReference?.ResourceId);
+            Assert.Equal("https://account.blob.core.windows.net/container/other.txt", sentFiles[2].HttpUrl);
+            Assert.Null(sentFiles[2].IdentityReference);
+        }
+
+        /// <summary>
+        /// Gets a pool the way Get-AzBatchPool does, with the start task the fake service returns.
+        /// </summary>
+        private static PSCloudPool GetPoolFromTheService(BatchAccountContext context, ProxyModels.StartTask startTask)
+        {
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                PoolGetBatchRequest request = (PoolGetBatchRequest)baseRequest;
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    var response = new AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>
+                    {
+                        Body = new ProxyModels.CloudPool { Id = "testPool", VmSize = "small", StartTask = startTask },
+                    };
+                    return System.Threading.Tasks.Task.FromResult(response);
+                };
+            });
+
+            return new PSCloudPool(context.BatchOMClient.PoolOperations.GetPool(
+                "testPool",
+                additionalBehaviors: new BatchClientBehavior[] { interceptor }));
         }
     }
 }

@@ -384,6 +384,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
         internal static ResourceFile ConvertResourceFile(PSResourceFile psResourceFile)
         {
+            ComputeNodeIdentityReference identityReference = psResourceFile.IdentityReference == null
+                ? null
+                : new ComputeNodeIdentityReference { ResourceId = psResourceFile.IdentityReference.ResourceId };
+
+            // The service uses the identity only with a storage container URL or an HTTP URL.
             if (!string.IsNullOrEmpty(psResourceFile.AutoStorageContainerName))
             {
                 return ResourceFile.FromAutoStorageContainer(
@@ -396,6 +401,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             {
                 return ResourceFile.FromStorageContainerUrl(
                     psResourceFile.StorageContainerUrl,
+                    identityReference,
                     filePath: psResourceFile.FilePath,
                     blobPrefix: psResourceFile.BlobPrefix,
                     fileMode: psResourceFile.FileMode);
@@ -404,6 +410,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             {
                 return ResourceFile.FromUrl(
                    psResourceFile.HttpUrl,
+                   identityReference,
                    filePath: psResourceFile.FilePath,
                    fileMode: psResourceFile.FileMode);
             }
