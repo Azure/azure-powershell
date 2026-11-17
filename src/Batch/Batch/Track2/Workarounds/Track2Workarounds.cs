@@ -21,6 +21,7 @@ using JObject = Newtonsoft.Json.Linq.JObject;
 using JsonConvert = Newtonsoft.Json.JsonConvert;
 using JsonDocument = System.Text.Json.JsonDocument;
 using JsonValueKind = System.Text.Json.JsonValueKind;
+using JToken = Newtonsoft.Json.Linq.JToken;
 using JTokenType = Newtonsoft.Json.Linq.JTokenType;
 using NewtonsoftFormatting = Newtonsoft.Json.Formatting;
 using NewtonsoftSettings = Newtonsoft.Json.JsonSerializerSettings;
@@ -72,7 +73,9 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
 
         /// <summary>
         /// Marks a VM extension setting value given as JSON: a number, true/false, a list, an object, or text that
-        /// itself starts with this marker (as a JSON string), so any text can be told apart from a marked value.
+        /// itself starts with this marker (as a JSON string), so any text can be told apart from a marked value. Setting
+        /// names that start with the marker get the marker once more, and settings that aren't a JSON object (a list or a
+        /// single value) are kept as the only setting, named just the marker (<see cref="ToSettings"/>).
         /// </summary>
         internal const string JsonSettingPrefix = "azure-powershell-json:";
 
@@ -109,20 +112,26 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
 
         /// <summary>
         /// VM extension settings for Azure.Compute.Batch: text stays text; other JSON values, and text that starts with
-        /// <see cref="JsonSettingPrefix"/>, are marked.
+        /// <see cref="JsonSettingPrefix"/>, are marked. Settings that aren't a JSON object become one marked setting named
+        /// <see cref="JsonSettingPrefix"/>; names that start with it get it once more, so they can't look like that.
         /// </summary>
-        internal static IDictionary<string, string> ToSettings(JObject settings)
+        internal static IDictionary<string, string> ToSettings(JToken settings)
         {
-            if (settings == null)
+            if (settings == null || settings.Type == JTokenType.Null)
             {
                 return null;
             }
 
+            if (!(settings is JObject properties))
+            {
+                return new Dictionary<string, string> { [JsonSettingPrefix] = JsonSettingPrefix + settings.ToString(NewtonsoftFormatting.None) };
+            }
+
             Dictionary<string, string> result = new Dictionary<string, string>();
-            foreach (Newtonsoft.Json.Linq.JProperty setting in settings.Properties())
+            foreach (Newtonsoft.Json.Linq.JProperty setting in properties.Properties())
             {
                 JTokenType type = setting.Value.Type;
-                result[setting.Name] = type == JTokenType.Null ? null
+                result[EscapeName(setting.Name)] = type == JTokenType.Null ? null
                     : type == JTokenType.String && !IsMarked((string)setting.Value) ? (string)setting.Value
                     : JsonSettingPrefix + setting.Value.ToString(NewtonsoftFormatting.None);
             }
@@ -131,13 +140,20 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
         }
 
         /// <summary>
-        /// VM extension settings read by Azure.Compute.Batch, as the object Track 1 gives for the same answer.
+        /// VM extension settings read by Azure.Compute.Batch, as Track 1 gives them for the same answer: an object, or for
+        /// settings that aren't a JSON object, a list or a single value.
         /// </summary>
-        internal static JObject FromSettings(IDictionary<string, string> settings)
+        internal static object FromSettings(IDictionary<string, string> settings)
         {
             if (settings == null)
             {
                 return null;
+            }
+
+            if (settings.Count == 1 && settings.TryGetValue(JsonSettingPrefix, out string root) && root != null && IsMarked(root)
+                && IsJson(root.Substring(JsonSettingPrefix.Length)))
+            {
+                return JsonConvert.DeserializeObject<object>(root.Substring(JsonSettingPrefix.Length), Track1Reading);
             }
 
             StringBuilder json = new StringBuilder("{");
@@ -148,7 +164,7 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
                     json.Append(',');
                 }
 
-                json.Append(JsonConvert.ToString(setting.Key)).Append(':');
+                json.Append(JsonConvert.ToString(UnescapeName(setting.Key))).Append(':');
                 string marked = setting.Value != null && IsMarked(setting.Value) ? setting.Value.Substring(JsonSettingPrefix.Length) : null;
                 if (setting.Value == null)
                 {
@@ -169,7 +185,8 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
 
         /// <summary>
         /// Fixes an answer from the service so that Azure.Compute.Batch 1.0.0 can read it: the int64 values become
-        /// text, and extension settings that aren't text become marked text. Null when there's nothing to fix.
+        /// text, extension settings that aren't text become marked text, and extension settings that aren't a JSON object
+        /// become one marked setting (<see cref="JsonSettingPrefix"/>). Null when there's nothing to fix.
         /// </summary>
         internal static byte[] FixAnswer(byte[] json)
         {
@@ -207,14 +224,13 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
                     }
                     else if (ExtensionSettings.Contains(property.Key) && value is JsonObject settings)
                     {
-                        foreach (KeyValuePair<string, JsonNode> setting in settings.ToList())
-                        {
-                            if (setting.Value != null && (setting.Value.GetValueKind() != JsonValueKind.String || IsMarked(setting.Value.GetValue<string>())))
-                            {
-                                settings[setting.Key] = JsonValue.Create(JsonSettingPrefix + setting.Value.ToJsonString());
-                                changed = true;
-                            }
-                        }
+                        changed |= MarkSettings(settings);
+                    }
+                    else if (ExtensionSettings.Contains(property.Key))
+                    {
+                        // A list or a single value: Azure.Compute.Batch can only read an object.
+                        item[property.Key] = new JsonObject { [JsonSettingPrefix] = JsonValue.Create(JsonSettingPrefix + value.ToJsonString()) };
+                        changed = true;
                     }
                     else
                     {
@@ -257,7 +273,15 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
                     }
                     else if (ExtensionSettings.Contains(property.Key) && property.Value is JsonObject settings)
                     {
-                        changed |= RestoreSettings(settings);
+                        if (TryUnwrapSettings(settings, out JsonNode root))
+                        {
+                            item[property.Key] = root;
+                            changed = true;
+                        }
+                        else
+                        {
+                            changed |= RestoreSettings(settings);
+                        }
                     }
                     else
                     {
@@ -301,29 +325,114 @@ namespace Microsoft.Azure.Commands.Batch.Track2.Workarounds
             }
         }
 
-        private static bool RestoreSettings(JsonObject settings)
+        // Marks the values that aren't text (and text that looks marked), and gives names that start with the marker the
+        // marker once more. Rebuilt in the same order when a name changes.
+        private static bool MarkSettings(JsonObject settings)
         {
+            List<KeyValuePair<string, JsonNode>> entries = settings.ToList();
             bool changed = false;
-            foreach (KeyValuePair<string, JsonNode> setting in settings.ToList())
+            List<KeyValuePair<string, JsonNode>> marked = new List<KeyValuePair<string, JsonNode>>(entries.Count);
+            foreach (KeyValuePair<string, JsonNode> setting in entries)
             {
-                string text = setting.Value != null && setting.Value.GetValueKind() == JsonValueKind.String ? setting.Value.GetValue<string>() : null;
-                if (text == null || !IsMarked(text))
+                JsonNode value = setting.Value;
+                if (value != null && (value.GetValueKind() != JsonValueKind.String || IsMarked(value.GetValue<string>())))
                 {
-                    continue;
+                    value = JsonValue.Create(JsonSettingPrefix + value.ToJsonString());
                 }
 
-                try
-                {
-                    settings[setting.Key] = JsonNode.Parse(text.Substring(JsonSettingPrefix.Length));
-                    changed = true;
-                }
-                catch (STJsonException)
-                {
-                    // Not one of ours: send the text as it is.
-                }
+                string name = EscapeName(setting.Key);
+                changed |= name != setting.Key || !ReferenceEquals(value, setting.Value);
+                marked.Add(new KeyValuePair<string, JsonNode>(name, value));
+            }
+
+            if (changed)
+            {
+                Replace(settings, marked);
             }
 
             return changed;
+        }
+
+        // The settings written by ToSettings for a list or a single value: one marked setting named just the marker.
+        private static bool TryUnwrapSettings(JsonObject settings, out JsonNode root)
+        {
+            root = null;
+            if (settings.Count != 1)
+            {
+                return false;
+            }
+
+            KeyValuePair<string, JsonNode> only = settings.First();
+            string text = only.Key == JsonSettingPrefix && only.Value != null && only.Value.GetValueKind() == JsonValueKind.String
+                ? only.Value.GetValue<string>() : null;
+            if (text == null || !IsMarked(text))
+            {
+                return false;
+            }
+
+            try
+            {
+                root = JsonNode.Parse(text.Substring(JsonSettingPrefix.Length));
+                return root != null;
+            }
+            catch (STJsonException)
+            {
+                return false;
+            }
+        }
+
+        private static bool RestoreSettings(JsonObject settings)
+        {
+            List<KeyValuePair<string, JsonNode>> entries = settings.ToList();
+            bool changed = false;
+            List<KeyValuePair<string, JsonNode>> restored = new List<KeyValuePair<string, JsonNode>>(entries.Count);
+            foreach (KeyValuePair<string, JsonNode> setting in entries)
+            {
+                JsonNode value = setting.Value;
+                string text = value != null && value.GetValueKind() == JsonValueKind.String ? value.GetValue<string>() : null;
+                if (text != null && IsMarked(text))
+                {
+                    try
+                    {
+                        value = JsonNode.Parse(text.Substring(JsonSettingPrefix.Length));
+                    }
+                    catch (STJsonException)
+                    {
+                        // Not one of ours: send the text as it is.
+                    }
+                }
+
+                string name = UnescapeName(setting.Key);
+                changed |= name != setting.Key || !ReferenceEquals(value, setting.Value);
+                restored.Add(new KeyValuePair<string, JsonNode>(name, value));
+            }
+
+            if (changed)
+            {
+                Replace(settings, restored);
+            }
+
+            return changed;
+        }
+
+        private static void Replace(JsonObject settings, List<KeyValuePair<string, JsonNode>> entries)
+        {
+            // Clear() detaches the old values, so the ones kept can be added again.
+            settings.Clear();
+            foreach (KeyValuePair<string, JsonNode> entry in entries)
+            {
+                settings[entry.Key] = entry.Value;
+            }
+        }
+
+        private static string EscapeName(string name)
+        {
+            return IsMarked(name) ? JsonSettingPrefix + name : name;
+        }
+
+        private static string UnescapeName(string name)
+        {
+            return IsMarked(name) ? name.Substring(JsonSettingPrefix.Length) : name;
         }
 
         private static bool IsMarked(string text)
