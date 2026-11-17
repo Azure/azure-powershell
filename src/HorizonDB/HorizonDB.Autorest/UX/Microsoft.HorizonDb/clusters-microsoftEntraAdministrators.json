@@ -1,0 +1,95 @@
+{
+  "resourceType": "clusters/microsoftEntraAdministrators",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.horizondb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHorizonDbMicrosoftEntraAdministrator",
+      "description": "Gets information about a PostgreSQL role that is a member of azure_pg_admin and mapped to a Microsoft Entra principal.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/clusters/{clusterName}/microsoftEntraAdministrators/{objectId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.horizondb/get-azhorizondbmicrosoftentraadministrator"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ObjectId <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about a PostgreSQL role that is a member of azure_pg_admin and mapped to a Microsoft Entra principal.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ObjectId",
+              "value": "[Path.objectId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzHorizonDbMicrosoftEntraAdministrator",
+      "description": "Deletes a PostgreSQL role that is a member of azure_pg_admin and mapped to a Microsoft Entra principal.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/clusters/{clusterName}/microsoftEntraAdministrators/{objectId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.horizondb/remove-azhorizondbmicrosoftentraadministrator"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ObjectId <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a PostgreSQL role that is a member of azure_pg_admin and mapped to a Microsoft Entra principal.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ObjectId",
+              "value": "[Path.objectId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

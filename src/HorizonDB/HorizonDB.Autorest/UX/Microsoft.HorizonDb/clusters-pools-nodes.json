@@ -1,0 +1,57 @@
+{
+  "resourceType": "clusters/pools/nodes",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.horizondb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHorizonDbNode",
+      "description": "Gets a node allocated to a HorizonDB pool.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/clusters/{clusterName}/pools/{poolName}/nodes/{nodeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.horizondb/get-azhorizondbnode"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-PoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a node allocated to a HorizonDB pool.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.nodeName]"
+            },
+            {
+              "name": "-PoolName",
+              "value": "[Path.poolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

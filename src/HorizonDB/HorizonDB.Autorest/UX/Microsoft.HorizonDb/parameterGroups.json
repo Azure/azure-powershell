@@ -1,0 +1,85 @@
+{
+  "resourceType": "parameterGroups",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.horizondb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHorizonDbParameterGroup",
+      "description": "Gets information about a HorizonDB parameter group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/parameterGroups/{parameterGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.horizondb/get-azhorizondbparametergroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about a HorizonDB parameter group.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.parameterGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzHorizonDbParameterGroup",
+      "description": "Deletes a HorizonDB parameter group.\nDeletion fails with a conflict when the parameter group is associated with one or more pools.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/parameterGroups/{parameterGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.horizondb/remove-azhorizondbparametergroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a HorizonDB parameter group. Deletion fails with a conflict when the parameter group is associated with one or more pools.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.parameterGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

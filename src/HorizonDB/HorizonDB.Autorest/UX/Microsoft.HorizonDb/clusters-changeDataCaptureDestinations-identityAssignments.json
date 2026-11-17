@@ -1,0 +1,105 @@
+{
+  "resourceType": "clusters/changeDataCaptureDestinations/identityAssignments",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.horizondb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHorizonDbIdentityAssignment",
+      "description": "Gets a change data capture identity assignment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/clusters/{clusterName}/changeDataCaptureDestinations/{destinationName}/identityAssignments/{assignmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.horizondb/get-azhorizondbidentityassignment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AssignmentName <String>",
+              "-ClusterName <String>",
+              "-DestinationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a change data capture identity assignment.",
+          "parameters": [
+            {
+              "name": "-AssignmentName",
+              "value": "[Path.assignmentName]"
+            },
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-DestinationName",
+              "value": "[Path.destinationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzHorizonDbIdentityAssignment",
+      "description": "Deletes an inactive change data capture identity assignment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/clusters/{clusterName}/changeDataCaptureDestinations/{destinationName}/identityAssignments/{assignmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.horizondb/remove-azhorizondbidentityassignment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AssignmentName <String>",
+              "-ClusterName <String>",
+              "-DestinationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an inactive change data capture identity assignment.",
+          "parameters": [
+            {
+              "name": "-AssignmentName",
+              "value": "[Path.assignmentName]"
+            },
+            {
+              "name": "-ClusterName",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-DestinationName",
+              "value": "[Path.destinationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
