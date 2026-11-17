@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-* Upgraded API version to 2026-09-01-preview.
+* Upgraded to the published 2026-09-01-preview API.
     - Changed registration token parameters and returned token properties from `String` to `SecureString` to honor the API secret metadata. Callers passing a string to `New-AzWvdHostPool -RegistrationInfoToken` must convert it to a secure string.
     - Updated registration-token list command output type declarations to describe the individual paged results.
     - Incorporated the finalized August preview contract, including paged registration-token results and virtual machine resource ID metadata, while retaining September NVMe support.
