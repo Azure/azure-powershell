@@ -46,27 +46,21 @@ Replace or replaces a HorizonDB pool firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a pool firewall rule
 ```powershell
-{{ Add code here }}
+Update-AzHorizonDbFirewallRule -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -PoolName 'example-pool-01' -Name 'example-firewall-rule-01' -StartIPAddress '10.0.0.1' -EndIPAddress '10.0.0.254' -Description 'Allow access from the corporate network' | Format-List -Property Name, StartIPAddress, EndIPAddress, Description, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : example-firewall-rule-01
+StartIPAddress    : 10.0.0.1
+EndIPAddress      : 10.0.0.254
+Description       : Allow access from the corporate network
+ProvisioningState : Updating
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

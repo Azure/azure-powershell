@@ -40,27 +40,43 @@ Gets information about a HorizonDB pool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List cluster pools
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbPool -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' | Format-List -Property Name, ComputeModelVCore, NodeCount, HighAvailabilityMode, State, ProvisioningState, ParameterGroupApplyMethod, ParameterGroupSyncStatus
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                      : example-pool-01
+ComputeModelVCore         : 8
+NodeCount                 : 3
+HighAvailabilityMode      : AnyZone
+State                     : Ready
+ProvisioningState         : Succeeded
+ParameterGroupApplyMethod : Immediate
+ParameterGroupSyncStatus  : InSync
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a pool
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbPool -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -Name 'example-pool-01' | Format-List -Property Name, ComputeModelVCore, NodeCount, HighAvailabilityMode, State, ProvisioningState, ParameterGroupApplyMethod, ParameterGroupSyncStatus
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                      : example-pool-01
+ComputeModelVCore         : 8
+NodeCount                 : 3
+HighAvailabilityMode      : AnyZone
+State                     : Ready
+ProvisioningState         : Succeeded
+ParameterGroupApplyMethod : Immediate
+ParameterGroupSyncStatus  : InSync
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

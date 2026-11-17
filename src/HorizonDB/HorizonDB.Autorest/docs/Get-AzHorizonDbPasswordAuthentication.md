@@ -29,27 +29,20 @@ Gets the service-created PostgreSQL username-and-password authentication method.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the password authentication configuration
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbPasswordAuthentication -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' | Format-List -Property Name, AdministratorLogin, State, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : passwordMethod
+AdministratorLogin : adminlogin1
+State              : Enabled
+ProvisioningState  : Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

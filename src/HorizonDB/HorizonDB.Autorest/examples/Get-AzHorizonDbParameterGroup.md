@@ -1,22 +1,185 @@
-### Example 1: {{ Add title here }}
+### Example 1: List parameter groups in the current subscription
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbParameterGroup | Format-List -Property Name, Location, PostgreSqlVersion, Description, ProvisioningState, Parameter
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : production-parameters
+Location          : eastus2
+PostgreSqlVersion : 17
+Description       : Parameters for production transactional workloads
+ProvisioningState : Succeeded
+Parameter         : {{
+                      "name": "allow_alter_system",
+                      "description": "Allows running the ALTER SYSTEM command. Can be set to off for environments where global configuration changes should be m
+                    ade using a different method.",
+                      "value": "on",
+                      "defaultValue": "on",
+                      "valueSource": "SystemDefault",
+                      "dataType": "Boolean",
+                      "allowedValues": "on,off",
+                      "isDynamic": true,
+                      "isReadOnly": true,
+                      "documentationLink": "https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-ALLOW-ALTER-SYSTEM"
+                    }, {
+                      "name": "allow_in_place_tablespaces",
+                      "description": "Allows tablespaces directly inside pg_tblspc, for testing. NOT IMPLEMENTED",
+                      "value": "off",
+                      "defaultValue": "off",
+                      "valueSource": "SystemDefault",
+                      "dataType": "Boolean",
+                      "allowedValues": "on,off",
+                      "isDynamic": true,
+                      "isReadOnly": true,
+                      "documentationLink": "https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-ALLOW-IN-PLACE-TABLESPACES"
+                    }, {
+                      "name": "allow_system_table_mods",
+                      "description": "Allows modifications of the structure of system tables.",
+                      "value": "off",
+                      "defaultValue": "off",
+                      "valueSource": "SystemDefault",
+                      "dataType": "Boolean",
+                      "allowedValues": "on,off",
+                      "isDynamic": true,
+                      "isReadOnly": true,
+                      "documentationLink": "https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-ALLOW-SYSTEM-TABLE-MODS"
+                    }, {
+                      "name": "application_name",
+                      "description": "Sets the application name to be reported in statistics and logs.",
+                      "value": "horizondb-production",
+                      "defaultValue": "",
+                      "valueSource": "UserOverride",
+                      "dataType": "String",
+                      "allowedValues": "[A-Za-z0-9._-]*",
+                      "isDynamic": true,
+                      "isReadOnly": false,
+                      "documentationLink": "https://www.postgresql.org/docs/17/libpq-connect.html#LIBPQ-CONNECT-APPLICATION-NAME"
+                    }…}
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
-### Example 2: {{ Add title here }}
+### Example 2: List parameter groups in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbParameterGroup -ResourceGroupName 'example-resource-group' | Format-List -Property Name, Location, PostgreSqlVersion, Description, ProvisioningState, Parameter
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : production-parameters
+Location          : eastus2
+PostgreSqlVersion : 17
+Description       : Parameters for production transactional workloads
+ProvisioningState : Succeeded
+Parameter         : {{
+                      "name": "allow_alter_system",
+                      "description": "Allows running the ALTER SYSTEM command. Can be set to off for environments where global configuration changes should be m
+                    ade using a different method.",
+                      "value": "on",
+                      "defaultValue": "on",
+                      "valueSource": "SystemDefault",
+                      "dataType": "Boolean",
+                      "allowedValues": "on,off",
+                      "isDynamic": true,
+                      "isReadOnly": true,
+                      "documentationLink": "https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-ALLOW-ALTER-SYSTEM"
+                    }, {
+                      "name": "allow_in_place_tablespaces",
+                      "description": "Allows tablespaces directly inside pg_tblspc, for testing. NOT IMPLEMENTED",
+                      "value": "off",
+                      "defaultValue": "off",
+                      "valueSource": "SystemDefault",
+                      "dataType": "Boolean",
+                      "allowedValues": "on,off",
+                      "isDynamic": true,
+                      "isReadOnly": true,
+                      "documentationLink": "https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-ALLOW-IN-PLACE-TABLESPACES"
+                    }, {
+                      "name": "allow_system_table_mods",
+                      "description": "Allows modifications of the structure of system tables.",
+                      "value": "off",
+                      "defaultValue": "off",
+                      "valueSource": "SystemDefault",
+                      "dataType": "Boolean",
+                      "allowedValues": "on,off",
+                      "isDynamic": true,
+                      "isReadOnly": true,
+                      "documentationLink": "https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-ALLOW-SYSTEM-TABLE-MODS"
+                    }, {
+                      "name": "application_name",
+                      "description": "Sets the application name to be reported in statistics and logs.",
+                      "value": "horizondb-production",
+                      "defaultValue": "",
+                      "valueSource": "UserOverride",
+                      "dataType": "String",
+                      "allowedValues": "[A-Za-z0-9._-]*",
+                      "isDynamic": true,
+                      "isReadOnly": false,
+                      "documentationLink": "https://www.postgresql.org/docs/17/libpq-connect.html#LIBPQ-CONNECT-APPLICATION-NAME"
+                    }…}
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
+### Example 3: Get a parameter group
+```powershell
+Get-AzHorizonDbParameterGroup -ResourceGroupName 'example-resource-group' -Name 'production-parameters' | Format-List -Property Name, Location, PostgreSqlVersion, Description, ProvisioningState, Parameter
+```
+
+```output
+Name              : production-parameters
+Location          : eastus2
+PostgreSqlVersion : 17
+Description       : Parameters for production transactional workloads
+ProvisioningState : Succeeded
+Parameter         : {{
+                      "name": "allow_alter_system",
+                      "description": "Allows running the ALTER SYSTEM command. Can be set to off for environments where global configuration changes should be m
+                    ade using a different method.",
+                      "value": "on",
+                      "defaultValue": "on",
+                      "valueSource": "SystemDefault",
+                      "dataType": "Boolean",
+                      "allowedValues": "on,off",
+                      "isDynamic": true,
+                      "isReadOnly": true,
+                      "documentationLink": "https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-ALLOW-ALTER-SYSTEM"
+                    }, {
+                      "name": "allow_in_place_tablespaces",
+                      "description": "Allows tablespaces directly inside pg_tblspc, for testing. NOT IMPLEMENTED",
+                      "value": "off",
+                      "defaultValue": "off",
+                      "valueSource": "SystemDefault",
+                      "dataType": "Boolean",
+                      "allowedValues": "on,off",
+                      "isDynamic": true,
+                      "isReadOnly": true,
+                      "documentationLink": "https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-ALLOW-IN-PLACE-TABLESPACES"
+                    }, {
+                      "name": "allow_system_table_mods",
+                      "description": "Allows modifications of the structure of system tables.",
+                      "value": "off",
+                      "defaultValue": "off",
+                      "valueSource": "SystemDefault",
+                      "dataType": "Boolean",
+                      "allowedValues": "on,off",
+                      "isDynamic": true,
+                      "isReadOnly": true,
+                      "documentationLink": "https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-ALLOW-SYSTEM-TABLE-MODS"
+                    }, {
+                      "name": "application_name",
+                      "description": "Sets the application name to be reported in statistics and logs.",
+                      "value": "horizondb-production",
+                      "defaultValue": "",
+                      "valueSource": "UserOverride",
+                      "dataType": "String",
+                      "allowedValues": "[A-Za-z0-9._-]*",
+                      "isDynamic": true,
+                      "isReadOnly": false,
+                      "documentationLink": "https://www.postgresql.org/docs/17/libpq-connect.html#LIBPQ-CONNECT-APPLICATION-NAME"
+                    }…}
+```
+
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.

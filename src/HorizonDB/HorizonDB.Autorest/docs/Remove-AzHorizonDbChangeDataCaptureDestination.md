@@ -37,27 +37,16 @@ Deletes a change data capture destination after all referencing configurations a
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a change data capture destination
 ```powershell
-{{ Add code here }}
+Remove-AzHorizonDbChangeDataCaptureDestination -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -DestinationName 'fabric-mirroring'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the Microsoft Fabric destination after confirmation.
+Remove configurations that reference the destination before deleting it.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+The HTTP 202 response has no body.
+This command produces no output unless PassThru is specified.
 
 ## PARAMETERS
 

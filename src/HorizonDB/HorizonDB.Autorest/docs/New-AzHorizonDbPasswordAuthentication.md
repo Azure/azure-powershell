@@ -38,27 +38,21 @@ Create or replaces the service-created PostgreSQL username-and-password authenti
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Configure password authentication
 ```powershell
-{{ Add code here }}
+$password = Read-Host -Prompt 'Enter the administrator password' -AsSecureString
+New-AzHorizonDbPasswordAuthentication -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -AdministratorLogin 'adminlogin1' -AdministratorLoginPassword $password -State 'Enabled' | Format-List -Property Name, AdministratorLogin, State, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               : passwordMethod
+AdministratorLogin : adminlogin1
+State              : Enabled
+ProvisioningState  : Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

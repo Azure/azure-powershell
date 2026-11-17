@@ -45,27 +45,33 @@ Create or replaces a Microsoft Fabric change data capture destination.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Microsoft Fabric change data capture destination
 ```powershell
-{{ Add code here }}
+$body = @{
+    properties = @{
+        destination = @{
+            destinationType = 'Fabric'
+            protocol = 'Native'
+            workspaceId = 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee'
+        }
+        desiredState = 'Enabled'
+    }
+} | ConvertTo-Json -Depth 5
+
+New-AzHorizonDbChangeDataCaptureDestination -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -DestinationName 'fabric-mirroring' -JsonString $body | Format-List -Property Name, DestinationType, DestinationProtocol, DesiredState, EffectiveState, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                : fabric-mirroring
+DestinationType     : Fabric
+DestinationProtocol : Native
+DesiredState        : Enabled
+EffectiveState      : WaitingForIdentity
+ProvisioningState   : Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

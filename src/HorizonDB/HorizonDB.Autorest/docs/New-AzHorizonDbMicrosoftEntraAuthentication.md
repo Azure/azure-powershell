@@ -44,27 +44,33 @@ Disabling the feature does not remove or modify database roles or users previous
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable Microsoft Entra authentication
 ```powershell
-{{ Add code here }}
+New-AzHorizonDbMicrosoftEntraAuthentication -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -State 'Enabled' | Format-List -Property Name, State, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : microsoftEntra
+State             : Enabled
+ProvisioningState : Succeeded
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
-### Example 2: {{ Add title here }}
+### Example 2: Disable Microsoft Entra authentication
 ```powershell
-{{ Add code here }}
+New-AzHorizonDbMicrosoftEntraAuthentication -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -State 'Disabled' | Format-List -Property Name, State, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : microsoftEntra
+State             : Disabled
+ProvisioningState : Succeeded
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

@@ -1,22 +1,18 @@
-### Example 1: {{ Add title here }}
+### Example 1: Activate a destination identity and drain existing sessions
 ```powershell
-{{ Add code here }}
+$subscriptionId = (Get-AzContext).Subscription.Id
+$assignmentId = "/subscriptions/$subscriptionId/resourceGroups/example-resource-group/providers/Microsoft.HorizonDb/clusters/example-cluster/changeDataCaptureDestinations/fabric-mirroring/identityAssignments/fabric-writer"
+
+Initialize-AzHorizonDbChangeDataCaptureDestinationIdentity -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -DestinationName 'fabric-mirroring' -IdentityAssignmentResourceId $assignmentId -IfMatch '*' -DrainExistingSession | Format-List -Property Status, TargetIdentityAssignmentResourceId, PreviousIdentityAssignmentResourceId
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Status                               : Succeeded
+TargetIdentityAssignmentResourceId   : /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/example-resource-group/providers/Microsoft.HorizonDb/clusters/example-cluster/changeDataCaptureDestinations/fabric-mirroring/identityA
+                                       ssignments/fabric-writer
+PreviousIdentityAssignmentResourceId : /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/example-resource-group/providers/Microsoft.HorizonDb/clusters/example-cluster/changeDataCaptureDestinations/fabric-mirroring/identityA
+                                       ssignments/previous-writer
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.

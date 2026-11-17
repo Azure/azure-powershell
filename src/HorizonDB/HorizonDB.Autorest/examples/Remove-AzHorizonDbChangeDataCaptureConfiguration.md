@@ -1,22 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a change data capture configuration
 ```powershell
-{{ Add code here }}
+Remove-AzHorizonDbChangeDataCaptureConfiguration -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -ConfigurationName 'sales-database'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the sales-database change data capture configuration after confirmation.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+The HTTP 202 response has no body. This command produces no output unless PassThru is specified.

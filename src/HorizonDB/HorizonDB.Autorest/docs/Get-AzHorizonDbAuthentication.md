@@ -22,27 +22,23 @@ Lists the two service-created authentication configurations for the cluster: pas
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List authentication configurations for a cluster
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbAuthentication -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' | Format-List -Property Name, State, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : passwordMethod
+State             : Disabled
+ProvisioningState : Succeeded
+
+Name              : microsoftEntra
+State             : Disabled
+ProvisioningState : Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

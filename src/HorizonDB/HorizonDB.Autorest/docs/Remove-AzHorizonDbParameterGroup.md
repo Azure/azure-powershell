@@ -31,27 +31,16 @@ Deletion fails with a conflict when the parameter group is associated with one o
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a parameter group
 ```powershell
-{{ Add code here }}
+Remove-AzHorizonDbParameterGroup -ResourceGroupName 'example-resource-group' -Name 'production-parameters'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the production-parameters parameter group after confirmation.
+Review its pool connections before deleting it.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+The HTTP 202 response has no body.
+This command produces no output unless PassThru is specified.
 
 ## PARAMETERS
 

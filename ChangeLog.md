@@ -1,4 +1,7 @@
 ## Upcoming Release
+#### Az.HorizonDB
+* Introduce cmdlet for cluster, pool, and parameter group management based on API version 2026-10-01-preview.
+
 #### Az.NetAppFiles
 * Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
 * Updated to API version 2026-08-01.

@@ -44,27 +44,16 @@ Deletes an inactive change data capture identity assignment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a destination identity assignment
 ```powershell
-{{ Add code here }}
+Remove-AzHorizonDbIdentityAssignment -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -DestinationName 'fabric-mirroring' -AssignmentName 'fabric-writer'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the fabric-writer identity assignment after confirmation.
+Ensure the assignment is not the active destination identity before removing it.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+The HTTP 202 response has no body.
+This command produces no output unless PassThru is specified.
 
 ## PARAMETERS
 

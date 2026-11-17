@@ -53,27 +53,22 @@ Omitted properties preserve their current values.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Disable a change data capture configuration
 ```powershell
-{{ Add code here }}
+Update-AzHorizonDbChangeDataCaptureConfiguration -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -ConfigurationName 'sales-database' -DesiredState 'Disabled' | Format-List -Property Name, DatabaseName, UsageProfile, DesiredState, EffectiveState, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : sales-database
+DatabaseName      : sales
+UsageProfile      : Mirroring
+DesiredState      : Disabled
+EffectiveState    : Disabled
+ProvisioningState : Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

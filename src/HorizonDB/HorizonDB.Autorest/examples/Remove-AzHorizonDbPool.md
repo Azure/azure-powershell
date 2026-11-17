@@ -1,22 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a pool
 ```powershell
-{{ Add code here }}
+Remove-AzHorizonDbPool -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -Name 'example-pool-01'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the specified HorizonDB pool after confirmation.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+The HTTP 202 response has no body. This command produces no output unless PassThru is specified.

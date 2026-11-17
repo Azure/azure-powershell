@@ -41,27 +41,35 @@ Gets a log capture configuration for a HorizonDB cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List log capture configurations
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbLogCaptureConfiguration -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' | Format-List -Property Name, State, RetentionDay, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : PostgreSqlServer
+State             : Enabled
+RetentionDay      : 14
+ProvisioningState : Succeeded
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the PostgreSQL server log capture configuration
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbLogCaptureConfiguration -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -Name 'PostgreSqlServer' | Format-List -Property Name, State, RetentionDay, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : PostgreSqlServer
+State             : Enabled
+RetentionDay      : 14
+ProvisioningState : Succeeded
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

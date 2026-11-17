@@ -31,27 +31,16 @@ For an accepted deletion, the long-running operation remains nonterminal until p
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a cluster
 ```powershell
-{{ Add code here }}
+Remove-AzHorizonDbCluster -ResourceGroupName 'example-resource-group' -Name 'example-cluster'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the specified HorizonDB cluster after confirmation.
+Review the cluster and its dependent resources before confirming this destructive operation.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+The HTTP 202 response has no body.
+This command produces no output unless PassThru is specified.
 
 ## PARAMETERS
 

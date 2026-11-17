@@ -24,27 +24,18 @@ The signed URL is returned only by this action so routine resource GET and LIST 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get download URLs for a log file
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbLogFileDownloadUrl -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -LogFileName '22222222-2222-2222-2222-222222222222' | Format-List -Property DownloadUri, ExpiresAtUtc
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+DownloadUri  : System.Security.SecureString
+ExpiresAtUtc : 09/11/2026 13:00:00
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

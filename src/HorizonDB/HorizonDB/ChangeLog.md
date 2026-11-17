@@ -4,6 +4,7 @@
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
     ## Upcoming Release
+    * Added sample cmdlet output based on the first API example response.
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -20,5 +21,5 @@
 ## Upcoming Release
 
 ## Version 0.1.0
-* First preview release for module Az.HorizonDB
-
+* First preview release for module Az.HorizonDB.
+* Added cmdlet examples for cluster, pool, and parameter group management based on API version 2026-10-01-preview.

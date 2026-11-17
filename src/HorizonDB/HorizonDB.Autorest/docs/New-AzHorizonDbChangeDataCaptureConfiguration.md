@@ -47,27 +47,32 @@ Create or replaces a change data capture configuration that enrolls a PostgreSQL
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Configure change data capture for a database
 ```powershell
-{{ Add code here }}
+$subscriptionId = (Get-AzContext).Subscription.Id
+$body = @{
+    properties = @{
+        databaseName = 'sales'
+        usageProfile = 'Mirroring'
+        destinationResourceId = "/subscriptions/$subscriptionId/resourceGroups/example-resource-group/providers/Microsoft.HorizonDb/clusters/example-cluster/changeDataCaptureDestinations/fabric-mirroring"
+        desiredState = 'Enabled'
+    }
+} | ConvertTo-Json -Depth 5
+
+New-AzHorizonDbChangeDataCaptureConfiguration -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -ConfigurationName 'sales-database' -JsonString $body | Format-List -Property Name, DatabaseName, UsageProfile, DesiredState, EffectiveState, ProvisioningState
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : sales-database
+DatabaseName      : sales
+UsageProfile      : Mirroring
+DesiredState      : Enabled
+EffectiveState    : Enabled
+ProvisioningState : Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

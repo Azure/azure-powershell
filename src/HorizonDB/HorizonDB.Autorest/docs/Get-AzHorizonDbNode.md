@@ -46,27 +46,41 @@ Gets a node allocated to a HorizonDB pool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List pool nodes
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbNode -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -PoolName 'example-pool-01' | Format-List -Property Name, Role, AvailabilityZone
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             : node-01
+Role             : ReadWrite
+AvailabilityZone : 3
+
+Name             : node-02
+Role             : ReadOnly
+AvailabilityZone : 2
+
+Name             : node-03
+Role             : ReadOnly
+AvailabilityZone : 1
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a pool node
 ```powershell
-{{ Add code here }}
+Get-AzHorizonDbNode -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -PoolName 'example-pool-01' -Name 'node-01' | Format-List -Property Name, Role, AvailabilityZone
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             : node-01
+Role             : ReadWrite
+AvailabilityZone : 3
 ```
 
-{{ Add description here }}
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
 
 ## PARAMETERS
 

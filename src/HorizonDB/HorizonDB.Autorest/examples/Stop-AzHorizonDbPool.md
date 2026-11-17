@@ -1,22 +1,18 @@
-### Example 1: {{ Add title here }}
+### Example 1: Stop a pool
 ```powershell
-{{ Add code here }}
+Stop-AzHorizonDbPool -ResourceGroupName 'exampleresourcegroup' -ClusterName 'examplecluster' -Name 'example-pool-01' | Format-List -Property Name, ComputeModelVCore, NodeCount, HighAvailabilityMode, State, ProvisioningState, ParameterGroupApplyMethod, ParameterGroupSyncStatus
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                      : example-pool-01
+ComputeModelVCore         : 2
+NodeCount                 : 1
+HighAvailabilityMode      : Disabled
+State                     : Stopped
+ProvisioningState         : Succeeded
+ParameterGroupApplyMethod : PendingReboot
+ParameterGroupSyncStatus  : PendingReboot
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
