@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
             Assert.Single(context.Track2Client.GetPools());
             object track1 = context.BatchOMClient.PoolOperations.GetPool("pool1").VirtualMachineConfiguration.Extensions.Single().Settings;
 
-            Assert.True(JToken.DeepEquals(Assert.IsAssignableFrom<JToken>(track1), Track2Workarounds.FromSettings(extension.Settings)));
+            Assert.True(JToken.DeepEquals(Assert.IsAssignableFrom<JToken>(track1), Assert.IsAssignableFrom<JToken>(Track2Workarounds.FromSettings(extension.Settings))));
         }
 
         [Fact]
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
 
             T2.VMExtension read = context.Track2Client.GetPool("pool1").Value.VirtualMachineConfiguration.Extensions.Single();
             object track1 = context.BatchOMClient.PoolOperations.GetPool("pool1").VirtualMachineConfiguration.Extensions.Single().Settings;
-            Assert.True(JToken.DeepEquals(Assert.IsAssignableFrom<JToken>(track1), Track2Workarounds.FromSettings(read.Settings)));
+            Assert.True(JToken.DeepEquals(Assert.IsAssignableFrom<JToken>(track1), Assert.IsAssignableFrom<JToken>(Track2Workarounds.FromSettings(read.Settings))));
 
             T2.VMExtension sent = new T2.VMExtension("extension1", "Microsoft.ManagedServices", "ApplicationHealthLinux");
             foreach (KeyValuePair<string, string> setting in Track2Workarounds.ToSettings(JObject.Parse(settings)))
@@ -233,6 +233,57 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
 
             context.Track2Client.CreatePool(NewPool(vm => vm.Extensions.Add(sent)));
             Assert.True(JToken.DeepEquals(JObject.Parse(settings), SentPool(handler).SelectToken("virtualMachineConfiguration.extensions[0].settings")));
+        }
+
+        // Review on #30433: settings that aren't a JSON object (a list or a single value), and names that look like the
+        // marker (one is exactly the marker, as a list or single value is kept), must work too, both ways.
+        public static IEnumerable<object[]> SettingsOfAnyShape => new List<object[]>
+        {
+            new object[] { "[1,2]" },
+            new object[] { "[\"a\",{\"b\":true},null]" },
+            new object[] { "5" },
+            new object[] { "\"text\"" },
+            new object[] { "true" },
+            new object[] { "{\"" + Track2Workarounds.JsonSettingPrefix + "\":5}" },
+            new object[] { "{\"" + Track2Workarounds.JsonSettingPrefix + "\":\"" + Track2Workarounds.JsonSettingPrefix + "5\"}" },
+            new object[] { "{\"" + Track2Workarounds.JsonSettingPrefix + "name\":\"value\",\"other\":1}" },
+        };
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [MemberData(nameof(SettingsOfAnyShape))]
+        public void ExtensionSettingsOfAnyShapeAreReadAsTrack1ReadsThem(string settings)
+        {
+            string pool = PoolJson("\"extensions\":[{\"name\":\"extension1\",\"publisher\":\"Microsoft.ManagedServices\",\"type\":\"ApplicationHealthLinux\","
+                + "\"settings\":" + settings + ",\"protectedSettings\":" + settings + "}]");
+            RecordingHandler handler = new RecordingHandler().On("GET /pools/pool1", HttpStatusCode.OK, pool);
+            Track2TestContext context = NewContext(handler);
+
+            T2.VMExtension read = context.Track2Client.GetPool("pool1").Value.VirtualMachineConfiguration.Extensions.Single();
+            Microsoft.Azure.Batch.VMExtension track1 = context.BatchOMClient.PoolOperations.GetPool("pool1").VirtualMachineConfiguration.Extensions.Single();
+
+            AssertSameAsTrack1(track1.Settings, Track2Workarounds.FromSettings(read.Settings));
+            AssertSameAsTrack1(track1.ProtectedSettings, Track2Workarounds.FromSettings(read.ProtectedSettings));
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [MemberData(nameof(SettingsOfAnyShape))]
+        public void ExtensionSettingsOfAnyShapeAreSentAsGiven(string settings)
+        {
+            RecordingHandler handler = new RecordingHandler().On("POST /pools", HttpStatusCode.Created);
+            T2.VMExtension extension = new T2.VMExtension("extension1", "Microsoft.ManagedServices", "ApplicationHealthLinux");
+            foreach (KeyValuePair<string, string> setting in Track2Workarounds.ToSettings(JToken.Parse(settings)))
+            {
+                extension.Settings.Add(setting);
+                extension.ProtectedSettings.Add(setting);
+            }
+
+            NewContext(handler).Track2Client.CreatePool(NewPool(vm => vm.Extensions.Add(extension)));
+
+            JObject sent = SentPool(handler);
+            Assert.True(JToken.DeepEquals(JToken.Parse(settings), sent.SelectToken("virtualMachineConfiguration.extensions[0].settings")));
+            Assert.True(JToken.DeepEquals(JToken.Parse(settings), sent.SelectToken("virtualMachineConfiguration.extensions[0].protectedSettings")));
         }
 
         [Fact]
@@ -360,6 +411,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
         private static JObject SentPool(RecordingHandler handler)
         {
             return JObject.Parse(handler.Requests.Last().Body);
+        }
+
+        // The same type (an object, a list, a number, text, true/false) and the same JSON as Track 1 gives.
+        private static void AssertSameAsTrack1(object track1, object track2)
+        {
+            Assert.NotNull(track1);
+            Assert.Equal(track1.GetType(), track2?.GetType());
+            Assert.True(JToken.DeepEquals(JToken.FromObject(track1), JToken.FromObject(track2)));
         }
 
         private static Track2TestContext NewContext(RecordingHandler handler)
