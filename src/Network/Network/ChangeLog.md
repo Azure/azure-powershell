@@ -25,6 +25,7 @@
     - Omitting configuration on NVA update resets existing settings to Default distribution and a 5-minute timeout, matching REST PUT semantics.
 * Upgraded Network SDK to API version `2026-05-01`.
 * Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
+* Added `NetworkAdapterIndex` support to create, retrieve, and update network interfaces with `New-AzNetworkInterface`, `Get-AzNetworkInterface`, and `Set-AzNetworkInterface`.
 
 ## Version 8.4.0
 * Updated replication vault Private Link to API 2026-05-01 and Network SDK to 2026-03-01/2026-01-01.

@@ -1335,3 +1335,69 @@ function Test-NetworkInterfaceWithAuxiliarySku
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating and updating a network interface with NetworkAdapterIndex.
+#>
+function Test-NetworkInterfaceWithNetworkAdapterIndex
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $nicWithoutIndexName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "Central US EUAP"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent "Central US EUAP"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create NetworkInterface with NetworkAdapterIndex
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -NetworkAdapterIndex 1
+        Assert-AreEqual "Succeeded" $actualNic.ProvisioningState
+        Assert-AreEqual 1 $actualNic.NetworkAdapterIndex
+
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
+        Assert-AreEqual $actualNic.Name $expectedNic.Name
+        Assert-AreEqual 1 $expectedNic.NetworkAdapterIndex
+
+        # Update NetworkAdapterIndex to zero
+        $expectedNic.NetworkAdapterIndex = [uint32]0
+        $updatedNic = $expectedNic | Set-AzNetworkInterface
+        Assert-AreEqual "Succeeded" $updatedNic.ProvisioningState
+        Assert-NotNull $updatedNic.NetworkAdapterIndex
+        Assert-AreEqual 0 $updatedNic.NetworkAdapterIndex
+
+        $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
+        Assert-NotNull $expectedNic.NetworkAdapterIndex
+        Assert-AreEqual 0 $expectedNic.NetworkAdapterIndex
+
+        # Create NetworkInterface without NetworkAdapterIndex
+        $nicWithoutIndex = New-AzNetworkInterface -Name $nicWithoutIndexName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0]
+        Assert-AreEqual "Succeeded" $nicWithoutIndex.ProvisioningState
+        Assert-Null $nicWithoutIndex.NetworkAdapterIndex
+
+        # Delete NetworkInterfaces
+        $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -Name $nicName -PassThru -Force
+        Assert-AreEqual true $delete
+        $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -Name $nicWithoutIndexName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

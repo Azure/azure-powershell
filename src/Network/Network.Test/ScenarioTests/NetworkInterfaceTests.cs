@@ -154,5 +154,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceWithAuxiliarySku");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestNetworkInterfaceWithNetworkAdapterIndex()
+        {
+            TestRunner.RunTestScript("Test-NetworkInterfaceWithNetworkAdapterIndex");
+        }
     }
 }

@@ -53,6 +53,7 @@ Get-AzNetworkInterface -ResourceId <String> [-DefaultProfile <IAzureContextConta
 
 ## DESCRIPTION
 The **Get-AzNetworkInterface** cmdlet gets an Azure network interface or a list of Azure network interfaces in a resource group.
+The returned object includes `NetworkAdapterIndex` when the service provides a network adapter index.
 
 ## EXAMPLES
 

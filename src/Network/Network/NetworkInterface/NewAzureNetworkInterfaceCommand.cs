@@ -258,6 +258,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network adapter index of the network interface.")]
+        public uint? NetworkAdapterIndex { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -310,6 +316,7 @@ namespace Microsoft.Azure.Commands.Network
 
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
             networkInterface.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
+            networkInterface.NetworkAdapterIndex = this.NetworkAdapterIndex;
 
             // Get the subnetId and publicIpAddressId from the object if specified
             if (ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByIpConfiguration))
