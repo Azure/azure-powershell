@@ -109,6 +109,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// </summary>
         public string ResolveVersionConstraint(string configFilePath)
         {
+            return ResolveVersionConstraint(configFilePath, out _);
+        }
+
+        /// <summary>
+        /// Same as <see cref="ResolveVersionConstraint(string)"/>, but also reports the actual
+        /// config file in the 'extends' chain that supplied the 'bicep.version' value via
+        /// <paramref name="sourceConfigPath"/> (which may differ from <paramref name="configFilePath"/>
+        /// when the value comes from a base config reached through 'extends'). Set to null if no
+        /// 'bicep.version' is found anywhere in the chain.
+        /// </summary>
+        public string ResolveVersionConstraint(string configFilePath, out string sourceConfigPath)
+        {
             var visited = new HashSet<string>(PathComparer);
             var currentPath = Path.GetFullPath(configFilePath);
             var depth = 0;
@@ -138,6 +150,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     // "" - that's deliberately not treated as "no opinion" here, so the caller's
                     // constraint parser rejects it as malformed instead of silently falling
                     // through to a base config or the unpinned executable.
+                    sourceConfigPath = currentPath;
                     return config.Bicep.Version;
                 }
 
@@ -161,6 +174,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 depth++;
             }
 
+            sourceConfigPath = null;
             return null;
         }
 

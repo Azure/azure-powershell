@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.26.54");
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(new byte[] { 1, 2, 3 });
 
-            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+            var installer = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
 
             installer.EnsureInstalled();
 

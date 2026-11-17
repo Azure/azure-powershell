@@ -137,8 +137,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 return null;
             }
 
-            var raw = ConfigResolver.ResolveVersionConstraint(configFilePath);
-            return raw == null ? null : BicepVersionConstraint.Parse(raw, configFilePath);
+            var raw = ConfigResolver.ResolveVersionConstraint(configFilePath, out var sourceConfigPath);
+            return raw == null ? null : BicepVersionConstraint.Parse(raw, sourceConfigPath);
         }
 
         /// <summary>

@@ -35,6 +35,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 
         private static string ExpectedFileName => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep";
 
+        /// <summary>
+        /// A process invoker mock that succeeds for any invocation (including "chmod +x" on the
+        /// non-Windows install path), used so the shared installer here can complete a real
+        /// download/install without needing per-test process-invocation setup.
+        /// </summary>
+        private static IProcessInvoker SucceedingProcessInvoker()
+        {
+            var mock = new Mock<IProcessInvoker>();
+            mock.Setup(x => x.Invoke(It.IsAny<ProcessInput>())).Returns(new ProcessOutput { ExitCode = 0, Stdout = "", Stderr = "" });
+            return mock.Object;
+        }
+
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
         private readonly Mock<IBicepDownloader> downloaderMock;
         private readonly Mock<IDataStore> dataStoreMock;
@@ -48,7 +60,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
             this.downloaderMock = new Mock<IBicepDownloader>();
             this.dataStoreMock = new Mock<IDataStore>();
 
-            var installer = new BicepInstaller(this.downloaderMock.Object, this.dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+            var installer = new BicepInstaller(this.downloaderMock.Object, this.dataStoreMock.Object, SucceedingProcessInvoker(), FakeProfileDirectory);
 
             this.cmdlet = new InstallAzBicepCmdlet
             {

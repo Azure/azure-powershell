@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             var installerDataStoreMock = new Mock<IDataStore>();
             installerDataStoreMock.Setup(x => x.FileExists(It.IsAny<string>())).Returns(false);
             installerDataStoreMock.Setup(x => x.DirectoryExists(It.IsAny<string>())).Returns(true);
-            var bicepInstaller = new BicepInstaller(downloaderMock.Object, installerDataStoreMock.Object, Mock.Of<IProcessInvoker>(), fakeProfileDirectory);
+            var bicepInstaller = new BicepInstaller(downloaderMock.Object, installerDataStoreMock.Object, SucceedingProcessInvoker(), fakeProfileDirectory);
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object, bicepInstaller);
 
@@ -185,6 +185,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
         }
 
         private static string NewRoot() => Path.Combine(Path.GetTempPath(), "bicep-util-" + System.Guid.NewGuid().ToString("N"));
+
+        /// <summary>
+        /// A process invoker mock that succeeds for any invocation (including "chmod +x" on the
+        /// non-Windows install path), for tests whose BicepInstaller exercises a real
+        /// download/install but aren't specifically testing process-invocation behavior themselves.
+        /// </summary>
+        private static IProcessInvoker SucceedingProcessInvoker()
+        {
+            var mock = new Mock<IProcessInvoker>();
+            mock.Setup(x => x.Invoke(It.IsAny<ProcessInput>())).Returns(new ProcessOutput { ExitCode = 0, Stdout = "", Stderr = "" });
+            return mock.Object;
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -277,7 +289,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             downloaderMock.Setup(x => x.GetAvailableReleaseTags()).Returns(new[] { "v0.26.0", "v0.24.0" });
             downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(new byte[] { 1 });
 
-            var bicepInstaller = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), fakeProfileDirectory);
+            var bicepInstaller = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, SucceedingProcessInvoker(), fakeProfileDirectory);
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object, bicepInstaller);
 
             bicepUtility.BuildBicepFile(entrypoint);
