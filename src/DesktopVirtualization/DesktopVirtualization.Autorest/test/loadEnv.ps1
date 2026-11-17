@@ -17,13 +17,46 @@ if ($TestMode -eq 'live') {
     $envFile = 'localEnv.json'
 }
 
-if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
+$selected = $env:AVD_TEST_PROFILE -or $env:AVD_TEST_STATE_PATH -or $env:AVD_TEST_RUNTIME_ENV_PATH
+$useRuntime = $TestMode -in @('live', 'record') -and -not $env:AzPSAutorestTestPlaybackMode -and $selected
+$useSnapshot = ($TestMode -eq 'playback' -or $env:AzPSAutorestTestPlaybackMode) -and $env:AVD_TEST_PLAYBACK_ENV_PATH
+if ($useSnapshot) {
+    . (Join-Path $PSScriptRoot 'provision-common.ps1')
+    $envFilePath = $env:AVD_TEST_PLAYBACK_ENV_PATH
+    $snapshot = Read-AvdState -Path $envFilePath
+    if (-not $snapshot.PlaybackSnapshot -or -not $snapshot.SetupComplete -or $snapshot.RunId -notmatch '^[0-9a-f]{32}$') {
+        throw 'The selected Playback environment is not a completed recording snapshot.'
+    }
+} elseif ($useRuntime) {
+    if (-not $env:AVD_TEST_RUNTIME_ENV_PATH) { throw 'An explicitly selected profile/state requires AVD_TEST_RUNTIME_ENV_PATH from completed setup. Legacy live targets will not be loaded.' }
+    . (Join-Path $PSScriptRoot 'provision-common.ps1')
+    $config = Get-AvdSelectedConfig
+    $envFilePath = $env:AVD_TEST_RUNTIME_ENV_PATH
+    $runtime = Read-AvdState -Path $envFilePath -Expected $config
+    if ($runtime.PlaybackSnapshot) { throw 'A Playback snapshot cannot select live targets.' }
+    if (-not $runtime.SetupComplete) { throw 'The selected runtime setup is incomplete; do not run live tests.' }
+} elseif (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
     $envFilePath = Join-Path $PSScriptRoot $envFile
 } else {
-    $envFilePath = Join-Path $PSScriptRoot '..\$envFile'
+    $envFilePath = Join-Path (Split-Path -Parent $PSScriptRoot) $envFile
 }
 $env = @{}
 if (Test-Path -Path $envFilePath) {
-    $env = Get-Content (Join-Path $PSScriptRoot $envFile) | ConvertFrom-Json
+    $env = Get-Content -LiteralPath $envFilePath -Raw | ConvertFrom-Json
+    if (-not $useSnapshot -and ($TestMode -eq 'playback' -or $env:AzPSAutorestTestPlaybackMode) -and $env.PSObject.Properties['RecordingSets']) {
+        $testFile = [System.IO.Path]::GetFileName($MyInvocation.ScriptName)
+        if ($testFile -notlike '*.Tests.ps1') {
+            $testCaller = Get-PSCallStack | Where-Object { $_.ScriptName -like '*.Tests.ps1' } | Select-Object -First 1
+            if ($testCaller) { $testFile = [System.IO.Path]::GetFileName($testCaller.ScriptName) }
+        }
+        $recordingSets = @($env.RecordingSets.PSObject.Properties | Where-Object { $_.Value.Tests -contains $testFile })
+        if ($recordingSets.Count -ne 1) {
+            throw "Expected exactly one recording environment for '$testFile'; found $($recordingSets.Count)."
+        }
+        if (-not $recordingSets[0].Value.Environment) {
+            throw "The recording environment for '$testFile' is missing."
+        }
+        $env = $recordingSets[0].Value.Environment
+    }
     $PSDefaultParameterValues=@{"*:Tenant"=$env.Tenant}
 }

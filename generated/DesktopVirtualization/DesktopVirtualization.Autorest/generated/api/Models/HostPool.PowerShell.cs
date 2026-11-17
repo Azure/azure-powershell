@@ -363,7 +363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RegistrationInfoToken"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolInternal)this).RegistrationInfoToken = (string) content.GetValueForProperty("RegistrationInfoToken",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolInternal)this).RegistrationInfoToken, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolInternal)this).RegistrationInfoToken = (System.Security.SecureString) content.GetValueForProperty("RegistrationInfoToken",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolInternal)this).RegistrationInfoToken, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RegistrationInfoToken"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolInternal)this).RegistrationInfoToken = (string) content.GetValueForProperty("RegistrationInfoToken",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolInternal)this).RegistrationInfoToken, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolInternal)this).RegistrationInfoToken = (System.Security.SecureString) content.GetValueForProperty("RegistrationInfoToken",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolInternal)this).RegistrationInfoToken, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("IdentityPrincipalId"))
             {

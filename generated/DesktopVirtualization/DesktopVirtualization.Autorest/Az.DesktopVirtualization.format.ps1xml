@@ -3690,9 +3690,6 @@
           <TableColumnHeader>
             <Label>RegistrationTokenOperation</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Token</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -3702,9 +3699,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RegistrationTokenOperation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Token</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3771,18 +3765,12 @@
           <TableColumnHeader>
             <Label>ExpirationTime</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Token</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>ExpirationTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Token</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

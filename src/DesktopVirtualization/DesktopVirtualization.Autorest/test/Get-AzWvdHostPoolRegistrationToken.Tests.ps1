@@ -38,6 +38,12 @@ Describe 'Get-AzWvdHostPoolRegistrationToken' {
                 -HostPoolName $env.HostPool `
 
             $regToken.Token | Should -not -BeNullOrEmpty
+            $regToken.Token | Should -BeOfType ([System.Security.SecureString])
+            foreach ($token in @($regToken)) {
+                $token -is [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal] | Should -BeTrue
+            }
+            (Get-Command Get-AzWvdHostPoolRegistrationToken).OutputType.Name |
+                Should -Contain 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal'
 
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `

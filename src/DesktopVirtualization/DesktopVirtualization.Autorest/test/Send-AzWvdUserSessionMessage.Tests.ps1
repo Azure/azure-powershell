@@ -13,12 +13,22 @@ while(-not $mockingPath) {
 
 Describe 'Send-AzWvdUserSessionMessage' {
     It 'Send' {
+        $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
+                                     -ResourceGroupName $env.ResourceGroupPersistent `
+                                     -HostPoolName $env.HostPoolPersistent `
+                                     -SessionHostName $env.SessionHostName `
+                                     -ErrorAction Stop `
+                                     | Where-Object SessionState -eq 'Active' | Select-Object -First 1
+        $userSession | Should -Not -BeNullOrEmpty
+        $userSessionId = ($userSession.Id -split '/')[-1]
+
         Send-AzWvdUserSessionMessage -SubscriptionId $env.SubscriptionId `
                                      -ResourceGroupName $env.ResourceGroupPersistent `
                                      -HostPoolName $env.HostPoolPersistent `
                                      -SessionHostName $env.SessionHostName `
-                                     -UserSessionId 2 `
+                                     -UserSessionId $userSessionId `
                                      -MessageBody 'apple' `
-                                     -MessageTitle 'title'
+                                     -MessageTitle 'title' `
+                                     -ErrorAction Stop
     }
 }

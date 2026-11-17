@@ -44,7 +44,8 @@ Describe 'Remove-AzWvdScalingPlan' {
                 Get-AzWvdScalingPlan `
                     -SubscriptionId $env.SubscriptionId `
                     -ResourceGroupName $env.ResourceGroup `
-                    -Name 'ScalingPlanPowershellContained1'
+                    -Name 'ScalingPlanPowershellContained1' `
+                    -ErrorAction Stop
             } | Should -Throw
         }
         finally {
