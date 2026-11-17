@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -170,6 +171,43 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(identity, sentFiles[1].IdentityReference?.ResourceId);
             Assert.Equal("https://account.blob.core.windows.net/container/other.txt", sentFiles[2].HttpUrl);
             Assert.Null(sentFiles[2].IdentityReference);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetBatchPoolSendsTheBindMountsOfAStartTaskReadFromTheService()
+        {
+            // The SDK doesn't allow changing the bind mounts of container settings read from the service, so they're sent as they are.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Pool = GetPoolFromTheService(context, new ProxyModels.StartTask
+            {
+                CommandLine = "cmd /c echo start task",
+                ContainerSettings = new ProxyModels.TaskContainerSettings
+                {
+                    ImageName = "ubuntu",
+                    ContainerHostBatchBindMounts = new List<ProxyModels.ContainerHostBatchBindMountEntry>
+                    {
+                        new ProxyModels.ContainerHostBatchBindMountEntry { Source = "Shared", IsReadOnly = true },
+                        new ProxyModels.ContainerHostBatchBindMountEntry { Source = "Task", IsReadOnly = false },
+                    },
+                },
+            });
+
+            PoolUpdatePropertiesParameter requestParameters = null;
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolUpdatePropertiesParameter,
+                PoolUpdatePropertiesOptions,
+                AzureOperationHeaderResponse<PoolUpdatePropertiesHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            var sentBindMounts = requestParameters.StartTask.ContainerSettings.ContainerHostBatchBindMounts;
+            Assert.Equal(new[] { "Shared", "Task" }, sentBindMounts.Select(m => m.Source));
+            Assert.Equal(new bool?[] { true, false }, sentBindMounts.Select(m => m.IsReadOnly));
         }
 
         /// <summary>

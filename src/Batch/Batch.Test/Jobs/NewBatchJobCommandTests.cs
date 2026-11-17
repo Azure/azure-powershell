@@ -132,6 +132,56 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchJobSendsBindMountsSetThroughTheProperty()
+        {
+            // Bind mounts set through the property used to be sent as an empty list, so nothing was mounted.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "testJob";
+            cmdlet.PoolInformation = new PSPoolInformation() { PoolId = "myPool" };
+
+            PSTaskContainerSettings CreateContainerSettings(string source)
+            {
+                return new PSTaskContainerSettings("ubuntu")
+                {
+                    ContainerHostBatchBindMounts = new List<PSContainerHostBatchBindMountEntry>
+                    {
+                        new PSContainerHostBatchBindMountEntry { Source = source, IsReadOnly = true },
+                    },
+                };
+            }
+
+            cmdlet.JobManagerTask = new PSJobManagerTask("job manager", "cmd /c echo job manager")
+            {
+                ContainerSettings = CreateContainerSettings("Shared"),
+            };
+            cmdlet.JobPreparationTask = new PSJobPreparationTask("cmd /c echo job prep")
+            {
+                ContainerSettings = CreateContainerSettings("Startup"),
+            };
+            cmdlet.JobReleaseTask = new PSJobReleaseTask("cmd /c echo job release")
+            {
+                ContainerSettings = CreateContainerSettings("Applications"),
+            };
+
+            JobAddParameter requestParameters = null;
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                JobAddParameter,
+                JobAddOptions,
+                AzureOperationHeaderResponse<JobAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal("Shared", requestParameters.JobManagerTask.ContainerSettings.ContainerHostBatchBindMounts.Single().Source);
+            Assert.Equal("Startup", requestParameters.JobPreparationTask.ContainerSettings.ContainerHostBatchBindMounts.Single().Source);
+            Assert.Equal("Applications", requestParameters.JobReleaseTask.ContainerSettings.ContainerHostBatchBindMounts.Single().Source);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApplicationPackageReferencesAreSentToService()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();

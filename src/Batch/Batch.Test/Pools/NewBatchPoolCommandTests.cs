@@ -74,6 +74,40 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchPoolSendsBindMountsSetThroughTheProperty()
+        {
+            // Bind mounts set through the property used to be sent as an empty list, so nothing was mounted.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "testPool";
+            cmdlet.VirtualMachineSize = "small";
+            PSTaskContainerSettings containerSettings = new PSTaskContainerSettings("ubuntu");
+            containerSettings.ContainerHostBatchBindMounts = new List<PSContainerHostBatchBindMountEntry>
+            {
+                new PSContainerHostBatchBindMountEntry { Source = "Shared", IsReadOnly = true },
+            };
+            containerSettings.ContainerHostBatchBindMounts.Add(new PSContainerHostBatchBindMountEntry { Source = "Task", IsReadOnly = false });
+            cmdlet.StartTask = new PSStartTask("cmd /c echo start task") { ContainerSettings = containerSettings };
+
+            PoolAddParameter requestParameters = null;
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolAddParameter,
+                PoolAddOptions,
+                AzureOperationHeaderResponse<PoolAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>())).Returns(true);
+            cmdlet.ExecuteCmdlet();
+
+            var sentBindMounts = requestParameters.StartTask.ContainerSettings.ContainerHostBatchBindMounts;
+            Assert.Equal(new[] { "Shared", "Task" }, sentBindMounts.Select(m => m.Source));
+            Assert.Equal(new bool?[] { true, false }, sentBindMounts.Select(m => m.IsReadOnly));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewBatchPoolSendsAnEnvironmentSettingWithoutAValue()
         {
             // An environment setting without a value used to make the cmdlets fail with a NullReferenceException.

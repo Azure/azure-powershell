@@ -127,6 +127,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
                 jobManager.omObject.ResourceFiles = CreateSyncedList(jobManager.ResourceFiles, ConvertResourceFile);
                 jobManager.omObject.OutputFiles = CreateSyncedList(jobManager.OutputFiles, ps => ps.omObject);
+                TaskContainerSettingsSyncCollections(jobManager.ContainerSettings);
                 jobManager.omObject.ApplicationPackageReferences = CreateSyncedList(jobManager.ApplicationPackageReferences,
                     a =>
                     {
@@ -152,6 +153,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     ConvertEnvironmentSetting);
 
                 jobPrepTask.omObject.ResourceFiles = CreateSyncedList(jobPrepTask.ResourceFiles, ConvertResourceFile);
+                TaskContainerSettingsSyncCollections(jobPrepTask.ContainerSettings);
             }
         }
 
@@ -167,6 +169,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     ConvertEnvironmentSetting);
 
                 jobReleaseTask.omObject.ResourceFiles = CreateSyncedList(jobReleaseTask.ResourceFiles, ConvertResourceFile);
+                TaskContainerSettingsSyncCollections(jobReleaseTask.ContainerSettings);
             }
         }
 
@@ -255,6 +258,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 ExitConditionsSyncCollections(task.ExitConditions);
 
                 MultiInstanceSettingsSyncCollections(task.MultiInstanceSettings);
+                TaskContainerSettingsSyncCollections(task.ContainerSettings);
             }
         }
 
@@ -270,6 +274,26 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     ConvertEnvironmentSetting);
 
                 startTask.omObject.ResourceFiles = CreateSyncedList(startTask.ResourceFiles, ConvertResourceFile);
+                TaskContainerSettingsSyncCollections(startTask.ContainerSettings);
+            }
+        }
+
+        /// <summary>
+        /// Syncs the collections on a PSTaskContainerSettings with its wrapped OM object
+        /// </summary>
+        internal static void TaskContainerSettingsSyncCollections(PSTaskContainerSettings containerSettings)
+        {
+            if (containerSettings != null)
+            {
+                IList<ContainerHostBatchBindMountEntry> bindMounts = CreateSyncedList(
+                    containerSettings.ContainerHostBatchBindMounts,
+                    ps => ps.omObject);
+
+                // Settings read from the service can't be changed, so only write the list when its entries changed.
+                if (!HaveSameItems(bindMounts, containerSettings.omObject.ContainerHostBatchBindMounts))
+                {
+                    containerSettings.omObject.ContainerHostBatchBindMounts = bindMounts;
+                }
             }
         }
 
@@ -327,6 +351,16 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 omList.Add(omItem);
             }
             return omList;
+        }
+
+        private static bool HaveSameItems<T>(IList<T> first, IList<T> second) where T : class
+        {
+            if (first == null || second == null)
+            {
+                return first == null && second == null;
+            }
+
+            return first.SequenceEqual(second);
         }
 
         private static IList<Tom> CreateSyncedDict<Tom>(IDictionary psDict, Func<string, string, Tom> mappingFunction)
