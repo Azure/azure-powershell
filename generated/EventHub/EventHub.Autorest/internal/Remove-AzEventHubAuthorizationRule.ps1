@@ -40,6 +40,7 @@ EVENTHUBINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -55,6 +56,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -70,6 +72,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -191,6 +194,34 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.EventHub.private\Remove-AzEventHubAuthorizationRule_Delete';
+        DeleteViaIdentity = 'Az.EventHub.private\Remove-AzEventHubAuthorizationRule_DeleteViaIdentity';
+        DeleteViaIdentityEventhub = 'Az.EventHub.private\Remove-AzEventHubAuthorizationRule_DeleteViaIdentityEventhub';
+        DeleteViaIdentityNamespace = 'Az.EventHub.private\Remove-AzEventHubAuthorizationRule_DeleteViaIdentityNamespace';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
 
 begin {
     try {

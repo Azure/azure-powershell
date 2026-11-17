@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class ClientEncryptionKeyGetPropertiesResource
+    public partial class ClientEncryptionKeyGetPropertiesResource : ClientEncryptionKeyResource
     {
         /// <summary>
         /// Initializes a new instance of the ClientEncryptionKeyGetPropertiesResource class.
@@ -47,11 +47,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public ClientEncryptionKeyGetPropertiesResource(string id = default(string), string encryptionAlgorithm = default(string), byte[] wrappedDataEncryptionKey = default(byte[]), KeyWrapMetadata keyWrapMetadata = default(KeyWrapMetadata), string rid = default(string), double? ts = default(double?), string etag = default(string))
 
+        : base(id, encryptionAlgorithm, wrappedDataEncryptionKey, keyWrapMetadata)
         {
-            this.Id = id;
-            this.EncryptionAlgorithm = encryptionAlgorithm;
-            this.WrappedDataEncryptionKey = wrappedDataEncryptionKey;
-            this.KeyWrapMetadata = keyWrapMetadata;
             this.Rid = rid;
             this.Ts = ts;
             this.Etag = etag;
@@ -63,33 +60,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets name of the ClientEncryptionKey
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets or sets encryption algorithm that will be used along with this client
-        /// encryption key to encrypt/decrypt data.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "encryptionAlgorithm")]
-        public string EncryptionAlgorithm {get; set; }
-
-        /// <summary>
-        /// Gets or sets wrapped (encrypted) form of the key represented as a byte
-        /// array.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "wrappedDataEncryptionKey")]
-        public byte[] WrappedDataEncryptionKey {get; set; }
-
-        /// <summary>
-        /// Gets or sets metadata for the wrapping provider that can be used to unwrap
-        /// the wrapped client encryption key.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "keyWrapMetadata")]
-        public KeyWrapMetadata KeyWrapMetadata {get; set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.

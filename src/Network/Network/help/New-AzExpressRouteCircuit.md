@@ -18,7 +18,8 @@ Creates an Azure express route circuit.
 New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
  [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String> -BandwidthInMbps <Int32>
  [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
- [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-AllowClassicOperations <Boolean>] [-PartnerAccountId <String>] [-ActivationKey <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
@@ -28,7 +29,19 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <
 New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
  [-SkuFamily <String>] -ExpressRoutePort <PSExpressRoutePort> -BandwidthInGbps <Double>
  [-AuthorizationKey <String>] [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
- [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-AllowClassicOperations <Boolean>]
+ [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### ExpressRouteLag
+```
+New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
+ [-SkuFamily <String>] -ExpressRouteLag <PSExpressRouteLag> -BandwidthInGbps <Double>
+ [-AuthorizationKey <String>] [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
+ [-AllowClassicOperations <Boolean>]
+ [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
@@ -67,6 +80,20 @@ $parameters = @{
 New-AzExpressRouteCircuit @parameters
 ```
 
+### Example 3: Create a new ExpressRoute circuit on ExpressRouteLag
+```powershell
+$parameters = @{
+    Name='ExpressRouteCircuit'
+    ResourceGroupName='ExpressRouteResourceGroup'
+    Location='West US'
+    SkuTier='Standard'
+    SkuFamily='MeteredData'
+    ExpressRouteLag=$PSExpressRouteLag
+    BandwidthInGbps=10.0
+}
+New-AzExpressRouteCircuit @parameters
+```
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken
@@ -81,6 +108,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActivationKey
+Activation Key from partner cloud provider. Mutually exclusive with -PartnerAccountId.
+
+```yaml
+Type: System.String
+Parameter Sets: ServiceProvider
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -131,11 +173,11 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationKey
-The authorization key used when the circuit is provisioned on an ExpressRoutePort resource in different subscription.
+The authorization key used when the circuit is provisioned on an ExpressRoutePort or ExpressRouteLag resource in a different subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExpressRoutePort
+Parameter Sets: ExpressRoutePort, ExpressRouteLag
 Aliases:
 
 Required: False
@@ -146,11 +188,11 @@ Accept wildcard characters: False
 ```
 
 ### -BandwidthInGbps
-The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
+The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort or ExpressRouteLag resource.
 
 ```yaml
 Type: System.Double
-Parameter Sets: ExpressRoutePort
+Parameter Sets: ExpressRoutePort, ExpressRouteLag
 Aliases:
 
 Required: True
@@ -202,6 +244,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpressRouteLag
+The reference to the ExpressRouteLag resource when the circuit is provisioned on an ExpressRouteLag resource.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteLag
+Parameter Sets: ExpressRouteLag
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -259,6 +316,21 @@ Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PartnerAccountId
+Account ID of customer account on partner cloud provider. Mutually exclusive with -ActivationKey.
+
+```yaml
+Type: System.String
+Parameter Sets: ServiceProvider
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -417,6 +489,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Int32
 
 ### Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
+
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteLag
 
 ### System.Double
 

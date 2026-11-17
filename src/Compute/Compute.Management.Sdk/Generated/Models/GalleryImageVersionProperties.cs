@@ -48,7 +48,10 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="validationsProfile">This is the validations profile of a Gallery Image Version.
         /// </param>
-        public GalleryImageVersionProperties(GalleryImageVersionStorageProfile storageProfile, GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), string provisioningState = default(string), GalleryImageVersionSafetyProfile safetyProfile = default(GalleryImageVersionSafetyProfile), ReplicationStatus replicationStatus = default(ReplicationStatus), ImageVersionSecurityProfile securityProfile = default(ImageVersionSecurityProfile), bool? restore = default(bool?), ValidationsProfile validationsProfile = default(ValidationsProfile))
+
+        /// <param name="imageMetadataProfiles">The image metadata profiles associated with the gallery image version.
+        /// </param>
+        public GalleryImageVersionProperties(GalleryImageVersionStorageProfile storageProfile, GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), string provisioningState = default(string), GalleryImageVersionSafetyProfile safetyProfile = default(GalleryImageVersionSafetyProfile), ReplicationStatus replicationStatus = default(ReplicationStatus), ImageVersionSecurityProfile securityProfile = default(ImageVersionSecurityProfile), bool? restore = default(bool?), ValidationsProfile validationsProfile = default(ValidationsProfile), System.Collections.Generic.IList<ImageMetadataProfile> imageMetadataProfiles = default(System.Collections.Generic.IList<ImageMetadataProfile>))
 
         {
             this.PublishingProfile = publishingProfile;
@@ -59,6 +62,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.SecurityProfile = securityProfile;
             this.Restore = restore;
             this.ValidationsProfile = validationsProfile;
+            this.ImageMetadataProfiles = imageMetadataProfiles;
             CustomInit();
         }
 
@@ -116,6 +120,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "validationsProfile")]
         public ValidationsProfile ValidationsProfile {get; private set; }
+
+        /// <summary>
+        /// Gets the image metadata profiles associated with the gallery image version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "imageMetadataProfiles")]
+        public System.Collections.Generic.IList<ImageMetadataProfile> ImageMetadataProfiles {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -135,6 +145,16 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
 
+            if (this.ImageMetadataProfiles != null)
+            {
+                foreach (var element in this.ImageMetadataProfiles)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

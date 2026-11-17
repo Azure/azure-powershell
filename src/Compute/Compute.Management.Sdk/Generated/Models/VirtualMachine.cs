@@ -79,6 +79,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="hardwareProfile">Specifies the hardware settings for the virtual machine.
         /// </param>
 
+        /// <param name="flexProfile">[Preview Feature] Specifies a FlexProfile for VM size. Azure may deploy a
+        /// compatible alternative VM size based on capacity and placement
+        /// considerations, and returns the deployed size in hardwareProfile.vmSize. A
+        /// request that adds flexProfile must omit hardwareProfile.vmSize. For a
+        /// virtual machine that uses FlexProfile, a hardwareProfile.vmSize equal to
+        /// the deployed size is ignored, so a GET response can be sent back unchanged.
+        /// A PATCH request that omits flexProfile keeps it. A PUT request that omits
+        /// flexProfile and sets hardwareProfile.vmSize clears it. This property cannot
+        /// exist along with a non-null properties.availabilitySet,
+        /// properties.capacityReservation, properties.host, properties.hostGroup,
+        /// properties.proximityPlacementGroup or properties.virtualMachineScaleSet.
+        /// </param>
+
         /// <param name="storageProfile">Specifies the storage settings for the virtual machine disks.
         /// </param>
 
@@ -145,7 +158,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="priority">Specifies the priority for the virtual machine. Minimum api-version:
         /// 2019-03-01
-        /// Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;</param>
+        /// Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;, &#39;SpotPlus&#39;</param>
 
         /// <param name="evictionPolicy">Specifies the eviction policy for the Azure Spot virtual machine and Azure
         /// Spot scale set. For Azure Spot virtual machines, both &#39;Deallocate&#39; and
@@ -221,7 +234,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="timeCreated">Specifies the time at which the Virtual Machine resource was created.
         /// Minimum api-version: 2021-11-01.
         /// </param>
-        public VirtualMachine(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), System.Collections.Generic.IList<VirtualMachineExtension> resources = default(System.Collections.Generic.IList<VirtualMachineExtension>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string managedBy = default(string), string etag = default(string), Placement placement = default(Placement), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), BillingProfile billingProfile = default(BillingProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), ResiliencyProfile resiliencyProfile = default(ResiliencyProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), InterconnectBlockProfile interconnectBlockProfile = default(InterconnectBlockProfile), System.DateTime? timeCreated = default(System.DateTime?))
+        public VirtualMachine(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), System.Collections.Generic.IList<VirtualMachineExtension> resources = default(System.Collections.Generic.IList<VirtualMachineExtension>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string managedBy = default(string), string etag = default(string), Placement placement = default(Placement), HardwareProfile hardwareProfile = default(HardwareProfile), FlexProfile flexProfile = default(FlexProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), BillingProfile billingProfile = default(BillingProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), ResiliencyProfile resiliencyProfile = default(ResiliencyProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), InterconnectBlockProfile interconnectBlockProfile = default(InterconnectBlockProfile), System.DateTime? timeCreated = default(System.DateTime?))
 
         : base(location, id, name, type, tags)
         {
@@ -234,6 +247,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.Etag = etag;
             this.Placement = placement;
             this.HardwareProfile = hardwareProfile;
+            this.FlexProfile = flexProfile;
             this.StorageProfile = storageProfile;
             this.AdditionalCapabilities = additionalCapabilities;
             this.OsProfile = osProfile;
@@ -335,6 +349,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hardwareProfile")]
         public HardwareProfile HardwareProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets [Preview Feature] Specifies a FlexProfile for VM size. Azure
+        /// may deploy a compatible alternative VM size based on capacity and placement
+        /// considerations, and returns the deployed size in hardwareProfile.vmSize. A
+        /// request that adds flexProfile must omit hardwareProfile.vmSize. For a
+        /// virtual machine that uses FlexProfile, a hardwareProfile.vmSize equal to
+        /// the deployed size is ignored, so a GET response can be sent back unchanged.
+        /// A PATCH request that omits flexProfile keeps it. A PUT request that omits
+        /// flexProfile and sets hardwareProfile.vmSize clears it. This property cannot
+        /// exist along with a non-null properties.availabilitySet,
+        /// properties.capacityReservation, properties.host, properties.hostGroup,
+        /// properties.proximityPlacementGroup or properties.virtualMachineScaleSet.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.flexProfile")]
+        public FlexProfile FlexProfile {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the storage settings for the virtual machine disks.
@@ -445,7 +475,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the priority for the virtual machine. Minimum
-        /// api-version: 2019-03-01 Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;
+        /// api-version: 2019-03-01 Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;, &#39;SpotPlus&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.priority")]
         public string Priority {get; set; }
@@ -593,6 +623,10 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
 
+            if (this.FlexProfile != null)
+            {
+                this.FlexProfile.Validate();
+            }
             if (this.StorageProfile != null)
             {
                 this.StorageProfile.Validate();

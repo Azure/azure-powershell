@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
+* Updated to API version 2026-08-01.
+* Added Lightweight Directory Access Protocol (LDAP) configuration support to `New-AzNetAppFilesAccount`, `Set-AzNetAppFilesAccount`, and `Update-AzNetAppFilesAccount`, and added `LdapConfiguration` to account output.
+* Added `Update-AzNetAppFilesAccountLdapBindPassword` to refresh the LDAP bind password from Azure Key Vault.
+
+## Version 1.4.1
+* Added deprecation notices to Azure NetApp Files subvolume cmdlets
+* Added breaking change notices for removing `EnableSubvolume` and the `EnableSubvolumes` volume output property
+* Fixed the output type of `Get-AzNetAppFilesVolumeQuotaRule` from `PSNetAppFilesVolume` to `PSNetAppFilesVolumeQuotaRule`
+
+## Version 1.4.0
  * Added FileAccessLogs to `Get-AzNetAppFilesCache` output.
  * Added Breakthrough Mode support for Azure NetApp Files volumes:
      - Added `-BreakthroughMode` to `New-AzNetAppFilesVolume` and `New-AzNetAppFilesVolumeGroup`.
@@ -25,6 +36,9 @@
 
 ## Version 1.3.0
 * Added ChangeSafety Support
+* Added FileAccessLogs to PSNetAppFilesCache ouput
+* Added Breaking Change notifications to Subvolume cmdlets in Az.NetAppFiles
+* Added Breaking Change notifications to New-AzNetAppFilesVolume for the EnableSubvolume parameter
 
 ## Version 1.2.0
 * Updated to API version 2026-01-01

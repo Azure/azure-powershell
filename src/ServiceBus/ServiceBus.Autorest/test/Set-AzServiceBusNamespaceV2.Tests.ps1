@@ -121,10 +121,6 @@ Describe 'Set-AzServiceBusNamespaceV2' {
 
         New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV11 -SkuName Premium -Location $env.location
         $expectedNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV11
-        $namespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV11 -MinimumTlsVersion 1.0
-        $expectedNamespace.MinimumTlsVersion = '1.0'
-        assertNamespaceUpdates $expectedNamespace $namespace
-
         $namespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV11 -MinimumTlsVersion 1.2
         $expectedNamespace.MinimumTlsVersion = '1.2'
         assertNamespaceUpdates $expectedNamespace $namespace

@@ -1,4 +1,4 @@
-#Requires -Modules @{ ModuleName = 'Microsoft.PowerShell.PlatyPS'; ModuleVersion = '1.0.2' }
+#Requires -Modules platyPS
 [CmdletBinding()]
 Param(
     [Parameter()]
@@ -11,7 +11,4 @@ Param(
 
 $ModuleFolder = Join-Path -Path $ArtifactFolder -ChildPath $ModuleName
 Import-Module $ModuleFolder
-$cmdHelp = Import-MarkdownCommandHelp -Path (Join-Path $HelpFolder '*-*.md')
-# Export-MamlCommandHelp appends a '<ModuleName>' subfolder under -OutputFolder, so target the
-# artifact folder; the help lands at $ArtifactFolder/<ModuleName>/, i.e. the module folder.
-Export-MamlCommandHelp -CommandHelp $cmdHelp -OutputFolder $ArtifactFolder -Force
+New-ExternalHelp –Path $HelpFolder -OutputPath $ModuleFolder -Force -Debug

@@ -32,4 +32,10 @@ Describe 'New-AzStorageMoverMultiCloudConnectorEndpoint' {
         $endpoint.Property.multiCloudConnectorId | Should -Be $multiCloudConnectorId 
         $endpoint.Property.aWSS3BucketId | Should -Be $awsS3BucketId
     }
+
+    It 'CreateExpandedWithEndpointKindRequest' {
+        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
+        $endpoint = New-AzStorageMoverMultiCloudConnectorEndpoint -Name "mcckind" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -MultiCloudConnectorId $env.MultiCloudConnectorId -AwsS3BucketId $env.AwsS3BucketId -EndpointKind Source
+        ($endpoint.Property.ToJsonString() | ConvertFrom-Json).endpointKind | Should -Be "Source"
+    }
 }

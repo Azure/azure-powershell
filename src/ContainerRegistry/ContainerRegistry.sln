@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContainerRegistry.Autorest"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ContainerRegistry", "..\..\generated\ContainerRegistry\ContainerRegistry.Autorest\Az.ContainerRegistry.csproj", "{5713767E-6259-4BB7-9025-17A1D5DDA36F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerRegistry.Test", "ContainerRegistry.Test\ContainerRegistry.Test.csproj", "{438CB94F-C117-4BAA-896A-7933AC6A6E9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -175,6 +177,18 @@ Global
 		{5713767E-6259-4BB7-9025-17A1D5DDA36F}.Release|x64.Build.0 = Release|Any CPU
 		{5713767E-6259-4BB7-9025-17A1D5DDA36F}.Release|x86.ActiveCfg = Release|Any CPU
 		{5713767E-6259-4BB7-9025-17A1D5DDA36F}.Release|x86.Build.0 = Release|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Debug|x64.Build.0 = Debug|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Debug|x86.Build.0 = Debug|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Release|x64.ActiveCfg = Release|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Release|x64.Build.0 = Release|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Release|x86.ActiveCfg = Release|Any CPU
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,5 +205,6 @@ Global
 		{AC03D97B-3F9B-44C5-BB7C-DA544BD0099E} = {77D6948A-FDE0-42B7-830D-FDED2B2AB4F4}
 		{9C8309D3-EAAC-4608-ACAC-50A300BB1EB8} = {C850B312-F84B-4089-A9D5-C74F8C76FDBD}
 		{5713767E-6259-4BB7-9025-17A1D5DDA36F} = {CE80D62D-3036-FFED-08C8-F26FB8866286}
+		{438CB94F-C117-4BAA-896A-7933AC6A6E9A} = {C850B312-F84B-4089-A9D5-C74F8C76FDBD}
 	EndGlobalSection
 EndGlobal

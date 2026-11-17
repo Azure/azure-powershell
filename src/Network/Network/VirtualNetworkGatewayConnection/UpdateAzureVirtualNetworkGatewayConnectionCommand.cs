@@ -124,6 +124,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Certificate authentication configuration for this VPN connection")]
         public PSCertificateAuthentication CertificateAuthentication { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The routing configuration for this connection.")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -163,6 +169,11 @@ namespace Microsoft.Azure.Commands.Network
                     if (this.CertificateAuthentication != null)
                     {
                         this.VirtualNetworkGatewayConnection.CertificateAuthentication = this.CertificateAuthentication;
+                    }
+
+                    if (this.RoutingConfiguration != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.RoutingConfiguration = this.RoutingConfiguration;
                     }
 
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)

@@ -39,9 +39,7 @@ To create the parameters described below, construct a hash table containing the 
 
 AFDENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
@@ -54,16 +52,13 @@ AFDENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
 
 CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
   [Id <String>]: Resource ID.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
@@ -76,13 +71,10 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
@@ -95,7 +87,6 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
 
 ROUTEUPDATEPROPERTY <IRouteUpdateParameters>: The domain JSON object required for domain creation or update.
   [CacheConfigurationQueryParameter <String>]: query parameters to include or exclude (comma separated).
@@ -418,6 +409,38 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnRoute_UpdateExpanded';
+        UpdateViaIdentityAfdEndpoint = 'Az.Cdn.private\Update-AzFrontDoorCdnRoute_UpdateViaIdentityAfdEndpoint';
+        UpdateViaIdentityAfdEndpointExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnRoute_UpdateViaIdentityAfdEndpointExpanded';
+        UpdateViaIdentityExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnRoute_UpdateViaIdentityExpanded';
+        UpdateViaIdentityProfile = 'Az.Cdn.private\Update-AzFrontDoorCdnRoute_UpdateViaIdentityProfile';
+        UpdateViaIdentityProfileExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnRoute_UpdateViaIdentityProfileExpanded';
+        UpdateViaJsonFilePath = 'Az.Cdn.private\Update-AzFrontDoorCdnRoute_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.Cdn.private\Update-AzFrontDoorCdnRoute_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
 
 begin {
     try {

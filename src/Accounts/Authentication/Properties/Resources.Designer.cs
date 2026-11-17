@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please authenticate using the log in dialog. In PowerShell, execute Connect-AzAccount..
+        ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please authenticate using the login dialog. In PowerShell, execute Connect-AzAccount..
         /// </summary>
         public static string AdalUserInteractionRequired {
             get {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzAccount..
+        ///   Looks up a localized string similar to No account found in the context. Please log in using Connect-AzAccount..
         /// </summary>
         public static string ArmAccountNotFound {
             get {
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to log in..
         /// </summary>
         public static string NoSubscriptionInContext {
             get {
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
+        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to log in..
         /// </summary>
         public static string NoTenantInContext {
             get {
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You may need to login again after updating &quot;{0}&quot;..
+        ///   Looks up a localized string similar to You may need to log in again after updating &quot;{0}&quot;..
         /// </summary>
         public static string SwitchLoginMethodWarning {
             get {

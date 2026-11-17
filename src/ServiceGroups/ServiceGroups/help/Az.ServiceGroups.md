@@ -14,9 +14,6 @@ Microsoft Azure PowerShell: ServiceGroups cmdlets
 ### [Get-AzServiceGroup](Get-AzServiceGroup.md)
 Get the details of the serviceGroup
 
-### [Get-AzServiceGroupAncestor](Get-AzServiceGroupAncestor.md)
-Get the details of the serviceGroup's ancestors
-
 ### [New-AzServiceGroup](New-AzServiceGroup.md)
 Create a serviceGroup
 

@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Lists all available Relay REST API operations.</summary>
+    /// <summary>List the operations for the provider</summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/providers/Microsoft.Relay/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzRelayOperation_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperation))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"Lists all available Relay REST API operations.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/providers/Microsoft.Relay/operations", ApiVersion = "2021-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/providers/Microsoft.Relay/operations", ApiVersion = "2026-07-01-preview")]
     public partial class GetAzRelayOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IContext

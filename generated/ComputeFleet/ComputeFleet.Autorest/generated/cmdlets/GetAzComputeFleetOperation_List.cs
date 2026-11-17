@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.HttpPath(Path = "/providers/Microsoft.AzureFleet/operations", ApiVersion = "2026-04-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.HttpPath(Path = "/providers/Microsoft.AzureFleet/operations", ApiVersion = "2026-08-01")]
     public partial class GetAzComputeFleetOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IContext

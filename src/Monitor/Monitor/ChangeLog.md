@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 8.1.0
+* Added Change Safety support for data collection rule cmdlets.
+
 ## Version 8.0.0
 * Added ChangeSafety Support
 * Updated MonitorWorkspace module to API 2025-10-03 with CRUD cmdlets for issues, alerts, resources, investigation, visualization, metrics containers, `Set-AzMonitorWorkspace`

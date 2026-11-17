@@ -38,6 +38,8 @@ MonthlyRetention    : PT0S
 YearlyRetention     : PT0S
 WeekOfYear          : 0
 Location            :
+TimeBasedImmutability     : Enabled
+TimeBasedImmutabilityMode : Unlocked
 ```
 
 Gets the current version of the long term retention policy for the database

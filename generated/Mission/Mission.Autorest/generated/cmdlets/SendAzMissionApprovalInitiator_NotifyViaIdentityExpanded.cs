@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mission.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Mission.Models.IApprovalActionResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Description(@"Upon receiving approval or rejection from approver, this facilitates actions on approval resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Mission/approvals/{approvalName}/notifyInitiator", ApiVersion = "2026-03-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Mission/approvals/{approvalName}/notifyInitiator", ApiVersion = "2026-04-01")]
     public partial class SendAzMissionApprovalInitiator_NotifyViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Mission.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Mission.Runtime.IContext

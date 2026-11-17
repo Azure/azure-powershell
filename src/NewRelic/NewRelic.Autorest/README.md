@@ -174,6 +174,12 @@ directive:
       subject: MonitoredSubscription
     set:
       command-description: Deletes the subscriptions that are being monitored by the NewRelic monitor resource
+  # Fix "underline" -> "underlying" typo inherited from the swagger description
+  - where:
+      verb: Invoke
+      subject: ResubscribeMonitor
+    set:
+      command-description: Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace.
   # Format setting
   - where:
       model-name: AccountResource

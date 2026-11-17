@@ -26,11 +26,11 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
  [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
- [-EnableSubvolume] [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
+ [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-IsLargeVolume] [-AcceptGrowCapacityPoolForShortTermCloneSplit <String>]
  [-DesiredRansomwareProtectionState <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -47,11 +47,11 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
  [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
- [-EnableSubvolume] [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
+ [-BreakthroughMode <String>] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-IsLargeVolume] [-AcceptGrowCapacityPoolForShortTermCloneSplit <String>]
  [-DesiredRansomwareProtectionState <String>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -395,21 +395,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSubvolume
-Flag indicating whether subvolume operations are enabled on the volume (Enabled, Disabled)
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EncryptionKeySource
 Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'
 
@@ -602,21 +587,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

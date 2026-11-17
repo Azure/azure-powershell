@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
+            string processorMode = null,
             string imageReferenceId = null,
             Dictionary<string, List<string>> auxAuthHeader = null,
             string diskControllerType = null,
@@ -88,7 +89,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableProxyAgent = null,
             bool? addProxyAgentExtension = null,
             string scheduledEventsApiVersion = null,
-            bool? enableAllInstancesDown = null
+            bool? enableAllInstancesDown = null,
+            bool? disableCapacityReservationAssignment = null,
+            FlexProfile flexProfile = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -115,9 +118,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             engine.GetReference(networkInterface, networkInterfaceDeleteOption)
                             }
                         },
+                        FlexProfile = flexProfile,
                         HardwareProfile = new HardwareProfile
                         {
-                            VmSize = size,
+                            VmSize = flexProfile == null ? size : null,
+                            ProcessorMode = processorMode,
                             VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
                             {
                                 VCPUsPerCore = vCPUsPerCore,
@@ -168,9 +173,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             SecurityType = securityType,
                             ProxyAgentSettings = (enableProxyAgent != null || addProxyAgentExtension != null) ? new ProxyAgentSettings(enabled: enableProxyAgent, addProxyAgentExtension: addProxyAgentExtension): null,
                         },
-                        CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                        CapacityReservation = (string.IsNullOrEmpty(capacityReservationGroupId) && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
                         {
-                            CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                            CapacityReservationGroup = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new SubResource(capacityReservationGroupId),
+                            DisableCapacityReservationAssignment = disableCapacityReservationAssignment
                         },
                         UserData = userData,
                         PlatformFaultDomain = platformFaultDomain,
@@ -237,10 +243,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
+            string processorMode = null,
             Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
-            string securityType = null
+            string securityType = null,
+            bool? disableCapacityReservationAssignment = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -257,6 +265,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     HardwareProfile = new HardwareProfile
                     {
                         VmSize = size,
+                        ProcessorMode = processorMode,
                         VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
                         {
                             VCPUsPerCore = vCPUsPerCore,
@@ -293,9 +302,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                         SecurityType = securityType,
                     } : null,
-                    CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                    CapacityReservation = (string.IsNullOrEmpty(capacityReservationGroupId) && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
                     {
-                        CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                        CapacityReservationGroup = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new SubResource(capacityReservationGroupId),
+                        DisableCapacityReservationAssignment = disableCapacityReservationAssignment
                     },
                     UserData = userData,
                     PlatformFaultDomain = platformFaultDomain,

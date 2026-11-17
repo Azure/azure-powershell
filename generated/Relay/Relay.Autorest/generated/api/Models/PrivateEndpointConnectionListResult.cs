@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
-    /// <summary>Result of the list of all private endpoint connections operation.</summary>
+    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
     public partial class PrivateEndpointConnectionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnectionListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnectionListResultInternal
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>A link for the next page of private endpoint connection resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> _value;
 
-        /// <summary>A collection of private endpoint connection resources.</summary>
+        /// <summary>The PrivateEndpointConnection items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> Value { get => this._value; set => this._value = value; }
 
@@ -33,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 
         }
     }
-    /// Result of the list of all private endpoint connections operation.
+    /// The response of a PrivateEndpointConnection list operation.
     public partial interface IPrivateEndpointConnectionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IJsonSerializable
     {
-        /// <summary>A link for the next page of private endpoint connection resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A link for the next page of private endpoint connection resources.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>A collection of private endpoint connection resources.</summary>
+        /// <summary>The PrivateEndpointConnection items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A collection of private endpoint connection resources.",
+        Description = @"The PrivateEndpointConnection items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> Value { get; set; }
 
     }
-    /// Result of the list of all private endpoint connections operation.
+    /// The response of a PrivateEndpointConnection list operation.
     internal partial interface IPrivateEndpointConnectionListResultInternal
 
     {
-        /// <summary>A link for the next page of private endpoint connection resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>A collection of private endpoint connection resources.</summary>
+        /// <summary>The PrivateEndpointConnection items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> Value { get; set; }
 
     }

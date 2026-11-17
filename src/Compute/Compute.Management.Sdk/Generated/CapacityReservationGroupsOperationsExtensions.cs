@@ -279,9 +279,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
         /// </param>
-        public static void Delete(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName)
+        public static CapacityReservationGroupsDeleteHeaders Delete(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName)
         {
-                ((ICapacityReservationGroupsOperations)operations).DeleteAsync(resourceGroupName, capacityReservationGroupName).GetAwaiter().GetResult();
+                return ((ICapacityReservationGroupsOperations)operations).DeleteAsync(resourceGroupName, capacityReservationGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -303,9 +303,59 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CapacityReservationGroupsDeleteHeaders> DeleteAsync(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// The operation to delete a capacity reservation group. This operation is
+        /// allowed only if all the associated resources are disassociated from the
+        /// reservation group and all capacity reservations under the reservation group
+        /// have also been deleted. Please refer to https://aka.ms/CapacityReservation
+        /// for more details.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='capacityReservationGroupName'>
+        /// The name of the capacity reservation group.
+        /// </param>
+        public static CapacityReservationGroupsDeleteHeaders BeginDelete(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName)
+        {
+                return ((ICapacityReservationGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, capacityReservationGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to delete a capacity reservation group. This operation is
+        /// allowed only if all the associated resources are disassociated from the
+        /// reservation group and all capacity reservations under the reservation group
+        /// have also been deleted. Please refer to https://aka.ms/CapacityReservation
+        /// for more details.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='capacityReservationGroupName'>
+        /// The name of the capacity reservation group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CapacityReservationGroupsDeleteHeaders> BeginDeleteAsync(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists all of the capacity reservation groups in the subscription. Use the

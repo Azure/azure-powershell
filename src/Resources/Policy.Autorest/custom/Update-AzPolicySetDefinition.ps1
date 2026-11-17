@@ -79,7 +79,6 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionPropertiesMetadata]))]
     [System.String]
     # The policy set definition metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -103,10 +102,11 @@ param(
     
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
+    [Alias('ManagementGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the management group.
-    ${ManagementGroupName},
+    ${ManagementGroupId},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
@@ -202,7 +202,7 @@ process {
     }
 
     # construct id for definition to update
-    $resolved = ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupName $thisId
+    $resolved = ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupId $thisId
 
     # handle disallowed cases not handled by PS parameter attributes
     if ($resolved.Version) {
@@ -264,12 +264,6 @@ process {
             Write-Host -ForegroundColor Cyan "begin:New-AzPolicySetDefinitionVersion(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
         }
 
-        # mapping table of generated cmdlet parameter sets
-        $mapping = @{
-            CreateExpanded = 'Az.Policy.private\New-AzPolicySetDefinitionVersion_CreateExpanded';
-            CreateExpanded1 = 'Az.Policy.private\New-AzPolicySetDefinitionVersion_CreateExpanded1';
-        }
-
         $calledParameters = $PSBoundParameters
 
         # populate the version property in the path
@@ -278,23 +272,16 @@ process {
         # convert input/legacy policy parameter to correct set of parameters and remove
         if ($PolicyDefinition) {
             $calledParameters.PolicyDefinition = (GetFileUriOrStringParameterValue $PolicyDefinition)
-        }
-
-        # rename [hashtable] PolicyDefinition parameter to [hashtable] PolicyDefinitionTable parameter
-        if ($calledParameters.PolicyDefinition) {
-            $calledParameters.PolicyDefinitionTable = (ConvertFrom-JsonSafe $calledParameters.PolicyDefinition -AsHashtable)
-            $null = $calledParameters.Remove('PolicyDefinition')
+            $calledParameters.PolicyDefinition = (ConvertFrom-JsonSafe $calledParameters.PolicyDefinition -AsHashtable)
         }
 
         # resolve [string] 'metadata' input parameter to [hashtable]
         if ($Metadata) {
-            $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+            $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
         }
         elseif ($calledParameters.Metadata) {
-            $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+            $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
         }
-
-        $null = $calledParameters.Remove('Metadata')
 
         # resolve [string] 'parameter' input parameter (could be a path)
         if ($Parameter) {
@@ -311,18 +298,12 @@ process {
         if ($PolicyDefinitionGroup) {
             $calledParameters.PolicyDefinitionGroup = (GetFileUriOrStringParameterValue $PolicyDefinitionGroup)
         }
-
-        # rename [hashtable] 'PolicyDefinitionGroup' parameter to [hashtable] 'PolicyDefinitionGroupTable' parameter
         if ($calledParameters.PolicyDefinitionGroup) {
-            $calledParameters.PolicyDefinitionGroupTable = (ConvertFrom-JsonSafe $calledParameters.PolicyDefinitionGroup -AsHashtable)
-            $null = $calledParameters.Remove('PolicyDefinitionGroup')
+            $calledParameters.PolicyDefinitionGroup = (ConvertFrom-JsonSafe $calledParameters.PolicyDefinitionGroup -AsHashtable)
         }
 
-        # determine called parameterset and convert ManagementGroupName parameter to ManagementGroupId if needed
-        if ($calledParameters.ManagementGroupName) {
-            $calledParameterSet = 'CreateExpanded1'
-        } else {
-            $calledParameterSet = 'CreateExpanded'
+        # ensure that the subscriptionId is set for the called cmdlet, if not provided by the user
+        if (!$calledParameters.ManagementGroupId) {
             if (!$SubscriptionId) {
                 $calledParameters.SubscriptionId = (Get-SubscriptionId)
             }
@@ -332,17 +313,9 @@ process {
             $PSBoundParameters['PolicySetDefinitionName'] = $PSBoundParameters['Name']
             $null = $PSBoundParameters.Remove('Name')
         }
-        
-        if ($writeln) {
-            Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
-        }
 
         # call internal generated cmdlet, convert generic JSON output properties to PSCustomObject
-        $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @calledParameters}
-        $item = Invoke-Command -ScriptBlock $scriptCmd
+        $item = Az.Policy.internal\New-AzPolicySetDefinitionVersion @calledParameters
 
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force

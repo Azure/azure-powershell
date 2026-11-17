@@ -70,6 +70,10 @@ function Test-ServerEndpoint2
         $job | Wait-Job
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
+        # Waiting for the server to run UpdateServerManagementState avoids potential race conditions on followup operations that modify server state
+        Write-Verbose "Waiting for server management state to propagate after registration."
+        Start-TestSleep -Seconds 60
+
         Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
         $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -VolumeFreeSpacePercent $volumeFreeSpacePercent -TierFilesOlderThanDays $tierFilesOlderThanDays -InitialUploadPolicy $initialUploadPolicy -Verbose -AsJob 
 
@@ -225,6 +229,10 @@ function Test-ServerEndpoint
         $job | Wait-Job
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
+        # Waiting for the server to run UpdateServerManagementState avoids potential race conditions on followup operations that modify server state
+        Write-Verbose "Waiting for server management state to propagate after registration."
+        Start-TestSleep -Seconds 60
+
         Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
         $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -VolumeFreeSpacePercent $volumeFreeSpacePercent -TierFilesOlderThanDays $tierFilesOlderThanDays -InitialUploadPolicy $initialUploadPolicy -Verbose -AsJob 
         $job | Wait-Job
@@ -317,12 +325,16 @@ function Test-ServerEndpointWithIdentityMigration
         $job | Wait-Job
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
+        # Waiting for the server to run UpdateServerManagementState avoids potential race conditions on followup operations that modify server state
+        Write-Verbose "Waiting for server management state to propagate after registration."
+        Start-TestSleep -Seconds 60
+
         Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
         $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -VolumeFreeSpacePercent $volumeFreeSpacePercent -TierFilesOlderThanDays $tierFilesOlderThanDays -InitialUploadPolicy $initialUploadPolicy -Verbose -AsJob 
         $job | Wait-Job
         $serverEndpoint = get-job -Id $job.Id | receive-job -Keep
 
-        Start-Sleep -Seconds 60
+        Start-TestSleep -Seconds 60
         # Ensure that arc is installed onto the server /subscriptions/e29c162a-d1d4-4cc3-8295-80057c1f4bd9/resourceGroups/ankushbrg/providers/Microsoft.HybridCompute/machines/miMachine
         Write-Verbose "Migrating StorageSyncService : $storageSyncServiceName"
         Set-AzStorageSyncServiceIdentity -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Verbose
@@ -411,7 +423,9 @@ function Test-ServerEndpointAfterIdentityMigration
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
         # Waiting on 9530 event to show up
-        Start-Sleep -Seconds 60
+        # Waiting for the server to run UpdateServerManagementState avoids potential race conditions on followup operations that modify server state
+        Write-Verbose "Waiting for server management state to propagate after registration"
+        Start-TestSleep -Seconds 60
         # Ensure that arc is installed onto the server /subscriptions/e29c162a-d1d4-4cc3-8295-80057c1f4bd9/resourceGroups/ankushbrg/providers/Microsoft.HybridCompute/machines/miMachine
         Write-Verbose "Migrating StorageSyncService : $storageSyncServiceName"
         Set-AzStorageSyncServiceIdentity -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Verbose

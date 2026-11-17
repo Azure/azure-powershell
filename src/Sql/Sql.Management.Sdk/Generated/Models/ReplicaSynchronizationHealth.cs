@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ReplicaSynchronizationHealth
     {
+        /// <summary>
+        /// NOT_HEALTHY
+        /// </summary>
         public const string NOTHealthy = "NOT_HEALTHY";
+        /// <summary>
+        /// PARTIALLY_HEALTHY
+        /// </summary>
         public const string PartiallyHealthy = "PARTIALLY_HEALTHY";
+        /// <summary>
+        /// HEALTHY
+        /// </summary>
         public const string Healthy = "HEALTHY";
     }
 }

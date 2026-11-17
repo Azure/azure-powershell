@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.TrafficManager
     public partial interface IGeographicHierarchiesOperations
     {
         /// <summary>
-        /// Gets the default Geographic Hierarchy used by the Geographic traffic routing method.
+        /// Gets the default Geographic Hierarchy used by the Geographic traffic
+        /// routing method.
         /// </summary>
         /// <remarks>
-        /// Gets the default Geographic Hierarchy used by the Geographic traffic routing method.
+        /// Gets the default Geographic Hierarchy used by the Geographic traffic
+        /// routing method.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

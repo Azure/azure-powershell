@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
             {
                 return;
             }
+            {_attribute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject>("attributes"), out var __jsonAttributes) ? Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupAttributes.FromJson(__jsonAttributes) : _attribute;}
             {_parent = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject>("parent"), out var __jsonParent) ? Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ParentServiceGroupProperties.FromJson(__jsonParent) : _parent;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
             {
                 return container;
             }
+            AddIf( null != this._attribute ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode) this._attribute.ToJson(null,serializationMode) : null, "attributes" ,container.Add );
             AddIf( null != this._parent ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode) this._parent.ToJson(null,serializationMode) : null, "parent" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeRead))
             {

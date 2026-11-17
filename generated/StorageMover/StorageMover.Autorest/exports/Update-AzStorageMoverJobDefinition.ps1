@@ -215,6 +215,15 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.DateTime]
+    # The last time the mover was synchronized.
+    ${MoverSyncedUntil},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # Optional CRON expression for advanced scheduling
     ${ScheduleCronExpression},
@@ -252,7 +261,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # Type of schedule — Monthly, Weekly, or Daily
@@ -272,9 +281,27 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Repeat interval used for sub-daily schedules.
+    ${ScheduleRepeatInterval},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.DateTime]
     # Specific one-time execution date and time
     ${ScheduleStartDate},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The synchronization mode for the Job Definition.
+    ${SyncMode},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]

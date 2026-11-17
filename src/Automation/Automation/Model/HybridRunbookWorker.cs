@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         {
             this.IpAddress = worker.IP;
             this.Name = worker.Name;
+            this.RegistrationTime = worker.RegisteredDateTime;
             this.LastSeenDateTime = worker.LastSeenDateTime;
         }
         public string IpAddress { get; set; }

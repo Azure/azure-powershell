@@ -15,7 +15,8 @@ Creates a multicloud connector endpoint resource, which represents a data transf
 ```
 New-AzStorageMoverMultiCloudConnectorEndpoint -Name <String> -ResourceGroupName <String>
  -StorageMoverName <String> -AWSS3BucketId <String> -MultiCloudConnectorId <String> [-SubscriptionId <String>]
- [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-EndpointKind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +84,22 @@ Accept wildcard characters: False
 
 ### -Description
 A description for the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointKind
+The kind of the endpoint, either Source or Target.
+Cannot be changed after the endpoint is created.
 
 ```yaml
 Type: System.String

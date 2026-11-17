@@ -36,6 +36,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyGetDetectionRule()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyGetDetectionRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicySetDetectionRule()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicySetDetectionRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
         public void TestDdosCustomPolicyCRUD()
         {
             TestRunner.RunTestScript("Test-DdosCustomPolicyCRUD");
@@ -183,6 +199,46 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestDdosCustomPolicyDuplicateTrafficTypePersistFailure()
         {
             TestRunner.RunTestScript("Test-DdosCustomPolicyDuplicateTrafficTypePersistFailure");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyMitigationRuleCreation()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyMitigationRuleCreation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyMitigationRuleValidation()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyMitigationRuleValidation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyMitigationRuleMutation()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyMitigationRuleMutation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyMitigationRuleEdgeCases()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyMitigationRuleEdgeCases");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyMitigationRuleCRUD()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyMitigationRuleCRUD");
         }
     }
 }

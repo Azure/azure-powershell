@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorGithubOffering
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorgithubofferingobject
 #>
 function New-AzSecurityCspmMonitorGithubOfferingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorGithubOffering')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

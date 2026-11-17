@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF Subvolume
+The name of the ANF volume quota rule
 
 ```yaml
 Type: System.String
@@ -176,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeQuotaRule
 
 ## NOTES
 

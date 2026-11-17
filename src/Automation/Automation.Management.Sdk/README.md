@@ -5,8 +5,10 @@ This directory contains the service clients of Az.Automation module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.x
+autorest --version=3.10.9 --use:@autorest/powershell@4.0.754
 ```
+
+The `LegacyGenerated` directory preserves the PowerShell 7.2 module operation group, which is not exposed by the 2024-10-23 specification. AutoRest only clears and regenerates `Generated`.
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
@@ -27,35 +29,10 @@ title: AutomationClient
 
 ### 
 ``` yaml 
-commit: main
+commit: 8933ceed3ed4dbd4d3835ee6e303348e9be7c068
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscNode.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/dscNodeConfiguration.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2024-10-23/openapi.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/dscCompilationJob.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/certificate.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/credential.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/jobSchedule.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/schedule.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/module.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/variable.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/connection.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/connectionType.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/sourceControl.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/sourceControlSyncJob.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/sourceControlSyncJobStreams.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/dscConfiguration.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/job.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/softwareUpdateConfiguration.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/softwareUpdateConfigurationRun.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/softwareUpdateConfigurationMachineRun.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/account.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2015-10-31/webhook.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/runbook.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/powershell72Module.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/hybridRunbookWorker.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/hybridRunbookWorkerGroup.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/automation/resource-manager/Microsoft.Automation/stable/2023-11-01/python3package.json
-
 
 output-folder: Generated
 
@@ -65,4 +42,27 @@ directive:
       model-name: UserAssignedIdentitiesProperties
     set:
       model-name: IdentityUserAssignedIdentitiesValue
+  - from: openapi.json
+    where: $
+    transform: |
+      for (const path of Object.values($.paths ?? {})) {
+        for (const operation of Object.values(path)) {
+          if (operation?.operationId !== "RunbookDraft_ReplaceContent") continue;
+
+          const acceptedResponse = operation.responses?.["202"];
+          if (acceptedResponse) {
+            delete acceptedResponse.headers;
+          }
+        }
+      }
+
+      const workerProperties =
+        $.definitions?.HybridRunbookWorkerProperties?.properties;
+      if (workerProperties?.registeredDateTime) {
+        workerProperties.registeredDateTime["x-nullable"] = false;
+      }
+      if (workerProperties?.lastSeenDateTime) {
+        workerProperties.lastSeenDateTime["x-nullable"] = false;
+      }
+      return $;
 ```

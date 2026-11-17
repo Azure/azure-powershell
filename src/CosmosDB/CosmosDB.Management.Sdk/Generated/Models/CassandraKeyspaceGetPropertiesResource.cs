@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class CassandraKeyspaceGetPropertiesResource
+    public partial class CassandraKeyspaceGetPropertiesResource : CassandraKeyspaceResource
     {
         /// <summary>
         /// Initializes a new instance of the CassandraKeyspaceGetPropertiesResource class.
@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public CassandraKeyspaceGetPropertiesResource(string id, string rid = default(string), double? ts = default(double?), string etag = default(string))
 
+        : base(id)
         {
-            this.Id = id;
             this.Rid = rid;
             this.Ts = ts;
             this.Etag = etag;
@@ -49,12 +49,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets name of the Cosmos DB Cassandra keyspace
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.
@@ -81,13 +75,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (this.Id == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Id");
-            }
-
+            base.Validate();
 
 
         }

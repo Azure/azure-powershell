@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability release for module Az.Mission targeting the stable Microsoft.Mission API version 2026-04-01
+
 ## Version 0.1.0
 * First preview release for module Az.Mission
 

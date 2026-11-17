@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell;
 
-    /// <summary>List of private endpoint connections.</summary>
+    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial class PrivateEndpointConnectionListResult
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             return ToJsonString();
         }
     }
-    /// List of private endpoint connections.
+    /// The response of a PrivateEndpointConnection list operation.
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial interface IPrivateEndpointConnectionListResult
 

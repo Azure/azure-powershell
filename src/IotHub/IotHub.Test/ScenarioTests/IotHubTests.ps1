@@ -174,8 +174,21 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $swappedKey.SecondaryKey -eq $newkey.PrimaryKey }
 
 	# Regenerate Primary Key
-	$regeneratedKey = New-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -RenewKey Primary
-	Assert-True { $regeneratedKey.PrimaryKey -ne $swappedKey.PrimaryKey }
+	$primaryRegeneratedKey = New-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -RenewKey Primary
+	$primaryKeyBytes = [System.Convert]::FromBase64String($primaryRegeneratedKey.PrimaryKey)
+	Assert-True { $primaryRegeneratedKey.PrimaryKey -ne $swappedKey.PrimaryKey }
+	Assert-True { $primaryRegeneratedKey.SecondaryKey -eq $swappedKey.SecondaryKey }
+	Assert-True { $primaryKeyBytes.Length -eq 32 }
+	Assert-True { @($primaryKeyBytes | Select-Object -Unique).Count -gt 1 }
+
+	# Regenerate Secondary Key
+	$secondaryRegeneratedKey = New-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -RenewKey Secondary
+	$secondaryKeyBytes = [System.Convert]::FromBase64String($secondaryRegeneratedKey.SecondaryKey)
+	Assert-True { $secondaryRegeneratedKey.PrimaryKey -eq $primaryRegeneratedKey.PrimaryKey }
+	Assert-True { $secondaryRegeneratedKey.SecondaryKey -ne $primaryRegeneratedKey.SecondaryKey }
+	Assert-True { $secondaryKeyBytes.Length -eq 32 }
+	Assert-True { @($secondaryKeyBytes | Select-Object -Unique).Count -gt 1 }
+	Assert-True { $secondaryRegeneratedKey.SecondaryKey -ne $primaryRegeneratedKey.PrimaryKey }
 
 	# Remove Key
 	Remove-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1

@@ -37,15 +37,25 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="privateIPAddress">Private IP address.
         /// </param>
 
+        /// <param name="publicIPAddressV6">Public IPv6 address. Populated for dual-stack NVAs, including on
+        /// additional-NIC configurations when the NVA is dual-stack.
+        /// </param>
+
+        /// <param name="privateIPAddressV6">Private IPv6 address. Populated for dual-stack NVAs, including on
+        /// additional-NIC configurations when the NVA is dual-stack.
+        /// </param>
+
         /// <param name="instanceName">Instance on which nic is attached.
         /// </param>
-        public VirtualApplianceNicProperties(string nicType = default(string), string name = default(string), string publicIPAddress = default(string), string privateIPAddress = default(string), string instanceName = default(string))
+        public VirtualApplianceNicProperties(string nicType = default(string), string name = default(string), string publicIPAddress = default(string), string privateIPAddress = default(string), string publicIPAddressV6 = default(string), string privateIPAddressV6 = default(string), string instanceName = default(string))
 
         {
             this.NicType = nicType;
             this.Name = name;
             this.PublicIPAddress = publicIPAddress;
             this.PrivateIPAddress = privateIPAddress;
+            this.PublicIPAddressV6 = publicIPAddressV6;
+            this.PrivateIPAddressV6 = privateIPAddressV6;
             this.InstanceName = instanceName;
             CustomInit();
         }
@@ -81,6 +91,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateIpAddress")]
         public string PrivateIPAddress {get; private set; }
+
+        /// <summary>
+        /// Gets public IPv6 address. Populated for dual-stack NVAs, including on
+        /// additional-NIC configurations when the NVA is dual-stack.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "publicIpAddressV6")]
+        public string PublicIPAddressV6 {get; private set; }
+
+        /// <summary>
+        /// Gets private IPv6 address. Populated for dual-stack NVAs, including on
+        /// additional-NIC configurations when the NVA is dual-stack.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateIpAddressV6")]
+        public string PrivateIPAddressV6 {get; private set; }
 
         /// <summary>
         /// Gets instance on which nic is attached.

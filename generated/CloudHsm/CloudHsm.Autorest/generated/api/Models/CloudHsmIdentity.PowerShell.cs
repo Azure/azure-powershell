@@ -87,13 +87,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).CloudHsmClusterName = (string) content.GetValueForProperty("CloudHsmClusterName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).CloudHsmClusterName, global::System.Convert.ToString);
             }
-            if (content.Contains("PeConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).PeConnectionName = (string) content.GetValueForProperty("PeConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).PeConnectionName, global::System.Convert.ToString);
-            }
             if (content.Contains("JobId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).JobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PeConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).PeConnectionName = (string) content.GetValueForProperty("PeConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).PeConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -128,13 +128,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).CloudHsmClusterName = (string) content.GetValueForProperty("CloudHsmClusterName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).CloudHsmClusterName, global::System.Convert.ToString);
             }
-            if (content.Contains("PeConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).PeConnectionName = (string) content.GetValueForProperty("PeConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).PeConnectionName, global::System.Convert.ToString);
-            }
             if (content.Contains("JobId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).JobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PeConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).PeConnectionName = (string) content.GetValueForProperty("PeConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmIdentityInternal)this).PeConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

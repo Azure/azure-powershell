@@ -7,7 +7,11 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 {
     using System.Linq;
 
-    public partial class DeletedManagedHsm
+    /// <summary>
+    /// Concrete proxy resource types can be created by aliasing this type using a
+    /// specific property type.
+    /// </summary>
+    public partial class DeletedManagedHsm : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DeletedManagedHsm class.
@@ -21,23 +25,27 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// Initializes a new instance of the DeletedManagedHsm class.
         /// </summary>
 
-        /// <param name="id">The Azure Resource Manager resource ID for the deleted managed HSM Pool.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the managed HSM Pool.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The resource type of the managed HSM Pool.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="properties">Properties of the deleted managed HSM
         /// </param>
-        public DeletedManagedHsm(string id = default(string), string name = default(string), string type = default(string), DeletedManagedHsmProperties properties = default(DeletedManagedHsmProperties))
+        public DeletedManagedHsm(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), DeletedManagedHsmProperties properties = default(DeletedManagedHsmProperties))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.Properties = properties;
             CustomInit();
         }
@@ -47,25 +55,6 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets the Azure Resource Manager resource ID for the deleted managed HSM
-        /// Pool.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the name of the managed HSM Pool.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the resource type of the managed HSM Pool.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets properties of the deleted managed HSM

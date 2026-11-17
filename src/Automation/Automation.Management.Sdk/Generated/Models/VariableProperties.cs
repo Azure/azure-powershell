@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public VariableProperties(string value = default(string), bool? isEncrypted = default(bool?), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string))
+        public VariableProperties(string value = default(string), bool? isEncrypted = default(bool?), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string))
 
         {
             this.Value = value;
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.

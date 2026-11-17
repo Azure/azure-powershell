@@ -1,14 +1,14 @@
 ---
 Module Name: Az.Discovery
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: 8fb9f548-5794-492c-be01-58d55e061f1e
+Download Help Link: https://learn.microsoft.com/powershell/module/az.discovery
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.Discovery Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: Discovery cmdlets
 
 ## Az.Discovery Cmdlets
 ### [Get-AzDiscoveryBookshelf](Get-AzDiscoveryBookshelf.md)

@@ -152,6 +152,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ApiId = (string) content.GetValueForProperty("ApiId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ApiId, global::System.Convert.ToString);
             }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RuleId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).RuleId = (string) content.GetValueForProperty("RuleId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).RuleId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ScanId = (string) content.GetValueForProperty("ScanId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ScanId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScanResultId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ScanResultId = (string) content.GetValueForProperty("ScanResultId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ScanResultId, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -216,6 +236,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
             if (content.Contains("ApiId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ApiId = (string) content.GetValueForProperty("ApiId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ApiId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RuleId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).RuleId = (string) content.GetValueForProperty("RuleId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).RuleId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ScanId = (string) content.GetValueForProperty("ScanId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ScanId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScanResultId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ScanResultId = (string) content.GetValueForProperty("ScanResultId",((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentityInternal)this).ScanResultId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

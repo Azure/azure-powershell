@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>The list of IP addresses in this interface.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress> IPAddress { get => this._iPAddress; set => this._iPAddress = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress> IPAddress { get => this._iPAddress; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Represents MAC address of the network interface.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string MacAddress { get => this._macAddress; set => this._macAddress = value; }
+
+        /// <summary>Internal Acessors for IPAddress</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterfaceInternal.IPAddress { get => this._iPAddress; set { {_iPAddress = value;} } }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -54,14 +57,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The list of IP addresses in this interface.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"The list of IP addresses in this interface.",
         SerializedName = @"ipAddresses",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress> IPAddress { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIPAddress> IPAddress { get;  }
         /// <summary>Represents the ID of the network interface.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,

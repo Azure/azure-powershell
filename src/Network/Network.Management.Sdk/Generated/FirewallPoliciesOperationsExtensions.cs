@@ -129,9 +129,13 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
-        public static FirewallPolicy CreateOrUpdate(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, FirewallPolicy parameters)
+        /// <param name='afcManagedSync'>
+        /// Indicates that the write originates from AFC (Azure Firewall for
+        /// Containers) and is permitted to modify an AFC-managed Firewall Policy.
+        /// </param>
+        public static FirewallPolicy CreateOrUpdate(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, FirewallPolicy parameters, bool? afcManagedSync = default(bool?))
         {
-                return ((IFirewallPoliciesOperations)operations).CreateOrUpdateAsync(resourceGroupName, firewallPolicyName, parameters).GetAwaiter().GetResult();
+                return ((IFirewallPoliciesOperations)operations).CreateOrUpdateAsync(resourceGroupName, firewallPolicyName, parameters, afcManagedSync).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -146,12 +150,16 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
+        /// <param name='afcManagedSync'>
+        /// Indicates that the write originates from AFC (Azure Firewall for
+        /// Containers) and is permitted to modify an AFC-managed Firewall Policy.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPolicy> CreateOrUpdateAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, FirewallPolicy parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<FirewallPolicy> CreateOrUpdateAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, FirewallPolicy parameters, bool? afcManagedSync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, parameters, afcManagedSync, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -243,9 +251,13 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
-        public static FirewallPolicy BeginCreateOrUpdate(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, FirewallPolicy parameters)
+        /// <param name='afcManagedSync'>
+        /// Indicates that the write originates from AFC (Azure Firewall for
+        /// Containers) and is permitted to modify an AFC-managed Firewall Policy.
+        /// </param>
+        public static FirewallPolicy BeginCreateOrUpdate(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, FirewallPolicy parameters, bool? afcManagedSync = default(bool?))
         {
-                return ((IFirewallPoliciesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, firewallPolicyName, parameters).GetAwaiter().GetResult();
+                return ((IFirewallPoliciesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, firewallPolicyName, parameters, afcManagedSync).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -260,12 +272,16 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
+        /// <param name='afcManagedSync'>
+        /// Indicates that the write originates from AFC (Azure Firewall for
+        /// Containers) and is permitted to modify an AFC-managed Firewall Policy.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPolicy> BeginCreateOrUpdateAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, FirewallPolicy parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<FirewallPolicy> BeginCreateOrUpdateAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, FirewallPolicy parameters, bool? afcManagedSync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, parameters, afcManagedSync, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

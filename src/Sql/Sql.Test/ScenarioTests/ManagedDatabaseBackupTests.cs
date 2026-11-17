@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -37,30 +38,75 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ManagedDatabaseShortTermRetentionLockImmutability()
+        {
+            // Runs in Playback only. Recording requires pre-existing resources in a region
+            // where short term retention lock immutability is available.
+            if (TestMockSupport.RunningMocked)
+            {
+                TestRunner.RunTestScript("Test-ManagedDatabaseShortTermRetentionLockImmutability");
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ManagedDeletedDatabaseShortTermRetentionLockImmutability()
+        {
+            // Runs in Playback only. Recording requires pre-existing resources in a region
+            // where short term retention lock immutability is available.
+            if (TestMockSupport.RunningMocked)
+            {
+                TestRunner.RunTestScript("Test-ManagedDeletedDatabaseShortTermRetentionLockImmutability");
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagedDeletedDatabaseShortTermRetentionPolicy()
         {
             TestRunner.RunTestScript("Test-ManagedDeletedDatabaseShortTermRetentionPolicy");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionPolicy()
         {
-            TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionPolicy");
+            if (IsPlaybackMode())
+            {
+                TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionPolicy");
+            }
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionBackup()
         {
-            TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionBackup");
+            if (IsPlaybackMode())
+            {
+                TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionBackup");
+            }
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionResourceGroupBasedBackup()
         {
-            TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup");
+            if (IsPlaybackMode())
+            {
+                TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup");
+            }
+        }
+
+        private bool IsPlaybackMode()
+        {
+            var value = System.Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+
+            if (value == null)
+            {
+                return false;
+            }
+
+            return value.Equals("Playback", System.StringComparison.OrdinalIgnoreCase);
         }
     }
 }

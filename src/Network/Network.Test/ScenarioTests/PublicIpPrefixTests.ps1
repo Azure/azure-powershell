@@ -116,6 +116,56 @@ function Test-PublicIpPrefixCRUD
 
 <#
 .SYNOPSIS
+Tests associating a first party service tag with a public IP prefix.
+#>
+function Test-PublicIpPrefixFirstPartyServiceTag
+{
+    $resourceGroupName = Get-ResourceGroupName
+    $serviceTagName = Get-ResourceName
+    $publicIpPrefixName = Get-ResourceName
+    $location = Get-ProviderLocation ResourceManagement "eastus2euap"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        $serviceTag = New-AzFirstPartyServiceTag `
+            -ResourceGroupName $resourceGroupName `
+            -Name $serviceTagName `
+            -Location $location `
+            -Value "/NrpBIServiceTag"
+
+        $ipTag = [Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefixTag]@{
+            IpTagType = "FirstPartyUsage"
+            Tag = "/NrpBIServiceTag"
+            FirstPartyServiceTagId = $serviceTag.Id
+        }
+
+        $created = New-AzPublicIpPrefix `
+            -ResourceGroupName $resourceGroupName `
+            -Name $publicIpPrefixName `
+            -Location $location `
+            -Sku Standard `
+            -PrefixLength 30 `
+            -IpAddressVersion IPv4 `
+            -IpTag $ipTag
+
+        Assert-AreEqual $serviceTag.Id $created.IpTags[0].FirstPartyServiceTagId
+
+        $retrieved = Get-AzPublicIpPrefix `
+            -ResourceGroupName $resourceGroupName `
+            -Name $publicIpPrefixName
+
+        Assert-AreEqual $serviceTag.Id $retrieved.IpTags[0].FirstPartyServiceTagId
+    }
+    finally
+    {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple publicIpPrefix.
 #>
 function Test-GlobalPublicIpPrefixCRUD
@@ -281,6 +331,52 @@ function Test-PublicIpPrefixInEdgeZone
     catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
     {
         Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a StandardV2 SKU publicIpPrefix and reading the read-only UpgradedToV2 property.
+#>
+function Test-PublicIpPrefixStandardV2UpgradedToV2
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpPrefixes"
+    $location = Get-ProviderLocation $resourceTypeParent "West Europe"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create a StandardV2 SKU public IP prefix
+        $actual = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku StandardV2 -PrefixLength 30
+        $expected = Get-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.Name $actual.Name
+        Assert-AreEqual "StandardV2" $expected.Sku.Name
+        Assert-AreEqual 30 $expected.PrefixLength
+        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+
+        # UpgradedToV2 is a read-only property. A natively-created StandardV2 resource has not been
+        # upgraded from Standard, so the value is not $true (it is $false or $null on a fresh resource).
+        Assert-True { $expected.UpgradedToV2 -ne $true }
+
+        # delete
+        $delete = Remove-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzPublicIpPrefix -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
     }
     finally
     {

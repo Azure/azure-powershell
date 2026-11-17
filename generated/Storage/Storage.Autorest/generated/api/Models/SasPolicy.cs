@@ -24,6 +24,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string ExpirationAction { get => this._expirationAction; set => this._expirationAction = value; }
 
+        /// <summary>Backing field for <see cref="RequireUserBoundUserDelegationSas" /> property.</summary>
+        private bool? _requireUserBoundUserDelegationSas;
+
+        /// <summary>
+        /// Indicates whether user delegation SAS (shared access signature) tokens are required to be bound to a specific user. The
+        /// default interpretation is false for this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public bool? RequireUserBoundUserDelegationSas { get => this._requireUserBoundUserDelegationSas; set => this._requireUserBoundUserDelegationSas = value; }
+
+        /// <summary>
+        /// Backing field for <see cref="RequireUserBoundUserDelegationSasAction" /> property.
+        /// </summary>
+        private string _requireUserBoundUserDelegationSasAction;
+
+        /// <summary>
+        /// The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by
+        /// requireUserBoundUserDelegationSas.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string RequireUserBoundUserDelegationSasAction { get => this._requireUserBoundUserDelegationSasAction; set => this._requireUserBoundUserDelegationSasAction = value; }
+
         /// <summary>Backing field for <see cref="SasExpirationPeriod" /> property.</summary>
         private string _sasExpirationPeriod;
 
@@ -57,6 +79,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Log", "Block")]
         string ExpirationAction { get; set; }
+        /// <summary>
+        /// Indicates whether user delegation SAS (shared access signature) tokens are required to be bound to a specific user. The
+        /// default interpretation is false for this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether user delegation SAS (shared access signature) tokens are required to be bound to a specific user. The default interpretation is false for this property.",
+        SerializedName = @"requireUserBoundUserDelegationSas",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? RequireUserBoundUserDelegationSas { get; set; }
+        /// <summary>
+        /// The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by
+        /// requireUserBoundUserDelegationSas.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by requireUserBoundUserDelegationSas.",
+        SerializedName = @"requireUserBoundUserDelegationSasAction",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("None", "Log", "Block")]
+        string RequireUserBoundUserDelegationSasAction { get; set; }
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = true,
@@ -81,6 +132,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Log", "Block")]
         string ExpirationAction { get; set; }
+        /// <summary>
+        /// Indicates whether user delegation SAS (shared access signature) tokens are required to be bound to a specific user. The
+        /// default interpretation is false for this property.
+        /// </summary>
+        bool? RequireUserBoundUserDelegationSas { get; set; }
+        /// <summary>
+        /// The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by
+        /// requireUserBoundUserDelegationSas.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("None", "Log", "Block")]
+        string RequireUserBoundUserDelegationSasAction { get; set; }
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         string SasExpirationPeriod { get; set; }
 

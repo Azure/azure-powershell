@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Attribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).Attribute = (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes) content.GetValueForProperty("Attribute",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).Attribute, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupAttributesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Parent"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).Parent = (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IParentServiceGroupProperties) content.GetValueForProperty("Parent",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).Parent, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ParentServiceGroupPropertiesTypeConverter.ConvertFrom);
@@ -120,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
             if (content.Contains("DisplayName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AttributeCriticality"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).AttributeCriticality = (int?) content.GetValueForProperty("AttributeCriticality",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).AttributeCriticality, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ParentResourceId"))
             {
@@ -142,6 +150,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Attribute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).Attribute = (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes) content.GetValueForProperty("Attribute",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).Attribute, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupAttributesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Parent"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).Parent = (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IParentServiceGroupProperties) content.GetValueForProperty("Parent",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).Parent, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ParentServiceGroupPropertiesTypeConverter.ConvertFrom);
@@ -153,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
             if (content.Contains("DisplayName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AttributeCriticality"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).AttributeCriticality = (int?) content.GetValueForProperty("AttributeCriticality",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)this).AttributeCriticality, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ParentResourceId"))
             {

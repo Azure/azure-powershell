@@ -15,6 +15,7 @@ Creates a Capacity Reservation resource in a Capacity Reservation Group
 ```
 New-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> -Name <String>
  -Location <String> -CapacityToReserve <Int32> -Sku <String> [-AsJob] [-Tag <Hashtable>] [-Zone <String[]>]
+ [-ScheduleProfileStart <DateTimeOffset>] [-MinimumCommitmentDayCount <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,6 +31,13 @@ New-AzCapacityReservation -ResourceGroupName "myRG" -Location "eastus" -Reservat
 ```
 
 This command will create a Capacity Reservation resource with the provided sku and capacity in the Capacity Reservation Group named "myCapacityReservationGroup".
+
+### Example 2
+```powershell
+New-AzCapacityReservation -ResourceGroupName "myRG" -Location "eastus" -ReservationGroupName "myCapacityReservationGroup" -Name "myCapacityReservation" -Sku "Standard_DS1_v2" -CapacityToReserve 4 -ScheduleProfileStart "2026-12-25" -MinimumCommitmentDayCount 35
+```
+
+This command will create a Future Capacity Reservation resource that reserves capacity starting on 2026-12-25, and that cannot be updated or deleted until 35 days have passed after the start date once the reservation is committed.
 
 ## PARAMETERS
 
@@ -93,6 +101,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -MinimumCommitmentDayCount
+The minimum number of days that must pass after the start date before a Future Capacity Reservation can be updated or deleted once it has been committed.
+Must be at least 30 if provided, and otherwise defaults to 30.
+This parameter is only valid for Future Capacity Reservations.
+Minimum API version: 2026-04-01.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the capacity reservation resource.
 
@@ -132,6 +158,24 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ScheduleProfileStart
+The required start date for a Future Capacity Reservation.
+It must be at least 7 days and at most 6 months in the future.
+In a Targeted or Open capacity reservation group, providing a start date without an end date creates a Future Capacity Reservation.
+Minimum API version: 2026-04-01.
+
+```yaml
+Type: System.DateTimeOffset
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -222,6 +266,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### System.Int32
+
+### System.DateTimeOffset
 
 ### System.Collections.Hashtable
 

@@ -17,6 +17,15 @@ API to register a new machine and thereby create a tracked resource in ARM
 ### [Get-AzConnectedExtensionMetadata](Get-AzConnectedExtensionMetadata.md)
 Gets an Extension Metadata based on location, publisher, extensionType and version
 
+### [Get-AzConnectedExtensionMetadataV2](Get-AzConnectedExtensionMetadataV2.md)
+Gets an Extension Metadata based on location, publisher, extensionType and version
+
+### [Get-AzConnectedExtensionPublisher](Get-AzConnectedExtensionPublisher.md)
+Gets all Extension publishers based on the location
+
+### [Get-AzConnectedExtensionType](Get-AzConnectedExtensionType.md)
+Gets all Extension types based on location and publisher
+
 ### [Get-AzConnectedLicense](Get-AzConnectedLicense.md)
 Retrieves information about the view of a license.
 
@@ -66,7 +75,7 @@ The operation to create the extension.
 The operation to create a run command.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
-create (or create  a Azure Arc PrivateLinkScope.
+Create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Remove-AzConnectedLicense](Remove-AzConnectedLicense.md)
@@ -94,7 +103,7 @@ The operation to update a license.
 The operation to update the extension.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
-update (or update  a Azure Arc PrivateLinkScope.
+Update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
@@ -116,6 +125,6 @@ The operation to update the extension.
 The operation to update a run command.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
-update an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrupdate method.
 

@@ -15,21 +15,21 @@ Delete a gallery image version.
 ### DefaultParameter (Default)
 ```
 Remove-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
- [-GalleryImageDefinitionName] <String> [-Name] <String> [-Force] [-AsJob]
+ [-GalleryImageDefinitionName] <String> [-Name] <String> [-Force] [-AsJob] [-BypassSoftDelete]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Remove-AzGalleryImageVersion [-Force] [-ResourceId] <String> [-AsJob]
+Remove-AzGalleryImageVersion [-Force] [-ResourceId] <String> [-AsJob] [-BypassSoftDelete]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
-Remove-AzGalleryImageVersion [-Force] [-InputObject] <PSGalleryImageVersion> [-AsJob]
+Remove-AzGalleryImageVersion [-Force] [-InputObject] <PSGalleryImageVersion> [-AsJob] [-BypassSoftDelete]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -46,10 +46,33 @@ Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $gallery -G
 
 Delete the given gallery image version.
 
+### Example 2
+```powershell
+Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $gallery -GalleryImageDefinitionName $image `
+    -Name $version -BypassSoftDelete -WhatIf
+```
+
+Preview permanent deletion without retaining the version in the recycle bin.
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BypassSoftDelete
+Permanently deletes the gallery image version without retaining it in the recycle bin. This operation cannot be undone.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

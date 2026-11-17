@@ -22,7 +22,7 @@ Update-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Descriptio
 
 ### ManagementGroupName
 ```
-Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
+Update-AzPolicySetDefinition -Name <String> -ManagementGroupId <String> [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
  [-Version <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -172,13 +172,13 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupName
+### -ManagementGroupId
 The ID of the management group.
 
 ```yaml
 Type: System.String
 Parameter Sets: ManagementGroupName
-Aliases:
+Aliases: ManagementGroupName
 
 Required: True
 Position: Named

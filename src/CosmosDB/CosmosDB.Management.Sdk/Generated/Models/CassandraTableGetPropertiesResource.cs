@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class CassandraTableGetPropertiesResource
+    public partial class CassandraTableGetPropertiesResource : CassandraTableResource
     {
         /// <summary>
         /// Initializes a new instance of the CassandraTableGetPropertiesResource class.
@@ -45,11 +45,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public CassandraTableGetPropertiesResource(string id, int? defaultTtl = default(int?), CassandraSchema schema = default(CassandraSchema), int? analyticalStorageTtl = default(int?), string rid = default(string), double? ts = default(double?), string etag = default(string))
 
+        : base(id, defaultTtl, schema, analyticalStorageTtl)
         {
-            this.Id = id;
-            this.DefaultTtl = defaultTtl;
-            this.Schema = schema;
-            this.AnalyticalStorageTtl = analyticalStorageTtl;
             this.Rid = rid;
             this.Ts = ts;
             this.Etag = etag;
@@ -61,30 +58,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets name of the Cosmos DB Cassandra table
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets or sets time to live of the Cosmos DB Cassandra table
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "defaultTtl")]
-        public int? DefaultTtl {get; set; }
-
-        /// <summary>
-        /// Gets or sets schema of the Cosmos DB Cassandra table
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "schema")]
-        public CassandraSchema Schema {get; set; }
-
-        /// <summary>
-        /// Gets or sets analytical TTL.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "analyticalStorageTtl")]
-        public int? AnalyticalStorageTtl {get; set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.
@@ -111,14 +84,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (this.Id == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Id");
-            }
-
-
+            base.Validate();
 
 
         }

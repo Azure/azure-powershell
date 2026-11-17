@@ -106,7 +106,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         public override void Validate()
         {
             base.Validate();
-
+            if (this.Properties != null)
+            {
+                this.Properties.Validate();
+            }
             if (this.Identity != null)
             {
                 this.Identity.Validate();

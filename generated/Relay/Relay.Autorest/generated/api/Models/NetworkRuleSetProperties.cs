@@ -36,6 +36,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string PublicNetworkAccess { get => this._publicNetworkAccess; set => this._publicNetworkAccess = value; }
 
+        /// <summary>Backing field for <see cref="TrustedServiceAccessEnabled" /> property.</summary>
+        private bool? _trustedServiceAccessEnabled;
+
+        /// <summary>Value that indicates whether Trusted Service Access is Enabled or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
+        public bool? TrustedServiceAccessEnabled { get => this._trustedServiceAccessEnabled; set => this._trustedServiceAccessEnabled = value; }
+
         /// <summary>Creates an new <see cref="NetworkRuleSetProperties" /> instance.</summary>
         public NetworkRuleSetProperties()
         {
@@ -83,6 +90,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>Value that indicates whether Trusted Service Access is Enabled or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Value that indicates whether Trusted Service Access is Enabled or not.",
+        SerializedName = @"trustedServiceAccessEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? TrustedServiceAccessEnabled { get; set; }
 
     }
     /// NetworkRuleSet properties
@@ -99,6 +117,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>Value that indicates whether Trusted Service Access is Enabled or not.</summary>
+        bool? TrustedServiceAccessEnabled { get; set; }
 
     }
 }

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AwsOrganizationalDataMaster
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsorganizationaldatamasterobject
 #>
 function New-AzSecurityAwsOrganizationalDataMasterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AwsOrganizationalDataMaster')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

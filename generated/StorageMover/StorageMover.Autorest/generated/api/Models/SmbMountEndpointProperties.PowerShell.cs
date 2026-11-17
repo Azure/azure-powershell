@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISmbMountEndpointPropertiesInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISmbMountEndpointPropertiesInternal)this).ShareName, global::System.Convert.ToString);
             }
+            if (content.Contains("SourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISmbMountEndpointPropertiesInternal)this).SourceType = (string) content.GetValueForProperty("SourceType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISmbMountEndpointPropertiesInternal)this).SourceType, global::System.Convert.ToString);
+            }
             if (content.Contains("EndpointType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal)this).EndpointType = (string) content.GetValueForProperty("EndpointType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal)this).EndpointType, global::System.Convert.ToString);
@@ -177,6 +181,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("ShareName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISmbMountEndpointPropertiesInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISmbMountEndpointPropertiesInternal)this).ShareName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISmbMountEndpointPropertiesInternal)this).SourceType = (string) content.GetValueForProperty("SourceType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISmbMountEndpointPropertiesInternal)this).SourceType, global::System.Convert.ToString);
             }
             if (content.Contains("EndpointType"))
             {

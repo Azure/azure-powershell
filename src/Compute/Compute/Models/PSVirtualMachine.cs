@@ -77,6 +77,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the hardware profile.
         public HardwareProfile HardwareProfile { get; set; }
 
+        // Gets or sets the preferred virtual machine size profile.
+        public FlexProfile FlexProfile { get; set; }
+
         // Gets the virtual machine instance view.
         public VirtualMachineInstanceView InstanceView { get; set; }
 
@@ -163,5 +166,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         // Gets or sets the ScheduledEventsPolicy
         public ScheduledEventsPolicy ScheduledEventsPolicy { get; set; }
+
+        // Gets or sets the ResiliencyProfile.
+        public ResiliencyProfile ResiliencyProfile { get; set; }
     }
 }

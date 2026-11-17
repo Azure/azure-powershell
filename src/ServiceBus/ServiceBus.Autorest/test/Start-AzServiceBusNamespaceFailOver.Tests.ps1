@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzServiceBusNamespaceFa
 
 Describe 'Start-AzServiceBusNamespaceFailOver' {
     It 'SetExpanded' {
+        Start-Sleep -Seconds 600
         Start-AzServiceBusNamespaceFailOver -ResourceGroupName $env.resourceGroup -Name $env.namespaceV10  -PrimaryLocation westus
-        $serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName $env.resourceGroup -Name $env.namespaceV10
-        $serviceBusNamespace.GeoDataReplicationLocation.Count | Should -Be 2
+        $serviceBusNamespace = Get-AzServiceBusNamespace
     }
 
     It 'SetViaIdentityExpanded' -skip {

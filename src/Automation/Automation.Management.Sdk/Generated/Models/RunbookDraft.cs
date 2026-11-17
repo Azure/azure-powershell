@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="outputTypes">Gets or sets the runbook output types.
         /// </param>
-        public RunbookDraft(bool? inEdit = default(bool?), ContentLink draftContentLink = default(ContentLink), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), System.Collections.Generic.IDictionary<string, RunbookParameter> parameters = default(System.Collections.Generic.IDictionary<string, RunbookParameter>), System.Collections.Generic.IList<string> outputTypes = default(System.Collections.Generic.IList<string>))
+        public RunbookDraft(bool? inEdit = default(bool?), ContentLink draftContentLink = default(ContentLink), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), System.Collections.Generic.IDictionary<string, RunbookParameter> parameters = default(System.Collections.Generic.IDictionary<string, RunbookParameter>), System.Collections.Generic.IList<string> outputTypes = default(System.Collections.Generic.IList<string>))
 
         {
             this.InEdit = inEdit;
@@ -72,13 +72,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the creation time of the runbook draft.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified time of the runbook draft.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the runbook draft parameters.

@@ -1,0 +1,150 @@
+{
+  "Get-AzMonitorHealthModelEntitySignalHistory+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/ingestHealthReport?api-version=2026-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/ingestHealthReport?api-version=2026-11-01",
+      "Content": "{\n  \"signalName\": \"azps-sig-shared-r3wz6p\",\n  \"healthState\": \"Unhealthy\",\n  \"value\": 99,\n  \"expiresInMinutes\": 60\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "115"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000171"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000190"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "198"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000149"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151726Z:00000000-0000-4000-8000-000000000149"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E09C35C8ACD64B289D5C6A20075C4A2F Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:25Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:25 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMonitorHealthModelEntitySignalHistory+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/getSignalHistory?api-version=2026-11-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/getSignalHistory?api-version=2026-11-01",
+      "Content": "{\n  \"signalName\": \"azps-sig-shared-r3wz6p\",\n  \"top\": 5\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "56"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000385"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000196"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000013"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "246"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151726Z:00000000-0000-4000-8000-000000000013"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C6BE2FE57AB549ED9E0E9171F9C6192E Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:26Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:26 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "178"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"entityName\":\"azps-ent-shared-r3wz6p\",\"signalName\":\"azps-sig-shared-r3wz6p\",\"history\":[{\"occurredAt\":\"2026-10-13T15:17:25.0582583+00:00\",\"value\":91.1,\"healthState\":\"Degraded\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

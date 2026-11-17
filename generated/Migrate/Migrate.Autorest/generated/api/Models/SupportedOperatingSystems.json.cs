@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             }
             __resource = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Resource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.SupportedOSProperties.FromJson(__jsonProperties) : _property;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
             AfterFromJson(json);
         }
 
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             }
             __resource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

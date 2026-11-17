@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>Describes the Machine Extensions List Result.</summary>
+    /// <summary>Paged collection of MachineExtension items</summary>
     public partial class MachineExtensionsListResult
     {
 

@@ -20,6 +20,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> AllowedFeature { get => this._allowedFeature; set => this._allowedFeature = value; }
 
+        /// <summary>Backing field for <see cref="GatewayBypass" /> property.</summary>
+        private System.Collections.Generic.List<string> _gatewayBypass;
+
+        /// <summary>
+        /// Specifies the list of domain names that should bypass the gateway. Each entry must be a valid DNS hostname.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> GatewayBypass { get => this._gatewayBypass; set => this._gatewayBypass = value; }
+
         /// <summary>Backing field for <see cref="GatewayEndpoint" /> property.</summary>
         private string _gatewayEndpoint;
 
@@ -78,6 +87,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"allowedFeatures",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> AllowedFeature { get; set; }
+        /// <summary>
+        /// Specifies the list of domain names that should bypass the gateway. Each entry must be a valid DNS hostname.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies the list of domain names that should bypass the gateway. Each entry must be a valid DNS hostname.",
+        SerializedName = @"gatewayBypass",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> GatewayBypass { get; set; }
         /// <summary>The endpoint fqdn for the Gateway.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -132,6 +154,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     {
         /// <summary>Specifies the list of features that are enabled for this Gateway.</summary>
         System.Collections.Generic.List<string> AllowedFeature { get; set; }
+        /// <summary>
+        /// Specifies the list of domain names that should bypass the gateway. Each entry must be a valid DNS hostname.
+        /// </summary>
+        System.Collections.Generic.List<string> GatewayBypass { get; set; }
         /// <summary>The endpoint fqdn for the Gateway.</summary>
         string GatewayEndpoint { get; set; }
         /// <summary>A unique, immutable, identifier for the Gateway.</summary>

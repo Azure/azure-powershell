@@ -21,7 +21,7 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
  [-DestinationName <String>] [-IdentityType <String>] [-UserAssignedIdentityId <String>]
  [-PartitionCount <Int64>] [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>]
  [-BlobContainer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -33,7 +33,7 @@ Set-AzEventHub -InputObject <IEventHubIdentity> [-CaptureEnabled] [-Encoding <St
  [-IdentityType <String>] [-UserAssignedIdentityId <String>] [-PartitionCount <Int64>]
  [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +129,21 @@ Updates `RetentionTimeInHour` in EventHub entity `myEventHub` to 72 hours.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ArchiveNameFormat
 Blob naming convention for archive, e.g.
 {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
@@ -182,6 +197,21 @@ A value that indicates whether capture description is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

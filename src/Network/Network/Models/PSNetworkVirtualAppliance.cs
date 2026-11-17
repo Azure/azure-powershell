@@ -21,7 +21,13 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         
         public IList<string> BootStrapConfigurationBlobs { get; set; }
-        
+
+        public IList<string> AddressFamily { get; set; }
+
+        public string AddressPrefixV6 { get; set; }
+
+        public string PrivateIpAddressV6 { get; set; }
+
         public PSResourceId VirtualHub { get; set; }
         
         public IList<string> CloudInitConfigurationBlobs { get; set; }

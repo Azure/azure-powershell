@@ -106,14 +106,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             AddIf( null != (((object)this._macAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._macAddress.ToString()) : null, "macAddress" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
-            if (null != this._iPAddress)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.XNodeArray();
-                foreach( var __x in this._iPAddress )
+                if (null != this._iPAddress)
                 {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._iPAddress )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("ipAddresses",__w);
                 }
-                container.Add("ipAddresses",__w);
             }
             AfterToJson(ref container);
             return container;

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IConnection))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"create a Connection resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}", ApiVersion = "2025-12-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}", ApiVersion = "2026-05-01")]
     public partial class NewAzStorageMoverConnection_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IContext

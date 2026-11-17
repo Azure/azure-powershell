@@ -76,9 +76,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
                 return;
             }
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.TrackedResource(json);
-            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Sku.FromJson(__jsonSku) : _sku;}
-            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SystemData.FromJson(__jsonSystemData) : _systemData;}
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespaceProperties.FromJson(__jsonProperties) : _property;}
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Sku.FromJson(__jsonSku) : _sku;}
             AfterFromJson(json);
         }
 
@@ -102,12 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
                 return container;
             }
             __trackedResource?.ToJson(container, serializationMode);
-            AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._systemData ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) this._systemData.ToJson(null,serializationMode) : null, "systemData" ,container.Add );
-            }
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -80,6 +80,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterSkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -128,42 +136,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityPrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SkuFamily"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuFamily, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("Identity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterSkuTypeConverter.ConvertFrom);
-            }
             if (content.Contains("ActivationState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).ActivationState = (string) content.GetValueForProperty("ActivationState",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).ActivationState, global::System.Convert.ToString);
@@ -191,6 +163,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             if (content.Contains("StatusMessage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).StatusMessage = (string) content.GetValueForProperty("StatusMessage",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).StatusMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -213,6 +213,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterSkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -261,42 +269,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityPrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SkuFamily"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuFamily, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("Identity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterSkuTypeConverter.ConvertFrom);
-            }
             if (content.Contains("ActivationState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).ActivationState = (string) content.GetValueForProperty("ActivationState",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).ActivationState, global::System.Convert.ToString);
@@ -324,6 +296,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             if (content.Contains("StatusMessage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).StatusMessage = (string) content.GetValueForProperty("StatusMessage",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).StatusMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

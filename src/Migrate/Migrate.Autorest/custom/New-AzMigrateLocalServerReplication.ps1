@@ -66,6 +66,30 @@ function New-AzMigrateLocalServerReplication {
         ${IsDynamicMemoryEnabled},
 
         [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies whether to migrate the server as an Azure Arc-enabled VM. When set to 'true', an Azure Arc-enabled machine resource with the same name as -TargetVMName must already exist in the resource group specified by -TargetResourceGroupId.
+        ${MigrateAsArcVM},
+
+        [Parameter()]
+        [ValidateSet("Standard", "TrustedLaunch")]
+        [ArgumentCompleter( { "Standard", "TrustedLaunch" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the security type of the target VM. 'TrustedLaunch' enables Secure Boot and vTPM, implies -EnableSecureBoot 'true', and requires a Generation 2 target VM. 'Standard' is accepted for either generation and on its own leaves the target inheriting the source.
+        ${TargetVMSecurityOption},
+
+        [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies whether Secure Boot is enabled on the target VM. Enabling it requires a Generation 2 target VM; 'false' is accepted for either generation. When omitted and -TargetVMSecurityOption is not 'TrustedLaunch', the target VM inherits the Secure Boot setting of the source server.
+        ${EnableSecureBoot},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Int64]
         # Specifies the target RAM size in MB. 
@@ -174,6 +198,18 @@ function New-AzMigrateLocalServerReplication {
         $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
         Import-Module $helperPath
 
+        $HasTargetVMSecurityOption = $PSBoundParameters.ContainsKey('TargetVMSecurityOption')
+        $HasEnableSecureBoot = $PSBoundParameters.ContainsKey('EnableSecureBoot')
+        if ($HasEnableSecureBoot) {
+            $secureBootEnabled = [System.Convert]::ToBoolean($EnableSecureBoot)
+        }
+
+        # Purely a contradiction between parameters, so reject it before the module and service checks.
+        if ($HasTargetVMSecurityOption -and $TargetVMSecurityOption -eq $TargetVMSecurityTypes.TrustedLaunch -and
+            $HasEnableSecureBoot -and -not $secureBootEnabled) {
+            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'."
+        }
+
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
 
@@ -181,6 +217,10 @@ function New-AzMigrateLocalServerReplication {
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
             $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
+        }
+        $HasMigrateAsArcVM = $PSBoundParameters.ContainsKey('MigrateAsArcVM')
+        if ($HasMigrateAsArcVM) {
+            $migrateAsArcVMEnabled = [System.Convert]::ToBoolean($MigrateAsArcVM)
         }
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
         $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
@@ -195,6 +235,9 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('TargetVirtualSwitchId')
         $null = $PSBoundParameters.Remove('TargetTestVirtualSwitchId')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
+        $null = $PSBoundParameters.Remove('MigrateAsArcVM')
+        $null = $PSBoundParameters.Remove('TargetVMSecurityOption')
+        $null = $PSBoundParameters.Remove('EnableSecureBoot')
         $null = $PSBoundParameters.Remove('TargetVMRam')
         $null = $PSBoundParameters.Remove('DiskToInclude')
         $null = $PSBoundParameters.Remove('NicToInclude')
@@ -243,6 +286,39 @@ function New-AzMigrateLocalServerReplication {
                 -ResourceId $TargetTestVirtualSwitchId `
                 -ResourceType "LogicalNetwork" `
                 -Format $IdFormats.LogicalNetworkArmIdTemplate
+        }
+
+        # Validate TargetVMName (pure parameter check; hoisted up-front so we fail fast
+        # before doing any source/target discovery work).
+        if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
+            throw "The target virtual machine name must be between 1 and 64 characters long."
+        }
+        elseif ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
+            throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
+        }
+        elseif (IsReservedOrTrademarked($TargetVMName)) {
+            throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
+        }
+
+        # Arc-enabled VM reuse preflight (only when -MigrateAsArcVM "true").
+        # Verifies that the customer-onboarded Arc machine exists at the expected
+        # target ARM tuple and has a reusable Kind. Performed up-front so the
+        # cmdlet fails fast on Arc misconfig before any discovery work.
+        if ($HasMigrateAsArcVM -and $migrateAsArcVMEnabled) {
+            # Az.ConnectedMachine is a conditional dependency required only for the Arc
+            # reuse preflight. Fail fast with an actionable install hint if it's missing.
+            CheckConnectedMachineModuleDependency
+
+            # $TargetResourceGroupId is "/subscriptions/{sub}/resourceGroups/{rg}".
+            # Format already validated above by Test-AzureResourceIdFormat.
+            $targetRgIdArray = $TargetResourceGroupId.Split("/")
+            $targetSubId     = $targetRgIdArray[2]
+            $targetRgName    = $targetRgIdArray[4]
+
+            Test-ArcMachineReuseEligibility `
+                -TargetSubscriptionId    $targetSubId `
+                -TargetResourceGroupName $targetRgName `
+                -TargetVMName            $TargetVMName
         }
 
         # $MachineId is in the format of
@@ -618,17 +694,6 @@ function New-AzMigrateLocalServerReplication {
             throw "$($ArcResourceBridgeValidationMessages.NotRunning). Make sure the Arc Resource Bridge is online before retrying."
         }
 
-        # Validate TargetVMName
-        if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
-            throw "The target virtual machine name must be between 1 and 64 characters long."
-        }
-        elseif ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
-            throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
-        }
-        elseif (IsReservedOrTrademarked($TargetVMName)) {
-            throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
-        }
-
         # Construct create protected item request object
         $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemModelProperties]::new()
         $protectedItemProperties.PolicyName = $policyName
@@ -683,6 +748,9 @@ function New-AzMigrateLocalServerReplication {
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
         $customProperties.TargetVMName = $TargetVMName
         $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
+        if ($HasMigrateAsArcVM) {
+            $customProperties.MigrateAsArcVM = $migrateAsArcVMEnabled
+        }
     
         # Determine target VM Hyper-V Generation
         if ($SiteType -eq $SiteTypes.HyperVSites) { 
@@ -692,6 +760,34 @@ function New-AzMigrateLocalServerReplication {
         else { 
             #Vmware source, non-BOIS VMs will be migrated to Gen2
             $customProperties.HyperVGeneration = if ($machine.Firmware -ieq "BIOS") { "1" } else { "2" }
+        }
+
+        # Gen 1 target VMs do not support Secure Boot or vTPM; fail before the service round-trip.
+        if ($HasTargetVMSecurityOption -or $HasEnableSecureBoot) {
+            # For VMware sources -MachineName is an opaque id, so report the discovered name.
+            $sourceName = if ([string]::IsNullOrEmpty($machine.DisplayName)) { $MachineName } else { $machine.DisplayName }
+
+            $securityDecision = Resolve-AzMigrateTargetSecurityOption `
+                -Mode 'Create' `
+                -HyperVGeneration $customProperties.HyperVGeneration `
+                -HasTargetVMSecurityOption $HasTargetVMSecurityOption `
+                -TargetVMSecurityOption $TargetVMSecurityOption `
+                -HasEnableSecureBoot $HasEnableSecureBoot `
+                -SecureBootEnabled ([bool]$secureBootEnabled)
+
+            if ($securityDecision.Gen2Required) {
+                throw "Secure Boot and Trusted Launch capabilities require a Generation 2 (EFI) VM. The source server '$sourceName' maps to a Generation 1 (BIOS) VM."
+            }
+
+            # The service rejects turning Secure Boot off for a Gen 2 source that has it on.
+            if ($securityDecision.VerifySourceSecureBoot -and
+                $true -eq (Get-AzMigrateSourceSecureBootState -MachineId $MachineId)) {
+                throw "Source server '$sourceName' has Secure Boot enabled, so it cannot be migrated with -EnableSecureBoot 'false'. Omit -EnableSecureBoot to keep Secure Boot enabled on the target VM, or disable Secure Boot on the source server first."
+            }
+
+            if ($null -ne $securityDecision.SecurityOption) {
+                $customProperties.SecurityOption = $securityDecision.SecurityOption
+            }
         }
 
         # Validate TargetVMCPUCore

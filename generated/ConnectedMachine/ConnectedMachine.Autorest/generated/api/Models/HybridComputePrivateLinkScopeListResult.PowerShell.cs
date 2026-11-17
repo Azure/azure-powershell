@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>Describes the list of Azure Arc PrivateLinkScope resources.</summary>
+    /// <summary>The response of a HybridComputePrivateLinkScope list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(HybridComputePrivateLinkScopeListResultTypeConverter))]
     public partial class HybridComputePrivateLinkScopeListResult
     {
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// Describes the list of Azure Arc PrivateLinkScope resources.
+    /// The response of a HybridComputePrivateLinkScope list operation.
     [System.ComponentModel.TypeConverter(typeof(HybridComputePrivateLinkScopeListResultTypeConverter))]
     public partial interface IHybridComputePrivateLinkScopeListResult
 

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         public string ObjectId {get; set; }
 
         /// <summary>
-        /// Gets or sets  Application ID of the client making request on behalf of a
+        /// Gets or sets application ID of the client making request on behalf of a
         /// principal
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "applicationId")]

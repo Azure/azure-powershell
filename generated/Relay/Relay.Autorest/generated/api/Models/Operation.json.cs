@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
-    /// <summary>A Relay REST API operation</summary>
+    /// <summary>
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
+    /// </summary>
     public partial class Operation
     {
 
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_isDataAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonBoolean>("isDataAction"), out var __jsonIsDataAction) ? (bool?)__jsonIsDataAction : _isDataAction;}
             {_origin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("origin"), out var __jsonOrigin) ? (string)__jsonOrigin : (string)_origin;}
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Any.FromJson(__jsonProperties) : _property;}
+            {_actionType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("actionType"), out var __jsonActionType) ? (string)__jsonActionType : (string)_actionType;}
             AfterFromJson(json);
         }
 
@@ -102,10 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._display ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) this._display.ToJson(null,serializationMode) : null, "display" ,container.Add );
-            }
+            AddIf( null != this._display ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) this._display.ToJson(null,serializationMode) : null, "display" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
@@ -118,7 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 AddIf( null != (((object)this._origin)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._origin.ToString()) : null, "origin" ,container.Add );
             }
-            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._actionType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._actionType.ToString()) : null, "actionType" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

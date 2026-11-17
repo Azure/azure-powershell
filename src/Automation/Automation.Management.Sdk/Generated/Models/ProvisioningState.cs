@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class ProvisioningState
     {
+        /// <summary>
+        /// Completed
+        /// </summary>
         public const string Completed = "Completed";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// Running
+        /// </summary>
         public const string Running = "Running";
     }
 }

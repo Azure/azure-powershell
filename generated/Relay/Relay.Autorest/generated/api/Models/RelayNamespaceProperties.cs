@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="ClusterArmId" /> property.</summary>
+        private string _clusterArmId;
+
+        /// <summary>Cluster ARM ID of the Namespace.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
+        public string ClusterArmId { get => this._clusterArmId; set => this._clusterArmId = value; }
+
         /// <summary>Backing field for <see cref="CreatedAt" /> property.</summary>
         private global::System.DateTime? _createdAt;
 
@@ -44,6 +51,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 
         /// <summary>Internal Acessors for UpdatedAt</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal.UpdatedAt { get => this._updatedAt; set { {_updatedAt = value;} } }
+
+        /// <summary>Backing field for <see cref="MinimumTlsVersion" /> property.</summary>
+        private string _minimumTlsVersion;
+
+        /// <summary>
+        /// The minimum TLS version for the namespace.
+        /// Supported values are 1.2 and 1.3.
+        /// The service defaults to 1.2 when the property is omitted.
+        /// Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
+        public string MinimumTlsVersion { get => this._minimumTlsVersion; set => this._minimumTlsVersion = value; }
 
         /// <summary>Backing field for <see cref="PrivateEndpointConnection" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> _privateEndpointConnection;
@@ -99,6 +118,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
     public partial interface IRelayNamespaceProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IJsonSerializable
     {
+        /// <summary>Cluster ARM ID of the Namespace.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Cluster ARM ID of the Namespace.",
+        SerializedName = @"clusterArmId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ClusterArmId { get; set; }
         /// <summary>The time the namespace was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
@@ -121,6 +151,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         SerializedName = @"metricId",
         PossibleTypes = new [] { typeof(string) })]
         string MetricId { get;  }
+        /// <summary>
+        /// The minimum TLS version for the namespace.
+        /// Supported values are 1.2 and 1.3.
+        /// The service defaults to 1.2 when the property is omitted.
+        /// Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The minimum TLS version for the namespace.
+        Supported values are 1.2 and 1.3.
+        The service defaults to 1.2 when the property is omitted.
+        Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.",
+        SerializedName = @"minimumTlsVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("1.2", "1.3")]
+        string MinimumTlsVersion { get; set; }
         /// <summary>List of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
@@ -196,10 +246,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
     internal partial interface IRelayNamespacePropertiesInternal
 
     {
+        /// <summary>Cluster ARM ID of the Namespace.</summary>
+        string ClusterArmId { get; set; }
         /// <summary>The time the namespace was created.</summary>
         global::System.DateTime? CreatedAt { get; set; }
         /// <summary>Identifier for Azure Insights metrics.</summary>
         string MetricId { get; set; }
+        /// <summary>
+        /// The minimum TLS version for the namespace.
+        /// Supported values are 1.2 and 1.3.
+        /// The service defaults to 1.2 when the property is omitted.
+        /// Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("1.2", "1.3")]
+        string MinimumTlsVersion { get; set; }
         /// <summary>List of private endpoint connections.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>Provisioning state of the Namespace.</summary>

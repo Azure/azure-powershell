@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Discovery
-Module Guid: 4a3a25da-d13c-4a24-aa59-82a88e55cf47
+Module Guid: 5d212b6b-7888-469a-8b9f-8c0ca595fe3d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.discovery
 Help Version: 1.0.0.0
 Locale: en-US

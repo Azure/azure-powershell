@@ -32,12 +32,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="isSoftDeleted">Bool to indicate whether RP is in soft delete state or not
         /// </param>
-        public RecoveryPointProperties(string expiryTime = default(string), string ruleName = default(string), bool? isSoftDeleted = default(bool?))
+
+        /// <param name="immutabilityProperties">Immutability properties of the recovery point.
+        /// </param>
+        public RecoveryPointProperties(string expiryTime = default(string), string ruleName = default(string), bool? isSoftDeleted = default(bool?), RecoveryPointImmutabilityProperties immutabilityProperties = default(RecoveryPointImmutabilityProperties))
 
         {
             this.ExpiryTime = expiryTime;
             this.RuleName = ruleName;
             this.IsSoftDeleted = isSoftDeleted;
+            this.ImmutabilityProperties = immutabilityProperties;
             CustomInit();
         }
 
@@ -64,5 +68,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isSoftDeleted")]
         public bool? IsSoftDeleted {get; set; }
+
+        /// <summary>
+        /// Gets or sets immutability properties of the recovery point.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "immutabilityProperties")]
+        public RecoveryPointImmutabilityProperties ImmutabilityProperties {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+            if (this.ImmutabilityProperties != null)
+            {
+                this.ImmutabilityProperties.Validate();
+            }
+        }
     }
 }

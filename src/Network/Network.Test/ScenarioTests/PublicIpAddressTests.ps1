@@ -776,6 +776,74 @@ function Test-PublicIpAddressCRUD-DdosProtection
 
 <#
 .SYNOPSIS
+Tests associating a DDoS custom policy with an instance-level public IP address, then removing and re-attaching it.
+#>
+function Test-PublicIpAddressCRUD-DdosCustomPolicy
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $ddosCustomPolicyName = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/ddosCustomPolicies"
+    $location = Get-ProviderLocation $resourceTypeParent
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create a DDoS custom policy with a detection rule
+        $tcpRule = New-AzDdosCustomPolicyDetectionRule -Name tcpRule1 -TrafficType Tcp -PacketsPerSecond 1000000
+        $dcp = New-AzDdosCustomPolicy -ResourceGroupName $rgname -Name $ddosCustomPolicyName -Location $location -DetectionRule @($tcpRule)
+        Assert-NotNull $dcp
+
+        # Create an instance-level public IP address
+        $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname -Location $location -AllocationMethod Static -Sku Standard
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $actual.Id
+        Assert-NotNull $nic
+
+        # Attach the DDoS custom policy
+        $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname
+        $expected = Set-AzPublicIpAddress -PublicIpAddress $expected -DdosCustomPolicyId $dcp.Id
+        $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.Name $actual.Name
+        Assert-AreEqual $dcp.Id $expected.DdosSettings.DdosCustomPolicy.Id
+
+        # Remove the DDoS custom policy association via Set
+        $pip = Set-AzPublicIpAddress -PublicIpAddress $expected -RemoveDdosCustomPolicy
+        $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname
+        Assert-Null $pip.DdosSettings.DdosCustomPolicy
+
+        # Re-attach the DDoS custom policy via Set
+        $pip = Set-AzPublicIpAddress -PublicIpAddress $pip -DdosCustomPolicyId $dcp.Id
+        $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $rname
+        Assert-AreEqual $dcp.Id $pip.DdosSettings.DdosCustomPolicy.Id
+
+        # delete
+        $deleteNic = Remove-AzNetworkInterface -ResourceGroupName $rgname -Name $nicName -PassThru -Force
+        Assert-AreEqual true $deleteNic
+
+        $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -Name $rname -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple publicIpAddress with Static allocation and global tier.
 #>
 function Test-PublicIpAddressCRUD-StandardSkuGlobalTier
@@ -1079,6 +1147,51 @@ function Test-PublicIpAddressInvokeDisassociateCloudServiceReservedIp
     }
     finally
     {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a StandardV2 SKU publicIpAddress and reading the read-only UpgradedToV2 property.
+#>
+function Test-PublicIpAddressStandardV2UpgradedToV2
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create a StandardV2 SKU public IP address
+        $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku StandardV2
+        $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.Name $actual.Name
+        Assert-AreEqual "StandardV2" $expected.Sku.Name
+        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+
+        # UpgradedToV2 is a read-only property. A natively-created StandardV2 resource has not been
+        # upgraded from Standard, so the value is not $true (it is $false or $null on a fresh resource).
+        Assert-True { $expected.UpgradedToV2 -ne $true }
+
+        # delete
+        $delete = Remove-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzPublicIpAddress -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
         Clean-ResourceGroup $rgname
     }
 }

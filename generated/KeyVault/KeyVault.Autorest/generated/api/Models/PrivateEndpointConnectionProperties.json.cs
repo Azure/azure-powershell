@@ -105,7 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             }
             AddIf( null != this._privateEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._privateEndpoint.ToJson(null,serializationMode) : null, "privateEndpoint" ,container.Add );
             AddIf( null != this._privateLinkServiceConnectionState ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._privateLinkServiceConnectionState.ToJson(null,serializationMode) : null, "privateLinkServiceConnectionState" ,container.Add );
-            AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

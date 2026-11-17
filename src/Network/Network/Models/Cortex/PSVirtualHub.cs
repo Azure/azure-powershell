@@ -50,12 +50,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> VirtualRouterIps { get; set; }
 
+        public List<string> VirtualRouterIpsV6 { get; set; }
+
         public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
 
         public SwitchParameter AllowBranchToBranchTraffic { get; set; }
 
         [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
         public string AddressPrefix { get; set; }
+
+        [Ps1Xml(Label = "Address Prefix V6", Target = ViewControl.Table)]
+        public string AddressPrefixV6 { get; set; }
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }

@@ -19,6 +19,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.4.1
+* Updated default API to 2026-07-01-preview.
+
+## Version 4.4.0
+* Added Change Safety support for additional cmdlets.
+* Fixed Change Safety parameter forwarding in custom read-before-write and GeoDR cmdlets.
+
+## Version 4.3.0
 * Added parameters 'GeoDataReplicationMaxReplicationLagDurationInSecond', 'GeoDataReplicationLocation', and 'IPAddressType' to cmdlets 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace'
 * Added new cmdlets for doing namespace failover - 'Start-AzServiceBusNamespaceFailOver'
 * Added new cmdlets for generating replication object for Replication parameter - 'New-AzServiceBusLocationsNameObject'
