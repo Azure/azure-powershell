@@ -247,6 +247,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
             new object[] { "{\"" + Track2Workarounds.JsonSettingPrefix + "\":5}" },
             new object[] { "{\"" + Track2Workarounds.JsonSettingPrefix + "\":\"" + Track2Workarounds.JsonSettingPrefix + "5\"}" },
             new object[] { "{\"" + Track2Workarounds.JsonSettingPrefix + "name\":\"value\",\"other\":1}" },
+            new object[] { "{}" },
         };
 
         [Theory]
@@ -284,6 +285,36 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
             JObject sent = SentPool(handler);
             Assert.True(JToken.DeepEquals(JToken.Parse(settings), sent.SelectToken("virtualMachineConfiguration.extensions[0].settings")));
             Assert.True(JToken.DeepEquals(JToken.Parse(settings), sent.SelectToken("virtualMachineConfiguration.extensions[0].protectedSettings")));
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData("")]
+        [InlineData(",\"settings\":null,\"protectedSettings\":null")]
+        public void ExtensionSettingsThatArentSentStayNull(string settingsPart)
+        {
+            // Review on #30435: left out or null, Track 1 gives null (Azure.Compute.Batch gives an empty dictionary of its
+            // own); and settings that aren't given aren't sent.
+            string pool = PoolJson("\"extensions\":[{\"name\":\"extension1\",\"publisher\":\"Microsoft.ManagedServices\",\"type\":\"ApplicationHealthLinux\"" + settingsPart + "}]");
+            RecordingHandler handler = new RecordingHandler()
+                .On("GET /pools/pool1", HttpStatusCode.OK, pool)
+                .On("POST /pools", HttpStatusCode.Created);
+            Track2TestContext context = NewContext(handler);
+
+            T2.VMExtension read = context.Track2Client.GetPool("pool1").Value.VirtualMachineConfiguration.Extensions.Single();
+            Microsoft.Azure.Batch.VMExtension track1 = context.BatchOMClient.PoolOperations.GetPool("pool1").VirtualMachineConfiguration.Extensions.Single();
+
+            Assert.Null(track1.Settings);
+            Assert.Null(track1.ProtectedSettings);
+            Assert.Null(Track2Workarounds.FromSettings(read.Settings));
+            Assert.Null(Track2Workarounds.FromSettings(read.ProtectedSettings));
+
+            Assert.Null(Track2Workarounds.ToSettings(null));
+            Assert.Null(Track2Workarounds.ToSettings(JValue.CreateNull()));
+            context.Track2Client.CreatePool(NewPool(vm => vm.Extensions.Add(new T2.VMExtension("extension1", "Microsoft.ManagedServices", "ApplicationHealthLinux"))));
+            JToken sent = SentPool(handler).SelectToken("virtualMachineConfiguration.extensions[0]");
+            Assert.Null(sent["settings"]);
+            Assert.Null(sent["protectedSettings"]);
         }
 
         [Fact]
