@@ -36,6 +36,7 @@ input-file:
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-07-01/runCommand.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/RecommenderRP/stable/2025-06-05/RecommenderRP.json
+  - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/42d95f77f74271dcb8fea6fdf50390c510e91dd3/specification/compute/resource-manager/Microsoft.Compute/Recommender/preview/2026-10-05-preview/RecommenderRP.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 module-version: 0.3.0
 # Normally, title is the service name
@@ -228,7 +229,7 @@ directive:
       subject: VMRunCommand|VmssVMRunCommand
       verb: Get
     remove: true
-  ### Remove All Diagnostic cmdlets aside from Invoke Spot Placement Recommender - generate ONLY SpotPlacementScore cmdlets
+  ### Remove unsupported Diagnostic operations while retaining placement-score generation cmdlets
   - where:
       verb: Get
       subject: Diagnostic
@@ -260,6 +261,10 @@ directive:
   - where:
       verb: Get
       subject: SpotPlacementScore
+    remove: true
+  - where:
+      verb: Get
+      subject: ComputePlacementScore
     remove: true
 
   ## Add Alias for Invoke-AzSpotPlacementScore

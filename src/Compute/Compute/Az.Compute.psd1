@@ -81,7 +81,8 @@ NestedModules = @('Compute.Autorest/Az.Compute.psm1',
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzGalleryApplication', 'Get-AzGalleryApplicationVersion', 
-               'Invoke-AzSpotPlacementScore', 'New-AzGalleryApplication', 
+               'Invoke-AzComputePlacementScore', 'Invoke-AzSpotPlacementScore',
+               'New-AzGalleryApplication',
                'New-AzGalleryApplicationVersion', 'Remove-AzGalleryApplication', 
                'Remove-AzGalleryApplicationVersion', 'Remove-AzVMRunCommand', 
                'Remove-AzVmssVMRunCommand', 'Set-AzVMRunCommand', 
@@ -296,4 +297,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
