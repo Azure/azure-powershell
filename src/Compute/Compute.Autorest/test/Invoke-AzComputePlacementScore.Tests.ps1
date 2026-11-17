@@ -9,7 +9,8 @@ if (($null -eq $TestName) -or ($TestName -contains 'Invoke-AzComputePlacementSco
 Describe 'Invoke-AzComputePlacementScore' {
     BeforeEach {
         $script:RestRequest = $null
-        Mock Invoke-AzRestMethod {
+        Mock -CommandName Get-AzContext -ModuleName Az.Compute { [pscustomobject]@{ Subscription = [pscustomobject]@{ Id = 'context-subscription-id' } } }
+        Mock -CommandName Invoke-AzRestMethod -ModuleName Az.Compute.custom {
             $script:RestRequest = [pscustomobject]@{
                 Method = $Method
                 Path = $Path
@@ -31,11 +32,20 @@ Describe 'Invoke-AzComputePlacementScore' {
         $result.placementScores[0].placementPreference | Should -Be 8
     }
 
+    It 'Uses the active subscription when SubscriptionId is omitted' {
+        $null = Invoke-AzComputePlacementScore -Location eastus -DesiredSize @(@{ Sku = 'Standard_D2_v3' })
+
+        $RestRequest.Path | Should -Be '/subscriptions/context-subscription-id/providers/Microsoft.Compute/locations/eastus/placementScores/regular/generate?api-version=2026-10-05-preview'
+    }
+
     It 'Includes each optional parameter alone and all optional parameters together' {
         $desiredSize = @(@{ Sku = 'Standard_D2_v3' })
 
         $null = Invoke-AzComputePlacementScore -Location eastus -SubscriptionId 'subscription-id' -DesiredSize $desiredSize -AvailabilityZone
         ($RestRequest.Payload | ConvertFrom-Json).availabilityZones | Should -BeTrue
+
+        $null = Invoke-AzComputePlacementScore -Location eastus -SubscriptionId 'subscription-id' -DesiredSize $desiredSize -AvailabilityZone:$false
+        ($RestRequest.Payload | ConvertFrom-Json).availabilityZones | Should -BeFalse
 
         $null = Invoke-AzComputePlacementScore -Location eastus -SubscriptionId 'subscription-id' -DesiredSize $desiredSize -DesiredCount 2
         ($RestRequest.Payload | ConvertFrom-Json).desiredCount | Should -Be 2
@@ -53,12 +63,13 @@ Describe 'Invoke-AzComputePlacementScore' {
     It 'Rejects null or empty desired sizes' {
         { Invoke-AzComputePlacementScore -Location eastus -SubscriptionId 'subscription-id' -DesiredSize $null } | Should -Throw
         { Invoke-AzComputePlacementScore -Location eastus -SubscriptionId 'subscription-id' -DesiredSize @() } | Should -Throw
-        Assert-MockCalled Invoke-AzRestMethod -Times 0
+        { Invoke-AzComputePlacementScore -Location '' -SubscriptionId 'subscription-id' -DesiredSize @(@{ Sku = 'Standard_D2_v3' }) } | Should -Throw
+        Assert-MockCalled Invoke-AzRestMethod -Times 0 -ModuleName Az.Compute.custom
     }
 
     It 'Does not send the request with WhatIf' {
         Invoke-AzComputePlacementScore -Location eastus -SubscriptionId 'subscription-id' -DesiredSize @(@{ Sku = 'Standard_D2_v3' }) -WhatIf
 
-        Assert-MockCalled Invoke-AzRestMethod -Times 0
+        Assert-MockCalled Invoke-AzRestMethod -Times 0 -ModuleName Az.Compute.custom
     }
 }

@@ -1,4 +1,16 @@
 function Invoke-AzComputePlacementScore {
+    <#
+    .Synopsis
+    Generates placement scores for regular Compute VM SKUs.
+    .Description
+    Generates placement scores for regular Compute VM SKUs in the requested regions and availability zones.
+    .Example
+    $desiredSizes = @(@{ sku = 'Standard_D2_v3' }, @{ sku = 'Standard_D4_v3' })
+    Invoke-AzComputePlacementScore -Location eastus -DesiredSize $desiredSizes -DesiredLocation @('eastus2', 'westus')
+    .Example
+    $desiredSizes = @(@{ sku = 'Standard_D2_v3' })
+    Invoke-AzComputePlacementScore -Location eastus -DesiredSize $desiredSizes -DesiredCount 2 -AvailabilityZone
+    #>
     [OutputType([PSObject])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
@@ -17,10 +29,51 @@ function Invoke-AzComputePlacementScore {
         ${SubscriptionId},
 
         [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+        # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
+
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach.
+        ${Break},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SendAsyncStep[]]
+        # SendAsync pipeline steps to append.
+        ${HttpPipelineAppend},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SendAsyncStep[]]
+        # SendAsync pipeline steps to prepend.
+        ${HttpPipelinePrepend},
+
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+        [System.Uri]
+        # URI of the proxy server.
+        ${Proxy},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for the proxy server.
+        ${ProxyCredential},
+
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy.
+        ${ProxyUseDefaultCredentials},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
@@ -50,6 +103,16 @@ function Invoke-AzComputePlacementScore {
     )
 
     process {
+        if ($Break) {
+            [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.AttachDebugger]::Break()
+        }
+
+        if (-not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $SubscriptionId = (Get-AzContext).Subscription.Id
+        }
+
+        $escapedSubscriptionId = [System.Uri]::EscapeDataString($SubscriptionId)
+        $escapedLocation = [System.Uri]::EscapeDataString($Location)
         $body = @{
             desiredSizes = @($DesiredSize | ForEach-Object { @{ sku = $_.Sku } })
         }
@@ -66,8 +129,9 @@ function Invoke-AzComputePlacementScore {
 
         $requestParameters = @{
             Method = 'POST'
-            Path = "/subscriptions/$SubscriptionId/providers/Microsoft.Compute/locations/$Location/placementScores/regular/generate?api-version=2026-10-05-preview"
+            Path = "/subscriptions/$escapedSubscriptionId/providers/Microsoft.Compute/locations/$escapedLocation/placementScores/regular/generate?api-version=2026-10-05-preview"
             Payload = ConvertTo-Json -InputObject $body -Depth 100 -Compress
+            ErrorAction = 'Stop'
         }
         if ($PSBoundParameters.ContainsKey('DefaultProfile')) {
             $requestParameters.DefaultProfile = $DefaultProfile
