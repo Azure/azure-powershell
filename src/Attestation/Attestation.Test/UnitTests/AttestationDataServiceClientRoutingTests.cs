@@ -257,6 +257,8 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             // A write the service has accepted must not be sent again when its response fails validation.
             AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
             AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            // The earlier API's update token must be valid before the policy is applied with PUT /operations/policy/current.
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "SgxEnclave", CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText }), "JWT"), "POST", "/operations/policy/updatepolicy", reason);
             AssertRejectedAfterOneRequest(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
             AssertRejectedAfterOneRequest(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
             AssertRejectedAfterOneRequest(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove", reason);
