@@ -99,9 +99,13 @@ namespace Microsoft.Azure.Commands.Batch.Track2
                 bool hasValues = answer.HasValue && answer.Value.ValueKind == JsonValueKind.Object
                     && answer.Value.TryGetProperty("value", out values) && values.ValueKind == JsonValueKind.Array
                     && values.GetArrayLength() == page.Values.Count;
+
+                // One pass over the JSON list: values[i] would walk the elements before i each time.
+                JsonElement.ArrayEnumerator rawValues = hasValues ? values.EnumerateArray() : default(JsonElement.ArrayEnumerator);
                 for (int i = 0; i < page.Values.Count; i++)
                 {
-                    yield return new KeyValuePair<T, JsonElement?>(page.Values[i], hasValues ? values[i] : (JsonElement?)null);
+                    JsonElement? raw = hasValues && rawValues.MoveNext() ? rawValues.Current : (JsonElement?)null;
+                    yield return new KeyValuePair<T, JsonElement?>(page.Values[i], raw);
                 }
             }
         }
