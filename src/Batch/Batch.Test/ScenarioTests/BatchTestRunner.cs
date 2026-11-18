@@ -72,6 +72,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                         {"Microsoft.Authorization", null}
                     }
                 )
+                .WithRecordMatcher((ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
+                    new BatchRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore))
                 .WithManagementClients(
                     GetResourceManagementClient,
                     GetBatchManagementClient,
