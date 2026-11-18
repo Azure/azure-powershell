@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Upgraded Network SDK to API version `2026-05-01`.
 * Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
 
 ## Version 8.4.0
