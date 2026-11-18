@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.resources/uninstall-azbicep
 schema: 2.0.0
 ---
 
