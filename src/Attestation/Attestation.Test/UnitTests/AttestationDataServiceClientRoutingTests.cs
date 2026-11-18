@@ -372,6 +372,44 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DoesNotResendWriteWhenResponseCannotBeRead()
+        {
+            _service.FailWriteResponseBody = true;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DoesNotResendWriteWhenResponseCannotBeReadAfterFailedAttempt()
+        {
+            _service.FailWriteResponseBody = true;
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            foreach (var write in new Action[]
+            {
+                () => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"),
+                () => _client.RemovePolicySigner("provider", "rg", null, signerJwt),
+            })
+            {
+                _service.Requests.Clear();
+                _service.FailNextRequests = 1;
+
+                // The failed attempt is retried; the successful response that can't be read is not.
+                Assert.Throws<UnreadableServiceResponseException>(write);
+                Assert.Equal(2, _service.ServiceRequests.Count);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportsServiceError()
         {
             _service.ErrorResponse = new JObject { ["error"] = new JObject { ["code"] = "PolicyParsingError", ["message"] = "Invalid policy was specified" } };
@@ -511,6 +549,18 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public bool ReturnWriteResponseWithoutToken { get; set; }
 
             /// <summary>
+            /// Makes policy and signer writes succeed with a response whose body fails while it is read, as when the
+            /// connection closes during the response.
+            /// </summary>
+            public bool FailWriteResponseBody { get; set; }
+
+            /// <summary>
+            /// Number of requests, other than requests for signing certificates, that fail as if the service could
+            /// not be reached.
+            /// </summary>
+            public int FailNextRequests { get; set; }
+
+            /// <summary>
             /// Difference between the service's clock and the local clock.
             /// </summary>
             public TimeSpan ClockOffset { get; set; }
@@ -560,11 +610,24 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                     return Json(ErrorResponse, HttpStatusCode.BadRequest);
                 }
 
+                if (FailNextRequests > 0)
+                {
+                    FailNextRequests--;
+                    throw new HttpRequestException("The service could not be reached.");
+                }
+
                 var isCurrentApiWrite = recorded.Method != "GET" &&
                     (recorded.Path.StartsWith("/policies/", StringComparison.Ordinal) || recorded.Path.StartsWith("/certificates:", StringComparison.Ordinal));
                 if (ReturnWriteResponseWithoutToken && isCurrentApiWrite)
                 {
                     return Json(new JObject());
+                }
+
+                if (FailWriteResponseBody && isCurrentApiWrite)
+                {
+                    var content = new StreamContent(new FailingStream());
+                    content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+                    return new HttpResponseMessage(HttpStatusCode.OK) { Content = content };
                 }
 
                 switch ($"{recorded.Method} {recorded.Path}")
@@ -644,6 +707,24 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                     Content = new StringContent(content.ToString(Formatting.None), Encoding.UTF8, "application/json")
                 };
             }
+        }
+
+        /// <summary>
+        /// A response body that fails when it is read.
+        /// </summary>
+        private class FailingStream : System.IO.Stream
+        {
+            public override bool CanRead => true;
+            public override bool CanSeek => false;
+            public override bool CanWrite => false;
+            public override long Length => throw new NotSupportedException();
+            public override long Position { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
+            public override int Read(byte[] buffer, int offset, int count) => throw new System.IO.IOException("The connection was closed while the response was received.");
+            public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) => throw new System.IO.IOException("The connection was closed while the response was received.");
+            public override void Flush() { }
+            public override long Seek(long offset, System.IO.SeekOrigin origin) => throw new NotSupportedException();
+            public override void SetLength(long value) => throw new NotSupportedException();
+            public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
         }
     }
 }

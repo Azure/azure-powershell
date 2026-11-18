@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -369,7 +370,8 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         /// <summary>
         /// The SDK clients don't validate service tokens; every token is validated by <see cref="ValidateServiceToken"/>,
-        /// so validation failures can be told apart from other failures.
+        /// so validation failures can be told apart from other failures. Azure.Core doesn't send a request again
+        /// after a successful response, see <see cref="NoRetryAfterSuccessfulResponsePolicy"/>.
         /// </summary>
         private AttestationClientOptions CreateClientOptions(HttpPipelinePolicy perCallPolicy = null)
         {
@@ -378,6 +380,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 options.Transport = _transport;
             if (perCallPolicy != null)
                 options.AddPolicy(perCallPolicy, HttpPipelinePosition.PerCall);
+            options.AddPolicy(new NoRetryAfterSuccessfulResponsePolicy(), HttpPipelinePosition.PerRetry);
             return options;
         }
 
@@ -603,6 +606,10 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 {
                     // Ignore this exception on purpose, since we'll retry below
                 }
+                catch (AggregateException ex) when (FindUnreadableResponse(ex) != null)
+                {
+                    throw FindUnreadableResponse(ex);
+                }
             }
 
             try
@@ -613,15 +620,30 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             {
                 throw ToRestException(ex);
             }
+            catch (AggregateException ex) when (FindUnreadableResponse(ex) != null)
+            {
+                throw FindUnreadableResponse(ex);
+            }
         }
 
         /// <summary>
         /// Whether a request failed without a successful response: the service returned an error status, or the
-        /// request couldn't be sent, which Azure.Core reports as an AggregateException after its own retries.
+        /// request couldn't be sent, which Azure.Core reports as an AggregateException after its own retries. An
+        /// AggregateException that includes a successful response that couldn't be read is not a request failure.
         /// </summary>
         private static bool IsRequestFailure(Exception exception)
         {
-            return exception is RequestFailedException || exception is AggregateException;
+            return exception is RequestFailedException ||
+                (exception is AggregateException aggregate && FindUnreadableResponse(aggregate) == null);
+        }
+
+        /// <summary>
+        /// Azure.Core reports a successful response that couldn't be read inside an AggregateException when an earlier
+        /// attempt failed and was retried.
+        /// </summary>
+        private static UnreadableServiceResponseException FindUnreadableResponse(AggregateException exception)
+        {
+            return exception.InnerExceptions.OfType<UnreadableServiceResponseException>().FirstOrDefault();
         }
 
         #endregion

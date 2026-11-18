@@ -280,6 +280,15 @@ namespace Microsoft.Azure.Commands.Attestation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The attestation service returned a successful response, but the response could not be read. If this was a change, it may already have been applied..
+        /// </summary>
+        internal static string UnreadableServiceResponse {
+            get {
+                return ResourceManager.GetString("UnreadableServiceResponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The policy in the &apos;AttestationPolicy&apos; claim of the policy token is not Base64Url encoded, which attestation type &apos;{0}&apos; does not support. Base64Url encode the policy and sign the token again..
         /// </summary>
         internal static string UnencodedPolicyNotSupported {

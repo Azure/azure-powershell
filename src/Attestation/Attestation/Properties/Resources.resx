@@ -495,6 +495,9 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="MissingServiceToken" xml:space="preserve">
     <value>The attestation service response does not contain a valid token.</value>
   </data>
+  <data name="UnreadableServiceResponse" xml:space="preserve">
+    <value>The attestation service returned a successful response, but the response could not be read. If this was a change, it may already have been applied.</value>
+  </data>
   <data name="UnencodedPolicyNotSupported" xml:space="preserve">
     <value>The policy in the &apos;AttestationPolicy&apos; claim of the policy token is not Base64Url encoded, which attestation type &apos;{0}&apos; does not support. Base64Url encode the policy and sign the token again.</value>
   </data>
