@@ -26,15 +26,14 @@ This cmdlet does not affect the separate, internal versioned cache that Azure Po
 
 ### Example 1: Remove the installed Bicep version
 ```powershell
-PS C:\> Uninstall-AzBicep
+Uninstall-AzBicep
 ```
 
 This command removes the Bicep installation at Azure PowerShell's default managed location.
 
 ### Example 2: Remove the installed Bicep version and confirm the result
 ```powershell
-PS C:\> Uninstall-AzBicep -PassThru
-True
+Uninstall-AzBicep -PassThru
 ```
 
 This command removes the Bicep installation at the default managed location and, because `-PassThru` is specified, returns `$true` if a version was removed, or `$false` if there was no installation to remove.

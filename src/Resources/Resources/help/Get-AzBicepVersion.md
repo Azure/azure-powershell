@@ -26,14 +26,10 @@ This cmdlet does not report on the separate, internal versioned cache that Azure
 
 ### Example 1: Get the currently installed Bicep version
 ```powershell
-PS C:\> Get-AzBicepVersion
-
-Version Path
-------- ----
-0.30.23 C:\Users\contoso\.Azure\bin\bicep.exe
+Get-AzBicepVersion
 ```
 
-This command returns the version of Bicep currently installed at the default managed location, along with its executable path.
+This command returns the version of Bicep currently installed at the default managed location (for example, `0.30.23`), along with its executable path (for example, `C:\Users\contoso\.Azure\bin\bicep.exe`).
 
 ## PARAMETERS
 
