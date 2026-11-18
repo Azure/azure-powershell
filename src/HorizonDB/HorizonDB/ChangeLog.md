@@ -20,7 +20,5 @@
 -->
 ## Upcoming Release
 * Fixed building Az.HorizonDB from source.
-
-## Version 0.1.0
 * First preview release for module Az.HorizonDB.
 * Added cmdlet examples for cluster, pool, and parameter group management based on API version 2026-10-01-preview.
