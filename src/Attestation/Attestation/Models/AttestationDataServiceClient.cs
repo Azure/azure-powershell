@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 SetAzureAttestationPolicy.TextPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
             {
                 SendWriteAndValidate(name, resourceGroupName, endpoint =>
-                    ReadSdkResponseToken(() => CreateAdministrationClient(endpoint).SetPolicy(attestationType, userSpecifiedPolicy)));
+                    SendSdkWrite(endpoint, client => client.SetPolicy(attestationType, userSpecifiedPolicy)));
             }
             else if (SetAzureAttestationPolicy.JwtPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             if (string.IsNullOrEmpty(policyJwt))
             {
                 SendWriteAndValidate(name, resourceGroupName, endpoint =>
-                    ReadSdkResponseToken(() => CreateAdministrationClient(endpoint).ResetPolicy(attestationType)));
+                    SendSdkWrite(endpoint, client => client.ResetPolicy(attestationType)));
             }
             else if (HasUnencodedPolicy(policyJwt.Trim()))
             {
@@ -362,20 +362,22 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         #region Private helper methods
 
-        private AttestationAdministrationClient CreateAdministrationClient(string endpoint)
+        private AttestationAdministrationClient CreateAdministrationClient(string endpoint, HttpPipelinePolicy perCallPolicy = null)
         {
-            return new AttestationAdministrationClient(new Uri(endpoint), Credential, CreateClientOptions());
+            return new AttestationAdministrationClient(new Uri(endpoint), Credential, CreateClientOptions(perCallPolicy));
         }
 
         /// <summary>
         /// The SDK clients don't validate service tokens; every token is validated by <see cref="ValidateServiceToken"/>,
         /// so validation failures can be told apart from other failures.
         /// </summary>
-        private AttestationClientOptions CreateClientOptions()
+        private AttestationClientOptions CreateClientOptions(HttpPipelinePolicy perCallPolicy = null)
         {
             var options = new AttestationClientOptions(tokenOptions: new AttestationTokenValidationOptions { ValidateToken = false });
             if (_transport != null)
                 options.Transport = _transport;
+            if (perCallPolicy != null)
+                options.AddPolicy(perCallPolicy, HttpPipelinePosition.PerCall);
             return options;
         }
 
@@ -401,18 +403,35 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         }
 
         /// <summary>
-        /// Calls an SDK method and returns the token from its response. The SDK fails with an unrelated exception,
-        /// such as a NullReferenceException, when the response has no valid token.
+        /// Sends a policy write with the SDK and returns the token from the service's response. The SDK fails with an
+        /// unrelated exception, such as a NullReferenceException, when a successful response has no valid token; that
+        /// failure is reported as a missing token. Failures before a successful response, such as failing to get an
+        /// access token, are not changed.
         /// </summary>
-        private static AttestationToken ReadSdkResponseToken<T>(Func<AttestationResponse<T>> call) where T : class
+        private AttestationToken SendSdkWrite<T>(string endpoint, Func<AttestationAdministrationClient, AttestationResponse<T>> write) where T : class
         {
+            var responseStatus = new ResponseStatusPolicy();
             try
             {
-                return call().Token;
+                return write(CreateAdministrationClient(endpoint, responseStatus)).Token;
             }
-            catch (Exception ex) when (!IsRequestFailure(ex))
+            catch (Exception ex) when (responseStatus.ReceivedSuccessfulResponse && !IsRequestFailure(ex))
             {
                 throw new InvalidOperationException(Resources.MissingServiceToken, ex);
+            }
+        }
+
+        /// <summary>
+        /// Records whether the service returned a successful response. Added before the SDK's authentication policy,
+        /// so it sees only responses the service actually returned.
+        /// </summary>
+        private sealed class ResponseStatusPolicy : HttpPipelineSynchronousPolicy
+        {
+            public bool ReceivedSuccessfulResponse { get; private set; }
+
+            public override void OnReceivedResponse(HttpMessage message)
+            {
+                ReceivedSuccessfulResponse = message.HasResponse && !message.Response.IsError;
             }
         }
 

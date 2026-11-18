@@ -44,13 +44,14 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
         private const string PolicyText = "version= 1.0;authorizationrules{c:[type==\"$is-debuggable\"] => permit();};issuancerules{};";
 
         private readonly MockAttestationService _service = new MockAttestationService();
+        private readonly StaticTokenCredential _credential = new StaticTokenCredential();
         private readonly List<string> _warnings = new List<string>();
         private readonly List<(string Name, string ResourceGroupName, bool IsDefaultProvider, string Location)> _endpointLookups = new List<(string, string, bool, string)>();
         private readonly AttestationDataServiceClient _client;
 
         public AttestationDataServiceClientRoutingTests()
         {
-            _client = new AttestationDataServiceClient(new StaticTokenCredential(), _service.CreateTransport(), (name, resourceGroupName, isDefaultProvider, location) =>
+            _client = new AttestationDataServiceClient(_credential, _service.CreateTransport(), (name, resourceGroupName, isDefaultProvider, location) =>
             {
                 _endpointLookups.Add((name, resourceGroupName, isDefaultProvider, location));
                 return MockAttestationService.Endpoint;
@@ -348,6 +349,29 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReportsSignInFailureUnchanged()
+        {
+            var signInFailure = new InvalidOperationException("Sign-in failed. Run Connect-AzAccount to sign in again.");
+            _credential.SignInFailure = signInFailure;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+
+            var writes = new Action[]
+            {
+                () => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"),
+                () => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"),
+                () => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null),
+                () => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)),
+            };
+
+            foreach (var write in writes)
+            {
+                Assert.Same(signInFailure, Assert.Throws<InvalidOperationException>(write));
+            }
+            Assert.Empty(_service.Requests);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportsServiceError()
         {
             _service.ErrorResponse = new JObject { ["error"] = new JObject { ["code"] = "PolicyParsingError", ["message"] = "Invalid policy was specified" } };
@@ -420,8 +444,13 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         private class StaticTokenCredential : TokenCredential
         {
+            /// <summary>
+            /// When set, getting a token fails with this exception, as when signing in fails.
+            /// </summary>
+            public Exception SignInFailure { get; set; }
+
             public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
-                => new AccessToken("test-token", DateTimeOffset.UtcNow.AddHours(1));
+                => SignInFailure == null ? new AccessToken("test-token", DateTimeOffset.UtcNow.AddHours(1)) : throw SignInFailure;
 
             public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
                 => new ValueTask<AccessToken>(GetToken(requestContext, cancellationToken));
