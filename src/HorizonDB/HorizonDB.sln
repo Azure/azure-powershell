@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorizonDB", "HorizonDB\Hori
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HorizonDB.Autorest", "HorizonDB.Autorest", "{244B499D-FD9D-10A6-C77A-34C4D248535D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.HorizonDB", "HorizonDB.Autorest\Az.HorizonDB.csproj", "{5C6106C9-D753-4481-A740-AC07C41AEFB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.HorizonDB", "..\..\generated\HorizonDB\HorizonDB.Autorest\Az.HorizonDB.csproj", "{5C6106C9-D753-4481-A740-AC07C41AEFB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
