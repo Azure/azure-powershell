@@ -156,6 +156,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             }
 
             // A client without the recorder, so the deletes stay out of the recording.
+            var failures = new List<Exception>();
             var credentials = new Microsoft.Azure.Batch.Auth.BatchSharedKeyCredentials(BatchAccountUrl, BatchAccount, BatchAccountKey);
             using (var client = Microsoft.Azure.Batch.BatchClient.Open(credentials))
             {
@@ -170,7 +171,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                             || e.RequestInformation?.BatchError?.Code == Microsoft.Azure.Batch.Common.BatchErrorCodeStrings.PoolBeingDeleted)
                     {
                     }
+                    catch (Exception e)
+                    {
+                        // Still try the other pools; report this one at the end.
+                        failures.Add(new InvalidOperationException($"Could not delete pool '{poolId}' after recording. Delete it by hand.", e));
+                    }
                 }
+            }
+
+            if (failures.Count > 0)
+            {
+                throw new AggregateException(failures);
             }
         }
     }

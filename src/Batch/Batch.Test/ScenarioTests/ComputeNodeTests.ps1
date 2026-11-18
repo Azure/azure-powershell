@@ -28,13 +28,14 @@ function Test-RemoveComputeNodes
     $computeNodeId2 = $computeNodes[1].Id
     Remove-AzBatchComputeNode -PoolId $poolId @($computeNodeId, $computeNodeId2) -Force -BatchContext $context
 
-    # State transition isn't immediate
+    # State transition isn't immediate. A removed node is leaving the pool, or already gone from the list.
+    $removedIds = @($computeNodeId, $computeNodeId2)
     $select = "id,state"
     $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
     $start = [DateTime]::Now
     $timeout = Compute-TestTimeout 60
     $end = $start.AddSeconds($timeout)
-    while ($computeNodes[0].State -ne 'LeavingPool' -or $computeNodes[1].State -ne 'LeavingPool')
+    while (@($computeNodes | Where-Object { $removedIds -contains $_.Id -and $_.State -ne 'LeavingPool' }).Count -gt 0)
     {
         if ([DateTime]::Now -gt $end)
         {
@@ -44,9 +45,10 @@ function Test-RemoveComputeNodes
         $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
     }
 
-    Assert-AreEqual 2 $computeNodes.Count
-    Assert-AreEqual 'LeavingPool' $computeNodes[0].State
-    Assert-AreEqual 'LeavingPool' $computeNodes[1].State
+    foreach ($computeNode in @($computeNodes | Where-Object { $removedIds -contains $_.Id }))
+    {
+        Assert-AreEqual 'LeavingPool' $computeNode.State
+    }
 }
 
 <#
