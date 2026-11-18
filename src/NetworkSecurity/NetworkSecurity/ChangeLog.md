@@ -20,6 +20,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed module help metadata so the Az.NetworkSecurity reference documentation can be published.
 
 ## Version 0.1.0
 * First preview release for module Az.NetworkSecurity
