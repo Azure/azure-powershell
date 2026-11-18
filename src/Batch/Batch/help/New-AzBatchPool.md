@@ -109,6 +109,10 @@ New-AzBatchPool -Id "AutoScalePool" -VirtualMachineSize "STANDARD_D1_V2" -Virtua
 ## PARAMETERS
 
 ### -ApplicationPackageReferences
+Specifies the application packages to install on each compute node in the pool.
+For each package, create a **PSApplicationPackageReference** object and set its **ApplicationId** to the name of the application in the Batch account (for example, "MyApp") and its **Version** to the package version.
+If you don't set **Version**, the default version of the application is used.
+
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]
 Parameter Sets: (All)

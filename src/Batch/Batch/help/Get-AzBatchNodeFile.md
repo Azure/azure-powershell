@@ -53,7 +53,8 @@ Get-AzBatchNodeFile [[-ComputeNode] <PSComputeNode>] [-Filter <String>] [-MaxCou
 ## DESCRIPTION
 The **Get-AzBatchNodeFile** cmdlet gets the properties of the Azure Batch node files of a task or compute node.
 To narrow your results, you can specify an Open Data Protocol (OData) filter.
-If you specify a task, but not a filter, this cmdlet returns properties for all node files for that task.
+To get the properties of all node files of a task, pipe the task from Get-AzBatchTask (see Example 3).
+If you specify the task with the *JobId* and *TaskId* parameters, also specify the *Path*, *Filter* or *Recursive* parameter: with only *JobId* and *TaskId*, PowerShell can't choose a parameter set.
 If you specify a compute node, but not a filter, this cmdlet returns properties for all node files for that compute node.
 
 ## EXAMPLES
@@ -90,7 +91,26 @@ False       StdOut.txt  Microsoft.Azure.Commands.Batch.Models.PSFile... https://
 
 This command gets the properties of the node files whose names start with st and are associated with task that has the ID Task26 under job that has the ID Job-00002.
 
-### Example 3: Recursively get the properties of node files associated with a task
+### Example 3: Get the properties of all node files of a task
+```powershell
+Get-AzBatchTask -JobId "Job-00002" -Id "Task26" -BatchContext $Context | Get-AzBatchNodeFile -BatchContext $Context
+```
+
+```output
+IsDirectory Name             Properties                                      Url
+
+----------- ----             ----------                                      ---
+
+False       ProcessEnv.cmd   Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+False       StdErr.txt       Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+False       StdOut.txt       Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
+True        wd                                                               https://cmdletexample.westus.Batch.contoso...
+```
+
+This command gets the properties of the node files in the folder of the task that has the ID Task26 in the job that has the ID Job-00002.
+It doesn't list the files inside subfolders such as wd; to get those, specify the *Recursive* parameter (see Example 4).
+
+### Example 4: Recursively get the properties of node files associated with a task
 ```powershell
 Get-AzBatchTask "Job-00003" "Task31" -BatchContext $Context | Get-AzBatchNodeFile -Recursive -BatchContext $Context
 ```
@@ -111,7 +131,7 @@ This command gets the properties of all files associated with the task that has 
 This command specifies the *Recursive* parameter.
 Therefore, the cmdlet performs a recursive file search is performed, and returns the wd\newFile.txt node file.
 
-### Example 4: Get a single file from a compute node
+### Example 5: Get a single file from a compute node
 ```powershell
 Get-AzBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Path "Startup\StdOut.txt" -BatchContext $Context
 ```
@@ -124,7 +144,7 @@ False       startup\stdout.txt      Microsoft.Azure.Commands.Batch.Models.PSFile
 
 This command gets the file that is named Startup\StdOut.txt from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool22.
 
-### Example 5: Get all files under a folder from a compute node
+### Example 6: Get all files under a folder from a compute node
 ```powershell
 Get-AzBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Filter "startswith(name,'startup')" -Recursive -BatchContext $Context
 ```
@@ -142,7 +162,7 @@ True        startup\wd                                                          
 This command gets all the files under the startup folder from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool22.
 This cmdlet specifies the *Recursive* parameter.
 
-### Example 6: Get files from the root folder of a compute node
+### Example 7: Get files from the root folder of a compute node
 ```powershell
 Get-AzBatchComputeNode "Pool22" -Id "ComputeNode01" -BatchContext $Context | Get-AzBatchNodeFile -BatchContext $Context
 ```
