@@ -15,8 +15,30 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHorizonDbCluster'))
 }
 
 Describe 'New-AzHorizonDbCluster' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $resourceGroupName = $env.clusterResourceGroup
+        $clusterName = $env.clusterName
+
+        if ($TestMode -ne 'playback') {
+            $null = New-AzResourceGroup -Name $resourceGroupName -Location $env.location -ErrorAction Stop
+        }
+
+        try {
+            $cluster = New-AzHorizonDbCluster -ResourceGroupName $resourceGroupName -Name $clusterName -SubscriptionId $env.SubscriptionId -Location $env.location -PostgreSqlVersion '17' -BackupGeoRedundancy 'Disabled' -NetworkPublicAccess 'Disabled' -ErrorAction Stop
+
+            $cluster.Name | Should -Be $clusterName
+            $cluster.ResourceGroupName | Should -Be $resourceGroupName
+            $cluster.Location | Should -Be 'indiasouthcentral'
+            $cluster.PostgreSqlVersion | Should -Be '17'
+            $cluster.BackupGeoRedundancy | Should -Be 'Disabled'
+            $cluster.NetworkPublicAccess | Should -Be 'Disabled'
+            $cluster.ProvisioningState | Should -Be 'Succeeded'
+        }
+        finally {
+            if ($TestMode -ne 'playback') {
+                $null = Remove-AzResourceGroup -Name $resourceGroupName -Confirm:$false -ErrorAction Stop
+            }
+        }
     }
 
     It 'CreateViaJsonFilePath' -skip {
