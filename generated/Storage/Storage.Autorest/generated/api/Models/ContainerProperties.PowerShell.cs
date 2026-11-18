@@ -88,6 +88,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).ImmutableStorageWithVersioning = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutableStorageWithVersioning) content.GetValueForProperty("ImmutableStorageWithVersioning",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).ImmutableStorageWithVersioning, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ImmutableStorageWithVersioningTypeConverter.ConvertFrom);
             }
+            if (content.Contains("BlobAccessPointConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnection) content.GetValueForProperty("BlobAccessPointConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobAccessPointConfigurationConnectionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Version"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).Version, global::System.Convert.ToString);
@@ -191,6 +195,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ImmutableStorageWithVersioningEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).ImmutableStorageWithVersioningEnabled = (bool?) content.GetValueForProperty("ImmutableStorageWithVersioningEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).ImmutableStorageWithVersioningEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("BlobAccessPointConfigurationBlobAccessPointConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfigurationBlobAccessPointConfigurationName = (string) content.GetValueForProperty("BlobAccessPointConfigurationBlobAccessPointConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfigurationBlobAccessPointConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId = (string) content.GetValueForProperty("BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId, global::System.Convert.ToString);
             }
             if (content.Contains("ImmutabilityPeriodSinceCreationInDay"))
             {
@@ -241,6 +253,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).ImmutableStorageWithVersioning = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutableStorageWithVersioning) content.GetValueForProperty("ImmutableStorageWithVersioning",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).ImmutableStorageWithVersioning, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ImmutableStorageWithVersioningTypeConverter.ConvertFrom);
             }
+            if (content.Contains("BlobAccessPointConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnection) content.GetValueForProperty("BlobAccessPointConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobAccessPointConfigurationConnectionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Version"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).Version, global::System.Convert.ToString);
@@ -344,6 +360,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ImmutableStorageWithVersioningEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).ImmutableStorageWithVersioningEnabled = (bool?) content.GetValueForProperty("ImmutableStorageWithVersioningEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).ImmutableStorageWithVersioningEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("BlobAccessPointConfigurationBlobAccessPointConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfigurationBlobAccessPointConfigurationName = (string) content.GetValueForProperty("BlobAccessPointConfigurationBlobAccessPointConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfigurationBlobAccessPointConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId = (string) content.GetValueForProperty("BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal)this).BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId, global::System.Convert.ToString);
             }
             if (content.Contains("ImmutabilityPeriodSinceCreationInDay"))
             {

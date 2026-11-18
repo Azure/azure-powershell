@@ -91,6 +91,17 @@ PostPlannedFailoverRedundancy : Standard_GRS
 
 This command gets a Storage account with its geo-replication stats, and shows the geo-replication stats.
 
+### Example 6: Read the IPv6 endpoint publishing preference
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "mystorageaccount"
+$account.DualStackEndpointPreference.PublishIpv6Endpoint
+$account.PrimaryEndpoints.Ipv6Endpoints
+```
+
+Reads the IPv6 endpoint publishing preference returned by the service.
+The preference is also available on accounts returned when listing a resource group or subscription.
+When IPv6 endpoint publishing is enabled, PrimaryEndpoints.Ipv6Endpoints contains the published endpoint URLs.
+
 ## PARAMETERS
 
 ### -AsJob

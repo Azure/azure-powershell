@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Fixed `Set-AzBatchAccount` resetting account settings it doesn't change, such as public network access, allowed authentication modes and the auto-storage account. It now uses the update operation.
+* Started moving Az.Batch from `Microsoft.Azure.Batch` (Track 1) to `Azure.Compute.Batch` (Track 2). No cmdlet uses the new SDK yet.
+    - Added `Azure.Compute.Batch` 1.0.0 as a dependency.
 
 ## Version 4.1.1
 * Fixed module load conflict by aligning `Microsoft.ApplicationInsights` to the common 2.18.0 dependency version, resolving "Assembly with same name is already loaded" error.

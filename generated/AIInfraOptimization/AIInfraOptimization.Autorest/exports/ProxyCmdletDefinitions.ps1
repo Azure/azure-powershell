@@ -141,7 +141,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Category('Body')]
     [System.Int32]
     # The maximum number of generated output tokens per inference request.
-    # Must be supplied together with PromptTokenCount, and the two must total from 1 through 131072.
+    # Must be supplied together with PromptTokenCount, and the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
     ${MaxOutputTokenCount},
 
     [Parameter(ParameterSetName='RecommendExpanded')]
@@ -198,7 +198,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Category('Body')]
     [System.Int32]
     # The number of prompt, or input, tokens per inference request.
-    # Must be supplied together with MaxOutputTokenCount, and the two must total from 1 through 131072.
+    # Must be supplied together with MaxOutputTokenCount, and the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
     ${PromptTokenCount},
 
     [Parameter(ParameterSetName='RecommendExpanded')]

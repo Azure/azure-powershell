@@ -159,14 +159,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
 
         /// <summary>
         /// The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and
-        /// the two must total from 1 through 131072.
+        /// the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Origin(Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.PropertyOrigin.Inlined)]
         public int? TokenBudgetMaxOutputToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models.IRecommendVMSkuWorkloadInternal)Workload).TokenBudgetMaxOutputToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models.IRecommendVMSkuWorkloadInternal)Workload).TokenBudgetMaxOutputToken = value ?? default(int); }
 
         /// <summary>
         /// The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the
-        /// two must total from 1 through 131072.
+        /// two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Origin(Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.PropertyOrigin.Inlined)]
         public int? TokenBudgetPromptToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models.IRecommendVMSkuWorkloadInternal)Workload).TokenBudgetPromptToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models.IRecommendVMSkuWorkloadInternal)Workload).TokenBudgetPromptToken = value ?? default(int); }
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
         System.Collections.Generic.List<string> TargetVMSize { get; set; }
         /// <summary>
         /// The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and
-        /// the two must total from 1 through 131072.
+        /// the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Runtime.Info(
         Required = false,
@@ -411,13 +411,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and the two must total from 1 through 131072.",
+        Description = @"The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and the two must total from 1 through 2147483647 without exceeding the model's maximum context length.",
         SerializedName = @"maxOutputTokens",
         PossibleTypes = new [] { typeof(int) })]
         int? TokenBudgetMaxOutputToken { get; set; }
         /// <summary>
         /// The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the
-        /// two must total from 1 through 131072.
+        /// two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Runtime.Info(
         Required = false,
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the two must total from 1 through 131072.",
+        Description = @"The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the two must total from 1 through 2147483647 without exceeding the model's maximum context length.",
         SerializedName = @"promptTokens",
         PossibleTypes = new [] { typeof(int) })]
         int? TokenBudgetPromptToken { get; set; }
@@ -523,12 +523,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AIInfraOptimization.Models
         System.Collections.Generic.List<string> TargetVMSize { get; set; }
         /// <summary>
         /// The maximum number of generated output tokens per inference request. Must be supplied together with `promptTokens`, and
-        /// the two must total from 1 through 131072.
+        /// the two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         int? TokenBudgetMaxOutputToken { get; set; }
         /// <summary>
         /// The number of prompt, or input, tokens per inference request. Must be supplied together with `maxOutputTokens`, and the
-        /// two must total from 1 through 131072.
+        /// two must total from 1 through 2147483647 without exceeding the model's maximum context length.
         /// </summary>
         int? TokenBudgetPromptToken { get; set; }
         /// <summary>Inference request concurrency and token shape assumptions.</summary>

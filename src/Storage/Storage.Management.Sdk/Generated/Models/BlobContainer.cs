@@ -111,7 +111,13 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="enableNfsV3AllSquash">Enable NFSv3 all squash on blob container.
         /// </param>
-        public BlobContainer(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), string version = default(string), System.DateTime? deletedTime = default(System.DateTime?), PublicAccess? publicAccess = default(PublicAccess?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), bool? deleted = default(bool?), int? remainingRetentionDays = default(int?), string defaultEncryptionScope = default(string), bool? denyEncryptionScopeOverride = default(bool?), System.DateTime? lastModifiedTime = default(System.DateTime?), ImmutabilityPolicyProperties immutabilityPolicy = default(ImmutabilityPolicyProperties), LegalHoldProperties legalHold = default(LegalHoldProperties), bool? hasLegalHold = default(bool?), bool? hasImmutabilityPolicy = default(bool?), ImmutableStorageWithVersioning immutableStorageWithVersioning = default(ImmutableStorageWithVersioning), bool? enableNfsV3RootSquash = default(bool?), bool? enableNfsV3AllSquash = default(bool?))
+
+        /// <param name="blobAccessPointConfiguration">Configuration that attaches this container to a Blob Access Point. If set,
+        /// the container is a read-only virtual container whose read/list requests are
+        /// forwarded to the connected backing data store. Cannot be changed, removed,
+        /// or added after container creation.
+        /// </param>
+        public BlobContainer(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), string version = default(string), System.DateTime? deletedTime = default(System.DateTime?), PublicAccess? publicAccess = default(PublicAccess?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), bool? deleted = default(bool?), int? remainingRetentionDays = default(int?), string defaultEncryptionScope = default(string), bool? denyEncryptionScopeOverride = default(bool?), System.DateTime? lastModifiedTime = default(System.DateTime?), ImmutabilityPolicyProperties immutabilityPolicy = default(ImmutabilityPolicyProperties), LegalHoldProperties legalHold = default(LegalHoldProperties), bool? hasLegalHold = default(bool?), bool? hasImmutabilityPolicy = default(bool?), ImmutableStorageWithVersioning immutableStorageWithVersioning = default(ImmutableStorageWithVersioning), bool? enableNfsV3RootSquash = default(bool?), bool? enableNfsV3AllSquash = default(bool?), BlobAccessPointConfigurationConnection blobAccessPointConfiguration = default(BlobAccessPointConfigurationConnection))
 
         : base(id, name, type, systemData)
         {
@@ -135,6 +141,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.ImmutableStorageWithVersioning = immutableStorageWithVersioning;
             this.EnableNfsV3RootSquash = enableNfsV3RootSquash;
             this.EnableNfsV3AllSquash = enableNfsV3AllSquash;
+            this.BlobAccessPointConfiguration = blobAccessPointConfiguration;
             CustomInit();
         }
 
@@ -274,5 +281,14 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableNfsV3AllSquash")]
         public bool? EnableNfsV3AllSquash {get; set; }
+
+        /// <summary>
+        /// Gets or sets configuration that attaches this container to a Blob Access
+        /// Point. If set, the container is a read-only virtual container whose
+        /// read/list requests are forwarded to the connected backing data store.
+        /// Cannot be changed, removed, or added after container creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.blobAccessPointConfiguration")]
+        public BlobAccessPointConfigurationConnection BlobAccessPointConfiguration {get; set; }
     }
 }
