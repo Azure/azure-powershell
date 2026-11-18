@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Compute.Batch" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.Batch" Version="16.3.1" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
   </ItemGroup>

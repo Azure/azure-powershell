@@ -1,0 +1,105 @@
+{
+  "resourceType": "cloudAccounts/protectionGroups/protectedItems",
+  "apiVersion": "2026-09-30",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.commvault"
+  },
+  "commands": [
+    {
+      "name": "Get-AzCommvaultProtectedItemRestorePoint",
+      "description": "Gets the restore points that are available for a protected item.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/protectionGroups/{protectionGroupName}/protectedItems/{protectedItemName}/getRestorePoints",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/get-azcommvaultprotecteditemrestorepoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-ProtectedItemName <String>",
+              "-ProtectionGroupName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the restore points that are available for a protected item.",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-ProtectedItemName",
+              "value": "[Path.protectedItemName]"
+            },
+            {
+              "name": "-ProtectionGroupName",
+              "value": "[Path.protectionGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzCommvaultProtectedItem",
+      "description": "Get a ProtectedItem",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/protectionGroups/{protectionGroupName}/protectedItems/{protectedItemName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/get-azcommvaultprotecteditem"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-Name <String>",
+              "-ProtectionGroupName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ProtectedItem",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.protectedItemName]"
+            },
+            {
+              "name": "-ProtectionGroupName",
+              "value": "[Path.protectionGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

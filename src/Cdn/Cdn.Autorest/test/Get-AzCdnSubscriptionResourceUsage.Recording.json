@@ -1,17 +1,17 @@
 {
-  "Get-AzCdnSubscriptionResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2026-04-01-preview+1": {
+  "Get-AzCdnSubscriptionResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2026-10-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "181" ],
-        "x-ms-client-request-id": [ "043b2a69-00d2-4723-9888-6585e32e081e" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "cfa08d35-2e46-430a-a510-d05767af6096" ],
         "CommandName": [ "Get-AzCdnSubscriptionResourceUsage" ],
         "FullCommandName": [ "Get-AzCdnSubscriptionResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ],
+        "User-Agent": [ "AzurePowershell/v16.5.0", "PSVersion/v7.6.9", "Az.Cdn/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,17 +23,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "c2b3fa3e-3e50-440f-812d-30aded56efd8" ],
-        "x-ms-client-request-id": [ "043b2a69-00d2-4723-9888-6585e32e081e" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiaeast/83302c8a-ea92-4000-af09-192be82c7efb" ],
+        "x-ms-request-id": [ "350492fd-f6ee-48e0-9d14-6a56e8ecf694" ],
+        "x-ms-client-request-id": [ "cfa08d35-2e46-430a-a510-d05767af6096" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8871dc6f-c573-4e06-8461-b5924fcedf31/southeastasia/1ea748c5-6fe7-4aea-a5e8-1ceb58ae3a7c" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "f93ef29f-aa3b-4854-ae90-1c36a48d58e8" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260623T032431Z:f93ef29f-aa3b-4854-ae90-1c36a48d58e8" ],
+        "x-ms-correlation-request-id": [ "039b6cec-4687-4cb9-b627-1b02d7fa0f8a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20261104T075309Z:039b6cec-4687-4cb9-b627-1b02d7fa0f8a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 86EBA8C3EF964EB0A08BC0D1AA885206 Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:24:30Z" ],
-        "Date": [ "Tue, 23 Jun 2026 03:24:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 902067BA95AE4776A55CC07E1B20C1B4 Ref B: SG2AA1070301029 Ref C: 2026-11-04T07:53:08Z" ],
+        "Date": [ "Wed, 04 Nov 2026 07:53:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "158" ],

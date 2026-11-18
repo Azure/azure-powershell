@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Azure Container Registry Name."),]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern(ContainerRegistryDataPlaneClient.RegistryNamePattern)]
         public string RegistryName { get; set; }
 
         protected override void InitDebuggingFilter()

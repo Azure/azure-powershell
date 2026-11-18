@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
+    [CmdletDeprecationWithVersion("18.0.0", "5.0.0", ChangeDescription = "The Batch service retired the pool usage metrics API on 30 September 2024, so this cmdlet is being deprecated without a replacement. See https://github.com/Azure/Batch/issues/140.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolUsageMetric"), OutputType(typeof(PSPoolUsageMetrics))]
     [Alias("Get-AzBatchPoolUsageMetrics")]
     public class GetBatchPoolUsageMetrics : BatchObjectModelCmdletBase

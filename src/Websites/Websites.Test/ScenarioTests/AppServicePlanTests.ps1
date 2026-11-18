@@ -159,6 +159,46 @@ function Test-CreateNewAppServicePlanLinux
 
 <#
 .SYNOPSIS
+Tests asynchronous scaling when creating and updating an App Service plan.
+#>
+function Test-AppServicePlanAsyncScaling
+{
+	$rgname = Get-ResourceGroupName
+	$location = "canadacentral"
+	$parameters = @{
+		ResourceGroupName = $rgname
+		Name = Get-WebHostPlanName
+		ErrorAction = "Stop"
+	}
+
+	New-AzResourceGroup -Name $rgname -Location $location -ErrorAction Stop | Out-Null
+	try
+	{
+		$plan = New-AzAppServicePlan @parameters -Location $location -Tier Standard -WorkerSize Small -AsyncScalingEnabled $true
+		Assert-AreEqual $true $plan.AsyncScalingEnabled
+
+		$plan = Set-AzAppServicePlan @parameters -NumberofWorkers 2
+		Assert-AreEqual $true $plan.AsyncScalingEnabled
+		Assert-AreEqual 2 $plan.Sku.Capacity
+
+		$plan = Set-AzAppServicePlan @parameters -AsyncScalingEnabled $false
+		Assert-AreEqual $false $plan.AsyncScalingEnabled
+
+		$plan = $plan | Set-AzAppServicePlan -AsyncScalingEnabled $true -ErrorAction Stop
+		Assert-AreEqual $true $plan.AsyncScalingEnabled
+
+		$plan = $plan | Set-AzAppServicePlan -ErrorAction Stop
+		Assert-AreEqual $true $plan.AsyncScalingEnabled
+		Assert-AreEqual $true (Get-AzAppServicePlan @parameters).AsyncScalingEnabled
+	}
+	finally
+	{
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
 Tests creating and updating a Managed Instance App Service plan.
 #>
 function Test-AppServicePlanManagedInstance

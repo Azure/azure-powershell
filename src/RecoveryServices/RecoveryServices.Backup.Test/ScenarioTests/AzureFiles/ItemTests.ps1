@@ -740,8 +740,10 @@ function Test-AzureFSGetItemSecondaryRegion
 		-BackupManagementType AzureStorage `
 		-WorkloadType AzureFiles `
 		-FriendlyName $fileShareFriendlyName `
+		-DeleteState NotDeleted `
 		-UseSecondaryRegion
 	Assert-NotNull $secItem
+	Assert-True { @($secItem).Count -eq 1 }
 	Assert-NotNull $secItem.ExtendedInfo
 	# A protected share with backups must report at least one recovery point in its ExtendedInfo.
 	Assert-True { $secItem.ExtendedInfo.RecoveryPointCount -gt 0 }
@@ -766,8 +768,10 @@ function Test-AzureFSGetRPsSecondaryRegion
 		-BackupManagementType AzureStorage `
 		-WorkloadType AzureFiles `
 		-FriendlyName $fileShareFriendlyName `
+		-DeleteState NotDeleted `
 		-UseSecondaryRegion
 	Assert-NotNull $item
+	Assert-True { @($item).Count -eq 1 }
 
 	# Anchor the query window on the item's LastBackupTime (a value that comes from the recorded item
 	# response). This keeps the request URL deterministic for playback, yet on a live re-record it tracks
@@ -803,8 +807,10 @@ function Test-AzureFSRestoreToSecondaryRegion
 		-BackupManagementType AzureStorage `
 		-WorkloadType AzureFiles `
 		-FriendlyName $fileShareFriendlyName `
+		-DeleteState NotDeleted `
 		-UseSecondaryRegion
 	Assert-NotNull $item
+	Assert-True { @($item).Count -eq 1 }
 
 	# Anchor the query window on the item's LastBackupTime (a value that comes from the recorded item
 	# response). This keeps the request URL deterministic for playback, yet on a live re-record it tracks
@@ -930,12 +936,14 @@ function Invoke-AzureFSMsiBackupAndRestore
 		[string] $UserAssignedIdentityArmUrl
 	)
 
+	# Live identities need Storage File Backup Contributor and Storage File Restore Contributor
+	# on this account; generic file-data contributor roles do not satisfy service validation.
 	$resourceGroupName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_RESOURCE_GROUP" `
 		-PlaybackValue "afs-msi-test-rg"
 	$vaultName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_VAULT_NAME" `
-		-PlaybackValue "afs-msi-test-vault"
+		-PlaybackValue "afs-msi-test-rsv"
 	$vault = Get-AzRecoveryServicesVault `
 		-ResourceGroupName $resourceGroupName `
 		-Name $vaultName
@@ -962,8 +970,9 @@ function Invoke-AzureFSMsiBackupAndRestore
 		-Job $backupJob `
 		-VaultId $vault.ID
 
-	$recoveryPointStartDate = $backupJob.StartTime.ToUniversalTime().AddMinutes(-1)
-	$recoveryPointEndDate = $backupJob.EndTime.ToUniversalTime().AddMinutes(1)
+	# Job and storage snapshot timestamps can differ.
+	$recoveryPointStartDate = $backupJob.StartTime.ToUniversalTime().AddHours(-1)
+	$recoveryPointEndDate = $backupJob.EndTime.ToUniversalTime().AddHours(1)
 	$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint `
 		-VaultId $vault.ID `
 		-Item $item `
@@ -1002,13 +1011,13 @@ function Test-AzureFSUamiBackupAndRestore
 {
 	$storageAccountName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_UAMI_STORAGE_ACCOUNT" `
-		-PlaybackValue "afsmsiuamisa"
+		-PlaybackValue "afsmsitestsa1"
 	$fileShareName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_UAMI_FILE_SHARE" `
-		-PlaybackValue "afsmsiuamishare"
+		-PlaybackValue "test-share-ps-uami-1023"
 	$uamiId = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_UAMI_ID" `
-		-PlaybackValue "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-test-uami"
+		-PlaybackValue "/subscriptions/62e529e9-80b4-4271-a2a5-e9028b4530f0/resourcegroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-uami-primary"
 
 	Invoke-AzureFSMsiBackupAndRestore `
 		-StorageAccountName $storageAccountName `
@@ -1022,10 +1031,10 @@ function Test-AzureFSSamiBackupAndRestore
 {
 	$storageAccountName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_SAMI_STORAGE_ACCOUNT" `
-		-PlaybackValue "afsmsisamisa"
+		-PlaybackValue "afsmsitestsa2"
 	$fileShareName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_SAMI_FILE_SHARE" `
-		-PlaybackValue "afsmsisamishare"
+		-PlaybackValue "test-share-ps-sami-1023"
 
 	Invoke-AzureFSMsiBackupAndRestore `
 		-StorageAccountName $storageAccountName `
@@ -1041,25 +1050,25 @@ function Test-AzureFSManagedIdentityEnableProtection
 		-PlaybackValue "afs-msi-test-rg"
 	$vaultName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_VAULT_NAME" `
-		-PlaybackValue "afs-msi-test-vault"
+		-PlaybackValue "afs-msi-test-rsv"
 	$policyName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_POLICY_NAME" `
-		-PlaybackValue "afs-msi-test-policy"
+		-PlaybackValue "AfsTestPolicy"
 	$uamiStorageAccountName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_UAMI_STORAGE_ACCOUNT" `
-		-PlaybackValue "afsmsiuamisa"
+		-PlaybackValue "afsmsitestsa1"
 	$uamiFileShareName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_UAMI_FILE_SHARE" `
-		-PlaybackValue "afsmsiuamishare"
+		-PlaybackValue "test-share-ps-uami-1023"
 	$uamiId = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_UAMI_ID" `
-		-PlaybackValue "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-test-uami"
+		-PlaybackValue "/subscriptions/62e529e9-80b4-4271-a2a5-e9028b4530f0/resourcegroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-uami-primary"
 	$samiStorageAccountName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_SAMI_STORAGE_ACCOUNT" `
-		-PlaybackValue "afsmsisamisa"
+		-PlaybackValue "afsmsitestsa2"
 	$samiFileShareName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_SAMI_FILE_SHARE" `
-		-PlaybackValue "afsmsisamishare"
+		-PlaybackValue "test-share-ps-sami-1023"
 
 	$vault = Get-AzRecoveryServicesVault `
 		-ResourceGroupName $resourceGroupName `

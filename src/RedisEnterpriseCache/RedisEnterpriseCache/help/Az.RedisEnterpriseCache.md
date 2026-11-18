@@ -26,6 +26,9 @@ Gets information about a database in a Redis Enterprise cluster.
 ### [Get-AzRedisEnterpriseCacheKey](Get-AzRedisEnterpriseCacheKey.md)
 Retrieves all access keys for a Redis Enterprise database.
 
+### [Get-AzRedisEnterpriseCacheMigration](Get-AzRedisEnterpriseCacheMigration.md)
+Gets information about a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
+
 ### [Get-AzRedisEnterpriseCacheOperationStatus](Get-AzRedisEnterpriseCacheOperationStatus.md)
 Gets the status of operation.
 
@@ -45,11 +48,17 @@ Forcibly recreates an existing database on the specified cluster, and rejoins it
 ### [Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink](Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink.md)
 Forcibly removes the link to the specified database resource.
 
+### [Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint](Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint.md)
+Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migrated from Azure Cache for Redis Enterprise, removing the source cache endpoint that was redirected to this cluster during migration.
+
+### [Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint](Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint.md)
+Unlinks the migrated endpoint from an Azure Managed Redis cluster that was migrated from an Azure Cache for Redis Basic, Standard, or Premium cache, removing the source cache endpoint that was redirected to this cluster during migration.
+
 ### [New-AzRedisEnterpriseCache](New-AzRedisEnterpriseCache.md)
 Creates a Redis Enterprise cache.
 
 ### [New-AzRedisEnterpriseCacheAccessPolicyAssignment](New-AzRedisEnterpriseCacheAccessPolicyAssignment.md)
-Creates or updates a particular access policy assignment for a database
+Create a particular access policy assignment for a database
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.
@@ -66,12 +75,20 @@ Deletes a single access policy assignment.
 ### [Remove-AzRedisEnterpriseCacheDatabase](Remove-AzRedisEnterpriseCacheDatabase.md)
 Deletes a single database in a Redis Enterprise cache.
 
+### [Start-AzRedisEnterpriseCacheMigration](Start-AzRedisEnterpriseCacheMigration.md)
+Starts a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
+
+### [Test-AzRedisEnterpriseCacheMigration](Test-AzRedisEnterpriseCacheMigration.md)
+Validates whether an Azure Cache for Redis Basic, Standard, or Premium cache can be migrated to Azure Managed Redis.
+
+### [Undo-AzRedisEnterpriseCacheMigration](Undo-AzRedisEnterpriseCacheMigration.md)
+Cancels or rolls back a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis.
+
 ### [Update-AzRedisEnterpriseCache](Update-AzRedisEnterpriseCache.md)
-Updates an existing Redis Enterprise cluster
+Updates an existing Redis Enterprise cluster.
 
 ### [Update-AzRedisEnterpriseCacheDatabase](Update-AzRedisEnterpriseCacheDatabase.md)
 Updates an existing Redis Enterprise database
 
 ### [Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion](Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion.md)
-Updates the database Redis version to the latest available.
-
+Upgrades the database Redis version to the latest available.

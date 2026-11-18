@@ -19,9 +19,12 @@
 -->
 ## Upcoming Release
 * Upgraded API version to 2026-07-15
-* Added new cmdlets `Get-AzConnectedExtensionPublisher`, `Get-AzConnectedExtensionType` and `Get-AzConnectedExtensionMetadataV2`
-* Changed the type of `RunAsPassword` on run command cmdlets from `String` to `SecureString`
-* Removed `OSType` and `MetadataName` properties from identity model, and `SystemData*` properties from private link scope model, due to the API version upgrade
+
+## Version 1.2.0
+* Updated to API 2026-06-16-preview.
+* Added `Get-AzConnectedExtensionPublisher`, `Get-AzConnectedExtensionType` and `Get-AzConnectedExtensionMetadataV2`.
+* Changed run command `RunAsPassword` from `String` to `SecureString`.
+* Removed identity properties `OSType` and `MetadataName`, and private link scope properties `SystemData*`.
 
 ## Version 1.1.1
 * Upgraded nuget package to signed packages.

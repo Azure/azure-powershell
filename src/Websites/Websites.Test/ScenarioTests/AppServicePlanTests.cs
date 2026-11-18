@@ -54,6 +54,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SetAppServicePlan");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAppServicePlanAsyncScaling()
+        {
+            TestRunner.RunTestScript("Test-AppServicePlanAsyncScaling");
+        }
+
         [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAppServicePlan()

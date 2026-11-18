@@ -5823,6 +5823,9 @@ param(
     [string] $ComputerName
     )
 
+    # Local calls keep this null so helper commands run in-process without a second hop.
+    $clusterNodeSession = $null
+
     try 
     {
         if ([string]::IsNullOrEmpty($ComputerName)) 
@@ -5849,10 +5852,6 @@ param(
                 $clusterNodeSession = New-PSSession -ComputerName $ComputerName -Credential $Credential
             }
         }
-        else 
-        {
-            $clusterNodeSession = New-PSSession -ComputerName localhost
-        }
 
         Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
@@ -5878,7 +5877,10 @@ param(
     }
     finally 
     {
-        Remove-PSSession $clusterNodeSession | Out-Null
+        if ($null -ne $clusterNodeSession)
+        {
+            Remove-PSSession $clusterNodeSession | Out-Null
+        }
     }
 }
 
@@ -6723,7 +6725,8 @@ param(
                 $IsManagementNode = $True
             }
 
-            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -Credential $Credential -ComputerName $ComputerName -IsManagementNode $IsManagementNode
+            # Avoid a localhost second hop for local calls while preserving explicit remote targeting.
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -Credential $Credential -ComputerName $ComputerName -IsManagementNode $IsManagementNode -newSession $IsManagementNode
 
             Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
@@ -7014,7 +7017,8 @@ param(
                 $IsManagementNode = $True
             }
 
-            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -Credential $Credential -ComputerName $ComputerName -IsManagementNode $IsManagementNode
+            # Avoid a localhost second hop for local calls while preserving explicit remote targeting.
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -Credential $Credential -ComputerName $ComputerName -IsManagementNode $IsManagementNode -newSession $IsManagementNode
 
             Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
@@ -8038,7 +8042,8 @@ function Assert-IsObservabilityStackPresent{
     [OutputType([Boolean])]
     param()
 
-    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    # Remote Support callers already run on the node, so reuse the current session.
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportObsStackPresent" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
     if ($Null -ne $clusterNodeSession)
     {

@@ -26,10 +26,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="sourceTierType">Source tier for the request
-        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;,
+        /// &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;</param>
 
         /// <param name="targetTierType">target tier for the request
-        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;,
+        /// &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;</param>
 
         /// <param name="containerName">Name of the protected item container
         /// </param>
@@ -42,7 +44,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="rehydrationPriority">Rehydration Priority
         /// Possible values include: &#39;Standard&#39;, &#39;High&#39;</param>
-        public FetchTieringCostInfoForRehydrationRequest(RecoveryPointTierType sourceTierType, RecoveryPointTierType targetTierType, string containerName, string protectedItemName, string recoveryPointId, string rehydrationPriority)
+        public FetchTieringCostInfoForRehydrationRequest(string sourceTierType, string targetTierType, string containerName, string protectedItemName, string recoveryPointId, string rehydrationPriority)
 
         : base(sourceTierType, targetTierType)
         {

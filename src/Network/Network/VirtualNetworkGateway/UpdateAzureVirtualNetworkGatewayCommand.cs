@@ -297,26 +297,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // For VPN VirtualNetworkGateway with P2SVpnClientConfiguration set, fetch Radius server secrets using new Post API and backfill before calling PUT.
-            if (this.VirtualNetworkGateway.VpnClientConfiguration != null && this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes != null && this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
-            {
-                var radiusAuthServers = (List<RadiusAuthServer>)this.VirtualNetworkGatewayClient.ListRadiusSecrets(VirtualNetworkGateway.ResourceGroupName, VirtualNetworkGateway.Name).Value;
-
-                if (radiusAuthServers != null && radiusAuthServers.Any())
-                {
-                    if (!string.IsNullOrWhiteSpace(this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress) && string.IsNullOrWhiteSpace(this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret))
-                    {
-                        this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress).RadiusServerSecret ?? "";
-                    }
-
-                    if (this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers != null && this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers.Any())
-                    {
-                        foreach (var radiusServer in this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServers)
-                        {
-                            radiusServer.RadiusServerSecret = radiusAuthServers.Find(radius => radius.RadiusServerAddress == radiusServer.RadiusServerAddress).RadiusServerSecret ?? "";
-                        }
-                    }
-                }
-            }
+            this.BackfillRadiusServerSecrets(this.VirtualNetworkGateway);
 
             if (this.EnableActiveActiveFeature.IsPresent && this.DisableActiveActiveFeature.IsPresent)
             {

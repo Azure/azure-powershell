@@ -89,9 +89,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </summary>
         public virtual IBackupEnginesOperations BackupEngines { get; private set; }
         /// <summary>
+        /// Gets the IRecoveryPointsOperations
+        /// </summary>
+        public virtual IRecoveryPointsOperations RecoveryPoints { get; private set; }
+        /// <summary>
         /// Gets the IProtectionContainerRefreshOperationResultsOperations
         /// </summary>
         public virtual IProtectionContainerRefreshOperationResultsOperations ProtectionContainerRefreshOperationResults { get; private set; }
+        /// <summary>
+        /// Gets the IProtectionContainerRefreshOperationStatusesOperations
+        /// </summary>
+        public virtual IProtectionContainerRefreshOperationStatusesOperations ProtectionContainerRefreshOperationStatuses { get; private set; }
         /// <summary>
         /// Gets the IProtectableContainersOperations
         /// </summary>
@@ -128,10 +136,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Gets the IProtectedItemOperationStatusesOperations
         /// </summary>
         public virtual IProtectedItemOperationStatusesOperations ProtectedItemOperationStatuses { get; private set; }
-        /// <summary>
-        /// Gets the IRecoveryPointsOperations
-        /// </summary>
-        public virtual IRecoveryPointsOperations RecoveryPoints { get; private set; }
         /// <summary>
         /// Gets the IItemLevelRecoveryConnectionsOperations
         /// </summary>
@@ -517,7 +521,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             this.DeletedProtectionContainers = new DeletedProtectionContainersOperations(this);
             this.BackupResourceEncryptionConfigs = new BackupResourceEncryptionConfigsOperations(this);
             this.BackupEngines = new BackupEnginesOperations(this);
+            this.RecoveryPoints = new RecoveryPointsOperations(this);
             this.ProtectionContainerRefreshOperationResults = new ProtectionContainerRefreshOperationResultsOperations(this);
+            this.ProtectionContainerRefreshOperationStatuses = new ProtectionContainerRefreshOperationStatusesOperations(this);
             this.ProtectableContainers = new ProtectableContainersOperations(this);
             this.ProtectionContainers = new ProtectionContainersOperations(this);
             this.BackupWorkloadItems = new BackupWorkloadItemsOperations(this);
@@ -527,7 +533,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             this.ConfigureSourceScan = new ConfigureSourceScanOperations(this);
             this.ProtectedItemOperationResults = new ProtectedItemOperationResultsOperations(this);
             this.ProtectedItemOperationStatuses = new ProtectedItemOperationStatusesOperations(this);
-            this.RecoveryPoints = new RecoveryPointsOperations(this);
             this.ItemLevelRecoveryConnections = new ItemLevelRecoveryConnectionsOperations(this);
             this.Restores = new RestoresOperations(this);
             this.RecoveryPointsRecommendedForMove = new RecoveryPointsRecommendedForMoveOperations(this);
@@ -564,7 +569,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             this.PrivateEndpointConnection = new PrivateEndpointConnectionOperations(this);
             this.PrivateEndpoint = new PrivateEndpointOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-08-01";
+            this.ApiVersion = "2026-10-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -601,6 +606,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BackupEngineBase>("backupEngineType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ProtectionIntent>("protectionIntentItemType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ProtectionIntent>("protectionIntentItemType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<RPExtendedInfo>("objectType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<RPExtendedInfo>("objectType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<OperationStatusExtendedInfo>("objectType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<OperationStatusExtendedInfo>("objectType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ProtectableContainer>("protectableContainerType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ProtectableContainer>("protectableContainerType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<WorkloadItem>("workloadItemType"));
@@ -609,8 +618,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ProtectedItem>("protectedItemType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BackupRequest>("objectType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BackupRequest>("objectType"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<OperationStatusExtendedInfo>("objectType"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<OperationStatusExtendedInfo>("objectType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<RecoveryPoint>("objectType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<RecoveryPoint>("objectType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ILRRequest>("objectType"));

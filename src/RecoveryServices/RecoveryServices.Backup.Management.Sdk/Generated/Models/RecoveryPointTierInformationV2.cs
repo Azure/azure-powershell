@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="type">Recovery point tier type.
-        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;,
+        /// &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;</param>
 
         /// <param name="status">Recovery point tier status.
         /// Possible values include: &#39;Invalid&#39;, &#39;Valid&#39;, &#39;Disabled&#39;, &#39;Deleted&#39;,
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="extendedInfo">Recovery point tier status.
         /// </param>
-        public RecoveryPointTierInformationV2(RecoveryPointTierType? type = default(RecoveryPointTierType?), string status = default(string), System.Collections.Generic.IDictionary<string, string> extendedInfo = default(System.Collections.Generic.IDictionary<string, string>))
+        public RecoveryPointTierInformationV2(string type = default(string), string status = default(string), System.Collections.Generic.IDictionary<string, string> extendedInfo = default(System.Collections.Generic.IDictionary<string, string>))
 
         : base(type, status, extendedInfo)
         {

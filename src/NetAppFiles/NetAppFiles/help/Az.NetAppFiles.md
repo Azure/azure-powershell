@@ -83,12 +83,6 @@ Gets details of an Azure NetApp Files (ANF) snapshot policy.
 ### [Get-AzNetAppFilesSnapshotPolicyVolumeList](Get-AzNetAppFilesSnapshotPolicyVolumeList.md)
 Get Volumes for Azure NetApp Files (ANF) Snapshot Policy
 
-### [Get-AzNetAppFilesSubvolume](Get-AzNetAppFilesSubvolume.md)
-Gets details of an Azure NetApp Files (ANF) subvolume.
-
-### [Get-AzNetAppFilesSubvolumeMetadata](Get-AzNetAppFilesSubvolumeMetadata.md)
-Gets metadata details of an Azure NetApp Files (ANF) subvolume.
-
 ### [Get-AzNetAppFilesUsage](Get-AzNetAppFilesUsage.md)
 Get usages
 
@@ -161,9 +155,6 @@ Creates a new Azure NetApp Files (ANF) snapshot.
 ### [New-AzNetAppFilesSnapshotPolicy](New-AzNetAppFilesSnapshotPolicy.md)
 Creates a new Azure NetApp Files (ANF) snapshot policy for an ANF account.
 
-### [New-AzNetAppFilesSubvolume](New-AzNetAppFilesSubvolume.md)
-Creates a new Azure NetApp Files (ANF) subvolume.
-
 ### [New-AzNetAppFilesVolume](New-AzNetAppFilesVolume.md)
 Creates a new Azure NetApp Files (ANF) volume.
 
@@ -206,9 +197,6 @@ Deletes an Azure NetApp Files (ANF) snapshot.
 
 ### [Remove-AzNetAppFilesSnapshotPolicy](Remove-AzNetAppFilesSnapshotPolicy.md)
 Deletes an Azure NetApp Files (ANF) snapshot policy.
-
-### [Remove-AzNetAppFilesSubvolume](Remove-AzNetAppFilesSubvolume.md)
-Deletes an Azure NetApp Files (ANF) subvolume.
 
 ### [Remove-AzNetAppFilesVolume](Remove-AzNetAppFilesVolume.md)
 Deletes an Azure NetApp Files (ANF) volume.
@@ -320,9 +308,6 @@ Updates an Azure NetApp Files (ANF) pool according to the optional modifiers pro
 
 ### [Update-AzNetAppFilesSnapshotPolicy](Update-AzNetAppFilesSnapshotPolicy.md)
 Updates an Azure NetApp Files (ANF) snapshot policy to the optional modifiers provided.
-
-### [Update-AzNetAppFilesSubvolume](Update-AzNetAppFilesSubvolume.md)
-Updates an Azure NetApp Files (ANF) subvolume according to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesVolume](Update-AzNetAppFilesVolume.md)
 Updates an Azure NetApp Files (ANF) volume according to the optional modifiers provided.
