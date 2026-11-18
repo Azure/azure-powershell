@@ -43,7 +43,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="appliesOn">Public IP name in case of Permanent Rule type &amp; Interface Name in case of
         /// Auto Expire Rule type
         /// </param>
-        public InboundSecurityRules(string name = default(string), string protocol = default(string), string sourceAddressPrefix = default(string), int? destinationPortRange = default(int?), System.Collections.Generic.IList<string> destinationPortRanges = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> appliesOn = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="loadBalancerConfiguration">Configuration of the Internet Ingress load-balancing rule for a managed
+        /// Network Virtual Appliance. Supported only when the enclosing ruleType is
+        /// Permanent; supplying this configuration for AutoExpire rules is rejected
+        /// with HTTP 400 Bad Request. When omitted on create or update, Default
+        /// distribution and a 5-minute idle timeout are used.
+        /// </param>
+        public InboundSecurityRules(string name = default(string), string protocol = default(string), string sourceAddressPrefix = default(string), int? destinationPortRange = default(int?), System.Collections.Generic.IList<string> destinationPortRanges = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> appliesOn = default(System.Collections.Generic.IList<string>), NetworkVirtualApplianceLoadBalancerConfiguration loadBalancerConfiguration = default(NetworkVirtualApplianceLoadBalancerConfiguration))
 
         {
             this.Name = name;
@@ -52,6 +59,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.DestinationPortRange = destinationPortRange;
             this.DestinationPortRanges = destinationPortRanges;
             this.AppliesOn = appliesOn;
+            this.LoadBalancerConfiguration = loadBalancerConfiguration;
             CustomInit();
         }
 
@@ -99,6 +107,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "appliesOn")]
         public System.Collections.Generic.IList<string> AppliesOn {get; set; }
+
+        /// <summary>
+        /// Gets or sets configuration of the Internet Ingress load-balancing rule for
+        /// a managed Network Virtual Appliance. Supported only when the enclosing
+        /// ruleType is Permanent; supplying this configuration for AutoExpire rules is
+        /// rejected with HTTP 400 Bad Request. When omitted on create or update,
+        /// Default distribution and a 5-minute idle timeout are used.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "loadBalancerConfiguration")]
+        public NetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -123,6 +141,10 @@ namespace Microsoft.Azure.Management.Network.Models
             }
 
 
+            if (this.LoadBalancerConfiguration != null)
+            {
+                this.LoadBalancerConfiguration.Validate();
+            }
         }
     }
 }

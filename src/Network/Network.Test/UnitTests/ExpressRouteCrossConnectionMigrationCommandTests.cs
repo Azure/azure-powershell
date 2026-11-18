@@ -256,7 +256,7 @@ namespace Commands.Network.Test.UnitTests
         private static void AssertRequest(Uri request, string operation)
         {
             Assert.Equal($"/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{ResourceName}/{operation}", request.AbsolutePath);
-            Assert.Equal("?api-version=2026-01-01", request.Query);
+            Assert.Equal("?api-version=2026-05-01", request.Query);
         }
 
         private void AssertHealthResult()
