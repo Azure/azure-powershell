@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 SetAzureAttestationPolicy.TextPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
             {
                 SendWriteAndValidate(name, resourceGroupName, endpoint =>
-                    CreateAdministrationClient(endpoint).SetPolicy(attestationType, userSpecifiedPolicy).Token);
+                    ReadSdkResponseToken(() => CreateAdministrationClient(endpoint).SetPolicy(attestationType, userSpecifiedPolicy)));
             }
             else if (SetAzureAttestationPolicy.JwtPolicyFormat.Equals(policyFormat, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             if (string.IsNullOrEmpty(policyJwt))
             {
                 SendWriteAndValidate(name, resourceGroupName, endpoint =>
-                    CreateAdministrationClient(endpoint).ResetPolicy(attestationType).Token);
+                    ReadSdkResponseToken(() => CreateAdministrationClient(endpoint).ResetPolicy(attestationType)));
             }
             else if (HasUnencodedPolicy(policyJwt.Trim()))
             {
@@ -401,6 +401,22 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         }
 
         /// <summary>
+        /// Calls an SDK method and returns the token from its response. The SDK fails with an unrelated exception,
+        /// such as a NullReferenceException, when the response has no valid token.
+        /// </summary>
+        private static AttestationToken ReadSdkResponseToken<T>(Func<AttestationResponse<T>> call) where T : class
+        {
+            try
+            {
+                return call().Token;
+            }
+            catch (Exception ex) when (!IsRequestFailure(ex))
+            {
+                throw new InvalidOperationException(Resources.MissingServiceToken, ex);
+            }
+        }
+
+        /// <summary>
         /// Sets a policy with the earlier API version, the same way earlier versions of this cmdlet did: the service
         /// prepares the policy update, the update token is validated, and the service then applies it.
         /// </summary>
@@ -541,17 +557,33 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         /// a different region during a single PowerShell session.  When this happens, we need to
         /// discard our cached URI for the attestation provider and re-fetch it.
         /// 
+        /// The call is retried only when the request itself failed. A failure after the service responded
+        /// successfully, such as a response that can't be read or a token that fails validation, is not retried,
+        /// because for a write the service has already applied the change.
+        /// 
         /// </summary>
         private T RefreshUriCacheAndRetryOnFailure<T>(string name, string resourceGroupName, Func<string, T> idempotentServiceCall, bool isDefaultProvider = false, string location = "")
         {
+            string cachedEndpoint = null;
             try
             {
-                return idempotentServiceCall(GetDataPlaneUri(name, resourceGroupName, isDefaultProvider, location, false));
+                cachedEndpoint = GetDataPlaneUri(name, resourceGroupName, isDefaultProvider, location, false);
             }
-            catch (Exception ex) when (!(ex is ServiceTokenValidationException))
+            catch (Exception)
             {
-                // Ignore this exception on purpose, since we'll retry below. A token that fails validation is not
-                // retried: the provider was reached and returned the token.
+                // Ignore this exception on purpose, since the provider's URI is looked up again below
+            }
+
+            if (cachedEndpoint != null)
+            {
+                try
+                {
+                    return idempotentServiceCall(cachedEndpoint);
+                }
+                catch (Exception ex) when (IsRequestFailure(ex))
+                {
+                    // Ignore this exception on purpose, since we'll retry below
+                }
             }
 
             try
@@ -562,6 +594,15 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             {
                 throw ToRestException(ex);
             }
+        }
+
+        /// <summary>
+        /// Whether a request failed without a successful response: the service returned an error status, or the
+        /// request couldn't be sent, which Azure.Core reports as an AggregateException after its own retries.
+        /// </summary>
+        private static bool IsRequestFailure(Exception exception)
+        {
+            return exception is RequestFailedException || exception is AggregateException;
         }
 
         #endregion

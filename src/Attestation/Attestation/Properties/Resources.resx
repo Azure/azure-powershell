@@ -493,7 +493,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>The signer token uses the &apos;maa-policyCertificate&apos; claim, which only an earlier version of the Azure Attestation API accepts. This claim is deprecated and support for it will be removed in a future release. Create the signer token with the &apos;policyCertificate&apos; claim instead.</value>
   </data>
   <data name="MissingServiceToken" xml:space="preserve">
-    <value>The attestation service response does not contain a token.</value>
+    <value>The attestation service response does not contain a valid token.</value>
   </data>
   <data name="UnencodedPolicyNotSupported" xml:space="preserve">
     <value>The policy in the &apos;AttestationPolicy&apos; claim of the policy token is not Base64Url encoded, which attestation type &apos;{0}&apos; does not support. Base64Url encode the policy and sign the token again.</value>

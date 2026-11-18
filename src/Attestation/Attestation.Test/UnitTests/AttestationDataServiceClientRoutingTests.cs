@@ -332,6 +332,22 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DoesNotResendWriteWhenResponseHasNoToken()
+        {
+            _service.ReturnWriteResponseWithoutToken = true;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            AssertWriteSentOnceWithoutToken(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceWithoutToken(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceWithoutToken(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceWithoutToken(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceWithoutToken(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add");
+            AssertWriteSentOnceWithoutToken(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportsServiceError()
         {
             _service.ErrorResponse = new JObject { ["error"] = new JObject { ["code"] = "PolicyParsingError", ["message"] = "Invalid policy was specified" } };
@@ -341,6 +357,9 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             Assert.Contains("400", exception.Message);
             Assert.Contains("PolicyParsingError", exception.Message);
             Assert.Contains("Invalid policy was specified", exception.Message);
+            // A failed request is retried once, with the provider's URI looked up again.
+            Assert.Equal(2, _service.ServiceRequests.Count);
+            Assert.All(_service.ServiceRequests, request => AssertRequest(request, "PUT", "/policies/TdxVm", CurrentApiVersion, null, "text/plain"));
         }
 
         private void AssertRejectedAfterOneRequest(Action call, string method, string path, string reason)
@@ -356,6 +375,13 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
             Assert.Contains("CertificatesUnavailable", exception.Message);
             Assert.Single(_service.Requests, r => r.Path == "/certs");
+        }
+
+        private void AssertWriteSentOnceWithoutToken(Action call, string method, string path)
+        {
+            var exception = AssertFailsAfterOneRequest<InvalidOperationException>(call, method, path);
+
+            Assert.Equal("The attestation service response does not contain a valid token.", exception.Message);
         }
 
         private TException AssertFailsAfterOneRequest<TException>(Action call, string method, string path) where TException : Exception
@@ -451,6 +477,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public bool FailCertificateRequests { get; set; }
 
             /// <summary>
+            /// Makes policy and signer writes succeed with a response that contains no token.
+            /// </summary>
+            public bool ReturnWriteResponseWithoutToken { get; set; }
+
+            /// <summary>
             /// Difference between the service's clock and the local clock.
             /// </summary>
             public TimeSpan ClockOffset { get; set; }
@@ -498,6 +529,13 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                 if (ErrorResponse != null)
                 {
                     return Json(ErrorResponse, HttpStatusCode.BadRequest);
+                }
+
+                var isCurrentApiWrite = recorded.Method != "GET" &&
+                    (recorded.Path.StartsWith("/policies/", StringComparison.Ordinal) || recorded.Path.StartsWith("/certificates:", StringComparison.Ordinal));
+                if (ReturnWriteResponseWithoutToken && isCurrentApiWrite)
+                {
+                    return Json(new JObject());
                 }
 
                 switch ($"{recorded.Method} {recorded.Path}")

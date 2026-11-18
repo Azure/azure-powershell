@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.Attestation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The attestation service response does not contain a token..
+        ///   Looks up a localized string similar to The attestation service response does not contain a valid token..
         /// </summary>
         internal static string MissingServiceToken {
             get {
