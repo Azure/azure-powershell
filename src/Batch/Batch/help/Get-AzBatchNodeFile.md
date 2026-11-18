@@ -53,7 +53,9 @@ Get-AzBatchNodeFile [[-ComputeNode] <PSComputeNode>] [-Filter <String>] [-MaxCou
 ## DESCRIPTION
 The **Get-AzBatchNodeFile** cmdlet gets the properties of the Azure Batch node files of a task or compute node.
 To narrow your results, you can specify an Open Data Protocol (OData) filter.
-To get the properties of all node files of a task, pipe the task from Get-AzBatchTask (see Example 3).
+To list the node files of a task, pipe the task from Get-AzBatchTask (see Example 3).
+This lists the files in the task's folder; to include its subfolders, also specify the *Recursive* parameter (see Example 4).
+The cmdlet returns at most 1,000 files unless you set the *MaxCount* parameter; 0 means no limit.
 If you specify the task with the *JobId* and *TaskId* parameters, also specify the *Path*, *Filter* or *Recursive* parameter: with only *JobId* and *TaskId*, PowerShell can't choose a parameter set.
 If you specify a compute node, but not a filter, this cmdlet returns properties for all node files for that compute node.
 
@@ -91,7 +93,7 @@ False       StdOut.txt  Microsoft.Azure.Commands.Batch.Models.PSFile... https://
 
 This command gets the properties of the node files whose names start with st and are associated with task that has the ID Task26 under job that has the ID Job-00002.
 
-### Example 3: Get the properties of all node files of a task
+### Example 3: Get the properties of the node files in a task's folder
 ```powershell
 Get-AzBatchTask -JobId "Job-00002" -Id "Task26" -BatchContext $Context | Get-AzBatchNodeFile -BatchContext $Context
 ```
@@ -108,7 +110,8 @@ True        wd                                                               htt
 ```
 
 This command gets the properties of the node files in the folder of the task that has the ID Task26 in the job that has the ID Job-00002.
-It doesn't list the files inside subfolders such as wd; to get those, specify the *Recursive* parameter (see Example 4).
+It doesn't list the files inside subfolders such as wd, and it returns at most 1,000 files.
+To get every file of the task, add the *Recursive* parameter and `-MaxCount 0` (see Example 4).
 
 ### Example 4: Recursively get the properties of node files associated with a task
 ```powershell

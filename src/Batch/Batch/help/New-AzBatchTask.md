@@ -150,7 +150,8 @@ Accept wildcard characters: False
 ### -ApplicationPackageReferences
 Specifies the application packages that the Batch service deploys to the compute node before it runs the task.
 For each package, create a **PSApplicationPackageReference** object and set its **ApplicationId** to the name of the application in the Batch account (for example, "MyApp") and its **Version** to the package version.
-If you don't set **Version**, the default version of the application is used.
+If you don't set **Version**, the application's default version is used; if the application has no default version, the task fails before it runs (a pre-processing error).
+To set a default version, use Set-AzBatchApplication with the *DefaultVersion* parameter.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]
