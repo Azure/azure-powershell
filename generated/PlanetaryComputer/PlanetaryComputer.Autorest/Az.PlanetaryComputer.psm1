@@ -1,4 +1,4 @@
-# region Generated 
+# region Generated
   # ----------------------------------------------------------------------------------
   # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
   $accountsName = 'Az.Accounts'
   $accountsModule = Get-Module -Name $accountsName
   if(-not $accountsModule) {
-    $localAccountsPath = Join-Path $PSScriptRoot 'generated\modules'
+    $localAccountsPath = Join-Path $PSScriptRoot 'generated/modules'
     if(Test-Path -Path $localAccountsPath) {
       $localAccounts = Get-ChildItem -Path $localAccountsPath -Recurse -Include 'Az.Accounts.psd1' | Select-Object -Last 1
       if($localAccounts) {

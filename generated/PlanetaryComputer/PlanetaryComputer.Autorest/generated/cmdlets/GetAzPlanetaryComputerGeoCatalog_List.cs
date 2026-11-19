@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalog))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Description(@"List GeoCatalog resources by subscription ID")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/geoCatalogs", ApiVersion = "2026-04-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/geoCatalogs", ApiVersion = "2026-10-01")]
     public partial class GetAzPlanetaryComputerGeoCatalog_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IContext

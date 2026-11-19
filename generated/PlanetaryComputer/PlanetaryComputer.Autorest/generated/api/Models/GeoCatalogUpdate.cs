@@ -14,22 +14,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
     {
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate _identity;
+        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate _identity;
 
         /// <summary>The managed service identity properties to update.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentityUpdate()); set => this._identity = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdate()); set => this._identity = value; }
 
         /// <summary>The type of managed identity assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateInternal)Identity).Type = value ?? null; }
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)Identity).Type = value ?? null; }
 
         /// <summary>The identities assigned to this resource by the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentityUpdate()); set { {_identity = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdate()); set { {_identity = value;} } }
+
+        /// <summary>Internal Acessors for Property</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogUpdateProperties()); set { {_property = value;} } }
+
+        /// <summary>Backing field for <see cref="Property" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties _property;
+
+        /// <summary>The updatable properties of the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogUpdateProperties()); set => this._property = value; }
+
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Origin(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PropertyOrigin.Inlined)]
+        public string PublicNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdatePropertiesInternal)Property).PublicNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdatePropertiesInternal)Property).PublicNetworkAccess = value ?? null; }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateTags _tag;
@@ -58,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         Description = @"The type of managed identity assigned to this resource.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
         string IdentityType { get; set; }
         /// <summary>The identities assigned to this resource by the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
@@ -69,8 +83,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
         Update = true,
         Description = @"The identities assigned to this resource by the user.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether or not public network access is allowed for the GeoCatalog.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
         Required = false,
@@ -89,12 +115,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
 
     {
         /// <summary>The managed service identity properties to update.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate Identity { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate Identity { get; set; }
         /// <summary>The type of managed identity assigned to this resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
         string IdentityType { get; set; }
         /// <summary>The identities assigned to this resource by the user.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>The updatable properties of the GeoCatalog.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties Property { get; set; }
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>Resource tags.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateTags Tag { get; set; }
 

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalog))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Description(@"create a GeoCatalog")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}", ApiVersion = "2026-04-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}", ApiVersion = "2026-10-01")]
     public partial class NewAzPlanetaryComputerGeoCatalog_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.IContext
@@ -97,9 +97,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
-        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _resourceBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+        /// <summary>The managed identity type of the GeoCatalog.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The managed identity type of the GeoCatalog. Use None to remove identities or UserAssigned for user-assigned identities.")]
+        [global::System.Management.Automation.ValidateSet("None", "UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("None", "UserAssigned")]
+        public string IdentityType { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -166,6 +168,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>Whether or not public network access is allowed for the GeoCatalog.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether or not public network access is allowed for the GeoCatalog.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether or not public network access is allowed for the GeoCatalog.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get => _resourceBody.PublicNetworkAccess ?? null; set => _resourceBody.PublicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -448,24 +462,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Cmdlets
         {
             if (this.UserAssignedIdentity?.Length > 0)
             {
-                // calculate UserAssignedIdentity
                 _resourceBody.IdentityUserAssignedIdentity.Clear();
-                foreach( var id in this.UserAssignedIdentity )
+                foreach (var id in this.UserAssignedIdentity)
                 {
                     _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.UserAssignedIdentity());
                 }
             }
-            // calculate IdentityType
-            if (this.UserAssignedIdentity?.Length > 0)
+            if (this.IdentityType != null)
             {
-                if ("SystemAssigned".Equals(_resourceBody.IdentityType, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
-                }
-                else
-                {
-                    _resourceBody.IdentityType = "UserAssigned";
-                }
+                _resourceBody.IdentityType = this.IdentityType;
+            }
+            else if (true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity"))
+            {
+                _resourceBody.IdentityType = this.UserAssignedIdentity?.Length > 0 ? "UserAssigned" : "None";
+            }
+            if ("None".Equals(_resourceBody.IdentityType, StringComparison.OrdinalIgnoreCase))
+            {
+                _resourceBody.IdentityUserAssignedIdentity = null;
             }
         }
 

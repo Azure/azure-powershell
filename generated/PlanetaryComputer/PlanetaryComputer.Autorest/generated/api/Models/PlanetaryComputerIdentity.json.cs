@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
             {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
             {_catalogName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("catalogName"), out var __jsonCatalogName) ? (string)__jsonCatalogName : (string)_catalogName;}
+            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)_privateEndpointConnectionName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._catalogName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString(this._catalogName.ToString()) : null, "catalogName" ,container.Add );
+            AddIf( null != (((object)this._privateEndpointConnectionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString(this._privateEndpointConnectionName.ToString()) : null, "privateEndpointConnectionName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

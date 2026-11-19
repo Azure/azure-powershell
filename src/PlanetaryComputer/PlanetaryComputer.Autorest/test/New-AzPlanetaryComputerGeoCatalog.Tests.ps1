@@ -30,7 +30,9 @@ Describe 'New-AzPlanetaryComputerGeoCatalog' {
                     break
                 }
             } catch {
-                # Catalog not yet available
+                if ($_.Exception.Message -notmatch 'NotFound|not found|404') {
+                    throw
+                }
             }
         }
         $result | Should -Not -BeNullOrEmpty -Because 'GeoCatalog should be provisioned within the retry budget'
