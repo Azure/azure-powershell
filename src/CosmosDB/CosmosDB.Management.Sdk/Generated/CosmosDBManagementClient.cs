@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.Fleetspace = new FleetspaceOperations(this);
             this.FleetspaceAccount = new FleetspaceAccountOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-03-15";
+            this.ApiVersion = "2026-07-15";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
