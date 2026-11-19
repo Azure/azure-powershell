@@ -26,6 +26,7 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -Location <String> -Acc
  [-BackupProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
  [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-BreakthroughMode <String>]
+ [-LdapServerType <String>] [-SmbOplock <String>]
  [-DataBreakthroughMode <String>] [-LogBreakthroughMode <String>] [-SharedBreakthroughMode <String>]
  [-DataBackupBreakthroughMode <String>] [-LogBackupBreakthroughMode <String>]
  [-BinaryBreakthroughMode <String>] [-BackupBreakthroughMode <String>] [-LogMirrorBreakthroughMode <String>]
@@ -51,6 +52,7 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
  [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-BreakthroughMode <String>]
+ [-LdapServerType <String>] [-SmbOplock <String>]
  [-DataBreakthroughMode <String>] [-LogBreakthroughMode <String>] [-SharedBreakthroughMode <String>]
  [-DataBackupBreakthroughMode <String>] [-LogBackupBreakthroughMode <String>]
  [-BinaryBreakthroughMode <String>] [-BackupBreakthroughMode <String>] [-LogMirrorBreakthroughMode <String>]
@@ -87,6 +89,7 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
  [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-BreakthroughMode <String>]
+ [-LdapServerType <String>] [-SmbOplock <String>]
  [-DataBreakthroughMode <String>] [-LogBreakthroughMode <String>] [-SharedBreakthroughMode <String>]
  [-DataBackupBreakthroughMode <String>] [-LogBackupBreakthroughMode <String>]
  [-BinaryBreakthroughMode <String>] [-BackupBreakthroughMode <String>] [-LogMirrorBreakthroughMode <String>]
@@ -115,7 +118,44 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccoun
 
 This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within the Account "MyAnfAccount" using Zone 1, the vnet "MyAnfVnet", and NodeMemory of 100
 
+### Example 3: Select OpenLDAP for the volumes in a group
+```powershell
+New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyLdapVolumeGroup" -Location "westus2" -ApplicationIdentifier "SH1" -ProximityPlacementGroup "MyPPGResourceId" -Vnet "MyAnfVnet" -SystemRole "PRIMARY" -NodeMemory 100 -LdapServerType OpenLdap
+```
+
+This command enables LDAP on the group's NFS volumes and selects the account's OpenLDAP configuration. Configure OpenLDAP on the NetApp account before creating the group.
+
 ## PARAMETERS
+
+### -LdapServerType
+Enables LDAP on NFS-only and dual-protocol volumes in the group and selects the LDAP server type: `ActiveDirectory` or `OpenLdap`. This parameter does not apply to CIFS-only volumes. If omitted, LDAP is not enabled. Configure the corresponding LDAP settings on the NetApp account before creating LDAP-enabled volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmbOplock
+Enables or disables SMB opportunistic locking for SMB or dual-protocol volumes in the group whose protocol list includes `CIFS`. This setting is not sent for NFS-only volumes. Accepted values are `Enabled` and `Disabled`. If omitted, the service chooses its default.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AccountName
 The name of the ANF account

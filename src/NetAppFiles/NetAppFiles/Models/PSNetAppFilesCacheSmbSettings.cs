@@ -36,5 +36,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// for SMB/DualProtocol volumes. Possible values include: 'Disabled', 'Enabled'.
         /// </summary>
         public string SmbNonBrowsable { get; set; }
+
+        public string SmbOplocks { get; set; }
     }
 }

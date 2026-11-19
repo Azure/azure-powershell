@@ -7,12 +7,38 @@ using System.Reflection;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using Xunit;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 //using Microsoft.Azure.Commands.NetAppFiles.VolumeGroup;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
 {    
     public class VolumeGroupUnitTest
     {
+        [Fact]
+        public void VolumeConversionsPreserveLdapServerTypeAndSmbOplocks()
+        {
+            var volume = new Microsoft.Azure.Management.NetApp.Models.Volume(location: "westus2",
+                creationToken: "test", usageThreshold: 107374182400, subnetId: "subnet",
+                id: "/subscriptions/test/resourceGroups/test/providers/Microsoft.NetApp/netAppAccounts/test/capacityPools/test/volumes/test")
+            {
+                LdapServerType = "OpenLdap",
+                SmbOplocks = "Disabled"
+            }.ToPsNetAppFilesVolume();
+            Assert.Equal("OpenLdap", volume.LdapServerType);
+            Assert.Equal("Disabled", volume.SmbOplocks);
+
+            var groupVolume = new VolumeGroupVolumeProperties
+            {
+                LdapServerType = "ActiveDirectory",
+                SmbOplocks = "Enabled"
+            }.ConvertToPs();
+            Assert.Equal("ActiveDirectory", groupVolume.LdapServerType);
+            Assert.Equal("Enabled", groupVolume.SmbOplocks);
+
+            var settings = new SmbSettings { SmbOplocks = "Disabled" }.ConvertToPs();
+            Assert.Equal("Disabled", settings.SmbOplocks);
+        }
+
         [Fact]
         public void DataThroughputCalculation1024ShouldReturn400()
         {

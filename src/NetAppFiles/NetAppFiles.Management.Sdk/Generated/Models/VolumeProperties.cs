@@ -138,6 +138,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// applicable for SMB volume
         /// </param>
 
+        /// <param name="smbOplocks">Enables or disables SMB opportunistic lock property for SMB Shares. Only
+        /// applicable for SMB/DualProtocol volume
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
+
         /// <param name="throughputMibps">Maximum throughput in MiB/s that can be achieved by this volume and this
         /// will be accepted as input only for manual qosType volume
         /// </param>
@@ -158,6 +162,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="ldapEnabled">Specifies whether LDAP is enabled or not for a given NFS volume.
         /// </param>
+
+        /// <param name="ldapServerType">Specifies the type of LDAP server for a given NFS volume.
+        /// Possible values include: &#39;ActiveDirectory&#39;, &#39;OpenLdap&#39;</param>
 
         /// <param name="coolAccess">Specifies whether Cool Access(tiering) is enabled for the volume.
         /// </param>
@@ -248,11 +255,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="placementRules">Application specific placement rules for the particular volume
         /// </param>
 
-        /// <param name="enableSubvolumes">Flag indicating whether subvolume operations are enabled on the volume
-        /// Deprecated. Subvolume operations and this flag will be removed in a future
-        /// API version.
-        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
-
         /// <param name="provisionedAvailabilityZone">The availability zone where the volume is provisioned. This refers to the
         /// logical availability zone where the volume resides.
         /// </param>
@@ -268,7 +270,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="breakthroughMode">Specifies whether the volume operates in Breakthrough Mode.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
-        public VolumeProperties(string creationToken, long usageThreshold, string subnetId, string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkFeatures = default(string), string effectiveNetworkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), System.Collections.Generic.IList<MountTargetProperties> mountTargets = default(System.Collections.Generic.IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), string acceptGrowCapacityPoolForShortTermCloneSplit = default(string), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), string securityStyle = default(string), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), string unixPermissions = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), System.Collections.Generic.IList<string> dataStoreResourceId = default(System.Collections.Generic.IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), System.Collections.Generic.IList<PlacementKeyValuePairs> placementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), string enableSubvolumes = default(string), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string), long? inheritedSizeInBytes = default(long?), string breakthroughMode = default(string))
+        public VolumeProperties(string creationToken, long usageThreshold, string subnetId, string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkFeatures = default(string), string effectiveNetworkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), System.Collections.Generic.IList<MountTargetProperties> mountTargets = default(System.Collections.Generic.IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), string acceptGrowCapacityPoolForShortTermCloneSplit = default(string), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), string securityStyle = default(string), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), string smbOplocks = default(string), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), string ldapServerType = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), string unixPermissions = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), System.Collections.Generic.IList<string> dataStoreResourceId = default(System.Collections.Generic.IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), System.Collections.Generic.IList<PlacementKeyValuePairs> placementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string), long? inheritedSizeInBytes = default(long?), string breakthroughMode = default(string))
 
         {
             this.FileSystemId = fileSystemId;
@@ -299,11 +301,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.SmbAccessBasedEnumeration = smbAccessBasedEnumeration;
             this.SmbNonBrowsable = smbNonBrowsable;
             this.SmbContinuouslyAvailable = smbContinuouslyAvailable;
+            this.SmbOplocks = smbOplocks;
             this.ThroughputMibps = throughputMibps;
             this.ActualThroughputMibps = actualThroughputMibps;
             this.EncryptionKeySource = encryptionKeySource;
             this.KeyVaultPrivateEndpointResourceId = keyVaultPrivateEndpointResourceId;
             this.LdapEnabled = ldapEnabled;
+            this.LdapServerType = ldapServerType;
             this.CoolAccess = coolAccess;
             this.CoolnessPeriod = coolnessPeriod;
             this.CoolAccessRetrievalPolicy = coolAccessRetrievalPolicy;
@@ -324,7 +328,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.VolumeSpecName = volumeSpecName;
             this.Encrypted = encrypted;
             this.PlacementRules = placementRules;
-            this.EnableSubvolumes = enableSubvolumes;
             this.ProvisionedAvailabilityZone = provisionedAvailabilityZone;
             this.IsLargeVolume = isLargeVolume;
             this.OriginatingResourceId = originatingResourceId;
@@ -537,6 +540,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public bool? SmbContinuouslyAvailable {get; set; }
 
         /// <summary>
+        /// Gets or sets enables or disables SMB opportunistic lock property for SMB
+        /// Shares. Only applicable for SMB/DualProtocol volume Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "smbOplocks")]
+        public string SmbOplocks {get; set; }
+
+        /// <summary>
         /// Gets or sets maximum throughput in MiB/s that can be achieved by this
         /// volume and this will be accepted as input only for manual qosType volume
         /// </summary>
@@ -572,6 +582,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ldapEnabled")]
         public bool? LdapEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the type of LDAP server for a given NFS volume. Possible values include: &#39;ActiveDirectory&#39;, &#39;OpenLdap&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ldapServerType")]
+        public string LdapServerType {get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether Cool Access(tiering) is enabled for the
@@ -725,15 +741,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public System.Collections.Generic.IList<PlacementKeyValuePairs> PlacementRules {get; set; }
 
         /// <summary>
-        /// Gets or sets flag indicating whether subvolume operations are enabled on
-        /// the volume
-        /// Deprecated. Subvolume operations and this flag will be removed in a future
-        /// API version. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "enableSubvolumes")]
-        public string EnableSubvolumes {get; set; }
-
-        /// <summary>
         /// Gets the availability zone where the volume is provisioned. This refers to
         /// the logical availability zone where the volume resides.
         /// </summary>
@@ -864,6 +871,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
 
+
+
             if (this.CoolnessPeriod != null)
             {
                 if (this.CoolnessPeriod > 183)
@@ -906,7 +915,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     }
                 }
             }
-
 
 
 

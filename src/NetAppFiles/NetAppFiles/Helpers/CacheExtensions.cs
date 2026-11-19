@@ -177,7 +177,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             {
                 SmbEncryption = smbSettings.SmbEncryption,
                 SmbAccessBasedEnumeration = smbSettings.SmbAccessBasedEnumeration,
-                SmbNonBrowsable = smbSettings.SmbNonBrowsable
+                SmbNonBrowsable = smbSettings.SmbNonBrowsable,
+                SmbOplocks = smbSettings.SmbOplocks
             };
         }
 

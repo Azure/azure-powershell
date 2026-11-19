@@ -7,19 +7,19 @@ namespace Microsoft.Azure.Management.NetApp.Models
 {
 
     /// <summary>
-    /// Defines values for EnableSubvolumes.
+    /// Defines values for SmbOplocks.
     /// </summary>
 
 
-    public static class EnableSubvolumes
+    public static class SmbOplocks
     {
         /// <summary>
-        /// subvolumes are enabled
-        /// </summary>
-        public const string Enabled = "Enabled";
-        /// <summary>
-        /// subvolumes are not enabled
+        /// SMB opportunistic locks share setting is disabled.
         /// </summary>
         public const string Disabled = "Disabled";
+        /// <summary>
+        /// SMB opportunistic locks share setting is enabled.
+        /// </summary>
+        public const string Enabled = "Enabled";
     }
 }

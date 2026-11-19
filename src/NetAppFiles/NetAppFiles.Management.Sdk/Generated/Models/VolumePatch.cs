@@ -53,6 +53,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// other users.
         /// </param>
 
+        /// <param name="smbOplocks">Enables or disables SMB opportunistic lock property for SMB Shares. Only
+        /// applicable for SMB/DualProtocol volume
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
+
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
         /// quota used for alerting only. For regular volumes, valid values are in the
         /// range 50GiB to 100TiB. For large volumes, valid values are in the range
@@ -123,7 +127,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="smbNonBrowsable">Enables non-browsable property for SMB Shares. Only applicable for
         /// SMB/DualProtocol volume
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public VolumePatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string serviceLevel = default(string), string unixPermissions = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
+        public VolumePatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string serviceLevel = default(string), string unixPermissions = default(string), string smbOplocks = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
 
         {
             this.Location = location;
@@ -133,6 +137,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.Tags = tags;
             this.ServiceLevel = serviceLevel;
             this.UnixPermissions = unixPermissions;
+            this.SmbOplocks = smbOplocks;
             this.UsageThreshold = usageThreshold;
             this.ExportPolicy = exportPolicy;
             this.ProtocolTypes = protocolTypes;
@@ -204,6 +209,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.unixPermissions")]
         public string UnixPermissions {get; set; }
+
+        /// <summary>
+        /// Gets or sets enables or disables SMB opportunistic lock property for SMB
+        /// Shares. Only applicable for SMB/DualProtocol volume Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.smbOplocks")]
+        public string SmbOplocks {get; set; }
 
         /// <summary>
         /// Gets or sets maximum storage quota allowed for a file system in bytes. This
@@ -346,6 +358,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "UnixPermissions", 4);
                 }
             }
+
             if (this.UsageThreshold != null)
             {
                 if (this.UsageThreshold > 2638827906662400)

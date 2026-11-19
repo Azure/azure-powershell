@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             return psActiveDirectories.Select(psActiveDirectory => new Management.NetApp.Models.ActiveDirectory
             {
-                // ActiveDirectoryId
+                ActiveDirectoryId = psActiveDirectory.ActiveDirectoryId,
                 Username = psActiveDirectory.Username,
                 Password = psActiveDirectory.Password,
                 Domain = psActiveDirectory.Domain,
@@ -53,6 +53,34 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         public static List<PSNetAppFilesActiveDirectory> ConvertToPs(this IList<Management.NetApp.Models.ActiveDirectory> activeDirectories, string resourceGroupName, string accountName)
         {
             return activeDirectories.Select(e => e.ConvertToPs(resourceGroupName, accountName)).ToList();
+        }
+
+        public static List<ActiveDirectoryPatch> ConvertToPatch(this IList<Management.NetApp.Models.ActiveDirectory> activeDirectories)
+        {
+            return activeDirectories.Select(directory => new ActiveDirectoryPatch
+            {
+                ActiveDirectoryId = directory.ActiveDirectoryId,
+                Username = directory.Username,
+                Password = directory.Password,
+                Domain = directory.Domain,
+                Dns = directory.Dns,
+                SmbServerName = directory.SmbServerName,
+                OrganizationalUnit = directory.OrganizationalUnit,
+                Site = directory.Site,
+                BackupOperators = directory.BackupOperators,
+                Administrators = directory.Administrators,
+                KdcIP = directory.KdcIP,
+                AdName = directory.AdName,
+                ServerRootCaCertificate = directory.ServerRootCaCertificate,
+                AesEncryption = directory.AesEncryption,
+                LdapSigning = directory.LdapSigning,
+                SecurityOperators = directory.SecurityOperators,
+                LdapOverTls = directory.LdapOverTls,
+                AllowLocalNfsUsersWithLdap = directory.AllowLocalNfsUsersWithLdap,
+                EncryptDcConnections = directory.EncryptDcConnections,
+                LdapSearchScope = directory.LdapSearchScope,
+                PreferredServersForLdapClient = directory.PreferredServersForLdapClient
+            }).ToList();
         }
 
         public static PSNetAppFilesActiveDirectory ConvertToPs(this Management.NetApp.Models.ActiveDirectory activeDirectory, string resourceGroupName, string accountName)
@@ -515,6 +543,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 SmbEncryption = volume.SmbEncryption,
                 SmbContinuouslyAvailable = volume.SmbContinuouslyAvailable,
                 LdapEnabled = volume.LdapEnabled,
+                LdapServerType = volume.LdapServerType,
+                SmbOplocks = volume.SmbOplocks,
                 CoolAccess = volume.CoolAccess,
                 CoolnessPeriod = volume.CoolnessPeriod,
                 UnixPermission = volume.UnixPermissions,
