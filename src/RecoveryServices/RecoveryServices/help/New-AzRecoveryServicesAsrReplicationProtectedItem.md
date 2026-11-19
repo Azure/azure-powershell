@@ -235,6 +235,22 @@ Starts the replication protected item creation operation for a Virtual Machine w
 ### Example 10: Enable replication for a confidential VM with customer-managed disk encryption
 
 ```powershell
+$subscriptionId = "00000000-0000-0000-0000-000000000000"
+$vm = Get-AzVM -ResourceGroupName "source-rg" -Name "source-cvm"
+$fabric = Get-AzRecoveryServicesAsrFabric -Name "source-fabric"
+$protectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "source-container"
+$forwardMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $protectionContainer -Name "source-to-recovery-mapping"
+$rpiName = "protected-cvm"
+$cacheStorageAccountId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Storage/storageAccounts/asrcache"
+$recoveryResourceGroupId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg"
+$recoveryNetworkId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Network/virtualNetworks/recovery-vnet"
+$recoverySubnetName = "recovery-subnet"
+$replicaOsConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Compute/diskEncryptionSets/replica-os-des"
+$targetOsConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Compute/diskEncryptionSets/target-os-des"
+$replicaDataConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Compute/diskEncryptionSets/replica-data-des"
+$targetDataConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Compute/diskEncryptionSets/target-data-des"
+$recoveryIdentityId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/recovery-cdde-identity"
+
 $osDiskConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig `
     -ManagedDisk -DiskId $vm.StorageProfile.OsDisk.ManagedDisk.Id `
     -LogStorageAccountId $cacheStorageAccountId `
@@ -265,6 +281,7 @@ $job = New-AzRecoveryServicesAsrReplicationProtectedItem `
 
 Starts replication for an existing confidential VM with one customer-managed-key encrypted OS disk and one confidential customer-managed-key encrypted data disk.
 Authenticate, select the subscription, and set the ASR vault context with `Set-AzRecoveryServicesAsrVaultContext -Vault $vault` before running this example.
+Replace the sample subscription ID, resource names, and resource IDs with your existing resources.
 The service and installed module must support confidential VM replication.
 `$vm` is the source VM returned by `Get-AzVM`; `$rpiName` is the name to assign to the replication protected item.
 `$forwardMapping` is the existing source-to-recovery protection-container mapping.

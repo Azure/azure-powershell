@@ -105,6 +105,15 @@ Start the update operation for the specified replication protected item to use t
 ### Example 9: Update a confidential data disk's target DES and recovery identity
 
 ```powershell
+$subscriptionId = "00000000-0000-0000-0000-000000000000"
+$fabric = Get-AzRecoveryServicesAsrFabric -Name "source-fabric"
+$protectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "source-container"
+$rpiName = "protected-cvm"
+$protectedDataDiskName = "cvm-data-01"
+$protectedDataDiskId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Compute/disks/cvm-data-01"
+$newTargetDataConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Compute/diskEncryptionSets/replacement-data-des"
+$newRecoveryIdentityId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/recovery-cdde-identity"
+
 $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem `
     -ProtectionContainer $protectionContainer -Name $rpiName
 
@@ -131,6 +140,7 @@ $job = Set-AzRecoveryServicesAsrReplicationProtectedItem `
 
 Updates the target confidential DES for one protected data disk and the VM-level recovery identity used for confidential data disk encryption.
 Authenticate, select the subscription, and set the ASR vault context before running the example.
+Replace the sample subscription ID, resource names, and resource IDs with your existing resources.
 The service and installed module must support confidential VM replication.
 `$protectionContainer` and `$rpiName` identify the protected item.
 `$protectedDataDiskName` and `$protectedDataDiskId` identify the same currently protected source data disk; obtain its ARM resource ID from the source VM or managed disk resource.

@@ -170,6 +170,20 @@ Start the update direction operation for the specified replication protected ite
 ### Example 7: Reprotect an individual confidential VM with explicit reverse-direction encryption settings
 
 ```powershell
+$subscriptionId = "00000000-0000-0000-0000-000000000000"
+$fabric = Get-AzRecoveryServicesAsrFabric -Name "recovery-fabric"
+$protectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "recovery-container"
+$rpiName = "protected-cvm"
+$failedOverVm = Get-AzVM -ResourceGroupName "recovery-rg" -Name "recovered-cvm"
+$reverseMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $protectionContainer -Name "recovery-to-source-mapping"
+$reverseCacheStorageAccountId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Storage/storageAccounts/reverseasrcache"
+$reverseRecoveryResourceGroupId = "/subscriptions/$subscriptionId/resourceGroups/source-rg"
+$reverseReplicaOsConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Compute/diskEncryptionSets/reverse-replica-os-des"
+$reverseTargetOsConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Compute/diskEncryptionSets/reverse-target-os-des"
+$reverseReplicaDataConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Compute/diskEncryptionSets/reverse-replica-data-des"
+$reverseTargetDataConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Compute/diskEncryptionSets/reverse-target-data-des"
+$reverseRecoveryIdentityId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/reverse-cdde-identity"
+
 $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem `
     -ProtectionContainer $protectionContainer -Name $rpiName
 
@@ -201,6 +215,7 @@ $job = Update-AzRecoveryServicesAsrProtectionDirection `
 
 Starts reverse replication for an individual confidential VM after failover has been committed and reprotect is allowed.
 Authenticate, select the subscription, and set the ASR vault context before running the example.
+Replace the sample subscription ID, resource names, and resource IDs with your existing resources.
 The service and installed module must support confidential VM reprotect.
 `$protectionContainer` and `$rpiName` identify the current protected item.
 `$failedOverVm` is the VM now running in the recovery region, returned by `Get-AzVM`, with one customer-managed-key encrypted OS disk and one confidential customer-managed-key encrypted data disk.

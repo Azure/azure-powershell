@@ -80,12 +80,23 @@ Create a managed disk mapping object that restricts the recovery disk to private
 
 ### Example 6: Configure replica and target confidential disk encryption sets
 ```powershell
+$subscriptionId = "00000000-0000-0000-0000-000000000000"
+$logStorageAccountId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Storage/storageAccounts/asrcache"
+$diskId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Compute/disks/cvm-os"
+$RecoveryResourceGroupId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg"
+$RecoveryReplicaDiskAccountType = "StandardSSD_LRS"
+$RecoveryTargetDiskAccountType = "StandardSSD_LRS"
+$replicaConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Compute/diskEncryptionSets/replica-os-des"
+$targetConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Compute/diskEncryptionSets/target-os-des"
+
 New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStorageAccountId -DiskId $diskId -RecoveryResourceGroupId $RecoveryResourceGroupId `
 -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType `
 -ReplicaConfidentialDiskEncryptionSetId $replicaConfidentialDesId -TargetConfidentialDiskEncryptionSetId $targetConfidentialDesId
 ```
 
 Creates a managed disk mapping object for a confidential VM disk encrypted with a customer-managed key (CMK), using replica and target confidential disk encryption sets. Use this configuration during Azure-to-Azure enable replication and reprotect operations.
+
+Replace the sample subscription ID and resource IDs with your existing resources, and choose supported disk account types.
 
 ## PARAMETERS
 

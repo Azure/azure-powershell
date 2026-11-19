@@ -40,6 +40,16 @@ Start the operation to add specified disk configuration for protection.Piping in
 ### Example 3: Add a confidential customer-managed-key encrypted data disk to replication
 
 ```powershell
+$subscriptionId = "00000000-0000-0000-0000-000000000000"
+$fabric = Get-AzRecoveryServicesAsrFabric -Name "source-fabric"
+$protectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "source-container"
+$rpiName = "protected-cvm"
+$newDataDiskId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Compute/disks/cvm-data-02"
+$cacheStorageAccountId = "/subscriptions/$subscriptionId/resourceGroups/source-rg/providers/Microsoft.Storage/storageAccounts/asrcache"
+$recoveryResourceGroupId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg"
+$replicaDataConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Compute/diskEncryptionSets/replica-data-des"
+$targetDataConfidentialDesId = "/subscriptions/$subscriptionId/resourceGroups/recovery-rg/providers/Microsoft.Compute/diskEncryptionSets/target-data-des"
+
 $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem `
     -ProtectionContainer $protectionContainer -Name $rpiName
 
@@ -60,6 +70,7 @@ $job = Add-AzRecoveryServicesAsrReplicationProtectedItemDisk `
 Starts protection for an existing confidential data disk already attached to the protected source VM.
 This command does not create or attach a VM disk.
 Authenticate, select the subscription, and set the ASR vault context before running the example.
+Replace the sample subscription ID, resource names, and resource IDs with your existing resources.
 The service and installed module must support confidential VM replication.
 `$protectionContainer` and `$rpiName` identify the current protected item; `$newDataDiskId` is the ARM resource ID of the attached data disk that is not yet protected.
 The cache account is in the current source region, and `$recoveryResourceGroupId` identifies the existing recovery resource group.

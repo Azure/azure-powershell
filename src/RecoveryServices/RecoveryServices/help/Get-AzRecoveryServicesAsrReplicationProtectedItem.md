@@ -60,6 +60,10 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName XXXXXXXXXX -Prot
 ### Example 3: Inspect a confidential VM's recovery identity and disk encryption settings
 
 ```powershell
+$fabric = Get-AzRecoveryServicesAsrFabric -Name "source-fabric"
+$protectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "source-container"
+$rpiName = "protected-cvm"
+
 $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem `
     -ProtectionContainer $protectionContainer -Name $rpiName
 
@@ -74,6 +78,7 @@ $rpi.ProviderSpecificDetails.A2ADiskDetails |
 
 Reads the saved recovery confidential data disk encryption identity and per-disk replica and target confidential DES ARM resource IDs for an Azure-to-Azure protected item.
 Authenticate, select the subscription, and set the ASR vault context before running the example.
+Replace the sample fabric, protection-container, and protected-item names with your existing resources.
 Use a module and service version that expose confidential VM settings.
 `$protectionContainer` is the item's current ASR protection container, and `$rpiName` is its replication protected item name.
 
