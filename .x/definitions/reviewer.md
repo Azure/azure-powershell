@@ -100,15 +100,29 @@ waiting until the reviewer approves or the change request is dismissed.
 
 ### Step 4 — Check regression coverage
 
-Call `get_pr_regression_coverage_summary` with the PR details and file
-changes. For Azure CLI command-module production changes, never infer
-scenario coverage from a changed test filename, recording or passing CI alone.
-If `uncovered_modules` is nonempty, name the gap and request focused tests or
-fixtures before merge. If `scenario_status` is `unknown` or `needs_review`,
-avoid an all-clear: inspect the linked issue and human review feedback, the
-test's setup and assertions, and its expected output. Ask a human to verify
-anything not evidenced; a changed command invocation or skipped live test
-does not prove coverage.
+Read `get_pr_review_tool_summary` once for the current PR snapshot:
+
+```python
+from x_engineering_agent.tools.reviews.inspection import get_pr_review_tool_summary
+
+tool_summary = get_pr_review_tool_summary(
+    owner, repo, pr["pr_number"],
+    sensitive_information=pr["sensitive_information"],
+)
+coverage = tool_summary["regression_coverage"]
+```
+
+For this repository, use that PowerShell coverage result rather than a
+separate legacy coverage skill. Coverage reports changed test artifacts,
+not semantic coverage or successful execution. If `uncovered_modules` is
+nonempty, inspect the existing tests and recordings before requesting
+corrections. Do not infer missing files from an incomplete file list.
+
+TestFx and AutoRest/Pester have different test and recording layouts.
+A recording-only update may validate an existing test, but cannot by itself
+satisfy a new cmdlet's test requirements. A neutral TestFx skip is not proof
+that Pester tests passed. Map coverage to every affected project; one project's
+tests cannot stand in for the other projects in a hybrid module.
 
 Also inspect the patch for changed outgoing requests, service-response fields,
 command behavior or output. Those are recording-risk signals. If such a change
@@ -117,18 +131,12 @@ instead of asserting that regression coverage is complete.
 
 ### Step 5 — Run all repository review tools
 
-Call `get_pr_review_tool_summary` once after CI is ready:
+Use the same `tool_summary` from Step 4; do not fetch a second snapshot:
 
 ```python
 from x_engineering_agent.tools.review_tools.formatting import (
     format_pr_risk_assessment,
     format_review_tool_findings,
-)
-from x_engineering_agent.tools.reviews.inspection import get_pr_review_tool_summary
-
-tool_summary = get_pr_review_tool_summary(
-    owner, repo, pr["pr_number"],
-    sensitive_information=pr["sensitive_information"],
 )
 deterministic_tool_findings = format_review_tool_findings(tool_summary)
 risk_assessment = format_pr_risk_assessment(tool_summary)
@@ -138,6 +146,24 @@ risk_assessment = format_pr_risk_assessment(tool_summary)
 policy violations are in `findings`; each includes severity, exact file/line
 evidence, remediation and verification. Include those findings in the single
 combined review without weakening or paraphrasing away the requirement.
+
+The repository-owned `analyze_review_tools` includes the PowerShell-specific
+rules. Use its `triage` before reviewing generated implementation and apply
+each `review_targets` check to the relevant project. Do not substitute a
+GitHub Copilot skill document or resurrect the old custom-skill registry.
+
+`context_gaps` identify unresolved checks, not code defects or passes. Use
+approved reads of the complete base/head files and trees to resolve them.
+Do not infer TypeSpec provenance or missing artifacts from the diff alone.
+Resolve missing context before acting on any absence-based finding; when it
+remains unavailable, report the limitation for human review without sending
+Copilot an unsupported correction.
+
+Require the complete PR template, repository-conformant title and applicable
+module release notes. Keep `Fixes #N` for Agent bug-fix PRs; require issue links
+on other PRs only when applicable. Respect documentation/tooling and verified
+archive exceptions. Handwritten AutoRest custom-only changes do not
+automatically require regeneration.
 
 `tool_summary["human_review_improvement_guidance"]["guidance"]` contains only
 threshold-qualified, deterministic themes learned from reviews on at least
@@ -216,6 +242,16 @@ the concrete behavior that fails, give a practical remediation and state the
 focused verification. Deduplicate overlaps: one root cause is one finding,
 owned by the most specific tool, with other affected concerns mentioned in
 that entry.
+
+Inspect open, resolved and suppressed feedback. Reference an existing
+equivalent thread instead of posting it again, and verify resolved issues
+were actually fixed. Keep `handoff_items`, Codegen migration, design/owner
+approvals, MAR onboarding and OOB release outside the code-fix loop.
+Suggest only existing repository labels when justified; never apply labels
+or initiate these external processes. Never approve or merge.
+
+Before a write, verify the PR head still matches the reviewed head and
+`tool_summary["head_sha"]`; otherwise leave it for a fresh round.
 
 Deterministic or confirmed semantic findings make the review non-successful.
 For a human-requested PR, post them with `event="COMMENT"`. For a
