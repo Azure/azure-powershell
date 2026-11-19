@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed `New-AzBatchApplicationPackage` deleting an existing application package version when its upload failed, and leaving a new, empty version behind. It now deletes only the version it created.
+* Fixed `Get-AzBatchSupportedVirtualMachineSku -MaxResultCount` returning every VM size. It now returns at most that many.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Fixed `Set-AzBatchAccount` resetting account settings it doesn't change, such as public network access, allowed authentication modes and the auto-storage account. It now uses the update operation.
 * Started moving Az.Batch from `Microsoft.Azure.Batch` (Track 1) to `Azure.Compute.Batch` (Track 2). No cmdlet uses the new SDK yet.
