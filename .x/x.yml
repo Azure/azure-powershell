@@ -8,10 +8,160 @@ profile:
   workflow: full
   live_test: true
   live_test_workflow: live-test-powershell.yml
+  pipeline_trigger: true
   triage_agent: Fixer
   triage_handoffs: {}
   triage_labels:
   - bug
-  needs_info_label: agent-assist-needs-info
   title_style: powershell
   pr_doc_url: https://github.com/Azure/azure-powershell/blob/main/CONTRIBUTING.md
+  needs_info_label: X Engineering Agent Needs Info
+  live_repro: true
+  live_repro_workflow: live-repro-powershell.yml
+  coding_norms:
+  - 'No breaking changes to cmdlets, parameters, parameter sets, aliases or output types without the Azure
+    PowerShell breaking-change process: pre-announce with the breaking-change attributes and ship only in
+    a breaking-change release.'
+  - Add a ChangeLog.md entry for each user-visible change under `## Upcoming Release` in `src/<Module>/<Module>/ChangeLog.md`;
+    never add a version header or edit released sections.
+  - Never hand-edit AutoRest-generated code (`*.Autorest/generated/`, generated models, proxy scripts, docs
+    or the top-level `generated/` tree). Change the spec input, README.md directives or handwritten `custom/`
+    code and regenerate.
+  - Update the module's `help/*.md` when cmdlet syntax or parameters change.
+  pr_conventions:
+    template_path: .github/PULL_REQUEST_TEMPLATE.md
+    heading: '##'
+    sections:
+    - name: Description
+      content: description
+    - name: Mandatory Checklist
+      content: null
+    checklist:
+    - text: '[General release](../blob/main/CONTRIBUTING.md#target-release-types)'
+      match: '[general release]'
+      verified_by: []
+    - text: '[Public preview](../blob/main/CONTRIBUTING.md#target-release-types)'
+      match: '[public preview]'
+      verified_by: []
+    - text: '[Private preview](../blob/main/CONTRIBUTING.md#target-release-types)'
+      match: '[private preview]'
+      verified_by: []
+    - text: '[Engineering build](../blob/main/CONTRIBUTING.md#target-release-types)'
+      match: '[engineering build]'
+      verified_by: []
+    - text: No need for a release
+      match: no need for a release
+      verified_by: []
+    - text: 'Check this box to confirm: **I have read the [_Submitting Changes_](../blob/main/CONTRIBUTING.md#submitting-changes)
+        section of [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) and reviewed the following information:**'
+      match: check this box to confirm
+      verified_by: []
+    issue_link: Fixes
+    title_convention: Clear and informative; `[Module] <Summary>` by convention.
+    release_notes: src/<Module>/<Module>/ChangeLog.md under `## Upcoming Release`.
+  contributor_docs:
+  - https://github.com/Azure/azure-powershell/blob/main/CONTRIBUTING.md
+  - https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md
+  generated_path_rules:
+  - pattern: generated/**
+    kind: autorest
+    description: AutoRest output in the top-level `generated/` tree
+  - pattern: src/*/*.Autorest/generated/**
+    kind: autorest
+    description: AutoRest generated C#
+  - pattern: src/*/*.Autorest/exports/**
+    kind: autorest
+    description: AutoRest generated proxy scripts
+  - pattern: src/*/*.Autorest/internal/**
+    kind: autorest
+    description: AutoRest generated internal cmdlets
+  - pattern: src/*/*.Autorest/docs/**
+    kind: autorest
+    description: AutoRest generated help (edit `examples/` instead)
+  - pattern: src/*/*.Autorest/Az.*.format.ps1xml
+    kind: autorest
+    description: AutoRest generated format file
+  - pattern: src/*/*.Autorest/Az.*.psd1
+    kind: autorest
+    description: AutoRest generated module manifest
+  - pattern: src/*/*.Autorest/Az.*.psm1
+    kind: autorest
+    description: AutoRest generated module script
+  - pattern: src/*/*.Autorest/Az.*.csproj
+    kind: autorest
+    description: AutoRest generated project file
+  - pattern: src/*/*.Autorest/custom/Az.*.custom.psm1
+    kind: autorest
+    description: AutoRest generated custom-module loader
+  generated_code_kinds:
+    autorest:
+      label: Generated AutoRest code (fix via README directive or custom code)
+      codegen_protocol: true
+      fix_route: Add a `directive:` to the AutoRest project's `README.md` or a handwritten wrapper under
+        `custom/`, then rerun Codegen and commit the complete regenerated output with its `generate-info.json`.
+      guidance: 'The trusted analysis places the root cause in AutoRest-generated Azure PowerShell code.
+        Generated C#, proxy scripts (`exports/`, `internal/`), `docs/`, `Az.*.psd1`/`.psm1`/`.format.ps1xml`
+        and the top-level `generated/` tree are rewritten on regeneration: reviewers reject hand edits and
+        the generated-ownership gate blocks them. Fix it at the source:
+
+        1. **README.md directive** - rename, hide or reshape cmdlets, parameters, models or formats with
+        a `directive:` entry in the project''s `src/<Module>/<Module>.Autorest/README.md`.
+
+        2. **custom/ wrapper** - put behaviour a directive cannot express in a handwritten cmdlet or wrapper
+        under `custom/` (hide the generated variant with a directive when it replaces it); examples go in
+        `examples/`, tests in `test/`.
+
+        3. **API spec** - if the REST API specification itself is wrong, do not patch: finish with decision
+        `abstain_upstream` and describe the spec defect for an Azure/azure-rest-api-specs issue.
+
+        After changing durable inputs, rerun Codegen and commit the complete regenerated output with the
+        changed `generate-info.json`; the gate blocks regenerated output without a matching `README.md`,
+        `custom/` or `examples/` change.'
+  generator_inputs: AAZ model, AutoRest `README.md` directive or `custom/` code
+  release_artifact_gate: true
+  repro_tools:
+  - pwsh-az
+  swe_replay: true
+  validation:
+    playback: 'not applicable: PowerShell playback runs in repository CI'
+    csharp_scope_root: src
+
+# How the engine publishes changes: from its fork (fork), from its fork with a verified
+# head (verified-fork) or from a branch in this repository (upstream-branch).
+publication:
+  mode: verified-fork
+
+# Files a generated change may touch and the bounds of its execution job.
+job:
+  allowed_paths:
+  - src/*
+  - generated/*
+  - tools/*
+  - documentation/*
+  - ChangeLog.md
+  - README.md
+  # Read-only for touched services; there is no local PowerShell playback.
+  read_only_paths:
+  - '**/SessionRecords/*'
+  - '**/recordings/*'
+  recording_scopes:
+  - src/*
+  max_checkout_files: 220000
+  max_checkout_bytes: 4000000000
+  execution_slice_seconds: 900
+
+# Scheduled GitHub automation the operator runs for this repository.
+automation:
+  pr_validation:
+    pipelines:
+    - title: PRComment
+      allow:
+      - azure-powershell - powershell-core
+      - azure-powershell - windows-powershell
+      result_path: /PipelineResult/PipelineResult.json
+      group_by:
+      - Module
+      - PhaseName
+      - Platform
+  reopen: true
+  pruning_label: Azure PS Team
