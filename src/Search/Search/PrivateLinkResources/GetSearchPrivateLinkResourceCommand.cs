@@ -80,8 +80,17 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
             try
             {
-                var resources = SearchClient.PrivateLinkResources.ListSupportedWithHttpMessagesAsync(ResourceGroupName, Name).Result;
-                WritePrivateLinkResourcesList(resources.Body);
+                var resources = SearchClient.PrivateLinkResources.ListSupportedWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
+                while (resources != null)
+                {
+                    WritePrivateLinkResourcesList(resources);
+                    if (string.IsNullOrEmpty(resources.NextPageLink))
+                    {
+                        break;
+                    }
+
+                    resources = SearchClient.PrivateLinkResources.ListSupportedNextWithHttpMessagesAsync(resources.NextPageLink).Result.Body;
+                }
             }
             catch (AggregateException ae)
             {
