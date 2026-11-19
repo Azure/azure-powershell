@@ -33,7 +33,7 @@ function Get-TestExcludePrincipalId
 #
 # UADA API model:
 #   - Principals can be Everyone (SystemDefined with Guid.Empty) or a specific User/ServicePrincipal
-#   - ExcludePrincipals is required for Everyone mode; optional for per-principal mode
+#   - ExcludePrincipals is optional for both Everyone and per-principal modes
 #   - Group type principals are not supported
 #   - DataActions not supported
 #   - DoNotApplyToChildScopes not supported

@@ -88,10 +88,10 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Data actions to exclude from the deny assignment. Not supported for user-assigned deny assignments.")]
         public string[] NotDataAction { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = EveryoneParameterSet,
-            HelpMessage = "Object IDs of principals to exclude from the deny assignment. Required when targeting Everyone.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = EveryoneParameterSet,
+            HelpMessage = "Object IDs of principals to exclude from the deny assignment. Optional in both Everyone and per-principal modes.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = PerPrincipalParameterSet,
-            HelpMessage = "Object IDs of principals to exclude from the deny assignment. Optional when using -PrincipalId.")]
+            HelpMessage = "Object IDs of principals to exclude from the deny assignment. Optional in both Everyone and per-principal modes.")]
         [ValidateNotNullOrEmpty]
         public string[] ExcludePrincipalId { get; set; }
 
@@ -188,14 +188,6 @@ namespace Microsoft.Azure.Commands.Resources
             {
                 throw new PSArgumentException(
                     "PrincipalTypes must not be specified without PrincipalIds.");
-            }
-
-            // Everyone mode requires at least one excluded principal
-            if (!hasPerPrincipal && !hasExcludes)
-            {
-                throw new PSArgumentException(
-                    "At least one excluded principal is required via ExcludePrincipalIds when targeting Everyone. " +
-                    "Use PrincipalId and PrincipalType to target a specific user or service principal instead.");
             }
 
             // Validate ExcludePrincipalTypes consistency
