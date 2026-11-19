@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoraclednsprivateview
 schema: 2.0.0
@@ -24,15 +24,14 @@ Get-AzOracleDnsPrivateView -Location <String> -Ocid <String> [-SubscriptionId <S
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityLocation
-```
-Get-AzOracleDnsPrivateView -Ocid <String> -LocationInputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
-Get-AzOracleDnsPrivateView -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
+Get-AzOracleDnsPrivateView -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityLocation
+```
+Get-AzOracleDnsPrivateView -LocationInputObject <IOracleIdentity> -Ocid <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -95,7 +94,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -141,7 +140,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -165,3 +164,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

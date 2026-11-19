@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/remove-azoraclecloudvmclustervm
 schema: 2.0.0
@@ -14,43 +14,41 @@ Remove VMs from the VM Cluster
 
 ### RemoveExpanded (Default)
 ```
-Remove-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -DbServer <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RemoveViaJsonString
-```
-Remove-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RemoveViaJsonFilePath
-```
-Remove-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String> -DbServer <String[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Remove
 ```
 Remove-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Body <IAddRemoveDbNode> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RemoveViaIdentityExpanded
-```
-Remove-AzOracleCloudVMClusterVM -InputObject <IOracleIdentity> -DbServer <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Body <IAddRemoveDbNode> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RemoveViaIdentity
 ```
 Remove-AzOracleCloudVMClusterVM -InputObject <IOracleIdentity> -Body <IAddRemoveDbNode>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RemoveViaIdentityExpanded
+```
+Remove-AzOracleCloudVMClusterVM -InputObject <IOracleIdentity> -DbServer <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RemoveViaJsonFilePath
+```
+Remove-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RemoveViaJsonString
+```
+Remove-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -110,7 +108,7 @@ CloudVmCluster name
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded, RemoveViaJsonString, RemoveViaJsonFilePath, Remove
+Parameter Sets: Remove, RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: True
@@ -156,7 +154,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: RemoveViaIdentityExpanded, RemoveViaIdentity
+Parameter Sets: RemoveViaIdentity, RemoveViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -217,7 +215,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded, RemoveViaJsonString, RemoveViaJsonFilePath, Remove
+Parameter Sets: Remove, RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: True
@@ -233,7 +231,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded, RemoveViaJsonString, RemoveViaJsonFilePath, Remove
+Parameter Sets: Remove, RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: False
@@ -290,3 +288,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
