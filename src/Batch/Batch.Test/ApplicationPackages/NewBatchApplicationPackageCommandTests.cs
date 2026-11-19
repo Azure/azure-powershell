@@ -153,22 +153,53 @@ namespace Microsoft.Azure.Commands.Batch.Test.ApplicationPackages
             packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Never());
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FailedUploadKeepsANewVersionThatAnotherUploadChanged()
+        {
+            // Another upload of the same version wrote to it after this one created it, so its ETag changed.
+            Mock<IApplicationPackageOperations> packageOperations = UseManagementClientWhoseUploadFails(
+                versionExists: false,
+                versionWhenTheUploadFails: new ApplicationPackage(etag: "W/\"another upload\"", state: PackageState.Pending));
+
+            Assert.Throws<NewApplicationPackageException>(() => cmdlet.ExecuteCmdlet());
+
+            packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FailedUploadKeepsANewVersionThatAnotherUploadActivated()
+        {
+            Mock<IApplicationPackageOperations> packageOperations = UseManagementClientWhoseUploadFails(
+                versionExists: false,
+                versionWhenTheUploadFails: new ApplicationPackage(etag: CreatedEtag, state: PackageState.Active));
+
+            Assert.Throws<NewApplicationPackageException>(() => cmdlet.ExecuteCmdlet());
+
+            packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Never());
+        }
+
+        private const string CreatedEtag = "W/\"created by this upload\"";
+
         /// <summary>
         /// Gives the cmdlet a BatchClient over a fake management client. The package it creates gets a storage URL that
-        /// isn't a URL, so the upload fails before anything is sent.
+        /// isn't a URL, so the upload fails before anything is sent. For a new version, the version as it is when the
+        /// upload fails is <paramref name="versionWhenTheUploadFails"/>, by default unchanged since this upload created it.
         /// </summary>
-        private Mock<IApplicationPackageOperations> UseManagementClientWhoseUploadFails(bool versionExists)
+        private Mock<IApplicationPackageOperations> UseManagementClientWhoseUploadFails(bool versionExists, ApplicationPackage versionWhenTheUploadFails = null)
         {
             string resourceGroup = "resourceGroup";
             string accountName = "account01";
             string applicationName = "applicationName";
             string version = "version";
+            var created = new ApplicationPackage(etag: CreatedEtag, state: PackageState.Pending, storageUrl: "not a URL");
 
             var packageOperations = new Mock<IApplicationPackageOperations>();
-            var getVersion = packageOperations.Setup(p => p.GetWithHttpMessagesAsync(resourceGroup, accountName, applicationName, version, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()));
             if (versionExists)
             {
-                getVersion.Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage> { Body = new ApplicationPackage() }));
+                packageOperations.Setup(p => p.GetWithHttpMessagesAsync(resourceGroup, accountName, applicationName, version, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                    .Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage> { Body = new ApplicationPackage() }));
             }
             else
             {
@@ -176,11 +207,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ApplicationPackages
                 {
                     Response = new HttpResponseMessageWrapper(new HttpResponseMessage(HttpStatusCode.NotFound), string.Empty)
                 };
-                getVersion.Returns(Task.FromException<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage>>(notFound));
+                packageOperations.SetupSequence(p => p.GetWithHttpMessagesAsync(resourceGroup, accountName, applicationName, version, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                    .Returns(Task.FromException<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage>>(notFound))
+                    .Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage> { Body = versionWhenTheUploadFails ?? created }));
             }
 
             packageOperations.Setup(p => p.CreateWithHttpMessagesAsync(resourceGroup, accountName, applicationName, version, It.IsAny<IDictionary<string, string>>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage> { Body = new ApplicationPackage(storageUrl: "not a URL") }));
+                .Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage> { Body = created }));
             packageOperations.Setup(p => p.DeleteWithHttpMessagesAsync(resourceGroup, accountName, applicationName, version, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse()));
 
