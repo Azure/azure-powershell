@@ -1108,6 +1108,7 @@
     "SubscriptionId": "94bd7ded-68b4-4ffa-82a5-37ac72caa2ec",
     "AZURE_BATCH_ACCOUNT": "dotnotsdkbatchaccount2",
     "AZURE_BATCH_ENDPOINT": "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "automation"
+    "AZURE_BATCH_RESOURCE_GROUP": "automation",
+    "expiryTime": "2025-11-03T22:35:23.4621363Z"
   }
 }
