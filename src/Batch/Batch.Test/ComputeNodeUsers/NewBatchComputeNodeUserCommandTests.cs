@@ -106,5 +106,32 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             Assert.Equal(cmdlet.IsAdmin, requestParameters.IsAdmin);
             Assert.Equal(cmdlet.ExpiryTime, requestParameters.ExpiryTime);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchComputeNodeUserLeavesOutTheExpiryTimeWhenNotGiven()
+        {
+            // Without -ExpiryTime the cmdlet used to send 0001-01-01. Left out, the service uses its default: 1 day from now.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.PoolId = "testPool";
+            cmdlet.ComputeNodeId = "computeNode1";
+            cmdlet.Name = "user";
+            cmdlet.Password = "password".ConvertToSecureString();
+
+            ProxyModels.ComputeNodeUser requestParameters = null;
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.ComputeNodeUser,
+                ProxyModels.ComputeNodeAddUserOptions,
+                AzureOperationHeaderResponse<ProxyModels.ComputeNodeAddUserHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal("user", requestParameters.Name);
+            Assert.Null(requestParameters.ExpiryTime);
+        }
     }
 }

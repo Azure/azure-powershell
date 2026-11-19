@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Specifies the expiry time for the new user account.
+Specifies the expiry time for the new user account. If you don't specify it, the Batch service sets it to 1 day from now.
 
 ```yaml
 Type: System.DateTime

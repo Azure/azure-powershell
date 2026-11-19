@@ -15,6 +15,10 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Protocol = Microsoft.Azure.Batch.Protocol;
+using BatchRequests = Microsoft.Azure.Batch.Protocol.BatchRequests;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -52,7 +56,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.CreatingComputeNodeUser, user.Name, computeNodeId));
 
-            user.Commit(ComputeNodeUserCommitSemantics.AddUser, options.AdditionalBehaviors);
+            user.Commit(ComputeNodeUserCommitSemantics.AddUser, WithUnsetExpiryTimeLeftOut(options.AdditionalBehaviors));
         }
 
         /// <summary>
@@ -72,7 +76,32 @@ namespace Microsoft.Azure.Commands.Batch.Models
             computeNodeUser.Name = parameters.ComputeNodeUserName;
             computeNodeUser.Password = parameters.Password;
             computeNodeUser.ExpiryTime = parameters.ExpiryTime;
-            computeNodeUser.Commit(ComputeNodeUserCommitSemantics.UpdateUser, parameters.AdditionalBehaviors);
+            computeNodeUser.Commit(ComputeNodeUserCommitSemantics.UpdateUser, WithUnsetExpiryTimeLeftOut(parameters.AdditionalBehaviors));
+        }
+
+        /// <summary>
+        /// -ExpiryTime is a DateTime, so it is 0001-01-01 when it isn't given, and Track 1's ComputeNodeUser always sends
+        /// its expiry time. This leaves 0001-01-01 out of the add and update requests, so the Batch service sets the
+        /// expiry time to 1 day from now.
+        /// </summary>
+        private static IEnumerable<BatchClientBehavior> WithUnsetExpiryTimeLeftOut(IEnumerable<BatchClientBehavior> additionalBehaviors)
+        {
+            Protocol.RequestInterceptor interceptor = new Protocol.RequestInterceptor(baseRequest =>
+            {
+                if (baseRequest is BatchRequests.ComputeNodeAddUserBatchRequest addUser
+                    && addUser.Parameters.ExpiryTime == default(DateTime))
+                {
+                    addUser.Parameters.ExpiryTime = null;
+                }
+
+                if (baseRequest is BatchRequests.ComputeNodeUpdateUserBatchRequest updateUser
+                    && updateUser.Parameters.ExpiryTime == default(DateTime))
+                {
+                    updateUser.Parameters.ExpiryTime = null;
+                }
+            });
+
+            return new List<BatchClientBehavior> { interceptor }.Concat(additionalBehaviors ?? Enumerable.Empty<BatchClientBehavior>());
         }
 
         /// <summary>
