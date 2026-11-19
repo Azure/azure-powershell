@@ -13,8 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using System.Net;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Management.Batch;
+using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Rest;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
@@ -119,6 +129,80 @@ namespace Microsoft.Azure.Commands.Batch.Test.ApplicationPackages
             cmdlet.ExecuteCmdlet();
 
             batchClientMock.Verify(b => b.UploadAndActivateApplicationPackage(resourceGroup, accountName, applicationName, version, null, format, true), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FailedUploadDeletesTheNewVersion()
+        {
+            Mock<IApplicationPackageOperations> packageOperations = UseManagementClientWhoseUploadFails(versionExists: false);
+
+            Assert.Throws<NewApplicationPackageException>(() => cmdlet.ExecuteCmdlet());
+
+            packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync("resourceGroup", "account01", "applicationName", "version", It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FailedUploadKeepsTheVersionThatExisted()
+        {
+            Mock<IApplicationPackageOperations> packageOperations = UseManagementClientWhoseUploadFails(versionExists: true);
+
+            Assert.Throws<NewApplicationPackageException>(() => cmdlet.ExecuteCmdlet());
+
+            packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Never());
+        }
+
+        /// <summary>
+        /// Gives the cmdlet a BatchClient over a fake management client. The package it creates gets a storage URL that
+        /// isn't a URL, so the upload fails before anything is sent.
+        /// </summary>
+        private Mock<IApplicationPackageOperations> UseManagementClientWhoseUploadFails(bool versionExists)
+        {
+            string resourceGroup = "resourceGroup";
+            string accountName = "account01";
+            string applicationName = "applicationName";
+            string version = "version";
+
+            var packageOperations = new Mock<IApplicationPackageOperations>();
+            var getVersion = packageOperations.Setup(p => p.GetWithHttpMessagesAsync(resourceGroup, accountName, applicationName, version, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()));
+            if (versionExists)
+            {
+                getVersion.Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage> { Body = new ApplicationPackage() }));
+            }
+            else
+            {
+                var notFound = new CloudException("The specified application package does not exist.")
+                {
+                    Response = new HttpResponseMessageWrapper(new HttpResponseMessage(HttpStatusCode.NotFound), string.Empty)
+                };
+                getVersion.Returns(Task.FromException<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage>>(notFound));
+            }
+
+            packageOperations.Setup(p => p.CreateWithHttpMessagesAsync(resourceGroup, accountName, applicationName, version, It.IsAny<IDictionary<string, string>>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage> { Body = new ApplicationPackage(storageUrl: "not a URL") }));
+            packageOperations.Setup(p => p.DeleteWithHttpMessagesAsync(resourceGroup, accountName, applicationName, version, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse()));
+
+            var applicationOperations = new Mock<IApplicationOperations>();
+            applicationOperations.Setup(a => a.GetWithHttpMessagesAsync(resourceGroup, accountName, applicationName, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse<Application> { Body = new Application(allowUpdates: true) }));
+
+            var managementClient = new Mock<IBatchManagementClient>();
+            managementClient.Setup(c => c.ApplicationPackage).Returns(packageOperations.Object);
+            managementClient.Setup(c => c.Application).Returns(applicationOperations.Object);
+
+            cmdlet.BatchClient = new BatchClient(managementClient.Object, new Mock<IResourceManagementClient>().Object);
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.AccountName = accountName;
+            cmdlet.ApplicationName = applicationName;
+            cmdlet.ApplicationVersion = version;
+            cmdlet.Format = "zip";
+            // Any file that exists; the upload fails before reading it.
+            cmdlet.FilePath = typeof(NewBatchApplicationPackageCommandTests).Assembly.Location;
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            return packageOperations;
         }
     }
 }

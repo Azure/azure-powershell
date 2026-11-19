@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             catch (Exception exception)
             {
                 // If the application package has already been created we don't want to delete the application package mysteriously.
-                if (appPackageAlreadyExists)
+                if (!appPackageAlreadyExists)
                 {
                     // If we are creating a new application package and the upload fails we should delete the application package.
                     try
