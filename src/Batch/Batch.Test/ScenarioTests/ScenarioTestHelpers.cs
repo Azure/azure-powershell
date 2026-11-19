@@ -195,6 +195,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchTestRunner runner,
             NewPoolParameters poolParameters)
         {
+            runner.DeletePoolAfterRecording(poolParameters.PoolId);
             BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             try
@@ -215,6 +216,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void CreateMpiPoolIfNotExists(BatchTestRunner runner, BatchAccountContext context, int targetDedicated = 3)
         {
+            runner.DeletePoolAfterRecording(MpiPoolId);
             BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
             ListPoolOptions listOptions = new ListPoolOptions(context)
             {

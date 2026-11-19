@@ -25,13 +25,15 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class BatchTestRunner
+    public class BatchTestRunner : IDisposable
     {
         internal static string BatchAccount;
         internal static string BatchAccountKey;
         internal static string BatchAccountUrl;
         internal static string BatchResourceGroup;
         internal static string Subscription;
+
+        private readonly HashSet<string> poolsToDeleteAfterRecording = new HashSet<string>();
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -133,6 +135,56 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             var client = context.GetServiceClient<AzureRestClient>();
             AzureRestClient = client;
             return client;
+        }
+
+        /// <summary>
+        /// When recording, deletes the pool after the test, even if the test fails, so its nodes don't keep running.
+        /// Playback doesn't change.
+        /// </summary>
+        internal void DeletePoolAfterRecording(string poolId)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                poolsToDeleteAfterRecording.Add(poolId);
+            }
+        }
+
+        // xUnit calls Dispose after each test, also when it fails.
+        public void Dispose()
+        {
+            if (poolsToDeleteAfterRecording.Count == 0)
+            {
+                return;
+            }
+
+            // A client without the recorder, so the deletes stay out of the recording.
+            var failures = new List<Exception>();
+            var credentials = new Microsoft.Azure.Batch.Auth.BatchSharedKeyCredentials(BatchAccountUrl, BatchAccount, BatchAccountKey);
+            using (var client = Microsoft.Azure.Batch.BatchClient.Open(credentials))
+            {
+                foreach (string poolId in poolsToDeleteAfterRecording)
+                {
+                    try
+                    {
+                        client.PoolOperations.DeletePool(poolId);
+                    }
+                    catch (Microsoft.Azure.Batch.Common.BatchException e)
+                        when (e.RequestInformation?.BatchError?.Code == Microsoft.Azure.Batch.Common.BatchErrorCodeStrings.PoolNotFound
+                            || e.RequestInformation?.BatchError?.Code == Microsoft.Azure.Batch.Common.BatchErrorCodeStrings.PoolBeingDeleted)
+                    {
+                    }
+                    catch (Exception e)
+                    {
+                        // Still try the other pools; report this one at the end.
+                        failures.Add(new InvalidOperationException($"Could not delete pool '{poolId}' after recording. Delete it by hand.", e));
+                    }
+                }
+            }
+
+            if (failures.Count > 0)
+            {
+                throw new AggregateException(failures);
+            }
         }
     }
 }
