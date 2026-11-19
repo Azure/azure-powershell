@@ -1,0 +1,92 @@
+{
+  "Get-AzRedHatOpenShiftHcpExternalAuth+[NoContext]+List (by cluster)+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/externalAuths?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/externalAuths?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "15e3713e-6558-46d3-9e49-47d362ef25e0" ],
+        "CommandName": [ "Get-AzRedHatOpenShiftHcpExternalAuth" ],
+        "FullCommandName": [ "Get-AzRedHatOpenShiftHcpExternalAuth_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.3.0", "PSVersion/v7.6.6", "Az.RedHatOpenShiftHcp/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "27201fc0-0750-4756-b7a2-d8ea05a74edb" ],
+        "x-envoy-upstream-service-time": [ "15" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=5320d50d-03d4-41a9-a4b6-2dbac3c54918/westeurope/00805c4d-491d-4603-9f98-2130f3a5b1dc" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "c67f7215-6695-4554-95ab-cfc76b47ef79" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T001913Z:c67f7215-6695-4554-95ab-cfc76b47ef79" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 09FEF112703E40C98F13EF4E76C9A7FA Ref B: YTO221090812027 Ref C: 2026-10-21T00:19:13Z" ],
+        "Date": [ "Wed, 21 Oct 2026 00:19:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2560" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"value\": [\n        {\n            \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/externalAuths/entra\",\n            \"name\": \"entra\",\n            \"properties\": {\n                \"claim\": {\n                    \"mappings\": {\n                        \"groups\": {\n                            \"claim\": \"groups\"\n                        },\n                        \"username\": {\n                            \"claim\": \"preferred_username\",\n                            \"prefixPolicy\": \"None\"\n                        }\n                    },\n                    \"validationRules\": []\n                },\n                \"clients\": [\n                    {\n                        \"clientId\": \"8ecb08e1-05be-4d6d-9a59-5d342aa5b6d0\",\n                        \"component\": {\n                            \"authClientNamespace\": \"openshift-console\",\n                            \"name\": \"console\"\n                        },\n                        \"extraScopes\": [],\n                        \"type\": \"Confidential\"\n                    }\n                ],\n                \"issuer\": {\n                    \"audiences\": [\n                        \"8ecb08e1-05be-4d6d-9a59-5d342aa5b6d0\",\n                        \"extra-audience\"\n                    ],\n                    \"url\": \"https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0\"\n                },\n                \"provisioningState\": \"Succeeded\",\n                \"status\": {\n                    \"conditions\": [\n                        {\n                            \"lastTransitionTime\": \"2026-10-20T21:51:22Z\",\n                            \"message\": \"OIDCClientsDegraded: console/openshift-console: Waiting for the client secret to be created in the openshift-config namespace by user.\",\n                            \"reason\": \"ExternalAuthDegraded\",\n                            \"status\": \"True\",\n                            \"type\": \"Degraded\"\n                        }\n                    ]\n                }\n            },\n            \"systemData\": {\n                \"createdAt\": \"2026-10-20T21:51:19.751849Z\",\n                \"createdBy\": \"aro@redhat.com\",\n                \"createdByType\": \"User\",\n                \"lastModifiedAt\": \"2026-10-20T21:53:30.6809307Z\",\n                \"lastModifiedBy\": \"aro@redhat.com\",\n                \"lastModifiedByType\": \"User\"\n            },\n            \"type\": \"Microsoft.RedHatOpenShift/hcpOpenShiftClusters/externalAuths\"\n        }\n    ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRedHatOpenShiftHcpExternalAuth+[NoContext]+Get (by name)+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/externalAuths/entra?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/externalAuths/entra?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "0c73b541-e914-4d73-a85a-e46896cf901c" ],
+        "CommandName": [ "Get-AzRedHatOpenShiftHcpExternalAuth" ],
+        "FullCommandName": [ "Get-AzRedHatOpenShiftHcpExternalAuth_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.3.0", "PSVersion/v7.6.6", "Az.RedHatOpenShiftHcp/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "92f0f9ec-078e-4b1c-b91d-b4d157bf3a82" ],
+        "x-envoy-upstream-service-time": [ "12" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=5320d50d-03d4-41a9-a4b6-2dbac3c54918/westeurope/c3f1081e-405a-408d-a2a4-1c7d503ce5a8" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "6cf1ef1c-868f-43d0-b056-5ac2efd80941" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T001914Z:6cf1ef1c-868f-43d0-b056-5ac2efd80941" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6F7BB159032847898835EA8923F1B988 Ref B: YTO221090812027 Ref C: 2026-10-21T00:19:13Z" ],
+        "Date": [ "Wed, 21 Oct 2026 00:19:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2079" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/externalAuths/entra\",\n    \"name\": \"entra\",\n    \"properties\": {\n        \"claim\": {\n            \"mappings\": {\n                \"groups\": {\n                    \"claim\": \"groups\"\n                },\n                \"username\": {\n                    \"claim\": \"preferred_username\",\n                    \"prefixPolicy\": \"None\"\n                }\n            },\n            \"validationRules\": []\n        },\n        \"clients\": [\n            {\n                \"clientId\": \"8ecb08e1-05be-4d6d-9a59-5d342aa5b6d0\",\n                \"component\": {\n                    \"authClientNamespace\": \"openshift-console\",\n                    \"name\": \"console\"\n                },\n                \"extraScopes\": [],\n                \"type\": \"Confidential\"\n            }\n        ],\n        \"issuer\": {\n            \"audiences\": [\n                \"8ecb08e1-05be-4d6d-9a59-5d342aa5b6d0\",\n                \"extra-audience\"\n            ],\n            \"url\": \"https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0\"\n        },\n        \"provisioningState\": \"Succeeded\",\n        \"status\": {\n            \"conditions\": [\n                {\n                    \"lastTransitionTime\": \"2026-10-20T21:51:22Z\",\n                    \"message\": \"OIDCClientsDegraded: console/openshift-console: Waiting for the client secret to be created in the openshift-config namespace by user.\",\n                    \"reason\": \"ExternalAuthDegraded\",\n                    \"status\": \"True\",\n                    \"type\": \"Degraded\"\n                }\n            ]\n        }\n    },\n    \"systemData\": {\n        \"createdAt\": \"2026-10-20T21:51:19.751849Z\",\n        \"createdBy\": \"aro@redhat.com\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2026-10-20T21:53:30.6809307Z\",\n        \"lastModifiedBy\": \"aro@redhat.com\",\n        \"lastModifiedByType\": \"User\"\n    },\n    \"type\": \"Microsoft.RedHatOpenShift/hcpOpenShiftClusters/externalAuths\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

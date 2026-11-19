@@ -127,10 +127,10 @@ function Initialize-AzDataProtectionRestoreRequest
         [System.String[]]
         ${ToPrefixPattern},
 
-        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.')]
-        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.')]
-        [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.')]
-        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.')]
+        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB. For AzureCosmosDB, this parameter is required for item level restore and must be used together with -ItemLevelRecovery.')]
+        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB. For AzureCosmosDB, this parameter is required for item level restore and must be used together with -ItemLevelRecovery.')]
+        [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB. For AzureCosmosDB, this parameter is required for item level restore and must be used together with -ItemLevelRecovery.')]
+        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB. For AzureCosmosDB, this parameter is required for item level restore and must be used together with -ItemLevelRecovery.')]
         [PSObject]
         ${RestoreConfiguration},
 
@@ -221,15 +221,18 @@ function Initialize-AzDataProtectionRestoreRequest
         $hasUserAssignedIdentityArmId = $PSBoundParameters.Remove("UserAssignedIdentityArmId")
         if ($hasUseSystemAssignedIdentity -or $hasUserAssignedIdentityArmId) {
 
+            if ($DatasourceType -eq "AzureCosmosDB" -and $hasUseSystemAssignedIdentity -and $null -eq $UseSystemAssignedIdentity) {
+                throw 'UseSystemAssignedIdentity cannot be null for DatasourceType AzureCosmosDB. Pass $true to use the system-assigned identity, or $false together with UserAssignedIdentityArmId.'
+            }
+
             if ($hasUserAssignedIdentityArmId -and (!$hasUseSystemAssignedIdentity -or $UseSystemAssignedIdentity)) {
                 throw "UserAssignedIdentityArmId cannot be provided without UseSystemAssignedIdentity and UseSystemAssignedIdentity must be false when UserAssignedIdentityArmId is provided."
             }
 
-            $restoreRequest.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IdentityDetails]::new()
-            $restoreRequest.IdentityDetail.UseSystemAssignedIdentity = $UseSystemAssignedIdentity            
+            $restoreRequest.IdentityDetailUseSystemAssignedIdentity = $UseSystemAssignedIdentity
 
             if ($hasUserAssignedIdentityArmId) {
-                $restoreRequest.IdentityDetail.UserAssignedIdentityArmUrl = $UserAssignedIdentityArmId
+                $restoreRequest.IdentityDetailUserAssignedIdentityArmUrl = $UserAssignedIdentityArmId
             }
         }
 
@@ -270,6 +273,10 @@ function Initialize-AzDataProtectionRestoreRequest
         }
         elseif(!($ItemLevelRecovery))
         {   
+            if($DatasourceType -eq "AzureCosmosDB" -and $RestoreConfiguration -ne $null){
+                throw "RestoreConfiguration for DatasourceType AzureCosmosDB requires ItemLevelRecovery. Add -ItemLevelRecovery to restore the selected databases and containers, or remove RestoreConfiguration for a full restore."
+            }
+
             # RestoreTargetInfo for OLR ALR Full recovery
             if($DatasourceType -ne "AzureKubernetesService" -and $DatasourceType -ne "AzureElasticSAN"){
                 $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.RestoreTargetInfo]::new()
@@ -307,7 +314,26 @@ function Initialize-AzDataProtectionRestoreRequest
             }
             
             # can generalise this condition to manifest level if needed
-            if($DatasourceType -ne "AzureKubernetesService" -and $DatasourceType -ne "AzureElasticSAN"){ # TODO: remove Datasource dependency
+            if($DatasourceType -eq "AzureCosmosDB"){
+                if($PSBoundParameters.ContainsKey("ContainersList") -or $PSBoundParameters.ContainsKey("PrefixMatch")){
+                    throw "ContainersList and PrefixMatch are not supported for DatasourceType AzureCosmosDB. Use RestoreConfiguration to select databases and containers."
+                }
+
+                if($RestoreConfiguration -eq $null){
+                    $errormsg = "Please input parameter RestoreConfiguration for $DatasourceType restore. Use command New-AzDataProtectionRestoreConfigurationClientObject for creating the RestoreConfiguration"
+                    throw $errormsg
+                }
+
+                $resourceSelector = if($RestoreConfiguration -is [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericRestoreDatasourceCriteria]){ $RestoreConfiguration.ResourceSelector }
+                if($resourceSelector -isnot [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria] -or $resourceSelector.ResourceIdentifier.Count -eq 0){
+                    throw "Invalid RestoreConfiguration for DatasourceType AzureCosmosDB. Use New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier to create it."
+                }
+
+                # Windows PowerShell 5.1 cannot assign an object array to the typed criteria list.
+                $restoreCriteriaList = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteria]]::new()
+                $restoreCriteriaList.Add($RestoreConfiguration)
+            }
+            elseif($DatasourceType -ne "AzureKubernetesService" -and $DatasourceType -ne "AzureElasticSAN"){ # TODO: remove Datasource dependency
                 
                 if(($RecoveryPoint -ne $null) -and ($RecoveryPoint -ne "") -and $ContainersList.length -gt 0){
                     $hasPrefixMatch = $PSBoundParameters.Remove("PrefixMatch")

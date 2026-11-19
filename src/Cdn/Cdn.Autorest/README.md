@@ -31,9 +31,8 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-# You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-04-01-preview/openapi.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
+# Use the stable API for both classic CDN and Azure Front Door.
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/stable/2026-10-01/openapi.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -45,7 +44,8 @@ title: Cdn
 subject-prefix: $(service-name)
 # Change Safety: opt in -AcquirePolicyToken / -ChangeReference on write cmdlets
 enable-change-safety: true
-commit: 9e9079a5d235e0c804e7fbb188258a84b4221571
+# Pin the Swagger revision for reproducible generation.
+commit: 77c5c1cbdaefb13ec55c83302b6aaccfee33fd62
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -58,6 +58,64 @@ disable-transform-identity-type: true
 flatten-userassignedidentity: false
 
 directive:
+  # Preserve published delivery-rule and WAF completion values when changing Swagger inputs.
+  - from: source-file-csharp
+    where: $
+    transform: |
+      if (/partial class (?:EdgeAction|DeliveryRuleEdgeActionParameters)\b/.test($)) {
+        return $.replace(/PSArgumentCompleterAttribute\((?=[^\r\n]*"(?:clientRequest|ClientRequest)")[^\r\n]*\)/g,
+          'PSArgumentCompleterAttribute("clientRequest", "originRequest", "originResponse", "clientResponse", "ClientRequest", "OriginRequest", "ClientResponse")');
+      }
+      if (/partial class CdnWebApplicationFirewallPolicy(?:Properties)?\b/.test($)) {
+        return $.replace(/PSArgumentCompleterAttribute\("Creating", "Succeeded", "Failed"\)/g,
+          'PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")');
+      }
+      return $;
+  # Remove legacy URL signing secrets while retaining the stable URL signing rule action.
+  - from: swagger-document
+    where: $.definitions
+    transform: |
+      delete $.UrlSigningKeyParameters;
+      const schema = $.SecretType;
+      if (schema && schema.enum) {
+        schema.enum = schema.enum.filter(value => value !== "UrlSigningKey");
+      }
+      const metadata = schema && schema["x-ms-enum"];
+      if (metadata && metadata.values) {
+        metadata.values = metadata.values.filter(value => value.value !== "UrlSigningKey");
+      }
+      return $;
+  # Remove unused schemas before generating the module's models.
+  - from: swagger-document
+    where: $
+    transform: |
+      if (!$.definitions || !$.definitions.ProfileProperties) { return $; }
+      const definitions = $.definitions;
+      const used = new Set();
+      const visit = value => {
+        if (!value || typeof value !== "object") { return; }
+        const ref = value["$ref"];
+        if (ref && ref.startsWith("#/definitions/")) {
+          const name = ref.slice("#/definitions/".length);
+          if (!used.has(name) && definitions[name]) {
+            used.add(name);
+            visit(definitions[name]);
+            if (definitions[name].discriminator) {
+              for (const [child, schema] of Object.entries(definitions)) {
+                if ((schema.allOf || []).some(parent => parent["$ref"] === ref)) {
+                  visit({ "$ref": "#/definitions/" + child });
+                }
+              }
+            }
+          }
+        }
+        Object.values(value).forEach(visit);
+      };
+      visit([$.paths, $["x-ms-paths"], $.parameters, $.responses]);
+      for (const name of Object.keys(definitions)) {
+        if (!used.has(name)) { delete definitions[name]; }
+      }
+      return $;
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^AFDProfiles_Upgrade$/g, "AFDProfileSku_Upgrade")
@@ -172,8 +230,6 @@ directive:
     #   cmdlet-name: New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
     # - model-name: ManagedCertificateParameters
     #   cmdlet-name: New-AzFrontDoorCdnSecretManagedCertificateParametersObject
-    # - model-name: UrlSigningKeyParameters
-    #   cmdlet-name: New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
 
     - model-name: SecurityPolicyWebApplicationFirewallAssociation
       cmdlet-name: New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject

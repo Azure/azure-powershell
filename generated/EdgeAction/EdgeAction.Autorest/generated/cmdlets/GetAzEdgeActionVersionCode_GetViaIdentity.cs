@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Cmdlets;
     using System;
 
-    /// <summary>A long-running resource action.</summary>
+    /// <summary>Get the version code for the edge action version.</summary>
     /// <remarks>
     /// [OpenAPI] GetVersionCode=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/getVersionCode"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzEdgeActionVersionCode_GetViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"A long-running resource action.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"Get the version code for the edge action version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/getVersionCode", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/getVersionCode", ApiVersion = "2026-10-01")]
     public partial class GetAzEdgeActionVersionCode_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>The List license operation response.</summary>
+    /// <summary>Paged collection of License items</summary>
     public partial class LicensesListResult
     {
 

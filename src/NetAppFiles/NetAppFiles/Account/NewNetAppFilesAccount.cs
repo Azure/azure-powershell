@@ -70,7 +70,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccountEncryption Encryption { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "OpenLDAP configuration for the account, including servers, search bases and Key Vault bind credentials.")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "LDAP server, search, transport security, and bind authentication settings for the account.")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
 

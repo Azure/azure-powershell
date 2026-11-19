@@ -1,0 +1,138 @@
+{
+  "resourceType": "neuroShields/protectedResources",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.networksecurity"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkSecurityNeuroShieldProtectedResource",
+      "description": "Gets a protected resource under a NeuroShield resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkSecurity/neuroShields/{neuroShieldName}/protectedResources/{protectedResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networksecurity/get-aznetworksecurityneuroshieldprotectedresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NeuroShieldName <String>",
+              "-ProtectedResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a protected resource under a NeuroShield resource.",
+          "parameters": [
+            {
+              "name": "-NeuroShieldName",
+              "value": "[Path.neuroShieldName]"
+            },
+            {
+              "name": "-ProtectedResourceName",
+              "value": "[Path.protectedResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkSecurityNeuroShieldProtectedResourceInventoryUpload",
+      "description": "Requests a fresh inventory upload from the Neuron agents associated with a protected resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkSecurity/neuroShields/{neuroShieldName}/protectedResources/{protectedResourceName}/triggerInventoryUpload",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networksecurity/invoke-aznetworksecurityneuroshieldprotectedresourceinventoryupload"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NeuroShieldName <String>",
+              "-ProtectedResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Requests a fresh inventory upload from the Neuron agents associated with a protected resource.",
+          "parameters": [
+            {
+              "name": "-NeuroShieldName",
+              "value": "[Path.neuroShieldName]"
+            },
+            {
+              "name": "-ProtectedResourceName",
+              "value": "[Path.protectedResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkSecurityNeuroShieldProtectedResource",
+      "description": "Deletes a protected resource under a NeuroShield resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkSecurity/neuroShields/{neuroShieldName}/protectedResources/{protectedResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networksecurity/remove-aznetworksecurityneuroshieldprotectedresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NeuroShieldName <String>",
+              "-ProtectedResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a protected resource under a NeuroShield resource.",
+          "parameters": [
+            {
+              "name": "-NeuroShieldName",
+              "value": "[Path.neuroShieldName]"
+            },
+            {
+              "name": "-ProtectedResourceName",
+              "value": "[Path.protectedResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

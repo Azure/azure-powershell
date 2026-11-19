@@ -16,10 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.InternalExport]
     [global::System.Management.Automation.Cmdlet("Deploy", @"AzEdgeActionVersionCode_Deploy", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"A long-running resource action.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/deployVersionCode", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/deployVersionCode", ApiVersion = "2026-10-01")]
     public partial class DeployAzEdgeActionVersionCode_Deploy : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext
@@ -214,12 +214,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties">Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion">Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -563,12 +563,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties">Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion">Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion> response)
         {
             using( NoSynchronizationContext )
             {
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion
                 var result = (await response);
                 WriteObject(result, false);
             }

@@ -1,5 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See License.txt in the project root for license information.
+// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
@@ -12,64 +23,72 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesAccountLdapBindPassword",
-        SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet)]
-    [OutputType(typeof(bool))]
+    [Cmdlet(
+        "Update",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesAccountLdapBindPassword",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     [Alias("Update-AnfAccountLdapBindPassword")]
     public class UpdateAzureRmNetAppFilesAccountLdapBindPassword : AzureNetAppFilesCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group of the NetApp account.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group of the ANF account.")]
         [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
+        [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the NetApp account.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the ANF account.")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         [ResourceNameCompleter("Microsoft.NetApp/netAppAccounts", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource ID of the NetApp account.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The resource ID of the ANF account, including the target subscription.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true,
-            HelpMessage = "The NetApp account whose LDAP bind password is refreshed.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = "The account whose LDAP bind password is refreshed from Azure Key Vault, using the subscription in its resource ID.")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccount InputObject { get; set; }
 
-        [Parameter(HelpMessage = "Return true after the LDAP bind password has been refreshed successfully.")]
+        [Parameter(Mandatory = false, HelpMessage = "Return true after the LDAP bind password is successfully refreshed.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            ResourceIdentifier resourceIdentifier = null;
             if (ParameterSetName == ResourceIdParameterSet)
             {
-                var identifier = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = identifier.ResourceGroupName;
-                Name = identifier.ResourceName;
+                resourceIdentifier = new ResourceIdentifier(ResourceId);
             }
             else if (ParameterSetName == ObjectParameterSet)
             {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                Name = InputObject.Name;
+                resourceIdentifier = new ResourceIdentifier(InputObject.Id);
             }
 
-            if (ShouldProcess(Name, "Refresh the LDAP bind password from Azure Key Vault"))
+            if (resourceIdentifier != null)
+            {
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                Name = resourceIdentifier.ResourceName;
+            }
+
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 try
                 {
-                    AzureNetAppFilesManagementClient.NetAppAccounts.RefreshLdapBindPassword(ResourceGroupName, Name);
+                    var client = AzureNetAppFilesManagementClient;
+                    if (resourceIdentifier != null)
+                    {
+                        client.SubscriptionId = resourceIdentifier.Subscription;
+                    }
+                    client.NetAppAccounts.RefreshLdapBindPassword(ResourceGroupName, Name);
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new CloudException(ex.Body.Error.Message, ex);
-                }
-
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(true);
+                    throw new CloudException(ex.Body?.Error?.Message ?? ex.Message, ex);
                 }
             }
         }

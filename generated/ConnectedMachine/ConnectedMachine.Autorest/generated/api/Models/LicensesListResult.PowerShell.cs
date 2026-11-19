@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>The List license operation response.</summary>
+    /// <summary>Paged collection of License items</summary>
     [System.ComponentModel.TypeConverter(typeof(LicensesListResultTypeConverter))]
     public partial class LicensesListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// The List license operation response.
+    /// Paged collection of License items
     [System.ComponentModel.TypeConverter(typeof(LicensesListResultTypeConverter))]
     public partial interface ILicensesListResult
 

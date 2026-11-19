@@ -12,6 +12,11 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+if ($env:AZURE_TEST_MODE -eq "Record")
+{
+    Update-AzConfig -EnableLoginByWam $false -Scope Process | Out-Null
+}
+
 function Assert-NewTestResource($ResourceId, $ApiVersion)
 {
     # Replay the guard GET to preserve the SDK response queue.
@@ -147,5 +152,5 @@ Cleans the created resource groups
 #>
 function Clean-ResourceGroup($rgname)
 {
-	Remove-AzureRmResourceGroup -Name $rgname -Force
+	Remove-AzureRmResourceGroup -Name $rgname -Force -ErrorAction Stop
 }

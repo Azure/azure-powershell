@@ -1,0 +1,305 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxP2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "6737c24a-cf65-4919-85e8-e18685b422f0"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "7b8c1094-ee03-4332-afe7-05da6d4611cc"
+        ],
+        "x-ms-client-request-id": [
+          "6737c24a-cf65-4919-85e8-e18685b422f0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "7b8c1094-ee03-4332-afe7-05da6d4611cc"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095547Z:7b8c1094-ee03-4332-afe7-05da6d4611cc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1223EDAE0F3E49948CF01025184DA4DE Ref B: SG2AA1040518062 Ref C: 2026-10-23T09:55:47Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:55:47 GMT"
+        ],
+        "Content-Length": [
+          "1127"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastasia\",\r\n  \"name\": \"SQLSnapGABBVault1\",\r\n  \"etag\": \"W/\\\"datetime'2026-10-23T09%3A52%3A02.6176825Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"LocallyRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupProtectionContainers?api-version=2026-10-01&$filter=friendlyName%20eq%20%27SQLInstTestVM1%27%20and%20backupManagementType%20eq%20%27AzureWorkload%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFByb3RlY3Rpb25Db250YWluZXJzP2FwaS12ZXJzaW9uPTIwMjYtMTAtMDEmJGZpbHRlcj1mcmllbmRseU5hbWUlMjBlcSUyMCUyN1NRTEluc3RUZXN0Vk0xJTI3JTIwYW5kJTIwYmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlV29ya2xvYWQlMjc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "f8ba0c58-d2f2-4a42-9926-b7b7ee6ac4e0"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "fb4c1261-662c-4693-8ace-20ee2da02b7f"
+        ],
+        "x-ms-client-request-id": [
+          "f8ba0c58-d2f2-4a42-9926-b7b7ee6ac4e0"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/8f224ccc-6bb7-422f-b63f-db4cf4c2d772"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "fb4c1261-662c-4693-8ace-20ee2da02b7f"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095550Z:fb4c1261-662c-4693-8ace-20ee2da02b7f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6039DDFA64BF49609DC4B204D5A6849E Ref B: SG2AA1040518060 Ref C: 2026-10-23T09:55:50Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:55:50 GMT"
+        ],
+        "Content-Length": [
+          "1324"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;AzureBackupRG_SQLInstSnapshotGABB;SQLInstTestVM1\",\r\n      \"name\": \"VMAppContainer;Compute;AzureBackupRG_SQLInstSnapshotGABB;SQLInstTestVM1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.Compute/virtualMachines/SQLInstTestVM1\",\r\n        \"lastUpdatedTime\": \"2026-09-28T07:24:28.0299107Z\",\r\n        \"extendedInfo\": {\r\n          \"hostServerName\": \"sqlinsttestvm1\",\r\n          \"inquiryInfo\": {\r\n            \"status\": \"Success\",\r\n            \"errorDetail\": {\r\n              \"code\": \"Success\",\r\n              \"message\": \"\",\r\n              \"recommendations\": [\r\n                \"\"\r\n              ]\r\n            },\r\n            \"inquiryDetails\": [\r\n              {\r\n                \"type\": \"SQL\",\r\n                \"itemCount\": 6,\r\n                \"inquiryValidation\": {\r\n                  \"status\": \"Success\",\r\n                  \"errorDetail\": {\r\n                    \"code\": \"Success\",\r\n                    \"message\": \"\",\r\n                    \"recommendations\": [\r\n                      \"\"\r\n                    ]\r\n                  },\r\n                  \"additionalDetail\": \"\",\r\n                  \"protectableItemCount\": {\r\n                    \"SQLInstance\": 1,\r\n                    \"SQLDataBase\": 6\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"SQLInstTestVM1\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"VMAppContainer\",\r\n        \"protectableObjectType\": \"VMAppContainer\",\r\n        \"sourceLocation\": \"eastasia\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupProtectedItems?api-version=2026-10-01&$filter=backupManagementType%20eq%20%27AzureWorkload%27%20and%20itemType%20eq%20%27SQLInstance%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cFByb3RlY3RlZEl0ZW1zP2FwaS12ZXJzaW9uPTIwMjYtMTAtMDEmJGZpbHRlcj1iYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJTI3QXp1cmVXb3JrbG9hZCUyNyUyMGFuZCUyMGl0ZW1UeXBlJTIwZXElMjAlMjdTUUxJbnN0YW5jZSUyNw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "63ed617a-1d91-454f-b821-449a0acca9a7"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "0b127f98-4251-418c-b2bd-641c6857a5d1"
+        ],
+        "x-ms-client-request-id": [
+          "63ed617a-1d91-454f-b821-449a0acca9a7"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/dc5e98ef-d242-467d-86fb-5e2d564e7e26"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b127f98-4251-418c-b2bd-641c6857a5d1"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095551Z:0b127f98-4251-418c-b2bd-641c6857a5d1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 86CA66EAFFE04A8C9B19AFD8D8D51D96 Ref B: SG2AA1040516031 Ref C: 2026-10-23T09:55:51Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:55:51 GMT"
+        ],
+        "Content-Length": [
+          "4129"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupFabrics/Azure/protectionContainers/VMAppContainer;compute;azurebackuprg_sqlinstsnapshotgabb;sqlinsttestvm1/protectedItems/SQLInstance;mssqlserver\",\r\n      \"name\": \"SQLInstance;mssqlserver\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"childDatabaseNameList\": [],\r\n        \"instanceProtectionReadiness\": \"Ready\",\r\n        \"friendlyName\": \"mssqlserver\",\r\n        \"serverName\": \"sqlinsttestvm1\",\r\n        \"parentName\": \"MSSQLSERVER\",\r\n        \"parentType\": \"AzureVmWorkloadSQLInstance\",\r\n        \"protectionStatus\": \"Unhealthy\",\r\n        \"protectionState\": \"ProtectionStopped\",\r\n        \"lastBackupStatus\": \"Unhealthy\",\r\n        \"lastBackupTime\": \"2026-10-14T21:40:53.0754825Z\",\r\n        \"lastBackupErrorDetail\": {\r\n          \"code\": \"UserErrorDbStoragePoolNotHealthy\",\r\n          \"message\": \"Operation has failed because the storage pool hosting the file system is not healthy.\",\r\n          \"recommendations\": [\r\n            \"Please make sure that the storage pool hosting the file system is healthy and retry the operation. Refer to https://aka.ms/wlsnapshotsupport for more information on Snapshot backup support.\"\r\n          ],\r\n          \"dynamicErrorMessage\": \"StoragePool is not healthy. StoragePool:SQLVMStoragePool1\"\r\n        },\r\n        \"protectedItemDataSourceId\": \"2266471697103406901\",\r\n        \"protectedItemHealthStatus\": \"Unhealthy\",\r\n        \"protectedItemType\": \"AzureVmWorkloadSQLInstance\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workloadType\": \"SQLInstance\",\r\n        \"containerName\": \"VMAppContainer;compute;azurebackuprg_sqlinstsnapshotgabb;sqlinsttestvm1\",\r\n        \"sourceResourceId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/azurebackuprg_sqlinstsnapshotgabb/providers/Microsoft.Compute/virtualMachines/sqlinsttestvm1\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0,\r\n        \"sourceLocation\": \"eastasia\",\r\n        \"sourceSideScanInfo\": {\r\n          \"sourceSideScanStatus\": \"NotConfigured\",\r\n          \"sourceSideScanSummary\": \"Unknown\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupFabrics/Azure/protectionContainers/VMAppContainer;compute;utk-rereg-tst;utk-vm-bkt/protectedItems/SQLInstance;mssqlserver\",\r\n      \"name\": \"SQLInstance;mssqlserver\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"childDatabaseNameList\": [],\r\n        \"instanceProtectionReadiness\": \"Ready\",\r\n        \"friendlyName\": \"mssqlserver\",\r\n        \"serverName\": \"utk-vm-bkt\",\r\n        \"parentName\": \"MSSQLSERVER\",\r\n        \"parentType\": \"AzureVmWorkloadSQLInstance\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"ProtectionStopped\",\r\n        \"lastBackupStatus\": \"IRPending\",\r\n        \"lastBackupTime\": \"2026-10-14T13:54:24.0094375Z\",\r\n        \"lastBackupErrorDetail\": {\r\n          \"code\": \"CloudInternalError\",\r\n          \"message\": \"Microsoft Azure Backup encountered an internal error.\",\r\n          \"recommendations\": [\r\n            \"Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.\"\r\n          ]\r\n        },\r\n        \"protectedItemDataSourceId\": \"2266471697614674553\",\r\n        \"protectedItemHealthStatus\": \"NotReachable\",\r\n        \"protectedItemType\": \"AzureVmWorkloadSQLInstance\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workloadType\": \"SQLInstance\",\r\n        \"containerName\": \"VMAppContainer;compute;utk-rereg-tst;utk-vm-bkt\",\r\n        \"sourceResourceId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/utk-rereg-tst/providers/Microsoft.Compute/virtualMachines/utk-vm-bkt\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1\",\r\n        \"deferredDeleteTimeInUTC\": \"2026-10-14T14:09:36.4884049Z\",\r\n        \"isScheduledForDeferredDelete\": true,\r\n        \"deferredDeleteTimeRemaining\": \"5.04:13:44.7287161\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 14,\r\n        \"sourceLocation\": \"eastasia\",\r\n        \"sourceSideScanInfo\": {\r\n          \"sourceSideScanStatus\": \"NotConfigured\",\r\n          \"sourceSideScanSummary\": \"Unknown\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupFabrics/Azure/protectionContainers/VMAppContainer%3Bcompute%3Bazurebackuprg_sqlinstsnapshotgabb%3Bsqlinsttestvm1/protectedItems/SQLInstance%3Bmssqlserver?api-version=2026-10-01&$filter=expand%20eq%20%27extendedinfo%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmZDA3NzMtOTBjNS00NzJjLTgwN2QtMGMwYTEwNjA1YjlkL3Jlc291cmNlR3JvdXBzL0F6dXJlQmFja3VwUkdfU1FMSW5zdFNuYXBzaG90R0FCQi9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL1NRTFNuYXBHQUJCVmF1bHQxL2JhY2t1cEZhYnJpY3MvQXp1cmUvcHJvdGVjdGlvbkNvbnRhaW5lcnMvVk1BcHBDb250YWluZXIlM0Jjb21wdXRlJTNCYXp1cmViYWNrdXByZ19zcWxpbnN0c25hcHNob3RnYWJiJTNCc3FsaW5zdHRlc3R2bTEvcHJvdGVjdGVkSXRlbXMvU1FMSW5zdGFuY2UlM0Jtc3NxbHNlcnZlcj9hcGktdmVyc2lvbj0yMDI2LTEwLTAxJiRmaWx0ZXI9ZXhwYW5kJTIwZXElMjAlMjdleHRlbmRlZGluZm8lMjc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "63ed617a-1d91-454f-b821-449a0acca9a7"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "5832da2e-9199-420d-a620-d81db9ccc39a"
+        ],
+        "x-ms-client-request-id": [
+          "63ed617a-1d91-454f-b821-449a0acca9a7"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/eastasia/9de886b1-ab4f-454f-81a6-44e8061d7445"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "5832da2e-9199-420d-a620-d81db9ccc39a"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20261023T095552Z:5832da2e-9199-420d-a620-d81db9ccc39a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4F828E41608741939352B0ADAAC04BA6 Ref B: SG2AA1040516031 Ref C: 2026-10-23T09:55:52Z"
+        ],
+        "Date": [
+          "Fri, 23 Oct 2026 09:55:52 GMT"
+        ],
+        "Content-Length": [
+          "2280"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1/backupFabrics/Azure/protectionContainers/VMAppContainer;compute;azurebackuprg_sqlinstsnapshotgabb;sqlinsttestvm1/protectedItems/SQLInstance;mssqlserver\",\r\n  \"name\": \"SQLInstance;mssqlserver\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"childDatabaseNameList\": [],\r\n    \"instanceProtectionReadiness\": \"Ready\",\r\n    \"friendlyName\": \"mssqlserver\",\r\n    \"serverName\": \"sqlinsttestvm1\",\r\n    \"parentName\": \"MSSQLSERVER\",\r\n    \"parentType\": \"AzureVmWorkloadSQLInstance\",\r\n    \"protectionStatus\": \"Unhealthy\",\r\n    \"protectionState\": \"ProtectionStopped\",\r\n    \"lastBackupStatus\": \"Unhealthy\",\r\n    \"lastBackupTime\": \"2026-10-14T21:40:53.0754825Z\",\r\n    \"lastBackupErrorDetail\": {\r\n      \"code\": \"UserErrorDbStoragePoolNotHealthy\",\r\n      \"message\": \"Operation has failed because the storage pool hosting the file system is not healthy.\",\r\n      \"recommendations\": [\r\n        \"Please make sure that the storage pool hosting the file system is healthy and retry the operation. Refer to https://aka.ms/wlsnapshotsupport for more information on Snapshot backup support.\"\r\n      ],\r\n      \"dynamicErrorMessage\": \"StoragePool is not healthy. StoragePool:SQLVMStoragePool1\"\r\n    },\r\n    \"protectedItemDataSourceId\": \"2266471697103406901\",\r\n    \"protectedItemHealthStatus\": \"Unhealthy\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2026-09-29T14:45:28Z\",\r\n      \"recoveryPointCount\": 8,\r\n      \"policyState\": \"Consistent\"\r\n    },\r\n    \"protectedItemType\": \"AzureVmWorkloadSQLInstance\",\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workloadType\": \"SQLInstance\",\r\n    \"containerName\": \"VMAppContainer;compute;azurebackuprg_sqlinstsnapshotgabb;sqlinsttestvm1\",\r\n    \"sourceResourceId\": \"/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/azurebackuprg_sqlinstsnapshotgabb/providers/Microsoft.Compute/virtualMachines/sqlinsttestvm1\",\r\n    \"lastRecoveryPoint\": \"2026-10-14T11:18:17Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/0ffd0773-90c5-472c-807d-0c0a10605b9d/resourceGroups/AzureBackupRG_SQLInstSnapshotGABB/providers/Microsoft.RecoveryServices/vaults/SQLSnapGABBVault1\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0,\r\n    \"sourceLocation\": \"eastasia\",\r\n    \"sourceSideScanInfo\": {\r\n      \"sourceSideScanStatus\": \"NotConfigured\",\r\n      \"sourceSideScanSummary\": \"Unknown\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0ffd0773-90c5-472c-807d-0c0a10605b9d"
+  }
+}

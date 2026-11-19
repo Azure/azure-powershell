@@ -43,18 +43,27 @@ namespace PSModelGenerator
 
         private static readonly Dictionary<string, string> OMtoPSClassMappings = new();
 
+        // CertificateReferences, CurrentNodeCommunicationMode, ResourceTags and TargetNodeCommunicationMode were removed in Az.Batch 4.0.0.
         private static readonly Dictionary<string, string[]> OmittedProperties = new()
         {
             // Hide Custom Behaviors
-            {"Microsoft.Azure.Batch.Certificate", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.CloudJob", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.CloudJobSchedule", new string[] {"CustomBehaviors"}},
-            {"Microsoft.Azure.Batch.CloudPool", new string[] {"CustomBehaviors"}},
+            {"Microsoft.Azure.Batch.CloudPool", new string[] {"CustomBehaviors", "CertificateReferences", "CurrentNodeCommunicationMode", "ResourceTags", "TargetNodeCommunicationMode"}},
             // Hide file staging for now - users can use storage cmdlets to upload files and generate SAS tokens
             {"Microsoft.Azure.Batch.CloudTask", new string[] {"CustomBehaviors", "FilesToStage"}},
-            {"Microsoft.Azure.Batch.ComputeNode", new string[] {"CustomBehaviors"}},
+            {"Microsoft.Azure.Batch.ComputeNode", new string[] {"CustomBehaviors", "CertificateReferences"}},
             {"Microsoft.Azure.Batch.ComputeNodeUser", new string[] {"CustomBehaviors"}},
             {"Microsoft.Azure.Batch.NodeFile", new string[] {"CustomBehaviors"}},
+            {"Microsoft.Azure.Batch.PoolSpecification", new string[] {"CertificateReferences", "ResourceTags", "TargetNodeCommunicationMode"}},
+        };
+
+        // Certificate models were removed in Az.Batch 4.0.0 together with the certificate cmdlets.
+        private static readonly HashSet<string> OmittedTypes = new()
+        {
+            "Microsoft.Azure.Batch.Certificate",
+            "Microsoft.Azure.Batch.CertificateReference",
+            "Microsoft.Azure.Batch.DeleteCertificateError",
         };
 
         public static void Main(string[] args)
@@ -97,7 +106,7 @@ namespace PSModelGenerator
 
             Type[] allTypes = omAssembly.GetTypes();
             List<(string FullName, string Name)> typeNames = allTypes
-                .Where(t => t.GetInterface("IPropertyMetadata") != null && t.Namespace == "Microsoft.Azure.Batch" && t.IsPublic).Select(t => (t.FullName, t.Name)).ToList();
+                .Where(t => t.GetInterface("IPropertyMetadata") != null && t.Namespace == "Microsoft.Azure.Batch" && t.IsPublic && !OmittedTypes.Contains(t.FullName)).Select(t => (t.FullName, t.Name)).ToList();
 
             foreach ((string fullName, string className) in typeNames)
             {

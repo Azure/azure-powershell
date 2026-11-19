@@ -44,27 +44,34 @@ ProvisioningState : Succeeded
 
 This command creates the new ANF account "MyAnfAccount".
 
-### Example 2: Create an account with OpenLDAP configuration
+### Example 2: Create an account with LDAP configuration
 ```powershell
 $ldap = @{
     Domain = "example.com"
-    LdapServers = @("192.0.2.10", "192.0.2.11")
+    LdapServers = @("10.0.0.4", "10.0.0.5")
     SecureLdapType = "None"
-    LdapPort = 389
-    UserDn = "ou=users,dc=example,dc=com"
-    GroupDn = "ou=groups,dc=example,dc=com"
     BindAuthenticationLevel = "Anonymous"
+    UserDN = "ou=users,dc=example,dc=com"
+    GroupDN = "ou=groups,dc=example,dc=com"
 }
 New-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -Location "westus2" -LdapConfiguration $ldap
 ```
 
-Configures anonymous LDAP lookups without a bind password. To use encrypted communication, set `SecureLdapType` to `LdapOverTLS` and supply `ServerCaCertificate`, `CertificateCnHost`, and `DnsServers` as required by the LDAP server configuration.
+Creates an account using the specified LDAP servers and search distinguished names. For encrypted transport, use `LdapOverTLS` and supply the certificate and DNS settings described below.
 
 ## PARAMETERS
 
 ### -LdapConfiguration
-OpenLDAP configuration for the account. Accepts `Domain`, `LdapServers`, `SecureLdapType` (`None` or `LdapOverTLS`), `ServerCaCertificate`, `CertificateCnHost`, `DnsServers`, `LdapPort`, `UserDn`, `GroupDn`, `NetGroupDn`, `BindAuthenticationLevel` (`Anonymous` or `Simple`), `BindDn`, and `BindPasswordAkvConfig`.
-For simple authentication, `BindPasswordAkvConfig` identifies the password secret using `AzureKeyVaultUri`, `SecretName`, and optionally `UserAssignedIdentity`. Do not supply the password itself.
+LDAP server, search, transport security, and bind authentication settings for the account. Accepts a PSNetAppFilesLdapConfiguration object or a hashtable with these properties:
+
+- `Domain`, `LdapServers`: LDAP domain and server IPv4 addresses.
+- `SecureLdapType`: `None` or `LdapOverTLS`.
+- `ServerCACertificate`, `CertificateCNHost`, `DnsServers`: Base64-encoded LDAP server CA certificate, certificate common-name host, and DNS server IPv4 addresses for LDAP over TLS.
+- `LdapPort`: LDAP port; the service defaults to 389.
+- `UserDN`, `GroupDN`, `NetGroupDN`: Distinguished names that override the base search distinguished name.
+- `BindAuthenticationLevel`: `Anonymous` or `Simple`.
+- `BindDN`: Distinguished name used to bind to the LDAP server.
+- `BindPasswordAkvConfig`: Nested hashtable or PSNetAppFilesBindPasswordAkvConfig object with `AzureKeyVaultUri`, `SecretName`, and `UserAssignedIdentity`, identifying the Key Vault secret containing the bind password and the identity used to access it. Do not provide the password itself.
 
 ```yaml
 Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapConfiguration

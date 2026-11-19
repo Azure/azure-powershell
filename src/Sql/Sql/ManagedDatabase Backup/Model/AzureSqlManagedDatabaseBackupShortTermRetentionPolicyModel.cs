@@ -45,6 +45,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
         /// </summary>
         public int RetentionDays { get; set; }
 
+        internal bool? LockImmutability { get; set; }
+
+        /// <summary>
+        /// Gets the current backup immutability status.
+        /// </summary>
+        public string ImmutabilityStatus { get; set; }
+
         /// <summary>
         /// Construct AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel object
         /// </summary>
@@ -60,6 +67,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
             DatabaseName = managedDatabaseName;
             DeletionDate = deletionDate;
             RetentionDays = managedBackupRetentionPolicy.RetentionDays.Value;
+            LockImmutability = managedBackupRetentionPolicy.LockImmutability;
+            ImmutabilityStatus = managedBackupRetentionPolicy.ImmutabilityStatus;
         }
     }
 }

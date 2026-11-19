@@ -53,6 +53,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="bandwidthInGbps">Bandwidth of the VirtualNetworkAppliance resource in Gbps.
         /// </param>
 
+        /// <param name="capacityProvider">The reference to the capacity provider resource.
+        /// </param>
+
         /// <param name="ipConfigurations">A list of IPConfigurations of the virtual network appliance.
         /// </param>
 
@@ -62,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">The resource GUID property of the virtual network appliance resource.
         /// </param>
-        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), Subnet subnet = default(Subnet), double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string resourceGuid = default(string))
+        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), Subnet subnet = default(Subnet), double? bandwidthInGbps = default(double?), SubResource capacityProvider = default(SubResource), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string resourceGuid = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -70,6 +73,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ProvisioningState = provisioningState;
             this.Subnet = subnet;
             this.BandwidthInGbps = bandwidthInGbps;
+            this.CapacityProvider = capacityProvider;
             this.IPConfigurations = ipConfigurations;
             this.PrivateIPAddressVersion = privateIPAddressVersion;
             this.ResourceGuid = resourceGuid;
@@ -106,6 +110,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.bandwidthInGbps")]
         public double? BandwidthInGbps {get; set; }
+
+        /// <summary>
+        /// Gets or sets the reference to the capacity provider resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.capacityProvider")]
+        public SubResource CapacityProvider {get; set; }
 
         /// <summary>
         /// Gets a list of IPConfigurations of the virtual network appliance.

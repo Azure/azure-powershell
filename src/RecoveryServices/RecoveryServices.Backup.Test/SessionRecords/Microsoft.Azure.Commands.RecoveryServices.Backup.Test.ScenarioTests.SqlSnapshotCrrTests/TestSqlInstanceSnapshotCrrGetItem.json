@@ -1,0 +1,305 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTM1Y2ZmNTQtN2QzYy00OWNjLWExZTAtYTlhYThiZjAwNmY1L3Jlc291cmNlR3JvdXBzL2FiaGlua3NxbDNjY3kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9hYmhpbmtzcWwzY2N5P2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "b248c899-3185-452d-9ff6-6d6261b2257f"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "c411186b-6f8a-470b-b159-cf6b25ef5ce0"
+        ],
+        "x-ms-client-request-id": [
+          "b248c899-3185-452d-9ff6-6d6261b2257f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "c411186b-6f8a-470b-b159-cf6b25ef5ce0"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20261024T033717Z:c411186b-6f8a-470b-b159-cf6b25ef5ce0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 7DB4B17F62EF4E349DD9B1197FF2DC49 Ref B: SG2AA1070305023 Ref C: 2026-10-24T03:37:17Z"
+        ],
+        "Date": [
+          "Sat, 24 Oct 2026 03:37:17 GMT"
+        ],
+        "Content-Length": [
+          "1099"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"abhinksql3ccy\",\r\n  \"etag\": \"W/\\\"datetime'2025-11-15T15%3A19%3A40.0369343Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Enabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy/backupProtectedItems/?$filter=backupManagementType%20eq%20'AzureWorkload'%20and%20itemType%20eq%20'SQLInstance'&api-version=2021-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTM1Y2ZmNTQtN2QzYy00OWNjLWExZTAtYTlhYThiZjAwNmY1L3Jlc291cmNlR3JvdXBzL2FiaGlua3NxbDNjY3kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9hYmhpbmtzcWwzY2N5L2JhY2t1cFByb3RlY3RlZEl0ZW1zLz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVXb3JrbG9hZCclMjBhbmQlMjBpdGVtVHlwZSUyMGVxJTIwJ1NRTEluc3RhbmNlJyZhcGktdmVyc2lvbj0yMDIxLTExLTE1",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "0a5721c4-b0e2-4d0a-aed0-b67b27ba1413"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "a8c2c1ea-0568-46da-872e-34f35bc6fccb"
+        ],
+        "x-ms-client-request-id": [
+          "0a5721c4-b0e2-4d0a-aed0-b67b27ba1413"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/centraluseuap/191ad83d-9476-4293-b455-7f322ea63ec3"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "a8c2c1ea-0568-46da-872e-34f35bc6fccb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20261024T033719Z:a8c2c1ea-0568-46da-872e-34f35bc6fccb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4AB6B64A6BDB4347951169FE52BDE8C4 Ref B: SG2AA1070304025 Ref C: 2026-10-24T03:37:18Z"
+        ],
+        "Date": [
+          "Sat, 24 Oct 2026 03:37:19 GMT"
+        ],
+        "Content-Length": [
+          "1606"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy/backupFabrics/Azure/protectionContainers/VMAppContainer;compute;abhinksql3ccy;abhinksql3ccy/protectedItems/SQLInstance;mssqlserver\",\r\n      \"name\": \"SQLInstance;mssqlserver\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"childDatabaseNameList\": [\r\n          \"newdb\"\r\n        ],\r\n        \"instanceProtectionReadiness\": \"Ready\",\r\n        \"friendlyName\": \"mssqlserver\",\r\n        \"serverName\": \"abhinksql3ccy\",\r\n        \"parentName\": \"MSSQLSERVER\",\r\n        \"parentType\": \"AzureVmWorkloadSQLInstance\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"lastBackupStatus\": \"Healthy\",\r\n        \"lastBackupTime\": \"2026-10-24T02:06:22.8690136Z\",\r\n        \"protectedItemDataSourceId\": \"598134931741184\",\r\n        \"protectedItemHealthStatus\": \"Healthy\",\r\n        \"protectedItemType\": \"AzureVmWorkloadSQLInstance\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workloadType\": \"SQLInstance\",\r\n        \"containerName\": \"VMAppContainer;compute;abhinksql3ccy;abhinksql3ccy\",\r\n        \"sourceResourceId\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.Compute/virtualMachines/abhinksql3ccy\",\r\n        \"policyId\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy/backupPolicies/snPolicy\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy/backupProtectedItems/?$filter=backupManagementType%20eq%20'AzureWorkload'%20and%20itemType%20eq%20'SQLInstance'&api-version=2021-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTM1Y2ZmNTQtN2QzYy00OWNjLWExZTAtYTlhYThiZjAwNmY1L3Jlc291cmNlR3JvdXBzL2FiaGlua3NxbDNjY3kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9hYmhpbmtzcWwzY2N5L2JhY2t1cFByb3RlY3RlZEl0ZW1zLz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVXb3JrbG9hZCclMjBhbmQlMjBpdGVtVHlwZSUyMGVxJTIwJ1NRTEluc3RhbmNlJyZhcGktdmVyc2lvbj0yMDIxLTExLTE1",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "94d2c4ca-bf47-4396-8828-643c6522ff33"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "c3898490-eba0-418f-8021-fd31553a5413"
+        ],
+        "x-ms-client-request-id": [
+          "94d2c4ca-bf47-4396-8828-643c6522ff33"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/centraluseuap/11af0be6-f526-414f-bf18-d57f98af1ebc"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "c3898490-eba0-418f-8021-fd31553a5413"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20261024T033721Z:c3898490-eba0-418f-8021-fd31553a5413"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: AD14310374AB4985B62D4D8CEC062098 Ref B: SG2AA1040513060 Ref C: 2026-10-24T03:37:20Z"
+        ],
+        "Date": [
+          "Sat, 24 Oct 2026 03:37:21 GMT"
+        ],
+        "Content-Length": [
+          "1606"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy/backupFabrics/Azure/protectionContainers/VMAppContainer;compute;abhinksql3ccy;abhinksql3ccy/protectedItems/SQLInstance;mssqlserver\",\r\n      \"name\": \"SQLInstance;mssqlserver\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"childDatabaseNameList\": [\r\n          \"newdb\"\r\n        ],\r\n        \"instanceProtectionReadiness\": \"Ready\",\r\n        \"friendlyName\": \"mssqlserver\",\r\n        \"serverName\": \"abhinksql3ccy\",\r\n        \"parentName\": \"MSSQLSERVER\",\r\n        \"parentType\": \"AzureVmWorkloadSQLInstance\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"lastBackupStatus\": \"Healthy\",\r\n        \"lastBackupTime\": \"2026-10-24T02:06:22.8690136Z\",\r\n        \"protectedItemDataSourceId\": \"598134931741184\",\r\n        \"protectedItemHealthStatus\": \"Healthy\",\r\n        \"protectedItemType\": \"AzureVmWorkloadSQLInstance\",\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workloadType\": \"SQLInstance\",\r\n        \"containerName\": \"VMAppContainer;compute;abhinksql3ccy;abhinksql3ccy\",\r\n        \"sourceResourceId\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.Compute/virtualMachines/abhinksql3ccy\",\r\n        \"policyId\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy/backupPolicies/snPolicy\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy/backupFabrics/Azure/protectionContainers/VMAppContainer%3Bcompute%3Babhinksql3ccy%3Babhinksql3ccy/protectedItems/SQLInstance%3Bmssqlserver?api-version=2026-10-01&$filter=expand%20eq%20%27extendedinfo%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTM1Y2ZmNTQtN2QzYy00OWNjLWExZTAtYTlhYThiZjAwNmY1L3Jlc291cmNlR3JvdXBzL2FiaGlua3NxbDNjY3kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9hYmhpbmtzcWwzY2N5L2JhY2t1cEZhYnJpY3MvQXp1cmUvcHJvdGVjdGlvbkNvbnRhaW5lcnMvVk1BcHBDb250YWluZXIlM0Jjb21wdXRlJTNCYWJoaW5rc3FsM2NjeSUzQmFiaGlua3NxbDNjY3kvcHJvdGVjdGVkSXRlbXMvU1FMSW5zdGFuY2UlM0Jtc3NxbHNlcnZlcj9hcGktdmVyc2lvbj0yMDI2LTEwLTAxJiRmaWx0ZXI9ZXhwYW5kJTIwZXElMjAlMjdleHRlbmRlZGluZm8lMjc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "0a5721c4-b0e2-4d0a-aed0-b67b27ba1413"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3226.50405",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26300",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.15.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "15dc5e6e-9cac-43b8-a511-b88d11284458"
+        ],
+        "x-ms-client-request-id": [
+          "0a5721c4-b0e2-4d0a-aed0-b67b27ba1413"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=75320258-6d4a-4f7e-aac0-f013fd030124/centraluseuap/3c2742d8-a4b9-45de-8f4f-d008397c8c40"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "15dc5e6e-9cac-43b8-a511-b88d11284458"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20261024T033720Z:15dc5e6e-9cac-43b8-a511-b88d11284458"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E87B5DBC63304121A3FDCB553F4C87C9 Ref B: SG2AA1070304029 Ref C: 2026-10-24T03:37:19Z"
+        ],
+        "Date": [
+          "Sat, 24 Oct 2026 03:37:19 GMT"
+        ],
+        "Content-Length": [
+          "1882"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy/backupFabrics/Azure/protectionContainers/VMAppContainer;compute;abhinksql3ccy;abhinksql3ccy/protectedItems/SQLInstance;mssqlserver\",\r\n  \"name\": \"SQLInstance;mssqlserver\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"childDatabaseNameList\": [\r\n      \"newdb\"\r\n    ],\r\n    \"instanceProtectionReadiness\": \"Ready\",\r\n    \"friendlyName\": \"mssqlserver\",\r\n    \"serverName\": \"abhinksql3ccy\",\r\n    \"parentName\": \"MSSQLSERVER\",\r\n    \"parentType\": \"AzureVmWorkloadSQLInstance\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"lastBackupStatus\": \"Healthy\",\r\n    \"lastBackupTime\": \"2026-10-24T02:06:22.8690136Z\",\r\n    \"protectedItemDataSourceId\": \"598134931741184\",\r\n    \"protectedItemHealthStatus\": \"Healthy\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2026-05-07T14:05:20Z\",\r\n      \"recoveryPointCount\": 146,\r\n      \"policyState\": \"Inconsistent\"\r\n    },\r\n    \"protectedItemType\": \"AzureVmWorkloadSQLInstance\",\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workloadType\": \"SQLInstance\",\r\n    \"containerName\": \"VMAppContainer;compute;abhinksql3ccy;abhinksql3ccy\",\r\n    \"sourceResourceId\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.Compute/virtualMachines/abhinksql3ccy\",\r\n    \"policyId\": \"/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy/backupPolicies/snPolicy\",\r\n    \"lastRecoveryPoint\": \"2026-10-24T02:05:36Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/935cff54-7d3c-49cc-a1e0-a9aa8bf006f5/resourceGroups/abhinksql3ccy/providers/Microsoft.RecoveryServices/vaults/abhinksql3ccy\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0,\r\n    \"sourceLocation\": \"centraluseuap\",\r\n    \"sourceSideScanInfo\": {\r\n      \"sourceSideScanStatus\": \"NotConfigured\",\r\n      \"sourceSideScanSummary\": \"Unknown\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "935cff54-7d3c-49cc-a1e0-a9aa8bf006f5"
+  }
+}

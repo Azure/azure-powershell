@@ -19,8 +19,9 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -Maxi
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
- [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-WindowParameterPatchNameMasksToExclude <String[]>]
+ [-WindowParameterPatchNameMasksToInclude <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Install
@@ -44,8 +45,9 @@ Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -Maximu
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
- [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-WindowParameterPatchNameMasksToExclude <String[]>]
+ [-WindowParameterPatchNameMasksToInclude <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InstallViaJsonFilePath
@@ -287,6 +289,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -302,6 +305,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -380,6 +384,40 @@ This is used to install patches that were published on or before this given max 
 
 ```yaml
 Type: System.DateTime
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WindowParameterPatchNameMasksToExclude
+This is used to exclude patches that match the given patch name masks.
+Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list.
+Null, empty and only whitespaces strings as inputs values are not supported.
+
+```yaml
+Type: System.String[]
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WindowParameterPatchNameMasksToInclude
+This is used to include patches that match the given patch name masks.
+Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list.
+Null, empty and only whitespaces strings as inputs values are not supported.
+
+```yaml
+Type: System.String[]
 Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 

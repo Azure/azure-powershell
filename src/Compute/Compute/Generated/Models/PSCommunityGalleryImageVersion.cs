@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Location { get; set; }
         public string Type { get; set; }
         public string UniqueId { get; set; }
+        public DateTime? ConsumptionEndTime { get; set; }
+        public string ImageState { get; set; }
     }
 
     public class PSCommunityGalleryImageVersionList : PSCommunityGalleryImageVersion

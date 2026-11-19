@@ -366,6 +366,58 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.AzureResourceMetricRecommendationConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.AzureResourceMetricRecommendationConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SignalKind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AggregationType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DimensionFilter</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MetricName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MetricNamespace</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TimeGrain</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SignalKind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AggregationType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DimensionFilter</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MetricName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MetricNamespace</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TimeGrain</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.AzureResourceSignal</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.AzureResourceSignal#Multiple</TypeName>
@@ -1538,6 +1590,46 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.LogAnalyticsQueryRecommendationConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.LogAnalyticsQueryRecommendationConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SignalKind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>QueryText</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TimeGrain</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ValueColumnName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SignalKind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>QueryText</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TimeGrain</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ValueColumnName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.LogAnalyticsQuerySignalDefinitionProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.LogAnalyticsQuerySignalDefinitionProperties#Multiple</TypeName>
@@ -1893,6 +1985,40 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.PrometheusMetricsRecommendationConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.PrometheusMetricsRecommendationConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SignalKind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>QueryText</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TimeGrain</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SignalKind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>QueryText</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TimeGrain</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2461,50 +2587,38 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AggregationType</Label>
+            <Label>DataUnit</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DimensionFilter</Label>
+            <Label>Description</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>MetricName</Label>
+            <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>MetricNamespace</Label>
+            <Label>RefreshInterval</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SignalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TimeGrain</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Unit</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AggregationType</PropertyName>
+                <PropertyName>DataUnit</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DimensionFilter</PropertyName>
+                <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>MetricName</PropertyName>
+                <PropertyName>DisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>MetricNamespace</PropertyName>
+                <PropertyName>RefreshInterval</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SignalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TimeGrain</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Unit</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2811,6 +2925,28 @@
               <TableColumnItem>
                 <PropertyName>SignalDefinitionName</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SignalKind</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalRecommendationConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalRecommendationConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SignalKind</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>SignalKind</PropertyName>
               </TableColumnItem>

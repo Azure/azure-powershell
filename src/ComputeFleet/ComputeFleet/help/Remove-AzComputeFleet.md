@@ -15,14 +15,14 @@ Delete a Fleet
 ### Delete (Default)
 ```
 Remove-AzComputeFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzComputeFleet -InputObject <IComputeFleetIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,10 +54,10 @@ Deletes the specified Compute Fleet and returns a boolean indicating success whe
 ### Example 3: Delete a fleet using its identity
 ```powershell
 $fleet = Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
-Remove-AzComputeFleet -InputObject $fleet -PassThru
+Remove-AzComputeFleet -InputObject @{ Id = $fleet.Id } -PassThru
 ```
 
-Uses an existing fleet object to identify the fleet to delete.
+Uses an identity hash table containing the resource ID of an existing fleet to identify the fleet to delete.
 This has the same Launch mode VM-retention behavior as deleting the fleet by name.
 
 ## PARAMETERS
@@ -145,21 +145,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

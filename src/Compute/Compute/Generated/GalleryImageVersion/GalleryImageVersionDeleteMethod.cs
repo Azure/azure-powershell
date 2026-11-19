@@ -72,7 +72,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             break;
                     }
 
-                    var result = GalleryImageVersionsClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageDefinitionName, galleryImageVersionName).GetAwaiter().GetResult();
+                    var result = GalleryImageVersionsClient.DeleteWithHttpMessagesAsync(
+                        resourceGroupName,
+                        galleryName,
+                        galleryImageDefinitionName,
+                        galleryImageVersionName,
+                        this.BypassSoftDelete.IsPresent ? (bool?)true : null).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -142,5 +147,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Permanently deletes the gallery image version, bypassing soft delete.")]
+        public SwitchParameter BypassSoftDelete { get; set; }
     }
 }

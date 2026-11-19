@@ -129,6 +129,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).PrivateLinkScopeResourceId = (string) content.GetValueForProperty("PrivateLinkScopeResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).PrivateLinkScopeResourceId, global::System.Convert.ToString);
             }
+            if (content.Contains("IdentityKeyStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).IdentityKeyStore = (string) content.GetValueForProperty("IdentityKeyStore",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).IdentityKeyStore, global::System.Convert.ToString);
+            }
+            if (content.Contains("TpmEkCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).TpmEkCertificate = (string) content.GetValueForProperty("TpmEkCertificate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).TpmEkCertificate, global::System.Convert.ToString);
+            }
             if (content.Contains("OSProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
@@ -171,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("AgentUpgradeLastAttemptTimestamp"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp = (string) content.GetValueForProperty("AgentUpgradeLastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp = (global::System.DateTime?) content.GetValueForProperty("AgentUpgradeLastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("AgentUpgradeLastAttemptStatus"))
             {
@@ -218,6 +226,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).PrivateLinkScopeResourceId = (string) content.GetValueForProperty("PrivateLinkScopeResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).PrivateLinkScopeResourceId, global::System.Convert.ToString);
             }
+            if (content.Contains("IdentityKeyStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).IdentityKeyStore = (string) content.GetValueForProperty("IdentityKeyStore",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).IdentityKeyStore, global::System.Convert.ToString);
+            }
+            if (content.Contains("TpmEkCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).TpmEkCertificate = (string) content.GetValueForProperty("TpmEkCertificate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).TpmEkCertificate, global::System.Convert.ToString);
+            }
             if (content.Contains("OSProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
@@ -260,7 +276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("AgentUpgradeLastAttemptTimestamp"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp = (string) content.GetValueForProperty("AgentUpgradeLastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp = (global::System.DateTime?) content.GetValueForProperty("AgentUpgradeLastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("AgentUpgradeLastAttemptStatus"))
             {

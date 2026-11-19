@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated the `Get-AzApiManagementNetworkStatus` example output to remove non-public service endpoints.
+* Fixed `Get-AzApiManagementBackend` credential mapping for backend query and header values that include redacted null entries such as `sig: null`.
+    - The cmdlet now preserves the existing redaction behavior while avoiding exceptions when null values are present in backend credentials.
+
+## Version 4.2.1
+* Removed non-public endpoints from the `Get-AzApiManagementNetworkStatus` example.
 
 ## Version 4.2.0
 * Added ChangeSafety Support

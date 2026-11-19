@@ -40,15 +40,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
-
         /// <summary>Describes a Run Command</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand _runCommandPropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachineRunCommand();
 
@@ -203,12 +194,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create,
         /// write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. ",
+        Description = @"Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.",
         SerializedName = @"outputBlobUri",
         PossibleTypes = new [] { typeof(string) })]
         public string OutputBlobUri { get => _runCommandPropertiesBody.OutputBlobUri ?? null; set => _runCommandPropertiesBody.OutputBlobUri = value; }
@@ -268,8 +259,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         ReadOnly = false,
         Description = @"Specifies the user account password on the machine when executing the run command.",
         SerializedName = @"runAsPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        public string RunAsPassword { get => _runCommandPropertiesBody.RunAsPassword ?? null; set => _runCommandPropertiesBody.RunAsPassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString RunAsPassword { get => _runCommandPropertiesBody.RunAsPassword ?? null; set => _runCommandPropertiesBody.RunAsPassword = value; }
 
         /// <summary>Specifies the user account on the machine when executing the run command.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the user account on the machine when executing the run command.")]
@@ -434,11 +425,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -728,7 +714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("RunAsPassword")))
             {
-                this.RunAsPassword = (string)(this.MyInvocation?.BoundParameters["RunAsPassword"]);
+                this.RunAsPassword = (System.Security.SecureString)(this.MyInvocation?.BoundParameters["RunAsPassword"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TimeoutInSecond")))
             {
@@ -858,24 +844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

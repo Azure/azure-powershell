@@ -21,6 +21,8 @@ Creates an SMB endpoint resource, which represents a data transfer source or des
 Creates an SMB endpoint resource, which represents a data transfer source or destination.
 .Example
 New-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Host "10.0.0.1" -ShareName "testshare" -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/username1" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/password1"
+.Example
+New-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Host "10.0.0.6" -ShareName "testshare" -SourceType FSX-SMB -EndpointKind Source
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
@@ -93,6 +95,22 @@ param(
     [System.String]
     # A description for the endpoint.
     ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SmbMount", "FSX-SMB")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The source type of the SMB mount endpoint, either SmbMount or FSX-SMB.
+    # Defaults to SmbMount.
+    ${SourceType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

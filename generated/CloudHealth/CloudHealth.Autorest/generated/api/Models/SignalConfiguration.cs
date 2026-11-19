@@ -11,19 +11,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal
     {
 
-        /// <summary>Backing field for <see cref="AggregationType" /> property.</summary>
-        private string _aggregationType;
+        /// <summary>Backing field for <see cref="ApplicableResourceType" /> property.</summary>
+        private System.Collections.Generic.List<string> _applicableResourceType;
 
-        /// <summary>Type of aggregation to apply to the metric.</summary>
+        /// <summary>Azure resource types to which the recommended signal configuration applies.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
-        public string AggregationType { get => this._aggregationType; set => this._aggregationType = value; }
+        public System.Collections.Generic.List<string> ApplicableResourceType { get => this._applicableResourceType; set => this._applicableResourceType = value; }
 
-        /// <summary>Backing field for <see cref="DimensionFilter" /> property.</summary>
-        private string _dimensionFilter;
+        /// <summary>Backing field for <see cref="Configuration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalRecommendationConfiguration _configuration;
 
-        /// <summary>Optional dimension filter to apply to the metric.</summary>
+        /// <summary>Kind-specific settings for the recommended signal.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
-        public string DimensionFilter { get => this._dimensionFilter; set => this._dimensionFilter = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalRecommendationConfiguration Configuration { get => (this._configuration = this._configuration ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalRecommendationConfiguration()); set => this._configuration = value; }
+
+        /// <summary>Kind of the recommended signal.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Inlined)]
+        public string ConfigurationSignalKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalRecommendationConfigurationInternal)Configuration).SignalKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalRecommendationConfigurationInternal)Configuration).SignalKind = value ; }
+
+        /// <summary>Backing field for <see cref="DataUnit" /> property.</summary>
+        private string _dataUnit;
+
+        /// <summary>
+        /// Unit of the recommended signal result (e.g. Bytes, MilliSeconds, Percent, Count).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
+        public string DataUnit { get => this._dataUnit; set => this._dataUnit = value; }
+
+        /// <summary>Backing field for <see cref="Description" /> property.</summary>
+        private string _description;
+
+        /// <summary>Description of the recommended signal configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
+        public string Description { get => this._description; set => this._description = value; }
+
+        /// <summary>Backing field for <see cref="DisplayName" /> property.</summary>
+        private string _displayName;
+
+        /// <summary>Display name of the recommended signal configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
+        public string DisplayName { get => this._displayName; set => this._displayName = value; }
 
         /// <summary>Backing field for <see cref="EvaluationRule" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEvaluationRule _evaluationRule;
@@ -32,19 +59,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEvaluationRule EvaluationRule { get => (this._evaluationRule = this._evaluationRule ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRule()); set => this._evaluationRule = value; }
 
-        /// <summary>Backing field for <see cref="MetricName" /> property.</summary>
-        private string _metricName;
+        /// <summary>Internal Acessors for Configuration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalRecommendationConfiguration Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalConfigurationInternal.Configuration { get => (this._configuration = this._configuration ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalRecommendationConfiguration()); set { {_configuration = value;} } }
 
-        /// <summary>Name of the metric (e.g. 'Percentage CPU').</summary>
+        /// <summary>Backing field for <see cref="RefreshInterval" /> property.</summary>
+        private string _refreshInterval;
+
+        /// <summary>Interval in which the recommended signal is evaluated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
-        public string MetricName { get => this._metricName; set => this._metricName = value; }
-
-        /// <summary>Backing field for <see cref="MetricNamespace" /> property.</summary>
-        private string _metricNamespace;
-
-        /// <summary>Metric namespace (e.g. 'microsoft.compute/virtualmachines').</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
-        public string MetricNamespace { get => this._metricNamespace; set => this._metricNamespace = value; }
+        public string RefreshInterval { get => this._refreshInterval; set => this._refreshInterval = value; }
 
         /// <summary>Backing field for <see cref="SignalId" /> property.</summary>
         private string _signalId;
@@ -52,20 +75,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         /// <summary>Unique identifier of the recommended signal configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
         public string SignalId { get => this._signalId; set => this._signalId = value; }
-
-        /// <summary>Backing field for <see cref="TimeGrain" /> property.</summary>
-        private string _timeGrain;
-
-        /// <summary>Time range of the metric. ISO 8601 duration format (e.g. 'PT5M').</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
-        public string TimeGrain { get => this._timeGrain; set => this._timeGrain = value; }
-
-        /// <summary>Backing field for <see cref="Unit" /> property.</summary>
-        private string _unit;
-
-        /// <summary>Unit of the metric (e.g. Percent, Bytes, Count).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PropertyOrigin.Owned)]
-        public string Unit { get => this._unit; set => this._unit = value; }
 
         /// <summary>Creates an new <see cref="SignalConfiguration" /> instance.</summary>
         public SignalConfiguration()
@@ -77,29 +86,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
     public partial interface ISignalConfiguration :
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IJsonSerializable
     {
-        /// <summary>Type of aggregation to apply to the metric.</summary>
+        /// <summary>Azure resource types to which the recommended signal configuration applies.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Type of aggregation to apply to the metric.",
-        SerializedName = @"aggregationType",
+        Description = @"Azure resource types to which the recommended signal configuration applies.",
+        SerializedName = @"applicableResourceTypes",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("None", "Average", "Count", "Minimum", "Maximum", "Total")]
-        string AggregationType { get; set; }
-        /// <summary>Optional dimension filter to apply to the metric.</summary>
+        System.Collections.Generic.List<string> ApplicableResourceType { get; set; }
+        /// <summary>Kind of the recommended signal.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Kind of the recommended signal.",
+        SerializedName = @"signalKind",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("AzureResourceMetric", "LogAnalyticsQuery", "PrometheusMetricsQuery")]
+        string ConfigurationSignalKind { get; set; }
+        /// <summary>
+        /// Unit of the recommended signal result (e.g. Bytes, MilliSeconds, Percent, Count).
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Optional dimension filter to apply to the metric.",
-        SerializedName = @"dimensionFilter",
+        Description = @"Unit of the recommended signal result (e.g. Bytes, MilliSeconds, Percent, Count).",
+        SerializedName = @"dataUnit",
         PossibleTypes = new [] { typeof(string) })]
-        string DimensionFilter { get; set; }
+        string DataUnit { get; set; }
+        /// <summary>Description of the recommended signal configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Description of the recommended signal configuration.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get; set; }
+        /// <summary>Display name of the recommended signal configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Display name of the recommended signal configuration.",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DisplayName { get; set; }
         /// <summary>Evaluation rules with recommended thresholds.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
@@ -111,28 +155,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         SerializedName = @"evaluationRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEvaluationRule) })]
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEvaluationRule EvaluationRule { get; set; }
-        /// <summary>Name of the metric (e.g. 'Percentage CPU').</summary>
+        /// <summary>Interval in which the recommended signal is evaluated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the metric (e.g. 'Percentage CPU').",
-        SerializedName = @"metricName",
+        Description = @"Interval in which the recommended signal is evaluated.",
+        SerializedName = @"refreshInterval",
         PossibleTypes = new [] { typeof(string) })]
-        string MetricName { get; set; }
-        /// <summary>Metric namespace (e.g. 'microsoft.compute/virtualmachines').</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Metric namespace (e.g. 'microsoft.compute/virtualmachines').",
-        SerializedName = @"metricNamespace",
-        PossibleTypes = new [] { typeof(string) })]
-        string MetricNamespace { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT1M", "PT5M", "PT10M", "PT15M", "PT30M", "PT1H", "PT2H")]
+        string RefreshInterval { get; set; }
         /// <summary>Unique identifier of the recommended signal configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
         Required = true,
@@ -144,51 +178,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
         SerializedName = @"signalId",
         PossibleTypes = new [] { typeof(string) })]
         string SignalId { get; set; }
-        /// <summary>Time range of the metric. ISO 8601 duration format (e.g. 'PT5M').</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Time range of the metric. ISO 8601 duration format (e.g. 'PT5M').",
-        SerializedName = @"timeGrain",
-        PossibleTypes = new [] { typeof(string) })]
-        string TimeGrain { get; set; }
-        /// <summary>Unit of the metric (e.g. Percent, Bytes, Count).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Unit of the metric (e.g. Percent, Bytes, Count).",
-        SerializedName = @"unit",
-        PossibleTypes = new [] { typeof(string) })]
-        string Unit { get; set; }
 
     }
     /// A signal configuration for an Azure resource type
     internal partial interface ISignalConfigurationInternal
 
     {
-        /// <summary>Type of aggregation to apply to the metric.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("None", "Average", "Count", "Minimum", "Maximum", "Total")]
-        string AggregationType { get; set; }
-        /// <summary>Optional dimension filter to apply to the metric.</summary>
-        string DimensionFilter { get; set; }
+        /// <summary>Azure resource types to which the recommended signal configuration applies.</summary>
+        System.Collections.Generic.List<string> ApplicableResourceType { get; set; }
+        /// <summary>Kind-specific settings for the recommended signal.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.ISignalRecommendationConfiguration Configuration { get; set; }
+        /// <summary>Kind of the recommended signal.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("AzureResourceMetric", "LogAnalyticsQuery", "PrometheusMetricsQuery")]
+        string ConfigurationSignalKind { get; set; }
+        /// <summary>
+        /// Unit of the recommended signal result (e.g. Bytes, MilliSeconds, Percent, Count).
+        /// </summary>
+        string DataUnit { get; set; }
+        /// <summary>Description of the recommended signal configuration.</summary>
+        string Description { get; set; }
+        /// <summary>Display name of the recommended signal configuration.</summary>
+        string DisplayName { get; set; }
         /// <summary>Evaluation rules with recommended thresholds.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEvaluationRule EvaluationRule { get; set; }
-        /// <summary>Name of the metric (e.g. 'Percentage CPU').</summary>
-        string MetricName { get; set; }
-        /// <summary>Metric namespace (e.g. 'microsoft.compute/virtualmachines').</summary>
-        string MetricNamespace { get; set; }
+        /// <summary>Interval in which the recommended signal is evaluated.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.PSArgumentCompleterAttribute("PT1M", "PT5M", "PT10M", "PT15M", "PT30M", "PT1H", "PT2H")]
+        string RefreshInterval { get; set; }
         /// <summary>Unique identifier of the recommended signal configuration.</summary>
         string SignalId { get; set; }
-        /// <summary>Time range of the metric. ISO 8601 duration format (e.g. 'PT5M').</summary>
-        string TimeGrain { get; set; }
-        /// <summary>Unit of the metric (e.g. Percent, Bytes, Count).</summary>
-        string Unit { get; set; }
 
     }
 }

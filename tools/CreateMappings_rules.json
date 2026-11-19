@@ -1035,5 +1035,25 @@
   {
     "module": "DocumentDB",
     "alias": "DocumentDB"
+  },
+  {
+    "module": "RedHatOpenShiftHcp",
+    "alias": "RedHatOpenShiftHcp"
+  },
+  {
+    "alias": "Commvault",
+    "module": "Commvault"
+  },
+  {
+    "module": "NetworkSecurity",
+    "alias": "NetworkSecurity"
+  },
+  {
+    "module": "AIInfraOptimization",
+    "alias": "AIInfraOptimization"
+  },
+  {  
+    "module": "Resiliency",
+    "alias": "Resiliency"
   }
 ]

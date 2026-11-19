@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The location of the resource")]
+            HelpMessage = "The location of the resource. Retained for compatibility; account updates do not change the location.")]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.NetApp/netAppAccounts")]
         public string Location { get; set; }
@@ -79,7 +79,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccountEncryption Encryption { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "OpenLDAP configuration properties to update. Omitted properties are left unchanged.")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "LDAP server, search, transport security, and bind authentication settings to update on the account.")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
 
@@ -199,9 +201,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             {
                 ActiveDirectories = ActiveDirectory?.ConvertFromPs().ConvertToPatch(),
                 Tags = tagPairs,
-                Encryption = Encryption?.ConvertToPatchFromPs(),
+                Encryption = Encryption?.ConvertToPatch(),
                 NfsV4IdDomain = NfsV4IdDomain,
-                LdapConfiguration = LdapConfiguration?.ConvertToPatchFromPs()
+                LdapConfiguration = LdapConfiguration?.ConvertToPatch()
             };
             if (IdentityType != null && IdentityType.Contains("UserAssigned"))
             {

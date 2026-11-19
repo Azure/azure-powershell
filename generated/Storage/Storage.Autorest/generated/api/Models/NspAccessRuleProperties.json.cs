@@ -82,6 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_subscription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("subscriptions"), out var __jsonSubscriptions) ? If( __jsonSubscriptions as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesSubscriptionsItem>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesSubscriptionsItem) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NspAccessRulePropertiesSubscriptionsItem.FromJson(__p) )) ))() : null : _subscription;}
             {_networkSecurityPerimeter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("networkSecurityPerimeters"), out var __jsonNetworkSecurityPerimeters) ? If( __jsonNetworkSecurityPerimeters as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeter>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeter) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NetworkSecurityPerimeter.FromJson(__k) )) ))() : null : _networkSecurityPerimeter;}
             {_fullyQualifiedDomainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("fullyQualifiedDomainNames"), out var __jsonFullyQualifiedDomainNames) ? If( __jsonFullyQualifiedDomainNames as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _fullyQualifiedDomainName;}
+            {_serviceTag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("serviceTags"), out var __jsonServiceTags) ? If( __jsonServiceTags as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__b, (__a)=>(string) (__a is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString ___z ? (string)(___z.ToString()) : null)) ))() : null : _serviceTag;}
             AfterFromJson(json);
         }
 
@@ -146,6 +147,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                     }
                     container.Add("fullyQualifiedDomainNames",__h);
                 }
+            }
+            if (null != this._serviceTag)
+            {
+                var __c = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.XNodeArray();
+                foreach( var __d in this._serviceTag )
+                {
+                    AddIf(null != (((object)__d)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(__d.ToString()) : null ,__c.Add);
+                }
+                container.Add("serviceTags",__c);
             }
             AfterToJson(ref container);
             return container;

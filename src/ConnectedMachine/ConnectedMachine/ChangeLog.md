@@ -19,8 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Updated to API 2026-06-16-preview.
+* Added `Get-AzConnectedExtensionPublisher`, `Get-AzConnectedExtensionType` and `Get-AzConnectedExtensionMetadataV2`.
+* Changed run command `RunAsPassword` from `String` to `SecureString`.
+* Removed identity properties `OSType` and `MetadataName`, and private link scope properties `SystemData*`.
+
 ## Version 1.1.1
-* Upgraded nuget package to signed package.
+* Upgraded nuget package to signed packages.
 
 ## Version 1.1.0
 * Updated preview version api of HybridCompute to 2024-07-31

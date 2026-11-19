@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlan"), OutputType(typeof(PSAppServicePlan))]
-    public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
+    public class NewAzureAppServicePlanCmdlet : AppServicePlanConfigurationBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
         [LocationCompleter("Microsoft.Web/serverfarms")]
@@ -63,6 +63,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public bool PerSiteScaling { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enable or disable asynchronous scaling when there are insufficient workers to scale synchronously. Requires a dedicated App Service plan.")]
+        public bool? AsyncScalingEnabled { get; set; }
+
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Specify this, App Service Plan will run Windows Containers")]
         public SwitchParameter HyperV { get; set; }
 
@@ -75,8 +78,21 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false)]
         public SwitchParameter Linux { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, HelpMessage = "Create a Managed Instance App Service plan for Windows applications that require operating system customization.")]
+        public SwitchParameter ManagedInstance { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (ManagedInstance.IsPresent && (Linux.IsPresent || HyperV.IsPresent))
+            {
+                throw new ArgumentException("Managed Instance plans do not support Linux or Windows containers.", nameof(ManagedInstance));
+            }
+
+            if (ManagedInstance.IsPresent && PerSiteScaling)
+            {
+                throw new ArgumentException("Managed Instance plans do not support per-site scaling.", nameof(PerSiteScaling));
+            }
+
             if (HyperV.IsPresent &&
                 (Tier != "PremiumContainer" && Tier != "PremiumV3" && Tier != "IsolatedV2" && Tier != "PremiumMV3" && Tier != "IsolatedV4" && Tier != "IsolatedMV4"))
             {
@@ -117,6 +133,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),
                 Reserved = Linux.IsPresent
             };
+
+            if (AsyncScalingEnabled.HasValue)
+            {
+                appServicePlan.AsyncScalingEnabled = AsyncScalingEnabled.Value;
+            }
+
+            if (ManagedInstance.IsPresent)
+            {
+                appServicePlan.IsCustomMode = true;
+            }
+
+            ApplyManagedInstanceConfiguration(appServicePlan);
 
             AppServicePlan retPlan = null;
 

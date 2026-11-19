@@ -71,6 +71,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
 
         public PSNetAppFilesAccountEncryption Encryption { get; set; }
 
+        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
+
         /// <summary>
         /// Gets or sets the identity of the resource.
         /// </summary>
@@ -99,7 +101,5 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Shows the status of MultiAdStatus
         /// </summary>
         public string MultiAdStatus { get; set; }
-
-        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
     }
 }

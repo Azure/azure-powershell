@@ -39,6 +39,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Get a user-assigned managed identity resource (Microsoft.ManagedIdentity/userAssignedIdentities).
+        /// Used to resolve the identity's clientId and principalId from its ARM id.
+        /// </summary>
+        /// <param name="identityArmId">ARM id of the user-assigned managed identity</param>
+        /// <returns>Generic resource returned from the service</returns>
+        public GenericResource GetUserAssignedIdentityResource(string identityArmId)
+        {
+            // Use the API version shipped by the official Az.ManagedServiceIdentity module. It is GA across all
+            // clouds/regions and exposes the stable clientId/principalId fields we read; newer versions add no
+            // fields we consume and may lag in sovereign/air-gapped clouds.
+            GenericResource resource = RMAdapter.Client.Resources.GetByIdWithHttpMessagesAsync(
+                identityArmId,
+                "2023-01-31",
+                null,
+                cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
+            return resource;
+        }
+
+        /// <summary>
         /// Get storage accounts according to the query params
         /// </summary>
         /// <param name="storageAccountName">Name of the container to unregister</param>

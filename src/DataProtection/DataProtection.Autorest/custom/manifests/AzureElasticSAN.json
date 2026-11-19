@@ -15,7 +15,7 @@
   "datasourceType": "Microsoft.ElasticSan/elasticSans/volumeGroups",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "AlternateLocation" ],
-  "itemLevelRecoveyEnabled": true,
+  "itemLevelRecoveryEnabled": true,
   "fileNamePrefixDisabled": false,
   "addBackupDatasourceParametersList": true,
   "backupConfigurationRequired": true,

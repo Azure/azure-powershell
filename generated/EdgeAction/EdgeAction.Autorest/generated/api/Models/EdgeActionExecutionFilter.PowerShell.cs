@@ -108,6 +108,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("AzureAsyncOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetryAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -196,6 +204,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureAsyncOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetryAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

@@ -81,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {_host = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("host"), out var __jsonHost) ? (string)__jsonHost : (string)_host;}
             {_nfsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("nfsVersion"), out var __jsonNfsVersion) ? (string)__jsonNfsVersion : (string)_nfsVersion;}
             {_export = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("export"), out var __jsonExport) ? (string)__jsonExport : (string)_export;}
+            {_sourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("sourceType"), out var __jsonSourceType) ? (string)__jsonSourceType : (string)_sourceType;}
             AfterFromJson(json);
         }
 
@@ -116,6 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 AddIf( null != (((object)this._export)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._export.ToString()) : null, "export" ,container.Add );
             }
+            AddIf( null != (((object)this._sourceType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._sourceType.ToString()) : null, "sourceType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

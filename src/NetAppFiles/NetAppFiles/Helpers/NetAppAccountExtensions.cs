@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             };
         }
 
-        public static AccountEncryptionPatch ConvertToPatchFromPs(this PSNetAppFilesAccountEncryption encryption)
+        public static AccountEncryptionPatch ConvertToPatch(this PSNetAppFilesAccountEncryption encryption)
         {
             return new AccountEncryptionPatch
             {

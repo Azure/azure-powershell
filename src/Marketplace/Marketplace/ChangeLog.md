@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* General availability for module Az.Marketplace
+
+## Version 1.0.0
+* Made Az.Marketplace generally available.
 
 ## Version 0.6.0
 * Added ChangeSafety Support

@@ -65,7 +65,7 @@ Set Tests:
 14. Test new Extension installation with SLES 15
 	Tested by: Test-ExtensionReinstall
 
-15. Test new Extension installation with RHEL 7
+15. Test new Extension installation with SystemAssigned identity on RHEL 8
 	Tested by: Test-WithSystemAssignedIdentity
 
 16. Test new Extension installation with RHEL 8
@@ -91,11 +91,16 @@ function Assert-NewExtension($ResourceGroupName, $VMName, $IdentityType) {
 	$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
 	$extension = Get-AzVMAEMExtension -ResourceGroupName $ResourceGroupName -VMName $vm.Name
 	$nul = Assert-NotNull $extension "New extension is not installed"	
-	$nul = Assert-AreEqual $vm.Identity.Type $IdentityType "VM does not have the expected identity. Expected: $($IdentityType) Actual: $($vm.Identity.Type)"
+	if ($IdentityType -eq 'SystemAssigned') {
+		Assert-True { $vm.Identity.Type -eq 'SystemAssigned' -or $vm.Identity.Type -eq 'SystemAssignedUserAssigned' } "VM does not have a system-assigned identity"
+	} else {
+		$nul = Assert-AreEqual $vm.Identity.Type $IdentityType "VM does not have the expected identity. Expected: $($IdentityType) Actual: $($vm.Identity.Type)"
+	}
 	$nul = Assert-AreEqual $extension.Publisher $newPublisher
 	$newType = ($extension.ExtensionType -eq $newTypeWin) -or ($extension.ExtensionType -eq $newTypeLnx)
 	$nul = Assert-True { $newType } "Extension is not of type $($newTypeWin) nor $($newTypeLnx)"
-	$nul = Assert-AreEqual $vm.Extensions.Count 1 "VM Extensions count does not equal 1"
+	$aemExtensions = @($vm.Extensions | Where-Object { $_.Publisher -eq $newPublisher })
+	$nul = Assert-AreEqual $aemExtensions.Count 1 "AEM extensions count does not equal 1"
 	
 	$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
 	Assert-True { $result.Result } "Test of extension failed"
@@ -188,8 +193,8 @@ function Test-WithSystemAssignedIdentity() {
 	$rgname = Get-CustomResourceGroupName
 	try
     {
-		$loc = Get-LocationForNewExtension
-		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS -imageType "RHEL 7"
+		$loc = "eastus2"
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_D2s_v5 -stotype Premium_LRS -imageType "RHEL 8"
 	
 		Remove-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
@@ -197,7 +202,7 @@ function Test-WithSystemAssignedIdentity() {
 			$vmUpd = Update-AzVM -ResourceGroupName $rgname -VM $vm -IdentityType SystemAssigned
 			$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
 		}
-		$nul = Assert-AreEqual $vm.Identity.Type "SystemAssigned"
+		Assert-True { $vm.Identity.Type -eq 'SystemAssigned' -or $vm.Identity.Type -eq 'SystemAssignedUserAssigned' } "VM does not have a system-assigned identity"
 		$nul = Assert-AreEqual $vm.Extensions.Count 0 "VM Extensions count does not equal 0"
 		$result = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
 		Assert-True {-not $result.Result } "Test of extension was positiv but should have failed"
@@ -220,8 +225,8 @@ function Test-ExtensionReinstall() {
 	$rgname = Get-CustomResourceGroupName
 	try
     {
-		$loc = Get-LocationForNewExtension
-		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS -imageType "SLES 15"
+		$loc = "eastus2"
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_D2s_v5 -stotype Premium_LRS -imageType "SLES 15"
 	
 		Remove-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
@@ -253,8 +258,8 @@ function Test-NewExtensionDiskAdd() {
 	$rgname = Get-CustomResourceGroupName
 	try
     {
-		$loc = Get-LocationForNewExtension
-		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS
+		$loc = "eastus2"
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_D2s_v5 -stotype Premium_LRS
 	
 		Remove-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
@@ -293,14 +298,14 @@ function Test-ExtensionProxyDebug
 	try
     {
         $proxyURI = "https://proxyhost:8080"
-		$loc = Get-LocationForNewExtension
-		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS
+		$loc = "eastus2"
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_D2s_v5 -stotype Premium_LRS
 	
 		Write-Verbose "`tInstalling new extension"
 		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -SetAccessToIndividualResources -ProxyURI $proxyURI -DebugExtension
 		Assert-NewExtension -ResourceGroupName $rgname -VMName $vm.Name -IdentityType 'SystemAssigned'
 
-        $extension = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vm.Name
+        $extension = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vm.Name -Name 'MonitorX64Windows'
         $nul = Assert-NotNull $extension
         $nul = Assert-NotNull $extension.PublicSettings
 
@@ -357,7 +362,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $nicCount = if ([string]::IsNullOrEmpty($nicCount)) { 1 } else { [int]$nicCount }
 
     # Common
-    $g = New-AzResourceGroup -Name $rgname -Location $loc -Force;
+    $g = New-AzResourceGroup -Name $rgname -Location $loc -Tag @{ Owner = (Get-AzContext).Account.Id } -Force;
 
     # VM Profile & Hardware
     $zoneparams = @{}
@@ -372,7 +377,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     Write-Verbose "Start Create-AdvancedVM - Config done"
 
     # NRP
-    $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+    $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DefaultOutboundAccess $false;
     $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
     $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
@@ -401,9 +406,12 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     Write-Verbose "Start Create-AdvancedVM 1"
     # Storage Account (SA)
     $stoname = 'sto' + $rgname;
-    $s = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-    $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
-    $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+    if (-not $useMD)
+    {
+        $s = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+    }
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
@@ -518,7 +526,7 @@ function Get-LinuxImage($imageType) {
     } elseif ($imageType -eq "SLES 12") {
         return Create-ComputeVMImageObject 'SUSE' 'sles-12-sp5' 'gen1' 'latest';
     } elseif ($imageType -eq "SLES 15") {
-        return Create-ComputeVMImageObject 'SUSE' 'sles-15-sp4' 'gen1' 'latest';
+        return Create-ComputeVMImageObject 'SUSE' 'sles-15-sp6' 'gen1' 'latest';
     } else {
         return Create-ComputeVMImageObject 'SUSE' 'sles-12-sp5' 'gen1' 'latest';
     }

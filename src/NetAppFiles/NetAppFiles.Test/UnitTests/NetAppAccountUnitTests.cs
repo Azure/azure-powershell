@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                 configuration.Domain = "example.com";
                 configuration.LdapServers = new[] { "192.0.2.10" };
                 configuration.BindAuthenticationLevel = "Simple";
-                configuration.BindDn = "cn=bind,dc=example,dc=com";
+                configuration.BindDN = "cn=bind,dc=example,dc=com";
                 configuration.BindPasswordAkvConfig.AzureKeyVaultUri = "https://example.vault.azure.net/";
                 configuration.BindPasswordAkvConfig.UserAssignedIdentity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity";
             }
@@ -506,15 +506,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                 Domain = "example.com",
                 LdapServers = new[] { "192.0.2.10", "192.0.2.11" },
                 SecureLdapType = "LdapOverTLS",
-                ServerCaCertificate = "certificate",
-                CertificateCnHost = "ldap.example.com",
+                ServerCACertificate = "certificate",
+                CertificateCNHost = "ldap.example.com",
                 DnsServers = new[] { "192.0.2.12" },
                 LdapPort = 636,
-                UserDn = "ou=users,dc=example,dc=com",
-                GroupDn = "ou=groups,dc=example,dc=com",
-                NetGroupDn = "ou=netgroups,dc=example,dc=com",
+                UserDN = "ou=users,dc=example,dc=com",
+                GroupDN = "ou=groups,dc=example,dc=com",
+                NetGroupDN = "ou=netgroups,dc=example,dc=com",
                 BindAuthenticationLevel = "Simple",
-                BindDn = "cn=bind,dc=example,dc=com",
+                BindDN = "cn=bind,dc=example,dc=com",
                 BindPasswordAkvConfig = new PSNetAppFilesBindPasswordAkvConfig
                 {
                     AzureKeyVaultUri = "https://example.vault.azure.net/",
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
             var sdkConfiguration = configuration.ConvertFromPs();
             var roundTrip = sdkConfiguration.ConvertToPs();
             Assert.True(JToken.DeepEquals(JObject.FromObject(configuration), JObject.FromObject(roundTrip)));
-            Assert.True(JToken.DeepEquals(JObject.FromObject(sdkConfiguration), JObject.FromObject(configuration.ConvertToPatchFromPs())));
+            Assert.True(JToken.DeepEquals(JObject.FromObject(sdkConfiguration), JObject.FromObject(configuration.ConvertToPatch())));
 
             var account = new NetAppAccount(location: "westus2",
                 id: "/subscriptions/test/resourceGroups/test/providers/Microsoft.NetApp/netAppAccounts/test")
@@ -534,8 +534,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                 Identity = new ManagedServiceIdentity(),
                 LdapConfiguration = sdkConfiguration
             };
-            Assert.Equal(configuration.BindDn, account.ConvertToPs().LdapConfiguration.BindDn);
-            Assert.Equal(configuration.BindDn, account.ToPsNetAppFilesAccount().LdapConfiguration.BindDn);
+            Assert.Equal(configuration.BindDN, account.ConvertToPs().LdapConfiguration.BindDN);
+            Assert.Equal(configuration.BindDN, account.ToPsNetAppFilesAccount().LdapConfiguration.BindDN);
         }
 
         [Fact]
@@ -544,7 +544,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
             var patch = new PSNetAppFilesLdapConfiguration
             {
                 BindPasswordAkvConfig = new PSNetAppFilesBindPasswordAkvConfig { SecretName = "rotated-secret" }
-            }.ConvertToPatchFromPs();
+            }.ConvertToPatch();
 
             patch.Validate();
             var json = JObject.FromObject(patch, JsonSerializer.Create(new JsonSerializerSettings
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                     KeyVaultId = "read-only-id",
                     Status = "read-only-status"
                 }
-            }.ConvertToPatchFromPs();
+            }.ConvertToPatch();
 
             var json = JObject.FromObject(encryption);
             Assert.Null(json["identity"]["principalId"]);

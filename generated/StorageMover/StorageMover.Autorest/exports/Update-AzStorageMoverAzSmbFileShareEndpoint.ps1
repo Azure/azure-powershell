@@ -95,6 +95,20 @@ param(
     ${Description},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enables or disables using this endpoint as one side of a cross-tenant data transfer.
+    # To disable, set this switch to false.
+    ${EnableCrossTenantTransfer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+    # The specified list replaces the existing list; specify an empty array to clear it.
+    ${AllowedStorageAccount},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]

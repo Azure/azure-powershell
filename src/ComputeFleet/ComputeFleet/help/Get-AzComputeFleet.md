@@ -15,25 +15,25 @@ Get a Fleet
 ### List1 (Default)
 ```
 Get-AzComputeFleet [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzComputeFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzComputeFleet -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzComputeFleet -InputObject <IComputeFleetIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,11 +98,11 @@ Lists all Compute Fleets across all resource groups in the current subscription.
 ### Example 4: Get a fleet using its identity
 ```powershell
 $fleet = Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
-Get-AzComputeFleet -InputObject $fleet |
+Get-AzComputeFleet -InputObject @{ Id = $fleet.Id } |
     Select-Object Name, Mode, ProvisioningState
 ```
 
-Retrieves the same fleet using the identity contained in an existing fleet object.
+Retrieves the same fleet using an identity hash table containing the resource ID of an existing fleet.
 
 ## PARAMETERS
 
@@ -146,21 +146,6 @@ Parameter Sets: Get
 Aliases: FleetName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
