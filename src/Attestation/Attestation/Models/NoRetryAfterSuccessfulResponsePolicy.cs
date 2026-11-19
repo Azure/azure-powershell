@@ -33,9 +33,10 @@ namespace Microsoft.Azure.Commands.Attestation.Models
     }
 
     /// <summary>
-    /// Stops Azure.Core from sending a request again when reading a successful response fails. Azure.Core retries
-    /// such failures, which are IOExceptions or timeouts, but for a write the service has already applied the change.
-    /// Added to the pipeline after the retry policy and before the policy that reads the response.
+    /// Stops Azure.Core from sending a write again when reading its successful response fails. Azure.Core retries
+    /// such failures, which are IOExceptions or timeouts, but the service has already applied the change. Reads
+    /// (GET requests) are still retried. Added to the pipeline after the retry policy and before the policy that
+    /// reads the response.
     /// </summary>
     internal sealed class NoRetryAfterSuccessfulResponsePolicy : HttpPipelinePolicy
     {
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             {
                 ProcessNext(message, pipeline);
             }
-            catch (Exception ex) when (HasSuccessfulResponse(message))
+            catch (Exception ex) when (IsWriteWithSuccessfulResponse(message))
             {
                 throw new UnreadableServiceResponseException(ex);
             }
@@ -57,12 +58,13 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             {
                 await ProcessNextAsync(message, pipeline).ConfigureAwait(false);
             }
-            catch (Exception ex) when (HasSuccessfulResponse(message))
+            catch (Exception ex) when (IsWriteWithSuccessfulResponse(message))
             {
                 throw new UnreadableServiceResponseException(ex);
             }
         }
 
-        private static bool HasSuccessfulResponse(HttpMessage message) => message.HasResponse && !message.Response.IsError;
+        private static bool IsWriteWithSuccessfulResponse(HttpMessage message) =>
+            message.Request.Method != RequestMethod.Get && message.HasResponse && !message.Response.IsError;
     }
 }

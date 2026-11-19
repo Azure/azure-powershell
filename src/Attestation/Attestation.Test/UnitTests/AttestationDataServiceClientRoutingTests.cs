@@ -410,6 +410,24 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RetriesReadWhenResponseCannotBeRead()
+        {
+            _service.FailResponseBodyOnce.Add("/policies/TdxVm");
+            _service.FailResponseBodyOnce.Add("/certificates");
+            _service.FailResponseBodyOnce.Add("/certs");
+
+            Assert.Equal(PolicyText, new PSPolicy(_client.GetPolicy("provider", "rg", null, "TdxVm")).Text);
+            Assert.Equal(1, new PSPolicySigners(_client.GetPolicySigners("provider", "rg", null)).CertificateCount);
+
+            // Each read whose response failed was sent again, including the request for the signing certificates.
+            Assert.Equal(2, _service.ServiceRequests.Count(r => r.Path == "/policies/TdxVm"));
+            Assert.Equal(2, _service.ServiceRequests.Count(r => r.Path == "/certificates"));
+            Assert.Equal(3, _service.Requests.Count(r => r.Path == "/certs"));
+            Assert.Empty(_service.FailResponseBodyOnce);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportsServiceError()
         {
             _service.ErrorResponse = new JObject { ["error"] = new JObject { ["code"] = "PolicyParsingError", ["message"] = "Invalid policy was specified" } };
@@ -561,6 +579,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public int FailNextRequests { get; set; }
 
             /// <summary>
+            /// Paths of requests whose next successful response has a body that fails while it is read.
+            /// </summary>
+            public HashSet<string> FailResponseBodyOnce { get; } = new HashSet<string>();
+
+            /// <summary>
             /// Difference between the service's clock and the local clock.
             /// </summary>
             public TimeSpan ClockOffset { get; set; }
@@ -586,6 +609,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                     Body = request.Content == null ? null : await request.Content.ReadAsStringAsync().ConfigureAwait(false)
                 };
                 Requests.Add(recorded);
+
+                if (FailResponseBodyOnce.Remove(recorded.Path))
+                {
+                    return FailingBodyResponse();
+                }
 
                 if (recorded.Path == "/certs")
                 {
@@ -625,9 +653,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
                 if (FailWriteResponseBody && isCurrentApiWrite)
                 {
-                    var content = new StreamContent(new FailingStream());
-                    content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-                    return new HttpResponseMessage(HttpStatusCode.OK) { Content = content };
+                    return FailingBodyResponse();
                 }
 
                 switch ($"{recorded.Method} {recorded.Path}")
@@ -706,6 +732,13 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                 {
                     Content = new StringContent(content.ToString(Formatting.None), Encoding.UTF8, "application/json")
                 };
+            }
+
+            private static HttpResponseMessage FailingBodyResponse()
+            {
+                var content = new StreamContent(new FailingStream());
+                content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+                return new HttpResponseMessage(HttpStatusCode.OK) { Content = content };
             }
         }
 
