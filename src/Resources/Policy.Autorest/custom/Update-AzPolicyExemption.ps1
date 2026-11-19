@@ -276,6 +276,10 @@ process {
         $calledParameters.AssignmentScopeValidation = $existing.AssignmentScopeValidation
     }
 
+    if (!$calledParameters.ResourceSelector -and !($calledParameters.ResourceSelector -is [array]) -and $existing.ResourceSelector) {
+        $calledParameters.ResourceSelector = $existing.ResourceSelector
+    }
+
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> New-AzPolicyExemption'(' $calledParameters ')'
     }
