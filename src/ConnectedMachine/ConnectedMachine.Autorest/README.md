@@ -38,11 +38,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: e0594098dde23f29e9908a1f230021e5f4609a4b
+commit: 85efeb3571600039a5ab10b03ea217f637c4720e
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/HybridCompute/preview/2026-06-16-preview/openapi.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/HybridCompute/stable/2026-07-15/openapi.json
  
 module-version: 0.1.0
 title: ConnectedMachine
