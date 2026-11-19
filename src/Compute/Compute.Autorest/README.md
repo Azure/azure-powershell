@@ -261,7 +261,6 @@ directive:
       verb: Get
       subject: SpotPlacementScore
     remove: true
-
   ## Add Alias for Invoke-AzSpotPlacementScore
   - where:
       verb: Invoke
