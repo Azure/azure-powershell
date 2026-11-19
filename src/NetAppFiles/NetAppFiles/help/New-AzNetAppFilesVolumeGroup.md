@@ -123,12 +123,12 @@ This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within
 New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyLdapVolumeGroup" -Location "westus2" -ApplicationIdentifier "SH1" -ProximityPlacementGroup "MyPPGResourceId" -Vnet "MyAnfVnet" -SystemRole "PRIMARY" -NodeMemory 100 -LdapServerType OpenLdap
 ```
 
-This command selects the account's OpenLDAP configuration for the group's NFS volumes. Configure OpenLDAP on the NetApp account before creating the group.
+This command enables LDAP on the group's NFS volumes and selects the account's OpenLDAP configuration. Configure OpenLDAP on the NetApp account before creating the group.
 
 ## PARAMETERS
 
 ### -LdapServerType
-The LDAP server type for NFS volumes in the group: `ActiveDirectory` or `OpenLdap`. The selected type is sent for each volume. Configure the corresponding LDAP settings on the NetApp account before creating LDAP-enabled volumes.
+Enables LDAP on NFS-only and dual-protocol volumes in the group and selects the LDAP server type: `ActiveDirectory` or `OpenLdap`. This parameter does not apply to CIFS-only volumes. If omitted, LDAP is not enabled. Configure the corresponding LDAP settings on the NetApp account before creating LDAP-enabled volumes.
 
 ```yaml
 Type: System.String
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -SmbOplock
-Enables or disables SMB opportunistic locking for SMB or dual-protocol volumes in the group. Accepted values are `Enabled` and `Disabled`. If omitted, the service chooses its default.
+Enables or disables SMB opportunistic locking for SMB or dual-protocol volumes in the group whose protocol list includes `CIFS`. This setting is not sent for NFS-only volumes. Accepted values are `Enabled` and `Disabled`. If omitted, the service chooses its default.
 
 ```yaml
 Type: System.String

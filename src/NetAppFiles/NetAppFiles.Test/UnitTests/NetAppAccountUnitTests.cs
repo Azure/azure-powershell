@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -23,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
 {
+    [Trait("AcceptanceType", "CheckIn")]
     public class AccountExtensionTest
     {
         public AccountExtensionTest()
@@ -289,9 +291,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
         }
 
         [Theory]
-        [InlineData("SAP-HANA")]
-        [InlineData("ORACLE")]
-        public void VolumeGroupSendsNewSettingsForEveryGeneratedVolume(string applicationType)
+        [InlineData("SAP-HANA", null, "OpenLdap", "Disabled")]
+        [InlineData("ORACLE", null, "OpenLdap", "Disabled")]
+        [InlineData("SAP-HANA", "CIFS", "OpenLdap", "Enabled")]
+        [InlineData("ORACLE", "CIFS", "OpenLdap", "Enabled")]
+        [InlineData("SAP-HANA", "NFSv3,CIFS", "ActiveDirectory", "Disabled")]
+        [InlineData("ORACLE", "NFSv3,CIFS", "ActiveDirectory", "Disabled")]
+        [InlineData("SAP-HANA", "CIFS", null, null)]
+        [InlineData("ORACLE", "CIFS", null, null)]
+        public void VolumeGroupAppliesSettingsToCompatibleProtocols(
+            string applicationType, string backupProtocolTypes, string ldapServerType, string smbOplock)
         {
             int writes = 0;
             using var handler = new RequestHandler(request =>
@@ -320,8 +329,27 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                 Assert.True(volumes.Count > 1);
                 Assert.All(volumes, volume =>
                 {
-                    Assert.Equal("OpenLdap", (string)volume["properties"]["ldapServerType"]);
-                    Assert.Equal("Disabled", (string)volume["properties"]["smbOplocks"]);
+                    var properties = volume["properties"];
+                    var protocols = properties["protocolTypes"].Values<string>();
+                    bool isNfs = protocols.Contains("NFSv3") || protocols.Contains("NFSv4.1");
+                    if (isNfs && ldapServerType != null)
+                    {
+                        Assert.Equal(ldapServerType, (string)properties["ldapServerType"]);
+                        Assert.Equal(true, (bool?)properties["ldapEnabled"]);
+                    }
+                    else
+                    {
+                        Assert.Null(properties["ldapServerType"]);
+                        Assert.Null(properties["ldapEnabled"]);
+                    }
+                    if (protocols.Contains("CIFS") && smbOplock != null)
+                    {
+                        Assert.Equal(smbOplock, (string)properties["smbOplocks"]);
+                    }
+                    else
+                    {
+                        Assert.Null(properties["smbOplocks"]);
+                    }
                 });
                 body["id"] = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.NetApp/netAppAccounts/test-account/volumeGroups/test-group";
                 body["name"] = "test-group";
@@ -340,8 +368,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                 Name = "test-group", Location = "westus2", Vnet = "test-vnet", SubnetId = "test-subnet",
                 ApplicationType = applicationType, ApplicationIdentifier = "SH1", NodeMemory = 100,
                 OracleDatabaseSize = 1024, OracleDatabaseThroughput = 1024,
-                LdapServerType = "OpenLdap", SmbOplock = "Disabled"
+                LdapServerType = ldapServerType, SmbOplock = smbOplock
             };
+            if (backupProtocolTypes != null)
+            {
+                cmdlet.BackupProtocolType = backupProtocolTypes.Split(',');
+            }
 
             cmdlet.ExecuteCmdlet();
 
@@ -349,8 +381,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
             var group = Assert.IsType<PSNetAppFilesVolumeGroupDetail>(Assert.Single(runtime.OutputPipeline));
             Assert.All(group.Volumes, volume =>
             {
-                Assert.Equal("OpenLdap", volume.LdapServerType);
-                Assert.Equal("Disabled", volume.SmbOplocks);
+                bool isNfs = volume.ProtocolTypes.Contains("NFSv3") || volume.ProtocolTypes.Contains("NFSv4.1");
+                Assert.Equal(isNfs ? ldapServerType : null, volume.LdapServerType);
+                Assert.Equal(isNfs && ldapServerType != null ? (bool?)true : null, volume.LdapEnabled);
+                Assert.Equal(volume.ProtocolTypes.Contains("CIFS") ? smbOplock : null, volume.SmbOplocks);
             });
         }
 
