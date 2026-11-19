@@ -18,11 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Corrected the `New-AzNetAppFilesVolume` help example to pass an export policy object instead of an individual rule.
+* Enabled existing regression tests for account, backup-status, volume, volume-group and cache operations in continuous integration.
 * Updated to API version 2026-09-01.
 * Updated `Get-AzNetAppFilesVolumeBackupStatus` to use the current backup-status API while preserving its output properties.
 * Added LDAP (Lightweight Directory Access Protocol) configuration to NetApp account creation, replacement, update and output.
 * Added `Update-AzNetAppFilesAccountLdapBindPassword` to refresh the LDAP bind password from Azure Key Vault.
 * Added `-LdapServerType` to `New-AzNetAppFilesVolume` and `New-AzNetAppFilesVolumeGroup`, and included `LdapServerType` in volume output.
+* Fixed `New-AzNetAppFilesVolumeGroup` to enable LDAP when `-LdapServerType` was supplied for NFS (Network File System) members and apply SMB (Server Message Block) opportunistic locking only to CIFS (Common Internet File System) members.
 * Added `-SmbOplock` for SMB (Server Message Block) opportunistic locking to `New-AzNetAppFilesVolume`, `Update-AzNetAppFilesVolume`, `New-AzNetAppFilesVolumeGroup`, `New-AzNetAppFilesCache` and `Update-AzNetAppFilesCache`, and included `SmbOplocks` in output.
 * Removed the deprecated subvolume cmdlets and their Anf aliases, the `-EnableSubvolume` parameter, and the `EnableSubvolumes` volume and volume-group output properties.
     - This is an intentional breaking change and must ship in an approved major release.

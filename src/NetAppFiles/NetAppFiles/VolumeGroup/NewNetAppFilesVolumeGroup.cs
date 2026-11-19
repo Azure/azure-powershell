@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string BreakthroughMode { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The LDAP server type for NFS volumes in the group. Use ActiveDirectory or OpenLdap.")]
+        [Parameter(Mandatory = false, HelpMessage = "Enables LDAP for NFS volumes in the group and selects the LDAP server type. Use ActiveDirectory or OpenLdap.")]
         [PSArgumentCompleter("ActiveDirectory", "OpenLdap")]
         [ValidateNotNullOrEmpty]
         public string LdapServerType { get; set; }
@@ -837,8 +837,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             var volumeGroup = CreateVolumeGroup(Name, ResourceGroupName, AccountName, poolResourceId, tagPairs);
             foreach (var volume in volumeGroup.Volumes)
             {
-                volume.LdapServerType = LdapServerType;
-                volume.SmbOplocks = SmbOplock;
+                if (LdapServerType != null && volume.ProtocolTypes.Any(protocol =>
+                    string.Equals(protocol, VolumeProtocolTypes.NFSv3, StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(protocol, VolumeProtocolTypes.NSFv41, StringComparison.OrdinalIgnoreCase)))
+                {
+                    volume.LdapEnabled = true;
+                    volume.LdapServerType = LdapServerType;
+                }
+
+                if (volume.ProtocolTypes.Contains("CIFS", StringComparer.OrdinalIgnoreCase))
+                {
+                    volume.SmbOplocks = SmbOplock;
+                }
             }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
