@@ -75,6 +75,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         [ValidateNotNullOrEmpty]
         public string NfsV4IdDomain { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "OpenLDAP configuration for the account, including servers, search bases and Key Vault bind credentials.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
@@ -115,7 +119,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 Location = Location,
                 ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : new List<Management.NetApp.Models.ActiveDirectory>(),
                 Tags = tagPairs,
-                NfsV4IdDomain = NfsV4IdDomain
+                NfsV4IdDomain = NfsV4IdDomain,
+                LdapConfiguration = LdapConfiguration?.ConvertFromPs()
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

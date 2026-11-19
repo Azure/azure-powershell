@@ -52,9 +52,6 @@ function Test-CheckFilePathAvailability
         $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
-        # create the resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
-
         # create account, pool and volume
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
 
@@ -97,9 +94,6 @@ function Test-CheckQuotaAvailability
         # create the resource group
         New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
         
-        # create the resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
-
         # check QuotaAvailability  
         $quotaAvailability = Get-AzNetAppFilesQuotaAvailability -ResourceGroupName $resourceGroup -Location $resourceLocation -Type $resourceType  -Name "resourceName" 
         Assert-NotNull $quotaAvailability
@@ -131,9 +125,6 @@ function Test-CheckNameAvailability
         # create the resource group
         New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
         
-        # create the resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
-
         # check NameAvailability  
         $quotaAvailability = Get-AzNetAppFilesNameAvailability -ResourceGroupName $resourceGroup -Location $resourceLocation -Type $resourceType  -Name $accName
         Assert-NotNull $quotaAvailability

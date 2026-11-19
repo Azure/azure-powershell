@@ -15,6 +15,7 @@ Creates a new Azure NetApp Files (ANF) account.
 ```
 New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
  [-EncryptionKeySource <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
  [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>]
  [-FederatedClientId <String>] [-NfsV4IdDomain <String>] [-Tag <Hashtable>]
@@ -43,7 +44,39 @@ ProvisioningState : Succeeded
 
 This command creates the new ANF account "MyAnfAccount".
 
+### Example 2: Create an account with OpenLDAP configuration
+```powershell
+$ldap = @{
+    Domain = "example.com"
+    LdapServers = @("192.0.2.10", "192.0.2.11")
+    SecureLdapType = "None"
+    LdapPort = 389
+    UserDn = "ou=users,dc=example,dc=com"
+    GroupDn = "ou=groups,dc=example,dc=com"
+    BindAuthenticationLevel = "Anonymous"
+}
+New-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -Location "westus2" -LdapConfiguration $ldap
+```
+
+Configures anonymous LDAP lookups without a bind password. To use encrypted communication, set `SecureLdapType` to `LdapOverTLS` and supply `ServerCaCertificate`, `CertificateCnHost`, and `DnsServers` as required by the LDAP server configuration.
+
 ## PARAMETERS
+
+### -LdapConfiguration
+OpenLDAP configuration for the account. Accepts `Domain`, `LdapServers`, `SecureLdapType` (`None` or `LdapOverTLS`), `ServerCaCertificate`, `CertificateCnHost`, `DnsServers`, `LdapPort`, `UserDn`, `GroupDn`, `NetGroupDn`, `BindAuthenticationLevel` (`Anonymous` or `Simple`), `BindDn`, and `BindPasswordAkvConfig`.
+For simple authentication, `BindPasswordAkvConfig` identifies the password secret using `AzureKeyVaultUri`, `SecretName`, and optionally `UserAssignedIdentity`. Do not supply the password itself.
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ActiveDirectory
 A hashtable array which represents the active directories

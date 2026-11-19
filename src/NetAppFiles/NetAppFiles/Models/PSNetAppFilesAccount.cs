@@ -99,5 +99,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Shows the status of MultiAdStatus
         /// </summary>
         public string MultiAdStatus { get; set; }
+
+        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
     }
 }

@@ -383,6 +383,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string BreakthroughMode { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The LDAP server type for NFS volumes in the group. Use ActiveDirectory or OpenLdap.")]
+        [PSArgumentCompleter("ActiveDirectory", "OpenLdap")]
+        [ValidateNotNullOrEmpty]
+        public string LdapServerType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enables or disables SMB opportunistic locking for SMB or dual-protocol volumes in the group.")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        [ValidateNotNullOrEmpty]
+        public string SmbOplock { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Breakthrough Mode override for data volumes. Possible values include: 'Enabled', 'Disabled'")]
@@ -825,6 +835,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             }
 
             var volumeGroup = CreateVolumeGroup(Name, ResourceGroupName, AccountName, poolResourceId, tagPairs);
+            foreach (var volume in volumeGroup.Volumes)
+            {
+                volume.LdapServerType = LdapServerType;
+                volume.SmbOplocks = SmbOplock;
+            }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {

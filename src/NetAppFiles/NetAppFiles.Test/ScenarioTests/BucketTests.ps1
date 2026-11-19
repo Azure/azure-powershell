@@ -75,7 +75,7 @@ function Test-BucketCrud
     $bucketName1     = Get-ResourceName
     $bucketName2     = Get-ResourceName
 
-    $resourceLocation = "westus"
+    $resourceLocation = "eastus"
     $gibibyte         = 1024 * 1024 * 1024
     $usageThreshold   = 100 * $gibibyte
     $poolSize         = 4398046511104
@@ -227,7 +227,7 @@ function Test-BucketPipeline
     $volName       = Get-ResourceName
     $bucketName    = Get-ResourceName
 
-    $resourceLocation = "westus"
+    $resourceLocation = "eastus"
     $gibibyte         = 1024 * 1024 * 1024
     $usageThreshold   = 100 * $gibibyte
     $poolSize         = 4398046511104

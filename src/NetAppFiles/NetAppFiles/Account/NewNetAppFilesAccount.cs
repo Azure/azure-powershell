@@ -70,6 +70,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccountEncryption Encryption { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "OpenLDAP configuration for the account, including servers, search bases and Key Vault bind credentials.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
+
         [Parameter(
             ParameterSetName = FieldsParameterSet,
             Mandatory = false,
@@ -180,7 +184,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 ActiveDirectories = ActiveDirectory?.ConvertFromPs(),
                 Tags = tagPairs,
                 Encryption = Encryption?.ConvertFromPs(),
-                NfsV4IdDomain = NfsV4IdDomain
+                NfsV4IdDomain = NfsV4IdDomain,
+                LdapConfiguration = LdapConfiguration?.ConvertFromPs()
             };
             if (IdentityType != null && IdentityType.Contains("UserAssigned"))
             {

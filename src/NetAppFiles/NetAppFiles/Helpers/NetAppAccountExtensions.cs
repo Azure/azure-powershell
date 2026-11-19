@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 DisableShowmount = netAppAccount.DisableShowmount,
                 Encryption = netAppAccount.Encryption?.ConvertToPs(),
                 SystemData = netAppAccount.SystemData?.ToPsSystemData(),
-                MultiAdStatus = netAppAccount.MultiAdStatus
+                MultiAdStatus = netAppAccount.MultiAdStatus,
+                LdapConfiguration = netAppAccount.LdapConfiguration?.ConvertToPs()
             };
         }
 
@@ -167,6 +168,25 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 KeySource = encryption.KeySource,
                 Identity = encryption.Identity?.ConvertFromPs(),
                 KeyVaultProperties = encryption.KeyVaultProperties?.ConvertFromPs(),
+            };
+        }
+
+        public static AccountEncryptionPatch ConvertToPatchFromPs(this PSNetAppFilesAccountEncryption encryption)
+        {
+            return new AccountEncryptionPatch
+            {
+                KeySource = encryption.KeySource,
+                Identity = encryption.Identity == null ? null : new EncryptionIdentityPatch
+                {
+                    UserAssignedIdentity = encryption.Identity.UserAssignedIdentity,
+                    FederatedClientId = encryption.Identity.FederatedClientId
+                },
+                KeyVaultProperties = encryption.KeyVaultProperties == null ? null : new KeyVaultPropertiesPatch
+                {
+                    KeyName = encryption.KeyVaultProperties.KeyName,
+                    KeyVaultResourceId = encryption.KeyVaultProperties.KeyVaultResourceId,
+                    KeyVaultUri = encryption.KeyVaultProperties.KeyVaultUri
+                }
             };
         }
 

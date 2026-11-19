@@ -29,18 +29,23 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="smbAccessBasedEnumeration">Enables access-based enumeration share property for SMB Shares. Only
-        /// applicable for SMB/DualProtocol volume
+        /// applicable for SMB/DualProtocol cache
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="smbNonBrowsable">Enables non-browsable property for SMB Shares. Only applicable for
-        /// SMB/DualProtocol volume
+        /// SMB/DualProtocol cache
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public SmbSettings(string smbEncryption = default(string), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
+
+        /// <param name="smbOplocks">Enables or disables SMB opportunistic lock property for SMB Shares. Only
+        /// applicable for SMB/DualProtocol cache
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
+        public SmbSettings(string smbEncryption = default(string), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), string smbOplocks = default(string))
 
         {
             this.SmbEncryption = smbEncryption;
             this.SmbAccessBasedEnumeration = smbAccessBasedEnumeration;
             this.SmbNonBrowsable = smbNonBrowsable;
+            this.SmbOplocks = smbOplocks;
             CustomInit();
         }
 
@@ -59,16 +64,23 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets enables access-based enumeration share property for SMB
-        /// Shares. Only applicable for SMB/DualProtocol volume Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// Shares. Only applicable for SMB/DualProtocol cache Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "smbAccessBasedEnumeration")]
         public string SmbAccessBasedEnumeration {get; set; }
 
         /// <summary>
         /// Gets or sets enables non-browsable property for SMB Shares. Only applicable
-        /// for SMB/DualProtocol volume Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// for SMB/DualProtocol cache Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "smbNonBrowsable")]
         public string SmbNonBrowsable {get; set; }
+
+        /// <summary>
+        /// Gets or sets enables or disables SMB opportunistic lock property for SMB
+        /// Shares. Only applicable for SMB/DualProtocol cache Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "smbOplocks")]
+        public string SmbOplocks {get; set; }
     }
 }

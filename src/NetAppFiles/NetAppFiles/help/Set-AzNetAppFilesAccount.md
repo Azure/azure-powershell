@@ -15,13 +15,14 @@ Updates an Azure NetApp Files (ANF) account with the new data set. Useful for de
 ### ByFieldsParameterSet (Default)
 ```
 Set-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
- [-NfsV4IdDomain <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-NfsV4IdDomain <String>] [-LdapConfiguration <PSNetAppFilesLdapConfiguration>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceActiveDirectory
 ```
 Set-AzNetAppFilesAccount -Location <String> -Name <String> [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>]
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -29,6 +30,7 @@ Set-AzNetAppFilesAccount -Location <String> -Name <String> [-ActiveDirectory <PS
 ### ByResourceIdParameterSet
 ```
 Set-AzNetAppFilesAccount -Location <String> -Name <String> [-Tag <Hashtable>] -ResourceId <String>
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -56,7 +58,32 @@ ProvisioningState : Succeeded
 
 This command performs an update on the given account. The absence of the active directory means it will be removed from the account.
 
+### Example 2: Replace an account's OpenLDAP configuration
+```powershell
+$account = Get-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount"
+$ldap = $account.LdapConfiguration
+$ldap.LdapServers = @("192.0.2.20")
+Set-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -Location $account.Location -LdapConfiguration $ldap
+```
+
+Replaces the account configuration with the supplied LDAP settings. This is a PUT operation; supply any Active Directory connections and tags that must be retained. Use `Update-AzNetAppFilesAccount` for partial LDAP changes.
+
 ## PARAMETERS
+
+### -LdapConfiguration
+The account's OpenLDAP configuration, including domain, server addresses, search bases, transport settings, bind distinguished name, and Azure Key Vault bind-password reference. Uses the same fields as `New-AzNetAppFilesAccount -LdapConfiguration`.
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ActiveDirectory
 A hashtable array which represents the active directories

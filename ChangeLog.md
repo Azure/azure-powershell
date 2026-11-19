@@ -1,3 +1,9 @@
+## Upcoming Release
+#### Az.NetAppFiles
+* Updated to API version 2026-09-01, with OpenLDAP account configuration, LDAP bind password refresh, and SMB (Server Message Block) opportunistic locking settings.
+* Updated `Get-AzNetAppFilesVolumeBackupStatus` to use the current backup-status API while preserving its output properties.
+* Removed deprecated subvolume commands, aliases, the enable parameter and related output properties. These breaking changes require an approved major release.
+
 ## 16.4.0 - October 2026
 #### Az.Compute 11.10.0
 * Added '-ScheduleProfileStart' and '-MinimumCommitmentDayCount' parameters to 'New-AzCapacityReservation' to create Future Capacity Reservations, and surfaced the read-only 'ScheduleProfile' (including 'ModifiableUntil') and instance view 'ReservationStateInfo' on 'Get-AzCapacityReservation' output.

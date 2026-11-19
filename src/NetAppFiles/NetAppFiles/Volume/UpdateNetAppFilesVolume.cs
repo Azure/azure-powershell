@@ -23,12 +23,10 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
-    [CmdletOutputBreakingChangeWithVersion(typeof(UpdateAzureRmNetAppFilesVolume), "12.0.0", "7.0.0", DeprecatedOutputProperties = new String[] { "EnableSubvolumes" })]
     [Cmdlet(
         "Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
@@ -200,6 +198,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [PSArgumentCompleter("Disabled", "Enabled")]
         public string SmbNonBrowsable { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enables or disables SMB opportunistic locking for SMB or dual-protocol volumes.")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        [ValidateNotNullOrEmpty]
+        public string SmbOplock { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "The desired state of the Advanced Ransomware Protection (ARP) feature. Possible values include: 'Enabled', 'Disabled'")]
@@ -299,6 +302,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 CoolnessPeriod = CoolnessPeriod,                
                 SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
                 SmbNonBrowsable = SmbNonBrowsable,
+                SmbOplocks = SmbOplock,
                 CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy,
                 CoolAccessTieringPolicy = CoolAccessTieringPolicy,
                 ProtocolTypes = ProtocolType

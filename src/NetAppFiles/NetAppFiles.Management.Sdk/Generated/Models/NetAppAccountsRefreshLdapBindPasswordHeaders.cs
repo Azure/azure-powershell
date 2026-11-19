@@ -7,34 +7,34 @@ namespace Microsoft.Azure.Management.NetApp.Models
 {
     using System.Linq;
 
-    public partial class SubvolumesCreateHeaders
+    public partial class NetAppAccountsRefreshLdapBindPasswordHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the SubvolumesCreateHeaders class.
+        /// Initializes a new instance of the NetAppAccountsRefreshLdapBindPasswordHeaders class.
         /// </summary>
-        public SubvolumesCreateHeaders()
+        public NetAppAccountsRefreshLdapBindPasswordHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubvolumesCreateHeaders class.
+        /// Initializes a new instance of the NetAppAccountsRefreshLdapBindPasswordHeaders class.
         /// </summary>
 
         /// <param name="azureAsyncOperation">
         /// </param>
 
-        /// <param name="retryAfter">
-        /// </param>
-
         /// <param name="location">
         /// </param>
-        public SubvolumesCreateHeaders(string azureAsyncOperation = default(string), int? retryAfter = default(int?), string location = default(string))
+
+        /// <param name="retryAfter">
+        /// </param>
+        public NetAppAccountsRefreshLdapBindPasswordHeaders(string azureAsyncOperation = default(string), string location = default(string), int? retryAfter = default(int?))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;
-            this.RetryAfter = retryAfter;
             this.Location = location;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
-        public int? RetryAfter {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
+        public string Location {get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
-        public string Location {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

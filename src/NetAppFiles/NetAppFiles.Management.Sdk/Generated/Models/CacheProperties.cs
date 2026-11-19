@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="ldapServerType">Specifies the type of LDAP server for flexcache volume.
-        /// Possible values include: &#39;ActiveDirectory&#39;, &#39;OpenLDAP&#39;</param>
+        /// Possible values include: &#39;ActiveDirectory&#39;, &#39;OpenLdap&#39;</param>
 
         /// <param name="originClusterInformation">Origin cluster information
         /// </param>
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string Ldap {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the type of LDAP server for flexcache volume. Possible values include: &#39;ActiveDirectory&#39;, &#39;OpenLDAP&#39;
+        /// Gets or sets specifies the type of LDAP server for flexcache volume. Possible values include: &#39;ActiveDirectory&#39;, &#39;OpenLdap&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ldapServerType")]
         public string LdapServerType {get; set; }

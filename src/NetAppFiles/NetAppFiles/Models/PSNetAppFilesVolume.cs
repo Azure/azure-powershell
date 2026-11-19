@@ -237,6 +237,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </remarks>
         public bool? LdapEnabled { get; set; }
 
+        public string LdapServerType { get; set; }
+
+        public string SmbOplocks { get; set; }
+
         /// <summary>
         /// Gets or sets CoolAccess
         /// </summary>
@@ -430,16 +434,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// more than 4TiB.
         /// </value>
         public long? MaximumNumberOfFiles {get; set;}
-
-        /// <summary>
-        /// Gets or sets EnableSubvolumes
-        /// </summary>
-        /// <value>
-        /// Gets or sets flag indicating whether subvolume operations are
-        /// enabled on the volume. Possible values include: 'Enabled',
-        /// 'Disabled'
-        /// </value>
-        public string EnableSubvolumes { get; set; }
 
         /// <summary>
         /// Gets or sets BreakthroughMode.

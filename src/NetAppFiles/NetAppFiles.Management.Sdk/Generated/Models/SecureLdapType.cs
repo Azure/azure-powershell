@@ -7,19 +7,19 @@ namespace Microsoft.Azure.Management.NetApp.Models
 {
 
     /// <summary>
-    /// Defines values for EnableSubvolumes.
+    /// Defines values for SecureLdapType.
     /// </summary>
 
 
-    public static class EnableSubvolumes
+    public static class SecureLdapType
     {
         /// <summary>
-        /// subvolumes are enabled
+        /// LDAP traffic is encrypted using LDAP over TLS.
         /// </summary>
-        public const string Enabled = "Enabled";
+        public const string LdapOverTLS = "LdapOverTLS";
         /// <summary>
-        /// subvolumes are not enabled
+        /// LDAP traffic is not encrypted.
         /// </summary>
-        public const string Disabled = "Disabled";
+        public const string None = "None";
     }
 }

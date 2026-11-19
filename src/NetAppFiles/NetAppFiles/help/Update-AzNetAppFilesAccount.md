@@ -16,6 +16,7 @@ Updates an Azure NetApp Files (ANF) account according to the optional modifiers 
 ```
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
  [-EncryptionKeySource <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
  [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>]
  [-FederatedClientId <String>] [-NfsV4IdDomain <String>] [-Tag <Hashtable>]
@@ -27,6 +28,7 @@ Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Na
 ```
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  -ResourceId <String> [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>]
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
  [-Encryption <PSNetAppFilesAccountEncryption>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,6 +37,7 @@ Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Na
 ```
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
  -InputObject <PSNetAppFilesAccount> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -62,7 +65,32 @@ ProvisioningState : Succeeded
 
 This command performs an update on the given account modifying the tags to those provided.
 
+### Example 2: Change the OpenLDAP bind-password secret reference
+```powershell
+$ldapPatch = @{
+    BindPasswordAkvConfig = @{ SecretName = "rotated-ldap-bind" }
+}
+Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -LdapConfiguration $ldapPatch
+```
+
+Updates only the secret name. Other LDAP properties and omitted nested Key Vault fields are not sent in the patch. To fetch the latest version of the configured secret without changing its name, use `Update-AzNetAppFilesAccountLdapBindPassword`.
+
 ## PARAMETERS
+
+### -LdapConfiguration
+The OpenLDAP properties to update, using the fields accepted by `New-AzNetAppFilesAccount -LdapConfiguration`. Omitted properties are left unchanged. Nested `BindPasswordAkvConfig` properties can also be updated individually.
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ActiveDirectory
 A hashtable array which represents the active directories

@@ -79,6 +79,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccountEncryption Encryption { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "OpenLDAP configuration properties to update. Omitted properties are left unchanged.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
+
         [Parameter(
             ParameterSetName = FieldsParameterSet,
             Mandatory = false,
@@ -193,11 +197,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
             var netAppAccountBody = new NetAppAccountPatch()
             {
-                Location = Location,
-                ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : null,
+                ActiveDirectories = ActiveDirectory?.ConvertFromPs().ConvertToPatch(),
                 Tags = tagPairs,
-                Encryption = Encryption?.ConvertFromPs(),
-                NfsV4IdDomain = NfsV4IdDomain
+                Encryption = Encryption?.ConvertToPatchFromPs(),
+                NfsV4IdDomain = NfsV4IdDomain,
+                LdapConfiguration = LdapConfiguration?.ConvertToPatchFromPs()
             };
             if (IdentityType != null && IdentityType.Contains("UserAssigned"))
             {

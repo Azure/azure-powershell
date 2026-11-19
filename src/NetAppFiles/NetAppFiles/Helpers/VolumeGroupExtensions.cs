@@ -110,6 +110,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ThroughputMibps = volumeGroupVolumeProperties.ThroughputMibps,
                 EncryptionKeySource = volumeGroupVolumeProperties.EncryptionKeySource,
                 LdapEnabled = volumeGroupVolumeProperties.LdapEnabled,
+                LdapServerType = volumeGroupVolumeProperties.LdapServerType,
+                SmbOplocks = volumeGroupVolumeProperties.SmbOplocks,
                 CoolAccess = volumeGroupVolumeProperties.CoolAccess,
                 CoolnessPeriod = volumeGroupVolumeProperties.CoolnessPeriod,
                 UnixPermission = volumeGroupVolumeProperties.UnixPermissions,
@@ -125,7 +127,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 T2Network = volumeGroupVolumeProperties.T2Network,
                 VolumeSpecName = volumeGroupVolumeProperties.VolumeSpecName,
                 PlacementRules = volumeGroupVolumeProperties.PlacementRules.ToPPSKeyValuePairs(),
-                EnableSubvolumes = volumeGroupVolumeProperties.EnableSubvolumes,
                 BreakthroughMode = volumeGroupVolumeProperties.BreakthroughMode,
                 Encrypted = volumeGroupVolumeProperties.Encrypted,                
                 KeyVaultPrivateEndpointResourceId = volumeGroupVolumeProperties.KeyVaultPrivateEndpointResourceId

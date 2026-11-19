@@ -129,10 +129,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// </summary>
         public virtual ISnapshotsOperations Snapshots { get; private set; }
         /// <summary>
-        /// Gets the ISubvolumesOperations
-        /// </summary>
-        public virtual ISubvolumesOperations Subvolumes { get; private set; }
-        /// <summary>
         /// Gets the IVolumeQuotaRulesOperations
         /// </summary>
         public virtual IVolumeQuotaRulesOperations VolumeQuotaRules { get; private set; }
@@ -144,6 +140,10 @@ namespace Microsoft.Azure.Management.NetApp
         /// Gets the INetAppResourceQuotaLimitsAccountOperations
         /// </summary>
         public virtual INetAppResourceQuotaLimitsAccountOperations NetAppResourceQuotaLimitsAccount { get; private set; }
+        /// <summary>
+        /// Gets the INetAppAccountsOperations
+        /// </summary>
+        public virtual INetAppAccountsOperations NetAppAccounts { get; private set; }
         /// <summary>
         /// Gets the ISnapshotPoliciesOperations
         /// </summary>
@@ -407,14 +407,14 @@ namespace Microsoft.Azure.Management.NetApp
             this.BackupsUnderVolume = new BackupsUnderVolumeOperations(this);
             this.RansomwareReports = new RansomwareReportsOperations(this);
             this.Snapshots = new SnapshotsOperations(this);
-            this.Subvolumes = new SubvolumesOperations(this);
             this.VolumeQuotaRules = new VolumeQuotaRulesOperations(this);
             this.BackupsUnderAccount = new BackupsUnderAccountOperations(this);
             this.NetAppResourceQuotaLimitsAccount = new NetAppResourceQuotaLimitsAccountOperations(this);
+            this.NetAppAccounts = new NetAppAccountsOperations(this);
             this.SnapshotPolicies = new SnapshotPoliciesOperations(this);
             this.VolumeGroups = new VolumeGroupsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-05-01";
+            this.ApiVersion = "2026-09-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

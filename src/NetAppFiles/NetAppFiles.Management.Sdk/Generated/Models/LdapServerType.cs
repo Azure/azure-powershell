@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         public const string ActiveDirectory = "ActiveDirectory";
         /// <summary>
-        /// The volume should use OpenLDAP for LDAP connections.
+        /// The volume should use OpenLdap for LDAP connections.
         /// </summary>
-        public const string OpenLdap = "OpenLDAP";
+        public const string OpenLdap = "OpenLdap";
     }
 }

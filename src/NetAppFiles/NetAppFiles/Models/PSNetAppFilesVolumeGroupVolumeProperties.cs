@@ -235,6 +235,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         public bool? LdapEnabled { get; set; }
 
+        public string LdapServerType { get; set; }
+
+        public string SmbOplocks { get; set; }
+
         /// <summary>
         /// Gets or sets specifies whether Cool Access(tiering) is enabled for
         /// the volume.
@@ -336,13 +340,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Application specific placement rules for the particular volume
         /// </remarks>
         public IList<PlacementKeyValuePairs> PlacementRules { get; set; }
-
-        /// <summary>
-        /// Gets or sets flag indicating whether subvolume operations are
-        /// enabled on the volume. Possible values include: 'Enabled',
-        /// 'Disabled'
-        /// </summary>
-        public string EnableSubvolumes { get; set; }
 
         /// <summary>
         /// Gets or sets the resource ID of private endpoint for KeyVault. It
