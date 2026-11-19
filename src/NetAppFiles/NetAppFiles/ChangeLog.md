@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
 * Updated to API version 2026-08-01.
 * Added Lightweight Directory Access Protocol (LDAP) configuration support to `New-AzNetAppFilesAccount`, `Set-AzNetAppFilesAccount`, and `Update-AzNetAppFilesAccount`, and added `LdapConfiguration` to account output.
