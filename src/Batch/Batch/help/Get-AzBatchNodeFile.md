@@ -113,9 +113,9 @@ This command gets the properties of the node files in the folder of the task tha
 It doesn't list the files inside subfolders such as wd, and it returns at most 1,000 files.
 To get every file of the task, add the *Recursive* parameter and `-MaxCount 0` (see Example 4).
 
-### Example 4: Recursively get the properties of node files associated with a task
+### Example 4: Recursively get the properties of all node files associated with a task
 ```powershell
-Get-AzBatchTask "Job-00003" "Task31" -BatchContext $Context | Get-AzBatchNodeFile -Recursive -BatchContext $Context
+Get-AzBatchTask "Job-00003" "Task31" -BatchContext $Context | Get-AzBatchNodeFile -Recursive -MaxCount 0 -BatchContext $Context
 ```
 
 ```output
@@ -133,6 +133,7 @@ False       wd\newFile.txt   Microsoft.Azure.Commands.Batch.Models.PSFile... htt
 This command gets the properties of all files associated with the task that has the ID Task31 in job Job-00003.
 This command specifies the *Recursive* parameter.
 Therefore, the cmdlet performs a recursive file search is performed, and returns the wd\newFile.txt node file.
+It also specifies `-MaxCount 0`, so the cmdlet returns every file instead of at most 1,000.
 
 ### Example 5: Get a single file from a compute node
 ```powershell
