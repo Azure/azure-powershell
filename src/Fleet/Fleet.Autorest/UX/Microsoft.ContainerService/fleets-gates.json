@@ -1,0 +1,52 @@
+{
+  "resourceType": "fleets/gates",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.fleet"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFleetGate",
+      "description": "Get a Gate",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/gates/{gateName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.fleet/get-azfleetgate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FleetName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Gate",
+          "parameters": [
+            {
+              "name": "-FleetName",
+              "value": "[Path.fleetName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.gateName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
