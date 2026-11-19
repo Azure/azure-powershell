@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
 
                 // Get the storage URL to upload the application package to by calling create/update
-                var storageUrl = CreateUpdateAppPackage(resourceGroupName, accountName, applicationName, version);
+                ApplicationPackage package = CreateUpdateAppPackage(resourceGroupName, accountName, applicationName, version);
 
-                UploadFileToApplicationPackage(resourceGroupName, accountName, applicationName, version, filePath, storageUrl, appPackageAlreadyExists);
+                UploadFileToApplicationPackage(resourceGroupName, accountName, applicationName, version, filePath, package, appPackageAlreadyExists);
 
                 ActivateApplicationPackage(resourceGroupName, accountName, applicationName, version, format, Resources.UploadedApplicationButFailedToActivate);
             }
@@ -136,12 +136,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
             string applicationName,
             string version,
             string filePath,
-            string storageUrl,
+            ApplicationPackage package,
             bool appPackageAlreadyExists)
         {
             try
             {
-                var blob = new CloudBlockBlob(new Uri(storageUrl));
+                var blob = new CloudBlockBlob(new Uri(package.StorageUrl));
 // TODO: Remove IfDef
 #if NETSTANDARD
                 Task.Run(() => blob.UploadFromFileAsync(filePath)).Wait();
@@ -152,7 +152,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             catch (Exception exception)
             {
                 // If the application package has already been created we don't want to delete the application package mysteriously.
-                if (appPackageAlreadyExists)
+                // Another upload of the same version may also have created or changed it after the check above.
+                if (!appPackageAlreadyExists && IsUnchangedSinceCreated(resourceGroupName, accountName, applicationName, version, package.Etag))
                 {
                     // If we are creating a new application package and the upload fails we should delete the application package.
                     try
@@ -219,18 +220,40 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return false;
         }
 
-
-        private string CreateUpdateAppPackage(string resourceGroupName, string accountName, string applicationName, string version)
+        /// <summary>
+        /// Whether the version is still the one this call created: never activated, and not written since (same ETag).
+        /// The service has no conditional delete for application packages, so this narrows the race with another
+        /// upload of the same version but can't close it.
+        /// </summary>
+        private bool IsUnchangedSinceCreated(string resourceGroupName, string accountName, string applicationName, string version, string createdEtag)
         {
             try
             {
-                var addResponse = BatchManagementClient.ApplicationPackage.Create(
+                ApplicationPackage current = BatchManagementClient.ApplicationPackage.Get(
                     resourceGroupName,
                     accountName,
                     applicationName,
                     version);
 
-                return addResponse.StorageUrl;
+                return current.State != PackageState.Active && string.Equals(current.Etag, createdEtag, StringComparison.Ordinal);
+            }
+            catch (Exception)
+            {
+                // Gone already, or we can't tell: don't delete.
+                return false;
+            }
+        }
+
+
+        private ApplicationPackage CreateUpdateAppPackage(string resourceGroupName, string accountName, string applicationName, string version)
+        {
+            try
+            {
+                return BatchManagementClient.ApplicationPackage.Create(
+                    resourceGroupName,
+                    accountName,
+                    applicationName,
+                    version);
             }
             catch (Exception exception)
             {
