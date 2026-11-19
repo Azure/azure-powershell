@@ -19,12 +19,24 @@ Describe 'Get-AzHorizonDbCluster' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $cluster = Get-AzHorizonDbCluster -ResourceGroupName $env.sharedResourceGroup -Name $env.sharedClusterName -SubscriptionId $env.SubscriptionId -ErrorAction Stop
+
+        $cluster.Name | Should -Be $env.sharedClusterName
+        $cluster.ResourceGroupName | Should -Be $env.sharedResourceGroup
+        $cluster.Location | Should -Be $env.location
+        $cluster.PostgreSqlVersion | Should -Be '17'
+        $cluster.BackupGeoRedundancy | Should -Be 'Disabled'
+        $cluster.NetworkPublicAccess | Should -Be 'Disabled'
+        $cluster.ProvisioningState | Should -Be 'Succeeded'
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $clusters = @(Get-AzHorizonDbCluster -ResourceGroupName $env.sharedResourceGroup -SubscriptionId $env.SubscriptionId -ErrorAction Stop)
+        $matching = @($clusters | Where-Object { $_.Name -eq $env.sharedClusterName })
+
+        $matching.Count | Should -Be 1
+        $matching[0].ResourceGroupName | Should -Be $env.sharedResourceGroup
     }
 
     It 'GetViaIdentity' -skip {

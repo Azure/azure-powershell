@@ -15,8 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzHorizonDbPool'))
 }
 
 Describe 'Update-AzHorizonDbPool' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $null = Update-AzHorizonDbPool -ResourceGroupName $env.sharedResourceGroup -ClusterName $env.sharedClusterName -Name $env.sharedPoolName -SubscriptionId $env.SubscriptionId -ComputeModelVCore 4 -Confirm:$false -ErrorAction Stop
+
+        $pool = Get-AzHorizonDbPool -ResourceGroupName $env.sharedResourceGroup -ClusterName $env.sharedClusterName -Name $env.sharedPoolName -SubscriptionId $env.SubscriptionId -ErrorAction Stop
+
+        $pool.Name | Should -Be $env.sharedPoolName
+        $pool.ResourceGroupName | Should -Be $env.sharedResourceGroup
+        $pool.ComputeModelVCore | Should -Be 4
+        $pool.State | Should -Be 'Ready'
+        $pool.ProvisioningState | Should -Be 'Succeeded'
     }
 
     It 'UpdateViaJsonString' -skip {

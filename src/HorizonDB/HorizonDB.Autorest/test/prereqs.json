@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
+    },
+    "clusterName": {
+      "type": "string"
+    },
+    "poolName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.HorizonDb/clusters",
+      "apiVersion": "2026-10-01-preview",
+      "name": "[parameters('clusterName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "postgreSqlVersion": "17",
+        "backup": {
+          "geoRedundancy": "Disabled"
+        },
+        "network": {
+          "publicAccess": "Disabled"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.HorizonDb/clusters/pools",
+      "apiVersion": "2026-10-01-preview",
+      "name": "[format('{0}/{1}', parameters('clusterName'), parameters('poolName'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.HorizonDb/clusters', parameters('clusterName'))]"
+      ],
+      "properties": {
+        "computeModel": {
+          "type": "Provisioned",
+          "computeProcessor": "Intel",
+          "computeGeneration": 1,
+          "vCores": 2
+        },
+        "scheduledMaintenance": {
+          "maintenanceManagementType": "System"
+        },
+        "nodeCount": 1,
+        "highAvailability": {
+          "mode": "Disabled"
+        }
+      }
+    }
+  ]
+}

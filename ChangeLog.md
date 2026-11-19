@@ -1,5 +1,7 @@
 ## Upcoming Release
 #### Az.HorizonDB
+* Added integration tests for updating cluster backup retention to 9 days and pool capacity to 4 vCores.
+* Added shared cluster and pool fixtures using Intel compute generation 1 for HorizonDB integration tests.
 * Introduce cmdlet for cluster, pool, and parameter group management based on API version 2026-10-01-preview.
 * Fixed building Az.HorizonDB from source.
 

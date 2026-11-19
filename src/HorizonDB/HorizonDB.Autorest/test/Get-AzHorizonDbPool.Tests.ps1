@@ -15,12 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzHorizonDbPool'))
 }
 
 Describe 'Get-AzHorizonDbPool' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $pools = @(Get-AzHorizonDbPool -ResourceGroupName $env.sharedResourceGroup -ClusterName $env.sharedClusterName -SubscriptionId $env.SubscriptionId -ErrorAction Stop)
+
+        $pools.Count | Should -Be 1
+        $pools[0].Name | Should -Be $env.sharedPoolName
+        $pools[0].ResourceGroupName | Should -Be $env.sharedResourceGroup
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $pool = Get-AzHorizonDbPool -ResourceGroupName $env.sharedResourceGroup -ClusterName $env.sharedClusterName -Name $env.sharedPoolName -SubscriptionId $env.SubscriptionId -ErrorAction Stop
+
+        $pool.Name | Should -Be $env.sharedPoolName
+        $pool.ResourceGroupName | Should -Be $env.sharedResourceGroup
+        $pool.ComputeModelType | Should -Be 'Provisioned'
+        $pool.ComputeModelComputeProcessor | Should -Be 'Intel'
+        $pool.ComputeModelComputeGeneration | Should -Be 1
+        $pool.NodeCount | Should -Be 1
+        $pool.HighAvailabilityMode | Should -Be 'Disabled'
+        $pool.State | Should -Be 'Ready'
+        $pool.ProvisioningState | Should -Be 'Succeeded'
     }
 
     It 'GetViaIdentityCluster' -skip {

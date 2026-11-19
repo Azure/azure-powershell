@@ -15,8 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzHorizonDbCluster'))
 }
 
 Describe 'Update-AzHorizonDbCluster' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $null = Update-AzHorizonDbCluster -ResourceGroupName $env.sharedResourceGroup -Name $env.sharedClusterName -SubscriptionId $env.SubscriptionId -BackupRetentionDay 9 -Confirm:$false -ErrorAction Stop
+
+        $cluster = Get-AzHorizonDbCluster -ResourceGroupName $env.sharedResourceGroup -Name $env.sharedClusterName -SubscriptionId $env.SubscriptionId -ErrorAction Stop
+
+        $cluster.Name | Should -Be $env.sharedClusterName
+        $cluster.ResourceGroupName | Should -Be $env.sharedResourceGroup
+        $cluster.BackupRetentionDay | Should -Be 9
+        $cluster.ProvisioningState | Should -Be 'Succeeded'
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
