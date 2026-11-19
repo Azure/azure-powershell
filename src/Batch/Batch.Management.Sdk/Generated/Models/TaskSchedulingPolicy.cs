@@ -27,11 +27,15 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the TaskSchedulingPolicy class.
         /// </summary>
 
+        /// <param name="jobDefaultOrder">The order for scheduling tasks from different jobs with the same priority.
+        /// Possible values include: &#39;None&#39;, &#39;CreationTime&#39;</param>
+
         /// <param name="nodeFillType">How tasks should be distributed across compute nodes.
         /// Possible values include: &#39;Spread&#39;, &#39;Pack&#39;</param>
-        public TaskSchedulingPolicy(ComputeNodeFillType nodeFillType)
+        public TaskSchedulingPolicy(ComputeNodeFillType nodeFillType, string jobDefaultOrder = default(string))
 
         {
+            this.JobDefaultOrder = jobDefaultOrder;
             this.NodeFillType = nodeFillType;
             CustomInit();
         }
@@ -41,6 +45,13 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the order for scheduling tasks from different jobs with the
+        /// same priority. Possible values include: &#39;None&#39;, &#39;CreationTime&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "jobDefaultOrder")]
+        public string JobDefaultOrder {get; set; }
 
         /// <summary>
         /// Gets or sets how tasks should be distributed across compute nodes. Possible values include: &#39;Spread&#39;, &#39;Pack&#39;
@@ -55,6 +66,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
         }
     }

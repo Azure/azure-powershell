@@ -21,10 +21,9 @@ license-header: MICROSOFT_MIT_NO_VERSION
 payload-flattening-threshold: 1
 # title: BatchManagementClient
 
-commit: f9391dfd43360c636a5d7428734f86afe316bbb9
+commit: eea7c005f673b4c72a97f4edda1a18217cfbca58
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/batch/resource-manager/Microsoft.Batch/stable/2024-07-01/BatchManagement.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/batch/resource-manager/Microsoft.Batch/stable/2024-07-01/NetworkSecurityPerimeter.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/batch/resource-manager/Microsoft.Batch/Batch/stable/2025-06-01/openapi.json
 
 
 output-folder: Generated
@@ -95,4 +94,9 @@ directive:
   - suppress: OBJECT_MISSING_REQUIRED_PROPERTY
     where: $.definitions.UserAccount
     reason: This field contains a secret (password) and is not returned on a get (but is required on a PUT/PATCH). Previous discussions with the modelling team had said that this was the correct way to model this type of field.
+
+  - from: swagger-document
+    where: $.definitions.PrivateEndpointConnectionProvisioningState
+    transform: $["x-nullable"] = false
+    reason: Keep PrivateEndpointConnection.ProvisioningState non-nullable as in the 2024-07-01 SDK (the 2025-06-01 spec dropped x-nullable false). This enum is only used by that property.
 ```

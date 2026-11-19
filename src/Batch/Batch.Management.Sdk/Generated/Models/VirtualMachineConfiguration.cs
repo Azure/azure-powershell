@@ -253,7 +253,10 @@ namespace Microsoft.Azure.Management.Batch.Models
                     }
                 }
             }
-
+            if (this.OSDisk != null)
+            {
+                this.OSDisk.Validate();
+            }
 
             if (this.ServiceArtifactReference != null)
             {

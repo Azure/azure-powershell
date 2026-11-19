@@ -14,6 +14,32 @@ namespace Microsoft.Azure.Management.Batch
     public partial interface ILocationOperations
     {
         /// <summary>
+        /// Checks whether the Batch account name is available in the specified region.
+        /// </summary>
+        /// <remarks>
+        /// Checks whether the Batch account name is available in the specified region.
+        /// </remarks>
+        /// <param name='locationName'>
+        /// The desired region for the name check.
+        /// </param>
+        /// <param name='name'>
+        /// The name to check for availability
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckNameAvailabilityResult>> CheckNameAvailabilityWithHttpMessagesAsync(string locationName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets the Batch service quotas for the specified subscription at the given
         /// location.
         /// </summary>
@@ -68,32 +94,6 @@ namespace Microsoft.Azure.Management.Batch
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SupportedSku>>> ListSupportedVirtualMachineSkusWithHttpMessagesAsync(string locationName, int? maxresults = default(int?), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Checks whether the Batch account name is available in the specified region.
-        /// </summary>
-        /// <remarks>
-        /// Checks whether the Batch account name is available in the specified region.
-        /// </remarks>
-        /// <param name='locationName'>
-        /// The desired region for the name check.
-        /// </param>
-        /// <param name='name'>
-        /// The name to check for availability
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CheckNameAvailabilityResult>> CheckNameAvailabilityWithHttpMessagesAsync(string locationName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the list of Batch supported Virtual Machine VM sizes available at the

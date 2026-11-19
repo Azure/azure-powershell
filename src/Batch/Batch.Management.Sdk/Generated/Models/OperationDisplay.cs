@@ -10,9 +10,6 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// <summary>
     /// The object that describes the operation.
     /// </summary>
-    /// <remarks>
-    /// The object that describes the operation.
-    /// </remarks>
     public partial class OperationDisplay
     {
         /// <summary>

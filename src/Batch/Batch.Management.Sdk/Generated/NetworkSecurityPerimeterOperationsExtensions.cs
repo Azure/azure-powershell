@@ -19,10 +19,15 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<NetworkSecurityPerimeterConfiguration> ListConfigurations(this INetworkSecurityPerimeterOperations operations, string resourceGroupName, string accountName)
         {
@@ -36,10 +41,15 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -58,13 +68,18 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='networkSecurityPerimeterConfigurationName'>
-        /// The name for Network Security Perimeter configuration
+        /// The name for a network security perimeter configuration
         /// </param>
         public static NetworkSecurityPerimeterConfiguration GetConfiguration(this INetworkSecurityPerimeterOperations operations, string resourceGroupName, string accountName, string networkSecurityPerimeterConfigurationName)
         {
@@ -78,13 +93,18 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='networkSecurityPerimeterConfigurationName'>
-        /// The name for Network Security Perimeter configuration
+        /// The name for a network security perimeter configuration
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -103,13 +123,18 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='networkSecurityPerimeterConfigurationName'>
-        /// The name for Network Security Perimeter configuration
+        /// The name for a network security perimeter configuration
         /// </param>
         public static NetworkSecurityPerimeterReconcileConfigurationHeaders ReconcileConfiguration(this INetworkSecurityPerimeterOperations operations, string resourceGroupName, string accountName, string networkSecurityPerimeterConfigurationName)
         {
@@ -123,13 +148,18 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='networkSecurityPerimeterConfigurationName'>
-        /// The name for Network Security Perimeter configuration
+        /// The name for a network security perimeter configuration
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -148,13 +178,18 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='networkSecurityPerimeterConfigurationName'>
-        /// The name for Network Security Perimeter configuration
+        /// The name for a network security perimeter configuration
         /// </param>
         public static NetworkSecurityPerimeterReconcileConfigurationHeaders BeginReconcileConfiguration(this INetworkSecurityPerimeterOperations operations, string resourceGroupName, string accountName, string networkSecurityPerimeterConfigurationName)
         {
@@ -168,13 +203,18 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='networkSecurityPerimeterConfigurationName'>
-        /// The name for Network Security Perimeter configuration
+        /// The name for a network security perimeter configuration
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

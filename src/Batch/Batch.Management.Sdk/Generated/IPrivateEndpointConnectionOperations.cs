@@ -20,10 +20,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Lists all of the private endpoint connections in the specified account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='maxresults'>
         /// The maximum number of items to return in the response.
@@ -49,10 +54,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Gets information about the specified private endpoint connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The private endpoint connection name. This must be unique within the
@@ -79,10 +89,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Updates the properties of an existing private endpoint connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The private endpoint connection name. This must be unique within the
@@ -118,10 +133,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Deletes the specified private endpoint connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The private endpoint connection name. This must be unique within the
@@ -145,10 +165,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Updates the properties of an existing private endpoint connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The private endpoint connection name. This must be unique within the
@@ -184,10 +209,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Deletes the specified private endpoint connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The private endpoint connection name. This must be unique within the

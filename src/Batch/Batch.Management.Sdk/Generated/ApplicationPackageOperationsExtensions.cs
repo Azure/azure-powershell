@@ -13,18 +13,82 @@ namespace Microsoft.Azure.Management.Batch
     public static partial class ApplicationPackageOperationsExtensions
     {
         /// <summary>
-        /// Activates the specified application package. This should be done after the
-        /// `ApplicationPackage` was created and uploaded. This needs to be done before
-        /// an `ApplicationPackage` can be used on Pools or Tasks.
+        /// Lists all of the application packages in the specified application.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the account.
+        /// </param>
+        /// <param name='maxresults'>
+        /// The maximum number of items to return in the response.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ApplicationPackage> List(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, int? maxresults = default(int?))
+        {
+                return ((IApplicationPackageOperations)operations).ListAsync(resourceGroupName, accountName, applicationName, maxresults).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all of the application packages in the specified application.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application. This must be unique within the account.
+        /// </param>
+        /// <param name='maxresults'>
+        /// The maximum number of items to return in the response.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationPackage>> ListAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, int? maxresults = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, maxresults, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets information about the specified application package.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='applicationName'>
         /// The name of the application. This must be unique within the account.
@@ -32,24 +96,27 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='versionName'>
         /// The version of the application.
         /// </param>
-        public static ApplicationPackage Activate(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, string format)
+        public static ApplicationPackage Get(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName)
         {
-                return ((IApplicationPackageOperations)operations).ActivateAsync(resourceGroupName, accountName, applicationName, versionName, format).GetAwaiter().GetResult();
+                return ((IApplicationPackageOperations)operations).GetAsync(resourceGroupName, accountName, applicationName, versionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Activates the specified application package. This should be done after the
-        /// `ApplicationPackage` was created and uploaded. This needs to be done before
-        /// an `ApplicationPackage` can be used on Pools or Tasks.
+        /// Gets information about the specified application package.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='applicationName'>
         /// The name of the application. This must be unique within the account.
@@ -60,9 +127,9 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationPackage> ActivateAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, string format, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationPackage> GetAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ActivateWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, format, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -78,10 +145,15 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='applicationName'>
         /// The name of the application. This must be unique within the account.
@@ -105,10 +177,15 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='applicationName'>
         /// The name of the application. This must be unique within the account.
@@ -133,10 +210,15 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='applicationName'>
         /// The name of the application. This must be unique within the account.
@@ -156,10 +238,15 @@ namespace Microsoft.Azure.Management.Batch
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='applicationName'>
         /// The name of the application. This must be unique within the account.
@@ -175,16 +262,23 @@ namespace Microsoft.Azure.Management.Batch
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets information about the specified application package.
+        /// Activates the specified application package. This should be done after the
+        /// `ApplicationPackage` was created and uploaded. This needs to be done before
+        /// an `ApplicationPackage` can be used on Pools or Tasks.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='applicationName'>
         /// The name of the application. This must be unique within the account.
@@ -192,22 +286,29 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='versionName'>
         /// The version of the application.
         /// </param>
-        public static ApplicationPackage Get(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName)
+        public static ApplicationPackage Activate(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, string format)
         {
-                return ((IApplicationPackageOperations)operations).GetAsync(resourceGroupName, accountName, applicationName, versionName).GetAwaiter().GetResult();
+                return ((IApplicationPackageOperations)operations).ActivateAsync(resourceGroupName, accountName, applicationName, versionName, format).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets information about the specified application package.
+        /// Activates the specified application package. This should be done after the
+        /// `ApplicationPackage` was created and uploaded. This needs to be done before
+        /// an `ApplicationPackage` can be used on Pools or Tasks.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='applicationName'>
         /// The name of the application. This must be unique within the account.
@@ -218,60 +319,9 @@ namespace Microsoft.Azure.Management.Batch
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationPackage> GetAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationPackage> ActivateAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, string versionName, string format, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all of the application packages in the specified application.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the Batch account.
-        /// </param>
-        /// <param name='applicationName'>
-        /// The name of the application. This must be unique within the account.
-        /// </param>
-        /// <param name='maxresults'>
-        /// The maximum number of items to return in the response.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ApplicationPackage> List(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, int? maxresults = default(int?))
-        {
-                return ((IApplicationPackageOperations)operations).ListAsync(resourceGroupName, accountName, applicationName, maxresults).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all of the application packages in the specified application.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the Batch account.
-        /// </param>
-        /// <param name='applicationName'>
-        /// The name of the application. This must be unique within the account.
-        /// </param>
-        /// <param name='maxresults'>
-        /// The maximum number of items to return in the response.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationPackage>> ListAsync(this IApplicationPackageOperations operations, string resourceGroupName, string accountName, string applicationName, int? maxresults = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, maxresults, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ActivateWithHttpMessagesAsync(resourceGroupName, accountName, applicationName, versionName, format, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

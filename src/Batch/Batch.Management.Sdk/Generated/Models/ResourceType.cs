@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Management.Batch.Models
     public enum ResourceType
     {
         /// <summary>
-        /// The Batch account resource type.
+        /// The resource type for Microsoft.Batch/batchAccounts
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Microsoft.Batch/batchAccounts")]
-        BatchAccounts
+        MicrosoftBatchBatchAccounts
     }
     internal static class ResourceTypeEnumExtension
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         {
             switch( value )
             {
-                case ResourceType.BatchAccounts:
+                case ResourceType.MicrosoftBatchBatchAccounts:
                     return "Microsoft.Batch/batchAccounts";
             }
             return null;
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Batch.Models
             switch( value )
             {
                 case "Microsoft.Batch/batchAccounts":
-                    return ResourceType.BatchAccounts;
+                    return ResourceType.MicrosoftBatchBatchAccounts;
             }
             return null;
         }

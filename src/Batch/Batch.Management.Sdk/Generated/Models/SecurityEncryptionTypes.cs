@@ -13,7 +13,21 @@ namespace Microsoft.Azure.Management.Batch.Models
 
     public static class SecurityEncryptionTypes
     {
+        /// <summary>
+        /// EncryptionType of the managed disk is set to NonPersistedTPM for not
+        /// persisting firmware state in the VMGuestState blob.
+        /// </summary>
         public const string NonPersistedTPM = "NonPersistedTPM";
+        /// <summary>
+        /// EncryptionType of the managed disk is set to VMGuestStateOnly for
+        /// encryption of just the VMGuestState blob.
+        /// </summary>
         public const string VMGuestStateOnly = "VMGuestStateOnly";
+        /// <summary>
+        /// EncryptionType of the managed disk is set to DiskWithVMGuestState for
+        /// encryption of the managed disk along with VMGuestState blob. It is not
+        /// supported in data disks.
+        /// </summary>
+        public const string DiskWithVMGuestState = "DiskWithVMGuestState";
     }
 }

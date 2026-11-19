@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains information about a pool.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Pool : AzureProxyResource
+    public partial class Pool : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the Pool class.
@@ -25,22 +25,28 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the Pool class.
         /// </summary>
 
-        /// <param name="id">The ID of the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="identity">The type of identity used for the Batch Pool.
         /// </param>
 
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
         /// </param>
 
         /// <param name="tags">The tags of the resource.
-        /// </param>
-
-        /// <param name="identity">The type of identity used for the Batch Pool.
         /// </param>
 
         /// <param name="allocationState">Whether the pool is resizing.
@@ -123,29 +129,10 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// the use of user code.
         /// </param>
 
-        /// <param name="certificates">For Windows compute nodes, the Batch service installs the certificates to
-        /// the specified certificate store and location. For Linux compute nodes, the
-        /// certificates are stored in a directory inside the task working directory
-        /// and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the
-        /// task to query for this location. For certificates with visibility of
-        /// &#39;remoteUser&#39;, a &#39;certs&#39; directory is created in the user&#39;s home directory
-        /// (e.g., /home/{user-name}/certs) and certificates are placed in that
-        /// directory.
-        /// Warning: This property is deprecated and will be removed after February,
-        /// 2024. Please use the [Azure KeyVault
-        /// Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide)
-        /// instead.
-        /// </param>
-
         /// <param name="applicationPackages">Changes to application package references affect all new compute nodes
         /// joining the pool, but do not affect compute nodes that are already in the
         /// pool until they are rebooted or reimaged. There is a maximum of 10
         /// application package references on any given pool.
-        /// </param>
-
-        /// <param name="applicationLicenses">The list of application licenses must be a subset of available Batch
-        /// service application licenses. If a license is requested which is not
-        /// supported, pool creation will fail.
         /// </param>
 
         /// <param name="resizeOperationStatus">Describes either the current operation (if the pool AllocationState is
@@ -155,24 +142,13 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="mountConfiguration">This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
         /// </param>
+        public Pool(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), BatchPoolIdentity identity = default(BatchPoolIdentity), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), AllocationState? allocationState = default(AllocationState?), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), ScaleSettings scaleSettings = default(ScaleSettings), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), StartTask startTask = default(StartTask), UpgradePolicy upgradePolicy = default(UpgradePolicy), string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>))
 
-        /// <param name="targetNodeCommunicationMode">If omitted, the default value is Default.
-        /// Possible values include: &#39;Default&#39;, &#39;Classic&#39;, &#39;Simplified&#39;</param>
-
-        /// <param name="currentNodeCommunicationMode">Determines how a pool communicates with the Batch service.
-        /// Possible values include: &#39;Default&#39;, &#39;Classic&#39;, &#39;Simplified&#39;</param>
-
-        /// <param name="resourceTags">The user-defined tags to be associated with the Azure Batch Pool. When
-        /// specified, these tags are propagated to the backing Azure resources
-        /// associated with the pool. This property can only be specified when the
-        /// Batch account was created with the poolAllocationMode property set to
-        /// &#39;UserSubscription&#39;.
-        /// </param>
-        public Pool(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), BatchPoolIdentity identity = default(BatchPoolIdentity), AllocationState? allocationState = default(AllocationState?), DeploymentConfiguration deploymentConfiguration = default(DeploymentConfiguration), ScaleSettings scaleSettings = default(ScaleSettings), NetworkConfiguration networkConfiguration = default(NetworkConfiguration), StartTask startTask = default(StartTask), UpgradePolicy upgradePolicy = default(UpgradePolicy), string displayName = default(string), System.DateTime? lastModified = default(System.DateTime?), System.DateTime? creationTime = default(System.DateTime?), PoolProvisioningState? provisioningState = default(PoolProvisioningState?), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), System.DateTime? allocationStateTransitionTime = default(System.DateTime?), string vmSize = default(string), int? currentDedicatedNodes = default(int?), int? currentLowPriorityNodes = default(int?), AutoScaleRun autoScaleRun = default(AutoScaleRun), InterNodeCommunicationState? interNodeCommunication = default(InterNodeCommunicationState?), int? taskSlotsPerNode = default(int?), TaskSchedulingPolicy taskSchedulingPolicy = default(TaskSchedulingPolicy), System.Collections.Generic.IList<UserAccount> userAccounts = default(System.Collections.Generic.IList<UserAccount>), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), System.Collections.Generic.IList<CertificateReference> certificates = default(System.Collections.Generic.IList<CertificateReference>), System.Collections.Generic.IList<ApplicationPackageReference> applicationPackages = default(System.Collections.Generic.IList<ApplicationPackageReference>), System.Collections.Generic.IList<string> applicationLicenses = default(System.Collections.Generic.IList<string>), ResizeOperationStatus resizeOperationStatus = default(ResizeOperationStatus), System.Collections.Generic.IList<MountConfiguration> mountConfiguration = default(System.Collections.Generic.IList<MountConfiguration>), NodeCommunicationMode? targetNodeCommunicationMode = default(NodeCommunicationMode?), NodeCommunicationMode? currentNodeCommunicationMode = default(NodeCommunicationMode?), System.Collections.Generic.IDictionary<string, string> resourceTags = default(System.Collections.Generic.IDictionary<string, string>))
-
-        : base(id, name, type, etag, tags)
+        : base(id, name, type, systemData)
         {
             this.Identity = identity;
+            this.Etag = etag;
+            this.Tags = tags;
             this.AllocationState = allocationState;
             this.DeploymentConfiguration = deploymentConfiguration;
             this.ScaleSettings = scaleSettings;
@@ -194,14 +170,9 @@ namespace Microsoft.Azure.Management.Batch.Models
             this.TaskSchedulingPolicy = taskSchedulingPolicy;
             this.UserAccounts = userAccounts;
             this.Metadata = metadata;
-            this.Certificates = certificates;
             this.ApplicationPackages = applicationPackages;
-            this.ApplicationLicenses = applicationLicenses;
             this.ResizeOperationStatus = resizeOperationStatus;
             this.MountConfiguration = mountConfiguration;
-            this.TargetNodeCommunicationMode = targetNodeCommunicationMode;
-            this.CurrentNodeCommunicationMode = currentNodeCommunicationMode;
-            this.ResourceTags = resourceTags;
             CustomInit();
         }
 
@@ -216,6 +187,18 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public BatchPoolIdentity Identity {get; set; }
+
+        /// <summary>
+        /// Gets the ETag of the resource, used for concurrency statements.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the tags of the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets whether the pool is resizing. Possible values include: &#39;Steady&#39;, &#39;Resizing&#39;, &#39;Stopping&#39;
@@ -363,23 +346,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         public System.Collections.Generic.IList<MetadataItem> Metadata {get; set; }
 
         /// <summary>
-        /// Gets or sets for Windows compute nodes, the Batch service installs the
-        /// certificates to the specified certificate store and location. For Linux
-        /// compute nodes, the certificates are stored in a directory inside the task
-        /// working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is
-        /// supplied to the task to query for this location. For certificates with
-        /// visibility of &#39;remoteUser&#39;, a &#39;certs&#39; directory is created in the user&#39;s
-        /// home directory (e.g., /home/{user-name}/certs) and certificates are placed
-        /// in that directory.
-        /// Warning: This property is deprecated and will be removed after February,
-        /// 2024. Please use the [Azure KeyVault
-        /// Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide)
-        /// instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.certificates")]
-        public System.Collections.Generic.IList<CertificateReference> Certificates {get; set; }
-
-        /// <summary>
         /// Gets or sets changes to application package references affect all new
         /// compute nodes joining the pool, but do not affect compute nodes that are
         /// already in the pool until they are rebooted or reimaged. There is a maximum
@@ -387,14 +353,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.applicationPackages")]
         public System.Collections.Generic.IList<ApplicationPackageReference> ApplicationPackages {get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of application licenses must be a subset of available
-        /// Batch service application licenses. If a license is requested which is not
-        /// supported, pool creation will fail.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.applicationLicenses")]
-        public System.Collections.Generic.IList<string> ApplicationLicenses {get; set; }
 
         /// <summary>
         /// Gets describes either the current operation (if the pool AllocationState is
@@ -409,28 +367,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.mountConfiguration")]
         public System.Collections.Generic.IList<MountConfiguration> MountConfiguration {get; set; }
-
-        /// <summary>
-        /// Gets or sets if omitted, the default value is Default. Possible values include: &#39;Default&#39;, &#39;Classic&#39;, &#39;Simplified&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.targetNodeCommunicationMode")]
-        public NodeCommunicationMode? TargetNodeCommunicationMode {get; set; }
-
-        /// <summary>
-        /// Gets determines how a pool communicates with the Batch service. Possible values include: &#39;Default&#39;, &#39;Classic&#39;, &#39;Simplified&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.currentNodeCommunicationMode")]
-        public NodeCommunicationMode? CurrentNodeCommunicationMode {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the user-defined tags to be associated with the Azure Batch
-        /// Pool. When specified, these tags are propagated to the backing Azure
-        /// resources associated with the pool. This property can only be specified
-        /// when the Batch account was created with the poolAllocationMode property set
-        /// to &#39;UserSubscription&#39;.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceTags")]
-        public System.Collections.Generic.IDictionary<string, string> ResourceTags {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -443,6 +379,8 @@ namespace Microsoft.Azure.Management.Batch.Models
             {
                 this.Identity.Validate();
             }
+
+
 
             if (this.DeploymentConfiguration != null)
             {
@@ -496,16 +434,6 @@ namespace Microsoft.Azure.Management.Batch.Models
                     }
                 }
             }
-            if (this.Certificates != null)
-            {
-                foreach (var element in this.Certificates)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
             if (this.ApplicationPackages != null)
             {
                 foreach (var element in this.ApplicationPackages)
@@ -517,7 +445,6 @@ namespace Microsoft.Azure.Management.Batch.Models
                 }
             }
 
-
             if (this.MountConfiguration != null)
             {
                 foreach (var element in this.MountConfiguration)
@@ -528,9 +455,6 @@ namespace Microsoft.Azure.Management.Batch.Models
                     }
                 }
             }
-
-
-
         }
     }
 }

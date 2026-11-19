@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="coreQuota">The core quota for the VM family for the Batch account.
         /// </param>
-        public VirtualMachineFamilyCoreQuota(string name = default(string), int coreQuota = default(int))
+        public VirtualMachineFamilyCoreQuota(string name = default(string), int? coreQuota = default(int?))
 
         {
             this.Name = name;
@@ -53,6 +53,6 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Gets the core quota for the VM family for the Batch account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "coreQuota")]
-        public int CoreQuota {get; private set; }
+        public int? CoreQuota {get; private set; }
     }
 }

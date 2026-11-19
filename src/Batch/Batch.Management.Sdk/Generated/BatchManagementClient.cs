@@ -38,10 +38,9 @@ namespace Microsoft.Azure.Management.Batch
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The Azure subscription ID. This is a GUID-formatted string (e.g.
-        /// 00000000-0000-0000-0000-000000000000)
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -62,45 +61,41 @@ namespace Microsoft.Azure.Management.Batch
         public bool? GenerateClientRequestId { get; set;}
 
         /// <summary>
+        /// Gets the IOperations
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
+        /// <summary>
         /// Gets the IBatchAccountOperations
         /// </summary>
         public virtual IBatchAccountOperations BatchAccount { get; private set; }
-        /// <summary>
-        /// Gets the IApplicationPackageOperations
-        /// </summary>
-        public virtual IApplicationPackageOperations ApplicationPackage { get; private set; }
-        /// <summary>
-        /// Gets the IApplicationOperations
-        /// </summary>
-        public virtual IApplicationOperations Application { get; private set; }
         /// <summary>
         /// Gets the ILocationOperations
         /// </summary>
         public virtual ILocationOperations Location { get; private set; }
         /// <summary>
-        /// Gets the IOperations
+        /// Gets the IApplicationOperations
         /// </summary>
-        public virtual IOperations Operations { get; private set; }
+        public virtual IApplicationOperations Application { get; private set; }
         /// <summary>
-        /// Gets the ICertificateOperations
+        /// Gets the IApplicationPackageOperations
         /// </summary>
-        public virtual ICertificateOperations Certificate { get; private set; }
+        public virtual IApplicationPackageOperations ApplicationPackage { get; private set; }
         /// <summary>
-        /// Gets the IPrivateLinkResourceOperations
+        /// Gets the INetworkSecurityPerimeterOperations
         /// </summary>
-        public virtual IPrivateLinkResourceOperations PrivateLinkResource { get; private set; }
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionOperations
-        /// </summary>
-        public virtual IPrivateEndpointConnectionOperations PrivateEndpointConnection { get; private set; }
+        public virtual INetworkSecurityPerimeterOperations NetworkSecurityPerimeter { get; private set; }
         /// <summary>
         /// Gets the IPoolOperations
         /// </summary>
         public virtual IPoolOperations Pool { get; private set; }
         /// <summary>
-        /// Gets the INetworkSecurityPerimeterOperations
+        /// Gets the IPrivateEndpointConnectionOperations
         /// </summary>
-        public virtual INetworkSecurityPerimeterOperations NetworkSecurityPerimeter { get; private set; }
+        public virtual IPrivateEndpointConnectionOperations PrivateEndpointConnection { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateLinkResourceOperations
+        /// </summary>
+        public virtual IPrivateLinkResourceOperations PrivateLinkResource { get; private set; }
         /// <summary>
         /// Initializes a new instance of the BatchManagementClient class.
         /// </summary>
@@ -339,18 +334,17 @@ namespace Microsoft.Azure.Management.Batch
         /// </summary>
         private void Initialize()
         {
-            this.BatchAccount = new BatchAccountOperations(this);
-            this.ApplicationPackage = new ApplicationPackageOperations(this);
-            this.Application = new ApplicationOperations(this);
-            this.Location = new LocationOperations(this);
             this.Operations = new Operations(this);
-            this.Certificate = new CertificateOperations(this);
-            this.PrivateLinkResource = new PrivateLinkResourceOperations(this);
-            this.PrivateEndpointConnection = new PrivateEndpointConnectionOperations(this);
-            this.Pool = new PoolOperations(this);
+            this.BatchAccount = new BatchAccountOperations(this);
+            this.Location = new LocationOperations(this);
+            this.Application = new ApplicationOperations(this);
+            this.ApplicationPackage = new ApplicationPackageOperations(this);
             this.NetworkSecurityPerimeter = new NetworkSecurityPerimeterOperations(this);
+            this.Pool = new PoolOperations(this);
+            this.PrivateEndpointConnection = new PrivateEndpointConnectionOperations(this);
+            this.PrivateLinkResource = new PrivateLinkResourceOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-07-01";
+            this.ApiVersion = "2025-06-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

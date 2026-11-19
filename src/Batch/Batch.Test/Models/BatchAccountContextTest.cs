@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.BatchManager.Test
@@ -69,6 +70,39 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
             Assert.Equal(allocationMode, context.PoolAllocationMode);
             Assert.Equal(keyVault.Id, context.KeyVaultReference.Id);
             Assert.Equal(keyVault.Url, context.KeyVaultReference.Url);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void OmittedProvisioningStateIsShownAsInvalid()
+        {
+            BatchAccount resource = new BatchAccount(
+                location: "location",
+                id: "id/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup/providers/Microsoft.Batch/batchAccounts/account",
+                accountEndpoint: "account.batch-test.windows-int.net");
+
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource, null);
+
+            Assert.Null(resource.ProvisioningState);
+            Assert.Equal("Invalid", context.State);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void OmittedQuotasAreShownAsZero()
+        {
+            BatchAccount resource = new BatchAccount(
+                location: "location",
+                id: "id/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup/providers/Microsoft.Batch/batchAccounts/account",
+                accountEndpoint: "account.batch-test.windows-int.net",
+                dedicatedCoreQuotaPerVMFamily: new List<VirtualMachineFamilyCoreQuota> { new VirtualMachineFamilyCoreQuota("standardDv2Family") });
+
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource, null);
+
+            Assert.Equal(0, context.DedicatedCoreQuotaPerVMFamily["standardDv2Family"]);
+            Assert.Equal(0, context.PoolQuota);
+            Assert.Equal(0, context.ActiveJobAndJobScheduleQuota);
+            Assert.False(context.DedicatedCoreQuotaPerVMFamilyEnforced);
         }
 
         [Fact]

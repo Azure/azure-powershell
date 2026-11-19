@@ -38,12 +38,16 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="uefiSettings">Specifies the security settings like secure boot and vTPM used while
         /// creating the virtual machine.
         /// </param>
-        public SecurityProfile(SecurityTypes? securityType = default(SecurityTypes?), bool? encryptionAtHost = default(bool?), UefiSettings uefiSettings = default(UefiSettings))
+
+        /// <param name="proxyAgentSettings">Specifies ProxyAgent settings while creating the virtual machine.
+        /// </param>
+        public SecurityProfile(SecurityTypes? securityType = default(SecurityTypes?), bool? encryptionAtHost = default(bool?), UefiSettings uefiSettings = default(UefiSettings), ProxyAgentSettings proxyAgentSettings = default(ProxyAgentSettings))
 
         {
             this.SecurityType = securityType;
             this.EncryptionAtHost = encryptionAtHost;
             this.UefiSettings = uefiSettings;
+            this.ProxyAgentSettings = proxyAgentSettings;
             CustomInit();
         }
 
@@ -75,5 +79,12 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "uefiSettings")]
         public UefiSettings UefiSettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies ProxyAgent settings while creating the virtual
+        /// machine.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "proxyAgentSettings")]
+        public ProxyAgentSettings ProxyAgentSettings {get; set; }
     }
 }

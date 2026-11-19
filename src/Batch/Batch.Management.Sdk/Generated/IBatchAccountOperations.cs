@@ -14,6 +14,82 @@ namespace Microsoft.Azure.Management.Batch
     public partial interface IBatchAccountOperations
     {
         /// <summary>
+        /// Gets information about the Batch accounts associated with the subscription.
+        /// </summary>
+        /// <remarks>
+        /// Gets information about the Batch accounts associated with the subscription.
+        /// </remarks>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BatchAccount>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets information about the Batch accounts associated with the specified
+        /// resource group.
+        /// </summary>
+        /// <remarks>
+        /// Gets information about the Batch accounts associated with the specified
+        /// resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BatchAccount>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets information about the specified Batch account.
+        /// </summary>
+        /// <remarks>
+        /// Gets information about the specified Batch account.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BatchAccount>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Creates a new Batch account with the specified parameters. Existing
         /// accounts cannot be updated with this API and should instead be updated with
         /// the Update Batch Account API.
@@ -24,7 +100,7 @@ namespace Microsoft.Azure.Management.Batch
         /// the Update Batch Account API.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// A name for the Batch account which must be unique within the region. Batch
@@ -58,10 +134,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Updates the properties of an existing Batch account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='parameters'>
         /// Additional parameters for account update.
@@ -87,10 +168,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Deletes the specified Batch account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -104,187 +190,21 @@ namespace Microsoft.Azure.Management.Batch
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BatchAccountDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets information about the specified Batch account.
-        /// </summary>
-        /// <remarks>
-        /// Gets information about the specified Batch account.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the Batch account.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BatchAccount>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets information about the Batch accounts associated with the subscription.
-        /// </summary>
-        /// <remarks>
-        /// Gets information about the Batch accounts associated with the subscription.
-        /// </remarks>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BatchAccount>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets information about the Batch accounts associated with the specified
-        /// resource group.
-        /// </summary>
-        /// <remarks>
-        /// Gets information about the Batch accounts associated with the specified
-        /// resource group.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BatchAccount>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Synchronizes access keys for the auto-storage account configured for the
-        /// specified Batch account, only if storage key authentication is being used.
-        /// </summary>
-        /// <remarks>
-        /// Synchronizes access keys for the auto-storage account configured for the
-        /// specified Batch account, only if storage key authentication is being used.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the Batch account.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> SynchronizeAutoStorageKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// This operation applies only to Batch accounts with
-        /// allowedAuthenticationModes containing &#39;SharedKey&#39;. If the Batch account
-        /// doesn&#39;t contain &#39;SharedKey&#39; in its allowedAuthenticationMode, clients
-        /// cannot use shared keys to authenticate, and must use another
-        /// allowedAuthenticationModes instead. In this case, regenerating the keys
-        /// will fail.
-        /// </summary>
-        /// <remarks>
-        /// This operation applies only to Batch accounts with
-        /// allowedAuthenticationModes containing &#39;SharedKey&#39;. If the Batch account
-        /// doesn&#39;t contain &#39;SharedKey&#39; in its allowedAuthenticationMode, clients
-        /// cannot use shared keys to authenticate, and must use another
-        /// allowedAuthenticationModes instead. In this case, regenerating the keys
-        /// will fail.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the Batch account.
-        /// </param>
-        /// <param name='keyName'>
-        /// The type of account key to regenerate.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BatchAccountKeys>> RegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, AccountKeyType keyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// This operation applies only to Batch accounts with
-        /// allowedAuthenticationModes containing &#39;SharedKey&#39;. If the Batch account
-        /// doesn&#39;t contain &#39;SharedKey&#39; in its allowedAuthenticationMode, clients
-        /// cannot use shared keys to authenticate, and must use another
-        /// allowedAuthenticationModes instead. In this case, getting the keys will
-        /// fail.
-        /// </summary>
-        /// <remarks>
-        /// This operation applies only to Batch accounts with
-        /// allowedAuthenticationModes containing &#39;SharedKey&#39;. If the Batch account
-        /// doesn&#39;t contain &#39;SharedKey&#39; in its allowedAuthenticationMode, clients
-        /// cannot use shared keys to authenticate, and must use another
-        /// allowedAuthenticationModes instead. In this case, getting the keys will
-        /// fail.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the Batch account.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BatchAccountKeys>> GetKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Gets information about the detectors available for a given Batch account.
         /// </summary>
         /// <remarks>
         /// Gets information about the detectors available for a given Batch account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -307,10 +227,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Gets information about the given detector for a given Batch account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='detectorId'>
         /// The name of the detector.
@@ -330,6 +255,47 @@ namespace Microsoft.Azure.Management.Batch
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorResponse>> GetDetectorWithHttpMessagesAsync(string resourceGroupName, string accountName, string detectorId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// This operation applies only to Batch accounts with
+        /// allowedAuthenticationModes containing &#39;SharedKey&#39;. If the Batch account
+        /// doesn&#39;t contain &#39;SharedKey&#39; in its allowedAuthenticationMode, clients
+        /// cannot use shared keys to authenticate, and must use another
+        /// allowedAuthenticationModes instead. In this case, getting the keys will
+        /// fail.
+        /// </summary>
+        /// <remarks>
+        /// This operation applies only to Batch accounts with
+        /// allowedAuthenticationModes containing &#39;SharedKey&#39;. If the Batch account
+        /// doesn&#39;t contain &#39;SharedKey&#39; in its allowedAuthenticationMode, clients
+        /// cannot use shared keys to authenticate, and must use another
+        /// allowedAuthenticationModes instead. In this case, getting the keys will
+        /// fail.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BatchAccountKeys>> GetKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Lists the endpoints that a Batch Compute Node under this Batch Account may
         /// call as part of Batch service administration. If you are deploying a Pool
         /// inside of a virtual network that you specify, you must make sure your
@@ -348,10 +314,15 @@ namespace Microsoft.Azure.Management.Batch
         /// https://learn.microsoft.com/azure/batch/batch-virtual-network.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -368,6 +339,80 @@ namespace Microsoft.Azure.Management.Batch
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<OutboundEnvironmentEndpoint>>> ListOutboundNetworkDependenciesEndpointsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// This operation applies only to Batch accounts with
+        /// allowedAuthenticationModes containing &#39;SharedKey&#39;. If the Batch account
+        /// doesn&#39;t contain &#39;SharedKey&#39; in its allowedAuthenticationMode, clients
+        /// cannot use shared keys to authenticate, and must use another
+        /// allowedAuthenticationModes instead. In this case, regenerating the keys
+        /// will fail.
+        /// </summary>
+        /// <remarks>
+        /// This operation applies only to Batch accounts with
+        /// allowedAuthenticationModes containing &#39;SharedKey&#39;. If the Batch account
+        /// doesn&#39;t contain &#39;SharedKey&#39; in its allowedAuthenticationMode, clients
+        /// cannot use shared keys to authenticate, and must use another
+        /// allowedAuthenticationModes instead. In this case, regenerating the keys
+        /// will fail.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
+        /// </param>
+        /// <param name='keyName'>
+        /// The type of account key to regenerate.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BatchAccountKeys>> RegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, AccountKeyType keyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Synchronizes access keys for the auto-storage account configured for the
+        /// specified Batch account, only if storage key authentication is being used.
+        /// </summary>
+        /// <remarks>
+        /// Synchronizes access keys for the auto-storage account configured for the
+        /// specified Batch account, only if storage key authentication is being used.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> SynchronizeAutoStorageKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Creates a new Batch account with the specified parameters. Existing
         /// accounts cannot be updated with this API and should instead be updated with
         /// the Update Batch Account API.
@@ -378,7 +423,7 @@ namespace Microsoft.Azure.Management.Batch
         /// the Update Batch Account API.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// A name for the Batch account which must be unique within the region. Batch
@@ -412,10 +457,15 @@ namespace Microsoft.Azure.Management.Batch
         /// Deletes the specified Batch account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the Batch account.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the Batch account.
+        /// A name for the Batch account which must be unique within the region. Batch
+        /// account names must be between 3 and 24 characters in length and must use
+        /// only numbers and lowercase letters. This name is used as part of the DNS
+        /// name that is used to access the Batch service in the region in which the
+        /// account is created. For example:
+        /// http://accountname.region.batch.azure.com/.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

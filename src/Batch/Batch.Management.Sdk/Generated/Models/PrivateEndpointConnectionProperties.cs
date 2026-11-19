@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </param>
 
         /// <param name="privateLinkServiceConnectionState">The private link service connection state of the private endpoint
-        /// connection
+        /// connection.
         /// </param>
         public PrivateEndpointConnectionProperties(PrivateEndpointConnectionProvisioningState provisioningState = default(PrivateEndpointConnectionProvisioningState), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <summary>
         /// Gets or sets the private link service connection state of the private
-        /// endpoint connection
+        /// endpoint connection.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkServiceConnectionState")]
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
