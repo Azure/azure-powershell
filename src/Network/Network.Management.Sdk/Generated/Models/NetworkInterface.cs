@@ -72,6 +72,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="macAddress">The MAC address of the network interface.
         /// </param>
 
+        /// <param name="networkAdapterIndex">The index of the physical network adapter.
+        /// </param>
+
         /// <param name="primary">Whether this is a primary network interface on a virtual machine.
         /// </param>
 
@@ -119,7 +122,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="auxiliarySku">Auxiliary sku of Network Interface resource.
         /// Possible values include: &#39;None&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;A4&#39;, &#39;A8&#39;</param>
-        public NetworkInterface(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string), SubResource virtualMachine = default(SubResource), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), System.Collections.Generic.IList<NetworkInterfaceIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceIPConfiguration>), System.Collections.Generic.IList<NetworkInterfaceTapConfiguration> tapConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceTapConfiguration>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? vnetEncryptionSupported = default(bool?), bool? defaultOutboundConnectivityEnabled = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableIPForwarding = default(bool?), System.Collections.Generic.IList<string> hostedWorkloads = default(System.Collections.Generic.IList<string>), SubResource dscpConfiguration = default(SubResource), string resourceGuid = default(string), string workloadType = default(string), string nicType = default(string), PrivateLinkService privateLinkService = default(PrivateLinkService), string migrationPhase = default(string), string auxiliaryMode = default(string), string auxiliarySku = default(string))
+        public NetworkInterface(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string), SubResource virtualMachine = default(SubResource), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), System.Collections.Generic.IList<NetworkInterfaceIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceIPConfiguration>), System.Collections.Generic.IList<NetworkInterfaceTapConfiguration> tapConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceTapConfiguration>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), int? networkAdapterIndex = default(int?), bool? primary = default(bool?), bool? vnetEncryptionSupported = default(bool?), bool? defaultOutboundConnectivityEnabled = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableIPForwarding = default(bool?), System.Collections.Generic.IList<string> hostedWorkloads = default(System.Collections.Generic.IList<string>), SubResource dscpConfiguration = default(SubResource), string resourceGuid = default(string), string workloadType = default(string), string nicType = default(string), PrivateLinkService privateLinkService = default(PrivateLinkService), string migrationPhase = default(string), string auxiliaryMode = default(string), string auxiliarySku = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -133,6 +136,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.TapConfigurations = tapConfigurations;
             this.DnsSettings = dnsSettings;
             this.MacAddress = macAddress;
+            this.NetworkAdapterIndex = networkAdapterIndex;
             this.Primary = primary;
             this.VnetEncryptionSupported = vnetEncryptionSupported;
             this.DefaultOutboundConnectivityEnabled = defaultOutboundConnectivityEnabled;
@@ -218,6 +222,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.macAddress")]
         public string MacAddress {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the index of the physical network adapter.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.networkAdapterIndex")]
+        public int? NetworkAdapterIndex {get; set; }
 
         /// <summary>
         /// Gets whether this is a primary network interface on a virtual machine.
@@ -313,5 +323,58 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.auxiliarySku")]
         public string AuxiliarySku {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+
+            if (this.IPConfigurations != null)
+            {
+                foreach (var element in this.IPConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (this.TapConfigurations != null)
+            {
+                foreach (var element in this.TapConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+
+
+            if (this.NetworkAdapterIndex != null)
+            {
+                if (this.NetworkAdapterIndex < 0)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "NetworkAdapterIndex", 0);
+                }
+            }
+
+
+
+
+
+
+
+
+
+        }
     }
 }
