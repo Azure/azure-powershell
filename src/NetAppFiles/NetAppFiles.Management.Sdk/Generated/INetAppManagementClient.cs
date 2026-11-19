@@ -154,11 +154,6 @@ namespace Microsoft.Azure.Management.NetApp
         ISnapshotsOperations Snapshots { get; }
 
         /// <summary>
-        /// Gets the ISubvolumesOperations
-        /// </summary>
-        ISubvolumesOperations Subvolumes { get; }
-
-        /// <summary>
         /// Gets the IVolumeQuotaRulesOperations
         /// </summary>
         IVolumeQuotaRulesOperations VolumeQuotaRules { get; }

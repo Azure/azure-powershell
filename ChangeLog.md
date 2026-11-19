@@ -4,7 +4,10 @@
 
 #### Az.NetAppFiles
 * Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
-* Updated to API version 2026-08-01.
+    - These breaking changes require an approved major release.
+* Updated to API version 2026-09-01.
+* Added OpenLdap volume server-type support and SMB (Server Message Block) opportunistic locking settings.
+* Updated `Get-AzNetAppFilesVolumeBackupStatus` to use the current backup-status API while preserving its output properties.
 * Added Lightweight Directory Access Protocol (LDAP) configuration to account create, set, update, and output.
 * Added `Update-AzNetAppFilesAccountLdapBindPassword` to refresh the LDAP bind password from Azure Key Vault.
 

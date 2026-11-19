@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
         [PSArgumentCompleter("Disabled", "Enabled")]
         public string Ldap { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Type of LDAP server. Either 'ActiveDirectory' or 'OpenLDAP'")]
-        [PSArgumentCompleter("ActiveDirectory", "OpenLDAP")]
+        [Parameter(Mandatory = false, HelpMessage = "Type of LDAP server. Either 'ActiveDirectory' or 'OpenLdap'")]
+        [PSArgumentCompleter("ActiveDirectory", "OpenLdap")]
         public string LdapServerType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether CIFS change notification is enabled. Either 'Disabled' or 'Enabled'")]
@@ -143,6 +143,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
         [Parameter(Mandatory = false, HelpMessage = "Enables non-browsable property for SMB shares. Either 'Disabled' or 'Enabled'")]
         [PSArgumentCompleter("Disabled", "Enabled")]
         public string SmbNonBrowsable { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enables or disables SMB opportunistic locking for SMB or dual-protocol caches.")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        [ValidateNotNullOrEmpty]
+        public string SmbOplock { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The availability zones for the cache")]
         public string[] Zone { get; set; }
@@ -217,11 +222,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
 
         private SmbSettings BuildSmbSettings()
         {
-            if (string.IsNullOrEmpty(SmbEncryption) && string.IsNullOrEmpty(SmbAccessBasedEnumeration) && string.IsNullOrEmpty(SmbNonBrowsable))
+            if (string.IsNullOrEmpty(SmbEncryption) && string.IsNullOrEmpty(SmbAccessBasedEnumeration) && string.IsNullOrEmpty(SmbNonBrowsable) && string.IsNullOrEmpty(SmbOplock))
             {
                 return null;
             }
-            return new SmbSettings(SmbEncryption, SmbAccessBasedEnumeration, SmbNonBrowsable);
+            return new SmbSettings(SmbEncryption, SmbAccessBasedEnumeration, SmbNonBrowsable, SmbOplock);
         }
     }
 }

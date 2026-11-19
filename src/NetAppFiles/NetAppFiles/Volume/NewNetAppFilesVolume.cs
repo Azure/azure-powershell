@@ -19,7 +19,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -213,6 +212,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "Specifies whether LDAP is enabled or not for a given NFS volume.")]
         public SwitchParameter LdapEnabled { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The LDAP server type for the NFS volume. Use ActiveDirectory or OpenLdap.")]
+        [PSArgumentCompleter("ActiveDirectory", "OpenLdap")]
+        [ValidateNotNullOrEmpty]
+        public string LdapServerType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enables or disables SMB opportunistic locking for SMB or dual-protocol volumes.")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        [ValidateNotNullOrEmpty]
+        public string SmbOplock { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -426,6 +435,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     SmbEncryption = SmbEncryption,
                     SmbContinuouslyAvailable = SmbContinuouslyAvailable,
                     LdapEnabled = LdapEnabled,
+                    LdapServerType = LdapServerType,
+                    SmbOplocks = SmbOplock,
                     CoolAccess = CoolAccess,
                     CoolnessPeriod = CoolnessPeriod,
                     UnixPermissions = UnixPermission,

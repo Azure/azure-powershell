@@ -21,7 +21,7 @@ Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -Accou
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
- [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-SmbOplock <String>] [-DesiredRansomwareProtectionState <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLev
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
- [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-SmbOplock <String>] [-DesiredRansomwareProtectionState <String>]
  -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -47,7 +47,7 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
- [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-SmbOplock <String>] [-DesiredRansomwareProtectionState <String>]
  -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -60,7 +60,7 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
- [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-SmbOplock <String>] [-DesiredRansomwareProtectionState <String>]
  -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -91,7 +91,29 @@ SubnetId          : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsof
 
 This command updates the ANF volume "MyAnfVolume" with the new UsageThreshold size.
 
+### Example 2: Disable SMB opportunistic locking
+```powershell
+Update-AzNetAppFilesVolume -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MySmbVolume" -SmbOplock Disabled
+```
+
+Updates opportunistic locking on an SMB or dual-protocol volume without changing other SMB settings.
+
 ## PARAMETERS
+
+### -SmbOplock
+Enables or disables SMB opportunistic locking for SMB or dual-protocol volumes. Accepted values are `Enabled` and `Disabled`. Omit this parameter to leave the existing value unchanged.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AccountName
 The name of the ANF account

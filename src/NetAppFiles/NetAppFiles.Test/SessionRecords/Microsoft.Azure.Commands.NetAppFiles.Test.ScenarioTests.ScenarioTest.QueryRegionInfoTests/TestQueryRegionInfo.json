@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/regionInfos/default?api-version=2026-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcmVnaW9uSW5mb3MvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/regionInfos/default?api-version=2026-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcmVnaW9uSW5mb3MvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "4b91f4f5-43ab-44da-a886-c24bf066118b"
+          "ed57e671-481a-41cb-9a7c-4420a268e47b"
         ],
         "User-Agent": [
-          "FxVersion/8.0.3226.50405",
+          "FxVersion/8.0.3426.52217",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26300",
           "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
@@ -27,10 +27,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3cb71f15-b03d-489b-8541-dbd988381753"
+          "3adbd8f7-b253-4357-9daf-f3c934aab2d5"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=723d61ed-68d4-4c12-8b79-3f232af57d8a/southcentralus/2601b4cf-7e33-4d07-ab90-3fd32e981941"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=723d61ed-68d4-4c12-8b79-3f232af57d8a/southcentralus/1b0494ff-6e51-468a-be85-ae477465ef21"
         ],
         "x-ms-throttling-version": [
           "v2"
@@ -39,10 +39,10 @@
           "1099"
         ],
         "x-ms-correlation-request-id": [
-          "20fd794b-6095-426e-a999-30cef825e6c4"
+          "a03e2633-4b07-42ab-872e-e2e87310e91b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHCENTRALUS:20261023T232402Z:20fd794b-6095-426e-a999-30cef825e6c4"
+          "SOUTHCENTRALUS:20261118T170524Z:a03e2633-4b07-42ab-872e-e2e87310e91b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,10 +54,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: AA24A8BBE3874ACB9A7654F872C451B4 Ref B: SN4AA2022305037 Ref C: 2026-10-23T23:24:02Z"
+          "Ref A: 5C4018B577164C4B9143DEA5E3430546 Ref B: SN4AA2022401035 Ref C: 2026-11-18T17:05:23Z"
         ],
         "Date": [
-          "Fri, 23 Oct 2026 23:24:01 GMT"
+          "Wed, 18 Nov 2026 17:05:23 GMT"
         ],
         "Content-Length": [
           "421"

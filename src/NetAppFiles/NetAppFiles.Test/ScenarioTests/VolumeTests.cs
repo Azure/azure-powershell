@@ -30,6 +30,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-VolumeCrud");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeOpenLdapServerType()
+        {
+            TestRunner.RunTestScript("Test-VolumeOpenLdapServerType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeSmbOplock()
+        {
+            TestRunner.RunTestScript("Test-VolumeSmbOplock");
+        }
+
         //---Note This test will be added to the next (2019-11-01) version ---
         //[Fact(Skip = "Doesn't work at the moment due to service side issue")]
         [Fact]

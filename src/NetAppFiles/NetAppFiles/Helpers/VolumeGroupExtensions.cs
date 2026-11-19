@@ -110,6 +110,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ThroughputMibps = volumeGroupVolumeProperties.ThroughputMibps,
                 EncryptionKeySource = volumeGroupVolumeProperties.EncryptionKeySource,
                 LdapEnabled = volumeGroupVolumeProperties.LdapEnabled,
+                LdapServerType = volumeGroupVolumeProperties.LdapServerType,
+                SmbOplocks = volumeGroupVolumeProperties.SmbOplocks,
                 CoolAccess = volumeGroupVolumeProperties.CoolAccess,
                 CoolnessPeriod = volumeGroupVolumeProperties.CoolnessPeriod,
                 UnixPermission = volumeGroupVolumeProperties.UnixPermissions,

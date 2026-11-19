@@ -235,6 +235,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         public bool? LdapEnabled { get; set; }
 
+        public string LdapServerType { get; set; }
+
+        public string SmbOplocks { get; set; }
+
         /// <summary>
         /// Gets or sets specifies whether Cool Access(tiering) is enabled for
         /// the volume.
