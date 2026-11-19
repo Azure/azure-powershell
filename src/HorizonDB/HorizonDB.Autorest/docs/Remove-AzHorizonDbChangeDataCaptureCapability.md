@@ -32,7 +32,7 @@ Deletes the change data capture capability after all change data capture destina
 
 ### Example 1: Delete the change data capture capability
 ```powershell
-Remove-AzHorizonDbChangeDataCaptureCapability -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster'
+Remove-AzHorizonDbChangeDataCaptureCapability -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -Confirm
 ```
 
 Deletes the cluster change data capture capability after confirmation.

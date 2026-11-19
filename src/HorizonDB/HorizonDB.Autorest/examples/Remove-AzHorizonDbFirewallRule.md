@@ -1,6 +1,6 @@
 ### Example 1: Delete a pool firewall rule
 ```powershell
-Remove-AzHorizonDbFirewallRule -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -PoolName 'example-pool-01' -Name 'example-firewall-rule-01'
+Remove-AzHorizonDbFirewallRule -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -PoolName 'example-pool-01' -Name 'example-firewall-rule-01' -Confirm
 ```
 
 Deletes the specified firewall rule after confirmation.

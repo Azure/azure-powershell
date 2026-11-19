@@ -39,7 +39,7 @@ Deletes a change data capture destination after all referencing configurations a
 
 ### Example 1: Delete a change data capture destination
 ```powershell
-Remove-AzHorizonDbChangeDataCaptureDestination -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -DestinationName 'fabric-mirroring'
+Remove-AzHorizonDbChangeDataCaptureDestination -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -DestinationName 'fabric-mirroring' -Confirm
 ```
 
 Deletes the Microsoft Fabric destination after confirmation.

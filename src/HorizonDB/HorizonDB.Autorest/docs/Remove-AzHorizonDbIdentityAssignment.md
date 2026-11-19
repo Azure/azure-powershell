@@ -46,7 +46,7 @@ Deletes an inactive change data capture identity assignment.
 
 ### Example 1: Delete a destination identity assignment
 ```powershell
-Remove-AzHorizonDbIdentityAssignment -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -DestinationName 'fabric-mirroring' -AssignmentName 'fabric-writer'
+Remove-AzHorizonDbIdentityAssignment -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -DestinationName 'fabric-mirroring' -AssignmentName 'fabric-writer' -Confirm
 ```
 
 Deletes the fabric-writer identity assignment after confirmation.

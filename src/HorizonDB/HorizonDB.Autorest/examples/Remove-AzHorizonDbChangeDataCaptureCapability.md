@@ -1,6 +1,6 @@
 ### Example 1: Delete the change data capture capability
 ```powershell
-Remove-AzHorizonDbChangeDataCaptureCapability -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster'
+Remove-AzHorizonDbChangeDataCaptureCapability -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -Confirm
 ```
 
 Deletes the cluster change data capture capability after confirmation. Remove dependent change data capture resources first.

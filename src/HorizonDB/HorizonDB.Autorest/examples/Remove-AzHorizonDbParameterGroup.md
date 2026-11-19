@@ -1,6 +1,6 @@
 ### Example 1: Delete a parameter group
 ```powershell
-Remove-AzHorizonDbParameterGroup -ResourceGroupName 'example-resource-group' -Name 'production-parameters'
+Remove-AzHorizonDbParameterGroup -ResourceGroupName 'example-resource-group' -Name 'production-parameters' -Confirm
 ```
 
 Deletes the production-parameters parameter group after confirmation. Review its pool connections before deleting it.

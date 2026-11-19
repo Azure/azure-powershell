@@ -41,7 +41,7 @@ This operation never deletes the Microsoft Fabric mirrored-database item.
 
 ### Example 1: Delete a change data capture configuration
 ```powershell
-Remove-AzHorizonDbChangeDataCaptureConfiguration -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -ConfigurationName 'sales-database'
+Remove-AzHorizonDbChangeDataCaptureConfiguration -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -ConfigurationName 'sales-database' -Confirm
 ```
 
 Deletes the sales-database change data capture configuration after confirmation.

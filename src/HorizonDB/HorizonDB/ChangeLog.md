@@ -20,6 +20,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated deletion examples to explicitly request confirmation before removing resources.
 * Added integration tests for updating cluster backup retention to 9 days and pool capacity to 4 vCores.
 * Added shared cluster and pool fixtures using Intel compute generation 1 for integration tests.
 * Fixed building Az.HorizonDB from source.
