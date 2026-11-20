@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             // versions accepted, so the policy is read from the validated service token instead.
             var token = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
             {
-                var serviceToken = AttestationToken.Deserialize(ReadResponseToken(
+                var serviceToken = DeserializeServiceToken(ReadResponseToken(
                     SendRequest(endpoint, RequestMethod.Get, $"/policies/{attestationType}", ServiceApiVersion, null, null, null)));
                 ValidateServiceToken(endpoint, serviceToken);
                 return serviceToken;
@@ -326,9 +326,22 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             return body[claim]?.ToString();
         }
 
+        /// <summary>
+        /// Reads the token in a response from the current API version, which returns it in a JSON object.
+        /// </summary>
+        /// <exception cref="MissingServiceTokenException">The response is not JSON or contains no token.</exception>
         internal static string ReadResponseToken(string responseBody)
         {
-            var token = JObject.Parse(responseBody)["token"]?.ToString();
+            string token;
+            try
+            {
+                token = JObject.Parse(responseBody)["token"]?.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new MissingServiceTokenException(ex);
+            }
+
             if (string.IsNullOrEmpty(token))
                 throw new MissingServiceTokenException();
             return token;
@@ -408,7 +421,20 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         private AttestationToken SendCallerToken(string endpoint, RequestMethod method, string path, string contentType, string content)
         {
             var responseBody = SendRequest(endpoint, method, path, ServiceApiVersion, null, contentType, content);
-            return AttestationToken.Deserialize(ReadResponseToken(responseBody));
+            return DeserializeServiceToken(ReadResponseToken(responseBody));
+        }
+
+        /// <exception cref="MissingServiceTokenException">The token is not a JSON Web Token.</exception>
+        private static AttestationToken DeserializeServiceToken(string token)
+        {
+            try
+            {
+                return AttestationToken.Deserialize(token);
+            }
+            catch (Exception ex)
+            {
+                throw new MissingServiceTokenException(ex);
+            }
         }
 
         /// <summary>

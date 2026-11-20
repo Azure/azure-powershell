@@ -456,6 +456,25 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             }
         }
 
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData("")]
+        [InlineData("not JSON")]
+        [InlineData("{\"token\":\"not a token\"}")]
+        public void ReportsUnconfirmedChangeWhenResponseIsMalformed(string responseBody)
+        {
+            _service.WriteResponseBody = responseBody;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            AssertWriteSentOnceWithoutToken(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceWithoutToken(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceWithoutToken(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceWithoutToken(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceWithoutToken(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add");
+            AssertWriteSentOnceWithoutToken(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportsServiceError()
@@ -617,6 +636,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public bool ReturnWriteResponseWithoutToken { get; set; }
 
             /// <summary>
+            /// When set, policy and signer writes succeed with this response body.
+            /// </summary>
+            public string WriteResponseBody { get; set; }
+
+            /// <summary>
             /// Makes policy and signer writes succeed with a response whose body fails while it is read, as when the
             /// connection closes during the response.
             /// </summary>
@@ -709,6 +733,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                 if (ReturnWriteResponseWithoutToken && isCurrentApiWrite)
                 {
                     return Json(new JObject());
+                }
+
+                if (WriteResponseBody != null && isCurrentApiWrite)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(WriteResponseBody, Encoding.UTF8, "application/json") };
                 }
 
                 if (FailWriteResponseBody && isCurrentApiWrite)
