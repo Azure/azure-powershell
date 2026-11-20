@@ -15,8 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzHorizonDbParameterGr
 }
 
 Describe 'Update-AzHorizonDbParameterGroup' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $null = Update-AzHorizonDbParameterGroup -ResourceGroupName $env.sharedResourceGroup -Name $env.sharedParameterGroupName -SubscriptionId $env.SubscriptionId -Parameter @(@{ Name = 'work_mem'; Value = '16384' }) -Confirm:$false -ErrorAction Stop
+
+        $parameterGroup = Get-AzHorizonDbParameterGroup -ResourceGroupName $env.sharedResourceGroup -Name $env.sharedParameterGroupName -SubscriptionId $env.SubscriptionId -ErrorAction Stop
+        $parameterGroup.Name | Should -Be $env.sharedParameterGroupName
+        $parameterGroup.ResourceGroupName | Should -Be $env.sharedResourceGroup
+        $workMem = @($parameterGroup.Parameter | Where-Object { $_.Name -eq 'work_mem' })
+        $workMem.Count | Should -Be 1
+        $workMem[0].Value | Should -Be '16384'
     }
 
     It 'UpdateViaJsonString' -skip {

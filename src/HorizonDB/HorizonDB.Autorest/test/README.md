@@ -33,8 +33,16 @@ Tests can use `$env.sharedResourceGroup`, `$env.sharedClusterName`,
 are saved in `env.json` for recording or `localEnv.json` for live runs, so node
 List and Get tests do not depend on one another.
 
+When parameter-group Get or Update tests are selected, setup also creates
+`sharedParameterGroupName` in `sharedResourceGroup`, with PostgreSQL 17 and the
+four supported production parameter overrides from the API example. The service
+does not recognize `wal_receiver_timeout` in `indiasouthcentral`, so it is omitted.
+Get tests verify the
+initial values, including `work_mem` set to `8192`. Update sets only `work_mem`
+to `16384` and reads it back. Run parameter-group Get tests before Update tests.
+
 When New-cluster, New-pool, New-firewall-rule, New-Microsoft-Entra-authentication,
-or New-password-authentication
+New-password-authentication, or New-parameter-group
 is selected, setup also creates the separate `clusterResourceGroup`.
 The New-cluster test creates a completely
 new `clusterName`, which is not used by any other creation test.
@@ -43,6 +51,12 @@ cluster named `clusterName` plus `-delete`, removes it with
 `Remove-AzHorizonDbCluster`, and verifies it is absent from the resource group's
 cluster list. It does not reuse the cluster from `CreateExpanded` or any other
 fixture.
+
+New-parameter-group creates `newParameterGroupName` in `clusterResourceGroup`
+with the production tag, description, PostgreSQL 17, and all four overrides.
+Its independent `Delete` case creates a separate name with the `-delete` suffix,
+removes it, and verifies it is absent from the resource group's parameter-group
+list. Neither case uses the shared parameter group.
 
 For New-pool, setup creates the distinct `newClusterPoolName` without a pool.
 The test creates `newPoolName` in that cluster with two Intel generation 1 vCores
@@ -74,4 +88,6 @@ New-Microsoft-Entra-authentication, and New-password-authentication tests.
 The New-cluster and New-firewall-rule recordings include their `Delete`
 scenarios. The standalone Remove-cluster and Remove-firewall-rule tests are
 skipped and do not produce separate recordings.
+Parameter-group recordings are saved for New, Get, and Update; the New recording
+also includes its independent `Delete` scenario.
 Record and live runs create billable Azure resources.

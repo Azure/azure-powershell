@@ -59,6 +59,15 @@ function Protect-HorizonDbPasswordRecording {
     Set-Content -LiteralPath $Path -Value ($recording | ConvertTo-Json -Depth 100) -ErrorAction Stop
 }
 
+function Get-HorizonDbTestParameter {
+    @(
+        @{ Name = 'application_name'; Value = 'horizondb-production' }
+        @{ Name = 'autovacuum'; Value = 'off' }
+        @{ Name = 'work_mem'; Value = '8192' }
+        @{ Name = 'xmlbinary'; Value = 'base64' }
+    )
+}
+
 function setupEnv() {
     if ($TestMode -eq 'playback') {
         return
@@ -75,6 +84,8 @@ function setupEnv() {
     $env.newClusterName = $env.AddWithCache('newClusterName', 'horizondb-new-cluster-' + (RandomString $false 8), $UsePreviousConfigForRecord)
     $env.newPoolName = $env.AddWithCache('newPoolName', 'horizondb-new-pool-' + (RandomString $false 8), $UsePreviousConfigForRecord)
     $env.newClusterPoolName = $env.AddWithCache('newClusterPoolName', 'horizondb-new-pool-cluster-' + (RandomString $false 8), $UsePreviousConfigForRecord)
+    $env.newParameterGroupName = $env.AddWithCache('newParameterGroupName', 'production-parameters-' + (RandomString $false 8), $UsePreviousConfigForRecord)
+    $env.sharedParameterGroupName = $env.AddWithCache('sharedParameterGroupName', 'shared-parameters-' + (RandomString $false 8), $UsePreviousConfigForRecord)
     $env.sharedResourceGroup = $env.AddWithCache('sharedResourceGroup', 'horizondb-fixture-rg-' + (RandomString $false 8), $UsePreviousConfigForRecord)
     $env.sharedClusterName = $env.AddWithCache('sharedClusterName', 'horizondb-fixture-' + (RandomString $false 8), $UsePreviousConfigForRecord)
     $env.sharedPoolName = $env.AddWithCache('sharedPoolName', 'horizondb-pool-' + (RandomString $false 8), $UsePreviousConfigForRecord)
@@ -106,9 +117,15 @@ function setupEnv() {
     }
     $env.sharedNodeName = $nodes[0].Name
     $env.sharedNodeId = $nodes[0].Id
+    if ($null -eq $TestName -or $TestName -contains 'Get-AzHorizonDbParameterGroup' -or $TestName -contains 'Update-AzHorizonDbParameterGroup') {
+        $parameterGroup = New-AzHorizonDbParameterGroup -ResourceGroupName $env.sharedResourceGroup -Name $env.sharedParameterGroupName -SubscriptionId $env.SubscriptionId -Location $env.location -PostgreSqlVersion '17' -Tag @{ environment = 'production' } -Description 'Parameters for production transactional workloads' -Parameter @(Get-HorizonDbTestParameter) -ErrorAction Stop
+        if ($parameterGroup.Name -ne $env.sharedParameterGroupName -or [string]::IsNullOrEmpty($parameterGroup.Id)) {
+            throw 'Shared HorizonDB parameter group creation did not return the expected name and resource ID.'
+        }
+    }
     Set-Content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env) -ErrorAction Stop
 
-    if ($null -eq $TestName -or $TestName -contains 'New-AzHorizonDbCluster' -or $TestName -contains 'New-AzHorizonDbPool' -or $TestName -contains 'New-AzHorizonDbFirewallRule' -or $TestName -contains 'New-AzHorizonDbMicrosoftEntraAuthentication' -or $TestName -contains 'New-AzHorizonDbPasswordAuthentication') {
+    if ($null -eq $TestName -or $TestName -contains 'New-AzHorizonDbCluster' -or $TestName -contains 'New-AzHorizonDbPool' -or $TestName -contains 'New-AzHorizonDbFirewallRule' -or $TestName -contains 'New-AzHorizonDbMicrosoftEntraAuthentication' -or $TestName -contains 'New-AzHorizonDbPasswordAuthentication' -or $TestName -contains 'New-AzHorizonDbParameterGroup') {
         $null = New-AzResourceGroup -Name $env.clusterResourceGroup -SubscriptionId $env.SubscriptionId -Location $env.location -ErrorAction Stop
         $script:fixtureResourceGroups.Add(@{
             Name = $env.clusterResourceGroup

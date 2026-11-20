@@ -21,6 +21,10 @@ Describe 'HorizonDbSharedFixture' {
             [CmdletBinding()]
             param($ResourceGroupName, $Name, $SubscriptionId, $Location, $PostgreSqlVersion, $BackupGeoRedundancy, $NetworkPublicAccess)
         }
+        function New-AzHorizonDbParameterGroup {
+            [CmdletBinding()]
+            param($ResourceGroupName, $Name, $SubscriptionId, $Location, $PostgreSqlVersion, $Tag, $Description, $Parameter)
+        }
 
         $fixtureDirectory = Join-Path $TestDrive ([guid]::NewGuid().ToString())
         $null = New-Item -ItemType Directory -Path $fixtureDirectory
@@ -42,6 +46,7 @@ Describe 'HorizonDbSharedFixture' {
         Mock Remove-AzResourceGroup {}
         Mock Get-AzHorizonDbNode { @{ Name = 'fixture-node'; Id = 'fixture-node-id' } }
         Mock New-AzHorizonDbCluster { @{ ProvisioningState = 'Succeeded' } }
+        Mock New-AzHorizonDbParameterGroup { @{ Name = $Name; Id = 'shared-parameter-group-id' } }
     }
 
     It 'Deploys and saves the shared fixture in <Mode> mode' -TestCases @(
@@ -78,6 +83,50 @@ Describe 'HorizonDbSharedFixture' {
             $ClusterName -eq $env.sharedClusterName -and
             $PoolName -eq $env.sharedPoolName -and $SubscriptionId -eq $env.SubscriptionId
         }
+    }
+
+    It 'Creates a shared parameter group for <SelectedTest> in <Mode> mode' -TestCases @(
+        @{ SelectedTest = 'Get-AzHorizonDbParameterGroup'; Mode = 'record'; EnvFile = 'env.json' }
+        @{ SelectedTest = 'Update-AzHorizonDbParameterGroup'; Mode = 'record'; EnvFile = 'env.json' }
+        @{ SelectedTest = 'Get-AzHorizonDbParameterGroup'; Mode = 'live'; EnvFile = 'localEnv.json' }
+    ) {
+        param($SelectedTest, $Mode, $EnvFile)
+        $TestName = @($SelectedTest)
+        $TestMode = $Mode
+
+        setupEnv
+
+        Assert-MockCalled New-AzHorizonDbParameterGroup -Times 1 -Exactly -Scope It -ParameterFilter {
+            $Name -eq $env.sharedParameterGroupName -and $ResourceGroupName -eq $env.sharedResourceGroup -and
+            $SubscriptionId -eq $env.SubscriptionId -and $Location -eq $env.location -and
+            $PostgreSqlVersion -eq '17' -and $Tag.environment -eq 'production' -and
+            @($Parameter).Count -eq 4 -and
+            @($Parameter | Where-Object { $_.Name -eq 'work_mem' -and $_.Value -eq '8192' }).Count -eq 1
+        }
+        $saved = Get-Content -LiteralPath (Join-Path $fixtureDirectory $EnvFile) -Raw | ConvertFrom-Json
+        $saved.sharedParameterGroupName | Should -Be $env.sharedParameterGroupName
+        $saved.sharedParameterGroupName | Should -Not -Be $saved.newParameterGroupName
+        Assert-MockCalled New-AzResourceGroup -Times 0 -Exactly -Scope It -ParameterFilter { $Name -eq $env.clusterResourceGroup }
+    }
+
+    It 'Cleans up when shared parameter group creation fails' {
+        $TestName = @('Get-AzHorizonDbParameterGroup')
+        Mock New-AzHorizonDbParameterGroup { throw 'Parameter group creation failed' }
+
+        { setupEnv } | Should -Throw 'Parameter group creation failed'
+        cleanupEnv
+
+        Assert-MockCalled Remove-AzResourceGroup -Times 1 -Exactly -Scope It -ParameterFilter { $Name -eq $env.sharedResourceGroup }
+    }
+
+    It 'Rejects an invalid shared parameter group result' {
+        $TestName = @('Update-AzHorizonDbParameterGroup')
+        Mock New-AzHorizonDbParameterGroup { @{ Name = $Name } }
+
+        { setupEnv } | Should -Throw 'expected name and resource ID'
+        cleanupEnv
+
+        Assert-MockCalled Remove-AzResourceGroup -Times 1 -Exactly -Scope It -ParameterFilter { $Name -eq $env.sharedResourceGroup }
     }
 
     It 'Reuses cached fixture names for recording' {
@@ -173,11 +222,13 @@ Describe 'HorizonDbSharedFixture' {
         Assert-MockCalled Remove-AzResourceGroup -Times 0 -Exactly -Scope It
         Assert-MockCalled Get-AzHorizonDbNode -Times 0 -Exactly -Scope It
         Assert-MockCalled New-AzHorizonDbCluster -Times 0 -Exactly -Scope It
+        Assert-MockCalled New-AzHorizonDbParameterGroup -Times 0 -Exactly -Scope It
         Test-Path -LiteralPath (Join-Path $fixtureDirectory 'env.json') | Should -Be $false
     }
 
     It 'Keeps creation resources until suite cleanup for <Scenario>' -TestCases @(
         @{ Scenario = 'New-cluster'; SelectedTests = @('New-AzHorizonDbCluster'); PoolClusterCount = 0; FirewallDeploymentCount = 0 }
+        @{ Scenario = 'New-parameter-group'; SelectedTests = @('New-AzHorizonDbParameterGroup'); PoolClusterCount = 0; FirewallDeploymentCount = 0 }
         @{ Scenario = 'New-pool'; SelectedTests = @('New-AzHorizonDbPool'); PoolClusterCount = 1; FirewallDeploymentCount = 0 }
         @{ Scenario = 'New-firewall'; SelectedTests = @('New-AzHorizonDbFirewallRule'); PoolClusterCount = 0; FirewallDeploymentCount = 1 }
         @{ Scenario = 'New-authentication'; SelectedTests = @('New-AzHorizonDbMicrosoftEntraAuthentication'); PoolClusterCount = 0; FirewallDeploymentCount = 0; AuthenticationClusterCount = 1 }
@@ -196,6 +247,9 @@ Describe 'HorizonDbSharedFixture' {
             $Name -eq $env.clusterResourceGroup -and $SubscriptionId -eq $env.SubscriptionId
         }
         Assert-MockCalled Remove-AzResourceGroup -Times 0 -Exactly -Scope It
+        Assert-MockCalled New-AzHorizonDbParameterGroup -Times 0 -Exactly -Scope It -ParameterFilter {
+            $ResourceGroupName -eq $env.clusterResourceGroup
+        }
         $saved = Get-Content -LiteralPath (Join-Path $fixtureDirectory 'env.json') -Raw | ConvertFrom-Json
         $saved.newClusterName | Should -Not -BeNullOrEmpty
         $saved.newClusterName | Should -Not -Be $saved.clusterName
@@ -548,5 +602,129 @@ Describe 'HorizonDbCreationTests' {
         $body.properties.state | Should -Be 'Enabled'
         $body.properties.administratorLogin | Should -Be 'adminlogin1'
         $saved.Create.Response.Content | Should -Be $recording.Create.Response.Content
+    }
+}
+
+Describe 'HorizonDbParameterGroupTests' {
+    BeforeEach {
+        function New-AzHorizonDbParameterGroup {
+            [CmdletBinding()]
+            param($ResourceGroupName, $Name, $SubscriptionId, $Location, $PostgreSqlVersion, $Tag, $Description, $Parameter)
+        }
+        function Get-AzHorizonDbParameterGroup {
+            [CmdletBinding()]
+            param($ResourceGroupName, $Name, $SubscriptionId)
+        }
+        function Update-AzHorizonDbParameterGroup {
+            [CmdletBinding(SupportsShouldProcess)]
+            param($ResourceGroupName, $Name, $SubscriptionId, $Parameter)
+        }
+        function Remove-AzHorizonDbParameterGroup {
+            [CmdletBinding(SupportsShouldProcess)]
+            param($ResourceGroupName, $Name, $SubscriptionId, [switch]$PassThru)
+        }
+        $TestMode = 'playback'
+        $UsePreviousConfigForRecord = $false
+        . (Join-Path $PSScriptRoot 'utils.ps1')
+        $env = @{
+            clusterResourceGroup = 'creation-rg'
+            sharedResourceGroup = 'shared-rg'
+            newParameterGroupName = 'production-parameters'
+            sharedParameterGroupName = 'shared-parameters'
+            SubscriptionId = '00000000-0000-0000-0000-000000000001'
+            location = 'indiasouthcentral'
+        }
+        $script:parameterGroups = @{
+            'shared-parameters' = @{
+                Name = $env.sharedParameterGroupName
+                ResourceGroupName = $env.sharedResourceGroup
+                Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.sharedResourceGroup)/providers/Microsoft.HorizonDb/parameterGroups/$($env.sharedParameterGroupName)"
+                PostgreSqlVersion = '17'
+                Parameter = @(Get-HorizonDbTestParameter)
+            }
+        }
+        Mock New-AzHorizonDbParameterGroup {
+            $result = @{
+                Name = $Name
+                ResourceGroupName = $ResourceGroupName
+                Id = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.HorizonDb/parameterGroups/$Name"
+                Type = 'Microsoft.HorizonDb/parameterGroups'
+                Location = $Location
+                PostgreSqlVersion = $PostgreSqlVersion
+                Tag = $Tag
+                Description = $Description
+                Parameter = @($Parameter) + @(@{ Name = 'allow_alter_system'; Value = 'on' })
+            }
+            $script:parameterGroups[$Name] = $result
+            $result
+        }
+        Mock Get-AzHorizonDbParameterGroup {
+            if ($Name) {
+                $script:parameterGroups[$Name]
+            } else {
+                $script:parameterGroups.Values | Where-Object { $_.ResourceGroupName -eq $ResourceGroupName }
+            }
+        }
+        Mock Update-AzHorizonDbParameterGroup {
+            foreach ($change in $Parameter) {
+                foreach ($existing in $script:parameterGroups[$Name].Parameter) {
+                    if ($existing.Name -eq $change.Name) {
+                        $existing.Value = $change.Value
+                    }
+                }
+            }
+            $script:parameterGroups[$Name]
+        }
+        Mock Remove-AzHorizonDbParameterGroup {
+            $script:parameterGroups.Remove($Name)
+            $true
+        }
+    }
+
+    It 'Runs <Cmdlet> <TestCase> using the correct fixture' -TestCases @(
+        @{ Cmdlet = 'New-AzHorizonDbParameterGroup'; TestCase = 'CreateExpanded' }
+        @{ Cmdlet = 'New-AzHorizonDbParameterGroup'; TestCase = 'Delete' }
+        @{ Cmdlet = 'Get-AzHorizonDbParameterGroup'; TestCase = 'List' }
+        @{ Cmdlet = 'Get-AzHorizonDbParameterGroup'; TestCase = 'Get' }
+        @{ Cmdlet = 'Update-AzHorizonDbParameterGroup'; TestCase = 'UpdateExpanded' }
+    ) {
+        param($Cmdlet, $TestCase)
+        $tokens = $null
+        $parseErrors = $null
+        $ast = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot "$Cmdlet.Tests.ps1"), [ref]$tokens, [ref]$parseErrors)
+        $test = $ast.Find({
+            param($node)
+            $node -is [System.Management.Automation.Language.CommandAst] -and
+            $node.GetCommandName() -eq 'It' -and $node.CommandElements[1].Value -eq $TestCase
+        }, $true)
+        & $test.CommandElements[-1].ScriptBlock.GetScriptBlock()
+
+        if ($Cmdlet -eq 'New-AzHorizonDbParameterGroup') {
+            Assert-MockCalled New-AzHorizonDbParameterGroup -Times 1 -Exactly -Scope It -ParameterFilter {
+                $ResourceGroupName -eq $env.clusterResourceGroup -and $SubscriptionId -eq $env.SubscriptionId -and
+                $Name -ne $env.sharedParameterGroupName -and $PostgreSqlVersion -eq '17' -and @($Parameter).Count -eq 4
+            }
+            ($script:parameterGroups[$env.sharedParameterGroupName].Parameter | Where-Object { $_.Name -eq 'work_mem' }).Value | Should -Be '8192'
+            if ($TestCase -eq 'Delete') {
+                Assert-MockCalled Remove-AzHorizonDbParameterGroup -Times 1 -Exactly -Scope It -ParameterFilter {
+                    $Name -eq ($env.newParameterGroupName + '-delete') -and
+                    $ResourceGroupName -eq $env.clusterResourceGroup -and $PassThru -and -not $Confirm
+                }
+                $script:parameterGroups.ContainsKey($env.newParameterGroupName + '-delete') | Should -Be $false
+            }
+        } else {
+            Assert-MockCalled Get-AzHorizonDbParameterGroup -Times 1 -Exactly -Scope It -ParameterFilter {
+                $ResourceGroupName -eq $env.sharedResourceGroup -and $SubscriptionId -eq $env.SubscriptionId
+            }
+            Assert-MockCalled New-AzHorizonDbParameterGroup -Times 0 -Exactly -Scope It
+            Assert-MockCalled Remove-AzHorizonDbParameterGroup -Times 0 -Exactly -Scope It
+            if ($Cmdlet -eq 'Update-AzHorizonDbParameterGroup') {
+                Assert-MockCalled Update-AzHorizonDbParameterGroup -Times 1 -Exactly -Scope It -ParameterFilter {
+                    $Name -eq $env.sharedParameterGroupName -and $ResourceGroupName -eq $env.sharedResourceGroup -and
+                    @($Parameter).Count -eq 1 -and $Parameter[0].Name -eq 'work_mem' -and
+                    $Parameter[0].Value -eq '16384' -and -not $Confirm
+                }
+            }
+        }
     }
 }

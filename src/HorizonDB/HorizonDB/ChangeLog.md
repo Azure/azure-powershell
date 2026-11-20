@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Added isolated cluster, pool, and firewall rule creation tests and cluster and firewall rule deletion coverage, with cleanup after the test suite.
+* Added parameter group creation, deletion, retrieval, and update tests, including shared fixtures and updating work_mem to 16384.
     - Skipped standalone cluster and firewall rule deletion tests in favor of the combined creation and deletion tests.
     - Adjusted firewall rule and password authentication checks to match service responses.
 * Added tests for enabling Microsoft Entra and password authentication on an isolated cluster.

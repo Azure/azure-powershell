@@ -1,5 +1,6 @@
 ## Upcoming Release
 #### Az.HorizonDB
+* Added parameter group creation, deletion, retrieval, and update tests, including shared fixtures and updating work_mem to 16384.
 * Added tests for enabling Microsoft Entra and password authentication on an isolated cluster.
 * Added isolated cluster, pool, and firewall rule creation tests and cluster and firewall rule deletion coverage, with cleanup after the test suite.
     - Skipped standalone cluster and firewall rule deletion tests in favor of the combined creation and deletion tests.

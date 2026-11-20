@@ -15,12 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzHorizonDbParameterGroup
 }
 
 Describe 'Get-AzHorizonDbParameterGroup' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $parameterGroups = @(Get-AzHorizonDbParameterGroup -ResourceGroupName $env.sharedResourceGroup -SubscriptionId $env.SubscriptionId -ErrorAction Stop)
+        $matching = @($parameterGroups | Where-Object { $_.Name -eq $env.sharedParameterGroupName })
+        $matching.Count | Should -Be 1
+        $matching[0].ResourceGroupName | Should -Be $env.sharedResourceGroup
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $parameterGroup = Get-AzHorizonDbParameterGroup -ResourceGroupName $env.sharedResourceGroup -Name $env.sharedParameterGroupName -SubscriptionId $env.SubscriptionId -ErrorAction Stop
+        $parameterGroup.Name | Should -Be $env.sharedParameterGroupName
+        $parameterGroup.ResourceGroupName | Should -Be $env.sharedResourceGroup
+        $parameterGroup.Id | Should -Be "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.sharedResourceGroup)/providers/Microsoft.HorizonDb/parameterGroups/$($env.sharedParameterGroupName)"
+        $parameterGroup.PostgreSqlVersion | Should -Be '17'
+        foreach ($expected in @(Get-HorizonDbTestParameter)) {
+            $matching = @($parameterGroup.Parameter | Where-Object { $_.Name -eq $expected.Name })
+            $matching.Count | Should -Be 1
+            $matching[0].Value | Should -Be $expected.Value
+        }
     }
 
     It 'List1' -skip {
