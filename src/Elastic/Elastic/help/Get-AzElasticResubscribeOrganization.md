@@ -17,42 +17,43 @@ Resubscribe the Elasticsearch Organization.
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-OrganizationId <String>] [-PlanId <String>] [-ResourceGroup <String>]
  [-TargetSubscriptionId <String>] [-Term <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResubscribeViaJsonString
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResubscribeViaJsonFilePath
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Resubscribe
 ```
 Get-AzElasticResubscribeOrganization -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -Body <IResubscribeProperties> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResubscribeViaIdentityExpanded
 ```
 Get-AzElasticResubscribeOrganization -InputObject <IElasticIdentity> [-OrganizationId <String>]
  [-PlanId <String>] [-ResourceGroup <String>] [-TargetSubscriptionId <String>] [-Term <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResubscribeViaIdentity
 ```
 Get-AzElasticResubscribeOrganization -InputObject <IElasticIdentity> -Body <IResubscribeProperties>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,6 +92,27 @@ Message              : Resubscription initiated successfully
 ```
 
 This command resubscribes an Elastic monitor to a new subscription by piping the monitor object from Get-AzElasticMonitor.
+
+### Example 3: Resubscribe with additional parameters using parameter expansion
+```powershell
+$resubscribeParams = @{
+    ResourceGroupName = "myResourceGroup"
+    MonitorName = "myElasticMonitor"
+    TargetSubscriptionId = "87654321-4321-4321-4321-210987654321"
+}
+Get-AzElasticResubscribeOrganization @resubscribeParams
+```
+
+```output
+Id                   : /subscriptions/87654321-4321-4321-4321-210987654321/resourceGroups/myResourceGroup/providers/Microsoft.Elastic/monitors/myElasticMonitor/resubscribe
+Name                 : myElasticMonitor
+Type                 : Microsoft.Elastic/monitors/resubscribe
+Status               : InProgress
+TargetSubscriptionId : 87654321-4321-4321-4321-210987654321
+Message              : Resubscription initiated successfully
+```
+
+This command demonstrates using parameter splatting to resubscribe an Elastic organization, which is useful for scripts and automation scenarios.
 
 ## PARAMETERS
 
