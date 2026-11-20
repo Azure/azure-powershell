@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Internal code generation updated. No user-facing changes in this release.
 
 ## Version 0.1.3
 * Upgraded nuget package to signed package.
@@ -33,4 +34,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.Sphere
-
