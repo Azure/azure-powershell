@@ -27,7 +27,7 @@ Gets a schedule resource.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,7 +61,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminschedule
 #>
 function Get-AzDevCenterAdminSchedule {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ISchedule])]
   [CmdletBinding(DefaultParameterSetName = 'GetWithDefault', PositionalBinding = $false)]
   param(
     [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]

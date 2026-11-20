@@ -20,6 +20,27 @@ Stop-AzDevCenterAdminProjectCatalogImageDefinitionBuild -BuildName <String> -Cat
  [-Confirm] [<CommonParameters>]
 ```
 
+### CancelViaIdentityProject
+```
+Stop-AzDevCenterAdminProjectCatalogImageDefinitionBuild -BuildName <String> -CatalogName <String>
+ -ImageDefinitionName <String> -ProjectInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CancelViaIdentityImageDefinition
+```
+Stop-AzDevCenterAdminProjectCatalogImageDefinitionBuild -BuildName <String>
+ -ImageDefinitionInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CancelViaIdentityCatalog
+```
+Stop-AzDevCenterAdminProjectCatalogImageDefinitionBuild -BuildName <String> -ImageDefinitionName <String>
+ -CatalogInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CancelViaIdentity
 ```
 Stop-AzDevCenterAdminProjectCatalogImageDefinitionBuild -InputObject <IDevCenterIdentity>
@@ -90,7 +111,7 @@ The ID of the Image Definition Build.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: Cancel, CancelViaIdentityProject, CancelViaIdentityImageDefinition, CancelViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -100,12 +121,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CatalogInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: CancelViaIdentityCatalog
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: Cancel, CancelViaIdentityProject
 Aliases:
 
 Required: True
@@ -131,12 +167,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImageDefinitionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: CancelViaIdentityImageDefinition
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ImageDefinitionName
 The name of the Image Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: Cancel, CancelViaIdentityProject, CancelViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -148,7 +199,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -189,6 +239,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: CancelViaIdentityProject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

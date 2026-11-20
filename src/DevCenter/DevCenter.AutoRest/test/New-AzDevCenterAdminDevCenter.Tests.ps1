@@ -15,11 +15,9 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminDevCente
 
 Describe 'New-AzDevCenterAdminDevCenter' {
     It 'CreateExpanded' {
-        $identityHashTable = @{$env.identityId = @{} }
-        $devCenter = New-AzDevCenterAdminDevCenter -Name $env.devCenterNew -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType "UserAssigned" -IdentityUserAssignedIdentity $identityHashTable
+        $devCenter = New-AzDevCenterAdminDevCenter -Name $env.devCenterNew -ResourceGroupName $env.resourceGroup -Location $env.location -UserAssignedIdentity @($env.identityId)
         $devCenter.Name | Should -Be $env.devCenterNew
-        $identityHash = $devCenter.IdentityUserAssignedIdentity | ConvertTo-Json | ConvertFrom-Json
-        $identityHash.Keys[0] | Should -Be $env.identityId
+        $devCenter.IdentityUserAssignedIdentity.Keys[0] | Should -Be $env.identityId
         $devcenter.IdentityType | Should -Be "UserAssigned"
     }
 
