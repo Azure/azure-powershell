@@ -112,6 +112,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
             return this;
         }
 
+        /// <summary>
+        /// Answers the requests that match with the given pages, one after another (the last page keeps answering).
+        /// </summary>
+        public RecordingHandler OnPages(string methodAndPathPrefix, params string[] pages)
+        {
+            int next = 0;
+            this.routes.Add(new KeyValuePair<string, Func<HttpRequestMessage, HttpResponseMessage>>(methodAndPathPrefix, request =>
+            {
+                string page = pages[Math.Min(next++, pages.Length - 1)];
+                return new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    RequestMessage = request,
+                    Content = new StringContent(page, Encoding.UTF8, "application/json")
+                };
+            }));
+            return this;
+        }
+
         protected override HttpResponseMessage Send(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             return SendAsync(request, cancellationToken).GetAwaiter().GetResult();
