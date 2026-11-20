@@ -446,7 +446,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExtendedLocation
-The extended location of this virtual network gateway
+The Edge Zone name for this virtual network gateway. Supported for Vpn, ExpressRoute, and LocalGateway gateway types. Omit this parameter or pass an empty string to create a regional gateway.
 
 ```yaml
 Type: System.String
