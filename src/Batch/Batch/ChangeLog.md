@@ -22,6 +22,9 @@
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Fixed `New-AzBatchComputeNodeUser` and `Set-AzBatchComputeNodeUser` sending the expiry time 0001-01-01 when `-ExpiryTime` isn't specified. They now omit `expiryTime` when it isn't specified, so the service default applies.
 * Fixed `Set-AzBatchAccount` resetting account settings it doesn't change, such as public network access, allowed authentication modes and the auto-storage account. It now uses the update operation.
+* Fixed `New-AzBatchPool`, `Set-AzBatchPool`, `New-AzBatchTask` and other cmdlets failing with "Object reference not set to an instance of an object" when an environment setting has no value.
+* Fixed `Set-AzBatchPool`, `New-AzBatchTask` and other cmdlets dropping the identity reference of resource files, which nodes use to download the files from Azure Storage.
+* Fixed `New-AzBatchPool`, `New-AzBatchTask`, `New-AzBatchJob` and other cmdlets sending an empty bind mount list, which mounts no folders into the container, when `ContainerHostBatchBindMounts` of a `PSTaskContainerSettings` object was set or changed after the object was created.
 * Started moving Az.Batch from `Microsoft.Azure.Batch` (Track 1) to `Azure.Compute.Batch` (Track 2). No cmdlet uses the new SDK yet.
     - Added `Azure.Compute.Batch` 1.0.0 as a dependency.
     - Added a conversion that shows `Azure.Compute.Batch` errors the same way as today's errors.
