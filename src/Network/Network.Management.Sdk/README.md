@@ -55,6 +55,62 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.Network
 
 directive:
+# Managed NVA load balancer contract from azure-rest-api-specs PR 47915, commit
+# f00515921cb2a7dc05ae411aae12de1f6ae8141d, Network/stable/2026-05-01/virtualNetwork.json.
+# Scope this contract to NVA and Permanent ingress rules without upgrading unrelated APIs.
+  - from: swagger-document
+    where: $
+    transform: >
+      if ($.definitions?.NetworkVirtualAppliancePropertiesFormat && $.definitions?.InboundSecurityRules) {
+        $.definitions.NetworkVirtualApplianceLoadBalancerConfiguration = {
+          type: "object",
+          description: "Load balancer settings shared by managed Network Virtual Appliances and their Permanent inbound security rules.",
+          properties: {
+            loadDistribution: {
+              type: "string",
+              description: "The load distribution policy. Default uses a five-tuple hash of source IP, destination IP, source port, destination port, and protocol. SourceIP uses a two-tuple hash of source IP and destination IP. SourceIPProtocol uses a three-tuple hash of source IP, destination IP, and protocol. When omitted, Default is used.",
+              default: "Default",
+              enum: ["Default", "SourceIP", "SourceIPProtocol"],
+              "x-ms-enum": {
+                name: "NetworkVirtualApplianceLoadDistribution",
+                modelAsString: true,
+                values: [
+                  { name: "Default", value: "Default", description: "Distributes traffic using a five-tuple hash of source IP, destination IP, source port, destination port, and protocol." },
+                  { name: "SourceIP", value: "SourceIP", description: "Distributes traffic using a two-tuple hash of source IP and destination IP." },
+                  { name: "SourceIPProtocol", value: "SourceIPProtocol", description: "Distributes traffic using a three-tuple hash of source IP, destination IP, and protocol." }
+                ]
+              }
+            },
+            idleTimeoutInMinutes: {
+              type: "integer",
+              format: "int32",
+              description: "The idle timeout of the load-balancing rule, in minutes. When omitted, the managed NVA platform default of 5 minutes is used. Values outside 4 through 100 are rejected with HTTP 400 InvalidParameter.",
+              default: 5,
+              minimum: 4,
+              maximum: 100
+            }
+          }
+        };
+        $.definitions.NetworkVirtualAppliancePropertiesFormat.properties.loadBalancerConfiguration = {
+          "$ref": "#/definitions/NetworkVirtualApplianceLoadBalancerConfiguration",
+          description: "Configuration of the internal load balancer for a managed Network Virtual Appliance in a virtual hub or virtual network. Not applicable to partner-managed load balancers on SaaS NVAs. When omitted on create or update, Default distribution and a 5-minute idle timeout are used."
+        };
+        $.definitions.InboundSecurityRules.properties.loadBalancerConfiguration = {
+          "$ref": "#/definitions/NetworkVirtualApplianceLoadBalancerConfiguration",
+          description: "Configuration of the Internet Ingress load-balancing rule for a managed Network Virtual Appliance. Supported only when the enclosing ruleType is Permanent; supplying this configuration for AutoExpire rules is rejected with HTTP 400 Bad Request. When omitted on create or update, Default distribution and a 5-minute idle timeout are used."
+        };
+      }
+# Generate the matching API version only for operations carrying this contract.
+  - from: NetworkVirtualAppliancesOperations.cs
+    where: $
+    transform: >
+      for (const operation of ["ListWithHttpMessagesAsync", "ListByResourceGroupWithHttpMessagesAsync", "GetWithHttpMessagesAsync", "BeginCreateOrUpdateWithHttpMessagesAsync"]) {
+        const pattern = new RegExp('(public async [^\\r\\n]+ ' + operation + '\\([\\s\\S]*?string apiVersion = ")2026-03-01(";)', 'g');
+        $ = $.replace(pattern, (match, prefix, suffix) => prefix + '2026-05-01' + suffix);
+      }
+  - from: InboundSecurityRuleOperations.cs
+    where: $
+    transform: $ = $.replace(/string apiVersion = "2026-03-01";/g, 'string apiVersion = "2026-05-01";');
 # Import the merged 2026-03-01 DDoS mitigation-rule schemas without upgrading
 # unrelated virtual network operations. Remove this compatibility transform when
 # the Network module's full Swagger baseline advances to 2026-03-01 or later.
