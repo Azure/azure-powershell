@@ -1,17 +1,6 @@
 ## Upcoming Release
 #### Az.HorizonDB
-* Clarified the password authentication State parameter help.
-* Added parameter group creation, deletion, retrieval, and update tests, including shared fixtures and updating work_mem to 16384.
-* Added tests for enabling Microsoft Entra and password authentication on an isolated cluster.
-* Added isolated cluster, pool, and firewall rule creation tests and cluster and firewall rule deletion coverage, with cleanup after the test suite.
-    - Skipped standalone cluster and firewall rule deletion tests in favor of the combined creation and deletion tests.
-    - Adjusted firewall rule and password authentication checks to match service responses.
-* Updated deletion examples to explicitly request confirmation before removing resources.
-* Added integration tests for updating cluster backup retention to 9 days and pool capacity to 4 vCores.
-* Added shared cluster and pool fixtures using Intel compute generation 1 for HorizonDB integration tests.
-    - Refreshed shared cluster, node, and pool Get and Update recordings to match the saved fixture names.
 * Introduce cmdlet for cluster, pool, and parameter group management based on API version 2026-10-01-preview.
-* Fixed building Az.HorizonDB from source.
 
 #### Az.NetworkSecurity
 * Fixed module help metadata so the Az.NetworkSecurity reference documentation can be published.
