@@ -223,15 +223,14 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             if (UsesLegacyPolicyCertificateClaim(signer))
             {
                 WriteWarning(Resources.LegacyPolicyCertificateClaimWarning);
-                RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
-                    SendRequest(endpoint, RequestMethod.Put, "/operations/policy/certificates", LegacyApiVersion, null, JsonContentType, CreatePolicyCertificateContent(signer)));
-            }
-            else
-            {
-                SendWriteAndValidate(name, resourceGroupName, endpoint =>
-                    SendCallerToken(endpoint, RequestMethod.Post, "/certificates:add", JsonContentType, CreatePolicyCertificateContent(signer)));
+                return SendWriteAndValidate(name, resourceGroupName, endpoint => ReadLegacyResponseToken(
+                    SendRequest(endpoint, RequestMethod.Put, "/operations/policy/certificates", LegacyApiVersion, null, JsonContentType, CreatePolicyCertificateContent(signer)))).Serialize();
             }
 
+            SendWriteAndValidate(name, resourceGroupName, endpoint =>
+                SendCallerToken(endpoint, RequestMethod.Post, "/certificates:add", JsonContentType, CreatePolicyCertificateContent(signer)));
+
+            // The current API version's response describes only the changed certificate, so the signers are read again.
             return GetPolicySigners(name, resourceGroupName, null);
         }
 
@@ -244,14 +243,12 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             if (UsesLegacyPolicyCertificateClaim(signer))
             {
                 WriteWarning(Resources.LegacyPolicyCertificateClaimWarning);
-                RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, endpoint =>
-                    SendRequest(endpoint, RequestMethod.Post, "/operations/policy/certificates", LegacyApiVersion, null, JsonContentType, CreatePolicyCertificateContent(signer)));
+                return SendWriteAndValidate(name, resourceGroupName, endpoint => ReadLegacyResponseToken(
+                    SendRequest(endpoint, RequestMethod.Post, "/operations/policy/certificates", LegacyApiVersion, null, JsonContentType, CreatePolicyCertificateContent(signer)))).Serialize();
             }
-            else
-            {
-                SendWriteAndValidate(name, resourceGroupName, endpoint =>
-                    SendCallerToken(endpoint, RequestMethod.Post, "/certificates:remove", JsonContentType, CreatePolicyCertificateContent(signer)));
-            }
+
+            SendWriteAndValidate(name, resourceGroupName, endpoint =>
+                SendCallerToken(endpoint, RequestMethod.Post, "/certificates:remove", JsonContentType, CreatePolicyCertificateContent(signer)));
 
             return GetPolicySigners(name, resourceGroupName, null);
         }
@@ -337,6 +334,26 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             return token;
         }
 
+        /// <summary>
+        /// Reads the token in a response from the earlier API version, which returns the token as a JSON string.
+        /// </summary>
+        internal static AttestationToken ReadLegacyResponseToken(string responseBody)
+        {
+            try
+            {
+                var token = responseBody?.Trim();
+                if (token != null && token.StartsWith("\"", StringComparison.Ordinal))
+                    token = JsonConvert.DeserializeObject<string>(token);
+                if (string.IsNullOrEmpty(token))
+                    throw new InvalidOperationException(Resources.MissingServiceToken);
+                return AttestationToken.Deserialize(token);
+            }
+            catch (Exception ex) when (!(ex is InvalidOperationException))
+            {
+                throw new InvalidOperationException(Resources.MissingServiceToken, ex);
+            }
+        }
+
         internal static RestException ToRestException(RequestFailedException exception)
         {
             var errorDetails = $"Operation returned HTTP Status Code {exception.Status}";
@@ -399,10 +416,11 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         /// failure while validating it, such as a failed request for the provider's signing certificates, doesn't
         /// send the write again.
         /// </summary>
-        private void SendWriteAndValidate(string name, string resourceGroupName, Func<string, AttestationToken> write)
+        private AttestationToken SendWriteAndValidate(string name, string resourceGroupName, Func<string, AttestationToken> write)
         {
             var (endpoint, token) = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, e => (e, write(e)));
             ValidateServiceToken(endpoint, token);
+            return token;
         }
 
         /// <summary>
@@ -444,12 +462,11 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         /// </summary>
         private object SetPolicyWithLegacyApi(string endpoint, string legacyTee, string policyJwt)
         {
-            var updateToken = SendRequest(endpoint, RequestMethod.Post, "/operations/policy/updatepolicy", LegacyApiVersion, legacyTee, JwtContentType, policyJwt).Trim();
-            if (updateToken.StartsWith("\"", StringComparison.Ordinal))
-                updateToken = JsonConvert.DeserializeObject<string>(updateToken);
+            var updateToken = ReadLegacyResponseToken(
+                SendRequest(endpoint, RequestMethod.Post, "/operations/policy/updatepolicy", LegacyApiVersion, legacyTee, JwtContentType, policyJwt));
 
-            ValidateServiceToken(endpoint, AttestationToken.Deserialize(updateToken));
-            return SendRequest(endpoint, RequestMethod.Put, "/operations/policy/current", LegacyApiVersion, legacyTee, JwtContentType, updateToken);
+            ValidateServiceToken(endpoint, updateToken);
+            return SendRequest(endpoint, RequestMethod.Put, "/operations/policy/current", LegacyApiVersion, legacyTee, JwtContentType, updateToken.Serialize());
         }
 
         private string SendRequest(string endpoint, RequestMethod method, string path, string apiVersion, string legacyTee, string contentType, string content)

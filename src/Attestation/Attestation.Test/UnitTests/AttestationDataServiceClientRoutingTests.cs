@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
         private const string LegacyApiVersion = "2018-09-01-preview";
         private const string PolicyText = "version= 1.0;authorizationrules{c:[type==\"$is-debuggable\"] => permit();};issuancerules{};";
 
+        /// <summary>
+        /// A signer token in the earlier format, which is sent to the earlier API version.
+        /// </summary>
+        private static readonly string LegacySignerJwt = CreateCallerToken(new JObject { ["maa-policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
         private readonly MockAttestationService _service = new MockAttestationService();
         private readonly StaticTokenCredential _credential = new StaticTokenCredential();
         private readonly List<string> _warnings = new List<string>();
@@ -234,15 +239,15 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
         {
             var signerJwt = CreateCallerToken(new JObject { ["maa-policyCertificate"] = new JObject { ["kty"] = "RSA" } });
 
-            if (add)
-                _client.AddPolicySigner("provider", "rg", null, signerJwt);
-            else
-                _client.RemovePolicySigner("provider", "rg", null, signerJwt);
+            var signers = add
+                ? _client.AddPolicySigner("provider", "rg", null, signerJwt)
+                : _client.RemovePolicySigner("provider", "rg", null, signerJwt);
 
-            Assert.Equal(2, _service.ServiceRequests.Count);
-            AssertRequest(_service.ServiceRequests[0], method, "/operations/policy/certificates", LegacyApiVersion, null, "application/json");
-            Assert.Equal(signerJwt, JsonConvert.DeserializeObject<string>(_service.ServiceRequests[0].Body));
-            AssertRequest(_service.ServiceRequests[1], "GET", "/certificates", CurrentApiVersion, null, null);
+            // The earlier API version returns the updated signers, so they are not read again.
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, method, "/operations/policy/certificates", LegacyApiVersion, null, "application/json");
+            Assert.Equal(signerJwt, JsonConvert.DeserializeObject<string>(request.Body));
+            Assert.Equal(1, new PSPolicySigners(signers).CertificateCount);
             Assert.Single(_warnings);
         }
 
@@ -263,6 +268,8 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             AssertRejectedAfterOneRequest(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
             AssertRejectedAfterOneRequest(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
             AssertRejectedAfterOneRequest(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove", reason);
+            AssertRejectedAfterOneRequest(() => _client.AddPolicySigner("provider", "rg", null, LegacySignerJwt), "PUT", "/operations/policy/certificates", reason);
+            AssertRejectedAfterOneRequest(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
             AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
             AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
         }
@@ -311,6 +318,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "SgxEnclave", updateJwt, "JWT"), "POST", "/operations/policy/updatepolicy", reason);
             AssertRejectedAfterOneRequest(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
             AssertRejectedAfterOneRequest(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
+            AssertRejectedAfterOneRequest(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
             AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
             AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
         }
@@ -663,22 +671,13 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                         return Json(new JValue(LastPolicyUpdateToken));
                     case "PUT /operations/policy/current":
                     case "POST /operations/policy/current":
+                        return new HttpResponseMessage(HttpStatusCode.OK);
                     case "PUT /operations/policy/certificates":
                     case "POST /operations/policy/certificates":
-                        return new HttpResponseMessage(HttpStatusCode.OK);
+                        // The earlier API version returns the updated signers as a JSON string token.
+                        return Json(new JValue(CreateServiceToken(new JObject { ["maa-policyCertificates"] = PolicySigners() })));
                     case "GET /certificates":
-                        return TokenResponse(new JObject
-                        {
-                            ["x-ms-policy-certificates"] = new JObject
-                            {
-                                ["keys"] = new JArray(new JObject
-                                {
-                                    ["kty"] = "RSA",
-                                    ["kid"] = "policy-signer",
-                                    ["x5c"] = new JArray(Convert.ToBase64String(_signingCertificate.RawData))
-                                })
-                            }
-                        });
+                        return TokenResponse(new JObject { ["x-ms-policy-certificates"] = PolicySigners() });
                     case "POST /certificates:add":
                     case "POST /certificates:remove":
                         return TokenResponse(new JObject { ["x-ms-certificate-thumbprint"] = _signingCertificate.Thumbprint, ["x-ms-policycertificates-result"] = "IsPresent" });
@@ -710,6 +709,16 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             }
 
             private HttpResponseMessage TokenResponse(JObject claims) => Json(new JObject { ["token"] = CreateServiceToken(claims) });
+
+            private JObject PolicySigners() => new JObject
+            {
+                ["keys"] = new JArray(new JObject
+                {
+                    ["kty"] = "RSA",
+                    ["kid"] = "policy-signer",
+                    ["x5c"] = new JArray(Convert.ToBase64String(_signingCertificate.RawData))
+                })
+            };
 
             private string CreateServiceToken(JObject claims)
             {
