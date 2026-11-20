@@ -28,6 +28,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 {
@@ -88,8 +92,15 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The server</returns>
         public AzureSqlServerModel GetServer(string resourceGroupName, string serverName, string expand = null, string subscriptionId = null)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, expand, subscriptionId);
-            return CreateServerModelFromResponse(resp);
+            try
+            {
+                var resp = Communicator.Get(resourceGroupName, serverName, expand, subscriptionId);
+                return CreateServerModelFromResponse(resp);
+            }
+            catch(ErrorResponseException ex)
+            {
+                throw CreateCloudExceptionFromErrorResponseException(ex);
+            }
         }
 
         /// <summary>
@@ -128,26 +139,32 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlServerModel UpsertServer(AzureSqlServerModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, new Management.Sql.Models.Server()
+            try
             {
-                Location = model.Location,
-                Tags = model.Tags,
-                AdministratorLogin = model.SqlAdministratorLogin,
-                AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
-                Version = model.ServerVersion,
-                Identity = model.Identity,
-                MinimalTlsVersion = model.MinimalTlsVersion,
-                PublicNetworkAccess = model.PublicNetworkAccess,
-                RestrictOutboundNetworkAccess = model.RestrictOutboundNetworkAccess,
-                Administrators = GetActiveDirectoryInformation(model.Administrators),
-                PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
-                KeyId = model.KeyId,
-                FederatedClientId = model.FederatedClientId,
-                RetentionDays = model.SoftDeleteRetentionDays,
-                CreateMode = model.CreateMode,
-            });
-
-            return CreateServerModelFromResponse(resp);
+                var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, new Management.Sql.Models.Server()
+                {
+                    Location = model.Location,
+                    Tags = model.Tags,
+                    AdministratorLogin = model.SqlAdministratorLogin,
+                    AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
+                    Version = model.ServerVersion,
+                    Identity = model.Identity,
+                    MinimalTlsVersion = model.MinimalTlsVersion,
+                    PublicNetworkAccess = model.PublicNetworkAccess,
+                    RestrictOutboundNetworkAccess = model.RestrictOutboundNetworkAccess,
+                    Administrators = GetActiveDirectoryInformation(model.Administrators),
+                    PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
+                    KeyId = model.KeyId,
+                    FederatedClientId = model.FederatedClientId,
+                    RetentionDays = model.SoftDeleteRetentionDays,
+                    CreateMode = model.CreateMode,
+                });
+                return CreateServerModelFromResponse(resp);
+            }
+            catch(ErrorResponseException ex) 
+            {
+                throw CreateCloudExceptionFromErrorResponseException(ex);
+            }
         }
 
         /// <summary>
@@ -423,6 +440,39 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         public Management.Sql.Models.DeletedServer GetDeletedServer(string location, string serverName, string subscriptionId = null)
         {
             return Communicator.GetDeleted(location, serverName, subscriptionId);
+        }
+
+        private AzPSCloudException CreateCloudExceptionFromErrorResponseException(ErrorResponseException ex)
+        {
+            string message = $"{ex.Message}: ";
+            if (!string.IsNullOrEmpty(ex.Response.Content))
+            {
+                Dictionary<string, object> content;
+                try
+                {
+                    content = JsonConvert.DeserializeObject<Dictionary<string, object>>(ex.Response.Content);
+                }
+                catch
+                {
+                    throw ex;
+                }
+
+                if (content.ContainsKey("Message"))
+                {
+                    message += content["Message"].ToString();
+                }
+
+                if (content.ContainsKey("error"))
+                {
+                    JObject errorResponse = (JObject)content["error"];
+                    JToken errorMessage;
+                    if (errorResponse.TryGetValue("message", StringComparison.InvariantCultureIgnoreCase, out errorMessage))
+                    {
+                        message += errorMessage.ToString();
+                    }
+                }
+            }
+            return new AzPSCloudException(message);
         }
     }
 }

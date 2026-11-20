@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Handled SDK exceptions by throwing error response in `AZPSCloudException`.
 
 ## Version 7.3.0
 * Added `LockImmutability`/`ImmutabilityStatus` to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`. Locking requires live Managed Instance databases and irreversible-action confirmation (`-Force` skips).
