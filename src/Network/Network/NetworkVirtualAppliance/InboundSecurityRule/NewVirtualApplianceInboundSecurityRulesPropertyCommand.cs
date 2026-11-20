@@ -64,9 +64,14 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "The Applies On value of the rule for the SLP IP/Interface")]
         public string[] AppliesOn { get; set; }
 
+        [Parameter(Mandatory = false,
+           HelpMessage = "The load balancer configuration for this Permanent ingress rule. Omission uses Default distribution and a 5-minute timeout.")]
+        public PSNetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
+            this.LoadBalancerConfiguration = LoadBalancerConfigurationHelper.Normalize(this.LoadBalancerConfiguration);
 
             if (!this.DestinationPortRange.HasValue && (this.DestinationPortRangeList == null || this.DestinationPortRangeList.Length == 0))
             {
@@ -79,6 +84,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var rule = new PSInboundSecurityRulesProperty();
+            rule.LoadBalancerConfiguration = this.LoadBalancerConfiguration;
             rule.Name = this.Name;
             rule.Protocol = this.Protocol;
             rule.SourceAddressPrefix = this.SourceAddressPrefix;

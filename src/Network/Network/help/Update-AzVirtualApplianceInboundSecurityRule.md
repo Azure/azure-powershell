@@ -42,6 +42,8 @@ Update-AzVirtualApplianceInboundSecurityRule -VirtualApplianceResourceId <String
 ## DESCRIPTION
 The Update-AzVirtualApplianceInboundSecurityRule command updates/creates the Inbound Security Rule of a Network Virtual Appliance. The Inbound Security Rule creates an NSG rule on the NVA and a LB rule on the SLB attached to NVA if the rule type is defined as: Permanent
 
+Each object in `-Rule` can carry `LoadBalancerConfiguration`, created through `New-AzVirtualApplianceInboundSecurityRulesProperty`. This configuration is supported only with `-RuleType Permanent`; AutoExpire rules reject it. Omitting a rule's configuration on create or update resets that rule to Default distribution and a 5-minute idle timeout. Partial configurations use defaults for omitted members.
+
 ## EXAMPLES
 
 ### Example 1

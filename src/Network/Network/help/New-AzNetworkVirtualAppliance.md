@@ -20,6 +20,7 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-AddressFamily <String[]>]
+ [-LoadBalancerConfiguration <PSNetworkVirtualApplianceLoadBalancerConfiguration>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
  [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfigProperties[]>]
@@ -34,6 +35,7 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> [-VirtualH
  [-BootStrapConfigurationBlob <String[]>] [-CloudInitConfigurationBlob <String[]>]
  [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
+ [-LoadBalancerConfiguration <PSNetworkVirtualApplianceLoadBalancerConfiguration>]
  [-AddressFamily <String[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
@@ -125,8 +127,32 @@ $nva = New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Locati
 
 Creates a new dual-stack (IPv4 + IPv6) Network Virtual Appliance resource in resource group: testrg. Omitting -AddressFamily (or passing only "IPv4") creates an IPv4-only appliance.
 
+### Example 7: Configure the managed NVA internal load balancer
+```powershell
+$configuration = New-AzNetworkVirtualApplianceLoadBalancerConfiguration -LoadDistribution SourceIPProtocol -IdleTimeoutInMinutes 15
+$sku = New-AzVirtualApplianceSkuProperty -VendorName ciscosdwan -BundledScaleUnit 2 -MarketPlaceVersion '17.18.02'
+$hub = Get-AzVirtualHub -ResourceGroupName testrg -Name hub
+New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location australiaeast -VirtualApplianceAsn 65222 -VirtualHubId $hub.Id -Sku $sku -LoadBalancerConfiguration $configuration
+```
+
+Uses a three-tuple distribution policy and a 15-minute timeout. The same configuration is supported with `-NvaInterfaceConfiguration` for managed NVAs in VNets. It does not configure partner-managed load balancers on SaaS NVAs.
+
 ## PARAMETERS
 
+### -LoadBalancerConfiguration
+The internal load balancer configuration, created with `New-AzNetworkVirtualApplianceLoadBalancerConfiguration`. Omission uses Default distribution (five-tuple hash) and a 5-minute timeout. Omitted members of a supplied configuration use their own defaults.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceLoadBalancerConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 ### -AcquirePolicyToken
 Acquire an Azure Policy token automatically for this resource operation.
 
