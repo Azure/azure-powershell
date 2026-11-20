@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Specifies the expiry time for the user account.
+Specifies the expiry time for the user account. If not specified, the cmdlet omits it and the service default applies.
 
 ```yaml
 Type: System.DateTime
