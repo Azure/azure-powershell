@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             
             // List data sources by kind
             var response = OperationalInsightsManagementClient.DataSources.ListByWorkspace(
-                new ODataQuery<DataSourceFilter>(ds => ds.Kind == kind), resourceGroupName, workspaceName);
+                resourceGroupName, workspaceName, new ODataQuery<DataSourceFilter>(ds => ds.Kind == kind));
 
             while (null != response)
             {
