@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed `New-AzVirtualNetworkGateway` to include a non-empty `ExtendedLocation` for VPN gateways.
 * Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
 
 ## Version 8.4.0
