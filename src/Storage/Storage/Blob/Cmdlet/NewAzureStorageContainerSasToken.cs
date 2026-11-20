@@ -67,6 +67,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Delegation object id")]
+        [ValidateNotNullOrEmpty]
+        public string DelegationObjectID { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateNotNull]
         public SharedAccessProtocol? Protocol { get; set; }
@@ -151,7 +157,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             //Create SAS builder
-            BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromContainer(container, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope);
+            BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromContainer(container, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope, this.DelegationObjectID);
 
             //Create SAS and output it
             string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken);

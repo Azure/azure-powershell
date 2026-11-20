@@ -62,6 +62,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Delegation object id")]
+        [ValidateNotNullOrEmpty]
+        public string DelegationObjectID { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateNotNull]
         public SasProtocol? Protocol { get; set; }
@@ -179,6 +185,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (this.EncryptionScope != null)
             {
                 sasBuilder.EncryptionScope = this.EncryptionScope;
+            }
+            if (this.DelegationObjectID != null)
+            {
+                if (!generateUserDelegationSas)
+                {
+                    // TODO Write error
+                }
+                sasBuilder.DelegatedUserObjectId = this.DelegationObjectID;
             }
 
             DataLakeFileSystemClient fileSystem = GetFileSystemClientByName(localChannel, this.FileSystem);

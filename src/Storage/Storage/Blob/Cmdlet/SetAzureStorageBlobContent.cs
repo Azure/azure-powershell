@@ -395,7 +395,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 Tuple<string, StorageBlob.CloudBlob> uploadRequest = UploadRequests.DequeueRequest();
                 IStorageBlobManagement localChannel = Channel;
                 Func<long, Task> taskGenerator;
-                if (!UseTrack2Sdk())
+                if (!(UseTrack2Sdk() || localChannel.IsSasWithOAuthCredential()))
                 {
                     //Upload with DMlib
                     taskGenerator = (taskId) => Upload2Blob(taskId, localChannel, uploadRequest.Item1, uploadRequest.Item2);
@@ -447,9 +447,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 options = SetClientOptionsWithEncryptionScope(this.EncryptionScope);
             }
+            BlobClient blobClient = GetTrack2BlobClient(blob, localChannel.StorageContext, options);
 
             if (this.Force.IsPresent
-                || !blob.Exists()
+                || !blobClient.Exists()
                 || ShouldContinue(string.Format(Resources.OverwriteConfirmation, blob.Uri), null))
             {
                 // Prepare blob Properties, MetaData, accessTier
@@ -484,7 +485,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     //block blob
                     if (string.Equals(blobType, BlockBlobType, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        BlobClient blobClient = GetTrack2BlobClient(blob, localChannel.StorageContext, options);
                         outputBlobClient = blobClient;
                         StorageTransferOptions trasnferOption = new StorageTransferOptions() { MaximumConcurrency = this.GetCmdletConcurrency() };
                         BlobUploadOptions uploadOptions = new BlobUploadOptions();
