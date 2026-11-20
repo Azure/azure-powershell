@@ -17,14 +17,16 @@ Disables task scheduling on the specified compute node.
 ```
 Disable-AzBatchComputeNodeScheduling [-PoolId] <String> [-Id] <String>
  [-DisableSchedulingOption <DisableComputeNodeSchedulingOption>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Disable-AzBatchComputeNodeScheduling [[-ComputeNode] <PSComputeNode>]
  [-DisableSchedulingOption <DisableComputeNodeSchedulingOption>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +53,7 @@ These commands disable task schedule on the compute node tvm-1783593343_34-20151
 To do this, the first command in the example creates an object reference to the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
 The second command then uses this object reference and the **Disable-AzBatchComputeNodeScheduling** cmdlet to connect to the pool myPool and disable task scheduling on node tvm-1783593343_34-20151117t222514z.
-Because the *DisableComputeNodeSchedulingOptions* parameter was not included any tasks currently running on the compute node will be requeued.
+Because the *DisableSchedulingOption* parameter was not included, any tasks currently running on the compute node will be requeued.
 
 ### Example 2: Disable task scheduling on all compute nodes in a pool
 ```powershell
@@ -64,9 +66,24 @@ To perform this task, the first command in the example creates an object referen
 This object reference is stored in a variable named $context.
 The second command in the example then uses this object reference and **Get-AzBatchComputeNode** to return a collection of all the compute nodes found in Pool06.
 That collection is then piped to then **Disable-AzBatchComputeNodeScheduling** cmdlet to disable task scheduling on each compute node in the collection.
-Because the *DisableComputeNodeSchedulingOptions* parameter was not included any tasks currently running on the compute nodes will be requeued.
+Because the *DisableSchedulingOption* parameter was not included, any tasks currently running on the compute nodes will be requeued.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
@@ -81,6 +98,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -127,9 +159,6 @@ Tasks are stopped immediately and removed from the job queue.
 These tasks will not be rescheduled. 
 - TaskCompletion.
 Currently running tasks will be able to complete before task scheduling is disabled on the compute node.
-No new tasks will be scheduled on this node. 
-- RetainedData.
-Currently running tasks will be able to complete and data retention periods will be able to expire before task scheduling is disabled on the compute node.
 No new tasks will be scheduled on this node.
 
 ```yaml
