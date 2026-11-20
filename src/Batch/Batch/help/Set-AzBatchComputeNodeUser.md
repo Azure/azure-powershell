@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Specifies the expiry time for the user account. If you don't specify it, the Batch service sets it to 1 day from now.
+Specifies the expiry time for the user account. If not specified, the cmdlet omits it and the service default applies.
 
 ```yaml
 Type: System.DateTime

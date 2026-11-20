@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetBatchComputeNodeUserLeavesOutTheExpiryTimeWhenNotGiven()
         {
-            // Without -ExpiryTime the cmdlet used to send 0001-01-01 as the user's new expiry time. Left out, the service
-            // uses its default: 1 day from now.
+            // Without -ExpiryTime the cmdlet used to send 0001-01-01 as the user's new expiry time. Now it omits expiryTime,
+            // so the service default applies.
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
             cmdlet.PoolId = "testPool";

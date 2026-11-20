@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.CreatingComputeNodeUser, user.Name, computeNodeId));
 
-            user.Commit(ComputeNodeUserCommitSemantics.AddUser, WithUnsetExpiryTimeLeftOut(options.AdditionalBehaviors));
+            user.Commit(ComputeNodeUserCommitSemantics.AddUser, WithUnsetExpiryTimeOmitted(options.AdditionalBehaviors));
         }
 
         /// <summary>
@@ -76,28 +76,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
             computeNodeUser.Name = parameters.ComputeNodeUserName;
             computeNodeUser.Password = parameters.Password;
             computeNodeUser.ExpiryTime = parameters.ExpiryTime;
-            computeNodeUser.Commit(ComputeNodeUserCommitSemantics.UpdateUser, WithUnsetExpiryTimeLeftOut(parameters.AdditionalBehaviors));
+            computeNodeUser.Commit(ComputeNodeUserCommitSemantics.UpdateUser, WithUnsetExpiryTimeOmitted(parameters.AdditionalBehaviors));
         }
 
         /// <summary>
-        /// -ExpiryTime is a DateTime, so it is 0001-01-01 when it isn't given, and Track 1's ComputeNodeUser always sends
-        /// its expiry time. This leaves 0001-01-01 out of the add and update requests, so the Batch service sets the
-        /// expiry time to 1 day from now.
+        /// -ExpiryTime is a DateTime, so it is 0001-01-01 when it isn't specified, and Track 1's ComputeNodeUser always
+        /// sends its expiry time. This omits expiryTime from the add and update requests when it isn't specified, so the
+        /// service default applies.
         /// </summary>
-        private static IEnumerable<BatchClientBehavior> WithUnsetExpiryTimeLeftOut(IEnumerable<BatchClientBehavior> additionalBehaviors)
+        private static IEnumerable<BatchClientBehavior> WithUnsetExpiryTimeOmitted(IEnumerable<BatchClientBehavior> additionalBehaviors)
         {
             Protocol.RequestInterceptor interceptor = new Protocol.RequestInterceptor(baseRequest =>
             {
-                if (baseRequest is BatchRequests.ComputeNodeAddUserBatchRequest addUser
-                    && addUser.Parameters.ExpiryTime == default(DateTime))
+                // ExpiryTime is a DateTime? here, so compare with default(DateTime) (0001-01-01), not with default (null).
+                switch (baseRequest)
                 {
-                    addUser.Parameters.ExpiryTime = null;
-                }
+                    case BatchRequests.ComputeNodeAddUserBatchRequest addUser
+                        when addUser.Parameters?.ExpiryTime == default(DateTime):
+                        addUser.Parameters.ExpiryTime = null;
+                        break;
 
-                if (baseRequest is BatchRequests.ComputeNodeUpdateUserBatchRequest updateUser
-                    && updateUser.Parameters.ExpiryTime == default(DateTime))
-                {
-                    updateUser.Parameters.ExpiryTime = null;
+                    case BatchRequests.ComputeNodeUpdateUserBatchRequest updateUser
+                        when updateUser.Parameters?.ExpiryTime == default(DateTime):
+                        updateUser.Parameters.ExpiryTime = null;
+                        break;
                 }
             });
 
