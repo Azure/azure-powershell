@@ -37,7 +37,7 @@ Get-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName Contoso -InputObject 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +66,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxcustomizationgroup
 #>
 function Get-AzDevCenterUserDevBoxCustomizationGroup {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationGroup])]
   [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
   param(
     [Parameter(ParameterSetName = 'Get', Mandatory)]
@@ -132,9 +132,9 @@ function Get-AzDevCenterUserDevBoxCustomizationGroup {
 
     [Parameter(ParameterSetName = 'List')]
     [Parameter(ParameterSetName = 'ListByDevCenter')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ListCustomizationGroupsIncludeProperty])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.PSArgumentCompleterAttribute("tasks")]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ListCustomizationGroupsIncludeProperty]
+    [System.String]
     # Optional query parameter to specify what properties should be included in the response.
     ${Include},
 

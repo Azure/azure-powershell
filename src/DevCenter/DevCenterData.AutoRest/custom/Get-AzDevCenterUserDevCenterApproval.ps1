@@ -25,12 +25,12 @@ Gets a list of Dev Box creations that are pending approval.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IApproval
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IApproval
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevcenterapproval
 #>
 function Get-AzDevCenterUserDevCenterApproval {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IApproval])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IApproval])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'List', Mandatory)]
