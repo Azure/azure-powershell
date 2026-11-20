@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzHorizonDbCluster'))
 
 Describe 'Remove-AzHorizonDbCluster' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        throw 'A cluster must be created first. Run New-AzHorizonDbCluster.Tests.ps1, which tests both creation and deletion.'
     }
 
     It 'DeleteViaIdentity' -skip {

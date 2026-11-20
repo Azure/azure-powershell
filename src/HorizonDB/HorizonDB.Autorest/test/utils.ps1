@@ -38,7 +38,27 @@ if ($UsePreviousConfigForRecord) {
 # Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
-$script:sharedFixtureResourceGroup = $null
+$script:fixtureResourceGroups = [System.Collections.Generic.List[hashtable]]::new()
+function Protect-HorizonDbPasswordRecording {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Path
+    )
+
+    $recording = Get-Content -LiteralPath $Path -Raw -ErrorAction Stop | ConvertFrom-Json
+    foreach ($entry in $recording.psobject.Properties) {
+        $request = $entry.Value.Request
+        if ($request.RequestUri -like '*/authentications/passwordMethod*' -and $request.Content) {
+            $body = $request.Content | ConvertFrom-Json
+            if ($null -ne $body.properties.administratorLoginPassword) {
+                $body.properties.administratorLoginPassword = '[REDACTED]'
+                $request.Content = $body | ConvertTo-Json -Depth 100 -Compress
+            }
+        }
+    }
+    Set-Content -LiteralPath $Path -Value ($recording | ConvertTo-Json -Depth 100) -ErrorAction Stop
+}
+
 function setupEnv() {
     if ($TestMode -eq 'playback') {
         return
@@ -52,6 +72,9 @@ function setupEnv() {
     # Creation tests retain separate names so their cleanup cannot delete the shared fixture.
     $env.clusterResourceGroup = $env.AddWithCache('clusterResourceGroup', 'horizondb-test-rg-' + (RandomString $false 8), $UsePreviousConfigForRecord)
     $env.clusterName = $env.AddWithCache('clusterName', 'horizondb-test-' + (RandomString $false 8), $UsePreviousConfigForRecord)
+    $env.newClusterName = $env.AddWithCache('newClusterName', 'horizondb-new-cluster-' + (RandomString $false 8), $UsePreviousConfigForRecord)
+    $env.newPoolName = $env.AddWithCache('newPoolName', 'horizondb-new-pool-' + (RandomString $false 8), $UsePreviousConfigForRecord)
+    $env.newClusterPoolName = $env.AddWithCache('newClusterPoolName', 'horizondb-new-pool-cluster-' + (RandomString $false 8), $UsePreviousConfigForRecord)
     $env.sharedResourceGroup = $env.AddWithCache('sharedResourceGroup', 'horizondb-fixture-rg-' + (RandomString $false 8), $UsePreviousConfigForRecord)
     $env.sharedClusterName = $env.AddWithCache('sharedClusterName', 'horizondb-fixture-' + (RandomString $false 8), $UsePreviousConfigForRecord)
     $env.sharedPoolName = $env.AddWithCache('sharedPoolName', 'horizondb-pool-' + (RandomString $false 8), $UsePreviousConfigForRecord)
@@ -62,10 +85,10 @@ function setupEnv() {
     Set-Content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env) -ErrorAction Stop
 
     $null = New-AzResourceGroup -Name $env.sharedResourceGroup -SubscriptionId $env.SubscriptionId -Location $env.location -ErrorAction Stop
-    $script:sharedFixtureResourceGroup = @{
+    $script:fixtureResourceGroups.Add(@{
         Name = $env.sharedResourceGroup
         SubscriptionId = $env.SubscriptionId
-    }
+    })
 
     $parameters = @{
         location = @{ value = $env.location }
@@ -84,13 +107,57 @@ function setupEnv() {
     $env.sharedNodeName = $nodes[0].Name
     $env.sharedNodeId = $nodes[0].Id
     Set-Content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env) -ErrorAction Stop
+
+    if ($null -eq $TestName -or $TestName -contains 'New-AzHorizonDbCluster' -or $TestName -contains 'New-AzHorizonDbPool' -or $TestName -contains 'New-AzHorizonDbFirewallRule' -or $TestName -contains 'New-AzHorizonDbMicrosoftEntraAuthentication' -or $TestName -contains 'New-AzHorizonDbPasswordAuthentication') {
+        $null = New-AzResourceGroup -Name $env.clusterResourceGroup -SubscriptionId $env.SubscriptionId -Location $env.location -ErrorAction Stop
+        $script:fixtureResourceGroups.Add(@{
+            Name = $env.clusterResourceGroup
+            SubscriptionId = $env.SubscriptionId
+        })
+
+        if ($null -eq $TestName -or $TestName -contains 'New-AzHorizonDbPool') {
+            $cluster = New-AzHorizonDbCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.newClusterPoolName -SubscriptionId $env.SubscriptionId -Location $env.location -PostgreSqlVersion '17' -BackupGeoRedundancy 'Disabled' -NetworkPublicAccess 'Disabled' -ErrorAction Stop
+            if ($cluster.ProvisioningState -ne 'Succeeded') {
+                throw "New-pool test cluster did not succeed. Provisioning state: '$($cluster.ProvisioningState)'."
+            }
+        }
+
+        if ($null -eq $TestName -or $TestName -contains 'New-AzHorizonDbFirewallRule') {
+            $parameters = @{
+                location = @{ value = $env.location }
+                clusterName = @{ value = $env.newClusterName }
+                poolName = @{ value = $env.newPoolName }
+            }
+            $deployment = New-AzDeployment -Name 'horizondb-new-firewall-fixture' -ResourceGroupName $env.clusterResourceGroup -SubscriptionId $env.SubscriptionId -Mode Incremental -TemplateFile (Join-Path $PSScriptRoot 'prereqs.json') -TemplateParameterObject $parameters -ErrorAction Stop
+            if ($deployment.ProvisioningState -ne 'Succeeded') {
+                throw "New-firewall test fixture deployment did not succeed. Provisioning state: '$($deployment.ProvisioningState)'."
+            }
+        } elseif ($TestName -contains 'New-AzHorizonDbMicrosoftEntraAuthentication' -or $TestName -contains 'New-AzHorizonDbPasswordAuthentication') {
+            $cluster = New-AzHorizonDbCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.newClusterName -SubscriptionId $env.SubscriptionId -Location $env.location -PostgreSqlVersion '17' -BackupGeoRedundancy 'Disabled' -NetworkPublicAccess 'Disabled' -ErrorAction Stop
+            if ($cluster.ProvisioningState -ne 'Succeeded') {
+                throw "New-authentication test cluster did not succeed. Provisioning state: '$($cluster.ProvisioningState)'."
+            }
+        }
+    }
 }
 function cleanupEnv() {
-    if ($TestMode -eq 'playback' -or $null -eq $script:sharedFixtureResourceGroup) {
+    if ($TestMode -eq 'playback') {
         return
     }
 
-    $null = Remove-AzResourceGroup -Name $script:sharedFixtureResourceGroup.Name -SubscriptionId $script:sharedFixtureResourceGroup.SubscriptionId -Confirm:$false -ErrorAction Stop
-    $script:sharedFixtureResourceGroup = $null
+    $cleanupErrors = [System.Collections.Generic.List[System.Exception]]::new()
+    foreach ($resourceGroup in $script:fixtureResourceGroups.ToArray()) {
+        try {
+            $null = Remove-AzResourceGroup -Name $resourceGroup.Name -SubscriptionId $resourceGroup.SubscriptionId -Confirm:$false -ErrorAction Stop
+            $null = $script:fixtureResourceGroups.Remove($resourceGroup)
+        }
+        catch {
+            $cleanupErrors.Add($_.Exception)
+        }
+    }
+    if ($cleanupErrors.Count -gt 0) {
+        $message = 'Failed to clean up HorizonDB test resource groups: ' + (($cleanupErrors | ForEach-Object { $_.Message }) -join '; ')
+        throw [System.AggregateException]::new($message, $cleanupErrors)
+    }
 }
 

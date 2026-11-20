@@ -19,8 +19,41 @@ Describe 'New-AzHorizonDbPool' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonString' {
+        $resourceGroupName = $env.clusterResourceGroup
+        $newClusterName = $env.newClusterPoolName
+        $poolName = $env.newPoolName
+
+        $body = @{
+            properties = @{
+                computeModel = @{
+                    type = 'Provisioned'
+                    computeProcessor = 'Intel'
+                    computeGeneration = 1
+                    vCores = 2
+                }
+                scheduledMaintenance = @{
+                    maintenanceManagementType = 'System'
+                }
+                nodeCount = 1
+                highAvailability = @{
+                    mode = 'Disabled'
+                }
+            }
+        } | ConvertTo-Json -Depth 5
+
+        $pool = New-AzHorizonDbPool -ResourceGroupName $resourceGroupName -ClusterName $newClusterName -Name $poolName -SubscriptionId $env.SubscriptionId -JsonString $body -ErrorAction Stop
+
+        $pool.Name | Should -Be $poolName
+        $pool.ResourceGroupName | Should -Be $resourceGroupName
+        $pool.ComputeModelType | Should -Be 'Provisioned'
+        $pool.ComputeModelComputeProcessor | Should -Be 'Intel'
+        $pool.ComputeModelComputeGeneration | Should -Be 1
+        $pool.ComputeModelVCore | Should -Be 2
+        $pool.NodeCount | Should -Be 1
+        $pool.HighAvailabilityMode | Should -Be 'Disabled'
+        $pool.State | Should -Be 'Ready'
+        $pool.ProvisioningState | Should -Be 'Succeeded'
     }
 
     It 'CreateViaJsonFilePath' -skip {

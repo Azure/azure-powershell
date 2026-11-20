@@ -31,11 +31,47 @@ After deployment, setup discovers the pool's generated node name and resource ID
 Tests can use `$env.sharedResourceGroup`, `$env.sharedClusterName`,
 `$env.sharedPoolName`, `$env.sharedNodeName`, and `$env.sharedNodeId`. These values
 are saved in `env.json` for recording or `localEnv.json` for live runs, so node
-List and Get tests do not depend on one another. The New-cluster test retains its separate
-`clusterResourceGroup` and `clusterName` values so it cannot delete this fixture.
+List and Get tests do not depend on one another.
 
-`cleanupEnv` deletes the shared resource group after testing, including after a
-failed deployment. Cleanup only targets a group successfully created by this run.
+When New-cluster, New-pool, New-firewall-rule, New-Microsoft-Entra-authentication,
+or New-password-authentication
+is selected, setup also creates the separate `clusterResourceGroup`.
+The New-cluster test creates a completely
+new `clusterName`, which is not used by any other creation test.
+The same test file has an independent `Delete` case that creates a separate
+cluster named `clusterName` plus `-delete`, removes it with
+`Remove-AzHorizonDbCluster`, and verifies it is absent from the resource group's
+cluster list. It does not reuse the cluster from `CreateExpanded` or any other
+fixture.
+
+For New-pool, setup creates the distinct `newClusterPoolName` without a pool.
+The test creates `newPoolName` in that cluster with two Intel generation 1 vCores
+through the JSON parameter set, which includes the required compute-model type.
+For New-firewall-rule, setup deploys `newClusterName` and `newPoolName` using
+`prereqs.json`. The test creates a rule for `10.0.0.1` through `10.0.0.254`, with
+the description `Allow access from the corporate network`. The same test file
+includes an independent `Delete` case that creates its own rule, removes it with
+`Remove-AzHorizonDbFirewallRule`, and verifies it is absent from the pool's rule
+list. It does not depend on `CreateExpanded` running first. These tests can run
+independently and never use the `shared` resources reserved for Get and Update
+tests. Both authentication tests enable authentication on `newClusterName`.
+The Microsoft Entra test verifies the `microsoftEntra` resource. The password
+test verifies the `passwordMethod` resource and administrator login `adminlogin1`.
+Its password is generated at runtime, passed as a SecureString, and redacted
+from the recording even when creation fails. When authentication tests run
+without New-firewall-rule, setup creates only that cluster, without an unused
+pool. All three tests use the same prerequisite cluster. None uses the
+standalone `clusterName`. All creation resources remain available until suite cleanup.
+
+`cleanupEnv` deletes the shared and creation resource groups after testing,
+including after failures. Cleanup only targets groups successfully created by
+this run and does not retry groups whose deletion has already succeeded.
 Playback skips provisioning and cleanup and uses saved environment values and
 recordings. Shared fixture provisioning is outside individual test recordings.
+New-test prerequisite provisioning is also outside individual test recordings.
+Recordings are saved for the New-cluster, New-pool, New-firewall-rule,
+New-Microsoft-Entra-authentication, and New-password-authentication tests.
+The New-cluster and New-firewall-rule recordings include their `Delete`
+scenarios. The standalone Remove-cluster and Remove-firewall-rule tests are
+skipped and do not produce separate recordings.
 Record and live runs create billable Azure resources.

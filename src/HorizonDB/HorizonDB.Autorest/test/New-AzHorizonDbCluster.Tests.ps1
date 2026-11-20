@@ -17,28 +17,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHorizonDbCluster'))
 Describe 'New-AzHorizonDbCluster' {
     It 'CreateExpanded' {
         $resourceGroupName = $env.clusterResourceGroup
-        $clusterName = $env.clusterName
+        $newClusterName = $env.clusterName
 
-        if ($TestMode -ne 'playback') {
-            $null = New-AzResourceGroup -Name $resourceGroupName -Location $env.location -ErrorAction Stop
-        }
+        $cluster = New-AzHorizonDbCluster -ResourceGroupName $resourceGroupName -Name $newClusterName -SubscriptionId $env.SubscriptionId -Location $env.location -PostgreSqlVersion '17' -BackupGeoRedundancy 'Disabled' -NetworkPublicAccess 'Disabled' -ErrorAction Stop
 
-        try {
-            $cluster = New-AzHorizonDbCluster -ResourceGroupName $resourceGroupName -Name $clusterName -SubscriptionId $env.SubscriptionId -Location $env.location -PostgreSqlVersion '17' -BackupGeoRedundancy 'Disabled' -NetworkPublicAccess 'Disabled' -ErrorAction Stop
+        $cluster.Name | Should -Be $newClusterName
+        $cluster.ResourceGroupName | Should -Be $resourceGroupName
+        $cluster.Location | Should -Be 'indiasouthcentral'
+        $cluster.PostgreSqlVersion | Should -Be '17'
+        $cluster.BackupGeoRedundancy | Should -Be 'Disabled'
+        $cluster.NetworkPublicAccess | Should -Be 'Disabled'
+        $cluster.ProvisioningState | Should -Be 'Succeeded'
+    }
 
-            $cluster.Name | Should -Be $clusterName
-            $cluster.ResourceGroupName | Should -Be $resourceGroupName
-            $cluster.Location | Should -Be 'indiasouthcentral'
-            $cluster.PostgreSqlVersion | Should -Be '17'
-            $cluster.BackupGeoRedundancy | Should -Be 'Disabled'
-            $cluster.NetworkPublicAccess | Should -Be 'Disabled'
-            $cluster.ProvisioningState | Should -Be 'Succeeded'
-        }
-        finally {
-            if ($TestMode -ne 'playback') {
-                $null = Remove-AzResourceGroup -Name $resourceGroupName -Confirm:$false -ErrorAction Stop
-            }
-        }
+    It 'Delete' {
+        $resourceGroupName = $env.clusterResourceGroup
+        $newClusterName = $env.clusterName + '-delete'
+        $cluster = New-AzHorizonDbCluster -ResourceGroupName $resourceGroupName -Name $newClusterName -SubscriptionId $env.SubscriptionId -Location $env.location -PostgreSqlVersion '17' -BackupGeoRedundancy 'Disabled' -NetworkPublicAccess 'Disabled' -ErrorAction Stop
+        $cluster.Name | Should -Be $newClusterName
+        $cluster.ProvisioningState | Should -Be 'Succeeded'
+
+        $removed = Remove-AzHorizonDbCluster -ResourceGroupName $resourceGroupName -Name $newClusterName -SubscriptionId $env.SubscriptionId -PassThru -Confirm:$false -ErrorAction Stop
+        $removed | Should -Be $true
+
+        $clusters = @(Get-AzHorizonDbCluster -ResourceGroupName $resourceGroupName -SubscriptionId $env.SubscriptionId -ErrorAction Stop)
+        @($clusters | Where-Object { $_.Name -eq $newClusterName }).Count | Should -Be 0
     }
 
     It 'CreateViaJsonFilePath' -skip {

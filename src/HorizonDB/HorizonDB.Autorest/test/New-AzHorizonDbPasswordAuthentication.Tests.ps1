@@ -15,8 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHorizonDbPasswordAuthen
 }
 
 Describe 'New-AzHorizonDbPasswordAuthentication' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $password = [System.Security.SecureString]::new()
+        foreach ($character in ('Aa1!' + [guid]::NewGuid().ToString('N')).ToCharArray()) {
+            $password.AppendChar($character)
+        }
+        $password.MakeReadOnly()
+        try {
+            $authentication = New-AzHorizonDbPasswordAuthentication -ResourceGroupName $env.clusterResourceGroup -ClusterName $env.newClusterName -SubscriptionId $env.SubscriptionId -State 'Enabled' -AdministratorLogin 'adminlogin1' -AdministratorLoginPassword $password -ErrorAction Stop
+
+            $authentication.Name | Should -Be 'passwordMethod'
+            $authentication.ResourceGroupName | Should -Be $env.clusterResourceGroup
+            $authentication.Id | Should -Be "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.clusterResourceGroup)/providers/Microsoft.HorizonDb/clusters/$($env.newClusterName)/authentications/passwordMethod"
+            $authentication.Type | Should -Be 'Microsoft.HorizonDb/clusters/authentications'
+            $authentication.State | Should -Be 'Enabled'
+            $authentication.AdministratorLogin | Should -Be 'adminlogin1'
+        }
+        finally {
+            $password.Dispose()
+            if ($TestMode -eq 'record' -and (Test-Path -LiteralPath $TestRecordingFile)) {
+                Protect-HorizonDbPasswordRecording -Path $TestRecordingFile
+            }
+        }
     }
 
     It 'CreateViaJsonFilePath' -skip {

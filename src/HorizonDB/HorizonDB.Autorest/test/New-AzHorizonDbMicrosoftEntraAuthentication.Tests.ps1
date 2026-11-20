@@ -15,8 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHorizonDbMicrosoftEntra
 }
 
 Describe 'New-AzHorizonDbMicrosoftEntraAuthentication' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $authentication = New-AzHorizonDbMicrosoftEntraAuthentication -ResourceGroupName $env.clusterResourceGroup -ClusterName $env.newClusterName -SubscriptionId $env.SubscriptionId -State 'Enabled' -ErrorAction Stop
+
+        $authentication.Name | Should -Be 'microsoftEntra'
+        $authentication.ResourceGroupName | Should -Be $env.clusterResourceGroup
+        $authentication.Id | Should -Be "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.clusterResourceGroup)/providers/Microsoft.HorizonDb/clusters/$($env.newClusterName)/authentications/microsoftEntra"
+        $authentication.Type | Should -Be 'Microsoft.HorizonDb/clusters/authentications'
+        $authentication.State | Should -Be 'Enabled'
+        $authentication.ProvisioningState | Should -Be 'Succeeded'
     }
 
     It 'CreateViaJsonFilePath' -skip {

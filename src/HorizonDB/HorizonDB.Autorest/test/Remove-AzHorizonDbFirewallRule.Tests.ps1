@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzHorizonDbFirewallRul
 
 Describe 'Remove-AzHorizonDbFirewallRule' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        throw 'A firewall rule must be created first. Run New-AzHorizonDbFirewallRule.Tests.ps1, which tests both creation and deletion.'
     }
 
     It 'DeleteViaIdentityPool' -skip {
