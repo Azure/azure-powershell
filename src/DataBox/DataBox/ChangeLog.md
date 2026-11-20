@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
 ## Version 0.5.0
 * Added new optional parameter -SkuModel to New-AzDataBoxJob cmdlet.
