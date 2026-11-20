@@ -1,23 +1,6 @@
 # Overall
 This directory contains management plane service clients of Az.Network module.
 
-## Managed NVA load balancer configuration staging
-
-The load-distribution feature is staged against the `2026-03-01` SDK until the
-`2026-05-01` release baseline is generated. The contract is defined in
-[azure-rest-api-specs PR 47915](https://github.com/Azure/azure-rest-api-specs/pull/47915).
-`Models/NetworkVirtualApplianceLoadBalancerConfiguration.cs` supplies the shared
-configuration and partial-class properties. NVA list/get/create-or-update and
-inbound-security-rule get/create-or-update operations explicitly use `2026-05-01`.
-Other operations retain their existing versions.
-
-When regenerating from the `2026-05-01` Swagger, remove this compatibility file
-once the generated models provide these properties, and replace the scoped
-operation-version edits with generated output. Regenerating the current baseline
-will overwrite those version edits; do not ship the new configuration against
-the older API version. Validate serialization, request versions, and playback
-tests after moving this feature to the new release branch.
-
 ## Run Generation
 In this directory, run AutoRest:
 ```
