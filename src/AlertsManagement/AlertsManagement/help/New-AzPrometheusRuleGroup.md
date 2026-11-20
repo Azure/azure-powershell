@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPrometheusRuleGroup
 
 ## SYNOPSIS
-create a Prometheus rule group definition.
+Create a Prometheus rule group definition.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String> [-
 ```
 
 ## DESCRIPTION
-create a Prometheus rule group definition.
+Create a Prometheus rule group definition.
 
 ## EXAMPLES
 
@@ -262,6 +262,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
