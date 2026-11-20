@@ -22,22 +22,20 @@ function Test-RemoveComputeNodes
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    $deallocationOption = ([Microsoft.Azure.Batch.Common.ComputeNodeRebootOption]::Terminate)
-    $resizeTimeout = ([TimeSpan]::FromMinutes(8))
-
     # Remove nodes
     $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
     $computeNodeId = $computeNodes[0].Id
     $computeNodeId2 = $computeNodes[1].Id
     Remove-AzBatchComputeNode -PoolId $poolId @($computeNodeId, $computeNodeId2) -Force -BatchContext $context
 
-    # State transition isn't immediate
+    # State transition isn't immediate. A removed node is leaving the pool, or already gone from the list.
+    $removedIds = @($computeNodeId, $computeNodeId2)
     $select = "id,state"
     $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
     $start = [DateTime]::Now
     $timeout = Compute-TestTimeout 60
     $end = $start.AddSeconds($timeout)
-    while ($computeNodes[0].State -ne 'LeavingPool' -and $computeNodes[1].State -ne 'LeavingPool')
+    while (@($computeNodes | Where-Object { $removedIds -contains $_.Id -and $_.State -ne 'LeavingPool' }).Count -gt 0)
     {
         if ([DateTime]::Now -gt $end)
         {
@@ -45,6 +43,11 @@ function Test-RemoveComputeNodes
         }
         Start-TestSleep -Seconds 1
         $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
+    }
+
+    foreach ($computeNode in @($computeNodes | Where-Object { $removedIds -contains $_.Id }))
+    {
+        Assert-AreEqual 'LeavingPool' $computeNode.State
     }
 }
 
@@ -66,7 +69,6 @@ function Test-RebootAndReimageComputeNode
     WaitForIdleComputeNode $context $poolId $computeNodeId2
 
     $rebootOption = ([Microsoft.Azure.Batch.Common.ComputeNodeRebootOption]::Terminate)
-    $reimageOption = ([Microsoft.Azure.Batch.Common.ComputeNodeReimageOption]::Terminate)
 
     # Reboot a node
     Get-AzBatchComputeNode $poolId $computeNodeId -BatchContext $context | Restart-AzBatchComputeNode -RebootOption $rebootOption -BatchContext $context

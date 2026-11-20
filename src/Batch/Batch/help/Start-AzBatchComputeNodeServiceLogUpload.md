@@ -15,7 +15,8 @@ Upload compute node service log files to an Azure Storage container.
 ### AzureBatchComputeNodeServiceLogUpload (Default)
 ```
 Start-AzBatchComputeNodeServiceLogUpload [-ContainerUrl] <String> [-StartTime] <DateTime> [-EndTime <DateTime>]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -23,14 +24,16 @@ Start-AzBatchComputeNodeServiceLogUpload [-ContainerUrl] <String> [-StartTime] <
 ```
 Start-AzBatchComputeNodeServiceLogUpload [-PoolId] <String> [-ComputeNodeId] <String> [-ContainerUrl] <String>
  [-StartTime] <DateTime> [-EndTime <DateTime>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
 Start-AzBatchComputeNodeServiceLogUpload [-ComputeNode] <PSComputeNode> [-ContainerUrl] <String>
  [-StartTime] <DateTime> [-EndTime <DateTime>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,6 +94,21 @@ Upload compute node service logs written on or after January 1, 2018 midnight an
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service.
@@ -107,6 +125,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

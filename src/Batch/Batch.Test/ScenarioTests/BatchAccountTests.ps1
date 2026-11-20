@@ -129,17 +129,23 @@ function Test-CreateNewBatchAccountWithNoPublicIp
         # Create a Batch account
         New-AzResourceGroup -Name $resourceGroup -Location $location
         $createdAccount = New-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Location $location -PublicNetworkAccess Disabled
+        Assert-AreEqual $accountName $createdAccount.AccountName
+        Assert-AreEqual 'Disabled' $createdAccount.PublicNetworkAccess
 
         $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
         New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Name "myvnet" -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $subnetConfig
         $vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroup -Name "myvnet"
 
         $privateLinkResource = Get-AzPrivateLinkResource -PrivateLinkResourceId $createdAccount.Id
+        Assert-True { $privateLinkResource.GroupId -contains 'batchAccount' }
 
         $plsConnection = New-AzPrivateLinkServiceConnection -Name "myplsconnection" -PrivateLinkServiceId $createdAccount.Id -GroupId "batchAccount"
         New-AzPrivateEndpoint -ResourceGroupName $resourceGroup -Name "mypec" -Location $location -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
 
         $connection = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $createdAccount.Id
+        Assert-AreEqual 1 @($connection).Count
+        # A connection requested with -ByManualRequest waits for the account owner's approval.
+        Assert-AreEqual 'Pending' $connection.PrivateLinkServiceConnectionState.Status
     }
     finally
     {
