@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Attestation;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
-using Microsoft.Azure.Test.HttpRecorder;
 using System.Collections.Generic;
 using Xunit.Abstractions;
 
@@ -51,12 +48,6 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null}
-                    }
-                )
-                .WithManagementClients(context =>
-                    {
-                        var creds = context.GetClientCredentials(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId);
-                        return new AttestationClient(creds, HttpMockServer.CreateInstance());
                     }
                 )
                 .Build();

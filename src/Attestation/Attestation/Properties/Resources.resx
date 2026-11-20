@@ -486,4 +486,25 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="ActiveDirectoryClientNull" xml:space="preserve">
     <value>The current credentials do not have access to Azure Active Directory. Please either use an ObjectId to refer to ActiveDirectory objects, or log in using credentials that have access to Azure Active Directory.</value>
   </data>
+  <data name="InvalidServiceToken" xml:space="preserve">
+    <value>The token returned by the attestation service is not valid. {0}</value>
+  </data>
+  <data name="LegacyPolicyCertificateClaimWarning" xml:space="preserve">
+    <value>The signer token uses the &apos;maa-policyCertificate&apos; claim, which only an earlier version of the Azure Attestation API accepts. This claim is deprecated and support for it will be removed in a future release. Create the signer token with the &apos;policyCertificate&apos; claim instead.</value>
+  </data>
+  <data name="MissingServiceToken" xml:space="preserve">
+    <value>The attestation service response does not contain a valid token.</value>
+  </data>
+  <data name="UnreadableServiceResponse" xml:space="preserve">
+    <value>The attestation service returned a successful response, but the response could not be read. If this was a change, it may already have been applied.</value>
+  </data>
+  <data name="UnconfirmedChange" xml:space="preserve">
+    <value>The attestation service accepted the change, but the result could not be confirmed: {0} The change may already have been applied. Check the current policy or policy signers before trying again.</value>
+  </data>
+  <data name="UnencodedPolicyNotSupported" xml:space="preserve">
+    <value>The policy in the &apos;AttestationPolicy&apos; claim of the policy token is not Base64Url encoded, which attestation type &apos;{0}&apos; does not support. Base64Url encode the policy and sign the token again.</value>
+  </data>
+  <data name="UnencodedPolicyWarning" xml:space="preserve">
+    <value>The policy in the &apos;AttestationPolicy&apos; claim of the policy token is not Base64Url encoded, which only an earlier version of the Azure Attestation API accepts. Unencoded policies are deprecated and support for them will be removed in a future release. Base64Url encode the policy instead.</value>
+  </data>
 </root>

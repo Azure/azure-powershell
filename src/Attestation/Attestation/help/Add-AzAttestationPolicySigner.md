@@ -102,8 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -Signer
-Specifies the RFC7519 JSON Web Token containing a claim named "maa-policyCertificate" whose value is an RFC7517 JSON Web Key which contains a new trusted signing key to add.
-The RFC7519 JWT must be signed with one of the existing trusted signing keys.
+Specifies an RFC7519 JSON Web Token containing a claim named "policyCertificate" whose value is an RFC7517 JSON Web Key which contains a new trusted signing key to add. The RFC7519 JWT must be signed with one of the existing trusted signing keys. Tokens that use the earlier claim name "maa-policyCertificate" are still accepted, but that claim name is deprecated.
 
 ```yaml
 Type: System.String

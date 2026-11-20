@@ -253,6 +253,69 @@ namespace Microsoft.Azure.Commands.Attestation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The token returned by the attestation service is not valid. {0}.
+        /// </summary>
+        internal static string InvalidServiceToken {
+            get {
+                return ResourceManager.GetString("InvalidServiceToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The signer token uses the &apos;maa-policyCertificate&apos; claim, which only an earlier version of the Azure Attestation API accepts. This claim is deprecated and support for it will be removed in a future release. Create the signer token with the &apos;policyCertificate&apos; claim instead..
+        /// </summary>
+        internal static string LegacyPolicyCertificateClaimWarning {
+            get {
+                return ResourceManager.GetString("LegacyPolicyCertificateClaimWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The attestation service response does not contain a valid token..
+        /// </summary>
+        internal static string MissingServiceToken {
+            get {
+                return ResourceManager.GetString("MissingServiceToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The attestation service returned a successful response, but the response could not be read. If this was a change, it may already have been applied..
+        /// </summary>
+        internal static string UnreadableServiceResponse {
+            get {
+                return ResourceManager.GetString("UnreadableServiceResponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The attestation service accepted the change, but the result could not be confirmed: {0} The change may already have been applied. Check the current policy or policy signers before trying again..
+        /// </summary>
+        internal static string UnconfirmedChange {
+            get {
+                return ResourceManager.GetString("UnconfirmedChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The policy in the &apos;AttestationPolicy&apos; claim of the policy token is not Base64Url encoded, which attestation type &apos;{0}&apos; does not support. Base64Url encode the policy and sign the token again..
+        /// </summary>
+        internal static string UnencodedPolicyNotSupported {
+            get {
+                return ResourceManager.GetString("UnencodedPolicyNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The policy in the &apos;AttestationPolicy&apos; claim of the policy token is not Base64Url encoded, which only an earlier version of the Azure Attestation API accepts. Unencoded policies are deprecated and support for them will be removed in a future release. Base64Url encode the policy instead..
+        /// </summary>
+        internal static string UnencodedPolicyWarning {
+            get {
+                return ResourceManager.GetString("UnencodedPolicyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bad Parameter Set Name.
         /// </summary>
         internal static string BadParameterSetName {
