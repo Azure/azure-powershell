@@ -289,6 +289,15 @@ namespace Microsoft.Azure.Commands.Attestation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The attestation service accepted the change, but the result could not be confirmed: {0} The change may already have been applied. Check the current policy or policy signers before trying again..
+        /// </summary>
+        internal static string UnconfirmedChange {
+            get {
+                return ResourceManager.GetString("UnconfirmedChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The policy in the &apos;AttestationPolicy&apos; claim of the policy token is not Base64Url encoded, which attestation type &apos;{0}&apos; does not support. Base64Url encode the policy and sign the token again..
         /// </summary>
         internal static string UnencodedPolicyNotSupported {

@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 SendCallerToken(endpoint, RequestMethod.Post, "/certificates:add", JsonContentType, CreatePolicyCertificateContent(signer)));
 
             // The current API version's response describes only the changed certificate, so the signers are read again.
-            return GetPolicySigners(name, resourceGroupName, null);
+            return ReadPolicySignersAfterChange(name, resourceGroupName);
         }
 
         public string RemovePolicySigner(string name, string resourceGroupName, string resourceId, string signer)
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             SendWriteAndValidate(name, resourceGroupName, endpoint =>
                 SendCallerToken(endpoint, RequestMethod.Post, "/certificates:remove", JsonContentType, CreatePolicyCertificateContent(signer)));
 
-            return GetPolicySigners(name, resourceGroupName, null);
+            return ReadPolicySignersAfterChange(name, resourceGroupName);
         }
 
         #region Internal helpers
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         {
             var token = JObject.Parse(responseBody)["token"]?.ToString();
             if (string.IsNullOrEmpty(token))
-                throw new InvalidOperationException(Resources.MissingServiceToken);
+                throw new MissingServiceTokenException();
             return token;
         }
 
@@ -345,12 +345,12 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 if (token != null && token.StartsWith("\"", StringComparison.Ordinal))
                     token = JsonConvert.DeserializeObject<string>(token);
                 if (string.IsNullOrEmpty(token))
-                    throw new InvalidOperationException(Resources.MissingServiceToken);
+                    throw new MissingServiceTokenException();
                 return AttestationToken.Deserialize(token);
             }
-            catch (Exception ex) when (!(ex is InvalidOperationException))
+            catch (Exception ex) when (!(ex is MissingServiceTokenException))
             {
-                throw new InvalidOperationException(Resources.MissingServiceToken, ex);
+                throw new MissingServiceTokenException(ex);
             }
         }
 
@@ -416,11 +416,47 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         /// failure while validating it, such as a failed request for the provider's signing certificates, doesn't
         /// send the write again.
         /// </summary>
+        /// <exception cref="UnconfirmedChangeException">The service accepted the write, but the response token is
+        /// missing or could not be validated.</exception>
         private AttestationToken SendWriteAndValidate(string name, string resourceGroupName, Func<string, AttestationToken> write)
         {
-            var (endpoint, token) = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, e => (e, write(e)));
-            ValidateServiceToken(endpoint, token);
+            string endpoint;
+            AttestationToken token;
+            try
+            {
+                (endpoint, token) = RefreshUriCacheAndRetryOnFailure(name, resourceGroupName, e => (e, write(e)));
+            }
+            catch (MissingServiceTokenException ex)
+            {
+                throw new UnconfirmedChangeException(ex);
+            }
+
+            try
+            {
+                ValidateServiceToken(endpoint, token);
+            }
+            catch (Exception ex)
+            {
+                throw new UnconfirmedChangeException(ex);
+            }
+
             return token;
+        }
+
+        /// <summary>
+        /// Reads the policy signers after the service accepted a change to them.
+        /// </summary>
+        /// <exception cref="UnconfirmedChangeException">The signers could not be read.</exception>
+        private string ReadPolicySignersAfterChange(string name, string resourceGroupName)
+        {
+            try
+            {
+                return GetPolicySigners(name, resourceGroupName, null);
+            }
+            catch (Exception ex)
+            {
+                throw new UnconfirmedChangeException(ex);
+            }
         }
 
         /// <summary>
@@ -438,7 +474,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             }
             catch (Exception ex) when (responseStatus.ReceivedSuccessfulResponse && !IsRequestFailure(ex))
             {
-                throw new InvalidOperationException(Resources.MissingServiceToken, ex);
+                throw new MissingServiceTokenException(ex);
             }
         }
 

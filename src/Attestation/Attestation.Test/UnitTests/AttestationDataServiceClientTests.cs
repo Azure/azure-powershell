@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             Assert.Equal(policyJwt, policy.Jwt);
             Assert.Equal(PolicyText, policy.Text);
             Assert.Equal("none", policy.Algorithm);
-            Assert.Throws<InvalidOperationException>(() => AttestationDataServiceClient.ReadResponseToken("{}"));
+            Assert.Throws<MissingServiceTokenException>(() => AttestationDataServiceClient.ReadResponseToken("{}"));
         }
 
         [Fact]

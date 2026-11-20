@@ -261,15 +261,15 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             const string reason = "Could not find a certificate which was used to sign the token.";
 
             // A write the service has accepted must not be sent again when its response fails validation.
-            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
-            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
             // The earlier API's update token must be valid before the policy is applied with PUT /operations/policy/current.
             AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "SgxEnclave", CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText }), "JWT"), "POST", "/operations/policy/updatepolicy", reason);
-            AssertRejectedAfterOneRequest(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
-            AssertRejectedAfterOneRequest(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
-            AssertRejectedAfterOneRequest(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove", reason);
-            AssertRejectedAfterOneRequest(() => _client.AddPolicySigner("provider", "rg", null, LegacySignerJwt), "PUT", "/operations/policy/certificates", reason);
-            AssertRejectedAfterOneRequest(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
+            AssertWriteNotConfirmed(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, LegacySignerJwt), "PUT", "/operations/policy/certificates", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
             AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
             AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
         }
@@ -297,8 +297,8 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
             const string reason = "Attestation token will not become valid before the slack time provided.";
 
-            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
-            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
             AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
         }
 
@@ -313,12 +313,12 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             var reason = $"Unknown Issuer for attestation token. Expected {MockAttestationService.Endpoint}, found {_service.Issuer}";
 
             // Covers tokens from the SDK clients, tokens returned for caller tokens, and the earlier API's update token.
-            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
-            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
             AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "SgxEnclave", updateJwt, "JWT"), "POST", "/operations/policy/updatepolicy", reason);
-            AssertRejectedAfterOneRequest(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
-            AssertRejectedAfterOneRequest(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
-            AssertRejectedAfterOneRequest(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
+            AssertWriteNotConfirmed(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
             AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
             AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
         }
@@ -436,6 +436,28 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReportsUnconfirmedChangeWhenSignersCannotBeReadAfterChange()
+        {
+            _service.FailPolicySignerReads = true;
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            foreach (var (write, path) in new (Action, string)[]
+            {
+                (() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "/certificates:add"),
+                (() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "/certificates:remove"),
+            })
+            {
+                _service.Requests.Clear();
+
+                var inner = AssertUnconfirmedChange<RestException>(Assert.Throws<UnconfirmedChangeException>(write));
+
+                Assert.Contains("SignersUnavailable", inner.Message);
+                Assert.Single(_service.ServiceRequests, r => r.Path == path);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReportsServiceError()
         {
             _service.ErrorResponse = new JObject { ["error"] = new JObject { ["code"] = "PolicyParsingError", ["message"] = "Invalid policy was specified" } };
@@ -457,19 +479,39 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             Assert.Contains(reason, exception.Message);
         }
 
+        /// <summary>
+        /// Checks that a write the service accepted was sent once, and that its response token failed validation
+        /// with an error that says the change may already have been applied.
+        /// </summary>
+        private void AssertWriteNotConfirmed(Action call, string method, string path, string reason)
+        {
+            var inner = AssertUnconfirmedChange<ServiceTokenValidationException>(AssertFailsAfterOneRequest<UnconfirmedChangeException>(call, method, path));
+
+            Assert.Contains(reason, inner.Message);
+        }
+
         private void AssertWriteSentOnceBeforeCertificatesFail(Action call, string method, string path)
         {
-            var exception = AssertFailsAfterOneRequest<RestException>(call, method, path);
+            var inner = AssertUnconfirmedChange<RestException>(AssertFailsAfterOneRequest<UnconfirmedChangeException>(call, method, path));
 
-            Assert.Contains("CertificatesUnavailable", exception.Message);
+            Assert.Contains("CertificatesUnavailable", inner.Message);
             Assert.Single(_service.Requests, r => r.Path == "/certs");
         }
 
         private void AssertWriteSentOnceWithoutToken(Action call, string method, string path)
         {
-            var exception = AssertFailsAfterOneRequest<InvalidOperationException>(call, method, path);
+            var inner = AssertUnconfirmedChange<MissingServiceTokenException>(AssertFailsAfterOneRequest<UnconfirmedChangeException>(call, method, path));
 
-            Assert.Equal("The attestation service response does not contain a valid token.", exception.Message);
+            Assert.Equal("The attestation service response does not contain a valid token.", inner.Message);
+        }
+
+        private static TInner AssertUnconfirmedChange<TInner>(UnconfirmedChangeException exception) where TInner : Exception
+        {
+            var inner = Assert.IsType<TInner>(exception.InnerException);
+            Assert.StartsWith("The attestation service accepted the change, but the result could not be confirmed: ", exception.Message);
+            Assert.Contains(inner.Message, exception.Message);
+            Assert.EndsWith("The change may already have been applied. Check the current policy or policy signers before trying again.", exception.Message);
+            return inner;
         }
 
         private TException AssertFailsAfterOneRequest<TException>(Action call, string method, string path) where TException : Exception
@@ -592,6 +634,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public HashSet<string> FailResponseBodyOnce { get; } = new HashSet<string>();
 
             /// <summary>
+            /// Makes requests that read the policy signers fail with an error response.
+            /// </summary>
+            public bool FailPolicySignerReads { get; set; }
+
+            /// <summary>
             /// Difference between the service's clock and the local clock.
             /// </summary>
             public TimeSpan ClockOffset { get; set; }
@@ -644,6 +691,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                 if (ErrorResponse != null)
                 {
                     return Json(ErrorResponse, HttpStatusCode.BadRequest);
+                }
+
+                if (FailPolicySignerReads && recorded.Method == "GET" && recorded.Path == "/certificates")
+                {
+                    return Json(new JObject { ["error"] = new JObject { ["code"] = "SignersUnavailable", ["message"] = "The policy signers are unavailable" } }, HttpStatusCode.BadRequest);
                 }
 
                 if (FailNextRequests > 0)
