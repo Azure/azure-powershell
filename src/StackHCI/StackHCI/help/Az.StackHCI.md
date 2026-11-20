@@ -77,6 +77,9 @@ Extends Software Assurance Benefit to a cluster
 ### [Invoke-AzStackHciUpdate](Invoke-AzStackHciUpdate.md)
 Apply Update
 
+### [Invoke-AzStackHciArcInitialization](Invoke-AzStackHciArcInitialization.md)
+Initialize Arc registration for an HCI cluster.
+
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
 
