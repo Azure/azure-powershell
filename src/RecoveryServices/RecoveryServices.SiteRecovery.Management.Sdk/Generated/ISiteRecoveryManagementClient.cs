@@ -69,6 +69,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
 
         /// <summary>
+        /// Gets the IReplicationEligibilityResultsOperations
+        /// </summary>
+        IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; }
+
+        /// <summary>
         /// Gets the IOperations
         /// </summary>
         IOperations Operations { get; }
@@ -217,11 +222,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationVaultSettingOperations
         /// </summary>
         IReplicationVaultSettingOperations ReplicationVaultSetting { get; }
-
-        /// <summary>
-        /// Gets the IReplicationEligibilityResultsOperations
-        /// </summary>
-        IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; }
 
     }
 }

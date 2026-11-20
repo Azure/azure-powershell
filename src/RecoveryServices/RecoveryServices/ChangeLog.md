@@ -19,6 +19,15 @@
 -->
 
 ## Upcoming Release
+* Updated Az.RecoveryServices.SiteRecovery to use API version 2026-11-01.
+* Added Confidential VM (CVM) support for Azure-to-Azure replication:
+    - `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig` accepts `-ReplicaConfidentialDiskEncryptionSetId` and `-TargetConfidentialDiskEncryptionSetId` to specify the per-disk replica and target confidential disk encryption sets for customer-managed key (CMK) confidential VM disks.
+    - `New-AzRecoveryServicesAsrReplicationProtectedItem` accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` to specify the confidential data disk encryption (CDDE) user-assigned managed identity used at failover.
+    - `Set-AzRecoveryServicesAsrReplicationProtectedItem` (update) accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` and honors the per-disk target confidential disk encryption set; a per-disk replica confidential disk encryption set is rejected on update.
+    - `Update-AzRecoveryServicesAsrProtectionDirection` (reprotect) accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` and forwards the per-disk confidential disk encryption sets on the switch-protection call.
+    - `Update-AzRecoveryServicesAsrClusterProtectionDirection` rejects per-disk confidential disk encryption sets, because cluster reprotect does not support them.
+    - Protected item output exposes `RecoveryConfidentialDataDiskEncryptionIdentity` and per-disk `ReplicaConfidentialDiskEncryptionSetId` and `TargetConfidentialDiskEncryptionSetId`.
+    - Added PowerShell help examples for CVM enable replication, add disk, target confidential disk encryption set and identity updates, individual reprotect, and settings readback.
 
 ## Version 7.16.0
 * Supported SQL instance snapshot backup features.
