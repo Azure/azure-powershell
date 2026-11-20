@@ -48,6 +48,13 @@ service-name: HorizonDB
 subject-prefix: $(service-name)
 
 directive:
+  # Avoid credential-scanner false positives in generated password-authentication parameter help.
+  - where:
+      subject: PasswordAuthentication
+      parameter-name: State
+    set:
+      parameter-description: Specifies whether PostgreSQL credential-based authentication is enabled or disabled.
+
   # Keep expanded and JSON input variants instead of model-based create/update variants.
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))

@@ -20,6 +20,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Clarified the password authentication State parameter help.
 * Added isolated cluster, pool, and firewall rule creation tests and cluster and firewall rule deletion coverage, with cleanup after the test suite.
 * Added parameter group creation, deletion, retrieval, and update tests, including shared fixtures and updating work_mem to 16384.
     - Skipped standalone cluster and firewall rule deletion tests in favor of the combined creation and deletion tests.

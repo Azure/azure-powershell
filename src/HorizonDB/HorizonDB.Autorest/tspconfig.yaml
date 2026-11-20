@@ -16,6 +16,12 @@ options:
       - Id
       - Type
     directive:
+      # Avoid credential-scanner false positives in generated password-authentication parameter help.
+      - where:
+          subject: PasswordAuthentication
+          parameter-name: State
+        set:
+          parameter-description: Specifies whether PostgreSQL credential-based authentication is enabled or disabled.
       - where:
           subject: Operation
         hide: true

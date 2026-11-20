@@ -198,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-The state of PostgreSQL username-and-password authentication.
+Specifies whether PostgreSQL credential-based authentication is enabled or disabled.
 
 ```yaml
 Type: System.String
