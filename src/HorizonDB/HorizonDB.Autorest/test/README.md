@@ -16,6 +16,19 @@ Custom cmdlets generally encompass additional functionality not described in the
 ## Usage
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.
 
+## Recording consistency
+Playback recordings are keyed by exact request URLs, so the fixture names in
+`env.json` must match all recordings that use them. When recording only selected
+suites, pass `-UsePreviousConfigForRecord` to preserve the saved fixture names:
+
+```powershell
+pwsh -NoProfile -File .\src\HorizonDB\HorizonDB.Autorest\test-module.ps1 -Record -UsePreviousConfigForRecord -TestName Get-AzHorizonDbCluster,Get-AzHorizonDbNode,Get-AzHorizonDbPool,Update-AzHorizonDbCluster,Update-AzHorizonDbPool
+```
+
+If fixture names are intentionally regenerated, re-record every suite using
+those fixtures before running full playback. Do not update recording keys alone;
+recorded response bodies also contain the resource names and IDs.
+
 ## Shared HorizonDB fixture
 In record and live modes, `setupEnv` creates a dedicated resource group and deploys
 `prereqs.json` through `New-AzDeployment`. The deployment waits for a PostgreSQL 17

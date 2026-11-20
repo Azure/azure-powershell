@@ -28,6 +28,7 @@
 * Updated deletion examples to explicitly request confirmation before removing resources.
 * Added integration tests for updating cluster backup retention to 9 days and pool capacity to 4 vCores.
 * Added shared cluster and pool fixtures using Intel compute generation 1 for integration tests.
+    - Refreshed shared cluster, node, and pool Get and Update recordings to match the saved fixture names.
 * Fixed building Az.HorizonDB from source.
 * First preview release for module Az.HorizonDB.
 * Added cmdlet examples for cluster, pool, and parameter group management based on API version 2026-10-01-preview.

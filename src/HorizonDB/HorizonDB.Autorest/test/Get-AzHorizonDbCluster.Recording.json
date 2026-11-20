@@ -1,13 +1,13 @@
 {
-  "Get-AzHorizonDbCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-ivbqu4zt/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-r3qkuwbo?api-version=2026-10-01-preview+1": {
+  "Get-AzHorizonDbCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-ivbqu4zt/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-r3qkuwbo?api-version=2026-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "02db52c5-f7f2-42f9-b39c-c9b91b96d947" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "307da4b3-4b18-440d-84fc-fb1dda40df83" ],
         "CommandName": [ "Get-AzHorizonDbCluster" ],
         "FullCommandName": [ "Get-AzHorizonDbCluster_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,34 +23,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "753ec589-6d3c-4b47-ac28-e42c92960811" ],
+        "x-ms-request-id": [ "5e4a650d-1187-469a-abbe-8e2ea38e376d" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-correlation-request-id": [ "df2ea4db-520a-4667-9dfc-ac1862196078" ],
-        "x-ms-routing-request-id": [ "INDIASOUTHCENTRAL:20261119T190905Z:df2ea4db-520a-4667-9dfc-ac1862196078" ],
+        "x-ms-correlation-request-id": [ "5ccccd92-0777-4948-859d-a0eadf7dcc2d" ],
+        "x-ms-routing-request-id": [ "INDIASOUTHCENTRAL:20261120T221205Z:5ccccd92-0777-4948-859d-a0eadf7dcc2d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8F7330FC69D34C5FAEE8234EBC32F576 Ref B: SN4AA2022402019 Ref C: 2026-11-19T19:09:04Z" ],
-        "Date": [ "Thu, 19 Nov 2026 19:09:05 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 550CC3523D154849AEA1EC2471572E25 Ref B: SN4AA2022302031 Ref C: 2026-11-20T22:12:05Z" ],
+        "Date": [ "Fri, 20 Nov 2026 22:12:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "842" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"identity\":{\"type\":\"None\"},\"properties\":{\"postgreSqlVersion\":\"17\",\"creationMode\":\"Create\",\"network\":{\"publicAccess\":\"Disabled\"},\"backup\":{\"geoRedundancy\":\"Disabled\",\"retentionDays\":7,\"earliestRestorePointUtc\":\"2026-11-19T18:53:47.0206968+00:00\"},\"aiModelManagement\":\"Disabled\",\"readWritePool\":{\"designatedPoolResourceId\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-ivbqu4zt/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-r3qkuwbo/pools/horizondb-pool-xlkwhd74\"},\"state\":\"Ready\",\"provisioningState\":\"Succeeded\"},\"location\":\"indiasouthcentral\",\"id\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-ivbqu4zt/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-r3qkuwbo\",\"name\":\"horizondb-fixture-r3qkuwbo\",\"type\":\"Microsoft.HorizonDb/clusters\"}",
+      "Content": "{\"identity\":{\"type\":\"None\"},\"properties\":{\"postgreSqlVersion\":\"17\",\"creationMode\":\"Create\",\"network\":{\"publicAccess\":\"Disabled\"},\"backup\":{\"geoRedundancy\":\"Disabled\",\"retentionDays\":7,\"earliestRestorePointUtc\":\"2026-11-20T22:00:00.4084701+00:00\"},\"aiModelManagement\":\"Disabled\",\"readWritePool\":{\"designatedPoolResourceId\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph/pools/horizondb-pool-pizxwf14\"},\"state\":\"Ready\",\"provisioningState\":\"Succeeded\"},\"location\":\"indiasouthcentral\",\"id\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph\",\"name\":\"horizondb-fixture-bc4nkzph\",\"type\":\"Microsoft.HorizonDb/clusters\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzHorizonDbCluster+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-ivbqu4zt/providers/Microsoft.HorizonDb/clusters?api-version=2026-10-01-preview+1": {
+  "Get-AzHorizonDbCluster+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-ivbqu4zt/providers/Microsoft.HorizonDb/clusters?api-version=2026-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "6caa654f-4ffb-49e9-abf4-2c76d41c26aa" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "c4900b7b-af79-4ba2-bd87-64f0f2f772d3" ],
         "CommandName": [ "Get-AzHorizonDbCluster" ],
         "FullCommandName": [ "Get-AzHorizonDbCluster_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,24 +65,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "75df614a-105c-45d9-8793-e949aee3aa52" ],
+        "x-ms-original-request-ids": [ "b75a6236-e396-4cbd-b549-41cb33c62095" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
-        "x-ms-request-id": [ "b105a9e2-39fe-4b87-ae40-579d21cb8220" ],
-        "x-ms-correlation-request-id": [ "b105a9e2-39fe-4b87-ae40-579d21cb8220" ],
-        "x-ms-routing-request-id": [ "INDIASOUTHCENTRAL:20261119T190906Z:b105a9e2-39fe-4b87-ae40-579d21cb8220" ],
+        "x-ms-request-id": [ "f41bd8b0-5bc5-4436-9295-e369479b9a3b" ],
+        "x-ms-correlation-request-id": [ "f41bd8b0-5bc5-4436-9295-e369479b9a3b" ],
+        "x-ms-routing-request-id": [ "INDIASOUTHCENTRAL:20261120T221206Z:f41bd8b0-5bc5-4436-9295-e369479b9a3b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6AC9E89C30A948118BBCD11254AD98B6 Ref B: SN4AA2022402019 Ref C: 2026-11-19T19:09:05Z" ],
-        "Date": [ "Thu, 19 Nov 2026 19:09:06 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F16AED7E413A4FC18D8EED537DF9031E Ref B: SN4AA2022302031 Ref C: 2026-11-20T22:12:06Z" ],
+        "Date": [ "Fri, 20 Nov 2026 22:12:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "854" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"identity\":{\"type\":\"None\"},\"properties\":{\"postgreSqlVersion\":\"17\",\"creationMode\":\"Create\",\"network\":{\"publicAccess\":\"Disabled\"},\"backup\":{\"geoRedundancy\":\"Disabled\",\"retentionDays\":7,\"earliestRestorePointUtc\":\"2026-11-19T18:53:47.0206968+00:00\"},\"aiModelManagement\":\"Disabled\",\"readWritePool\":{\"designatedPoolResourceId\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-ivbqu4zt/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-r3qkuwbo/pools/horizondb-pool-xlkwhd74\"},\"state\":\"Ready\",\"provisioningState\":\"Succeeded\"},\"location\":\"indiasouthcentral\",\"id\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-ivbqu4zt/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-r3qkuwbo\",\"name\":\"horizondb-fixture-r3qkuwbo\",\"type\":\"Microsoft.HorizonDb/clusters\"}]}",
+      "Content": "{\"value\":[{\"identity\":{\"type\":\"None\"},\"properties\":{\"postgreSqlVersion\":\"17\",\"creationMode\":\"Create\",\"network\":{\"publicAccess\":\"Disabled\"},\"backup\":{\"geoRedundancy\":\"Disabled\",\"retentionDays\":7,\"earliestRestorePointUtc\":\"2026-11-20T22:00:00.4084701+00:00\"},\"aiModelManagement\":\"Disabled\",\"readWritePool\":{\"designatedPoolResourceId\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph/pools/horizondb-pool-pizxwf14\"},\"state\":\"Ready\",\"provisioningState\":\"Succeeded\"},\"location\":\"indiasouthcentral\",\"id\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph\",\"name\":\"horizondb-fixture-bc4nkzph\",\"type\":\"Microsoft.HorizonDb/clusters\"}]}",
       "isContentBase64": false
     }
   }
