@@ -1,0 +1,89 @@
+{
+  "Get-AzHorizonDbCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph?api-version=2026-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph?api-version=2026-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "307da4b3-4b18-440d-84fc-fb1dda40df83" ],
+        "CommandName": [ "Get-AzHorizonDbCluster" ],
+        "FullCommandName": [ "Get-AzHorizonDbCluster_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.5.0", "PSVersion/v7.6.10", "Az.HorizonDB/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5e4a650d-1187-469a-abbe-8e2ea38e376d" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "5ccccd92-0777-4948-859d-a0eadf7dcc2d" ],
+        "x-ms-routing-request-id": [ "INDIASOUTHCENTRAL:20261120T221205Z:5ccccd92-0777-4948-859d-a0eadf7dcc2d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 550CC3523D154849AEA1EC2471572E25 Ref B: SN4AA2022302031 Ref C: 2026-11-20T22:12:05Z" ],
+        "Date": [ "Fri, 20 Nov 2026 22:12:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "842" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"identity\":{\"type\":\"None\"},\"properties\":{\"postgreSqlVersion\":\"17\",\"creationMode\":\"Create\",\"network\":{\"publicAccess\":\"Disabled\"},\"backup\":{\"geoRedundancy\":\"Disabled\",\"retentionDays\":7,\"earliestRestorePointUtc\":\"2026-11-20T22:00:00.4084701+00:00\"},\"aiModelManagement\":\"Disabled\",\"readWritePool\":{\"designatedPoolResourceId\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph/pools/horizondb-pool-pizxwf14\"},\"state\":\"Ready\",\"provisioningState\":\"Succeeded\"},\"location\":\"indiasouthcentral\",\"id\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph\",\"name\":\"horizondb-fixture-bc4nkzph\",\"type\":\"Microsoft.HorizonDb/clusters\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzHorizonDbCluster+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters?api-version=2026-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters?api-version=2026-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "c4900b7b-af79-4ba2-bd87-64f0f2f772d3" ],
+        "CommandName": [ "Get-AzHorizonDbCluster" ],
+        "FullCommandName": [ "Get-AzHorizonDbCluster_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.5.0", "PSVersion/v7.6.10", "Az.HorizonDB/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "b75a6236-e396-4cbd-b549-41cb33c62095" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-request-id": [ "f41bd8b0-5bc5-4436-9295-e369479b9a3b" ],
+        "x-ms-correlation-request-id": [ "f41bd8b0-5bc5-4436-9295-e369479b9a3b" ],
+        "x-ms-routing-request-id": [ "INDIASOUTHCENTRAL:20261120T221206Z:f41bd8b0-5bc5-4436-9295-e369479b9a3b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F16AED7E413A4FC18D8EED537DF9031E Ref B: SN4AA2022302031 Ref C: 2026-11-20T22:12:06Z" ],
+        "Date": [ "Fri, 20 Nov 2026 22:12:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "854" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"identity\":{\"type\":\"None\"},\"properties\":{\"postgreSqlVersion\":\"17\",\"creationMode\":\"Create\",\"network\":{\"publicAccess\":\"Disabled\"},\"backup\":{\"geoRedundancy\":\"Disabled\",\"retentionDays\":7,\"earliestRestorePointUtc\":\"2026-11-20T22:00:00.4084701+00:00\"},\"aiModelManagement\":\"Disabled\",\"readWritePool\":{\"designatedPoolResourceId\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph/pools/horizondb-pool-pizxwf14\"},\"state\":\"Ready\",\"provisioningState\":\"Succeeded\"},\"location\":\"indiasouthcentral\",\"id\":\"/subscriptions/ac0271d6-426b-4b0d-b88d-0d0e4bd693ae/resourceGroups/horizondb-fixture-rg-0e5p3w47/providers/Microsoft.HorizonDb/clusters/horizondb-fixture-bc4nkzph\",\"name\":\"horizondb-fixture-bc4nkzph\",\"type\":\"Microsoft.HorizonDb/clusters\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

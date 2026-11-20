@@ -1,4 +1,7 @@
 ## Upcoming Release
+#### Az.HorizonDB
+* Introduce cmdlet for cluster, pool, and parameter group management based on API version 2026-10-01-preview.
+
 #### Az.NetworkSecurity
 * Fixed module help metadata so the Az.NetworkSecurity reference documentation can be published.
 
