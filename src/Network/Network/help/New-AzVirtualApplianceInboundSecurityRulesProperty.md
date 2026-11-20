@@ -16,6 +16,7 @@ Define Inbound Security Rules Property
 New-AzVirtualApplianceInboundSecurityRulesProperty -Name <String> -Protocol <String>
  -SourceAddressPrefix <String> [-DestinationPortRange <Int32>] [-DestinationPortRangeList <String[]>]
  -AppliesOn <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [-LoadBalancerConfiguration <PSNetworkVirtualApplianceLoadBalancerConfiguration>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -39,8 +40,31 @@ Applies on: publicip1
 
 The rule with above property will configure a corresponding NSG rule and a Load Balancing rule on the SLB attached to the NVA, the LB rule will have the Frontend IP as publicip1
 
+### Example 2: Configure load balancing for a Permanent ingress rule
+```powershell
+$configuration = New-AzNetworkVirtualApplianceLoadBalancerConfiguration -LoadDistribution SourceIP -IdleTimeoutInMinutes 15
+$rule = New-AzVirtualApplianceInboundSecurityRulesProperty -Name InboundRule1 -Protocol TCP -SourceAddressPrefix '*' -DestinationPortRange 443 -AppliesOn publicip1 -LoadBalancerConfiguration $configuration
+Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName testrg -VirtualApplianceName nva -Name collection1 -RuleType Permanent -Rule $rule
+```
+
+Configures the individual Internet Ingress rule with two-tuple distribution and a 15-minute timeout. Configuration is not supported on AutoExpire rules.
+
 ## PARAMETERS
 
+### -LoadBalancerConfiguration
+Load balancer settings for this individual Permanent Internet Ingress rule. The enclosing rule collection must be submitted with `-RuleType Permanent`. Omission on create or update uses Default distribution and a 5-minute timeout. Omitted configuration members use their defaults, not previously configured values.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceLoadBalancerConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 ### -AcquirePolicyToken
 Acquire an Azure Policy token automatically for this resource operation.
 

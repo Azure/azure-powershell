@@ -15,6 +15,7 @@ Update or Change a Network Virtual Appliance resource.
 ```
 Update-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String>
  [-Sku <PSVirtualApplianceSkuProperties>] [-VirtualApplianceAsn <Int32>] [-AddressFamily <String[]>]
+ [-LoadBalancerConfiguration <PSNetworkVirtualApplianceLoadBalancerConfiguration>]
  [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
@@ -22,6 +23,8 @@ Update-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String>
 
 ## DESCRIPTION
 The Update-AzNetworkVirtualAppliance modifies a Network Virtual Appliance resource.
+
+Omitting `-LoadBalancerConfiguration` resets the internal load balancer to Default distribution and a 5-minute idle timeout, even when updating only ASN, SKU, tags, or address family. A supplied configuration replaces the previous configuration; omitted members use their defaults rather than previous values.
 
 ## EXAMPLES
 
@@ -50,8 +53,32 @@ Update-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -AddressFam
 
 Upgrades an existing IPv4-only Network Virtual Appliance to dual-stack (IPv4 + IPv6). Passing -AddressFamily "IPv4" downgrades it back to IPv4-only. Omitting -AddressFamily leaves the existing address family unchanged.
 
+### Example 4: Set and explicitly reset load balancer settings
+```powershell
+$configuration = New-AzNetworkVirtualApplianceLoadBalancerConfiguration -LoadDistribution SourceIPProtocol -IdleTimeoutInMinutes 15
+Update-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -LoadBalancerConfiguration $configuration
+$defaults = New-AzNetworkVirtualApplianceLoadBalancerConfiguration -LoadDistribution Default -IdleTimeoutInMinutes 5
+Update-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -LoadBalancerConfiguration $defaults
+```
+
+Sets custom settings, then resets them explicitly. Omitting `-LoadBalancerConfiguration` also resets both settings to defaults.
+
 ## PARAMETERS
 
+### -LoadBalancerConfiguration
+The replacement internal load balancer configuration. Omission resets existing settings to Default distribution and a 5-minute timeout. If only one member is supplied, the other uses its default. Applies to managed NVAs in hubs and VNets, not partner-managed SaaS load balancers.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceLoadBalancerConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 ### -AcquirePolicyToken
 Acquire an Azure Policy token automatically for this resource operation.
 
