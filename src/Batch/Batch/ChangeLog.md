@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.1.3
 * Fixed `New-AzBatchApplicationPackage` deleting an existing application package version when its upload failed, and leaving a new, empty version behind. It now deletes only the version it created.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Fixed `New-AzBatchComputeNodeUser` and `Set-AzBatchComputeNodeUser` sending the expiry time 0001-01-01 when `-ExpiryTime` isn't specified. They now omit `expiryTime` when it isn't specified, so the service default applies.
