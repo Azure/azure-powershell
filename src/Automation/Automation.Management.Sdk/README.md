@@ -53,6 +53,16 @@ directive:
           if (acceptedResponse) {
             delete acceptedResponse.headers;
           }
+
+          // Send the runbook as the raw request body, as earlier API versions did.
+          // With `text/plain` and a string schema the generator JSON-encodes the
+          // content, so the service stores it as a quoted, escaped string.
+          operation.consumes = ["text/powershell"];
+          for (const parameter of operation.parameters ?? []) {
+            if (parameter?.in === "body" && parameter.name === "runbookContent") {
+              parameter.schema = { type: "object", format: "file" };
+            }
+          }
         }
       }
 

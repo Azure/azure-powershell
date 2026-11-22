@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='runbookName'>
         /// The runbook name.
         /// </param>
-        public static void ReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, string runbookContent)
+        public static void ReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, System.IO.Stream runbookContent)
         {
                 ((IRunbookDraftOperations)operations).ReplaceContentAsync(resourceGroupName, automationAccountName, runbookName, runbookContent).GetAwaiter().GetResult();
         }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task ReplaceContentAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, string runbookContent, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task ReplaceContentAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, System.IO.Stream runbookContent, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.ReplaceContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, runbookContent, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='runbookName'>
         /// The runbook name.
         /// </param>
-        public static void BeginReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, string runbookContent)
+        public static void BeginReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, System.IO.Stream runbookContent)
         {
                 ((IRunbookDraftOperations)operations).BeginReplaceContentAsync(resourceGroupName, automationAccountName, runbookName, runbookContent).GetAwaiter().GetResult();
         }
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginReplaceContentAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, string runbookContent, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginReplaceContentAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, System.IO.Stream runbookContent, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginReplaceContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, runbookContent, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }

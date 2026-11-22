@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, string runbookContent, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, System.IO.Stream runbookContent, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
                 Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginReplaceContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, runbookContent, customHeaders, cancellationToken).ConfigureAwait(false);
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, string runbookContent, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, System.IO.Stream runbookContent, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -909,11 +909,14 @@ namespace Microsoft.Azure.Management.Automation
             }
             // Serialize Request
             string _requestContent = null;
-            if(runbookContent != null)
+            if (runbookContent == null)
             {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(runbookContent, this.Client.SerializationSettings);
-                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                throw new System.ArgumentNullException("runbookContent");
+            }
+                if (runbookContent != null && runbookContent != System.IO.Stream.Null)
+            {
+                _httpRequest.Content = new System.Net.Http.StreamContent(runbookContent);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("text/powershell");
             }
             // Set Credentials
             if (this.Client.Credentials != null)
