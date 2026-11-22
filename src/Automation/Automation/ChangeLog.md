@@ -28,6 +28,8 @@
   * `New-AzAutomationRuntimeEnvironmentPackage`
   * `Set-AzAutomationRuntimeEnvironmentPackage`
   * `Remove-AzAutomationRuntimeEnvironmentPackage`
+* Fixed `Export-AzAutomationRunbook` and `Export-AzAutomationDscConfiguration` failing to read the runbook or configuration content
+    - The content is raw script text, so the generated `GetContent` operations now return it as a stream again instead of deserializing it as JSON
 
 ## Version 1.12.1
 * Updated Automation account identity handling to explicitly use the Automation SDK `Identity` model in create/update flows.

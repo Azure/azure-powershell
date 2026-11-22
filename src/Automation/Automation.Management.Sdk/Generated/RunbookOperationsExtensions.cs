@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='runbookName'>
         /// The runbook name.
         /// </param>
-        public static string GetContent(this IRunbookOperations operations, string resourceGroupName, string automationAccountName, string runbookName)
+        public static System.IO.Stream GetContent(this IRunbookOperations operations, string resourceGroupName, string automationAccountName, string runbookName)
         {
                 return ((IRunbookOperations)operations).GetContentAsync(resourceGroupName, automationAccountName, runbookName).GetAwaiter().GetResult();
         }
@@ -266,12 +266,11 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<string> GetContentAsync(this IRunbookOperations operations, string resourceGroupName, string automationAccountName, string runbookName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<System.IO.Stream> GetContentAsync(this IRunbookOperations operations, string resourceGroupName, string automationAccountName, string runbookName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
+            var _result = await operations.GetContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, null, cancellationToken).ConfigureAwait(false);
+            _result.Request.Dispose();
+            return _result.Body;
         }
         /// <summary>
         /// Publish runbook draft.

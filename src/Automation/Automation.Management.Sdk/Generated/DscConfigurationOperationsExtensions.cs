@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='configurationName'>
         /// The configuration name.
         /// </param>
-        public static string GetContent(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName)
+        public static System.IO.Stream GetContent(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName)
         {
                 return ((IDscConfigurationOperations)operations).GetContentAsync(resourceGroupName, automationAccountName, configurationName).GetAwaiter().GetResult();
         }
@@ -290,12 +290,11 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<string> GetContentAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<System.IO.Stream> GetContentAsync(this IDscConfigurationOperations operations, string resourceGroupName, string automationAccountName, string configurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
+            var _result = await operations.GetContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, configurationName, null, cancellationToken).ConfigureAwait(false);
+            _result.Request.Dispose();
+            return _result.Body;
         }
         /// <summary>
         /// Retrieve a list of configurations.
