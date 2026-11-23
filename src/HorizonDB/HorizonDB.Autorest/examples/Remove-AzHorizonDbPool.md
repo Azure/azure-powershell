@@ -1,22 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a pool from a cluster that has multiple pools
 ```powershell
-{{ Add code here }}
+Remove-AzHorizonDbPool -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -Name 'example-pool-02' -Confirm
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes `example-pool-02` after confirmation. The cluster must contain at least one other pool.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+> [!IMPORTANT]
+> Currently, a pool cannot be deleted if it is the only pool in the cluster.

@@ -4,6 +4,7 @@
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
     ## Upcoming Release
+    * Documented that a cluster's only pool cannot currently be deleted and added a pool deletion example.
     * Updated HorizonDB TypeSpec generation settings to exclude an unrelated service directive.
     * Added shared cluster and pool fixtures for HorizonDB integration tests.
     * Added sample cmdlet output based on the first API example response.

@@ -10,7 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Deletes a HorizonDB pool together with the Pool-scoped Endpoint whose associatedResourceId identifies that Pool and all FirewallRule children of that Endpoint.
 The Endpoint cannot outlive or be deleted independently from its Pool.
-When this is the Cluster's last surviving Pool, the service also disconnects every existing private endpoint connection associated with the Cluster by setting its privateLinkServiceConnectionState.status to Rejected and providing a description that the last Pool was deleted.
+Currently, a pool cannot be deleted if it is the only pool in the cluster.
 The HorizonDB private endpoint connection resources remain available for inspection and cleanup, and customer-owned Microsoft.Network/privateEndpoints resources are not deleted.
 The delete long-running operation completes only after all required private endpoint disconnections have completed.
 
@@ -38,33 +38,21 @@ Remove-AzHorizonDbPool -ClusterInputObject <IHorizonDbIdentity> -Name <String> [
 ## DESCRIPTION
 Deletes a HorizonDB pool together with the Pool-scoped Endpoint whose associatedResourceId identifies that Pool and all FirewallRule children of that Endpoint.
 The Endpoint cannot outlive or be deleted independently from its Pool.
-When this is the Cluster's last surviving Pool, the service also disconnects every existing private endpoint connection associated with the Cluster by setting its privateLinkServiceConnectionState.status to Rejected and providing a description that the last Pool was deleted.
+Currently, a pool cannot be deleted if it is the only pool in the cluster.
 The HorizonDB private endpoint connection resources remain available for inspection and cleanup, and customer-owned Microsoft.Network/privateEndpoints resources are not deleted.
 The delete long-running operation completes only after all required private endpoint disconnections have completed.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a pool from a cluster that has multiple pools
 ```powershell
-{{ Add code here }}
+Remove-AzHorizonDbPool -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -Name 'example-pool-02' -Confirm
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes `example-pool-02` after confirmation. The cluster must contain at least one other pool.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+> [!IMPORTANT]
+> Currently, a pool cannot be deleted if it is the only pool in the cluster.
 
 ## PARAMETERS
 
