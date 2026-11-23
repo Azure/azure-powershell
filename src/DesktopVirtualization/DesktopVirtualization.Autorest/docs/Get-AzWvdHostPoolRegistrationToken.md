@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal
 
 ## NOTES
 

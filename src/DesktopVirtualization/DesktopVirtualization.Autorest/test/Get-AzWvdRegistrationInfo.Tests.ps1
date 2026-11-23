@@ -37,6 +37,7 @@ Describe 'Get-AzWvdRegistrationInfo' {
             -HostPoolName $env.HostPool `
 
             $regToken.Token | Should -Not -BeNullOrEmpty
+            $regToken.Token | Should -BeOfType ([System.Security.SecureString])
         }
         finally{
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `

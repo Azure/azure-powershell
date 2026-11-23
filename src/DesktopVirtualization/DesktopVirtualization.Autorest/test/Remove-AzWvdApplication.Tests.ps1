@@ -56,7 +56,7 @@ Describe 'Remove-AzWvdApplication' {
                             -ResourceGroupName $env.ResourceGroup `
                             -GroupName $env.RemoteApplicationGroup `
                             -Name 'Paint'
-            $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
+            $application.Name | Should -Be "$($env.RemoteApplicationGroup)/Paint"
             $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
             $application.FriendlyName | Should -Be 'fri'
             $application.Description | Should -Be 'des'
@@ -141,7 +141,7 @@ Describe 'Remove-AzWvdApplication' {
             -GroupName $env.RemoteApplicationGroup `
             -Name 'UnitTest-MSIX-Application'
 
-        $application.Name | Should -Be 'ApplicationGroupPowershell2/UnitTest-MSIX-Application'
+        $application.Name | Should -Be "$($env.RemoteApplicationGroup)/UnitTest-MSIX-Application"
         $application.FriendlyName | Should -Be 'friendlyname'
         $application.Description | Should -Be 'Unit Test MSIX Application'
         $application.IconIndex | Should -Be 0
@@ -221,7 +221,7 @@ Describe 'Remove-AzWvdApplication' {
             -GroupName $env.DesktopApplicationGroup `
             -Name 'UnitTest-MSIX-Application'
 
-        $application.Name | Should -Be 'ApplicationGroupPowershell1/UnitTest-MSIX-Application'
+        $application.Name | Should -Be "$($env.DesktopApplicationGroup)/UnitTest-MSIX-Application"
         $application.FriendlyName | Should -Be 'friendlyname'
         $application.Description | Should -Be 'Unit Test MSIX Application'
         $application.IconIndex | Should -Be 0

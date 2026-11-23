@@ -106,7 +106,7 @@ Describe 'Get-AzWvdApplicationGroup' {
 
             $applicationGroups = Get-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                | Where-Object -Property Name -Match 'ApplicationGroupPowershell*' `
+                                | Where-Object { $_.Name -in @($env.DesktopApplicationGroup, $env.RemoteApplicationGroup) } `
                                 | Sort-Object -Property Name
 
                 $applicationGroups[0].Name | Should -Be $env.DesktopApplicationGroup
@@ -177,7 +177,7 @@ Describe 'Get-AzWvdApplicationGroup' {
                                 -ApplicationGroupType 'RemoteApp'
 
             $applicationGroups = Get-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                                | Where-Object -Property Name -Match 'ApplicationGroupPowershell*' `
+                                | Where-Object { $_.Name -in @($env.DesktopApplicationGroup, $env.RemoteApplicationGroup) } `
                                 | Sort-Object -Property Name
 
                 $applicationGroups[0].Name | Should -Be $env.DesktopApplicationGroup

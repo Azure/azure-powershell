@@ -1807,7 +1807,7 @@ Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtuali
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1833,7 +1833,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
 #>
 function Get-AzWvdHostPoolRegistrationToken {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='List', Mandatory)]
@@ -4708,7 +4708,7 @@ Get-AzWvdSessionHostSingleRegistrationToken -ResourceGroupName resourceGroup1 `
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScopedRegistrationTokenProperties
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4720,7 +4720,7 @@ BODY <IScopedRegistrationTokenProperties>: Request body for listing scoped regis
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostsingleregistrationtoken
 #>
 function Get-AzWvdSessionHostSingleRegistrationToken {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -8804,7 +8804,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # The registration token base64 encoded string.
     ${RegistrationInfoToken},
 
@@ -10851,13 +10851,13 @@ param(
     ${DiffDiskSettingOption},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "TempDisk")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "TempDisk", "NvmeDisk")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Gets or sets specifies the ephemeral disk placement for operating system disk.
     # The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise TempDisk is used.
     # Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
-    # Possible values include: 'CacheDisk', 'TempDisk'.
+    # Possible values include: 'CacheDisk', 'TempDisk', 'NvmeDisk'.
     ${DiffDiskSettingPlacement},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -19229,13 +19229,13 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "TempDisk")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "TempDisk", "NvmeDisk")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Gets or sets specifies the ephemeral disk placement for operating system disk.
     # The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise TempDisk is used.
     # Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
-    # Possible values include: 'CacheDisk', 'TempDisk'.
+    # Possible values include: 'CacheDisk', 'TempDisk', 'NvmeDisk'.
     ${DiffDiskSettingPlacement},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

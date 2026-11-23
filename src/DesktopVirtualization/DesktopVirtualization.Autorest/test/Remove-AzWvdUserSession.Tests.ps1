@@ -13,21 +13,30 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzWvdUserSession' {
     It 'Delete' {
+        $userSessions = @(Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
+                                    -ResourceGroupName $env.ResourceGroupPersistent `
+                                    -HostPoolName $env.HostPoolPersistent `
+                                    -SessionHostName $env.SessionHostName `
+                                    -ErrorAction Stop)
+        $userSessions.Count | Should -BeGreaterThan 0
+        $userSessionId = ($userSessions[0].Id -split '/')[-1]
+
         Remove-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                     -ResourceGroupName $env.ResourceGroupPersistent `
                                     -HostPoolName $env.HostPoolPersistent `
                                     -SessionHostName $env.SessionHostName `
-                                    -Id 4
+                                    -Id $userSessionId `
+                                    -ErrorAction Stop
 
-        try {
-            $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroupPersistent `
-                                -HostPoolName $env.HostPoolPersistent `
-                                -SessionHostName $env.SessionHostName `
-                                -Id 4
-            throw "Get should have failed."
-        } catch {
-
+        for ($attempt = 0; $attempt -lt 60; $attempt++) {
+            $remainingSessions = @(Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
+                                    -ResourceGroupName $env.ResourceGroupPersistent `
+                                    -HostPoolName $env.HostPoolPersistent `
+                                    -SessionHostName $env.SessionHostName `
+                                    -ErrorAction Stop `
+                                    | Where-Object { ($_.Id -split '/')[-1] -eq $userSessionId })
+            if ($remainingSessions.Count -eq 0) { break }
         }
+        $remainingSessions.Count | Should -Be 0
     }
 }

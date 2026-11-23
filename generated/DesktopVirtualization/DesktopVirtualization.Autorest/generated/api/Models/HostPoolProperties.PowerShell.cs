@@ -247,7 +247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RegistrationInfoToken"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RegistrationInfoToken = (string) content.GetValueForProperty("RegistrationInfoToken",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RegistrationInfoToken, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RegistrationInfoToken = (System.Security.SecureString) content.GetValueForProperty("RegistrationInfoToken",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RegistrationInfoToken, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("RegistrationInfoRegistrationTokenOperation"))
             {
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("RegistrationInfoToken"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RegistrationInfoToken = (string) content.GetValueForProperty("RegistrationInfoToken",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RegistrationInfoToken, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RegistrationInfoToken = (System.Security.SecureString) content.GetValueForProperty("RegistrationInfoToken",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPropertiesInternal)this).RegistrationInfoToken, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("RegistrationInfoRegistrationTokenOperation"))
             {
