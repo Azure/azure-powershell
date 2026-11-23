@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.1.3
 * Fixed `New-AzBatchApplicationPackage` deleting an existing application package version when its upload failed, and leaving a new, empty version behind. It now deletes only the version it created.
 * Fixed `Get-AzBatchSupportedVirtualMachineSku -MaxResultCount` returning every VM size. It now returns at most that many.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
