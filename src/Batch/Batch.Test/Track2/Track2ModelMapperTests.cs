@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
         public void PartsReadThroughTrack2CanBeSentThroughTrack1()
         {
             // While the cmdlets move one group at a time, objects from a moved cmdlet go into cmdlets that still use
-            // Track 1. They're backed by Track 1 objects, so both send what the service returned (except a resource
-            // file's identity, which Track 1 drops today: ResourceFileIdentityIsSentByTrack2).
-            string pool = AllParts.Replace(ResourceFileIdentity, string.Empty);
+            // Track 1. They're backed by Track 1 objects, so both send what the service returned, a resource file's
+            // identity included (Track 1 used to drop it; fixed in #30452).
+            string pool = AllParts;
             RecordingHandler handler = new RecordingHandler()
                 .On("GET /pools/pool1", HttpStatusCode.OK, pool)
                 .On("POST /pools", HttpStatusCode.Created);
@@ -169,9 +169,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void BindMountsSetThroughThePropertyAreSentByTrack2()
         {
-            // Today Track 1 doesn't send a bind mount list set through the ContainerHostBatchBindMounts property: it sends
-            // an empty list, which mounts no folder at all (only the constructor's list is sent; reported as a bug).
-            // Track 2 sends what the property shows.
+            // Both tracks send the bind mount list set through the ContainerHostBatchBindMounts property. Track 1 used to
+            // send an empty list, which mounts no folder at all (fixed in #30452).
             RecordingHandler handler = new RecordingHandler().On("POST /pools", HttpStatusCode.Created);
             Track2TestContext context = NewContext(handler);
             Func<Parts> parts = () => new Parts
@@ -192,17 +191,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
             SendThroughTrack2(context, parts());
 
             string path = "startTask.containerSettings.containerHostBatchBindMounts";
-            Assert.Equal("[]", JObject.Parse(handler.Requests[0].Body).SelectToken(path).ToString(Newtonsoft.Json.Formatting.None));
-            Assert.Equal("[{\"source\":\"Shared\",\"isReadOnly\":true}]", JObject.Parse(handler.Requests[1].Body).SelectToken(path).ToString(Newtonsoft.Json.Formatting.None));
+            JToken sentByTrack1 = JObject.Parse(handler.Requests[0].Body).SelectToken(path);
+            JToken sentByTrack2 = JObject.Parse(handler.Requests[1].Body).SelectToken(path);
+            Assert.Equal("[{\"source\":\"Shared\",\"isReadOnly\":true}]", sentByTrack2.ToString(Newtonsoft.Json.Formatting.None));
+            Assert.True(JToken.DeepEquals(sentByTrack1, sentByTrack2), "Track 1 sent " + sentByTrack1);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ASettingWithoutAValueIsSentByTrack2()
         {
-            // The service allows an environment setting without a value, and both tracks read it as null. Today Track 1
-            // can't send it: Utils.CreateSyncedDict fails with a NullReferenceException, for example when
-            // Set-AzBatchPool sends such a pool back (reported as a bug). Track 2 sends it without a value.
+            // The service allows an environment setting without a value, and both tracks read it as null. Both tracks
+            // send it without a value. Track 1 used to fail with a NullReferenceException in Utils.CreateSyncedDict, for
+            // example when Set-AzBatchPool sent such a pool back (fixed in #30452).
             RecordingHandler handler = new RecordingHandler().On("POST /pools", HttpStatusCode.Created);
             Track2TestContext context = NewContext(handler);
             Func<Parts> parts = () => new Parts
@@ -210,19 +211,23 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
                 StartTask = new PSStartTask("cmd") { EnvironmentSettings = new Dictionary<string, string> { { "B", null } } },
             };
 
-            Assert.Throws<NullReferenceException>(() => SendThroughTrack1(context, parts()));
+            SendThroughTrack1(context, parts());
             SendThroughTrack2(context, parts());
 
-            Assert.Equal("[{\"name\":\"B\"}]", JObject.Parse(handler.Requests.Single().Body).SelectToken("startTask.environmentSettings").ToString(Newtonsoft.Json.Formatting.None));
+            string path = "startTask.environmentSettings";
+            JToken sentByTrack1 = JObject.Parse(handler.Requests[0].Body).SelectToken(path);
+            JToken sentByTrack2 = JObject.Parse(handler.Requests[1].Body).SelectToken(path);
+            Assert.Equal("[{\"name\":\"B\"}]", sentByTrack2.ToString(Newtonsoft.Json.Formatting.None));
+            Assert.True(JToken.DeepEquals(sentByTrack1, sentByTrack2), "Track 1 sent " + sentByTrack1);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceFileIdentityIsSentByTrack2()
         {
-            // Today Track 1 drops a resource file's identity reference when it sends a start task or a task
-            // (Utils.ConvertResourceFile builds a new resource file without it), for example when Set-AzBatchPool sends
-            // back a pool read from the service; the node then can't download the files (reported as a bug). Track 2 sends it.
+            // Both tracks send a resource file's identity reference when they send a start task or a task. Track 1 used
+            // to drop it (Utils.ConvertResourceFile built a new resource file without it), for example when
+            // Set-AzBatchPool sent back a pool read from the service (fixed in #30452).
             RecordingHandler handler = new RecordingHandler().On("POST /pools", HttpStatusCode.Created);
             Track2TestContext context = NewContext(handler);
             Func<Parts> parts = () => new Parts
@@ -240,7 +245,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
             SendThroughTrack2(context, parts());
 
             string path = "startTask.resourceFiles[0].identityReference.resourceId";
-            Assert.Null(JObject.Parse(handler.Requests[0].Body).SelectToken(path));
+            Assert.Equal(IdentityId, (string)JObject.Parse(handler.Requests[0].Body).SelectToken(path));
             Assert.Equal(IdentityId, (string)JObject.Parse(handler.Requests[1].Body).SelectToken(path));
         }
 
