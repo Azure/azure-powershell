@@ -5411,6 +5411,10 @@
 							  <Label>AddressFamily</Label>
 							  <PropertyName>AddressFamily</PropertyName>
 						  </ListItem>
+                          <ListItem>
+                              <Label>LoadBalancerConfiguration</Label>
+                              <PropertyName>LoadBalancerConfiguration</PropertyName>
+                          </ListItem>
 						  <ListItem>
 							  <Label>AddressPrefixV6</Label>
 							  <PropertyName>AddressPrefixV6</PropertyName>
