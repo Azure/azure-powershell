@@ -27,6 +27,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="nvaSku">Network Virtual Appliance SKU.
         /// </param>
 
+        /// <param name="loadBalancerConfiguration">Configuration of the internal load balancer for a managed Network Virtual
+        /// Appliance in a virtual hub or virtual network. Not applicable to
+        /// partner-managed load balancers on SaaS NVAs. When omitted on create or
+        /// update, Default distribution and a 5-minute idle timeout are used.
+        /// </param>
+
         /// <param name="addressPrefix">Address Prefix.
         /// </param>
 
@@ -108,16 +114,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="migrationStatus">The migration status of the Network Virtual Appliance.
         /// </param>
-
-        /// <param name="loadBalancerConfiguration">Configuration of the internal load balancer for a managed Network Virtual
-        /// Appliance in a virtual hub or virtual network. Not applicable to
-        /// partner-managed load balancers on SaaS NVAs. When omitted on create or
-        /// update, Default distribution and a 5-minute idle timeout are used.
-        /// </param>
-        public NetworkVirtualAppliancePropertiesFormat(VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), string addressPrefixV6 = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), System.Collections.Generic.IList<string> addressFamily = default(System.Collections.Generic.IList<string>), string privateIPAddress = default(string), string privateIPAddressV6 = default(string), NetworkVirtualApplianceMigrationStatus migrationStatus = default(NetworkVirtualApplianceMigrationStatus), NetworkVirtualApplianceLoadBalancerConfiguration loadBalancerConfiguration = default(NetworkVirtualApplianceLoadBalancerConfiguration))
+        public NetworkVirtualAppliancePropertiesFormat(VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), NetworkVirtualApplianceLoadBalancerConfiguration loadBalancerConfiguration = default(NetworkVirtualApplianceLoadBalancerConfiguration), string addressPrefix = default(string), string addressPrefixV6 = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), System.Collections.Generic.IList<string> addressFamily = default(System.Collections.Generic.IList<string>), string privateIPAddress = default(string), string privateIPAddressV6 = default(string), NetworkVirtualApplianceMigrationStatus migrationStatus = default(NetworkVirtualApplianceMigrationStatus))
 
         {
             this.NvaSku = nvaSku;
+            this.LoadBalancerConfiguration = loadBalancerConfiguration;
             this.AddressPrefix = addressPrefix;
             this.AddressPrefixV6 = addressPrefixV6;
             this.BootStrapConfigurationBlobs = bootStrapConfigurationBlobs;
@@ -157,6 +158,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nvaSku")]
         public VirtualApplianceSkuProperties NvaSku {get; set; }
+
+        /// <summary>
+        /// Gets or sets configuration of the internal load balancer for a managed
+        /// Network Virtual Appliance in a virtual hub or virtual network. Not
+        /// applicable to partner-managed load balancers on SaaS NVAs. When omitted on
+        /// create or update, Default distribution and a 5-minute idle timeout are
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "loadBalancerConfiguration")]
+        public NetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration {get; set; }
 
         /// <summary>
         /// Gets address Prefix.
@@ -333,6 +344,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public virtual void Validate()
         {
 
+            if (this.LoadBalancerConfiguration != null)
+            {
+                this.LoadBalancerConfiguration.Validate();
+            }
 
 
 
