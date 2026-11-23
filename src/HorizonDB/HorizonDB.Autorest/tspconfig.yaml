@@ -22,24 +22,25 @@ options:
           parameter-name: State
         set:
           parameter-description: Specifies whether PostgreSQL credential-based authentication is enabled or disabled.
+      # Hide provider operations from the public cmdlet surface.
       - where:
           subject: Operation
         hide: true
+      # Resolve the subscription from the active Azure context when omitted.
       - where:
           parameter-name: SubscriptionId
         set:
           default:
             script: "(Get-AzContext).Subscription.Id"
+      # Keep expanded and JSON input variants instead of model-based variants.
       - where:
           variant: ^(Create|Update|Export)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
         remove: true
-      - where:
-          subject: MapConnection
-          variant: ^(Get)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
-        remove: true
+      # Exclude create-via-identity variants from the initial cmdlet surface.
       - where:
           variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
         remove: true
+      # Use Update cmdlets rather than exposing replacement-style Set cmdlets.
       - where:
           verb: Set
         remove: true

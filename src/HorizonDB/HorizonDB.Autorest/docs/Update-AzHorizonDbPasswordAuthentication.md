@@ -244,10 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-The target password-authentication state.
-Enabled can be combined with administratorLoginPassword to re-enable password authentication and reset the password for a cluster that already has an administrator.
-Disabling password authentication does not remove or modify existing database users or roles.
-Disabled cannot be combined with administratorLoginPassword.
+Specifies whether PostgreSQL credential-based authentication is enabled or disabled.
 
 ```yaml
 Type: System.String
