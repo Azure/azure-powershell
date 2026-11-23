@@ -1,0 +1,105 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/StorageCache/StorageCache.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.3.0
+    prefix: "Az"
+    subject-prefix: "StorageCache"
+    service-name: "StorageCache"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          subject: ^AmlFilesystem$
+        set:
+          subject: AmlFileSystem
+      - where:
+          subject: ^ArchiveAmlFilesystem$
+        set:
+          subject: AmlFileSystemArchive
+      - where:
+          subject: ^RequiredAmlFSubnetSize$
+        set:
+          subject: AmlFileSystemSubnetRequiredSize
+      - where:
+          subject: ^Cach$
+        set:
+          subject: Cache
+      - where:
+          subject: ^CachInfo$
+        set:
+          subject: CacheInfo
+      - where:
+          subject: ^CachFirmware$
+        set:
+          subject: CacheFirmware
+      - where:
+          subject: ^CachPrimingJob$
+        set:
+          subject: CachePrimingJob
+      - where:
+          subject: ^SpaceCachAllocation$
+        set:
+          subject: SpaceCacheAllocation
+      - where:
+          subject: ^AmlFSubnet$
+        set:
+          subject: AmlFileSystemSubnet
+      - where:
+          variant: ^(Create|Update|Archive|Check)(?!.*?(Expanded|ViaJsonFilePath|ViaJsonString))
+        remove: true
+      - where:
+          subject: ^AmlFileSystemSubnetRequiredSize$
+          variant: ^Get(?!.*?Expanded)
+        remove: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          subject: AmlFileSystemSubnet
+          parameter-name: FilesystemSubnet
+        set:
+          parameter-name: Name
+      - where:
+          parameter-name: OperationId
+        set:
+          parameter-name: Id
+      - where:
+          model-name: AmlFilesystem
+        set:
+          format-table:
+            properties:
+              - Name
+              - Location
+              - ResourceGroupName
+              - HealthState
+              - SkuName
+      - where:
+          variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+        remove: true
+      - where:
+          subject: .*PrimingJob$
+          variant: ^(Start|Stop|Resume|Pause)(?!.*?(Expanded|ViaJsonFilePath|ViaJsonString))
+        remove: true
+      - where:
+          subject: ^(Cache|CacheInfo|CacheFirmware|CachePrimingJob|SpaceCacheAllocation|StorageTarget|StorageTargetDefault|StorageTargetDns|InvalidateStorageTarget|Sku|UsageModel|AscOperation|AscUsage)$
+        hide: true
+      - where:
+          variant: ^(Restore|Refresh)
+        remove: true
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
