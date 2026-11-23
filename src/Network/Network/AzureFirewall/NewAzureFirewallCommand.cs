@@ -252,6 +252,12 @@ namespace Microsoft.Azure.Commands.Network
         HelpMessage = "The maximum number of capacity units for this azure firewall")]
         public int? MaxCapacity { get; set; }
 
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The TCP idle timeout for the azure firewall, in minutes. Valid values range from 4 to 64, inclusive.")]
+        [ValidateRange(4, 64)]
+        public int? TcpIdleTimeoutInMinutes { get; set; }
+
         public override void Execute()
         {
             // Old params provided - Get the virtual network, get the public IP address
@@ -456,6 +462,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             firewall.AutoscaleConfiguration = autoscaleConfiguration;
+            firewall.TcpIdleTimeoutInMinutes = this.TcpIdleTimeoutInMinutes;
 
             // Map to the sdk object
             var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(firewall);

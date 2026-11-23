@@ -61,6 +61,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallAfcConfiguration AfcConfiguration { get; set; }
 
+        public int? TcpIdleTimeoutInMinutes { get; set; }
+
         public string[] PrivateRange
         {
             get
