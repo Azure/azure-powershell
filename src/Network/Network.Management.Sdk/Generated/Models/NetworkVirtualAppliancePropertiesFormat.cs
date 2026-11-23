@@ -143,7 +143,6 @@ namespace Microsoft.Azure.Management.Network.Models
             this.PrivateIPAddress = privateIPAddress;
             this.PrivateIPAddressV6 = privateIPAddressV6;
             this.MigrationStatus = migrationStatus;
-            this.LoadBalancerConfiguration = loadBalancerConfiguration;
             CustomInit();
         }
 
@@ -325,16 +324,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "migrationStatus")]
         public NetworkVirtualApplianceMigrationStatus MigrationStatus {get; private set; }
-
-        /// <summary>
-        /// Gets or sets configuration of the internal load balancer for a managed
-        /// Network Virtual Appliance in a virtual hub or virtual network. Not
-        /// applicable to partner-managed load balancers on SaaS NVAs. When omitted on
-        /// create or update, Default distribution and a 5-minute idle timeout are
-        /// used.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "loadBalancerConfiguration")]
-        public NetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -405,10 +394,6 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
 
-            if (this.LoadBalancerConfiguration != null)
-            {
-                this.LoadBalancerConfiguration.Validate();
-            }
         }
     }
 }
