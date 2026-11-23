@@ -142,6 +142,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
             Assert.Equal(new[] { "id", " state", string.Empty, "stats" }, Track2Lists.ToClauseList("id, state,,stats"));
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void OnPagesNeedsAtLeastOnePage()
+        {
+            // Review on #30432: with no pages, the first request failed with an IndexOutOfRangeException inside the
+            // handler. Now the test setup fails right away with a clear message.
+            ArgumentException e = Assert.Throws<ArgumentException>(() => new RecordingHandler().OnPages("GET /pools"));
+            Assert.Equal("pages", e.ParamName);
+        }
+
         private static void CallTrack1(Track2TestContext context, string call)
         {
             switch (call)

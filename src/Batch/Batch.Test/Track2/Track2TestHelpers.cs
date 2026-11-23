@@ -117,6 +117,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Track2
         /// </summary>
         public RecordingHandler OnPages(string methodAndPathPrefix, params string[] pages)
         {
+            if (pages == null || pages.Length == 0)
+            {
+                throw new ArgumentException("OnPages needs at least one page to answer with.", nameof(pages));
+            }
+
             int next = 0;
             this.routes.Add(new KeyValuePair<string, Func<HttpRequestMessage, HttpResponseMessage>>(methodAndPathPrefix, request =>
             {
