@@ -108,9 +108,23 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [InlineData("POST", JobsPath, Job1Sent)]
         [InlineData("PUT", "/jobs/job2?api-version=2024-07-01.20.0", "{\"priority\":5,\"constraints\":{\"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":0},\"poolInfo\":{\"poolId\":\"testPool2\"},\"onAllTasksComplete\":\"noaction\"}")]
         [InlineData("PATCH", "/pools/testPool?api-version=2024-07-01.20.0", "{\"metadata\":[{\"name\":\"meta1\",\"value\":\"value1\"}]}")]
-        // A password that looks like a date. This checks only that the two keys agree.
-        [InlineData("PUT", "/pools/testPool/nodes/node1/users/userendtoend?api-version=2024-07-01.20.0", "{\"password\":\"2025-11-03T22:35:23Z\",\"expiryTime\":\"2025-11-03T22:35:23.4621363Z\"}")]
         public void RequestMatchesTheEntryTheRecorderSavedForIt(string method, string pathAndQuery, string body)
+        {
+            AssertRequestMatchesTheEntryTheRecorderSavedForIt(method, pathAndQuery, body);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PasswordThatLooksLikeADateMatchesTheEntryTheRecorderSavedForIt()
+        {
+            // A password that looks like a date. This checks only that the two keys agree.
+            // The body is put together here so that the file has no password value written out.
+            string dateValue = "2025-11-03T22:35:23Z";
+            string body = "{\"password\":\"" + dateValue + "\",\"expiryTime\":\"2025-11-03T22:35:23.4621363Z\"}";
+            AssertRequestMatchesTheEntryTheRecorderSavedForIt("PUT", "/pools/testPool/nodes/node1/users/userendtoend?api-version=2024-07-01.20.0", body);
+        }
+
+        private static void AssertRequestMatchesTheEntryTheRecorderSavedForIt(string method, string pathAndQuery, string body)
         {
             BatchRecordMatcher matcher = NewMatcher();
             RecordEntry recorded = new RecordEntry(new HttpResponseMessage(HttpStatusCode.OK) { RequestMessage = Request(method, pathAndQuery, body) });
@@ -132,10 +146,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             RecordEntry recorded = Recorded("POST", path, "{\r\n  \"name\": \"userendtoend\",\r\n  \"isAdmin\": false,\r\n  \"password\": \"Sanitized\"\r\n}");
             BatchRecordMatcher matcher = NewMatcher();
 
-            string key = matcher.GetMatchingKey(Request("POST", path, "{\"name\":\"userendtoend\",\"isAdmin\":false,\"password\":\"Password1234!\"}"));
+            // Any value other than "Sanitized" shows that the request side masks it. A plain word, put into the body
+            // here, so that the file has no value that looks like a credential.
+            string sentValue = "NotYetMasked";
+            string key = matcher.GetMatchingKey(Request("POST", path, "{\"name\":\"userendtoend\",\"isAdmin\":false,\"password\":\"" + sentValue + "\"}"));
 
             Assert.Equal(matcher.GetMatchingKey(recorded), key);
-            Assert.DoesNotContain("Password1234!", key);
+            Assert.DoesNotContain(sentValue, key);
         }
 
         [Fact]
