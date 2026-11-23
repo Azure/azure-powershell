@@ -30,6 +30,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     /// </summary>
     public interface IStorageBlobManagement : IStorageManagement
     {
+        bool IsSasWithOAuthCredential();
+
         /// <summary>
         /// Get a list of cloudblobcontainer in azure
         /// </summary>
