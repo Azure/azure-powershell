@@ -65,4 +65,28 @@ directive:
         workerProperties.lastSeenDateTime["x-nullable"] = false;
       }
       return $;
+  - from: openapi.json
+    where: $
+    transform: |
+      // Runbook and DSC configuration content is raw script text, not a JSON string.
+      // Return it as a stream, as with earlier API versions, so callers read the text unchanged.
+      const rawContentGetters = [
+        "Runbook_GetContent",
+        "RunbookDraft_GetContent",
+        "DscConfiguration_GetContent",
+      ];
+      for (const path of Object.values($.paths ?? {})) {
+        for (const operation of Object.values(path)) {
+          if (!rawContentGetters.includes(operation?.operationId)) continue;
+
+          // Keep the spec's text media type only; the generator fails on a file response
+          // that also lists application/json.
+          operation.produces = (operation.produces ?? []).filter((type) => type !== "application/json");
+          const okResponse = operation.responses?.["200"];
+          if (okResponse) {
+            okResponse.schema = { type: "file" };
+          }
+        }
+      }
+      return $;
 ```

@@ -151,6 +151,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                     throw;
                 }
+                catch (Microsoft.Rest.Azure.CloudException cloudException)
+                    when (cloudException.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    // GetContent returns the raw script as a stream, so its errors come back as CloudException.
+                    throw new ResourceNotFoundException(typeof(ConfigurationContent),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ConfigurationContentNotFound, configurationName));
+                }
             }
         }
 
