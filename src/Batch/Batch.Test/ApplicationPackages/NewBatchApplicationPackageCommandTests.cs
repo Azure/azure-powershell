@@ -20,6 +20,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -180,20 +181,94 @@ namespace Microsoft.Azure.Commands.Batch.Test.ApplicationPackages
             packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Never());
         }
 
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FailedUploadKeepsANewVersionWhenTheCreateGaveNoEtag(string etag)
+        {
+            // The last read shows the same blank ETag. The two are equal, but that proves nothing.
+            Mock<IApplicationPackageOperations> packageOperations = UseManagementClientWhoseUploadFails(
+                versionExists: false,
+                versionWhenTheUploadFails: new ApplicationPackage(etag: etag, state: PackageState.Pending),
+                createdEtag: etag);
+
+            AssertFailsWithTheUploadError<UriFormatException>();
+
+            packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Never());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FailedUploadKeepsANewVersionWhenTheLastReadShowsNoEtag(string etag)
+        {
+            Mock<IApplicationPackageOperations> packageOperations = UseManagementClientWhoseUploadFails(
+                versionExists: false,
+                versionWhenTheUploadFails: new ApplicationPackage(etag: etag, state: PackageState.Pending));
+
+            AssertFailsWithTheUploadError<UriFormatException>();
+
+            packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FailedUploadKeepsANewVersionWhenTheLastReadShowsNoState()
+        {
+            Mock<IApplicationPackageOperations> packageOperations = UseManagementClientWhoseUploadFails(
+                versionExists: false,
+                versionWhenTheUploadFails: new ApplicationPackage(etag: CreatedEtag));
+
+            AssertFailsWithTheUploadError<UriFormatException>();
+
+            packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FailedUploadShowsTheUploadErrorWhenTheCreateReturnsNoBody()
+        {
+            Mock<IApplicationPackageOperations> packageOperations = UseManagementClientWhoseUploadFails(versionExists: false);
+            // The create request succeeds but returns no body: no storage URL and no ETag.
+            packageOperations.Setup(p => p.CreateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<IDictionary<string, string>>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(new Microsoft.Rest.Azure.AzureOperationResponse<ApplicationPackage>()));
+
+            AssertFailsWithTheUploadError<NullReferenceException>();
+
+            packageOperations.Verify(p => p.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()), Times.Never());
+        }
+
         private const string CreatedEtag = "W/\"created by this upload\"";
 
         /// <summary>
-        /// Gives the cmdlet a BatchClient over a fake management client. The package it creates gets a storage URL that
-        /// isn't a URL, so the upload fails before anything is sent. For a new version, the version as it is when the
-        /// upload fails is <paramref name="versionWhenTheUploadFails"/>, by default unchanged since this upload created it.
+        /// Runs the cmdlet and checks that it fails with the upload's own error, a <typeparamref name="TUploadError"/>,
+        /// wrapped as usual.
         /// </summary>
-        private Mock<IApplicationPackageOperations> UseManagementClientWhoseUploadFails(bool versionExists, ApplicationPackage versionWhenTheUploadFails = null)
+        private void AssertFailsWithTheUploadError<TUploadError>() where TUploadError : Exception
+        {
+            NewApplicationPackageException error = Assert.Throws<NewApplicationPackageException>(() => cmdlet.ExecuteCmdlet());
+
+            Assert.IsType<TUploadError>(error.InnerException);
+            Assert.Equal(string.Format(Resources.FailedToUpload, cmdlet.FilePath, error.InnerException.Message), error.Message);
+        }
+
+        /// <summary>
+        /// Gives the cmdlet a BatchClient over a fake management client. The package it creates has the ETag
+        /// <paramref name="createdEtag"/> and a storage URL that isn't a URL, so the upload fails before anything is sent.
+        /// For a new version, the version as it is when the upload fails is <paramref name="versionWhenTheUploadFails"/>,
+        /// by default unchanged since this upload created it.
+        /// </summary>
+        private Mock<IApplicationPackageOperations> UseManagementClientWhoseUploadFails(bool versionExists, ApplicationPackage versionWhenTheUploadFails = null, string createdEtag = CreatedEtag)
         {
             string resourceGroup = "resourceGroup";
             string accountName = "account01";
             string applicationName = "applicationName";
             string version = "version";
-            var created = new ApplicationPackage(etag: CreatedEtag, state: PackageState.Pending, storageUrl: "not a URL");
+            var created = new ApplicationPackage(etag: createdEtag, state: PackageState.Pending, storageUrl: "not a URL");
 
             var packageOperations = new Mock<IApplicationPackageOperations>();
             if (versionExists)
