@@ -1,7 +1,4 @@
 ## Upcoming Release
-#### Az.Network
-* Added managed NVA internal and Permanent Internet Ingress rule load balancer configuration, with distribution mode and idle timeout settings. Omitting configuration on NVA update resets settings to platform defaults.
-
 #### Az.NetAppFiles
 * Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
 * Updated to API version 2026-08-01.
