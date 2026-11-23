@@ -21,56 +21,205 @@ Create an in-memory object for DataBoxJobDetails.
 Create an in-memory object for DataBoxJobDetails.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxJobDetails
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxJobDetailsObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxjobdetailsobject
 #>
 function New-AzDataBoxJobDetailsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxJobDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Set Device password for unlocking Databox. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+.")]
         [string]
         $DevicePassword,
-        [Parameter(Mandatory, HelpMessage="Contact details for notification and shipping.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
-        $ContactDetail,
+        [Parameter(HelpMessage="Name of the City.")]
+        [string]
+        $City,
+        [Parameter(HelpMessage="Name of the company.")]
+        [string]
+        $CompanyName,
+        [Parameter(Mandatory, HelpMessage="List of Email-ids to be notified about job progress.")]
+        [string[]]
+        $ContactDetailEmailList,
+        [Parameter(HelpMessage="Notification preference for a job stage.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.INotificationPreference[]]
+        $ContactDetailNotificationPreference,
+        [Parameter(Mandatory, HelpMessage="Contact name of the person.")]
+        [string]
+        $ContactDetailsContactName,
+        [Parameter(HelpMessage="Mobile number of the contact person.")]
+        [string]
+        $ContactDetailsMobile,
+        [Parameter(Mandatory, HelpMessage="Phone number of the contact person.")]
+        [string]
+        $ContactDetailsPhone,
+        [Parameter(HelpMessage="Phone extension number of the contact person.")]
+        [string]
+        $ContactDetailsPhoneExtension,
+        [Parameter(HelpMessage="Name of the Country.")]
+        [string]
+        $Country,
         [Parameter(HelpMessage="Details of the data to be exported from azure.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataExportDetails[]]
         $DataExportDetail,
         [Parameter(HelpMessage="Details of the data to be imported into azure.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataImportDetails[]]
         $DataImportDetail,
+        [Parameter(HelpMessage="Defines secondary layer of software-based encryption enablement.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [string]
+        $EncryptionPreferenceDoubleEncryption,
+        [Parameter(HelpMessage="Defines Hardware level encryption (Only for disk).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [string]
+        $EncryptionPreferenceHardwareEncryption,
         [Parameter(HelpMessage="The expected size of the data, which needs to be transferred in this job, in terabytes.")]
         [int]
         $ExpectedDataSizeInTeraByte,
-        [Parameter(HelpMessage="Details about which key encryption type is being used.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
-        $KeyEncryptionKey,
-        [Parameter(HelpMessage="Preferences for the order.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences]
-        $Preference,
-        [Parameter(HelpMessage="Optional Reverse Shipping details for order.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails]
-        $ReverseShippingDetail,
-        [Parameter(HelpMessage="Shipping address of the customer.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
-        $ShippingAddress,
-        [Parameter(Mandatory, HelpMessage="Indicates the type of job details.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator]
-        $Type
+        [Parameter(HelpMessage="Managed service identity type.")]
+        [string]
+        $IdentityPropertyType,
+        [Parameter(HelpMessage="Type of encryption key used for key encryption.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("MicrosoftManaged", "CustomerManaged")]
+        [string]
+        $KeyEncryptionKeyKekType,
+        [Parameter(HelpMessage="Key encryption key. It is required in case of Customer managed KekType.")]
+        [string]
+        $KeyEncryptionKeyKekUrl,
+        [Parameter(HelpMessage="Kek vault resource id. It is required in case of Customer managed KekType.")]
+        [string]
+        $KeyEncryptionKeyKekVaultResourceId,
+        [Parameter(HelpMessage="Postal code.")]
+        [string]
+        $PostalCode,
+        [Parameter(HelpMessage="Preferred data center region.")]
+        [string[]]
+        $PreferencePreferredDataCenterRegion,
+        [Parameter(HelpMessage="Preferences related to the Access Tier of storage accounts.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("Archive")]
+        [string[]]
+        $PreferenceStorageAccountAccessTierPreference,
+        [Parameter(HelpMessage="Mobile number of the contact person.")]
+        [string]
+        $ReverseShippingDetailsContactDetailsMobile,
+        [Parameter(HelpMessage="Phone number of the contact person.")]
+        [string]
+        $ReverseShippingDetailsContactDetailsPhone,
+        [Parameter(HelpMessage="Phone extension number of the contact person.")]
+        [string]
+        $ReverseShippingDetailsContactDetailsPhoneExtension,
+        [Parameter(HelpMessage="Contact name of the person.")]
+        [string]
+        $ReverseShippingDetailsContactName,
+        [Parameter(HelpMessage="Name of the City.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressCity,
+        [Parameter(HelpMessage="Name of the company.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressCompanyName,
+        [Parameter(HelpMessage="Name of the Country.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressCountry,
+        [Parameter(HelpMessage="Postal code.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressPostalCode,
+        [Parameter(HelpMessage="Flag to indicate if customer has chosen to skip default address validation.")]
+        [bool]
+        $ReverseShippingDetailsShippingAddressSkipAddressValidation,
+        [Parameter(HelpMessage="Name of the State or Province.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressStateOrProvince,
+        [Parameter(HelpMessage="Street Address line 1.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressStreetAddress1,
+        [Parameter(HelpMessage="Street Address line 2.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressStreetAddress2,
+        [Parameter(HelpMessage="Street Address line 3.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressStreetAddress3,
+        [Parameter(HelpMessage="Tax Identification Number.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressTaxIdentificationNumber,
+        [Parameter(HelpMessage="Type of address.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("None", "Residential", "Commercial")]
+        [string]
+        $ReverseShippingDetailsShippingAddressType,
+        [Parameter(HelpMessage="Extended Zip Code.")]
+        [string]
+        $ReverseShippingDetailsShippingAddressZipExtendedCode,
+        [Parameter(HelpMessage="Indicates Shipment Logistics type that the customer preferred.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("CustomerManaged", "MicrosoftManaged")]
+        [string]
+        $ReverseTransportPreferencePreferredShipmentType,
+        [Parameter(HelpMessage="Type of address.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("None", "Residential", "Commercial")]
+        [string]
+        $ShippingAddressType,
+        [Parameter(HelpMessage="Flag to indicate if customer has chosen to skip default address validation.")]
+        [bool]
+        $SkipAddressValidation,
+        [Parameter(HelpMessage="Name of the State or Province.")]
+        [string]
+        $StateOrProvince,
+        [Parameter(HelpMessage="Street Address line 1.")]
+        [string]
+        $StreetAddress1,
+        [Parameter(HelpMessage="Street Address line 2.")]
+        [string]
+        $StreetAddress2,
+        [Parameter(HelpMessage="Street Address line 3.")]
+        [string]
+        $StreetAddress3,
+        [Parameter(HelpMessage="Tax Identification Number.")]
+        [string]
+        $TaxIdentificationNumber,
+        [Parameter(HelpMessage="Indicates Shipment Logistics type that the customer preferred.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("CustomerManaged", "MicrosoftManaged")]
+        [string]
+        $TransportPreferencePreferredShipmentType,
+        [Parameter(HelpMessage="Arm resource id for user assigned identity to be used to fetch MSI token.")]
+        [string]
+        $UserAssignedResourceId,
+        [Parameter(HelpMessage="Extended Zip Code.")]
+        [string]
+        $ZipExtendedCode
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxJobDetails]::New()
 
         if ($PSBoundParameters.ContainsKey('DevicePassword')) {
             $Object.DevicePassword = $DevicePassword
         }
-        if ($PSBoundParameters.ContainsKey('ContactDetail')) {
-            $Object.ContactDetail = $ContactDetail
+        if ($PSBoundParameters.ContainsKey('City')) {
+            $Object.City = $City
+        }
+        if ($PSBoundParameters.ContainsKey('CompanyName')) {
+            $Object.CompanyName = $CompanyName
+        }
+        if ($PSBoundParameters.ContainsKey('ContactDetailEmailList')) {
+            $Object.ContactDetailEmailList = $ContactDetailEmailList
+        }
+        if ($PSBoundParameters.ContainsKey('ContactDetailNotificationPreference')) {
+            $Object.ContactDetailNotificationPreference = $ContactDetailNotificationPreference
+        }
+        if ($PSBoundParameters.ContainsKey('ContactDetailsContactName')) {
+            $Object.ContactDetailsContactName = $ContactDetailsContactName
+        }
+        if ($PSBoundParameters.ContainsKey('ContactDetailsMobile')) {
+            $Object.ContactDetailsMobile = $ContactDetailsMobile
+        }
+        if ($PSBoundParameters.ContainsKey('ContactDetailsPhone')) {
+            $Object.ContactDetailsPhone = $ContactDetailsPhone
+        }
+        if ($PSBoundParameters.ContainsKey('ContactDetailsPhoneExtension')) {
+            $Object.ContactDetailsPhoneExtension = $ContactDetailsPhoneExtension
+        }
+        if ($PSBoundParameters.ContainsKey('Country')) {
+            $Object.Country = $Country
         }
         if ($PSBoundParameters.ContainsKey('DataExportDetail')) {
             $Object.DataExportDetail = $DataExportDetail
@@ -78,23 +227,116 @@ function New-AzDataBoxJobDetailsObject {
         if ($PSBoundParameters.ContainsKey('DataImportDetail')) {
             $Object.DataImportDetail = $DataImportDetail
         }
+        if ($PSBoundParameters.ContainsKey('EncryptionPreferenceDoubleEncryption')) {
+            $Object.EncryptionPreferenceDoubleEncryption = $EncryptionPreferenceDoubleEncryption
+        }
+        if ($PSBoundParameters.ContainsKey('EncryptionPreferenceHardwareEncryption')) {
+            $Object.EncryptionPreferenceHardwareEncryption = $EncryptionPreferenceHardwareEncryption
+        }
         if ($PSBoundParameters.ContainsKey('ExpectedDataSizeInTeraByte')) {
             $Object.ExpectedDataSizeInTeraByte = $ExpectedDataSizeInTeraByte
         }
-        if ($PSBoundParameters.ContainsKey('KeyEncryptionKey')) {
-            $Object.KeyEncryptionKey = $KeyEncryptionKey
+        if ($PSBoundParameters.ContainsKey('IdentityPropertyType')) {
+            $Object.IdentityPropertyType = $IdentityPropertyType
         }
-        if ($PSBoundParameters.ContainsKey('Preference')) {
-            $Object.Preference = $Preference
+        if ($PSBoundParameters.ContainsKey('KeyEncryptionKeyKekType')) {
+            $Object.KeyEncryptionKeyKekType = $KeyEncryptionKeyKekType
         }
-        if ($PSBoundParameters.ContainsKey('ReverseShippingDetail')) {
-            $Object.ReverseShippingDetail = $ReverseShippingDetail
+        if ($PSBoundParameters.ContainsKey('KeyEncryptionKeyKekUrl')) {
+            $Object.KeyEncryptionKeyKekUrl = $KeyEncryptionKeyKekUrl
         }
-        if ($PSBoundParameters.ContainsKey('ShippingAddress')) {
-            $Object.ShippingAddress = $ShippingAddress
+        if ($PSBoundParameters.ContainsKey('KeyEncryptionKeyKekVaultResourceId')) {
+            $Object.KeyEncryptionKeyKekVaultResourceId = $KeyEncryptionKeyKekVaultResourceId
         }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
+        if ($PSBoundParameters.ContainsKey('PostalCode')) {
+            $Object.PostalCode = $PostalCode
+        }
+        if ($PSBoundParameters.ContainsKey('PreferencePreferredDataCenterRegion')) {
+            $Object.PreferencePreferredDataCenterRegion = $PreferencePreferredDataCenterRegion
+        }
+        if ($PSBoundParameters.ContainsKey('PreferenceStorageAccountAccessTierPreference')) {
+            $Object.PreferenceStorageAccountAccessTierPreference = $PreferenceStorageAccountAccessTierPreference
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsContactDetailsMobile')) {
+            $Object.ReverseShippingDetailsContactDetailsMobile = $ReverseShippingDetailsContactDetailsMobile
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsContactDetailsPhone')) {
+            $Object.ReverseShippingDetailsContactDetailsPhone = $ReverseShippingDetailsContactDetailsPhone
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsContactDetailsPhoneExtension')) {
+            $Object.ReverseShippingDetailsContactDetailsPhoneExtension = $ReverseShippingDetailsContactDetailsPhoneExtension
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsContactName')) {
+            $Object.ReverseShippingDetailsContactName = $ReverseShippingDetailsContactName
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressCity')) {
+            $Object.ReverseShippingDetailsShippingAddressCity = $ReverseShippingDetailsShippingAddressCity
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressCompanyName')) {
+            $Object.ReverseShippingDetailsShippingAddressCompanyName = $ReverseShippingDetailsShippingAddressCompanyName
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressCountry')) {
+            $Object.ReverseShippingDetailsShippingAddressCountry = $ReverseShippingDetailsShippingAddressCountry
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressPostalCode')) {
+            $Object.ReverseShippingDetailsShippingAddressPostalCode = $ReverseShippingDetailsShippingAddressPostalCode
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressSkipAddressValidation')) {
+            $Object.ReverseShippingDetailsShippingAddressSkipAddressValidation = $ReverseShippingDetailsShippingAddressSkipAddressValidation
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressStateOrProvince')) {
+            $Object.ReverseShippingDetailsShippingAddressStateOrProvince = $ReverseShippingDetailsShippingAddressStateOrProvince
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressStreetAddress1')) {
+            $Object.ReverseShippingDetailsShippingAddressStreetAddress1 = $ReverseShippingDetailsShippingAddressStreetAddress1
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressStreetAddress2')) {
+            $Object.ReverseShippingDetailsShippingAddressStreetAddress2 = $ReverseShippingDetailsShippingAddressStreetAddress2
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressStreetAddress3')) {
+            $Object.ReverseShippingDetailsShippingAddressStreetAddress3 = $ReverseShippingDetailsShippingAddressStreetAddress3
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressTaxIdentificationNumber')) {
+            $Object.ReverseShippingDetailsShippingAddressTaxIdentificationNumber = $ReverseShippingDetailsShippingAddressTaxIdentificationNumber
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressType')) {
+            $Object.ReverseShippingDetailsShippingAddressType = $ReverseShippingDetailsShippingAddressType
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseShippingDetailsShippingAddressZipExtendedCode')) {
+            $Object.ReverseShippingDetailsShippingAddressZipExtendedCode = $ReverseShippingDetailsShippingAddressZipExtendedCode
+        }
+        if ($PSBoundParameters.ContainsKey('ReverseTransportPreferencePreferredShipmentType')) {
+            $Object.ReverseTransportPreferencePreferredShipmentType = $ReverseTransportPreferencePreferredShipmentType
+        }
+        if ($PSBoundParameters.ContainsKey('ShippingAddressType')) {
+            $Object.ShippingAddressType = $ShippingAddressType
+        }
+        if ($PSBoundParameters.ContainsKey('SkipAddressValidation')) {
+            $Object.SkipAddressValidation = $SkipAddressValidation
+        }
+        if ($PSBoundParameters.ContainsKey('StateOrProvince')) {
+            $Object.StateOrProvince = $StateOrProvince
+        }
+        if ($PSBoundParameters.ContainsKey('StreetAddress1')) {
+            $Object.StreetAddress1 = $StreetAddress1
+        }
+        if ($PSBoundParameters.ContainsKey('StreetAddress2')) {
+            $Object.StreetAddress2 = $StreetAddress2
+        }
+        if ($PSBoundParameters.ContainsKey('StreetAddress3')) {
+            $Object.StreetAddress3 = $StreetAddress3
+        }
+        if ($PSBoundParameters.ContainsKey('TaxIdentificationNumber')) {
+            $Object.TaxIdentificationNumber = $TaxIdentificationNumber
+        }
+        if ($PSBoundParameters.ContainsKey('TransportPreferencePreferredShipmentType')) {
+            $Object.TransportPreferencePreferredShipmentType = $TransportPreferencePreferredShipmentType
+        }
+        if ($PSBoundParameters.ContainsKey('UserAssignedResourceId')) {
+            $Object.UserAssignedResourceId = $UserAssignedResourceId
+        }
+        if ($PSBoundParameters.ContainsKey('ZipExtendedCode')) {
+            $Object.ZipExtendedCode = $ZipExtendedCode
         }
         return $Object
     }

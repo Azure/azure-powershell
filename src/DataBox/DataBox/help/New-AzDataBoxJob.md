@@ -8,23 +8,37 @@ schema: 2.0.0
 # New-AzDataBoxJob
 
 ## SYNOPSIS
-Creates a new job with the specified parameters.
-Existing job cannot be updated with this API and should instead be updated with the Update job API.
+Create a new job with the specified parameters.
+Existing job cannot be updated with this API and should instead be updated with the create job API.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -SkuName <SkuName> -TransferType <TransferType> [-DeliveryInfoScheduledDateTime <DateTime>]
- [-DeliveryType <JobDeliveryType>] [-Detail <IJobDetails>] [-IdentityType <String>] [-SkuDisplayName <String>]
- [-SkuFamily <String>] [-SkuModel <ModelName>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ -SkuName <String> -TransferType <String> [-DeliveryInfoScheduledDateTime <DateTime>] [-DeliveryType <String>]
+ [-Detail <IJobDetails>] [-EnableSystemAssignedIdentity] [-SkuDisplayName <String>] [-SkuFamily <String>]
+ [-SkuModel <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new job with the specified parameters.
-Existing job cannot be updated with this API and should instead be updated with the Update job API.
+Create a new job with the specified parameters.
+Existing job cannot be updated with this API and should instead be updated with the create job API.
 
 ## EXAMPLES
 
@@ -192,7 +206,7 @@ Name     Location Status        TransferType  SkuName     IdentityType DeliveryT
 pwshDisk WestUS   DeviceOrdered ImportToAzure DataBoxDisk None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
 ```
 
-Creates a databoxDisk job with your own Passkey.
+Creates a databoxDisky job with your own Passkey.
 For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1
 
 ### Example 8: Creates a databox job with double encryption enabled
@@ -291,7 +305,7 @@ Scheduled date time.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -305,8 +319,8 @@ Accept wildcard characters: False
 Delivery type of Job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -319,11 +333,10 @@ Accept wildcard characters: False
 ### -Detail
 Details of a job run.
 This field will only be sent for expand details filter.
-To construct, see NOTES section for DETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobDetails
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobDetails
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -333,15 +346,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Identity type
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -356,7 +399,7 @@ The region of a resource cannot be changed once it is created, but if an identic
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -417,7 +460,7 @@ The display name of the sku.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -432,7 +475,7 @@ The sku family.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -448,8 +491,8 @@ This field is necessary only at the time of ordering the newer generation device
 AzureDataBox120 and AzureDataBox525 as of Feb/2025
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ModelName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -463,8 +506,8 @@ Accept wildcard characters: False
 The sku name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -495,7 +538,7 @@ These tags can be used in viewing and grouping this resource (across resource gr
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -509,8 +552,8 @@ Accept wildcard characters: False
 Type of the data transfer.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -521,11 +564,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User Assigned Identities
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -573,7 +617,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobResource
 
 ## NOTES
 
