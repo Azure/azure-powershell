@@ -163,11 +163,16 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet("IPv4", "IPv6", IgnoreCase = true)]
         public string[] AddressFamily { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The internal load balancer configuration. Omission uses Default distribution and a 5-minute timeout.")]
+        public PSNetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
             ValidateAddressFamily();
+            this.LoadBalancerConfiguration = LoadBalancerConfigurationHelper.Normalize(this.LoadBalancerConfiguration);
 
 			      if (!string.IsNullOrEmpty(VirtualHubId) && NvaInterfaceConfiguration != null)
 			      {
@@ -206,6 +211,7 @@ namespace Microsoft.Azure.Commands.Network
             networkVirtualAppliance.VirtualHub = new PSResourceId();
             networkVirtualAppliance.VirtualHub.Id = this.VirtualHubId;
             networkVirtualAppliance.VirtualApplianceAsn = this.VirtualApplianceAsn;
+            networkVirtualAppliance.LoadBalancerConfiguration = this.LoadBalancerConfiguration;
             networkVirtualAppliance.NvaSku = this.Sku;
             networkVirtualAppliance.Identity = this.Identity;
             networkVirtualAppliance.BootStrapConfigurationBlobs = this.BootStrapConfigurationBlob;

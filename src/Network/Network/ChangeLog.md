@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added load balancer configuration for managed NVAs in hubs and VNets and individual Permanent Internet Ingress rules.
+    - Added `New-AzNetworkVirtualApplianceLoadBalancerConfiguration` and `-LoadBalancerConfiguration` on NVA creation/update and ingress rule builders.
+    - Supports Default, SourceIP, and SourceIPProtocol distribution with idle timeouts from 4 to 100 minutes.
+    - Omitting configuration on NVA update resets existing settings to Default distribution and a 5-minute timeout, matching REST PUT semantics.
+* Upgraded Network SDK to API version `2026-05-01`.
 * Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
 * Added `-EnableConfidentialCompute` parameter to `New-AzApplicationGateway` and `EnableConfidentialCompute` property to `PSApplicationGateway` to create Application Gateways on Confidential Compute
     - Supported only on Standard_v2 and WAF_v2 (Web Application Firewall) SKUs, cannot be combined with FIPS (Federal Information Processing Standards) and cannot be changed after creation
