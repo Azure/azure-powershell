@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Management.Search.Models
         /// The search service is accessible from traffic originating from the public
         /// internet.
         /// </summary>
-        public const string Enabled = "enabled";
+        public const string Enabled = "Enabled";
         /// <summary>
         /// The search service is not accessible from traffic originating from the
         /// public internet. Access is only permitted over approved private endpoint
         /// connections.
         /// </summary>
-        public const string Disabled = "disabled";
+        public const string Disabled = "Disabled";
         /// <summary>
         /// The network security perimeter configuration rules allow or disallow public
         /// network access to the resource. Requires an associated network security
         /// perimeter.
         /// </summary>
-        public const string SecuredByPerimeter = "securedByPerimeter";
+        public const string SecuredByPerimeter = "SecuredByPerimeter";
     }
 }

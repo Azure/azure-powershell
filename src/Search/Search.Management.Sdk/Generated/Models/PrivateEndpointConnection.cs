@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Search.Models
     /// Describes an existing private endpoint connection to the Azure AI Search
     /// service.
     /// </summary>
-    public partial class PrivateEndpointConnection : Resource
+    public partial class PrivateEndpointConnection : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.

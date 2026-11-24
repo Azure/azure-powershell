@@ -28,6 +28,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestNetworkVirtualApplianceLoadBalancerConfigurationHub()
+        {
+            TestRunner.RunTestScript("Test-NetworkVirtualApplianceLoadBalancerConfigurationHub");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestNetworkVirtualApplianceSourceIPLoadBalancerConfigurationVnet()
+        {
+            TestRunner.RunTestScript("Test-NetworkVirtualApplianceSourceIPLoadBalancerConfigurationVnet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestNetworkVirtualApplianceCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-NetworkVirtualApplianceCRUD"));

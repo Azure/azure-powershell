@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed `New-AzBatchApplicationPackage` deleting an existing application package version when its upload failed, and leaving a new, empty version behind. It now deletes only the version it created.
+* Changed `New-AzBatchApplicationPackage` to attempt cleanup after a failed upload only if the version was not found before the create or update request and the later read shows it `Pending` with the same non-blank ETag. Another upload of the same version can still race with the delete.
 * Fixed `Get-AzBatchSupportedVirtualMachineSku -MaxResultCount` returning every VM size. It now returns at most that many.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Fixed `New-AzBatchComputeNodeUser` and `Set-AzBatchComputeNodeUser` sending the expiry time 0001-01-01 when `-ExpiryTime` isn't specified. They now omit `expiryTime` when it isn't specified, so the service default applies.
@@ -30,6 +30,7 @@
     - Added `Azure.Compute.Batch` 1.0.0 as a dependency.
     - Added a conversion that shows `Azure.Compute.Batch` errors the same way as today's errors.
     - Added helpers that keep `-MaxCount`, `-Select` and `-Expand` working the same way with `Azure.Compute.Batch`.
+    - Added workarounds for three `Azure.Compute.Batch` 1.0.0 issues until a newer version fixes them: counts and sizes the service sends as numbers, registry server addresses, and VM extension settings that aren't text.
 
 ## Version 4.1.1
 * Fixed module load conflict by aligning `Microsoft.ApplicationInsights` to the common 2.18.0 dependency version, resolving "Assembly with same name is already loaded" error.
