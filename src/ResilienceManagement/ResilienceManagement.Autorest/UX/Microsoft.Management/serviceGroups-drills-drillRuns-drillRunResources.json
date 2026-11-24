@@ -1,0 +1,52 @@
+{
+  "resourceType": "serviceGroups/drills/drillRuns/drillRunResources",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceManagementDrillRunResource",
+      "description": "Get a DrillRunResource",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/drills/{drillName}/drillRuns/{drillRunName}/drillRunResources/{drillRunResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/get-azresiliencemanagementdrillrunresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DrillName <String>",
+              "-DrillRunName <String>",
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DrillRunResource",
+          "parameters": [
+            {
+              "name": "-DrillName",
+              "value": "[Path.drillName]"
+            },
+            {
+              "name": "-DrillRunName",
+              "value": "[Path.drillRunName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.drillRunResourceName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
