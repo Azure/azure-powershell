@@ -133,7 +133,14 @@ function Get-AzADGroupMember {
             if ($PSBoundParameters['Debug']) {
                 $param['Debug'] = $PSBoundParameters['Debug']
             }
-            $PSBoundParameters['GroupId'] = (Get-AzADGroup @param).Id
+            $group = @(Get-AzADGroup @param)
+            if ($group.Count -eq 0) {
+                throw [System.ArgumentException]::new("Group with display name '$($PSBoundParameters['GroupDisplayName'])' was not found.")
+            }
+            if ($group.Count -gt 1) {
+                throw [System.ArgumentException]::new("Multiple groups found with display name '$($PSBoundParameters['GroupDisplayName'])'. Use -GroupObjectId to specify the target group.")
+            }
+            $PSBoundParameters['GroupId'] = $group[0].Id
             $null = $PSBoundParameters.Remove('GroupDisplayName')
         }
 
