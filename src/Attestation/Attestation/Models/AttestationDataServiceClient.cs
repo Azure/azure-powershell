@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         private readonly IAzureContext _context;
         private readonly HttpPipelineTransport _transport;
         private readonly Func<string, string, bool, string, string> _dataPlaneUriResolver;
+        private readonly Func<string> _userAgent;
         private TokenCredential _credential;
         private static readonly Dictionary<(string, string), string> DataPlaneUriLookup = new Dictionary<(string, string), string>();
         private static readonly Dictionary<string, string> DefaultProviderDataPlaneUriLookup = new Dictionary<string, string>();
@@ -84,17 +85,19 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
             _authFactory = authFactory;
             _context = context;
+            _userAgent = () => string.Join(" ", AzureSession.Instance.ClientFactory.UserAgents.Select(u => u.ToString()));
             _attestationControlPlaneClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Attestation.AttestationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
         /// Creates a client that sends requests with the given transport to the endpoint the resolver returns. Used by tests.
         /// </summary>
-        internal AttestationDataServiceClient(TokenCredential credential, HttpPipelineTransport transport, Func<string, string, bool, string, string> dataPlaneUriResolver)
+        internal AttestationDataServiceClient(TokenCredential credential, HttpPipelineTransport transport, Func<string, string, bool, string, string> dataPlaneUriResolver, string userAgent = null)
         {
             _credential = credential ?? throw new ArgumentNullException(nameof(credential));
             _transport = transport ?? throw new ArgumentNullException(nameof(transport));
             _dataPlaneUriResolver = dataPlaneUriResolver ?? throw new ArgumentNullException(nameof(dataPlaneUriResolver));
+            _userAgent = () => userAgent;
         }
 
         private TokenCredential Credential => _credential ?? (_credential = new AttestationTokenCredential(_authFactory, _context));
@@ -410,6 +413,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 options.Transport = _transport;
             if (perCallPolicy != null)
                 options.AddPolicy(perCallPolicy, HttpPipelinePosition.PerCall);
+            options.AddPolicy(new AzurePowerShellUserAgentPolicy(_userAgent), HttpPipelinePosition.PerRetry);
             options.AddPolicy(new NoRetryAfterSuccessfulResponsePolicy(), HttpPipelinePosition.PerRetry);
             return options;
         }

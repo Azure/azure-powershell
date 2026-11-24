@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
         private const string CurrentApiVersion = "2025-06-01";
         private const string LegacyApiVersion = "2018-09-01-preview";
         private const string PolicyText = "version= 1.0;authorizationrules{c:[type==\"$is-debuggable\"] => permit();};issuancerules{};";
+        private const string AzurePowerShellUserAgent = "AzurePowershell/v15.0.0 PSVersion/v7.6.10 Az.Attestation/3.1.0";
 
         /// <summary>
         /// A signer token in the earlier format, which is sent to the earlier API version.
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             {
                 _endpointLookups.Add((name, resourceGroupName, isDefaultProvider, location));
                 return MockAttestationService.Endpoint;
-            })
+            }, AzurePowerShellUserAgent)
             {
                 WarningWriter = _warnings.Add
             };
@@ -349,6 +350,34 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SendsAzurePowerShellUserAgentWithEveryRequest()
+        {
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            // Covers the SDK clients, requests for caller tokens, the earlier API version, and signing certificate requests.
+            _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text");
+            _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT");
+            _client.SetPolicy("provider", "rg", null, "SgxEnclave", CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText }), "JWT");
+            _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null);
+            _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null));
+            _client.AddPolicySigner("provider", "rg", null, signerJwt);
+            _client.RemovePolicySigner("provider", "rg", null, signerJwt);
+            _client.AddPolicySigner("provider", "rg", null, LegacySignerJwt);
+            _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt);
+            _client.GetPolicySigners("provider", "rg", null);
+
+            // A request Azure.Core sends again must not get the user agent twice.
+            _service.FailNextRequests = 1;
+            _client.GetPolicy("provider", "rg", null, "TdxVm");
+
+            Assert.Contains(_service.Requests, r => r.Path == "/certs");
+            Assert.Equal(2, _service.Requests.Count(r => r.Method == "GET" && r.Path == "/policies/TdxVm"));
+            Assert.All(_service.Requests, AssertAzurePowerShellUserAgent);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DoesNotResendWriteWhenSigningCertificatesCannotBeRetrieved()
         {
             _service.FailCertificateRequests = true;
@@ -576,12 +605,22 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             Assert.Equal(apiVersion, request.Query["api-version"]);
             Assert.Equal(tee, request.Query["tee"]);
             Assert.Equal(contentType, request.ContentType);
+            AssertAzurePowerShellUserAgent(request);
             Assert.Equal("Bearer test-token", request.Authorization);
         }
 
         private static JObject ReadTokenBody(string jwt)
         {
             return JObject.Parse(Base64Url.DecodeString(jwt.Split('.')[1]));
+        }
+
+        /// <summary>
+        /// The Azure PowerShell user agent comes once, before the SDK's own user agent.
+        /// </summary>
+        private static void AssertAzurePowerShellUserAgent(RecordedRequest request)
+        {
+            Assert.StartsWith(AzurePowerShellUserAgent + " azsdk-net-Security.Attestation/", request.UserAgent);
+            Assert.Equal(request.UserAgent.IndexOf(AzurePowerShellUserAgent, StringComparison.Ordinal), request.UserAgent.LastIndexOf(AzurePowerShellUserAgent, StringComparison.Ordinal));
         }
 
         private static string CreateCallerToken(JObject body)
@@ -612,6 +651,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public System.Collections.Specialized.NameValueCollection Query { get; set; }
             public string ContentType { get; set; }
             public string Authorization { get; set; }
+            public string UserAgent { get; set; }
             public string Body { get; set; }
         }
 
@@ -714,6 +754,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                     Query = HttpUtility.ParseQueryString(request.RequestUri.Query),
                     ContentType = request.Content?.Headers.ContentType?.MediaType,
                     Authorization = request.Headers.Authorization?.ToString(),
+                    UserAgent = request.Headers.TryGetValues("User-Agent", out var userAgent) ? string.Join(" ", userAgent) : null,
                     Body = request.Content == null ? null : await request.Content.ReadAsStringAsync().ConfigureAwait(false)
                 };
                 Requests.Add(recorded);
