@@ -53,11 +53,13 @@ Get-AzBatchNodeFile [[-ComputeNode] <PSComputeNode>] [-Filter <String>] [-MaxCou
 ## DESCRIPTION
 The **Get-AzBatchNodeFile** cmdlet gets the properties of the Azure Batch node files of a task or compute node.
 To narrow your results, you can specify an Open Data Protocol (OData) filter.
+To get one file, specify its path with the *Path* parameter (see Examples 1 and 5).
 To list the node files of a task, pipe the task from Get-AzBatchTask (see Example 3).
 This lists the files in the task's folder; to include its subfolders, also specify the *Recursive* parameter (see Example 4).
-The cmdlet returns at most 1,000 files unless you set the *MaxCount* parameter; 0 means no limit.
-If you specify the task with the *JobId* and *TaskId* parameters, also specify the *Path*, *Filter* or *Recursive* parameter: with only *JobId* and *TaskId*, PowerShell can't choose a parameter set.
-If you specify a compute node, but not a filter, this cmdlet returns properties for all node files for that compute node.
+For a compute node, the cmdlet lists the entries directly in the node's root folder; to include its subfolders, also specify *Recursive* (see Examples 6 and 7).
+For each task or compute node, the list has up to 1,000 entries (files and folders) by default; a positive *MaxCount* sets a different cap, and a *MaxCount* of 0 or less removes it.
+To get the whole tree, specify `-Recursive -MaxCount 0` without *Filter*, because a filter still applies (see Example 4).
+If you specify the task with the *JobId* and *TaskId* parameters, also specify *Path* to get one file, or *Filter*, *MaxCount* or *Recursive* to get a list: with only *JobId* and *TaskId*, PowerShell can't choose a parameter set.
 
 ## EXAMPLES
 
@@ -110,7 +112,7 @@ True        wd                                                               htt
 ```
 
 This command gets the properties of the node files in the folder of the task that has the ID Task26 in the job that has the ID Job-00002.
-It doesn't list the files inside subfolders such as wd, and it returns at most 1,000 files.
+It doesn't list the files inside subfolders such as wd, and it returns at most 1,000 entries.
 To get every file of the task, add the *Recursive* parameter and `-MaxCount 0` (see Example 4).
 
 ### Example 4: Recursively get the properties of all node files associated with a task
@@ -133,7 +135,7 @@ False       wd\newFile.txt   Microsoft.Azure.Commands.Batch.Models.PSFile... htt
 This command gets the properties of all files associated with the task that has the ID Task31 in job Job-00003.
 This command specifies the *Recursive* parameter.
 Therefore, the cmdlet performs a recursive file search is performed, and returns the wd\newFile.txt node file.
-It also specifies `-MaxCount 0`, so the cmdlet returns every file instead of at most 1,000.
+It also specifies `-MaxCount 0`, so the cmdlet doesn't stop at 1,000 entries.
 
 ### Example 5: Get a single file from a compute node
 ```powershell
@@ -148,7 +150,7 @@ False       startup\stdout.txt      Microsoft.Azure.Commands.Batch.Models.PSFile
 
 This command gets the file that is named Startup\StdOut.txt from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool22.
 
-### Example 6: Get all files under a folder from a compute node
+### Example 6: Recursively get the node files whose names start with "startup" from a compute node
 ```powershell
 Get-AzBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Filter "startswith(name,'startup')" -Recursive -BatchContext $Context
 ```
@@ -163,8 +165,9 @@ False       startup\stdout.txt        Microsoft.Azure.Commands.Batch.Models.PSFi
 True        startup\wd                                                                https://cmdletexample.westus.Batch.contoso...
 ```
 
-This command gets all the files under the startup folder from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool22.
-This cmdlet specifies the *Recursive* parameter.
+This command recursively lists up to 1,000 entries whose names start with "startup" on the compute node that has the ID ComputeNode01 in the pool that has the ID Pool22.
+The filter matches a name prefix, not a folder.
+The filter can match both the `startup` folder and nested entries such as `startup\stdout.txt`.
 
 ### Example 7: Get files from the root folder of a compute node
 ```powershell
@@ -179,7 +182,7 @@ True        startup                         https://cmdletexample.westus.Batch.c
 True        workitems                       https://cmdletexample.westus.Batch.contoso...
 ```
 
-This command gets all the files at the root folder of the compute node that has the ID ComputeNode01 in the pool that has the ID Pool22.
+This command lists up to 1,000 entries directly in the root folder of the compute node that has the ID ComputeNode01 in the pool that has the ID Pool22.
 
 ## PARAMETERS
 

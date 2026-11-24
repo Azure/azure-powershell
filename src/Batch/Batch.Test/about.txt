@@ -14,8 +14,15 @@ To record (full steps: documentation/testing-docs/using-azure-test-framework.md)
   $env:AZURE_TEST_MODE = "Record"
 This writes C:\Users\<you>\.Azure\testcredentials.json. Instead, you can set
   $env:TEST_CSM_ORGID_AUTHENTICATION = "Environment=Prod;SubscriptionId=<subscription id>;TenantId=<tenant id>;UserId=<your e-mail>;"
+An existing testcredentials.json overrides $env:TEST_CSM_ORGID_AUTHENTICATION and $env:AZURE_TEST_MODE. Check for an
+old one, and remove it if you use the environment variables.
 
-3. Set the Batch account the tests use. Batch service requests sign in with the account's shared key.
+3. Set the Batch account the tests use. Record in a Batch account that is only for these tests: some tests delete pools
+by name, also pools they didn't create (for example TestPoolCRUD removes pool1 and pool2 at the end, even if it couldn't
+create them). Batch service requests sign in with the account's shared key.
+Set-TestFxEnvironment doesn't change the Azure PowerShell context that Get-AzBatchAccountKey uses, so first select the
+same subscription:
+  Set-AzContext -Subscription <subscription id>
   $env:AZURE_BATCH_ACCOUNT = "<account name>"
   $env:AZURE_BATCH_ACCESS_KEY = (Get-AzBatchAccountKey -AccountName "<account name>" -ResourceGroupName "<resource group>").PrimaryAccountKey
   $env:AZURE_BATCH_ENDPOINT = "https://<account name>.<region>.batch.azure.com"
@@ -36,8 +43,9 @@ Pools and cost:
   Tests that need running nodes (for example ComputeNodeTests and ComputeNodeUserTests) need dedicated core quota in
   the account.
 - When recording, pools created by a test's C# setup (ScenarioTestHelpers) are deleted after the test, also when the
-  test fails. Pools created inside a .ps1 script are not: after recording, check for pools left behind
-  (Get-AzBatchPool) and remove them.
+  test fails. This clean-up skips a pool that was already there, but the tests' own deletes don't (see step 3). It
+  doesn't cover pools created inside a .ps1 script: after recording, check for pools left behind (Get-AzBatchPool) and
+  remove them.
 
 ==================================================================================================================================
 This project is divided into Unit Tests and Scenario Tests.
