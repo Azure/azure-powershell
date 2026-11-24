@@ -40,9 +40,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         public override string GetMatchingKey(HttpRequestMessage request)
         {
+            string key = base.GetMatchingKey(request);
+
+            // Check the method first, so the body of a GET, DELETE or HEAD request is never read.
+            if (request.Content == null || !MethodsWithBody.Contains(request.Method.Method))
+            {
+                return key;
+            }
+
             // Same formatting and secret masking the recorder applies before it saves a request body.
-            string body = request.Content == null ? null : RecorderUtilities.FormatHttpContent(request.Content);
-            return WithBody(base.GetMatchingKey(request), request.Method.Method, body);
+            return WithBody(key, request.Method.Method, RecorderUtilities.FormatHttpContent(request.Content));
         }
 
         public override string GetMatchingKey(RecordEntry recordEntry)
