@@ -18,18 +18,20 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='location'>
-        /// The unique location name for a Microsoft Azure geographic region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='skuName'>
         /// The unique SKU name that identifies a billable tier.
         /// </param>
-        public static QuotaUsageResult UsageBySubscriptionSku(this ISearchManagementClient operations, string location, string skuName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        public static QuotaUsageResult UsageBySubscriptionSku(this ISearchManagementClient operations, string location, string skuName, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((ISearchManagementClient)operations).UsageBySubscriptionSkuAsync(location, skuName, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((ISearchManagementClient)operations).UsageBySubscriptionSkuAsync(location, skuName, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -38,11 +40,13 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='location'>
-        /// The unique location name for a Microsoft Azure geographic region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='skuName'>
         /// The unique SKU name that identifies a billable tier.
@@ -50,9 +54,9 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<QuotaUsageResult> UsageBySubscriptionSkuAsync(this ISearchManagementClient operations, string location, string skuName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<QuotaUsageResult> UsageBySubscriptionSkuAsync(this ISearchManagementClient operations, string location, string skuName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UsageBySubscriptionSkuWithHttpMessagesAsync(location, skuName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UsageBySubscriptionSkuWithHttpMessagesAsync(location, skuName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

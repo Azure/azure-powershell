@@ -198,5 +198,12 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewAzSearchServiceDataExfiltrationProtection");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceServerless()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceServerless");
+        }
     }
 }
