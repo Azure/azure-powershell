@@ -27,8 +27,9 @@
 * Added `-LdapServerType` to `New-AzNetAppFilesVolume` and `New-AzNetAppFilesVolumeGroup`, and included `LdapServerType` in volume output.
 * Fixed `New-AzNetAppFilesVolumeGroup` to enable LDAP when `-LdapServerType` was supplied for NFS (Network File System) members and apply SMB (Server Message Block) opportunistic locking only to CIFS (Common Internet File System) members.
 * Added `-SmbOplock` for SMB (Server Message Block) opportunistic locking to `New-AzNetAppFilesVolume`, `Update-AzNetAppFilesVolume`, `New-AzNetAppFilesVolumeGroup`, `New-AzNetAppFilesCache` and `Update-AzNetAppFilesCache`, and included `SmbOplocks` in output.
-* Removed the deprecated subvolume cmdlets and their Anf aliases, the `-EnableSubvolume` parameter, and the `EnableSubvolumes` volume and volume-group output properties.
-    - This is an intentional breaking change and must ship in an approved major release.
+* Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
+* Breaking change: removed deprecated subvolume operations, types, and `EnableSubvolumes` properties from the management SDK (Software Development Kit), and changed generated model constructor signatures.
+* Changed the LDAP server-type value from `OpenLDAP` to `OpenLdap` to match API version 2026-09-01.
 
 ## Version 1.4.1
 * Added deprecation notices to Azure NetApp Files subvolume cmdlets

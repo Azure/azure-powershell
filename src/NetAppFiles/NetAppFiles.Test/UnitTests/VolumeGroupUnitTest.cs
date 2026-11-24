@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
     public class VolumeGroupUnitTest
     {
         [Fact]
+        [Trait("AcceptanceType", "CheckIn")]
         public void VolumeConversionsPreserveLdapServerTypeAndSmbOplocks()
         {
             var volume = new Microsoft.Azure.Management.NetApp.Models.Volume(location: "westus2",
