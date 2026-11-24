@@ -14,7 +14,7 @@ Create an in-memory object for ManagedRuleOverride.
 
 ```
 New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-Disabled]
- [-Exclusion <IManagedRuleExclusion[]>] [-Sensitivity <String>]
+ [-Exclusion <IManagedRuleExclusion[]>] [-Sensitivity <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -76,6 +76,21 @@ Describes the exclusions that are applied to this specific rule.
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

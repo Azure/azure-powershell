@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Description(@"update an NetworkExperiment Profile")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}", ApiVersion = "2025-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}", ApiVersion = "2026-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.NotSuggestDefaultParameterSet]
     public partial class SetAzFrontDoorNetworkExperimentProfile_UpdateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener,

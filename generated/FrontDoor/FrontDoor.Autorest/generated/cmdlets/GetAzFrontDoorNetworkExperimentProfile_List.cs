@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Description(@"Gets a list of Network Experiment Profiles under a subscription")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/NetworkExperimentProfiles", ApiVersion = "2025-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/NetworkExperimentProfiles", ApiVersion = "2026-04-01")]
     public partial class GetAzFrontDoorNetworkExperimentProfile_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IContext

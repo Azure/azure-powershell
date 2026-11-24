@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPreconfiguredEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Description(@"Gets a list of Preconfigured Endpoints")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/preconfiguredEndpoints", ApiVersion = "2025-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/preconfiguredEndpoints", ApiVersion = "2026-04-01")]
     public partial class GetAzFrontDoorPreconfiguredEndpoint_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IContext

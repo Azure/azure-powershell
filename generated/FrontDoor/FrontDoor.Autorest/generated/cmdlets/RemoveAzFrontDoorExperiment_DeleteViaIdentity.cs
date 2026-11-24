@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Description(@"Deletes an Experiment")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}", ApiVersion = "2025-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}", ApiVersion = "2026-04-01")]
     public partial class RemoveAzFrontDoorExperiment_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IContext

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2026-04-01 and exposed managed rule set DisplayName, Status, and per-rule ParanoiaLevel in `Get-AzFrontDoorWafManagedRuleSetDefinition`. [#30141]
 
 ## Version 2.3.0
 * Added support for Front Door WAF managed rule exceptions.

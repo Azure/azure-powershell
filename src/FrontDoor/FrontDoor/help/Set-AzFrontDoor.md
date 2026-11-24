@@ -19,7 +19,7 @@ Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <Str
  [-FriendlyName <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
  [-HealthProbeSetting <IHealthProbeSettingsModel[]>] [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>]
  [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -28,7 +28,7 @@ Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <Str
  [-BackendPool <IBackendPool[]>] [-EnabledState <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
  [-HealthProbeSetting <IHealthProbeSettingsModel[]>] [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>]
  [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdWithCertificateNameCheckParameterSet
@@ -37,7 +37,7 @@ Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <Str
  [-BackendPool <IBackendPool[]>] [-EnabledState <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
  [-HealthProbeSetting <IHealthProbeSettingsModel[]>] [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>]
  [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>] [-DisableCertificateNameCheck] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdWithBackendPoolsSettingParameterSet
@@ -46,21 +46,21 @@ Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <Str
  [-BackendPool <IBackendPool[]>] [-BackendPoolsSetting <IBackendPoolsSettings>] [-EnabledState <String>]
  [-FrontendEndpoint <IFrontendEndpoint[]>] [-HealthProbeSetting <IHealthProbeSettingsModel[]>]
  [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>] [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Set-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -308,6 +308,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
