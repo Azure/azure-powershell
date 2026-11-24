@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(Id))
             {
-                SqlRoleDefinitionGetResults sqlRoleDefinitionGetResults = CosmosDBManagementClient.SqlResources.GetSqlRoleDefinitionWithHttpMessagesAsync(RoleHelper.ParseToRoleDefinitionId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                SqlRoleDefinitionGetResults sqlRoleDefinitionGetResults = CosmosDBManagementClient.SqlResources.GetSqlRoleDefinitionWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, accountName: AccountName, roleDefinitionId: RoleHelper.ParseToRoleDefinitionId(Id)).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlRoleDefinitionGetResults(sqlRoleDefinitionGetResults));
             }
             else

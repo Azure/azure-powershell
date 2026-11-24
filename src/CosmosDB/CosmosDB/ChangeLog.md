@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed SQL role assignment and role definition cmdlets sending resource group name, account name and Id in the wrong URL segments after the SDK regeneration in 1.22.0 [#30382]
+* Fixed `New-AzCosmosDBSqlRoleDefinition`, `New-AzCosmosDBSqlRoleAssignment`, `Update-AzCosmosDBSqlRoleDefinition` and `Update-AzCosmosDBSqlRoleAssignment` catching the wrong exception type when checking whether the role exists, which made the `New-` cmdlets always fail [#30382]
 
 ## Version 1.22.0
 * Regenerated the Cosmos DB management SDK with stable API version 2026-03-15.
