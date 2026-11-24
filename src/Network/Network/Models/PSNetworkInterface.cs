@@ -67,6 +67,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string AuxiliarySku { get; set; }
 
+        public uint? NetworkAdapterIndex { get; set; }
+
         [JsonIgnore]
         public string VirtualMachineText
         {

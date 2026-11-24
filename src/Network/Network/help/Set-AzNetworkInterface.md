@@ -83,6 +83,15 @@ $nic | Set-AzNetworkInterface
 
 The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command gets an existing network security group called MyNSG and stores it in the $nsg variable. The third command assigns the $nsg to the $nic. Finally, the fourth command applies the changes to the Network interface. To dissociate network security groups from a network interface, simple replace $nsg in the third command with $null.
 
+### Example 6: Set the network adapter index
+```powershell
+$nic = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "NetworkInterface1"
+$nic.NetworkAdapterIndex = [uint32]1
+$nic | Set-AzNetworkInterface
+```
+
+This example updates the network adapter index of an existing network interface to 1.
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken
