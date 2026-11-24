@@ -153,7 +153,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 // If the application package has already been created we don't want to delete the application package mysteriously.
                 // Another upload of the same version may also have created or changed it after the check above.
-                if (!appPackageAlreadyExists && IsUnchangedSinceCreated(resourceGroupName, accountName, applicationName, version, package.Etag))
+                // package is null if the create returned no body; then there's no ETag, and no delete.
+                if (!appPackageAlreadyExists && IsUnchangedSinceCreated(resourceGroupName, accountName, applicationName, version, package?.Etag))
                 {
                     // If we are creating a new application package and the upload fails we should delete the application package.
                     try
@@ -221,12 +222,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Whether the version is still the one this call created: never activated, and not written since (same ETag).
-        /// The service has no conditional delete for application packages, so this narrows the race with another
-        /// upload of the same version but can't close it.
+        /// Whether the version is still as this call's create left it: still Pending, with the same non-blank ETag.
+        /// This is best effort only. The service has no If-Match for application packages, and its create returns 200
+        /// for a new version and for one that already exists. So another upload of the same version at the same time
+        /// can still race with this one, and this call can then delete that upload's version.
         /// </summary>
         private bool IsUnchangedSinceCreated(string resourceGroupName, string accountName, string applicationName, string version, string createdEtag)
         {
+            if (string.IsNullOrWhiteSpace(createdEtag))
+            {
+                // Nothing to compare with: don't delete.
+                return false;
+            }
+
             try
             {
                 ApplicationPackage current = BatchManagementClient.ApplicationPackage.Get(
@@ -235,7 +243,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     applicationName,
                     version);
 
-                return current.State != PackageState.Active && string.Equals(current.Etag, createdEtag, StringComparison.Ordinal);
+                return current.State == PackageState.Pending && string.Equals(current.Etag, createdEtag, StringComparison.Ordinal);
             }
             catch (Exception)
             {

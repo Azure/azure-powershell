@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Search.Models
         /// <param name="limit">The quota limit for the particular search SKU.
         /// </param>
 
-        /// <param name="name">The name of the SKU supported by Azure AI Search.
+        /// <param name="name">The SKU name information of the current search service.
         /// </param>
         public QuotaUsageResult(string id = default(string), string unit = default(string), int? currentValue = default(int?), int? limit = default(int?), QuotaUsageResultName name = default(QuotaUsageResultName))
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Search.Models
         public int? Limit {get; set; }
 
         /// <summary>
-        /// Gets the name of the SKU supported by Azure AI Search.
+        /// Gets the SKU name information of the current search service.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public QuotaUsageResultName Name {get; private set; }
