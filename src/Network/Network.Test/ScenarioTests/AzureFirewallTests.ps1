@@ -2151,11 +2151,12 @@ function Test-AzureFirewallCRUDTcpIdleTimeout {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create public ip
-        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+        $ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/NonProd"
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag
 
         # Values outside the supported range (4 to 64) are rejected by parameter validation
         Assert-ThrowsContains { New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -TcpIdleTimeoutInMinutes 3 } "TcpIdleTimeoutInMinutes"
