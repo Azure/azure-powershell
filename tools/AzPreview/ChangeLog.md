@@ -1,3 +1,136 @@
+## 17.0.0 - December 2026
+#### Az.Accounts 5.5.6
+* Fixed 'Method not found' errors on PowerShell 7.6 when a module uses an Azure SDK whose models implement 'IJsonModel'.
+    - Az.Accounts now uses the runtime copy of a shared .NET assembly, such as 'System.Text.Json', when it is the same version or newer than the copy Az.Accounts ships, so only one copy is loaded.
+* Upgraded 'Azure.Core' dependency from 1.57.0 to 1.64.0.
+* Upgraded 'System.ClientModel' dependency from 1.13.0 to 1.16.0.
+* Upgraded MSAL dependencies ('Microsoft.Identity.Client', 'Microsoft.Identity.Client.Extensions.Msal', 'Microsoft.Identity.Client.Broker') from 4.84.0 to 4.90.0.
+* Upgraded 'Microsoft.Identity.Client.NativeInterop' from 0.20.4 to 0.20.6.
+* Upgraded 'System.Text.Json', 'System.Memory.Data', 'Microsoft.Bcl.AsyncInterfaces' and related .NET dependencies from 10.0.3 to 10.0.10.
+* Added 'System.Net.ServerSentEvents' 10.0.10 as a dependency of 'System.ClientModel'.
+
+#### Az.Aks 7.2.2
+* Fixed 'Get-AzAksCluster -Id' ignoring the subscription embedded in the resource ID and using the current context subscription instead
+    - The cmdlet now correctly uses the subscription from the provided resource ID
+    - Fixed issue [#29928]
+
+#### Az.ApiManagement 4.2.3
+* Fixed 'Get-AzApiManagementBackend' credential mapping for backend query and header values that include redacted null entries such as 'sig: null'.
+    - The cmdlet now preserves the existing redaction behavior while avoiding exceptions when null values are present in backend credentials.
+
+#### Az.Automation 1.14.0
+* Added cmdlets for Runtime Environment management
+  * 'Get-AzAutomationRuntimeEnvironment'
+  * 'New-AzAutomationRuntimeEnvironment'
+  * 'Set-AzAutomationRuntimeEnvironment'
+  * 'Remove-AzAutomationRuntimeEnvironment'
+* Added cmdlets for Runtime Environment Package management
+  * 'Get-AzAutomationRuntimeEnvironmentPackage'
+  * 'New-AzAutomationRuntimeEnvironmentPackage'
+  * 'Set-AzAutomationRuntimeEnvironmentPackage'
+  * 'Remove-AzAutomationRuntimeEnvironmentPackage'
+
+#### Az.Batch 4.1.3
+* Changed 'New-AzBatchApplicationPackage' to attempt cleanup after a failed upload only if the version was not found before the create or update request and the later read shows it 'Pending' with the same non-blank ETag. Another upload of the same version can still race with the delete.
+* Fixed 'Get-AzBatchSupportedVirtualMachineSku -MaxResultCount' returning every VM size. It now returns at most that many.
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Fixed 'New-AzBatchComputeNodeUser' and 'Set-AzBatchComputeNodeUser' sending the expiry time 0001-01-01 when '-ExpiryTime' isn't specified. They now omit 'expiryTime' when it isn't specified, so the service default applies.
+* Fixed 'Set-AzBatchAccount' resetting account settings it doesn't change, such as public network access, allowed authentication modes and the auto-storage account. It now uses the update operation.
+* Fixed 'New-AzBatchPool', 'Set-AzBatchPool', 'New-AzBatchTask' and other cmdlets failing with 'Object reference not set to an instance of an object' when an environment setting has no value.
+* Fixed 'Set-AzBatchPool', 'New-AzBatchTask' and other cmdlets dropping the identity reference of resource files, which nodes use to download the files from Azure Storage.
+* Fixed 'New-AzBatchPool', 'New-AzBatchTask', 'New-AzBatchJob' and other cmdlets sending an empty bind mount list, which mounts no folders into the container, when 'ContainerHostBatchBindMounts' of a 'PSTaskContainerSettings' object was set or changed after the object was created.
+* Started moving Az.Batch from 'Microsoft.Azure.Batch' (Track 1) to 'Azure.Compute.Batch' (Track 2). No cmdlet uses the new SDK yet.
+    - Added 'Azure.Compute.Batch' 1.0.0 as a dependency.
+    - Added a conversion that shows 'Azure.Compute.Batch' errors the same way as today's errors.
+    - Added helpers that keep '-MaxCount', '-Select' and '-Expand' working the same way with 'Azure.Compute.Batch'.
+    - Added workarounds for three 'Azure.Compute.Batch' 1.0.0 issues until a newer version fixes them: counts and sizes the service sends as numbers, registry server addresses, and VM extension settings that aren't text.
+
+#### Az.Compute 11.13.0
+* Removed unused MD5 calculations from disk and blob uploads and switched disk and blob upload lock names and deterministic Azure Enhanced Monitoring test IDs to SHA-256.
+* Added 'Set-AzSnapshotImmutabilityPolicy' and 'Remove-AzSnapshotImmutabilityPolicy', and exposed typed immutability policy details consistently in snapshot results. [Azure/azure-powershell-cmdlet-review-pr#1579]
+* Added a preview message to 'New-AzCapacityReservationGroup' indicating that the Open Capacity Reservation feature is in preview.
+
+#### Az.ContainerRegistry 5.2.2
+* Validated registry names and login-server labels before container registry data-plane requests.
+    - Accepted a single hyphen followed by a variable-length ASCII alphanumeric suffix, up to 63 characters in total.
+    - Used explicit hyphenated labels, including Domain Name Label (DNL) and legacy labels, directly without Azure Resource Manager discovery.
+* Updated 'Connect-AzContainerRegistry' credential handling.
+    - Passed credentials as data rather than executable PowerShell.
+* Updated container registry login-server discovery.
+    - Used Azure Resource Manager when available; otherwise warned and used the input with the environment suffix.
+    - Reused successful discovery results for the same registry and context within the client.
+* Updated 'Connect-AzContainerRegistry -ExposeToken'.
+    - Returned the same login server used for authentication.
+
+#### Az.IotHub 2.9.4
+* Updated 'Microsoft.Extensions.DependencyInjection.Abstractions' dependency from '10.0.3' to '10.0.10'.
+
+#### Az.NetAppFiles 1.5.0
+* Removed deprecated subvolume cmdlets and aliases, the 'EnableSubvolume' volume parameter, and 'EnableSubvolumes' output properties.
+* Updated to API version 2026-08-01.
+* Added Lightweight Directory Access Protocol (LDAP) configuration support to 'New-AzNetAppFilesAccount', 'Set-AzNetAppFilesAccount', and 'Update-AzNetAppFilesAccount', and added 'LdapConfiguration' to account output.
+* Added 'Update-AzNetAppFilesAccountLdapBindPassword' to refresh the LDAP bind password from Azure Key Vault.
+
+#### Az.Network 8.5.0
+* Added load balancer configuration for managed NVAs in hubs and VNets and individual Permanent Internet Ingress rules.
+    - Added 'New-AzNetworkVirtualApplianceLoadBalancerConfiguration' and '-LoadBalancerConfiguration' on NVA creation/update and ingress rule builders.
+    - Supports Default, SourceIP, and SourceIPProtocol distribution with idle timeouts from 4 to 100 minutes.
+    - Omitting configuration on NVA update resets existing settings to Default distribution and a 5-minute timeout, matching REST PUT semantics.
+* Upgraded Network SDK to API version '2026-05-01'.
+* Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
+
+#### Az.NetworkSecurity 0.1.1
+* Fixed module help metadata so the Az.NetworkSecurity reference documentation can be published.
+
+#### Az.RecoveryServices 7.17.0
+* Updated Az.RecoveryServices.SiteRecovery to use API version 2026-11-01.
+* Added Confidential VM (CVM) support for Azure-to-Azure replication, including per-disk encryption settings and failover identity configuration.
+
+#### Az.RedisEnterpriseCache 2.2.0
+* Upgraded code generator. See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Added support for API version 2026-09-01
+* Added 'Get-AzRedisEnterpriseCacheMigration' cmdlet to get information about a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis
+* Added 'Start-AzRedisEnterpriseCacheMigration' cmdlet to start a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis
+* Added 'Undo-AzRedisEnterpriseCacheMigration' cmdlet to cancel or rollback a migration from an Azure Cache for Redis Basic, Standard, or Premium cache to Azure Managed Redis
+* Added 'Test-AzRedisEnterpriseCacheMigration' cmdlet to validate whether an Azure Cache for Redis Basic, Standard, or Premium cache can be migrated to Azure Managed Redis
+* Added 'Invoke-AzRedisEnterpriseCacheClusterUnlinkMigratedEndpoint' and 'Invoke-AzRedisEnterpriseCacheMigrationUnlinkMigratedEndpoint' cmdlets to unlink endpoints after migrations from Azure Cache for Redis Enterprise and Azure Cache for Redis Basic, Standard, or Premium, respectively
+* Added 'MaintenanceConfigurationMaintenanceWindow' parameter to 'New-AzRedisEnterpriseCache' and 'Update-AzRedisEnterpriseCache' for configuring maintenance windows
+* Added 'NotifyKeyspaceEvents' parameter to 'New-AzRedisEnterpriseCache', 'New-AzRedisEnterpriseCacheDatabase', and 'Update-AzRedisEnterpriseCacheDatabase' for configuring keyspace notifications
+
+#### Az.Resources 10.2.4
+* Updated 'Microsoft.Extensions.DependencyInjection.Abstractions' dependency from '10.0.3' to '10.0.10'.
+
+#### Az.Search 0.13.0
+* Added support for the 2026-11-01 Resource Provider API.
+* Added support for the Serverless SKU.
+* Added 'KnowledgeRetrievalMode' to 'New-AzSearchService' and 'Set-AzSearchService' to configure the agentic retrieval billing plan.
+* Added knowledge retrieval billing-plan information to search service output.
+
+#### Az.StackHCI 3.0.2
+* Fixed node-local Remote Support, virtual machine (VM) attestation, attestation, and logs-directory cmdlets to work without an Azure login.
+    - Avoided unnecessary local remoting sessions in Remote Support checks, 'Enable-AzStackHCIAttestation', 'Disable-AzStackHCIAttestation', and 'Get-AzStackHCILogsDirectory'.
+
+#### Az.Storage 9.9.0
+* Updated Storage management operations to API version 2026-09-01.
+* Added 'PublishIpv6Endpoint' to 'New-AzStorageAccount' and 'Set-AzStorageAccount' to enable or disable IPv6 storage endpoint publishing.
+    - Exposed 'DualStackEndpointPreference' on Storage account output, including 'Get-AzStorageAccount' results.
+* Added per-service Shared Key controls, cross-tenant delegation SAS (shared access signature) controls, user-bound delegation SAS enforcement, Blob Access Point enablement, and Turbo Tier settings to 'New-AzStorageAccount' and 'Set-AzStorageAccount'.
+    - Disabling Turbo Tier omits an existing target percentage to avoid a service validation error.
+* Added commands to manage context caches, their managed identities and containers, and advanced platform metrics rules.
+    - Made 'Get-AzStorageAdvancedPlatformMetricsRule' list rules by default and retrieve a specific rule through its resource identity.
+    - Aligned command discovery metadata with listing metrics rules and deleting the container-level capacity metrics rule.
+    - Made 'Update-AzStorageContextCacheContainer' return the updated container after an asynchronous update.
+* Added commands to manage Blob Access Point configurations and test proposed or existing connections.
+    - Made 'Update-AzStorageBlobAccessPointConfiguration' return the updated configuration after an asynchronous update.
+* Added Blob Access Point attachment parameters to 'New-AzRmStorageContainer' and attachment details to container output.
+* Added file share guardrail limits and network security perimeter service tags to management output.
+
+#### Az.StorageSync 2.7.3
+* Updated the 'Set-AzStorageSyncServer' help description to explain that the cmdlet patches a server's managed identity and re-establishes the trust relationship between the server and its storage sync service, and updated the example to use a placeholder for 'ServerId'
+
+#### Az.Websites 4.3.1
+* CodeQL scan rules ignored.
+
 ## 16.5.0 - November 2026
 #### Az.Accounts 5.5.4
 * Fixed 'Get-AzAccessToken -ResourceUrl' help; replaced Azure AD Graph with Microsoft Graph.

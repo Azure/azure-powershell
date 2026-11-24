@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.5.0
 * Added load balancer configuration for managed NVAs in hubs and VNets and individual Permanent Internet Ingress rules.
     - Added `New-AzNetworkVirtualApplianceLoadBalancerConfiguration` and `-LoadBalancerConfiguration` on NVA creation/update and ingress rule builders.
     - Supports Default, SourceIP, and SourceIPProtocol distribution with idle timeouts from 4 to 100 minutes.

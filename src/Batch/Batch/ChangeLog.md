@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.1.3
 * Changed `New-AzBatchApplicationPackage` to attempt cleanup after a failed upload only if the version was not found before the create or update request and the later read shows it `Pending` with the same non-blank ETag. Another upload of the same version can still race with the delete.
 * Fixed `Get-AzBatchSupportedVirtualMachineSku -MaxResultCount` returning every VM size. It now returns at most that many.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
