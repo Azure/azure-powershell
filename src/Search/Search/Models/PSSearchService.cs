@@ -93,6 +93,9 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         [Ps1Xml(Label = "ETag", Target = ViewControl.List, Position = 22)]
         public string ETag { get; private set; }
 
+        [Ps1Xml(Label = "Knowledge retrieval", Target = ViewControl.List, Position = 23)]
+        public PSKnowledgeRetrievalMode? KnowledgeRetrievalMode { get; private set; }
+
         public PSSearchService(Azure.Management.Search.Models.SearchService searchService)
         {
             ResourceGroupName = new ResourceIdentifier(searchService.Id).ResourceGroupName;
@@ -189,6 +192,13 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             ServiceUpgradedAt = searchService.ServiceUpgradedAt;
 
             ETag = searchService.ETag;
+
+            if (searchService.KnowledgeRetrieval != null &&
+                Enum.TryParse(searchService.KnowledgeRetrieval, ignoreCase: true, out PSKnowledgeRetrievalMode knowledgeRetrievalMode) &&
+                Enum.IsDefined(typeof(PSKnowledgeRetrievalMode), knowledgeRetrievalMode))
+            {
+                KnowledgeRetrievalMode = knowledgeRetrievalMode;
+            }
         }
 
         public static PSSearchService Create(Azure.Management.Search.Models.SearchService searchService)

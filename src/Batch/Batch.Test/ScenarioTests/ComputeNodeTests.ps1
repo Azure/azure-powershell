@@ -35,8 +35,19 @@ function Test-RemoveComputeNodes
     $start = [DateTime]::Now
     $timeout = Compute-TestTimeout 60
     $end = $start.AddSeconds($timeout)
-    while (@($computeNodes | Where-Object { $removedIds -contains $_.Id -and $_.State -ne 'LeavingPool' }).Count -gt 0)
+    while ($true)
     {
+        # The checks below filter by Id, so first check that every node in this response has one.
+        foreach ($computeNode in $computeNodes)
+        {
+            Assert-NotNullOrEmpty $computeNode.Id "Get-AzBatchComputeNode returned a compute node without an Id"
+        }
+
+        if (@($computeNodes | Where-Object { $removedIds -contains $_.Id -and $_.State -ne 'LeavingPool' }).Count -eq 0)
+        {
+            break
+        }
+
         if ([DateTime]::Now -gt $end)
         {
             throw [System.TimeoutException] "Timed out waiting for compute nodes to enter LeavingPool state"

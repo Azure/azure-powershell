@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 * Fixed `New-AzVirtualNetworkGateway` to include a non-empty `ExtendedLocation` for VPN gateways.
+* Added load balancer configuration for managed NVAs in hubs and VNets and individual Permanent Internet Ingress rules.
+    - Added `New-AzNetworkVirtualApplianceLoadBalancerConfiguration` and `-LoadBalancerConfiguration` on NVA creation/update and ingress rule builders.
+    - Supports Default, SourceIP, and SourceIPProtocol distribution with idle timeouts from 4 to 100 minutes.
+    - Omitting configuration on NVA update resets existing settings to Default distribution and a 5-minute timeout, matching REST PUT semantics.
+* Upgraded Network SDK to API version `2026-05-01`.
 * Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
 
 ## Version 8.4.0

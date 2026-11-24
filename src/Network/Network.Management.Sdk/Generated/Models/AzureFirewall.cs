@@ -99,7 +99,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="aiSecurityAddOn">Indicates whether the AI security add-on is enabled for the Azure Firewall.
         /// </param>
-        public AzureFirewall(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), string provisioningState = default(string), AfcConfiguration afcConfiguration = default(AfcConfiguration), System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), bool? aiSecurityAddOn = default(bool?))
+
+        /// <param name="tcpIdleTimeoutInMinutes">The TCP idle timeout for the Azure Firewall, in minutes. Valid values range
+        /// from 4 to 64, inclusive.
+        /// </param>
+        public AzureFirewall(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), string provisioningState = default(string), AfcConfiguration afcConfiguration = default(AfcConfiguration), System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), bool? aiSecurityAddOn = default(bool?), int? tcpIdleTimeoutInMinutes = default(int?))
 
         : base(id, name, type, location, tags)
         {
@@ -122,6 +126,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AdditionalProperties = additionalProperties;
             this.AutoscaleConfiguration = autoscaleConfiguration;
             this.AiSecurityAddOn = aiSecurityAddOn;
+            this.TcpIdleTimeoutInMinutes = tcpIdleTimeoutInMinutes;
             CustomInit();
         }
 
@@ -251,6 +256,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.aiSecurityAddOn")]
         public bool? AiSecurityAddOn {get; set; }
+
+        /// <summary>
+        /// Gets or sets the TCP idle timeout for the Azure Firewall, in minutes. Valid
+        /// values range from 4 to 64, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.tcpIdleTimeoutInMinutes")]
+        public int? TcpIdleTimeoutInMinutes {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -306,6 +318,17 @@ namespace Microsoft.Azure.Management.Network.Models
             if (this.AutoscaleConfiguration != null)
             {
                 this.AutoscaleConfiguration.Validate();
+            }
+            if (this.TcpIdleTimeoutInMinutes != null)
+            {
+                if (this.TcpIdleTimeoutInMinutes > 64)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "TcpIdleTimeoutInMinutes", 64);
+                }
+                if (this.TcpIdleTimeoutInMinutes < 4)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "TcpIdleTimeoutInMinutes", 4);
+                }
             }
         }
     }

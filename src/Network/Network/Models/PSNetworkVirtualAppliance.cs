@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public IList<string> AddressFamily { get; set; }
 
+        public PSNetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration { get; set; }
+
         public string AddressPrefixV6 { get; set; }
 
         public string PrivateIpAddressV6 { get; set; }

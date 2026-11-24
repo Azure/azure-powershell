@@ -21,12 +21,8 @@ namespace Microsoft.Azure.Management.Search
         /// Generates a new query key for the specified search service. You can create
         /// up to 50 query keys per service.
         /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -35,36 +31,10 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='name'>
         /// The name of the new query API key.
         /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<QueryKey>> CreateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string name, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Returns the list of query API keys for the given Azure AI Search service.
-        /// </summary>
-        /// <remarks>
-        /// Returns the list of query API keys for the given Azure AI Search service.
-        /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -78,24 +48,32 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<QueryKey>>> ListBySearchServiceWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<QueryKey>> CreateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string name, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified query key. Unlike admin keys, query keys are not
         /// regenerated. The process for regenerating a query key is to delete and then
         /// recreate it.
+        /// Returns 200 (OK) on successful deletion, 204 (No Content) if the service
+        /// exists but the query keys not found, or 404 (Not Found) if the service is
+        /// not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </summary>
         /// <remarks>
         /// Deletes the specified query key. Unlike admin keys, query keys are not
         /// regenerated. The process for regenerating a query key is to delete and then
         /// recreate it.
+        /// Returns 200 (OK) on successful deletion, 204 (No Content) if the service
+        /// exists but the query keys not found, or 404 (Not Found) if the service is
+        /// not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -105,6 +83,11 @@ namespace Microsoft.Azure.Management.Search
         /// The query key to be deleted. Query keys are identified by value, not by
         /// name.
         /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -114,7 +97,39 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string key, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string key, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns the list of query API keys for the given Azure AI Search service.
+        /// </summary>
+        /// <remarks>
+        /// Returns the list of query API keys for the given Azure AI Search service.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<QueryKey>>> ListBySearchServiceWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the list of query API keys for the given Azure AI Search service.
@@ -137,7 +152,7 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<QueryKey>>> ListBySearchServiceNextWithHttpMessagesAsync(string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<QueryKey>>> ListBySearchServiceNextWithHttpMessagesAsync(string nextPageLink, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }
