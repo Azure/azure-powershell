@@ -24,6 +24,8 @@
     - Supports Default, SourceIP, and SourceIPProtocol distribution with idle timeouts from 4 to 100 minutes.
     - Omitting configuration on NVA update resets existing settings to Default distribution and a 5-minute timeout, matching REST PUT semantics.
 * Upgraded Network SDK to API version `2026-05-01`.
+
+## Version 8.4.1
 * Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
 
 ## Version 8.4.0
