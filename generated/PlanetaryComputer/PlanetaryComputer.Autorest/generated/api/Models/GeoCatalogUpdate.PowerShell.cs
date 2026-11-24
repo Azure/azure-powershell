@@ -111,19 +111,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             // actually deserialize
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentityUpdateTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogUpdatePropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogUpdateTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("IdentityType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityType, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityUserAssignedIdentity"))
+            if (content.Contains("PublicNetworkAccess"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentityUpdateUserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -144,19 +152,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models
             // actually deserialize
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdate) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentityUpdateTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdate) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogUpdatePropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogUpdateTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogManagedServiceIdentityUpdateUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.GeoCatalogManagedServiceIdentityUpdateUserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("IdentityType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityType, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityUserAssignedIdentity"))
+            if (content.Contains("PublicNetworkAccess"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IManagedServiceIdentityUpdateUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.ManagedServiceIdentityUpdateUserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.PlanetaryComputer.Models.IGeoCatalogUpdateInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

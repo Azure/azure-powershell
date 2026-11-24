@@ -1,5 +1,5 @@
 ---
-external help file: Az.PlanetaryComputer-help.xml
+external help file:
 Module Name: Az.PlanetaryComputer
 online version: https://learn.microsoft.com/powershell/module/az.planetarycomputer/remove-azplanetarycomputergeocatalog
 schema: 2.0.0
@@ -15,14 +15,14 @@ Delete a GeoCatalog
 ### Delete (Default)
 ```
 Remove-AzPlanetaryComputerGeoCatalog -CatalogName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzPlanetaryComputerGeoCatalog -InputObject <IPlanetaryComputerIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

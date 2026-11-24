@@ -42,7 +42,7 @@ function DownloadModule ([bool]$predicate, [string]$path, [string]$moduleName, [
 $ProgressPreference = 'SilentlyContinue'
 $all = (@($Accounts.IsPresent, $Pester.IsPresent) | Select-Object -Unique | Measure-Object).Count -eq 1
 
-$localModulesPath = Join-Path $PSScriptRoot 'generated\modules'
+$localModulesPath = Join-Path $PSScriptRoot 'generated/modules'
 if(Test-Path -Path $localModulesPath) {
   $env:PSModulePath = "$localModulesPath$([IO.Path]::PathSeparator)$env:PSModulePath"
 }
