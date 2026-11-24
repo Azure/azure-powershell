@@ -331,6 +331,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime
 
     internal static partial class Extensions
     {
+        internal const string RequestScopedHeadersKey = "Microsoft.Azure.PowerShell.RequestScopedHeaders";
+
+        internal static HttpRequestMessage CloneForFollowUpGetAndDispose(this HttpRequestMessage original, System.Uri requestUri)
+        {
+            using (original)
+            {
+                return original.Clone(requestUri, System.Net.Http.HttpMethod.Get, includeRequestScopedHeaders: false);
+            }
+        }
+
         internal static HttpRequestMessage CloneAndDispose(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null)
         {
             using (original)
@@ -354,8 +364,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime
         /// <param name="requestUri"></param>
         /// <param name="method"></param>
         /// <returns>A clone of the HttpRequestMessage</returns>
-        internal static HttpRequestMessage Clone(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null)
+        internal static HttpRequestMessage Clone(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null, bool includeRequestScopedHeaders = true)
         {
+            HashSet<string> excludedHeaders = null;
+            if (!includeRequestScopedHeaders && original.Properties.TryGetValue(RequestScopedHeadersKey, out var scopedHeaders))
+            {
+                if (!(scopedHeaders is IEnumerable<string> headerNames))
+                {
+                    throw new System.InvalidOperationException($"{RequestScopedHeadersKey} must contain an IEnumerable<string>.");
+                }
+                excludedHeaders = new HashSet<string>(headerNames, System.StringComparer.OrdinalIgnoreCase);
+            }
+
             // Resolve a relative target against the original request so same-origin relative nextLinks are not misclassified as cross-origin.
             var effectiveTargetUri = requestUri;
             if (effectiveTargetUri != null && !effectiveTargetUri.IsAbsoluteUri && original.RequestUri != null && original.RequestUri.IsAbsoluteUri)
@@ -379,7 +399,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime
 
             foreach (KeyValuePair<string, object> prop in original.Properties)
             {
-                clone.Properties.Add(prop);
+                if (includeRequestScopedHeaders || prop.Key != RequestScopedHeadersKey)
+                {
+                    clone.Properties.Add(prop);
+                }
             }
 
             foreach (KeyValuePair<string, IEnumerable<string>> header in original.Headers)
@@ -390,6 +413,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime
                 */
                 if (!"x-ms-unique-id".Equals(header.Key) && !"x-ms-client-request-id".Equals(header.Key) && !"CommandName".Equals(header.Key) && !"FullCommandName".Equals(header.Key) && !"ParameterSetName".Equals(header.Key) && !"User-Agent".Equals(header.Key))
                 {
+                    if (excludedHeaders != null && excludedHeaders.Contains(header.Key))
+                    {
+                        continue;
+                    }
                     if (!isSameOrigin && ("Authorization".Equals(header.Key, System.StringComparison.OrdinalIgnoreCase) || "Proxy-Authorization".Equals(header.Key, System.StringComparison.OrdinalIgnoreCase) || "Cookie".Equals(header.Key, System.StringComparison.OrdinalIgnoreCase)))
                     {
                         continue;
