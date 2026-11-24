@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for the 2026-11-01 Resource Provider API.
+* Added support for the Serverless SKU.
+* Added `KnowledgeRetrievalMode` to `New-AzSearchService` and `Set-AzSearchService` to configure the agentic retrieval billing plan.
+* Added knowledge retrieval billing-plan information to search service output.
 
 ## Version 0.12.1
 * Updated Search service identity casts to explicitly use the Search SDK `Identity` model.

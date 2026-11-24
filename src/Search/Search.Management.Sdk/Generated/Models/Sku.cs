@@ -33,9 +33,10 @@ namespace Microsoft.Azure.Management.Search.Models
         /// up to 3 partitions with more indexes if you also set the hostingMode
         /// property to &#39;highDensity&#39;). &#39;storage_optimized_l1&#39;: Supports 1TB per
         /// partition, up to 12 partitions. &#39;storage_optimized_l2&#39;: Supports 2TB per
-        /// partition, up to 12 partitions.&#39;
+        /// partition, up to 12 partitions. &#39;serverless&#39;: Serverless tier with
+        /// auto-scaling capabilities.
         /// Possible values include: &#39;free&#39;, &#39;basic&#39;, &#39;standard&#39;, &#39;standard2&#39;,
-        /// &#39;standard3&#39;, &#39;storage_optimized_l1&#39;, &#39;storage_optimized_l2&#39;</param>
+        /// &#39;standard3&#39;, &#39;storage_optimized_l1&#39;, &#39;storage_optimized_l2&#39;, &#39;serverless&#39;</param>
         public Sku(string name = default(string))
 
         {
@@ -58,7 +59,8 @@ namespace Microsoft.Azure.Management.Search.Models
         /// replicas (or up to 3 partitions with more indexes if you also set the
         /// hostingMode property to &#39;highDensity&#39;). &#39;storage_optimized_l1&#39;: Supports
         /// 1TB per partition, up to 12 partitions. &#39;storage_optimized_l2&#39;: Supports
-        /// 2TB per partition, up to 12 partitions.&#39; Possible values include: &#39;free&#39;, &#39;basic&#39;, &#39;standard&#39;, &#39;standard2&#39;, &#39;standard3&#39;, &#39;storage_optimized_l1&#39;, &#39;storage_optimized_l2&#39;
+        /// 2TB per partition, up to 12 partitions. &#39;serverless&#39;: Serverless tier with
+        /// auto-scaling capabilities. Possible values include: &#39;free&#39;, &#39;basic&#39;, &#39;standard&#39;, &#39;standard2&#39;, &#39;standard3&#39;, &#39;storage_optimized_l1&#39;, &#39;storage_optimized_l2&#39;, &#39;serverless&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }

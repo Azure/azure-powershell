@@ -66,10 +66,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             IPage<SupportedSku> response = BatchManagementClient.Location.ListSupportedVirtualMachineSkus(location, maxResultCount, filter);
             List<PSSupportedSku> psSupportedSku = response.Select(ConvertToPSSupportedSku).ToList();
 
-            while (response.NextPageLink != null)
+            // maxResultCount is the most sizes to return; the service also takes it as the page size.
+            bool limited = maxResultCount.HasValue && maxResultCount.Value > 0;
+            while (response.NextPageLink != null && (!limited || psSupportedSku.Count < maxResultCount.Value))
             {
                 response = BatchManagementClient.Location.ListSupportedVirtualMachineSkusNext(response.NextPageLink);
                 psSupportedSku.AddRange(response.Select(ConvertToPSSupportedSku));
+            }
+
+            if (limited && psSupportedSku.Count > maxResultCount.Value)
+            {
+                psSupportedSku.RemoveRange(maxResultCount.Value, psSupportedSku.Count - maxResultCount.Value);
             }
 
             return psSupportedSku;

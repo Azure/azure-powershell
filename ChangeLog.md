@@ -100,6 +100,9 @@
 * Updated the 'Set-AzStorageSyncServer' help description to explain that the cmdlet patches a server's managed identity and re-establishes the trust relationship between the server and its storage sync service, and updated the example to use a placeholder for 'ServerId'
 
 ## Upcoming Release
+#### Az.NetworkSecurity
+* Fixed module help metadata so the Az.NetworkSecurity reference documentation can be published.
+
 #### Az.NetAppFiles
 * Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
 * Updated to API version 2026-08-01.
