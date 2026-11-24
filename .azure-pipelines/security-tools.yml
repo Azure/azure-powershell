@@ -87,6 +87,8 @@ jobs:
       outputFormat: sarif
       scanFolder: SecurityTmp
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
+  - task: NuGetAuthenticate@1
+    displayName: Authenticate NuGet feeds for external CredScan
   - task: PowerShell@2
     displayName: Run external CredScan
     env:
@@ -97,8 +99,11 @@ jobs:
     inputs:
       targetType: inline
       script: |
-        nuget.exe install Microsoft.Security.DevOps.Cli
-        $toolsPath = Join-Path ("Microsoft.Security.DevOps.Cli*" | Resolve-Path) tools
+        nuget.exe install Microsoft.Security.DevOps.Cli -NonInteractive
+        $package = Get-ChildItem -Path . -Directory -Filter "Microsoft.Security.DevOps.Cli*" | Select-Object -First 1
+        if (-not $package) { throw "Failed to install Microsoft.Security.DevOps.Cli (feed/auth issue)." }
+        $toolsPath = Join-Path $package.FullName tools
+        if (-not (Test-Path $toolsPath)) { throw "CredScan tools path not found: $toolsPath" }
         $env:Path = "$toolsPath;$env:Path"
         $env:GDN_CREDSCAN_TARGETDIRECTORY = (Resolve-Path $env:Scan_Folder).Path
         guardian init -f
