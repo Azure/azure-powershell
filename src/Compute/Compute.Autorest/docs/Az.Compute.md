@@ -17,6 +17,9 @@ Retrieves information about a gallery Application Definition.
 ### [Get-AzGalleryApplicationVersion](Get-AzGalleryApplicationVersion.md)
 Retrieves information about a gallery Application Version.
 
+### [Invoke-AzComputePlacementScore](Invoke-AzComputePlacementScore.md)
+Generates placement scores for Compute VM SKUs.
+
 ### [Invoke-AzSpotPlacementScore](Invoke-AzSpotPlacementScore.md)
 Generates placement scores for Spot VM skus.
 
@@ -49,4 +52,3 @@ Update a gallery Application Definition.
 
 ### [Update-AzGalleryApplicationVersion](Update-AzGalleryApplicationVersion.md)
 Update a gallery Application Version.
-
