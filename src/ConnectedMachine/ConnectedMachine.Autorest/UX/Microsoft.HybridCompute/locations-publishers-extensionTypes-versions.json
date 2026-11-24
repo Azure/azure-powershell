@@ -1,6 +1,6 @@
 {
   "resourceType": "locations/publishers/extensionTypes/versions",
-  "apiVersion": "2026-06-16-preview",
+  "apiVersion": "2026-07-15",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine"
   },
