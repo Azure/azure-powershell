@@ -1068,7 +1068,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduledEventsApiVersion
-Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events. This parameter is only supported when updating a Virtual Machine Scale Set via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`).
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see [Version and region availability](https://learn.microsoft.com/azure/virtual-machines/linux/scheduled-events#version-and-region-availability). This parameter is only supported when updating a Virtual Machine Scale Set via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`).
 
 ```yaml
 Type: System.String

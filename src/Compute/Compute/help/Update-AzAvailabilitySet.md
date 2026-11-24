@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduledEventsApiVersion
-Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see [Version and region availability](https://learn.microsoft.com/azure/virtual-machines/linux/scheduled-events#version-and-region-availability).
 
 ```yaml
 Type: System.String
