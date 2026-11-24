@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved `Remove-AzConnectedKubernetes` diagnostics when Helm cleanup fails after deleting the Azure connected cluster resource.
+    - Reports the Helm exit code, command output, release namespace, kube context, and a recovery command.
 
 ## Version 0.15.0
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
@@ -89,4 +91,3 @@
 
 ## Version 0.1.0
 * The first preview release
-

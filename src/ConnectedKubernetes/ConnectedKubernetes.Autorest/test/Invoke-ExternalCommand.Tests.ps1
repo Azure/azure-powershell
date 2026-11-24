@@ -18,4 +18,23 @@ Describe 'Invoke-ExternalCommand' {
     It '__AllParameterSets' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
+    It 'Captures native output and exit code' {
+        $powerShellExecutable = (Get-Process -Id $PID).Path
+        $arguments = @(
+            '-NoProfile',
+            '-NonInteractive',
+            '-Command',
+            '[Console]::Out.WriteLine("standard output"); [Console]::Error.WriteLine("standard error"); exit 7'
+        )
+
+        $result = Invoke-ExternalCommand `
+            -Command $powerShellExecutable `
+            -Arguments $arguments `
+            -PassThruResult
+
+        $result.ExitCode | Should -eq 7
+        ($result.Output -join "`n") | Should -Match 'standard output'
+        ($result.Output -join "`n") | Should -Match 'standard error'
+    }
 }
