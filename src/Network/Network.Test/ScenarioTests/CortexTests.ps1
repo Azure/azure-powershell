@@ -914,6 +914,7 @@ function Test-CortexExpressRouteCRUD
  
     $virtualWanName = Get-ResourceName
     $virtualHubName = Get-ResourceName
+    $routeMapName = "testRouteMap"
     $VpnServerConfiguration1Name = Get-ResourceName
     $VpnServerConfiguration2Name = Get-ResourceName
     $VpnServerConfigurationMultiAuthName = Get-ResourceName
@@ -944,6 +945,28 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		Assert-AreEqual $virtualWan.Id $virtualhub.VirtualWan.Id
+
+		# Create a route map in the Virtual hub
+		$routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
+		$routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
+		$routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
+		$routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
+
+		$routeMapMatchCriterion2 = New-AzRouteMapRuleCriterion -MatchCondition "Equals" -AsPath @("12345")
+		$routeMapAction2 = New-AzRouteMapRuleAction -Type "Drop"
+		$routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatchCriterion2) -RouteMapRuleAction @($routeMapAction2) -NextStepIfMatched "Terminate"
+
+		New-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule1, $routeMapRule2)
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
+		Assert-AreEqual $routeMap.Rules.Count 2
+
+		Update-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule2)
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
+		Assert-AreEqual $routeMap.Rules.Count 1
+		Assert-AreEqual $routeMap.AssociatedInboundConnections.Count 0
+
+		$rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
+		$testRoutingConfiguration =New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label @("testLabel") -Id @($rt1.Id) -InboundRouteMap $routeMap.Id
 
 		# Create a PolicyGroup1 Object
 		$policyGroup1 = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroup
@@ -1168,7 +1191,7 @@ function Test-CortexExpressRouteCRUD
         Assert-AreEqual "9.9.9.9" $P2SVpnGateway.CustomDnsServers[0]
 		Assert-AreEqual $false $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 
-		# Update existing P2SVpnGateway to remove the CustomDnsServers & EnableInternetSecurityFlag & adding new P2SConnectionConfiguration
+		# Update existing P2SVpnGateway to remove the CustomDnsServers & EnableInternetSecurityFlag & adding new P2SConnectionConfiguration with RouteMap
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
 		$p2SConnectionConfigs = New-Object Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration[] 2
 		$p2SConnectionConfigs[0] = $P2SVpnGateway.P2SConnectionConfigurations[0]
@@ -1177,6 +1200,7 @@ function Test-CortexExpressRouteCRUD
 		$p2SConnectionConfigs[1].VpnClientAddressPool = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSAddressSpace
 		$p2SConnectionConfigs[1].VpnClientAddressPool.AddressPrefixes = New-Object string[] 1
 		$p2SConnectionConfigs[1].VpnClientAddressPool.AddressPrefixes[0] = "192.168.5.0/24"
+		$p2SConnectionConfigs[1].RoutingConfiguration = $testRoutingConfiguration
 		Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -CustomDnsServer @() -EnableInternetSecurityFlag -P2SConnectionConfiguration $p2SConnectionConfigs
 
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
@@ -1191,6 +1215,10 @@ function Test-CortexExpressRouteCRUD
 		Assert-NotNull $associatedVpnServerConfigs
 		Assert-AreEqual 1 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
 		Assert-AreEqual $vpnServerConfig1.Id $associatedVpnServerConfigs.VpnServerConfigurationResourceIds[0]
+		
+		$inboundRoutes = Get-AzVHubInboundRoute -ResourceGroupName $rgName -VirtualHubName $virtualHubName -ResourceUri $P2SVpnGateway.P2SConnectionConfigurations[1].Id -VirtualWanConnectionType 'P2SConnection'
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $routeMapName
+		Assert-AreEqual $routeMap.AssociatedInboundConnections.Count 1
 
         # Delete VpnServerConfiguration2 using Remove-AzVpnServerConfiguration
 		$delete = Remove-AzVpnServerConfiguration -InputObject $VpnServerConfig2Get -Force -PassThru

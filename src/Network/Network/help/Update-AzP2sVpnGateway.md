@@ -168,6 +168,87 @@ P2SConnectionConfigurations    : [
 The **Update-AzP2sVpnGateway** cmdlet enables you to update an existing P2SVpnGateway under VirtualHub with new VpnClientAddressPool. When Point to site client connects with this P2SVpnGateway, one of the ip address from this VpnClientAddressPool gets allocated to that client.
 
 ### Example 2
+```powershell
+$vpnClientAddressSpaces = New-Object string[] 1 
+$vpnClientAddressSpaces[0] = "101.10.0.0/16"
+
+$routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
+$routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
+$routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
+$routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
+
+$routeMapMatchCriterion2 = New-AzRouteMapRuleCriterion -MatchCondition "Equals" -AsPath @("12345")
+$routeMapAction2 = New-AzRouteMapRuleAction -Type "Drop"
+$routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatchCriterion2) -RouteMapRuleAction @($routeMapAction2) -NextStepIfMatched "Terminate"
+
+New-AzRouteMap -ResourceGroupName P2SCortexGATesting -VirtualHubName WestUsVirtualHub -Name TestRouteMap1 -RouteMapRule @($routeMapRule1, $routeMapRule2)
+$routeMap = Get-AzRouteMap -ResourceGroupName P2SCortexGATesting -VirtualHubName WestUsVirtualHub -Name TestRouteMap1
+
+$rt1 = Get-AzVHubRouteTable -ResourceGroupName P2SCortexGATesting -VirtualHubName WestUsVirtualHub -Name "defaultRouteTable"
+$testRoutingConfiguration =New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label @("testLabel") -Id @($rt1.Id) -InboundRouteMap $routeMap.Id
+
+$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+$p2SConnectionConfigs = New-Object Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration[] 1
+$p2SConnectionConfigs[0] = $P2SVpnGateway.P2SConnectionConfigurations[0]
+$p2SConnectionConfigs[0].RoutingConfiguration = $testRoutingConfiguration
+
+Update-AzP2sVpnGateway -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw -VpnClientAddressPool $vpnClientAddressSpaces -EnableInternetSecurityFlag -P2SConnectionConfiguration $p2SConnectionConfigs
+```
+
+```output
+ResourceGroupName              : P2SCortexGATesting
+Name                           : 683482ade8564515aed4b8448c9757ea-westus-gw
+Id                             : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482ade8564515a
+                                 ed4b8448c9757ea-westus-gw
+Location                       : westus
+VpnGatewayScaleUnit            : 1
+VirtualHub                     : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/virtualHubs/NilamdWestUsVirtualH
+                                 ub
+VpnServerConfiguration         : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/NilamdWe
+                                 stUsConfig
+VpnServerConfigurationLocation :
+VpnClientConnectionHealth      : null
+Type                           : Microsoft.Network/p2sVpnGateways
+ProvisioningState              : Succeeded
+P2SConnectionConfigurations    : [
+                                   {
+                                     "ProvisioningState": "Succeeded",
+                                     "VpnClientAddressPool": {
+                                       "AddressPrefixes": [
+                                         "101.10.0.0/16"
+                                       ]
+                                     },
+                                     "EnableInternetSecurity": True,								 
+                                     "RoutingConfiguration": {
+                                       "AssociatedRouteTable": {
+                                         "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/virtualHubs/WestUsVirtualHub/hubRouteTables/defaultRouteTable"
+                                       }
+                                       "PropagatedRouteTables": {
+                                         "Labels": [],
+                                         "Ids": [
+                                           {
+                                            "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/virtualHubs/WestUsVirtualHub/hubRouteTables/defaultRouteTable"
+                                           }
+                                        ]
+                                       },
+                                       "VnetRoutes": {
+                                         "StaticRoutes": []
+                                       },
+					"InboundRouteMap": { 
+                                         "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/virtualHubs/WestUsVirtualHub/routeMaps/TestRouteMap1" 
+					}
+                                     },
+                                     "Name": "P2SConnectionConfigDefault",
+                                     "Etag": "W/\"d7debc2f-ccbb-4f00-bddc-42c99b52fda3\"",
+                                     "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482
+                                 ade8564515aed4b8448c9757ea-westus-gw/p2sConnectionConfigurations/P2SConnectionConfigDefault"
+                                   }
+                                 ]
+```
+
+The **Update-AzP2sVpnGateway** cmdlet enables you to update an existing P2SVpnGateway under VirtualHub with new VpnClientAddressPool. When Point to site client connects with this P2SVpnGateway, one of the ip address from this VpnClientAddressPool gets allocated to that client.
+
+### Example 3
 
 Update an existing P2SVpnGateway under VirtualHub for point to site connectivity. (autogenerated)
 
