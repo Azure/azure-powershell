@@ -57,11 +57,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Attestation.Autorest/bin/Az.Attestation.private.dll', 
-               'Microsoft.Azure.Attestation.dll', 
-               'Microsoft.Azure.PowerShell.Attestation.Management.Sdk.dll', 
-               'Microsoft.IdentityModel.JsonWebTokens.dll', 
-               'Microsoft.IdentityModel.Logging.dll', 
-               'Microsoft.IdentityModel.Tokens.dll'
+               'Azure.Security.Attestation.dll', 
+               'Microsoft.Azure.PowerShell.Attestation.Management.Sdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

@@ -30,8 +30,12 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetAttestationPolicySigners");
         }
 
+        /// <summary>
+        /// The data plane cmdlets use the Azure.Security.Attestation SDK, whose requests the test framework
+        /// does not record, so the data plane tests run live only.
+        /// </summary>
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGetDefaultProviderPolicySigners()
         {
             TestRunner.RunTestScript("Test-GetDefaultProviderPolicySigners");
@@ -49,6 +53,13 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         public void TestRemoveAttestationPolicySigner()
         {
             TestRunner.RunTestScript("Test-RemoveAttestationPolicySigner");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestAddRemoveAttestationPolicySignerCurrentFormat()
+        {
+            TestRunner.RunTestScript("Test-AddRemoveAttestationPolicySignerCurrentFormat");
         }
     }
 }

@@ -1,0 +1,924 @@
+// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web;
+using Azure.Core;
+using Azure.Core.Pipeline;
+using Microsoft.Azure.Commands.Attestation.Models;
+using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
+{
+    /// <summary>
+    /// Verifies the requests the policy and policy signer operations send, using a simulated attestation service.
+    /// </summary>
+    public class AttestationDataServiceClientRoutingTests : IDisposable
+    {
+        private const string CurrentApiVersion = "2025-06-01";
+        private const string LegacyApiVersion = "2018-09-01-preview";
+        private const string PolicyText = "version= 1.0;authorizationrules{c:[type==\"$is-debuggable\"] => permit();};issuancerules{};";
+        private const string AzurePowerShellUserAgent = "AzurePowershell/v15.0.0 PSVersion/v7.6.10 Az.Attestation/3.1.0";
+
+        /// <summary>
+        /// A signer token in the earlier format, which is sent to the earlier API version.
+        /// </summary>
+        private static readonly string LegacySignerJwt = CreateCallerToken(new JObject { ["maa-policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+        private readonly MockAttestationService _service = new MockAttestationService();
+        private readonly StaticTokenCredential _credential = new StaticTokenCredential();
+        private readonly List<string> _warnings = new List<string>();
+        private readonly List<(string Name, string ResourceGroupName, bool IsDefaultProvider, string Location)> _endpointLookups = new List<(string, string, bool, string)>();
+        private readonly AttestationDataServiceClient _client;
+
+        public AttestationDataServiceClientRoutingTests()
+        {
+            _client = new AttestationDataServiceClient(_credential, _service.CreateTransport(), (name, resourceGroupName, isDefaultProvider, location) =>
+            {
+                _endpointLookups.Add((name, resourceGroupName, isDefaultProvider, location));
+                return MockAttestationService.Endpoint;
+            }, AzurePowerShellUserAgent)
+            {
+                WarningWriter = _warnings.Add
+            };
+        }
+
+        public void Dispose() => _service.Dispose();
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData("TdxVm", "TdxVm")]
+        [InlineData("SgxEnclave", "SgxEnclave")]
+        [InlineData("VBSEnclave", "Tpm")]
+        public void SetsTextPolicyWithCurrentApi(string tee, string attestationType)
+        {
+            _client.SetPolicy("provider", "rg", null, tee, PolicyText, "Text");
+
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, "PUT", $"/policies/{attestationType}", CurrentApiVersion, null, "text/plain");
+            Assert.Equal(Base64Url.EncodeString(PolicyText), ReadTokenBody(request.Body)["AttestationPolicy"].ToString());
+            Assert.Empty(_warnings);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SendsCallerPolicyTokenUnchangedToCurrentApi()
+        {
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+
+            _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT");
+
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, "PUT", "/policies/TdxVm", CurrentApiVersion, null, "text/plain");
+            Assert.Equal(policyJwt, request.Body);
+            Assert.Empty(_warnings);
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData("SgxEnclave", "SgxEnclave")]
+        [InlineData("Tpm", "VBSEnclave")]
+        [InlineData("VBSEnclave", "VBSEnclave")]
+        public void SendsUnencodedPolicyTokenToLegacyApi(string tee, string legacyTee)
+        {
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText });
+
+            _client.SetPolicy("provider", "rg", null, tee, policyJwt, "JWT");
+
+            Assert.Equal(2, _service.ServiceRequests.Count);
+            AssertRequest(_service.ServiceRequests[0], "POST", "/operations/policy/updatepolicy", LegacyApiVersion, legacyTee, "text/plain");
+            Assert.Equal(policyJwt, _service.ServiceRequests[0].Body);
+            AssertRequest(_service.ServiceRequests[1], "PUT", "/operations/policy/current", LegacyApiVersion, legacyTee, "text/plain");
+            Assert.Equal(_service.LastPolicyUpdateToken, _service.ServiceRequests[1].Body);
+            Assert.Single(_warnings);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsUnencodedPolicyTokenForTypeLegacyApiDoesNotSupport()
+        {
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText });
+
+            Assert.Throws<ArgumentException>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"));
+            Assert.Empty(_service.ServiceRequests);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ResetsPolicyWithCurrentApi()
+        {
+            _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null);
+
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, "POST", "/policies/TdxVm:reset", CurrentApiVersion, null, "text/plain");
+            Assert.Empty(_warnings);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SendsCallerResetTokenUnchangedToCurrentApi()
+        {
+            var resetJwt = CreateCallerToken(null);
+
+            _client.ResetToDefaultPolicy("provider", "rg", null, "VBSEnclave", resetJwt);
+
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, "POST", "/policies/Tpm:reset", CurrentApiVersion, null, "text/plain");
+            Assert.Equal(resetJwt, request.Body);
+            Assert.Empty(_warnings);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SendsUnencodedResetTokenToLegacyApi()
+        {
+            var resetJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText });
+
+            _client.ResetToDefaultPolicy("provider", "rg", null, "SgxEnclave", resetJwt);
+
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, "POST", "/operations/policy/current", LegacyApiVersion, "SgxEnclave", "text/plain");
+            Assert.Equal(resetJwt, request.Body);
+            Assert.Single(_warnings);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsPolicyFromValidatedServiceToken()
+        {
+            var policy = new PSPolicy(_client.GetPolicy("provider", "rg", null, "VBSEnclave"));
+
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, "GET", "/policies/Tpm", CurrentApiVersion, null, null);
+            Assert.Equal(PolicyText, policy.Text);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsDefaultProviderPolicy()
+        {
+            var policy = new PSPolicy(_client.GetPolicy(null, null, null, "TdxVm", true, "East US"));
+
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, "GET", "/policies/TdxVm", CurrentApiVersion, null, null);
+            Assert.Equal(PolicyText, policy.Text);
+            Assert.Equal((null, null, true, "East US"), Assert.Single(_endpointLookups));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsDefaultProviderPolicySigners()
+        {
+            var signers = new PSPolicySigners(_client.GetPolicySigners(null, null, null, true, "East US"));
+
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, "GET", "/certificates", CurrentApiVersion, null, null);
+            Assert.Equal(1, signers.CertificateCount);
+            Assert.Equal((null, null, true, "East US"), Assert.Single(_endpointLookups));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void LooksUpEndpointOfNamedProvider()
+        {
+            _client.GetPolicy("provider", "rg", null, "TdxVm");
+            _client.GetPolicySigners("provider", "rg", null);
+
+            Assert.Equal(2, _endpointLookups.Count);
+            Assert.All(_endpointLookups, lookup => Assert.Equal(("provider", "rg", false, string.Empty), lookup));
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(true, "/certificates:add")]
+        [InlineData(false, "/certificates:remove")]
+        public void SendsCurrentSignerTokenToCurrentApi(bool add, string path)
+        {
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            var signers = add
+                ? _client.AddPolicySigner("provider", "rg", null, signerJwt)
+                : _client.RemovePolicySigner("provider", "rg", null, signerJwt);
+
+            Assert.Equal(2, _service.ServiceRequests.Count);
+            AssertRequest(_service.ServiceRequests[0], "POST", path, CurrentApiVersion, null, "application/json");
+            Assert.Equal(signerJwt, JsonConvert.DeserializeObject<string>(_service.ServiceRequests[0].Body));
+            AssertRequest(_service.ServiceRequests[1], "GET", "/certificates", CurrentApiVersion, null, null);
+            Assert.Equal(1, new PSPolicySigners(signers).CertificateCount);
+            Assert.Empty(_warnings);
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(true, "PUT")]
+        [InlineData(false, "POST")]
+        public void SendsLegacySignerTokenToLegacyApi(bool add, string method)
+        {
+            var signerJwt = CreateCallerToken(new JObject { ["maa-policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            var signers = add
+                ? _client.AddPolicySigner("provider", "rg", null, signerJwt)
+                : _client.RemovePolicySigner("provider", "rg", null, signerJwt);
+
+            // The earlier API version returns the updated signers, so they are not read again.
+            var request = Assert.Single(_service.ServiceRequests);
+            AssertRequest(request, method, "/operations/policy/certificates", LegacyApiVersion, null, "application/json");
+            Assert.Equal(signerJwt, JsonConvert.DeserializeObject<string>(request.Body));
+            Assert.Equal(1, new PSPolicySigners(signers).CertificateCount);
+            Assert.Single(_warnings);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsServiceTokenNotSignedByProvider()
+        {
+            _service.SignWithUnknownKey = true;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+            const string reason = "Could not find a certificate which was used to sign the token.";
+
+            // A write the service has accepted must not be sent again when its response fails validation.
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            // The earlier API's update token must be valid before the policy is applied with PUT /operations/policy/current.
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "SgxEnclave", CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText }), "JWT"), "POST", "/operations/policy/updatepolicy", reason);
+            AssertWriteNotConfirmed(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, LegacySignerJwt), "PUT", "/operations/policy/certificates", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AcceptsServiceTokensFromClockAheadWithinTolerance()
+        {
+            _service.ClockOffset = TimeSpan.FromMinutes(2);
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+
+            // Covers tokens validated by the SDK clients and by the module.
+            _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text");
+            _client.GetPolicySigners("provider", "rg", null);
+            _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT");
+            Assert.Equal(PolicyText, new PSPolicy(_client.GetPolicy("provider", "rg", null, "TdxVm")).Text);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsServiceTokensFromClockAheadBeyondTolerance()
+        {
+            _service.ClockOffset = TimeSpan.FromSeconds(AttestationDataServiceClient.TokenTimeValidationSlack).Add(TimeSpan.FromMinutes(5));
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+
+            const string reason = "Attestation token will not become valid before the slack time provided.";
+
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsServiceTokenIssuedByAnotherProvider()
+        {
+            _service.Issuer = "https://fabrikam.attest.azure.net";
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+            var updateJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText });
+            var reason = $"Unknown Issuer for attestation token. Expected {MockAttestationService.Endpoint}, found {_service.Issuer}";
+
+            // Covers tokens from the SDK clients, tokens returned for caller tokens, and the earlier API's update token.
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "SgxEnclave", updateJwt, "JWT"), "POST", "/operations/policy/updatepolicy", reason);
+            AssertWriteNotConfirmed(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsServiceTokenWithoutExpirationTime()
+        {
+            _service.OmitExpirationTime = true;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+            var updateJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText });
+            const string reason = "The token has no expiration time.";
+
+            // The tokens are signed by the provider, so only the missing expiration time makes them invalid.
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "SgxEnclave", updateJwt, "JWT"), "POST", "/operations/policy/updatepolicy", reason);
+            AssertWriteNotConfirmed(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
+            AssertWriteNotConfirmed(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, LegacySignerJwt), "PUT", "/operations/policy/certificates", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SendsAzurePowerShellUserAgentWithEveryRequest()
+        {
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            // Covers the SDK clients, requests for caller tokens, the earlier API version, and signing certificate requests.
+            _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text");
+            _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT");
+            _client.SetPolicy("provider", "rg", null, "SgxEnclave", CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText }), "JWT");
+            _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null);
+            _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null));
+            _client.AddPolicySigner("provider", "rg", null, signerJwt);
+            _client.RemovePolicySigner("provider", "rg", null, signerJwt);
+            _client.AddPolicySigner("provider", "rg", null, LegacySignerJwt);
+            _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt);
+            _client.GetPolicySigners("provider", "rg", null);
+
+            // A request Azure.Core sends again must not get the user agent twice.
+            _service.FailNextRequests = 1;
+            _client.GetPolicy("provider", "rg", null, "TdxVm");
+
+            Assert.Contains(_service.Requests, r => r.Path == "/certs");
+            Assert.Equal(2, _service.Requests.Count(r => r.Method == "GET" && r.Path == "/policies/TdxVm"));
+            Assert.All(_service.Requests, AssertAzurePowerShellUserAgent);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DoesNotResendWriteWhenSigningCertificatesCannotBeRetrieved()
+        {
+            _service.FailCertificateRequests = true;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add");
+            AssertWriteSentOnceBeforeCertificatesFail(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DoesNotResendWriteWhenResponseHasNoToken()
+        {
+            _service.ReturnWriteResponseWithoutToken = true;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            AssertWriteSentOnceWithoutToken(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceWithoutToken(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceWithoutToken(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceWithoutToken(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceWithoutToken(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add");
+            AssertWriteSentOnceWithoutToken(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReportsSignInFailureUnchanged()
+        {
+            var signInFailure = new InvalidOperationException("Sign-in failed. Run Connect-AzAccount to sign in again.");
+            _credential.SignInFailure = signInFailure;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+
+            var writes = new Action[]
+            {
+                () => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"),
+                () => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"),
+                () => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null),
+                () => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)),
+            };
+
+            foreach (var write in writes)
+            {
+                Assert.Same(signInFailure, Assert.Throws<InvalidOperationException>(write));
+            }
+            Assert.Empty(_service.Requests);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DoesNotResendWriteWhenResponseCannotBeRead()
+        {
+            _service.FailWriteResponseBody = true;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add");
+            AssertFailsAfterOneRequest<UnreadableServiceResponseException>(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DoesNotResendWriteWhenResponseCannotBeReadAfterFailedAttempt()
+        {
+            _service.FailWriteResponseBody = true;
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            foreach (var write in new Action[]
+            {
+                () => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"),
+                () => _client.RemovePolicySigner("provider", "rg", null, signerJwt),
+            })
+            {
+                _service.Requests.Clear();
+                _service.FailNextRequests = 1;
+
+                // The failed attempt is retried; the successful response that can't be read is not.
+                Assert.Throws<UnreadableServiceResponseException>(write);
+                Assert.Equal(2, _service.ServiceRequests.Count);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RetriesReadWhenResponseCannotBeRead()
+        {
+            _service.FailResponseBodyOnce.Add("/policies/TdxVm");
+            _service.FailResponseBodyOnce.Add("/certificates");
+            _service.FailResponseBodyOnce.Add("/certs");
+
+            Assert.Equal(PolicyText, new PSPolicy(_client.GetPolicy("provider", "rg", null, "TdxVm")).Text);
+            Assert.Equal(1, new PSPolicySigners(_client.GetPolicySigners("provider", "rg", null)).CertificateCount);
+
+            // Each read whose response failed was sent again, including the request for the signing certificates.
+            Assert.Equal(2, _service.ServiceRequests.Count(r => r.Path == "/policies/TdxVm"));
+            Assert.Equal(2, _service.ServiceRequests.Count(r => r.Path == "/certificates"));
+            Assert.Equal(3, _service.Requests.Count(r => r.Path == "/certs"));
+            Assert.Empty(_service.FailResponseBodyOnce);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReportsUnconfirmedChangeWhenSignersCannotBeReadAfterChange()
+        {
+            _service.FailPolicySignerReads = true;
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            foreach (var (write, path) in new (Action, string)[]
+            {
+                (() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "/certificates:add"),
+                (() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "/certificates:remove"),
+            })
+            {
+                _service.Requests.Clear();
+
+                var inner = AssertUnconfirmedChange<RestException>(Assert.Throws<UnconfirmedChangeException>(write));
+
+                Assert.Contains("SignersUnavailable", inner.Message);
+                Assert.Single(_service.ServiceRequests, r => r.Path == path);
+            }
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData("")]
+        [InlineData("not JSON")]
+        [InlineData("{\"token\":\"not a token\"}")]
+        public void ReportsUnconfirmedChangeWhenResponseIsMalformed(string responseBody)
+        {
+            _service.WriteResponseBody = responseBody;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+
+            AssertWriteSentOnceWithoutToken(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceWithoutToken(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm");
+            AssertWriteSentOnceWithoutToken(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceWithoutToken(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset");
+            AssertWriteSentOnceWithoutToken(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add");
+            AssertWriteSentOnceWithoutToken(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReportsServiceError()
+        {
+            _service.ErrorResponse = new JObject { ["error"] = new JObject { ["code"] = "PolicyParsingError", ["message"] = "Invalid policy was specified" } };
+
+            var exception = Assert.Throws<RestException>(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"));
+
+            Assert.Contains("400", exception.Message);
+            Assert.Contains("PolicyParsingError", exception.Message);
+            Assert.Contains("Invalid policy was specified", exception.Message);
+            // A failed request is retried once, with the provider's URI looked up again.
+            Assert.Equal(2, _service.ServiceRequests.Count);
+            Assert.All(_service.ServiceRequests, request => AssertRequest(request, "PUT", "/policies/TdxVm", CurrentApiVersion, null, "text/plain"));
+        }
+
+        private void AssertRejectedAfterOneRequest(Action call, string method, string path, string reason)
+        {
+            var exception = AssertFailsAfterOneRequest<ServiceTokenValidationException>(call, method, path);
+
+            Assert.Contains(reason, exception.Message);
+        }
+
+        /// <summary>
+        /// Checks that a write the service accepted was sent once, and that its response token failed validation
+        /// with an error that says the change may already have been applied.
+        /// </summary>
+        private void AssertWriteNotConfirmed(Action call, string method, string path, string reason)
+        {
+            var inner = AssertUnconfirmedChange<ServiceTokenValidationException>(AssertFailsAfterOneRequest<UnconfirmedChangeException>(call, method, path));
+
+            Assert.Contains(reason, inner.Message);
+        }
+
+        private void AssertWriteSentOnceBeforeCertificatesFail(Action call, string method, string path)
+        {
+            var inner = AssertUnconfirmedChange<RestException>(AssertFailsAfterOneRequest<UnconfirmedChangeException>(call, method, path));
+
+            Assert.Contains("CertificatesUnavailable", inner.Message);
+            Assert.Single(_service.Requests, r => r.Path == "/certs");
+        }
+
+        private void AssertWriteSentOnceWithoutToken(Action call, string method, string path)
+        {
+            var inner = AssertUnconfirmedChange<MissingServiceTokenException>(AssertFailsAfterOneRequest<UnconfirmedChangeException>(call, method, path));
+
+            Assert.Equal("The attestation service response does not contain a valid token.", inner.Message);
+        }
+
+        private static TInner AssertUnconfirmedChange<TInner>(UnconfirmedChangeException exception) where TInner : Exception
+        {
+            var inner = Assert.IsType<TInner>(exception.InnerException);
+            Assert.StartsWith("The attestation service accepted the change, but the result could not be confirmed: ", exception.Message);
+            Assert.Contains(inner.Message, exception.Message);
+            Assert.EndsWith("The change may already have been applied. Check the current policy or policy signers before trying again.", exception.Message);
+            return inner;
+        }
+
+        private TException AssertFailsAfterOneRequest<TException>(Action call, string method, string path) where TException : Exception
+        {
+            _service.Requests.Clear();
+
+            var exception = Assert.Throws<TException>(call);
+
+            var request = Assert.Single(_service.ServiceRequests);
+            Assert.Equal(method, request.Method);
+            Assert.Equal(path, request.Path);
+            return exception;
+        }
+
+        private static void AssertRequest(RecordedRequest request, string method, string path, string apiVersion, string tee, string contentType)
+        {
+            Assert.Equal(method, request.Method);
+            Assert.Equal(path, request.Path);
+            Assert.Equal(apiVersion, request.Query["api-version"]);
+            Assert.Equal(tee, request.Query["tee"]);
+            Assert.Equal(contentType, request.ContentType);
+            AssertAzurePowerShellUserAgent(request);
+            Assert.Equal("Bearer test-token", request.Authorization);
+        }
+
+        private static JObject ReadTokenBody(string jwt)
+        {
+            return JObject.Parse(Base64Url.DecodeString(jwt.Split('.')[1]));
+        }
+
+        /// <summary>
+        /// The Azure PowerShell user agent comes once, before the SDK's own user agent.
+        /// </summary>
+        private static void AssertAzurePowerShellUserAgent(RecordedRequest request)
+        {
+            Assert.StartsWith(AzurePowerShellUserAgent + " azsdk-net-Security.Attestation/", request.UserAgent);
+            Assert.Equal(request.UserAgent.IndexOf(AzurePowerShellUserAgent, StringComparison.Ordinal), request.UserAgent.LastIndexOf(AzurePowerShellUserAgent, StringComparison.Ordinal));
+        }
+
+        private static string CreateCallerToken(JObject body)
+        {
+            var header = Base64Url.EncodeString("{\"alg\":\"none\"}");
+            var encodedBody = body == null ? string.Empty : Base64Url.EncodeString(body.ToString(Formatting.None));
+            return $"{header}.{encodedBody}.";
+        }
+
+        private class StaticTokenCredential : TokenCredential
+        {
+            /// <summary>
+            /// When set, getting a token fails with this exception, as when signing in fails.
+            /// </summary>
+            public Exception SignInFailure { get; set; }
+
+            public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+                => SignInFailure == null ? new AccessToken("test-token", DateTimeOffset.UtcNow.AddHours(1)) : throw SignInFailure;
+
+            public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
+                => new ValueTask<AccessToken>(GetToken(requestContext, cancellationToken));
+        }
+
+        private class RecordedRequest
+        {
+            public string Method { get; set; }
+            public string Path { get; set; }
+            public System.Collections.Specialized.NameValueCollection Query { get; set; }
+            public string ContentType { get; set; }
+            public string Authorization { get; set; }
+            public string UserAgent { get; set; }
+            public string Body { get; set; }
+        }
+
+        /// <summary>
+        /// Simulates an attestation provider: records requests and returns tokens signed with the provider's signing key.
+        /// </summary>
+        private class MockAttestationService : HttpMessageHandler
+        {
+            public const string Endpoint = "https://contoso.attest.azure.net";
+            private const string KeyId = "provider-signing-key";
+
+            private readonly RSA _signingKey = RSA.Create(2048);
+            private readonly RSA _unknownKey = RSA.Create(2048);
+            private readonly X509Certificate2 _signingCertificate;
+
+            public MockAttestationService()
+            {
+                var request = new CertificateRequest("CN=" + Endpoint, _signingKey, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                _signingCertificate = request.CreateSelfSigned(DateTimeOffset.UtcNow.AddDays(-1), DateTimeOffset.UtcNow.AddDays(1));
+            }
+
+            public List<RecordedRequest> Requests { get; } = new List<RecordedRequest>();
+
+            /// <summary>
+            /// Requests other than the ones that retrieve the provider's signing certificates.
+            /// </summary>
+            public List<RecordedRequest> ServiceRequests => Requests.Where(r => r.Path != "/certs").ToList();
+
+            public string LastPolicyUpdateToken { get; private set; }
+
+            public bool SignWithUnknownKey { get; set; }
+
+            /// <summary>
+            /// Issuer of the tokens the service returns. Defaults to the provider's endpoint.
+            /// </summary>
+            public string Issuer { get; set; } = Endpoint;
+
+            /// <summary>
+            /// Makes the tokens the service returns have no expiration time.
+            /// </summary>
+            public bool OmitExpirationTime { get; set; }
+
+            /// <summary>
+            /// Makes requests for the provider's signing certificates fail.
+            /// </summary>
+            public bool FailCertificateRequests { get; set; }
+
+            /// <summary>
+            /// Makes policy and signer writes succeed with a response that contains no token.
+            /// </summary>
+            public bool ReturnWriteResponseWithoutToken { get; set; }
+
+            /// <summary>
+            /// When set, policy and signer writes succeed with this response body.
+            /// </summary>
+            public string WriteResponseBody { get; set; }
+
+            /// <summary>
+            /// Makes policy and signer writes succeed with a response whose body fails while it is read, as when the
+            /// connection closes during the response.
+            /// </summary>
+            public bool FailWriteResponseBody { get; set; }
+
+            /// <summary>
+            /// Number of requests, other than requests for signing certificates, that fail as if the service could
+            /// not be reached.
+            /// </summary>
+            public int FailNextRequests { get; set; }
+
+            /// <summary>
+            /// Paths of requests whose next successful response has a body that fails while it is read.
+            /// </summary>
+            public HashSet<string> FailResponseBodyOnce { get; } = new HashSet<string>();
+
+            /// <summary>
+            /// Makes requests that read the policy signers fail with an error response.
+            /// </summary>
+            public bool FailPolicySignerReads { get; set; }
+
+            /// <summary>
+            /// Difference between the service's clock and the local clock.
+            /// </summary>
+            public TimeSpan ClockOffset { get; set; }
+
+            public JObject ErrorResponse { get; set; }
+
+            public HttpPipelineTransport CreateTransport() => new HttpClientTransport(new HttpClient(this));
+
+            protected override HttpResponseMessage Send(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                return SendAsync(request, cancellationToken).GetAwaiter().GetResult();
+            }
+
+            protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                var recorded = new RecordedRequest
+                {
+                    Method = request.Method.Method,
+                    Path = request.RequestUri.AbsolutePath,
+                    Query = HttpUtility.ParseQueryString(request.RequestUri.Query),
+                    ContentType = request.Content?.Headers.ContentType?.MediaType,
+                    Authorization = request.Headers.Authorization?.ToString(),
+                    UserAgent = request.Headers.TryGetValues("User-Agent", out var userAgent) ? string.Join(" ", userAgent) : null,
+                    Body = request.Content == null ? null : await request.Content.ReadAsStringAsync().ConfigureAwait(false)
+                };
+                Requests.Add(recorded);
+
+                if (FailResponseBodyOnce.Remove(recorded.Path))
+                {
+                    return FailingBodyResponse();
+                }
+
+                if (recorded.Path == "/certs")
+                {
+                    if (FailCertificateRequests)
+                    {
+                        return Json(new JObject { ["error"] = new JObject { ["code"] = "CertificatesUnavailable", ["message"] = "Signing certificates are unavailable" } }, HttpStatusCode.BadRequest);
+                    }
+
+                    return Json(new JObject
+                    {
+                        ["keys"] = new JArray(new JObject
+                        {
+                            ["kty"] = "RSA",
+                            ["kid"] = KeyId,
+                            ["x5c"] = new JArray(Convert.ToBase64String(_signingCertificate.RawData))
+                        })
+                    });
+                }
+
+                if (ErrorResponse != null)
+                {
+                    return Json(ErrorResponse, HttpStatusCode.BadRequest);
+                }
+
+                if (FailPolicySignerReads && recorded.Method == "GET" && recorded.Path == "/certificates")
+                {
+                    return Json(new JObject { ["error"] = new JObject { ["code"] = "SignersUnavailable", ["message"] = "The policy signers are unavailable" } }, HttpStatusCode.BadRequest);
+                }
+
+                if (FailNextRequests > 0)
+                {
+                    FailNextRequests--;
+                    throw new HttpRequestException("The service could not be reached.");
+                }
+
+                var isCurrentApiWrite = recorded.Method != "GET" &&
+                    (recorded.Path.StartsWith("/policies/", StringComparison.Ordinal) || recorded.Path.StartsWith("/certificates:", StringComparison.Ordinal));
+                if (ReturnWriteResponseWithoutToken && isCurrentApiWrite)
+                {
+                    return Json(new JObject());
+                }
+
+                if (WriteResponseBody != null && isCurrentApiWrite)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(WriteResponseBody, Encoding.UTF8, "application/json") };
+                }
+
+                if (FailWriteResponseBody && isCurrentApiWrite)
+                {
+                    return FailingBodyResponse();
+                }
+
+                switch ($"{recorded.Method} {recorded.Path}")
+                {
+                    case "POST /operations/policy/updatepolicy":
+                        LastPolicyUpdateToken = CreateServiceToken(new JObject { ["AttestationPolicy"] = ReadTokenBody(recorded.Body)["AttestationPolicy"] });
+                        return Json(new JValue(LastPolicyUpdateToken));
+                    case "PUT /operations/policy/current":
+                    case "POST /operations/policy/current":
+                        return new HttpResponseMessage(HttpStatusCode.OK);
+                    case "PUT /operations/policy/certificates":
+                    case "POST /operations/policy/certificates":
+                        // The earlier API version returns the updated signers as a JSON string token.
+                        return Json(new JValue(CreateServiceToken(new JObject { ["maa-policyCertificates"] = PolicySigners() })));
+                    case "GET /certificates":
+                        return TokenResponse(new JObject { ["x-ms-policy-certificates"] = PolicySigners() });
+                    case "POST /certificates:add":
+                    case "POST /certificates:remove":
+                        return TokenResponse(new JObject { ["x-ms-certificate-thumbprint"] = _signingCertificate.Thumbprint, ["x-ms-policycertificates-result"] = "IsPresent" });
+                }
+
+                if (recorded.Method == "GET" && recorded.Path.StartsWith("/policies/", StringComparison.Ordinal))
+                {
+                    var storedPolicy = CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText });
+                    return TokenResponse(new JObject { [AttestationDataServiceClient.PolicyClaim] = storedPolicy });
+                }
+
+                if (recorded.Path.StartsWith("/policies/", StringComparison.Ordinal))
+                {
+                    return TokenResponse(new JObject { ["x-ms-policy-result"] = recorded.Path.EndsWith(":reset", StringComparison.Ordinal) ? "Removed" : "Updated" });
+                }
+
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
+            }
+
+            protected override void Dispose(bool disposing)
+            {
+                if (disposing)
+                {
+                    _signingKey.Dispose();
+                    _unknownKey.Dispose();
+                    _signingCertificate.Dispose();
+                }
+                base.Dispose(disposing);
+            }
+
+            private HttpResponseMessage TokenResponse(JObject claims) => Json(new JObject { ["token"] = CreateServiceToken(claims) });
+
+            private JObject PolicySigners() => new JObject
+            {
+                ["keys"] = new JArray(new JObject
+                {
+                    ["kty"] = "RSA",
+                    ["kid"] = "policy-signer",
+                    ["x5c"] = new JArray(Convert.ToBase64String(_signingCertificate.RawData))
+                })
+            };
+
+            private string CreateServiceToken(JObject claims)
+            {
+                var now = DateTimeOffset.UtcNow.Add(ClockOffset).ToUnixTimeSeconds();
+                claims["iss"] = Issuer;
+                claims["iat"] = now;
+                claims["nbf"] = now;
+                if (!OmitExpirationTime)
+                    claims["exp"] = now + 3600;
+
+                var header = Base64Url.EncodeString(new JObject { ["alg"] = "RS256", ["kid"] = KeyId, ["typ"] = "JWT" }.ToString(Formatting.None));
+                var body = Base64Url.EncodeString(claims.ToString(Formatting.None));
+                var key = SignWithUnknownKey ? _unknownKey : _signingKey;
+                var signature = key.SignData(Encoding.UTF8.GetBytes($"{header}.{body}"), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                return $"{header}.{body}.{Base64Url.EncodeBytes(signature)}";
+            }
+
+            private static HttpResponseMessage Json(JToken content, HttpStatusCode status = HttpStatusCode.OK)
+            {
+                return new HttpResponseMessage(status)
+                {
+                    Content = new StringContent(content.ToString(Formatting.None), Encoding.UTF8, "application/json")
+                };
+            }
+
+            private static HttpResponseMessage FailingBodyResponse()
+            {
+                var content = new StreamContent(new FailingStream());
+                content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+                return new HttpResponseMessage(HttpStatusCode.OK) { Content = content };
+            }
+        }
+
+        /// <summary>
+        /// A response body that fails when it is read.
+        /// </summary>
+        private class FailingStream : System.IO.Stream
+        {
+            public override bool CanRead => true;
+            public override bool CanSeek => false;
+            public override bool CanWrite => false;
+            public override long Length => throw new NotSupportedException();
+            public override long Position { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
+            public override int Read(byte[] buffer, int offset, int count) => throw new System.IO.IOException("The connection was closed while the response was received.");
+            public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) => throw new System.IO.IOException("The connection was closed while the response was received.");
+            public override void Flush() { }
+            public override long Seek(long offset, System.IO.SeekOrigin origin) => throw new NotSupportedException();
+            public override void SetLength(long value) => throw new NotSupportedException();
+            public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+        }
+    }
+}

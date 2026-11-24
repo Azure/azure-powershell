@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 try
                 {
                     var parsedBody = JoseHelper.ExtractJosePart(jwt, 1);
-                    var parsedCertificates = parsedBody["maa-policyCertificates"]["keys"].ToArray();
+                    var policyCertificates = parsedBody[PolicyCertificatesClaim] ?? parsedBody[LegacyPolicyCertificatesClaim];
+                    var parsedCertificates = policyCertificates["keys"].ToArray();
                     certificates = parsedCertificates.Select(c => c.ToString()).ToArray();
                 }
                 catch (Exception)
@@ -80,5 +81,9 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
             return certificates;
         }
+
+        private const string PolicyCertificatesClaim = "x-ms-policy-certificates";
+
+        private const string LegacyPolicyCertificatesClaim = "maa-policyCertificates";
     }
 }
