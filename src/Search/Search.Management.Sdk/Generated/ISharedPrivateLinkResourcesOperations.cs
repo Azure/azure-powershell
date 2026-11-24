@@ -14,19 +14,49 @@ namespace Microsoft.Azure.Management.Search
     public partial interface ISharedPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// Initiates the creation or update of a shared private link resource managed
-        /// by the search service in the given resource group.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </summary>
         /// <remarks>
-        /// Initiates the creation or update of a shared private link resource managed
-        /// by the search service in the given resource group.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the details of the shared private link resource managed by the search
+        /// service in the given resource group.
+        /// </summary>
+        /// <remarks>
+        /// Gets the details of the shared private link resource managed by the search
+        /// service in the given resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -35,6 +65,49 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='sharedPrivateLinkResourceName'>
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SharedPrivateLinkResource>> GetWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
+        /// </summary>
+        /// <remarks>
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='sharedPrivateLinkResourceName'>
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='properties'>
         /// Describes the properties of a shared private link resource managed by the
@@ -52,22 +125,30 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SharedPrivateLinkResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SharedPrivateLinkResource,SharedPrivateLinkResourcesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the details of the shared private link resource managed by the search
-        /// service in the given resource group.
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
+        /// Returns 202 (Accepted) for asynchronous deletion, 204 (No Content) if the
+        /// service exists but the shared private link is not found, or 404 (Not Found)
+        /// if the service is not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </summary>
         /// <remarks>
-        /// Gets the details of the shared private link resource managed by the search
-        /// service in the given resource group.
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
+        /// Returns 202 (Accepted) for asynchronous deletion, 204 (No Content) if the
+        /// service exists but the shared private link is not found, or 404 (Not Found)
+        /// if the service is not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -77,42 +158,10 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
         /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SharedPrivateLinkResource>> GetWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Initiates the deletion of the shared private link resource from the search
-        /// service.
-        /// </summary>
-        /// <remarks>
-        /// Initiates the deletion of the shared private link resource from the search
-        /// service.
-        /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure AI Search
-        /// service within the specified resource group.
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -123,40 +172,7 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets a list of all shared private link resources managed by the given
-        /// service.
-        /// </summary>
-        /// <remarks>
-        /// Gets a list of all shared private link resources managed by the given
-        /// service.
-        /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource>>> ListByServiceWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SharedPrivateLinkResourcesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Initiates the creation or update of a shared private link resource managed
@@ -166,12 +182,8 @@ namespace Microsoft.Azure.Management.Search
         /// Initiates the creation or update of a shared private link resource managed
         /// by the search service in the given resource group.
         /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -180,6 +192,11 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='sharedPrivateLinkResourceName'>
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='properties'>
         /// Describes the properties of a shared private link resource managed by the
@@ -197,22 +214,30 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SharedPrivateLinkResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SharedPrivateLinkResource,SharedPrivateLinkResourcesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Initiates the deletion of the shared private link resource from the search
         /// service.
+        /// Returns 202 (Accepted) for asynchronous deletion, 204 (No Content) if the
+        /// service exists but the shared private link is not found, or 404 (Not Found)
+        /// if the service is not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </summary>
         /// <remarks>
         /// Initiates the deletion of the shared private link resource from the search
         /// service.
+        /// Returns 202 (Accepted) for asynchronous deletion, 204 (No Content) if the
+        /// service exists but the shared private link is not found, or 404 (Not Found)
+        /// if the service is not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -221,6 +246,11 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='sharedPrivateLinkResourceName'>
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -231,7 +261,7 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SharedPrivateLinkResourcesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of all shared private link resources managed by the given
@@ -256,7 +286,7 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource>>> ListByServiceNextWithHttpMessagesAsync(string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource>>> ListByServiceNextWithHttpMessagesAsync(string nextPageLink, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

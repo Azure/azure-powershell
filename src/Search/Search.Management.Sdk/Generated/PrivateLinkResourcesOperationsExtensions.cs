@@ -19,20 +19,21 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
         /// resource group.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<PrivateLinkResource> ListSupported(this IPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<PrivateLinkResource> ListSupported(this IPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IPrivateLinkResourcesOperations)operations).ListSupportedAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IPrivateLinkResourcesOperations)operations).ListSupportedAsync(resourceGroupName, searchServiceName, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -42,23 +43,59 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
         /// resource group.
         /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<PrivateLinkResource>> ListSupportedAsync(this IPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateLinkResource>> ListSupportedAsync(this IPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListSupportedWithHttpMessagesAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListSupportedWithHttpMessagesAsync(resourceGroupName, searchServiceName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets a list of all supported private link resource types for the given
+        /// service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<PrivateLinkResource> ListSupportedNext(this IPrivateLinkResourcesOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?))
+        {
+                return ((IPrivateLinkResourcesOperations)operations).ListSupportedNextAsync(nextPageLink, clientRequestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a list of all supported private link resource types for the given
+        /// service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateLinkResource>> ListSupportedNextAsync(this IPrivateLinkResourcesOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListSupportedNextWithHttpMessagesAsync(nextPageLink, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

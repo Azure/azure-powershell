@@ -17,10 +17,10 @@ New-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSku
  [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-HostingMode <PSHostingMode>]
  [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
  [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
- [-SemanticSearchMode <PSSemanticSearchMode>] [-ComputeType <PSComputeType>]
- [-DataExfiltrationProtectionList <PSDataExfiltrationProtection[]>] [-Bypass <PSSearchBypass>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SemanticSearchMode <PSSemanticSearchMode>] [-KnowledgeRetrievalMode <PSKnowledgeRetrievalMode>]
+ [-ComputeType <PSComputeType>] [-DataExfiltrationProtectionList <PSDataExfiltrationProtection[]>]
+ [-Bypass <PSSearchBypass>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +47,14 @@ Tags              :
 
 The command creates an Azure AI Search service.
 
+### Example 2: Create a serverless service with the free agentic retrieval billing plan
+```powershell
+New-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestserverless01" -Sku Serverless -Location "westus" -KnowledgeRetrievalMode Free
+```
+
+The command creates a serverless Azure AI Search service and selects the free agentic retrieval billing plan.
+Serverless and agentic retrieval availability depend on the service SKU and location.
+
 ## PARAMETERS
 
 ### -AadAuthFailureMode
@@ -57,6 +65,21 @@ Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadA
 Parameter Sets: (All)
 Aliases:
 Accepted values: Http403, Http401WithBearerChallenge
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -89,6 +112,21 @@ Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSear
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, AzureServices
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -206,6 +244,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KnowledgeRetrievalMode
+(Optional) Billing plan for agentic retrieval (Free/Standard). This configuration is only available for certain Azure AI Search SKUs in certain locations.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSKnowledgeRetrievalMode]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Free, Standard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Azure AI Search Service location.
 
@@ -243,6 +297,21 @@ Azure AI Search Service partition count.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+Controls how progress records are handled. This is a PowerShell common parameter.
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -320,7 +389,7 @@ Azure AI Search Service Sku.
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSkuName
 Parameter Sets: (All)
 Aliases:
-Accepted values: Free, Basic, Standard, Standard2, Standard3, Storage_Optimized_L1, Storage_Optimized_L2
+Accepted values: Free, Basic, Standard, Standard2, Standard3, Storage_Optimized_L1, Storage_Optimized_L2, Serverless
 
 Required: True
 Position: 2
