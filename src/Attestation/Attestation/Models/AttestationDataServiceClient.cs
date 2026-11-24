@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         }
 
         /// <summary>
-        /// Checks that a token is signed by the provider, was issued by it, and is within its validity period.
+        /// Checks that a token is signed by the provider, was issued by it, has an expiration time, and is within its validity period.
         /// </summary>
         /// <exception cref="ServiceTokenValidationException">The token is not valid.</exception>
         private void ValidateServiceToken(string endpoint, AttestationToken token)
@@ -597,6 +597,10 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
             if (!isValid)
                 throw new ServiceTokenValidationException(string.Empty);
+
+            // The SDK checks the expiration time only when the token has one.
+            if (!token.ExpirationTime.HasValue)
+                throw new ServiceTokenValidationException(Resources.ServiceTokenWithoutExpirationTime);
         }
 
         private void WriteWarning(string message)

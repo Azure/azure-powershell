@@ -298,6 +298,15 @@ namespace Microsoft.Azure.Commands.Attestation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The token has no expiration time..
+        /// </summary>
+        internal static string ServiceTokenWithoutExpirationTime {
+            get {
+                return ResourceManager.GetString("ServiceTokenWithoutExpirationTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The policy in the &apos;AttestationPolicy&apos; claim of the policy token is not Base64Url encoded, which attestation type &apos;{0}&apos; does not support. Base64Url encode the policy and sign the token again..
         /// </summary>
         internal static string UnencodedPolicyNotSupported {

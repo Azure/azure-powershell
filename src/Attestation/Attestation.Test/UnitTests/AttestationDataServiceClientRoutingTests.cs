@@ -325,6 +325,30 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RejectsServiceTokenWithoutExpirationTime()
+        {
+            _service.OmitExpirationTime = true;
+            var policyJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = Base64Url.EncodeString(PolicyText) });
+            var signerJwt = CreateCallerToken(new JObject { ["policyCertificate"] = new JObject { ["kty"] = "RSA" } });
+            var updateJwt = CreateCallerToken(new JObject { ["AttestationPolicy"] = PolicyText });
+            const string reason = "The token has no expiration time.";
+
+            // The tokens are signed by the provider, so only the missing expiration time makes them invalid.
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", PolicyText, "Text"), "PUT", "/policies/TdxVm", reason);
+            AssertWriteNotConfirmed(() => _client.SetPolicy("provider", "rg", null, "TdxVm", policyJwt, "JWT"), "PUT", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.SetPolicy("provider", "rg", null, "SgxEnclave", updateJwt, "JWT"), "POST", "/operations/policy/updatepolicy", reason);
+            AssertWriteNotConfirmed(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", null), "POST", "/policies/TdxVm:reset", reason);
+            AssertWriteNotConfirmed(() => _client.ResetToDefaultPolicy("provider", "rg", null, "TdxVm", CreateCallerToken(null)), "POST", "/policies/TdxVm:reset", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:add", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, signerJwt), "POST", "/certificates:remove", reason);
+            AssertWriteNotConfirmed(() => _client.AddPolicySigner("provider", "rg", null, LegacySignerJwt), "PUT", "/operations/policy/certificates", reason);
+            AssertWriteNotConfirmed(() => _client.RemovePolicySigner("provider", "rg", null, LegacySignerJwt), "POST", "/operations/policy/certificates", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicy("provider", "rg", null, "TdxVm"), "GET", "/policies/TdxVm", reason);
+            AssertRejectedAfterOneRequest(() => _client.GetPolicySigners("provider", "rg", null), "GET", "/certificates", reason);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DoesNotResendWriteWhenSigningCertificatesCannotBeRetrieved()
         {
             _service.FailCertificateRequests = true;
@@ -626,6 +650,11 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
             public string Issuer { get; set; } = Endpoint;
 
             /// <summary>
+            /// Makes the tokens the service returns have no expiration time.
+            /// </summary>
+            public bool OmitExpirationTime { get; set; }
+
+            /// <summary>
             /// Makes requests for the provider's signing certificates fail.
             /// </summary>
             public bool FailCertificateRequests { get; set; }
@@ -807,7 +836,8 @@ namespace Microsoft.Azure.Commands.Attestation.Test.UnitTests
                 claims["iss"] = Issuer;
                 claims["iat"] = now;
                 claims["nbf"] = now;
-                claims["exp"] = now + 3600;
+                if (!OmitExpirationTime)
+                    claims["exp"] = now + 3600;
 
                 var header = Base64Url.EncodeString(new JObject { ["alg"] = "RS256", ["kid"] = KeyId, ["typ"] = "JWT" }.ToString(Formatting.None));
                 var body = Base64Url.EncodeString(claims.ToString(Formatting.None));
