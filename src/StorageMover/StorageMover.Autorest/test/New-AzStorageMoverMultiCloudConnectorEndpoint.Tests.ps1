@@ -33,9 +33,31 @@ Describe 'New-AzStorageMoverMultiCloudConnectorEndpoint' {
         $endpoint.Property.aWSS3BucketId | Should -Be $awsS3BucketId
     }
 
+}
+
+Describe 'New-AzStorageMoverMultiCloudConnectorEndpoint RequestContract' -Tag @('PythonParity', 'Offline') {
     It 'CreateExpandedWithEndpointKindRequest' {
-        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
-        $endpoint = New-AzStorageMoverMultiCloudConnectorEndpoint -Name "mcckind" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -MultiCloudConnectorId $env.MultiCloudConnectorId -AwsS3BucketId $env.AwsS3BucketId -EndpointKind Source
-        ($endpoint.Property.ToJsonString() | ConvertFrom-Json).endpointKind | Should -Be "Source"
+        $capture = Invoke-StorageMoverTestRequest -Response @{ properties = @{ endpointType = 'AzureMultiCloudConnector' } } -Command {
+            param($pipeline)
+            New-AzStorageMoverMultiCloudConnectorEndpoint -Name 'mcckind' -SubscriptionId $env.SubscriptionId -ResourceGroupName 'rg' -StorageMoverName 'mover' -MultiCloudConnectorId $env.MultiCloudConnectorId -AwsS3BucketId $env.AwsS3BucketId -EndpointKind Source -HttpPipelinePrepend $pipeline
+        }
+        $request = ($capture.Requests[0].Content | ConvertFrom-Json).properties
+        $request.endpointKind | Should -Be 'Source'
+        $request.multiCloudConnectorId | Should -Be $env.MultiCloudConnectorId
+        $request.awsS3BucketId | Should -Be $env.AwsS3BucketId
+    }
+}
+
+Describe 'New-AzStorageMoverMultiCloudConnectorEndpoint PythonParity' -Tag 'PythonParity' {
+    It 'RejectTargetEndpointKind' {
+        $context = $null
+        try {
+            $context = New-StorageMoverTestContext -Name 'sm-mcc-target-validation'
+            Invoke-StorageMoverTestFailure -Command {
+                New-AzStorageMoverMultiCloudConnectorEndpoint @context -Name 'invalid' -MultiCloudConnectorId $env.ScenarioMultiCloudConnectorId -AwsS3BucketId $env.ScenarioPublicS3BucketId -EndpointKind Target -ErrorAction Stop
+            }
+        } finally {
+            Remove-StorageMoverTestContext -Context $context
+        }
     }
 }

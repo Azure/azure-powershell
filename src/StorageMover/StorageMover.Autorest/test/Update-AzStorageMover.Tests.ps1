@@ -4,6 +4,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageMover'))
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
+
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzStorageMover.Recording.json'
   $currentPath = $PSScriptRoot
@@ -12,6 +13,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageMover'))
       $currentPath = Split-Path -Path $currentPath -Parent
   }
   . ($mockingPath | Select-Object -First 1).FullName
+}
+
+Describe 'Update-AzStorageMover PythonParity' -Tag 'PythonParity' {
+    It 'UpdateDescriptionAndAddReplaceRemoveTags' {
+        $context = $null
+        try {
+            $context = New-StorageMoverTestContext -Name 'sm-tag-lifecycle'
+            $parameters = @{ SubscriptionId = $context.SubscriptionId; ResourceGroupName = $context.ResourceGroupName; Name = $context.StorageMoverName; HttpPipelinePrepend = $context.HttpPipelinePrepend }
+            $mover = Update-AzStorageMover @parameters -Description 'Updated description'
+            $mover.Description | Should -Be 'Updated description'
+            $mover = Update-AzStorageMover @parameters -Tag @{ tag1 = 'value1' }
+            $mover.Tag['tag1'] | Should -Be 'value1'
+            $mover = Update-AzStorageMover @parameters -Tag @{ tag2 = 'value2'; tag3 = 'value3' }
+            $mover.Tag['tag2'] | Should -Be 'value2'
+            $mover.Tag['tag3'] | Should -Be 'value3'
+            @($mover.Tag.Keys) | Should -Not -Contain 'tag1'
+            $mover = Update-AzStorageMover @parameters -Tag @{ tag3 = 'value3' }
+            $mover.Tag['tag3'] | Should -Be 'value3'
+            @($mover.Tag.Keys) | Should -Not -Contain 'tag2'
+            $mover = Get-AzStorageMover @parameters
+            $mover.Description | Should -Be 'Updated description'
+            $mover.Tag['tag3'] | Should -Be 'value3'
+            Remove-StorageMoverTestContext -Context $context
+            $context = $null
+            Invoke-StorageMoverTestFailure -Code ResourceNotFound -Command { Get-AzStorageMover @parameters -ErrorAction Stop }
+        } finally {
+            Remove-StorageMoverTestContext -Context $context
+        }
+    }
 }
 
 Describe 'Update-AzStorageMover' {
