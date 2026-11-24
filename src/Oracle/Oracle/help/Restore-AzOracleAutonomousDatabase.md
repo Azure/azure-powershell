@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/restore-azoracleautonomousdatabase
 schema: 2.0.0
@@ -14,43 +14,41 @@ Restores an Autonomous Database based on the provided request parameters.
 
 ### RestoreExpanded (Default)
 ```
-Restore-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Timestamp <DateTime> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestoreViaJsonString
-```
-Restore-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestoreViaJsonFilePath
-```
-Restore-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -Timestamp <DateTime>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Restore
 ```
-Restore-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Body <IRestoreAutonomousDatabaseDetails> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestoreViaIdentityExpanded
-```
-Restore-AzOracleAutonomousDatabase -InputObject <IOracleIdentity> -Timestamp <DateTime>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restore-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String>
+ -Body <IRestoreAutonomousDatabaseDetails> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentity
 ```
 Restore-AzOracleAutonomousDatabase -InputObject <IOracleIdentity> -Body <IRestoreAutonomousDatabaseDetails>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaIdentityExpanded
+```
+Restore-AzOracleAutonomousDatabase -InputObject <IOracleIdentity> -Timestamp <DateTime>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaJsonFilePath
+```
+Restore-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RestoreViaJsonString
+```
+Restore-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -121,7 +119,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: RestoreViaIdentityExpanded, RestoreViaIdentity
+Parameter Sets: RestoreViaIdentity, RestoreViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -166,7 +164,7 @@ The database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaJsonString, RestoreViaJsonFilePath, Restore
+Parameter Sets: Restore, RestoreExpanded, RestoreViaJsonFilePath, RestoreViaJsonString
 Aliases: Autonomousdatabasename
 
 Required: True
@@ -197,7 +195,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaJsonString, RestoreViaJsonFilePath, Restore
+Parameter Sets: Restore, RestoreExpanded, RestoreViaJsonFilePath, RestoreViaJsonString
 Aliases:
 
 Required: True
@@ -213,7 +211,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaJsonString, RestoreViaJsonFilePath, Restore
+Parameter Sets: Restore, RestoreExpanded, RestoreViaJsonFilePath, RestoreViaJsonString
 Aliases:
 
 Required: False
@@ -285,3 +283,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

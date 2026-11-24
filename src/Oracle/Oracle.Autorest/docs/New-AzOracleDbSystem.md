@@ -15,13 +15,15 @@ Create a DbSystem
 ### CreateExpanded (Default)
 ```
 New-AzOracleDbSystem -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AdminPassword <SecureString>] [-ClusterName <String>] [-ComputeCount <Int32>] [-ComputeModel <String>]
- [-DatabaseEdition <String>] [-DbSystemOptionStorageManagement <String>] [-DbVersion <String>]
- [-DiskRedundancy <String>] [-DisplayName <String>] [-DomainV2 <String>] [-Hostname <String>]
- [-InitialDataStorageSizeInGb <Int32>] [-LicenseModelV2 <String>] [-NetworkAnchorId <String>]
- [-NodeCount <Int32>] [-PdbName <String>] [-ResourceAnchorId <String>] [-Shape <String>]
- [-SshPublicKey <String[]>] [-StorageVolumePerformanceMode <String>] [-Tag <Hashtable>] [-TimeZone <String>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdminPassword <SecureString>] [-CharacterSet <String>] [-ClusterName <String>] [-ComputeCount <Int32>]
+ [-ComputeModel <String>] [-DatabaseEdition <String>] [-DataCollectionOptionIsDiagnosticsEventsEnabled]
+ [-DataCollectionOptionIsHealthMonitoringEnabled] [-DataCollectionOptionIsIncidentLogsEnabled]
+ [-DbSystemOptionStorageManagement <String>] [-DbVersion <String>] [-DiskRedundancy <String>]
+ [-DisplayName <String>] [-DomainV2 <String>] [-Hostname <String>] [-InitialDataStorageSizeInGb <Int32>]
+ [-LicenseModelV2 <String>] [-NcharacterSet <String>] [-NetworkAnchorId <String>] [-NodeCount <Int32>]
+ [-PdbName <String>] [-ResourceAnchorId <String>] [-Shape <String>] [-SshPublicKey <String[]>]
+ [-StorageVolumePerformanceMode <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -160,6 +162,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CharacterSet
+The character set for the DB system.
+The default is AL32UTF8
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The cluster name for Exadata and 2-node RAC virtual machine DB systems.
 The cluster name must begin with an alphabetic character, and may contain hyphens (-).
@@ -217,6 +235,51 @@ Exadata DB systems and 2-node RAC DB systems require EnterpriseEditionExtremePer
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataCollectionOptionIsDiagnosticsEventsEnabled
+Indicates whether diagnostic collection is enabled for the VM cluster/Cloud VM cluster/VMBM DBCS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataCollectionOptionIsHealthMonitoringEnabled
+Indicates whether health monitoring is enabled for the VM cluster / Cloud VM cluster / VMBM DBCS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataCollectionOptionIsIncidentLogsEnabled
+Indicates whether incident logs and trace collection are enabled for the VM cluster / Cloud VM cluster / VMBM DBCS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -425,6 +488,22 @@ Parameter Sets: (All)
 Aliases: DbSystemName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NcharacterSet
+The national character set for the DB system.
+The default is AL16UTF16
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

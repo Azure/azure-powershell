@@ -19,7 +19,7 @@ New-AzOracleExadbVMCluster -Name <String> -ResourceGroupName <String> -Location 
  [-DataCollectionOptionIsDiagnosticsEventsEnabled] [-DataCollectionOptionIsHealthMonitoringEnabled]
  [-DataCollectionOptionIsIncidentLogsEnabled] [-DisplayName <String>] [-Domain <String>]
  [-EnabledEcpuCount <Int32>] [-ExascaleDbStorageVaultId <String>] [-GridImageOcid <String>]
- [-Hostname <String>] [-LicenseModel <String>] [-NodeCount <Int32>] [-NsgCidr <INsgCidr[]>]
+ [-HostnameV2 <String>] [-LicenseModel <String>] [-NodeCount <Int32>] [-NsgCidr <INsgCidr[]>]
  [-PrivateZoneOcid <String>] [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>]
  [-Shape <String>] [-ShapeAttribute <String>] [-SshPublicKey <String[]>] [-SubnetId <String>]
  [-SystemVersion <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-TotalEcpuCount <Int32>]
@@ -300,7 +300,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Hostname
+### -HostnameV2
 The hostname for the Exadata VM cluster on Exascale Infrastructure.
 
 ```yaml
