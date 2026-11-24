@@ -1,0 +1,46 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/HorizonDB/HorizonDB.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "HorizonDB"
+    enable-change-safety: true
+    service-name: HorizonDB
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      # Avoid credential-scanner false positives in generated password-authentication parameter help.
+      - where:
+          subject: PasswordAuthentication
+          parameter-name: State
+        set:
+          parameter-description: Specifies whether PostgreSQL credential-based authentication is enabled or disabled.
+      # Hide provider operations from the public cmdlet surface.
+      - where:
+          subject: Operation
+        hide: true
+      # Resolve the subscription from the active Azure context when omitted.
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      # Keep expanded and JSON input variants instead of model-based variants.
+      - where:
+          variant: ^(Create|Update|Export)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      # Exclude create-via-identity variants from the initial cmdlet surface.
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      # Use Update cmdlets rather than exposing replacement-style Set cmdlets.
+      - where:
+          verb: Set
+        remove: true

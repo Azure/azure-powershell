@@ -1052,8 +1052,12 @@
     "module": "AIInfraOptimization",
     "alias": "AIInfraOptimization"
   },
-  {  
+  {
     "module": "Resiliency",
     "alias": "Resiliency"
+  },
+  {
+    "alias": "HorizonDB",
+    "module": "HorizonDB"
   }
 ]

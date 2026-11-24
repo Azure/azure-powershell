@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/parameterGroups",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.horizondb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHorizonDbDefaultParameterGroup",
+      "description": "Gets a default parameter group available for a subscription in a specific region.\nEach PostgreSQL version has at most one default parameter group in a location.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.HorizonDb/locations/{location}/parameterGroups/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.horizondb/get-azhorizondbdefaultparametergroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a default parameter group available for a subscription in a specific region. Each PostgreSQL version has at most one default parameter group in a location.",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

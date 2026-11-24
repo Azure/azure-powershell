@@ -1,0 +1,42 @@
+{
+  "resourceType": "locations",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.horizondb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHorizonDbCapability",
+      "description": "Gets the singleton HorizonDB capability catalog entry available to a subscription in a specific region.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.HorizonDb/locations/{location}/capabilities/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.horizondb/get-azhorizondbcapability"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the singleton HorizonDB capability catalog entry available to a subscription in a specific region.",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

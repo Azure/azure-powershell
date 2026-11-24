@@ -1,0 +1,322 @@
+---
+external help file: Az.HorizonDB-help.xml
+Module Name: Az.HorizonDB
+online version: https://learn.microsoft.com/powershell/module/az.horizondb/update-azhorizondbpasswordauthentication
+schema: 2.0.0
+---
+
+# Update-AzHorizonDbPasswordAuthentication
+
+## SYNOPSIS
+Update the service-created PostgreSQL username-and-password authentication method.
+The request is sparse and omitted properties preserve their current values.
+This API version supports enabling the method, disabling the method, and resetting its password.
+For a cluster that already has an administrator but currently has password authentication disabled, state Enabled and administratorLoginPassword can be supplied together to re-enable password authentication and reset the password.
+Disabling cannot include credentials and does not remove or modify existing database users or roles.
+Administrator rename is not supported in this API version.
+
+## SYNTAX
+
+### UpdateExpanded (Default)
+```
+Update-AzHorizonDbPasswordAuthentication -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AdministratorLoginPassword <SecureString>] [-State <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzHorizonDbPasswordAuthentication -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzHorizonDbPasswordAuthentication -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzHorizonDbPasswordAuthentication -InputObject <IHorizonDbIdentity>
+ [-AdministratorLoginPassword <SecureString>] [-State <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Update the service-created PostgreSQL username-and-password authentication method.
+The request is sparse and omitted properties preserve their current values.
+This API version supports enabling the method, disabling the method, and resetting its password.
+For a cluster that already has an administrator but currently has password authentication disabled, state Enabled and administratorLoginPassword can be supplied together to re-enable password authentication and reset the password.
+Disabling cannot include credentials and does not remove or modify existing database users or roles.
+Administrator rename is not supported in this API version.
+
+## EXAMPLES
+
+### Example 1: Reset the administrator password
+```powershell
+$password = Read-Host -Prompt 'Enter the new administrator password' -AsSecureString
+Update-AzHorizonDbPasswordAuthentication -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -AdministratorLoginPassword $password | Format-List -Property Name, AdministratorLogin, State, ProvisioningState
+```
+
+```output
+Name               : passwordMethod
+AdministratorLogin : adminlogin1
+State              : Enabled
+ProvisioningState  : Succeeded
+```
+
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
+
+### Example 2: Enable password authentication
+```powershell
+$password = Read-Host -Prompt 'Enter the administrator password' -AsSecureString
+Update-AzHorizonDbPasswordAuthentication -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -State 'Enabled' -AdministratorLoginPassword $password | Format-List -Property Name, AdministratorLogin, State, ProvisioningState
+```
+
+```output
+Name               : passwordMethod
+AdministratorLogin : adminlogin1
+State              : Enabled
+ProvisioningState  : Succeeded
+```
+
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
+
+### Example 3: Disable password authentication
+```powershell
+Update-AzHorizonDbPasswordAuthentication -ResourceGroupName 'example-resource-group' -ClusterName 'example-cluster' -State 'Disabled' | Format-List -Property Name, AdministratorLogin, State, ProvisioningState
+```
+
+```output
+Name               : passwordMethod
+AdministratorLogin : adminlogin1
+State              : Disabled
+ProvisioningState  : Succeeded
+```
+
+Sample output from the HTTP 200 response.
+Values are illustrative REST response data, not a live execution result.
+
+## PARAMETERS
+
+### -AdministratorLoginPassword
+The PostgreSQL administrator password.
+Supplying this property resets the configured administrator's password.
+When password authentication is currently disabled for a cluster that already has an administrator, this property can be combined with state Enabled to re-enable password authentication and reset the password.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+The name of the HorizonDB cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HorizonDB.Models.IHorizonDbIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -State
+Specifies whether PostgreSQL credential-based authentication is enabled or disabled.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.HorizonDB.Models.IHorizonDbIdentity
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.HorizonDB.Models.IPasswordAuthentication
+
+## NOTES
+
+## RELATED LINKS
