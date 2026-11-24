@@ -2583,6 +2583,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Network Virtual Appliance & Sites
                 // CNM to MNM
+                cfg.CreateMap<CNM.PSNetworkVirtualApplianceLoadBalancerConfiguration, MNM.NetworkVirtualApplianceLoadBalancerConfiguration>().ReverseMap();
                 cfg.CreateMap<CNM.PSNetworkVirtualAppliance, MNM.NetworkVirtualAppliance>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceSku, MNM.NetworkVirtualApplianceSku>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceSkuInstances, MNM.NetworkVirtualApplianceSkuInstances>();
