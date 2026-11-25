@@ -18,10 +18,13 @@ if ($UseWindowsPowerShell) {
     $baseArguments = @("-NoLogo", "-NoProfile", "-NonInteractive")
 }
 else {
-    Write-Host "##[section]Using PowerShell"
-    dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -Version
-    $executable = "dotnet"
-    $baseArguments = @("tool", "run", "pwsh", "-NoLogo", "-NoProfile", "-NonInteractive")
+    $executable = $env:LIVETESTPWSHPATH
+    if ([string]::IsNullOrWhiteSpace($executable) -or -not (Test-Path -LiteralPath $executable)) {
+        throw "PowerShell executable not found. Ensure InitializeLiveTestEnvironment.ps1 has set the LiveTestPwshPath variable."
+    }
+    Write-Host "##[section]Using PowerShell at $executable"
+    & $executable -NoLogo -NoProfile -NonInteractive -Version
+    $baseArguments = @("-NoLogo", "-NoProfile", "-NonInteractive")
 }
 
 switch ($PSCmdlet.ParameterSetName) {
