@@ -19,12 +19,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -33,9 +29,14 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='name'>
         /// The name of the new query API key.
         /// </param>
-        public static QueryKey Create(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, string name, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static QueryKey Create(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, string name, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IQueryKeysOperations)operations).CreateAsync(resourceGroupName, searchServiceName, name, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IQueryKeysOperations)operations).CreateAsync(resourceGroupName, searchServiceName, name, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -45,12 +46,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -59,12 +56,140 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='name'>
         /// The name of the new query API key.
         /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<QueryKey> CreateAsync(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, string name, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<QueryKey> CreateAsync(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, string name, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, searchServiceName, name, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, searchServiceName, name, clientRequestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified query key. Unlike admin keys, query keys are not
+        /// regenerated. The process for regenerating a query key is to delete and then
+        /// recreate it.
+        /// Returns 200 (OK) on successful deletion, 204 (No Content) if the service
+        /// exists but the query keys not found, or 404 (Not Found) if the service is
+        /// not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='key'>
+        /// The query key to be deleted. Query keys are identified by value, not by
+        /// name.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static void Delete(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, string key, System.Guid? clientRequestId = default(System.Guid?))
+        {
+                ((IQueryKeysOperations)operations).DeleteAsync(resourceGroupName, searchServiceName, key, clientRequestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified query key. Unlike admin keys, query keys are not
+        /// regenerated. The process for regenerating a query key is to delete and then
+        /// recreate it.
+        /// Returns 200 (OK) on successful deletion, 204 (No Content) if the service
+        /// exists but the query keys not found, or 404 (Not Found) if the service is
+        /// not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='key'>
+        /// The query key to be deleted. Query keys are identified by value, not by
+        /// name.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, string key, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, searchServiceName, key, clientRequestId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Returns the list of query API keys for the given Azure AI Search service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<QueryKey> ListBySearchService(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?))
+        {
+                return ((IQueryKeysOperations)operations).ListBySearchServiceAsync(resourceGroupName, searchServiceName, clientRequestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns the list of query API keys for the given Azure AI Search service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<QueryKey>> ListBySearchServiceAsync(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySearchServiceWithHttpMessagesAsync(resourceGroupName, searchServiceName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -75,119 +200,12 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<QueryKey> ListBySearchService(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
-        {
-                return ((IQueryKeysOperations)operations).ListBySearchServiceAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Returns the list of query API keys for the given Azure AI Search service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<QueryKey>> ListBySearchServiceAsync(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListBySearchServiceWithHttpMessagesAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes the specified query key. Unlike admin keys, query keys are not
-        /// regenerated. The process for regenerating a query key is to delete and then
-        /// recreate it.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='key'>
-        /// The query key to be deleted. Query keys are identified by value, not by
-        /// name.
-        /// </param>
-        public static void Delete(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, string key, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
-        {
-                ((IQueryKeysOperations)operations).DeleteAsync(resourceGroupName, searchServiceName, key, searchManagementRequestOptions).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified query key. Unlike admin keys, query keys are not
-        /// regenerated. The process for regenerating a query key is to delete and then
-        /// recreate it.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='key'>
-        /// The query key to be deleted. Query keys are identified by value, not by
-        /// name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IQueryKeysOperations operations, string resourceGroupName, string searchServiceName, string key, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, searchServiceName, key, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Returns the list of query API keys for the given Azure AI Search service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<QueryKey> ListBySearchServiceNext(this IQueryKeysOperations operations, string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        public static Microsoft.Rest.Azure.IPage<QueryKey> ListBySearchServiceNext(this IQueryKeysOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IQueryKeysOperations)operations).ListBySearchServiceNextAsync(nextPageLink, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IQueryKeysOperations)operations).ListBySearchServiceNextAsync(nextPageLink, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -202,9 +220,9 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<QueryKey>> ListBySearchServiceNextAsync(this IQueryKeysOperations operations, string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<QueryKey>> ListBySearchServiceNextAsync(this IQueryKeysOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListBySearchServiceNextWithHttpMessagesAsync(nextPageLink, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListBySearchServiceNextWithHttpMessagesAsync(nextPageLink, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

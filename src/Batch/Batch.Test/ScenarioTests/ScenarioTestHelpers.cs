@@ -196,7 +196,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             NewPoolParameters poolParameters)
         {
             BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
+            CreatePoolIfNotExists(client, poolParameters, runner.DeletePoolAfterRecording);
+        }
 
+        internal static void CreatePoolIfNotExists(
+            BatchClient client,
+            NewPoolParameters poolParameters,
+            Action<string> deletePoolAfterRecording)
+        {
             try
             {
                 client.CreatePool(poolParameters);
@@ -207,7 +214,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     throw;
                 }
+
+                // The pool was already there, so it isn't this test's to delete.
+                return;
             }
+
+            deletePoolAfterRecording(poolParameters.PoolId);
         }
 
         /// <summary>

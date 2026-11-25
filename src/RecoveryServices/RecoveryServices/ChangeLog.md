@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Updated Az.RecoveryServices.SiteRecovery to use API version 2026-11-01.
+* Added Confidential VM (CVM) support for Azure-to-Azure replication, including per-disk encryption settings and failover identity configuration.
 
 ## Version 7.16.0
 * Supported SQL instance snapshot backup features.

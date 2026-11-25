@@ -13,60 +13,54 @@ namespace Microsoft.Azure.Management.Search
     public static partial class SharedPrivateLinkResourcesOperationsExtensions
     {
         /// <summary>
-        /// Initiates the creation or update of a shared private link resource managed
-        /// by the search service in the given resource group.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
         /// resource group.
         /// </param>
-        /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure AI Search
-        /// service within the specified resource group.
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
-        public static SharedPrivateLinkResource CreateOrUpdate(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        public static Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource> ListByService(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((ISharedPrivateLinkResourcesOperations)operations).CreateOrUpdateAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, properties, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((ISharedPrivateLinkResourcesOperations)operations).ListByServiceAsync(resourceGroupName, searchServiceName, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Initiates the creation or update of a shared private link resource managed
-        /// by the search service in the given resource group.
+        /// Gets a list of all shared private link resources managed by the given
+        /// service.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
         /// resource group.
         /// </param>
-        /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure AI Search
-        /// service within the specified resource group.
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SharedPrivateLinkResource> CreateOrUpdateAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource>> ListByServiceAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, properties, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByServiceWithHttpMessagesAsync(resourceGroupName, searchServiceName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -78,12 +72,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -93,9 +83,14 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
         /// </param>
-        public static SharedPrivateLinkResource Get(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static SharedPrivateLinkResource Get(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((ISharedPrivateLinkResourcesOperations)operations).GetAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((ISharedPrivateLinkResourcesOperations)operations).GetAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -105,12 +100,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -120,119 +111,17 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
         /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SharedPrivateLinkResource> GetAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Initiates the deletion of the shared private link resource from the search
-        /// service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure AI Search
-        /// service within the specified resource group.
-        /// </param>
-        public static void Delete(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
-        {
-                ((ISharedPrivateLinkResourcesOperations)operations).DeleteAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, searchManagementRequestOptions).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Initiates the deletion of the shared private link resource from the search
-        /// service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='sharedPrivateLinkResourceName'>
-        /// The name of the shared private link resource managed by the Azure AI Search
-        /// service within the specified resource group.
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SharedPrivateLinkResource> GetAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets a list of all shared private link resources managed by the given
-        /// service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource> ListByService(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
-        {
-                return ((ISharedPrivateLinkResourcesOperations)operations).ListByServiceAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a list of all shared private link resources managed by the given
-        /// service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource>> ListByServiceAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByServiceWithHttpMessagesAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -244,12 +133,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -259,9 +144,14 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
         /// </param>
-        public static SharedPrivateLinkResource BeginCreateOrUpdate(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static SharedPrivateLinkResource CreateOrUpdate(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((ISharedPrivateLinkResourcesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, properties, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((ISharedPrivateLinkResourcesOperations)operations).CreateOrUpdateAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, properties, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -271,12 +161,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -286,12 +172,17 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
         /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SharedPrivateLinkResource> BeginCreateOrUpdateAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SharedPrivateLinkResource> CreateOrUpdateAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, properties, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, properties, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -299,16 +190,18 @@ namespace Microsoft.Azure.Management.Search
         /// <summary>
         /// Initiates the deletion of the shared private link resource from the search
         /// service.
+        /// Returns 202 (Accepted) for asynchronous deletion, 204 (No Content) if the
+        /// service exists but the shared private link is not found, or 404 (Not Found)
+        /// if the service is not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -318,24 +211,31 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
         /// </param>
-        public static void BeginDelete(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static SharedPrivateLinkResourcesDeleteHeaders Delete(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, System.Guid? clientRequestId = default(System.Guid?))
         {
-                ((ISharedPrivateLinkResourcesOperations)operations).BeginDeleteAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((ISharedPrivateLinkResourcesOperations)operations).DeleteAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Initiates the deletion of the shared private link resource from the search
         /// service.
+        /// Returns 202 (Accepted) for asynchronous deletion, 204 (No Content) if the
+        /// service exists but the shared private link is not found, or 404 (Not Found)
+        /// if the service is not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -345,12 +245,154 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the shared private link resource managed by the Azure AI Search
         /// service within the specified resource group.
         /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SharedPrivateLinkResourcesDeleteHeaders> DeleteAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='sharedPrivateLinkResourceName'>
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static SharedPrivateLinkResource BeginCreateOrUpdate(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), System.Guid? clientRequestId = default(System.Guid?))
+        {
+                return ((ISharedPrivateLinkResourcesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, properties, clientRequestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Initiates the creation or update of a shared private link resource managed
+        /// by the search service in the given resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='sharedPrivateLinkResourceName'>
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SharedPrivateLinkResource> BeginCreateOrUpdateAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, SharedPrivateLinkResourceProperties properties = default(SharedPrivateLinkResourceProperties), System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, properties, clientRequestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
+        /// Returns 202 (Accepted) for asynchronous deletion, 204 (No Content) if the
+        /// service exists but the shared private link is not found, or 404 (Not Found)
+        /// if the service is not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='sharedPrivateLinkResourceName'>
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static SharedPrivateLinkResourcesDeleteHeaders BeginDelete(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, System.Guid? clientRequestId = default(System.Guid?))
+        {
+                return ((ISharedPrivateLinkResourcesOperations)operations).BeginDeleteAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, clientRequestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Initiates the deletion of the shared private link resource from the search
+        /// service.
+        /// Returns 202 (Accepted) for asynchronous deletion, 204 (No Content) if the
+        /// service exists but the shared private link is not found, or 404 (Not Found)
+        /// if the service is not found.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='sharedPrivateLinkResourceName'>
+        /// The name of the shared private link resource managed by the Azure AI Search
+        /// service within the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SharedPrivateLinkResourcesDeleteHeaders> BeginDeleteAsync(this ISharedPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, string sharedPrivateLinkResourceName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, searchServiceName, sharedPrivateLinkResourceName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of all shared private link resources managed by the given
@@ -362,9 +404,9 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource> ListByServiceNext(this ISharedPrivateLinkResourcesOperations operations, string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        public static Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource> ListByServiceNext(this ISharedPrivateLinkResourcesOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((ISharedPrivateLinkResourcesOperations)operations).ListByServiceNextAsync(nextPageLink, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((ISharedPrivateLinkResourcesOperations)operations).ListByServiceNextAsync(nextPageLink, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -380,9 +422,9 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource>> ListByServiceNextAsync(this ISharedPrivateLinkResourcesOperations operations, string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SharedPrivateLinkResource>> ListByServiceNextAsync(this ISharedPrivateLinkResourcesOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByServiceNextWithHttpMessagesAsync(nextPageLink, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByServiceNextWithHttpMessagesAsync(nextPageLink, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

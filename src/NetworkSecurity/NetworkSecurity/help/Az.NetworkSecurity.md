@@ -1,14 +1,14 @@
 ---
 Module Name: Az.NetworkSecurity
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: 6eb6373c-c21f-4c7a-8875-ab449b370471
+Download Help Link: https://learn.microsoft.com/powershell/module/az.networksecurity
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.NetworkSecurity Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: NetworkSecurity cmdlets
 
 ## Az.NetworkSecurity Cmdlets
 ### [Get-AzNetworkSecurityNeuroShield](Get-AzNetworkSecurityNeuroShield.md)

@@ -305,6 +305,175 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskSendsBindMountsAddedToTheList()
+        {
+            // Bind mounts added to the list used to be left out of the request.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "testTask";
+            cmdlet.JobId = "testJob";
+            cmdlet.CommandLine = "cmd /c echo hello";
+            cmdlet.ContainerSettings = new PSTaskContainerSettings(
+                "ubuntu",
+                containerHostBatchBindMounts: new List<Microsoft.Azure.Batch.ContainerHostBatchBindMountEntry>
+                {
+                    new Microsoft.Azure.Batch.ContainerHostBatchBindMountEntry { Source = "Shared", IsReadOnly = true },
+                });
+            cmdlet.ContainerSettings.ContainerHostBatchBindMounts.Add(new PSContainerHostBatchBindMountEntry { Source = "Task", IsReadOnly = false });
+
+            TaskAddParameter requestParameters = null;
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                TaskAddParameter,
+                TaskAddOptions,
+                AzureOperationHeaderResponse<TaskAddHeaders>>(requestAction: (r) =>
+                {
+                    requestParameters = r.Parameters;
+                });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            var sentBindMounts = requestParameters.ContainerSettings.ContainerHostBatchBindMounts;
+            Assert.Equal(new[] { "Shared", "Task" }, sentBindMounts.Select(m => m.Source));
+            Assert.Equal(new bool?[] { true, false }, sentBindMounts.Select(m => m.IsReadOnly));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskCollectionSendsBindMountsSetThroughTheProperty()
+        {
+            // Bind mounts set through the property used to be sent as an empty list, so nothing was mounted.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.JobId = "job-collection";
+            cmdlet.Tasks = new[]
+            {
+                new PSCloudTask("task1", "cmd /c echo task1")
+                {
+                    ContainerSettings = new PSTaskContainerSettings("ubuntu")
+                    {
+                        ContainerHostBatchBindMounts = new List<PSContainerHostBatchBindMountEntry>
+                        {
+                            new PSContainerHostBatchBindMountEntry { Source = "Shared", IsReadOnly = true },
+                        },
+                    },
+                },
+            };
+
+            IList<TaskAddParameter> requestCollection = null;
+            Action<BatchRequest<
+                IList<TaskAddParameter>,
+                TaskAddCollectionOptions,
+                AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders>>> extractCollection =
+                (request) =>
+                {
+                    requestCollection = request.Parameters;
+                };
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(
+                responseToUse: BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.Tasks),
+                requestAction: extractCollection);
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            var sentBindMount = requestCollection.Single().ContainerSettings.ContainerHostBatchBindMounts.Single();
+            Assert.Equal("Shared", sentBindMount.Source);
+            Assert.True(sentBindMount.IsReadOnly);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskCollectionSendsAnEnvironmentSettingWithoutAValue()
+        {
+            // An environment setting without a value used to make the cmdlets fail with a NullReferenceException.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.JobId = "job-collection";
+            cmdlet.Tasks = new[]
+            {
+                new PSCloudTask("task1", "cmd /c echo task1")
+                {
+                    EnvironmentSettings = new Dictionary<string, string> { { "A", "1" }, { "B", null } },
+                },
+            };
+
+            IList<TaskAddParameter> requestCollection = null;
+            Action<BatchRequest<
+                IList<TaskAddParameter>,
+                TaskAddCollectionOptions,
+                AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders>>> extractCollection =
+                (request) =>
+                {
+                    requestCollection = request.Parameters;
+                };
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(
+                responseToUse: BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.Tasks),
+                requestAction: extractCollection);
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            TaskAddParameter task = requestCollection.Single();
+            Assert.Equal(2, task.EnvironmentSettings.Count);
+            Assert.Equal("1", task.EnvironmentSettings.Single(s => s.Name == "A").Value);
+            Assert.Null(task.EnvironmentSettings.Single(s => s.Name == "B").Value);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskCollectionKeepsTheIdentityOfResourceFiles()
+        {
+            // Resource files used to lose their identity reference when the cmdlets sent them.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.JobId = "job-collection";
+
+            const string identity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1";
+            cmdlet.Tasks = new[]
+            {
+                new PSCloudTask("task1", "cmd /c echo task1")
+                {
+                    ResourceFiles = new[]
+                    {
+                        new PSResourceFile(ResourceFile.FromUrl(
+                            "https://account.blob.core.windows.net/container/file.txt",
+                            new Microsoft.Azure.Batch.ComputeNodeIdentityReference { ResourceId = identity },
+                            filePath: "file.txt")),
+                    },
+                    MultiInstanceSettings = new PSMultiInstanceSettings("cmd /c echo coordinating", 2)
+                    {
+                        CommonResourceFiles = new List<PSResourceFile>()
+                        {
+                            new PSResourceFile(ResourceFile.FromStorageContainerUrl(
+                                "https://account.blob.core.windows.net/container",
+                                new Microsoft.Azure.Batch.ComputeNodeIdentityReference { ResourceId = identity },
+                                filePath: null,
+                                blobPrefix: null,
+                                fileMode: null)),
+                        },
+                    },
+                },
+            };
+
+            IList<TaskAddParameter> requestCollection = null;
+            Action<BatchRequest<
+                IList<TaskAddParameter>,
+                TaskAddCollectionOptions,
+                AzureOperationResponse<TaskAddCollectionResult, TaskAddCollectionHeaders>>> extractCollection =
+                (request) =>
+                {
+                    requestCollection = request.Parameters;
+                };
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(
+                responseToUse: BatchTestHelpers.CreateTaskCollectionResponse(cmdlet.Tasks),
+                requestAction: extractCollection);
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            TaskAddParameter task = requestCollection.Single();
+            Assert.Equal(identity, task.ResourceFiles.Single().IdentityReference?.ResourceId);
+            Assert.Equal(identity, task.MultiInstanceSettings.CommonResourceFiles.Single().IdentityReference?.ResourceId);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewBatchTaskCollectionParametersTest()
         {
             string commandLine = "cmd /c dir /s";
