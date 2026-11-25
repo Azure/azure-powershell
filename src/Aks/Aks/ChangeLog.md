@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.2.2
 * Fixed `Get-AzAksCluster -Id` ignoring the subscription embedded in the resource ID and using the current context subscription instead
     - The cmdlet now correctly uses the subscription from the provided resource ID
     - Fixed issue [#29928]

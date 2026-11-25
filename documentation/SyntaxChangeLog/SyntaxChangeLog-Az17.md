@@ -1,3 +1,22 @@
+## 17.1.0 - December 2026
+#### Az.Network 8.5.0 
+* Modified cmdlet `New-AzNetworkVirtualAppliance`
+   - Added parameter `-LoadBalancerConfiguration`
+* Modified cmdlet `New-AzVirtualApplianceInboundSecurityRulesProperty`
+   - Added parameter `-LoadBalancerConfiguration`
+* Modified cmdlet `Update-AzNetworkVirtualAppliance`
+   - Added parameter `-LoadBalancerConfiguration`
+* Added cmdlet `New-AzNetworkVirtualApplianceLoadBalancerConfiguration`
+#### Az.RecoveryServices 7.17.0 
+* Modified cmdlet `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig`
+   - Added parameters `-ReplicaConfidentialDiskEncryptionSetId`, `-TargetConfidentialDiskEncryptionSetId`
+* Modified cmdlet `New-AzRecoveryServicesAsrReplicationProtectedItem`
+   - Added parameter `-RecoveryConfidentialDataDiskEncryptionIdentity`
+* Modified cmdlet `Set-AzRecoveryServicesAsrReplicationProtectedItem`
+   - Added parameter `-RecoveryConfidentialDataDiskEncryptionIdentity`
+* Modified cmdlet `Update-AzRecoveryServicesAsrProtectionDirection`
+   - Added parameter `-RecoveryConfidentialDataDiskEncryptionIdentity`
+
 ## 17.0.0 - November 2026
 #### Az.Automation 1.13.0 
 * Added cmdlet `Get-AzAutomationRuntimeEnvironment`, `Get-AzAutomationRuntimeEnvironmentPackage`, `New-AzAutomationRuntimeEnvironment`, `New-AzAutomationRuntimeEnvironmentPackage`, `Remove-AzAutomationRuntimeEnvironment`, `Remove-AzAutomationRuntimeEnvironmentPackage`, `Set-AzAutomationRuntimeEnvironment`, `Set-AzAutomationRuntimeEnvironmentPackage`
@@ -37,5 +56,6 @@
 * Modified cmdlet `Set-AzStorageAccount`
    - Added parameters `-AllowSharedKeyAccessForBlob`, `-AllowSharedKeyAccessForFile`, `-AllowSharedKeyAccessForQueue`, `-AllowSharedKeyAccessForTable`, `-AllowCrossTenantDelegationSas`, `-PublishIpv6Endpoint`, `-RequireUserBoundUserDelegationSas`, `-RequireUserBoundUserDelegationSasAction`, `-AllowBlobAccessPoints`, `-TurboTierStatus`, `-TurboTierTargetPercent`
 * Added cmdlet `Get-AzStorageAdvancedPlatformMetricsRule`, `Get-AzStorageBlobAccessPointConfiguration`, `Get-AzStorageContextCache`, `Get-AzStorageContextCacheContainer`, `New-AzStorageAdvancedPlatformMetricsRule`, `New-AzStorageBlobAccessPointConfiguration`, `New-AzStorageContextCache`, `New-AzStorageContextCacheContainer`, `Remove-AzStorageAdvancedPlatformMetricsRule`, `Remove-AzStorageBlobAccessPointConfiguration`, `Remove-AzStorageContextCache`, `Remove-AzStorageContextCacheContainer`, `Set-AzStorageAdvancedPlatformMetricsRule`, `Set-AzStorageContextCache`, `Set-AzStorageContextCacheContainer`, `Test-AzStorageBlobAccessPointConfigurationConnection`, `Test-AzStorageBlobAccessPointConnection`, `Test-AzStorageContextCacheNameAvailability`, `Update-AzStorageAdvancedPlatformMetricsRule`, `Update-AzStorageBlobAccessPointConfiguration`, `Update-AzStorageContextCache`, `Update-AzStorageContextCacheContainer`
+
 
 

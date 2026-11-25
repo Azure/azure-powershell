@@ -5838,6 +5838,7 @@
       "New-AzVirtualApplianceIpConfiguration": {},
       "New-AzVirtualApplianceNetworkInterfaceConfiguration": {},
       "New-AzVirtualApplianceNetworkProfile": {},
+      "New-AzNetworkVirtualApplianceLoadBalancerConfiguration": {},
       "New-AzVirtualApplianceSite": {},
       "New-AzVirtualApplianceSkuProperty": {},
       "New-AzVirtualHub": {},

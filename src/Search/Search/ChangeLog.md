@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.13.0
 * Added support for the 2026-11-01 Resource Provider API.
 * Added support for the Serverless SKU.
 * Added `KnowledgeRetrievalMode` to `New-AzSearchService` and `Set-AzSearchService` to configure the agentic retrieval billing plan.
