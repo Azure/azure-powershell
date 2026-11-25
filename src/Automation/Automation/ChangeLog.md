@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Import-AzAutomationRunbook` storing the runbook content as a JSON-encoded string [#30466]
+  * The runbook draft content is sent as the raw file text again, as in Az.Automation 1.12.x
 
 ## Version 1.13.0
 * Added cmdlets for Runtime Environment management

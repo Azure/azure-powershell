@@ -692,11 +692,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var runbook = this.CreateRunbookByName(resourceGroupName, automationAccountName, runbookName, description, tags, type, logProgress, logVerbose, overwrite);
 
-                this.automationManagementClient.RunbookDraft.ReplaceContent(
-                    resourceGroupName,
-                    automationAccountName,
-                    runbookName,
-                    File.ReadAllText(runbookPath));
+                using (FileStream sourceStream = File.OpenRead(runbookPath))
+                {
+                    this.automationManagementClient.RunbookDraft.ReplaceContent(
+                        resourceGroupName,
+                        automationAccountName,
+                        runbookName,
+                        sourceStream);
+                }
 
                 if (published)
                 {
