@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the success message of browser-based interactive login to warn users against using this authentication method and recommend switching to Web Account Manager (WAM) for a more robust authentication mechanism.
 
 ## Version 5.5.5
 * Fixed `Method not found` errors on PowerShell 7.6 when a module uses an Azure SDK whose models implement `IJsonModel`.
