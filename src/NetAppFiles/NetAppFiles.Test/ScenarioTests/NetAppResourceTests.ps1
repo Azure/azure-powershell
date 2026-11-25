@@ -94,7 +94,7 @@ function Test-CheckQuotaAvailability
         # create the resource group
         New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
         
-        # check QuotaAvailability
+        # check QuotaAvailability  
         $quotaAvailability = Get-AzNetAppFilesQuotaAvailability -ResourceGroupName $resourceGroup -Location $resourceLocation -Type $resourceType  -Name "resourceName" 
         Assert-NotNull $quotaAvailability
         Assert-True {$quotaAvailability.IsAvailable}
@@ -125,7 +125,7 @@ function Test-CheckNameAvailability
         # create the resource group
         New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
         
-        # check NameAvailability
+        # check NameAvailability  
         $quotaAvailability = Get-AzNetAppFilesNameAvailability -ResourceGroupName $resourceGroup -Location $resourceLocation -Type $resourceType  -Name $accName
         Assert-NotNull $quotaAvailability
         Assert-True {$quotaAvailability.IsAvailable}

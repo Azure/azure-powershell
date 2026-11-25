@@ -279,6 +279,9 @@ Updates an Azure NetApp Files (ANF) account according to the optional modifiers 
 ### [Update-AzNetAppFilesAccountCredential](Update-AzNetAppFilesAccountCredential.md)
 Renew identity credentials
 
+### [Update-AzNetAppFilesAccountLdapBindPassword](Update-AzNetAppFilesAccountLdapBindPassword.md)
+Refreshes the account's LDAP bind password from Azure Key Vault.
+
 ### [Update-AzNetAppFilesActiveDirectory](Update-AzNetAppFilesActiveDirectory.md)
 Updates an Azure NetApp Files (ANF) active directory configuration to the optional modifiers provided.
 

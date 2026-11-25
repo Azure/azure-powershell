@@ -51,6 +51,7 @@ function Test-VolumeGroupCrud
     $vnetName = "vnetnortheurope-anf"
     $subnetId = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
     $proximityPlacementGroup = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Compute/proximityPlacementGroups/sdk_test_northeurope_ppg"
+    Assert-NewTestResource -ResourceId "/subscriptions/$subsid/resourceGroups/$fixedResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$accName" -ApiVersion '2026-09-01'
     
     # create the list of protocol types
     $protocolTypes = New-Object string[] 1
@@ -157,6 +158,7 @@ function Test-OracleVolumeGroupCrud
     $vnetName = "vnetnortheurope-anf"
     $subnetId = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
     $proximityPlacementGroup = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Compute/proximityPlacementGroups/sdk_test_northeurope_ppg"
+    Assert-NewTestResource -ResourceId "/subscriptions/$subsid/resourceGroups/$fixedResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$accName" -ApiVersion '2026-09-01'
     
     # create the list of protocol types
     $protocolTypes = New-Object string[] 1
@@ -260,6 +262,7 @@ function Test-OracleVolumeGroupDRCrud
     $vnetName = "vnetnortheurope-anf"
     $subnetId = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
     $proximityPlacementGroup = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Compute/proximityPlacementGroups/sdk_test_northeurope_ppg"
+    Assert-NewTestResource -ResourceId "/subscriptions/$subsid/resourceGroups/$fixedResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$accName" -ApiVersion '2026-09-01'
     
     # create the list of protocol types
     $protocolTypes = New-Object string[] 1
@@ -364,6 +367,7 @@ function Test-OracleVolumeGroupToManyVolumes
     $vnetName = "vnetnortheurope-anf"
     $subnetId = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
     $proximityPlacementGroup = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Compute/proximityPlacementGroups/sdk_test_northeurope_ppg"
+    Assert-NewTestResource -ResourceId "/subscriptions/$subsid/resourceGroups/$fixedResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$accName" -ApiVersion '2026-09-01'
     
     # create the list of protocol types
     $protocolTypes = New-Object string[] 1

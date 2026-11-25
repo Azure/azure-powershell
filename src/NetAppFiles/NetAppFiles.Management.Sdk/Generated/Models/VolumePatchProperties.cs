@@ -107,7 +107,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="smbNonBrowsable">Enables non-browsable property for SMB Shares. Only applicable for
         /// SMB/DualProtocol volume
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public VolumePatchProperties(string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
+
+        /// <param name="smbOplocks">Enables or disables SMB opportunistic lock property for SMB Shares. Only
+        /// applicable for SMB/DualProtocol volume
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
+        public VolumePatchProperties(string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), string smbOplocks = default(string))
 
         {
             this.ServiceLevel = serviceLevel;
@@ -127,6 +131,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.SnapshotDirectoryVisible = snapshotDirectoryVisible;
             this.SmbAccessBasedEnumeration = smbAccessBasedEnumeration;
             this.SmbNonBrowsable = smbNonBrowsable;
+            this.SmbOplocks = smbOplocks;
             CustomInit();
         }
 
@@ -270,6 +275,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "smbNonBrowsable")]
         public string SmbNonBrowsable {get; set; }
+
+        /// <summary>
+        /// Gets or sets enables or disables SMB opportunistic lock property for SMB
+        /// Shares. Only applicable for SMB/DualProtocol volume Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "smbOplocks")]
+        public string SmbOplocks {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -315,6 +327,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CoolnessPeriod", 2);
                 }
             }
+
 
 
 

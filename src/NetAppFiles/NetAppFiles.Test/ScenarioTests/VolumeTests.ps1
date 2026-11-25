@@ -14,6 +14,137 @@
 
 <#
 .SYNOPSIS
+Creates an LDAP-enabled volume using the existing OpenLDAP test infrastructure.
+#>
+function Test-VolumeOpenLdapServerType
+{
+    $resourceGroup = "sdk-py-test-rg"
+    $accountName = "shn-dnd-4"
+    $poolName = "cp1"
+    $volumeName = Get-ResourceName
+    Assert-AreEqual "0661b131-4a11-479b-96bf-2f95acca2f73" (Get-AzContext).Subscription.Id
+
+    $reference = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accountName -PoolName $poolName -Name "shn-vol10" -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $reference.ProvisioningState
+    Assert-AreEqual "OpenLdap" $reference.LdapServerType
+    Assert-AreEqual $true $reference.LdapEnabled
+    Assert-NotNullOrEmpty $reference.SubnetId
+    $existing = @(Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accountName -PoolName $poolName -ErrorAction Stop)
+    Assert-AreEqual 0 @($existing | Where-Object { ($_.Name -split '/')[-1] -eq $volumeName }).Count
+
+    try
+    {
+        $parameters = @{
+            ResourceGroupName = $resourceGroup
+            AccountName = $accountName
+            PoolName = $poolName
+            Name = $volumeName
+            Location = $reference.Location
+            CreationToken = $volumeName
+            UsageThreshold = 107374182400
+            ServiceLevel = $reference.ServiceLevel
+            SubnetId = $reference.SubnetId
+            NetworkFeature = $reference.NetworkFeatures
+            ProtocolType = @("NFSv3")
+            ExportPolicy = $reference.ExportPolicy
+            LdapEnabled = $true
+            LdapServerType = "OpenLdap"
+        }
+        $volume = New-AzNetAppFilesVolume @parameters -ErrorAction Stop
+        Assert-AreEqual "Succeeded" $volume.ProvisioningState
+        Assert-AreEqual "OpenLdap" $volume.LdapServerType
+        Assert-AreEqual $true $volume.LdapEnabled
+
+        $volume = Get-AzNetAppFilesVolume -ResourceId $volume.Id -ErrorAction Stop
+        Assert-AreEqual "OpenLdap" $volume.LdapServerType
+        Assert-AreEqual $true $volume.LdapEnabled
+        Assert-AreEqual "NFSv3" $volume.ProtocolTypes[0]
+        Assert-AreEqual $reference.SubnetId $volume.SubnetId
+    }
+    finally
+    {
+        $volumes = @(Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accountName -PoolName $poolName -ErrorAction Stop)
+        $created = @($volumes | Where-Object { ($_.Name -split '/')[-1] -eq $volumeName })
+        Assert-True { $created.Count -le 1 }
+        if ($created.Count -eq 1)
+        {
+            Remove-AzNetAppFilesVolume -ResourceId $created[0].Id -Confirm:$false -ErrorAction Stop
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+Tests SMB opportunistic locking on a new volume without modifying existing volumes.
+#>
+function Test-VolumeSmbOplock
+{
+    $resourceGroup = "contoso.rg"
+    $accountName = "contoso-eastus2"
+    $poolName = "seanTest"
+    $volumeName = Get-ResourceName
+    Assert-AreEqual "4df05da8-a113-4428-b787-01361b3089e4" (Get-AzContext).Subscription.Id
+
+    $account = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $account.ProvisioningState
+    Assert-AreEqual 1 $account.ActiveDirectories.Count
+    Assert-AreEqual "InUse" $account.ActiveDirectories[0].Status
+    $reference = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accountName -PoolName $poolName -Name "testtest" -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $reference.ProvisioningState
+    Assert-AreEqual "eastus2" $reference.Location
+    Assert-AreEqual "CIFS" $reference.ProtocolTypes[0]
+    Assert-NotNullOrEmpty $reference.SubnetId
+    $existing = @(Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accountName -PoolName $poolName -ErrorAction Stop)
+    Assert-AreEqual 0 @($existing | Where-Object { ($_.Name -split '/')[-1] -eq $volumeName }).Count
+
+    try
+    {
+        $parameters = @{
+            ResourceGroupName = $resourceGroup
+            AccountName = $accountName
+            PoolName = $poolName
+            Name = $volumeName
+            Location = $reference.Location
+            CreationToken = $volumeName
+            UsageThreshold = 107374182400
+            ServiceLevel = $reference.ServiceLevel
+            SubnetId = $reference.SubnetId
+            NetworkFeature = $reference.NetworkFeatures
+            ProtocolType = @("CIFS")
+            SmbOplock = "Disabled"
+        }
+        $volume = New-AzNetAppFilesVolume @parameters -ErrorAction Stop
+        Assert-AreEqual "Succeeded" $volume.ProvisioningState
+        Assert-AreEqual "Disabled" $volume.SmbOplocks
+
+        $volume = Get-AzNetAppFilesVolume -ResourceId $volume.Id -ErrorAction Stop
+        Assert-AreEqual "CIFS" $volume.ProtocolTypes[0]
+        Assert-AreEqual "Disabled" $volume.SmbOplocks
+
+        $volume = Update-AzNetAppFilesVolume -ResourceId $volume.Id -SmbOplock Enabled -ErrorAction Stop
+        Assert-AreEqual "Enabled" $volume.SmbOplocks
+        $volume = Get-AzNetAppFilesVolume -ResourceId $volume.Id -ErrorAction Stop
+        Assert-AreEqual "Enabled" $volume.SmbOplocks
+
+        $volume = Update-AzNetAppFilesVolume -ResourceId $volume.Id -SmbOplock Disabled -ErrorAction Stop
+        Assert-AreEqual "Disabled" $volume.SmbOplocks
+        $volume = Get-AzNetAppFilesVolume -ResourceId $volume.Id -ErrorAction Stop
+        Assert-AreEqual "Disabled" $volume.SmbOplocks
+    }
+    finally
+    {
+        $volumes = @(Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accountName -PoolName $poolName -ErrorAction Stop)
+        $created = @($volumes | Where-Object { ($_.Name -split '/')[-1] -eq $volumeName })
+        Assert-True { $created.Count -le 1 }
+        if ($created.Count -eq 1)
+        {
+            Remove-AzNetAppFilesVolume -ResourceId $created[0].Id -Confirm:$false -ErrorAction Stop
+        }
+    }
+}
+
+<#
+.SYNOPSIS
 Test Volume CRUD operations
 #>
 function Test-VolumeCrud

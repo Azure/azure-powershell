@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                 RequestCount++;
                 Assert.Equal(patch ? "PATCH" : "PUT", request.Method.Method);
                 Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.NetApp/netAppAccounts/test-account", request.RequestUri.AbsolutePath);
-                Assert.Equal("?api-version=2026-08-01", request.RequestUri.Query);
+                Assert.Equal("?api-version=2026-09-01", request.RequestUri.Query);
                 var body = JObject.Parse(await request.Content.ReadAsStringAsync());
                 Assert.Equal("example.com", (string)body["properties"]["ldapConfiguration"]["domain"]);
                 Assert.Equal("192.0.2.4", (string)body["properties"]["ldapConfiguration"]["ldapServers"][0]);
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                 Assert.Equal(method, request.Method.Method);
                 var path = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.NetApp/netAppAccounts/test-account";
                 Assert.Equal(method == "POST" ? path + "/refreshLdapBindPassword" : path, request.RequestUri.AbsolutePath);
-                Assert.Equal("?api-version=2026-08-01", request.RequestUri.Query);
+                Assert.Equal("?api-version=2026-09-01", request.RequestUri.Query);
                 return Task.FromResult(new HttpResponseMessage(status)
                 {
                     RequestMessage = request,
@@ -665,11 +665,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
             {
                 RequestCount++;
                 var statusUrl = "https://management.azure.com" + accountPath +
-                    "/refresh-status?api-version=2026-08-01";
+                    "/refresh-status?api-version=2026-09-01";
                 if (request.Method == HttpMethod.Post)
                 {
                     Assert.Equal(accountPath + "/refreshLdapBindPassword", request.RequestUri.AbsolutePath);
-                    Assert.Equal("?api-version=2026-08-01", request.RequestUri.Query);
+                    Assert.Equal("?api-version=2026-09-01", request.RequestUri.Query);
                     var response = new HttpResponseMessage(HttpStatusCode.Accepted)
                     {
                         RequestMessage = request,
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                 RequestCount++;
                 Assert.Equal(HttpMethod.Post, request.Method);
                 Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.NetApp/netAppAccounts/test-account/refreshLdapBindPassword", request.RequestUri.AbsolutePath);
-                Assert.Equal("?api-version=2026-08-01", request.RequestUri.Query);
+                Assert.Equal("?api-version=2026-09-01", request.RequestUri.Query);
                 Assert.Null(request.Content);
                 return Task.FromResult(new HttpResponseMessage(HttpStatusCode.Accepted)
                 {

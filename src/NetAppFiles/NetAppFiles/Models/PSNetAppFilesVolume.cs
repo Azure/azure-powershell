@@ -237,6 +237,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </remarks>
         public bool? LdapEnabled { get; set; }
 
+        public string LdapServerType { get; set; }
+
+        public string SmbOplocks { get; set; }
+
         /// <summary>
         /// Gets or sets CoolAccess
         /// </summary>

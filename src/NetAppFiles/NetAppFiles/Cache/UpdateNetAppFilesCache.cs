@@ -104,6 +104,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
         [PSArgumentCompleter("Disabled", "Enabled")]
         public string SmbNonBrowsable { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enables or disables SMB opportunistic locking for SMB or dual-protocol caches.")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        [ValidateNotNullOrEmpty]
+        public string SmbOplock { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "A hashtable representing resource tags")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
@@ -164,11 +169,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
 
         private SmbSettings BuildSmbSettings()
         {
-            if (string.IsNullOrEmpty(SmbEncryption) && string.IsNullOrEmpty(SmbAccessBasedEnumeration) && string.IsNullOrEmpty(SmbNonBrowsable))
+            if (string.IsNullOrEmpty(SmbEncryption) && string.IsNullOrEmpty(SmbAccessBasedEnumeration) && string.IsNullOrEmpty(SmbNonBrowsable) && string.IsNullOrEmpty(SmbOplock))
             {
                 return null;
             }
-            return new SmbSettings(SmbEncryption, SmbAccessBasedEnumeration, SmbNonBrowsable);
+            return new SmbSettings(SmbEncryption, SmbAccessBasedEnumeration, SmbNonBrowsable, SmbOplock);
         }
     }
 }

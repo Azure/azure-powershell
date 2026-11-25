@@ -20,7 +20,7 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-ReplicationObject <PSNetAppFilesReplicationObject>] [-Snapshot <PSNetAppFilesVolumeSnapshot>]
  [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
  [-SnapshotDirectoryVisible] [-BackupId <String>] [-SecurityStyle <String>] [-ThroughputMibps <Double>]
- [-KerberosEnabled] [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess]
+ [-KerberosEnabled] [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-LdapServerType <String>] [-SmbOplock <String>] [-CoolAccess]
  [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>] [-CoolAccessTieringPolicy <String>]
  [-UnixPermission <String>] [-AvsDataStore <String>] [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>]
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
@@ -41,7 +41,7 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-ReplicationObject <PSNetAppFilesReplicationObject>] [-Snapshot <PSNetAppFilesVolumeSnapshot>]
  [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
  [-SnapshotDirectoryVisible] [-SecurityStyle <String>] [-ThroughputMibps <Double>] [-KerberosEnabled]
- [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess] [-CoolnessPeriod <Int32>]
+ [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-LdapServerType <String>] [-SmbOplock <String>] [-CoolAccess] [-CoolnessPeriod <Int32>]
  [-CoolAccessRetrievalPolicy <String>] [-CoolAccessTieringPolicy <String>] [-UnixPermission <String>]
  [-AvsDataStore <String>] [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>]
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
@@ -84,7 +84,8 @@ This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool
 ### Example 2: Create an ANF volume using NFSv4.1 Protocol Type. Note do not use the IP adddress block shown for -AllowedClient. This is an example IPv4 address blocks for use in documentation.
 ```powershell
 $exportPolicyRule = New-AzNetAppFilesExportPolicyRuleObject -RuleIndex 1 -AllowedClient "192.0.2.0/24" -UnixReadWrite -Nfsv41
-New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -Location "westus2" -CreationToken "MyAnfVolume" -ProtocolType NFSv4.1 -ExportPolicy $exportPolicyRule -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName"
+$exportPolicy = New-AzNetAppFilesExportPolicyObject -Rule $exportPolicyRule
+New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume" -Location "westus2" -CreationToken "MyAnfVolume" -ProtocolType NFSv4.1 -ExportPolicy $exportPolicy -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName"
 ```
 
 ```output
@@ -101,7 +102,21 @@ ProvisioningState : Succeeded
 SubnetId          : /subscriptions/f557b96d-2308-4a18-aae1-b8f7e7e70cc7/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/default
 ```
 
-This command creates the new ANF volume "MyAnfVolume" within the pool "MyAnfPool" using NFSv4.1 protocol including the required ExportPolicy.
+This example wraps the export policy rule in an export policy object, then creates the ANF volume "MyAnfVolume" within the pool "MyAnfPool" using NFSv4.1.
+
+### Example 3: Create an NFS volume using OpenLDAP
+```powershell
+New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyLdapVolume" -Location "westus2" -CreationToken "MyLdapVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName" -ProtocolType NFSv3 -LdapEnabled -LdapServerType OpenLdap
+```
+
+Creates an LDAP-enabled NFS volume. Configure the account's OpenLDAP servers first using `-LdapConfiguration`.
+
+### Example 4: Create an SMB volume without opportunistic locking
+```powershell
+New-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MySmbVolume" -Location "westus2" -CreationToken "MySmbVolume" -UsageThreshold 1099511627776 -ServiceLevel "Premium" -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName" -ProtocolType CIFS -SmbOplock Disabled
+```
+
+Requires an Active Directory connection on the account.
 
 ## PARAMETERS
 
@@ -490,6 +505,36 @@ Specifies whether LDAP is enabled or not for a given NFS volume.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LdapServerType
+The LDAP server type for the NFS volume: `ActiveDirectory` or `OpenLdap`. When using OpenLDAP, configure the account's LDAP settings and enable LDAP on the volume.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmbOplock
+Enables or disables SMB opportunistic locking for SMB or dual-protocol volumes. Accepted values are `Enabled` and `Disabled`. If omitted, the service chooses its default.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

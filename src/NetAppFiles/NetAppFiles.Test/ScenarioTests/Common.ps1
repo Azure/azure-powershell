@@ -12,10 +12,23 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-# Use the browser-authenticated token cache for headless live recordings.
 if ($env:AZURE_TEST_MODE -eq "Record")
 {
     Update-AzConfig -EnableLoginByWam $false -Scope Process | Out-Null
+}
+
+function Assert-NewTestResource($ResourceId, $ApiVersion)
+{
+    # Replay the guard GET to preserve the SDK response queue.
+    $response = Invoke-AzRestMethod -Path "$ResourceId`?api-version=$ApiVersion" -Method GET -ErrorAction Stop
+    if ($response.StatusCode -eq 200)
+    {
+        throw "Refusing to reuse existing test resource '$ResourceId'; test cleanup deletes it."
+    }
+    if ($response.StatusCode -ne 404)
+    {
+        throw "Could not verify that test resource '$ResourceId' is new. HTTP status: $($response.StatusCode)."
+    }
 }
 
 <#
@@ -24,7 +37,13 @@ Gets valid resource group name
 #>
 function Get-ResourceGroupName
 {
-    return getAssetName -prefix ("anfrec" + [guid]::NewGuid().ToString("N").Substring(0, 12))
+    $name = getAssetName
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Record)
+    {
+        $subscriptionId = (Get-AzContext).Subscription.Id
+        Assert-NewTestResource -ResourceId "/subscriptions/$subscriptionId/resourcegroups/$name" -ApiVersion '2021-04-01'
+    }
+    return $name
 }
 
 <#

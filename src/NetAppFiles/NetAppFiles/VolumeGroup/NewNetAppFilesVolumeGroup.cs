@@ -383,6 +383,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string BreakthroughMode { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enables LDAP for NFS volumes in the group and selects the LDAP server type. Use ActiveDirectory or OpenLdap.")]
+        [PSArgumentCompleter("ActiveDirectory", "OpenLdap")]
+        [ValidateNotNullOrEmpty]
+        public string LdapServerType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enables or disables SMB opportunistic locking for SMB or dual-protocol volumes in the group.")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        [ValidateNotNullOrEmpty]
+        public string SmbOplock { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Breakthrough Mode override for data volumes. Possible values include: 'Enabled', 'Disabled'")]
@@ -825,6 +835,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             }
 
             var volumeGroup = CreateVolumeGroup(Name, ResourceGroupName, AccountName, poolResourceId, tagPairs);
+            foreach (var volume in volumeGroup.Volumes)
+            {
+                if (LdapServerType != null && volume.ProtocolTypes.Any(protocol =>
+                    string.Equals(protocol, VolumeProtocolTypes.NFSv3, StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(protocol, VolumeProtocolTypes.NSFv41, StringComparison.OrdinalIgnoreCase)))
+                {
+                    volume.LdapEnabled = true;
+                    volume.LdapServerType = LdapServerType;
+                }
+
+                if (volume.ProtocolTypes.Contains("CIFS", StringComparer.OrdinalIgnoreCase))
+                {
+                    volume.SmbOplocks = SmbOplock;
+                }
+            }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {

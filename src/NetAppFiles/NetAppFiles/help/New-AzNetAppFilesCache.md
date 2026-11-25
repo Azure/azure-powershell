@@ -22,7 +22,7 @@ New-AzNetAppFilesCache -ResourceGroupName <String> -Location <String> -AccountNa
  [-ThroughputMibps <Double>] [-KeyVaultPrivateEndpointResourceId <String>] [-Ldap <String>]
  [-LdapServerType <String>] [-CifsChangeNotification <String>] [-GlobalFileLocking <String>]
  [-WriteBack <String>] [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>]
- [-SmbNonBrowsable <String>] [-Zone <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-SmbNonBrowsable <String>] [-SmbOplock <String>] [-Zone <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ New-AzNetAppFilesCache -Name <String> -FilePath <String> -Size <Int64> -CacheSub
  [-ThroughputMibps <Double>] [-KeyVaultPrivateEndpointResourceId <String>] [-Ldap <String>]
  [-LdapServerType <String>] [-CifsChangeNotification <String>] [-GlobalFileLocking <String>]
  [-WriteBack <String>] [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>]
- [-SmbNonBrowsable <String>] [-Zone <String[]>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
+ [-SmbNonBrowsable <String>] [-SmbOplock <String>] [-Zone <String[]>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -66,7 +66,42 @@ New-AzNetAppFilesCache -ResourceGroupName "MyRG" -Location "eastus" `
 
 Creates a 100 GiB NFSv3 FlexCache whose origin is the `onprem-origin-vol` volume on the `onprem-svm` Vserver of the `onprem-ontap-cluster` cluster.
 
+### Example 2: Create an SMB cache without opportunistic locking
+```powershell
+$subsId = (Get-AzContext).Subscription.Id
+$cacheSubnet = "/subscriptions/$subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/myanf-vnet/subnets/cache-subnet"
+$peeringSubnet = "/subscriptions/$subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/myanf-vnet/subnets/peering-subnet"
+
+New-AzNetAppFilesCache -ResourceGroupName "MyRG" -Location "eastus2" `
+    -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MySmbCache" `
+    -FilePath "MySmbCache" -Size (100 * 1024 * 1024 * 1024) `
+    -CacheSubnetResourceId $cacheSubnet -PeeringSubnetResourceId $peeringSubnet `
+    -EncryptionKeySource "Microsoft.NetApp" `
+    -OriginPeerClusterName "onprem-ontap-cluster" `
+    -OriginPeerAddress @("10.10.0.10", "10.10.0.11") `
+    -OriginPeerVserverName "onprem-svm" `
+    -OriginPeerVolumeName "onprem-smb-origin-vol" `
+    -ProtocolType @("CIFS") -SmbOplock Disabled
+```
+
+Creates an SMB cache with opportunistic locking disabled. The NetApp account must have an Active Directory connection, and the external origin must support SMB. Complete the external cluster and vserver peering after creation.
+
 ## PARAMETERS
+
+### -SmbOplock
+Enables or disables SMB opportunistic locking for SMB or dual-protocol caches. Accepted values are `Enabled` and `Disabled`. If omitted, the service chooses its default.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AccountName
 The name of the ANF account
@@ -240,7 +275,7 @@ Accept wildcard characters: False
 
 ### -LdapServerType
 Type of LDAP server.
-Either 'ActiveDirectory' or 'OpenLDAP'
+Either 'ActiveDirectory' or 'OpenLdap'
 
 ```yaml
 Type: System.String

@@ -18,7 +18,7 @@ Update-AzNetAppFilesCache -ResourceGroupName <String> -AccountName <String> -Poo
  [-Size <Int64>] [-ProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-ThroughputMibps <Double>] [-KeyVaultPrivateEndpointResourceId <String>] [-CifsChangeNotification <String>]
  [-WriteBack <String>] [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>]
- [-SmbNonBrowsable <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-SmbNonBrowsable <String>] [-SmbOplock <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Update-AzNetAppFilesCache -ResourceGroupName <String> -AccountName <String> -Poo
 Update-AzNetAppFilesCache -ResourceId <String> [-Size <Int64>] [-ProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-ThroughputMibps <Double>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-CifsChangeNotification <String>] [-WriteBack <String>]
- [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>] [-Tag <Hashtable>]
+ [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>] [-SmbOplock <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -37,7 +37,7 @@ Update-AzNetAppFilesCache -ResourceId <String> [-Size <Int64>] [-ProtocolType <S
 Update-AzNetAppFilesCache -InputObject <PSNetAppFilesCache> [-Size <Int64>] [-ProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-ThroughputMibps <Double>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-CifsChangeNotification <String>] [-WriteBack <String>]
- [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>] [-Tag <Hashtable>]
+ [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>] [-SmbOplock <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -63,7 +63,29 @@ Update-AzNetAppFilesCache -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" 
 
 Enables CIFS change notifications on the cache and replaces the resource tags.
 
+### Example 3: Disable SMB opportunistic locking
+```powershell
+Update-AzNetAppFilesCache -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfCache" -SmbOplock Disabled
+```
+
+Updates opportunistic locking without modifying the cache's other SMB settings.
+
 ## PARAMETERS
+
+### -SmbOplock
+Enables or disables SMB opportunistic locking for SMB or dual-protocol caches. Accepted values are `Enabled` and `Disabled`. Omit this parameter to retain the current setting.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AccountName
 The name of the ANF account
