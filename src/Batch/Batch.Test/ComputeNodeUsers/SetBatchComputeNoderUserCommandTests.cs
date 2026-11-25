@@ -105,5 +105,32 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             Assert.Equal(cmdlet.Password.ConvertToString(), requestPassword);
             Assert.Equal(cmdlet.ExpiryTime, requestExpiryTime);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetBatchComputeNodeUserLeavesOutTheExpiryTimeWhenNotGiven()
+        {
+            // Without -ExpiryTime the cmdlet used to send 0001-01-01 as the user's new expiry time. Now it omits expiryTime,
+            // so the service default applies.
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.PoolId = "testPool";
+            cmdlet.ComputeNodeId = "computeNode1";
+            cmdlet.Name = "testUser";
+            cmdlet.Password = "Password1234".ConvertToSecureString();
+
+            NodeUpdateUserParameter requestParameters = null;
+            Action<BatchRequest<NodeUpdateUserParameter, ComputeNodeUpdateUserOptions, AzureOperationHeaderResponse<ComputeNodeUpdateUserHeaders>>> extractUserUpdateParametersAction =
+                (request) =>
+                {
+                    requestParameters = request.Parameters;
+                };
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractUserUpdateParametersAction);
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal("Password1234", requestParameters.Password);
+            Assert.Null(requestParameters.ExpiryTime);
+        }
     }
 }

@@ -15,16 +15,15 @@ namespace Microsoft.Azure.Management.Search.Models
     public enum HostingMode
     {
         /// <summary>
-        /// The limit on number of indexes is determined by the default limits for the
-        /// SKU.
+        /// The maximum limit of indexes is determined by the SKU or pricing tier.
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "default")]
+        [System.Runtime.Serialization.EnumMember(Value = "Default")]
         Default,
         /// <summary>
-        /// Only application for standard3 SKU, where the search service can have up to
-        /// 1000 indexes.
+        /// Only applies to the Standard3 (S3) SKU, where the search services can have
+        /// up to 1,000 indexes.
         /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "highDensity")]
+        [System.Runtime.Serialization.EnumMember(Value = "HighDensity")]
         HighDensity
     }
     internal static class HostingModeEnumExtension
@@ -38,9 +37,9 @@ namespace Microsoft.Azure.Management.Search.Models
             switch( value )
             {
                 case HostingMode.Default:
-                    return "default";
+                    return "Default";
                 case HostingMode.HighDensity:
-                    return "highDensity";
+                    return "HighDensity";
             }
             return null;
         }
@@ -48,9 +47,9 @@ namespace Microsoft.Azure.Management.Search.Models
         {
             switch( value )
             {
-                case "default":
+                case "Default":
                     return HostingMode.Default;
-                case "highDensity":
+                case "HighDensity":
                     return HostingMode.HighDensity;
             }
             return null;

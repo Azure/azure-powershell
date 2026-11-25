@@ -840,10 +840,10 @@
           "application/json; odata=minimalmetadata; charset=utf-8"
         ],
         "Content-Length": [
-          "124"
+          "83"
         ]
       },
-      "RequestBody": "{\r\n  \"name\": \"userendtoend\",\r\n  \"isAdmin\": false,\r\n  \"expiryTime\": \"0001-01-01T00:00:00Z\",\r\n  \"password\": \"Sanitized\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"userendtoend\",\r\n  \"isAdmin\": false,\r\n  \"password\": \"Sanitized\"\r\n}",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
@@ -1108,6 +1108,7 @@
     "SubscriptionId": "94bd7ded-68b4-4ffa-82a5-37ac72caa2ec",
     "AZURE_BATCH_ACCOUNT": "dotnotsdkbatchaccount2",
     "AZURE_BATCH_ENDPOINT": "https://dotnotsdkbatchaccount2.eastus2.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "automation"
+    "AZURE_BATCH_RESOURCE_GROUP": "automation",
+    "expiryTime": "2025-11-03T22:35:23.4621363Z"
   }
 }

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;,
         /// &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;,
         /// &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;,
-        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
+        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;, &#39;SQLInstance&#39;</param>
 
         /// <param name="resourceId">ARM Virtual Machine Id
         /// </param>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
 
         /// <summary>
-        /// Gets or sets protectedItem Type- VM, SqlDataBase, AzureFileShare etc Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;, &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;, &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;, &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;
+        /// Gets or sets protectedItem Type- VM, SqlDataBase, AzureFileShare etc Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;, &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;, &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;, &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;, &#39;SQLInstance&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resourceType")]
         public string ResourceType {get; set; }

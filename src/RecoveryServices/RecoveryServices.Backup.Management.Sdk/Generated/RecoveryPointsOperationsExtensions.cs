@@ -13,6 +13,116 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class RecoveryPointsOperationsExtensions
     {
         /// <summary>
+        /// Triggers fetching the additional details of a recovery point, which are not
+        /// returned by the recovery point GET
+        /// API. This is an asynchronous operation. Returns tracking headers which can
+        /// be tracked using the
+        /// GetRPExtendedInfoOperationResult API.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the backed up items.
+        /// </param>
+        public static RPExtendedInfoResourceList GetRPExtendedInfo(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, GetRPExtendedInfoRequestResource parameters)
+        {
+                return ((IRecoveryPointsOperations)operations).GetRPExtendedInfoAsync(resourceGroupName, vaultName, fabricName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Triggers fetching the additional details of a recovery point, which are not
+        /// returned by the recovery point GET
+        /// API. This is an asynchronous operation. Returns tracking headers which can
+        /// be tracked using the
+        /// GetRPExtendedInfoOperationResult API.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the backed up items.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<RPExtendedInfoResourceList> GetRPExtendedInfoAsync(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, GetRPExtendedInfoRequestResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetRPExtendedInfoWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns the additional details of the recovery points fetched by a prior
+        /// getRPExtendedInfo operation. Returns
+        /// 202 Accepted while the operation is still running.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the backed up items.
+        /// </param>
+        /// <param name='operationId'>
+        /// OperationID which represents the prior getRPExtendedInfo operation whose
+        /// result needs to be fetched.
+        /// </param>
+        public static RPExtendedInfoResourceList GetRPExtendedInfoOperationResult(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, string operationId)
+        {
+                return ((IRecoveryPointsOperations)operations).GetRPExtendedInfoOperationResultAsync(resourceGroupName, vaultName, fabricName, operationId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns the additional details of the recovery points fetched by a prior
+        /// getRPExtendedInfo operation. Returns
+        /// 202 Accepted while the operation is still running.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the backed up items.
+        /// </param>
+        /// <param name='operationId'>
+        /// OperationID which represents the prior getRPExtendedInfo operation whose
+        /// result needs to be fetched.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<RPExtendedInfoResourceList> GetRPExtendedInfoOperationResultAsync(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetRPExtendedInfoOperationResultWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, operationId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Lists the backup copies for the backed up item.
         /// </summary>
         /// <param name='operations'>
@@ -140,6 +250,59 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public static async System.Threading.Tasks.Task<RecoveryPointResource> GetAsync(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Triggers fetching the additional details of a recovery point, which are not
+        /// returned by the recovery point GET
+        /// API. This is an asynchronous operation. Returns tracking headers which can
+        /// be tracked using the
+        /// GetRPExtendedInfoOperationResult API.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the backed up items.
+        /// </param>
+        public static RPExtendedInfoResourceList BeginGetRPExtendedInfo(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, GetRPExtendedInfoRequestResource parameters)
+        {
+                return ((IRecoveryPointsOperations)operations).BeginGetRPExtendedInfoAsync(resourceGroupName, vaultName, fabricName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Triggers fetching the additional details of a recovery point, which are not
+        /// returned by the recovery point GET
+        /// API. This is an asynchronous operation. Returns tracking headers which can
+        /// be tracked using the
+        /// GetRPExtendedInfoOperationResult API.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the backed up items.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<RPExtendedInfoResourceList> BeginGetRPExtendedInfoAsync(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, GetRPExtendedInfoRequestResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetRPExtendedInfoWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

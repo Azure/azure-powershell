@@ -125,7 +125,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 T2Network = volumeGroupVolumeProperties.T2Network,
                 VolumeSpecName = volumeGroupVolumeProperties.VolumeSpecName,
                 PlacementRules = volumeGroupVolumeProperties.PlacementRules.ToPPSKeyValuePairs(),
-                EnableSubvolumes = volumeGroupVolumeProperties.EnableSubvolumes,
                 BreakthroughMode = volumeGroupVolumeProperties.BreakthroughMode,
                 Encrypted = volumeGroupVolumeProperties.Encrypted,                
                 KeyVaultPrivateEndpointResourceId = volumeGroupVolumeProperties.KeyVaultPrivateEndpointResourceId

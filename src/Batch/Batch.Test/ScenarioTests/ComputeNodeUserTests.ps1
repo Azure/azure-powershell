@@ -36,7 +36,10 @@ function Test-ComputeNodeUserEndToEnd
     # Basically just validating that we can set the parameters and execute the cmdlet without error. 
     # If a Get user API is added, we can validate that the properties were actually updated.
     $password2 = ConvertTo-SecureString "Abcdefghijk1234!" -AsPlainText -Force
-    Set-AzBatchComputeNodeUser $poolId $computeNodeId $userName $password2 -ExpiryTime ([DateTime]::Now.AddDays(5)) -BatchContext $context
+    # Saved with the recording so playback sends the same request body.
+    $expiryTime = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("expiryTime", [DateTime]::UtcNow.AddDays(5).ToString("o"))
+    $expiryTime = [DateTime]::Parse($expiryTime, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::RoundtripKind)
+    Set-AzBatchComputeNodeUser $poolId $computeNodeId $userName $password2 -ExpiryTime $expiryTime -BatchContext $context
 
     # Delete the user
     Remove-AzBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context

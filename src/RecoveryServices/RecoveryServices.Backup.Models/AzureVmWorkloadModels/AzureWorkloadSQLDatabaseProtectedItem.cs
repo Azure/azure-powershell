@@ -60,6 +60,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string ProtectedItemHealthStatus { get; set; }
 
         /// <summary>
+        /// Name of the parent protected item (e.g., SQL Instance name) when this
+        /// database is protected as part of a parent.
+        /// </summary>
+        public string ParentProtectedItem { get; set; }
+
+        /// <summary>
+        /// Protection type in case protected as part of a parent.
+        /// Possible values: Database, DatabaseUnderInstance.
+        /// </summary>
+        public string ProtectionLevel { get; set; }
+
+        /// <summary>
         /// Constructor. Takes the service client object representing the protected item 
         /// and converts it in to the PS protected item model
         /// </summary>
@@ -79,6 +91,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             LastBackupErrorDetail = protectedItem.LastBackupErrorDetail;
             ProtectedItemDataSourceId = protectedItem.ProtectedItemDataSourceId;
             ProtectedItemHealthStatus = protectedItem.ProtectedItemHealthStatus;
+            ParentProtectedItem = protectedItem.ParentProtectedItem;
+            ProtectionLevel = protectedItem.ProtectionLevel;
             LastBackupStatus = protectedItem.LastBackupStatus;
             LastBackupTime = protectedItem.LastBackupTime;
             ProtectionState =
@@ -124,6 +138,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ServerName = protectedItem.ServerName;
             ParentName = protectedItem.ParentName;
             ParentType = protectedItem.ParentType;
+            ParentProtectedItem = protectedItem.ParentProtectedItem;
+            ProtectionLevel = protectedItem.ProtectionLevel;
 
             if(protectedItem.LastBackupErrorDetail != null)
             {

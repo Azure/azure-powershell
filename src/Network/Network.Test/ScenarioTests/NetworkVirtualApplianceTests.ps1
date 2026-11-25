@@ -208,6 +208,242 @@ function Test-NVAInVnetCRUD
 
 <#
 .SYNOPSIS
+Test IPv4 Hub NVA and Permanent Internet Ingress creation and same-mode idle timeout updates
+#>
+function Test-NetworkVirtualApplianceLoadBalancerConfigurationHub
+{
+    Test-NetworkVirtualApplianceLoadBalancerConfiguration -DeploymentType Hub
+}
+
+<#
+.SYNOPSIS
+Test IPv4 VNet NVA and Permanent Internet Ingress creation and same-mode idle timeout updates
+#>
+function Test-NetworkVirtualApplianceSourceIPLoadBalancerConfigurationVnet
+{
+    Test-NetworkVirtualApplianceLoadBalancerConfiguration -DeploymentType Vnet -LoadDistribution SourceIP
+}
+
+function Test-NetworkVirtualApplianceLoadBalancerConfiguration
+{
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateSet("Hub", "Vnet")]
+        [string] $DeploymentType,
+
+        [ValidateSet("SourceIP", "SourceIPProtocol")]
+        [string] $LoadDistribution = "SourceIPProtocol"
+    )
+
+    # Recording requires existing network resources; run scenarios sequentially because they share the ingress IP.
+    $rgname = "dev2-testingipv6"
+    $location = "australiaeast"
+    $hubname = "chainingHub"
+    $vnetName = "vnet-v6"
+    $inVnet = $DeploymentType -eq "Vnet"
+    $publicIpName = "ipv4-test03"
+    $nvaname = Get-ResourceName
+    $collectionName = "lb-test-collection"
+    $ruleName = "https-lb-test"
+    $creationAttempted = $false
+    $creationSucceeded = $false
+    $scenarioError = $null
+
+    function Assert-NvaLoadBalancerSettings($configuration, $distribution, $timeout, $stage)
+    {
+        Assert-NotNull $configuration "$stage did not return LoadBalancerConfiguration."
+        Assert-AreEqual $distribution $configuration.LoadDistribution "$stage returned an unexpected load distribution."
+        Assert-AreEqual $timeout $configuration.IdleTimeoutInMinutes "$stage returned an unexpected idle timeout."
+    }
+
+    function Assert-NvaNetworkPlacement($appliance)
+    {
+        if ($inVnet)
+        {
+            Assert-AreEqual 2 $appliance.NvaInterfaceConfigurations.Count
+            $privateConfig = $appliance.NvaInterfaceConfigurations | Where-Object { $_.Name -eq "privateInterface" }
+            $publicConfig = $appliance.NvaInterfaceConfigurations | Where-Object { $_.Name -eq "publicInterface" }
+            Assert-NotNull $privateConfig "The private interface configuration did not round-trip."
+            Assert-NotNull $publicConfig "The public interface configuration did not round-trip."
+            Assert-AreEqual $privateSubnet.Id $privateConfig.Subnet.Id
+            Assert-AreEqual $publicSubnet.Id $publicConfig.Subnet.Id
+            Assert-True { $privateConfig.NicType -contains "PrivateNic" }
+            Assert-True { $publicConfig.NicType -contains "PublicNic" }
+            Assert-True { [string]::IsNullOrEmpty($appliance.VirtualHub.Id) }
+        }
+        else
+        {
+            Assert-AreEqual $hub.Id $appliance.VirtualHub.Id
+        }
+    }
+
+    $networkParameters = @{}
+    if ($inVnet)
+    {
+        $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgname -Name $vnetName -ErrorAction Stop
+        Assert-NotNull $vnet "The recording VNet was not found."
+        Assert-AreEqual $location $vnet.Location
+        $privateSubnet = $vnet.Subnets | Where-Object { $_.Name -eq "subnet1" }
+        $publicSubnet = $vnet.Subnets | Where-Object { $_.Name -eq "subnet2" }
+        Assert-NotNullOrEmpty $privateSubnet.Id "Private subnet subnet1 was not found."
+        Assert-NotNullOrEmpty $publicSubnet.Id "Public subnet subnet2 was not found."
+        $privateInterface = New-AzNvaInterfaceConfiguration -NicType PrivateNic -Name privateInterface -SubnetId $privateSubnet.Id -ErrorAction Stop
+        $publicInterface = New-AzNvaInterfaceConfiguration -NicType PublicNic -Name publicInterface -SubnetId $publicSubnet.Id -ErrorAction Stop
+        $networkParameters.NvaInterfaceConfiguration = @($privateInterface, $publicInterface)
+    }
+    else
+    {
+        $hub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $hubname -ErrorAction Stop
+        Assert-NotNull $hub "The recording hub was not found."
+        Assert-AreEqual $location $hub.Location
+        $networkParameters.VirtualHubId = $hub.Id
+    }
+
+    $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $publicIpName -ErrorAction Stop
+    Assert-NotNull $pip "The recording ingress public IP was not found."
+    Assert-AreEqual $location $pip.Location
+    Assert-AreEqual "IPv4" $pip.PublicIpAddressVersion
+    Assert-True { [string]::IsNullOrEmpty($pip.IpConfiguration.Id) } "The ingress public IP must not already be attached."
+
+    $sku = New-AzVirtualApplianceSkuProperty -VendorName "fortinet-sdwan-and-ngfw" -BundledScaleUnit 2 -MarketPlaceVersion "7.6.7" -ErrorAction Stop
+    $ingress = New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId $pip.Id -ErrorAction Stop
+    $initialConfiguration = New-AzNetworkVirtualApplianceLoadBalancerConfiguration -LoadDistribution $LoadDistribution -IdleTimeoutInMinutes 5 -ErrorAction Stop
+
+    # Record one timeout update, keeping the distribution unchanged.
+    $cases = @(
+        @{ Stage = "Same-mode timeout update"; Configuration = (New-AzNetworkVirtualApplianceLoadBalancerConfiguration -LoadDistribution $LoadDistribution -IdleTimeoutInMinutes 20); Distribution = $LoadDistribution; Timeout = 20 }
+    )
+
+    try
+    {
+        $creationAttempted = $true
+        $nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn 65222 @networkParameters -Sku $sku -CloudInitConfiguration "echo hi" -AddressFamily "IPv4" -InternetIngressIp $ingress -LoadBalancerConfiguration $initialConfiguration -ErrorAction Stop
+        $creationSucceeded = $true
+        Assert-NotNull $nva
+        Assert-NvaLoadBalancerSettings $nva.LoadBalancerConfiguration $LoadDistribution 5 "NVA create"
+
+        $getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -ErrorAction Stop
+        Assert-NvaNetworkPlacement $getnva
+        Assert-AreEqual "Succeeded" $getnva.ProvisioningState
+        Assert-AreEqual 1 $getnva.AddressFamily.Count
+        Assert-AreEqual "IPv4" $getnva.AddressFamily[0]
+        Assert-True { $getnva.InternetIngressPublicIps.Id -contains $pip.Id } "The ingress public IP did not round-trip."
+        Assert-NvaLoadBalancerSettings $getnva.LoadBalancerConfiguration $LoadDistribution 5 "NVA create GET"
+
+        # Allow live provisioning to settle before the first update, without slowing playback.
+        if ((getTestMode) -ne "Playback")
+        {
+            Write-Verbose "Waiting 12 minutes after creation before updating test NVA '$nvaname'."
+            Start-Sleep -Seconds 720
+        }
+
+        foreach ($case in $cases)
+        {
+            $parameters = @{
+                ResourceGroupName = $rgname
+                Name = $nvaname
+                Tag = $getnva.Tag
+                Force = $true
+                ErrorAction = "Stop"
+            }
+            if ($null -ne $case.Configuration)
+            {
+                $parameters.LoadBalancerConfiguration = $case.Configuration
+            }
+
+            $updated = Update-AzNetworkVirtualAppliance @parameters
+            Assert-NvaLoadBalancerSettings $updated.LoadBalancerConfiguration $case.Distribution $case.Timeout "NVA $($case.Stage)"
+            $getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -ErrorAction Stop
+            Assert-NvaNetworkPlacement $getnva
+            Assert-NvaLoadBalancerSettings $getnva.LoadBalancerConfiguration $case.Distribution $case.Timeout "NVA GET $($case.Stage)"
+            Assert-AreEqual 1 $getnva.AddressFamily.Count
+            Assert-AreEqual "IPv4" $getnva.AddressFamily[0]
+            Assert-True { $getnva.InternetIngressPublicIps.Id -contains $pip.Id } "An update removed the ingress public IP."
+        }
+
+        $ruleCases = @(@{ Stage = "Create"; Configuration = $initialConfiguration; Distribution = $LoadDistribution; Timeout = 5 }) + $cases
+        foreach ($case in $ruleCases)
+        {
+            $parameters = @{
+                Name = $ruleName
+                Protocol = "TCP"
+                SourceAddressPrefix = "20.213.138.201/32"
+                DestinationPortRange = 9090
+                AppliesOn = $pip.Name
+                ErrorAction = "Stop"
+            }
+            if ($null -ne $case.Configuration)
+            {
+                $parameters.LoadBalancerConfiguration = $case.Configuration
+            }
+
+            $rule = New-AzVirtualApplianceInboundSecurityRulesProperty @parameters
+            $result = Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName $rgname -VirtualApplianceName $nvaname -Name $collectionName -RuleType Permanent -Rule $rule -Confirm:$false -ErrorAction Stop
+            Assert-NotNull $result
+            Assert-AreEqual 1 $result.Rules.Count
+            Assert-AreEqual $ruleName $result.Rules[0].Name
+            Assert-NvaLoadBalancerSettings $result.Rules[0].LoadBalancerConfiguration $case.Distribution $case.Timeout "Ingress $($case.Stage)"
+
+            $response = Invoke-AzRestMethod -Method GET -Path "$($getnva.Id)/inboundSecurityRules/${collectionName}?api-version=2026-05-01" -ErrorAction Stop
+            Assert-AreEqual 200 $response.StatusCode
+            $persisted = ($response.Content | ConvertFrom-Json).properties
+            Assert-AreEqual "Permanent" $persisted.ruleType
+            Assert-AreEqual 1 $persisted.rules.Count
+            $persistedRule = $persisted.rules[0]
+            Assert-AreEqual $ruleName $persistedRule.name
+            Assert-AreEqual "TCP" $persistedRule.protocol
+            Assert-AreEqual "20.213.138.201/32" $persistedRule.sourceAddressPrefix
+            Assert-AreEqual 9090 $persistedRule.destinationPortRange
+            Assert-True { $persistedRule.appliesOn -contains $pip.Name }
+            Assert-NvaLoadBalancerSettings $persistedRule.loadBalancerConfiguration $case.Distribution $case.Timeout "Ingress GET $($case.Stage)"
+
+            # Ingress rule settings must not change the NVA internal load balancer settings.
+            $getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -ErrorAction Stop
+            Assert-NvaLoadBalancerSettings $getnva.LoadBalancerConfiguration $LoadDistribution 20 "NVA after ingress $($case.Stage)"
+        }
+    }
+    catch
+    {
+        $scenarioError = $_
+        throw
+    }
+    finally
+    {
+        if ($creationAttempted)
+        {
+            # Only this test's NVA is removed. Never delete the shared hub, VNet, subnets, IP, or resource group.
+            try
+            {
+                # Allow live operations to settle before cleanup, without slowing playback.
+                if ((getTestMode) -ne "Playback")
+                {
+                    if ($inVnet -and $creationSucceeded)
+                    {
+                        Write-Verbose "Waiting 15 minutes before deleting test VNet NVA '$nvaname'."
+                        Start-Sleep -Seconds 900
+                    }
+                    elseif (-not $inVnet)
+                    {
+                        Write-Verbose "Waiting 10 minutes before deleting test Hub NVA '$nvaname'."
+                        Start-Sleep -Seconds 600
+                    }
+                }
+                Remove-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Force -ErrorAction Stop
+            }
+            catch
+            {
+                if ($null -eq $scenarioError)
+                {
+                    throw
+                }
+                Write-Warning "Cleanup of test NVA '$nvaname' failed: $($_.Exception.Message). The original test failure is preserved."
+            }
+        }
+    }
+}
+
+<#
+.SYNOPSIS
 Test creating a dual-stack (IPv4 + IPv6) NetworkVirtualAppliance in a Virtual Hub
 #>
 function Test-NetworkVirtualApplianceDualStackHub

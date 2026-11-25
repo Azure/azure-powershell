@@ -80,10 +80,15 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet("IPv4", "IPv6", IgnoreCase = true)]
         public string[] AddressFamily { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The internal load balancer configuration. Omission resets existing settings to Default distribution and a 5-minute timeout.")]
+        public PSNetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
             ValidateAddressFamily();
+            this.LoadBalancerConfiguration = LoadBalancerConfigurationHelper.Normalize(this.LoadBalancerConfiguration);
             if(!this.IsNetworkVirtualAppliancePresent(this.ResourceGroupName, this.Name))
             {
                 throw new ArgumentException(Properties.Resources.ResourceNotFound);
@@ -109,6 +114,9 @@ namespace Microsoft.Azure.Commands.Network
                 networkVirtualAppliance.VirtualApplianceAsn = this.VirtualApplianceAsn;
             }
             networkVirtualAppliance.NvaSku = this.Sku??networkVirtualAppliance.NvaSku;
+
+            // PUT omission resets load balancer settings; do not retain the configuration returned by GET.
+            networkVirtualAppliance.LoadBalancerConfiguration = this.LoadBalancerConfiguration;
 
             if (this.AddressFamily != null && this.AddressFamily.Length > 0)
             {

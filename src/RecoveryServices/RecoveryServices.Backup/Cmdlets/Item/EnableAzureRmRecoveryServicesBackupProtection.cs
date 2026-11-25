@@ -66,6 +66,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public ProtectableItemBase ProtectableItem { get; set; }
 
         /// <summary>
+        /// List of child database names to protect under a SQL (MSSQL) Instance snapshot protection.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureWorkloadParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.ChildDatabaseName)]
+        [ValidateNotNullOrEmpty]
+        public string[] ChildDatabaseName { get; set; }
+
+        /// <summary>
         /// Service name of the classic Azure VM whose representative item needs to be protected.
         /// </summary>
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -221,7 +229,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
                 {
-                    if (ParameterSetName == AzureWorkloadParameterSet &&
+                    // SQL (MSSQL) Instance snapshot protection: protect the instance as a single protected item
+                    // (with the optional child database list) instead of fanning out to per-database protection.
+                    bool isSqlInstanceSnapshotProtection =
+                        ParameterSetName == AzureWorkloadParameterSet &&
+                        string.Compare(((AzureWorkloadProtectableItem)ProtectableItem).ProtectableItemType,
+                            ProtectableItemType.SQLInstance.ToString()) == 0 &&
+                        Policy != null && Policy.WorkloadType == Models.WorkloadType.MSSQLInstance;
+
+                    if (!isSqlInstanceSnapshotProtection &&
+                    ParameterSetName == AzureWorkloadParameterSet &&
                     (string.Compare(((AzureWorkloadProtectableItem)ProtectableItem).ProtectableItemType,
                     ProtectableItemType.SQLAvailabilityGroup.ToString()) == 0 ||
                     string.Compare(((AzureWorkloadProtectableItem)ProtectableItem).ProtectableItemType,
@@ -308,6 +325,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ItemParams.Item, Item },
                                 { ItemParams.ProtectableItem, ProtectableItem  },
                                 { ItemParams.ParameterSetName, this.ParameterSetName },
+                                { ItemParams.ChildDatabaseNameList, ChildDatabaseName },
                                 { ItemParams.InclusionDisksList, InclusionDisksList },
                                 { ItemParams.ExclusionDisksList, ExclusionDisksList },
                                 { ItemParams.ResetExclusionSettings, ResetExclusionSettings },
