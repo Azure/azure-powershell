@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDocumentDBFirewallRule
 
 ## SYNOPSIS
-Update a new firewall rule or update an existing firewall rule on a mongo cluster.
+Update a new firewall rule or update an existing firewall rule on a DocumentDB cluster.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzDocumentDBFirewallRule -InputObject <IDocumentDbIdentity> [-EndIPAddres
 ```
 
 ## DESCRIPTION
-Update a new firewall rule or update an existing firewall rule on a mongo cluster.
+Update a new firewall rule or update an existing firewall rule on a DocumentDB cluster.
 
 ## EXAMPLES
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndIPAddress
-The end IP address of the mongo cluster firewall rule.
+The end IP address of the DocumentDB cluster firewall rule.
 Must be IPv4 format.
 
 ```yaml
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -MongoClusterName
-The name of the mongo cluster.
+The name of the DocumentDB cluster.
 
 ```yaml
 Type: System.String
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the mongo cluster firewall rule.
+The name of the DocumentDB cluster firewall rule.
 
 ```yaml
 Type: System.String
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartIPAddress
-The start IP address of the mongo cluster firewall rule.
+The start IP address of the DocumentDB cluster firewall rule.
 Must be IPv4 format.
 
 ```yaml

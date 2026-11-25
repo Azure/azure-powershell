@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDocumentDBMongoCluster
 
 ## SYNOPSIS
-Update a mongo cluster.
+Update a DocumentDB cluster.
 update overwrites all properties for the resource.
 To only modify some of the properties, use PATCH.
 
@@ -41,7 +41,7 @@ Update-AzDocumentDBMongoCluster -InputObject <IDocumentDbIdentity> [-Administrat
 ```
 
 ## DESCRIPTION
-Update a mongo cluster.
+Update a DocumentDB cluster.
 update overwrites all properties for the resource.
 To only modify some of the properties, use PATCH.
 
@@ -302,7 +302,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the mongo cluster.
+The name of the DocumentDB cluster.
 
 ```yaml
 Type: System.String
@@ -318,7 +318,7 @@ Accept wildcard characters: False
 
 ### -NetworkBypassMode
 The network bypass mode for the cluster.
-Setting to 'AzureCosmosDB' allows Azure Cosmos DB service to bypass network restrictions.
+Setting to 'AzureCosmosDB' allows the Azure Cosmos DB service to bypass network restrictions.
 
 ```yaml
 Type: System.String
@@ -363,7 +363,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
-Whether or not public endpoint access is allowed for this mongo cluster.
+Whether or not public endpoint access is allowed for this DocumentDB cluster.
 
 ```yaml
 Type: System.String
@@ -441,6 +441,8 @@ Accept wildcard characters: False
 
 ### -StorageType
 The type of storage to provision the cluster servers with.
+Defaults to 'PremiumSSDv2' when omitted during cluster creation.
+Omitting this property during an update leaves the storage type unchanged.
 
 ```yaml
 Type: System.String

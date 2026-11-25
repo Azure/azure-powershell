@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzDocumentDBMongoClusterNameAvailability
 
 ## SYNOPSIS
-Check if mongo cluster name is available for use.
+Check if DocumentDB cluster name is available for use.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Test-AzDocumentDBMongoClusterNameAvailability -InputObject <IDocumentDbIdentity>
 ```
 
 ## DESCRIPTION
-Check if mongo cluster name is available for use.
+Check if DocumentDB cluster name is available for use.
 
 ## EXAMPLES
 

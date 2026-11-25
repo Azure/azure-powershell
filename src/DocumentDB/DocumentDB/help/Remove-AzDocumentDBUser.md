@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDocumentDBUser
 
 ## SYNOPSIS
-Deletes a mongo cluster user.
+Deletes a DocumentDB cluster user.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Remove-AzDocumentDBUser -InputObject <IDocumentDbIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-Deletes a mongo cluster user.
+Deletes a DocumentDB cluster user.
 
 ## EXAMPLES
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -MongoClusterName
-The name of the mongo cluster.
+The name of the DocumentDB cluster.
 
 ```yaml
 Type: System.String
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the mongo cluster user.
+The name of the DocumentDB cluster user.
 
 ```yaml
 Type: System.String

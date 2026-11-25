@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDocumentDBMongoCluster
 
 ## SYNOPSIS
-Gets information about a mongo cluster.
+Gets information about a DocumentDB cluster.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzDocumentDBMongoCluster -InputObject <IDocumentDbIdentity> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-Gets information about a mongo cluster.
+Gets information about a DocumentDB cluster.
 
 ## EXAMPLES
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the mongo cluster.
+The name of the DocumentDB cluster.
 
 ```yaml
 Type: System.String

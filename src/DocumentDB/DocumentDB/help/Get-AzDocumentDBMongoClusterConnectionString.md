@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDocumentDBMongoClusterConnectionString
 
 ## SYNOPSIS
-List mongo cluster connection strings.
+List DocumentDB cluster connection strings.
 This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
 
 ## SYNTAX
@@ -20,7 +20,7 @@ Get-AzDocumentDBMongoClusterConnectionString -MongoClusterName <String> -Resourc
 ```
 
 ## DESCRIPTION
-List mongo cluster connection strings.
+List DocumentDB cluster connection strings.
 This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
 
 ## EXAMPLES
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -MongoClusterName
-The name of the mongo cluster.
+The name of the DocumentDB cluster.
 
 ```yaml
 Type: System.String

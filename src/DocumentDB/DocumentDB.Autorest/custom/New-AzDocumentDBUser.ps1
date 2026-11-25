@@ -27,7 +27,8 @@ param(
     [Alias('UserName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Category('Path')]
     [System.String]
-    # The Microsoft Entra object (client) ID of the user or service principal.
+    # The Microsoft Entra object ID of the user or service principal.
+    # This is not the application (client) ID; no ID lookup or conversion is performed.
     ${Name},
 
     [Parameter(Mandatory)]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDocumentDBFirewallRule
 
 ## SYNOPSIS
-Deletes a mongo cluster firewall rule.
+Deletes a DocumentDB cluster firewall rule.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Remove-AzDocumentDBFirewallRule -InputObject <IDocumentDbIdentity> [-DefaultProf
 ```
 
 ## DESCRIPTION
-Deletes a mongo cluster firewall rule.
+Deletes a DocumentDB cluster firewall rule.
 
 ## EXAMPLES
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -MongoClusterName
-The name of the mongo cluster.
+The name of the DocumentDB cluster.
 
 ```yaml
 Type: System.String
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the mongo cluster firewall rule.
+The name of the DocumentDB cluster firewall rule.
 
 ```yaml
 Type: System.String

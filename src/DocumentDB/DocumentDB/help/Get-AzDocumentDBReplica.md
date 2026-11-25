@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDocumentDBReplica
 
 ## SYNOPSIS
-List all the replicas for the mongo cluster.
+List all the replicas for the DocumentDB cluster.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzDocumentDBReplica -MongoClusterName <String> -ResourceGroupName <String> [
 ```
 
 ## DESCRIPTION
-List all the replicas for the mongo cluster.
+List all the replicas for the DocumentDB cluster.
 
 ## EXAMPLES
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -MongoClusterName
-The name of the mongo cluster.
+The name of the DocumentDB cluster.
 
 ```yaml
 Type: System.String
