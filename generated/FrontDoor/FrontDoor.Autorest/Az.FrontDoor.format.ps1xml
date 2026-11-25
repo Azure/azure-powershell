@@ -1543,9 +1543,6 @@
             <Label>Description</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ParanoiaLevel</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>RuleId</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -1563,9 +1560,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ParanoiaLevel</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RuleId</PropertyName>
@@ -1785,9 +1779,6 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>DisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1799,16 +1790,10 @@
           <TableColumnHeader>
             <Label>RuleSetVersion</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
@@ -1820,9 +1805,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RuleSetVersion</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Description = @"Describes the supported variable for group by",
         SerializedName = @"variableName",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("SocketAddr", "GeoLocation", "None", "Asn", "Ja4")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("SocketAddr", "GeoLocation", "None")]
         string VariableName { get; set; }
 
     }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 
     {
         /// <summary>Describes the supported variable for group by</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("SocketAddr", "GeoLocation", "None", "Asn", "Ja4")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("SocketAddr", "GeoLocation", "None")]
         string VariableName { get; set; }
 
     }

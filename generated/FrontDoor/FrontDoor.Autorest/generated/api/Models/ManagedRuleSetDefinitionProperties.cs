@@ -13,18 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal
     {
 
-        /// <summary>Backing field for <see cref="DisplayName" /> property.</summary>
-        private string _displayName;
-
-        /// <summary>
-        /// Human-readable display name for the managed rule set version (e.g., 'Default Ruleset 2.2 (Latest, Recommended)').
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
-        public string DisplayName { get => this._displayName; }
-
-        /// <summary>Internal Acessors for DisplayName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal.DisplayName { get => this._displayName; set { {_displayName = value;} } }
-
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
@@ -39,9 +27,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 
         /// <summary>Internal Acessors for RuleSetVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal.RuleSetVersion { get => this._ruleSetVersion; set { {_ruleSetVersion = value;} } }
-
-        /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal.Status { get => this._status; set { {_status = value;} } }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -78,13 +63,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string RuleSetVersion { get => this._ruleSetVersion; }
 
-        /// <summary>Backing field for <see cref="Status" /> property.</summary>
-        private string _status;
-
-        /// <summary>Describes the lifecycle status of the managed rule set version.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
-        public string Status { get => this._status; }
-
         /// <summary>Creates an new <see cref="ManagedRuleSetDefinitionProperties" /> instance.</summary>
         public ManagedRuleSetDefinitionProperties()
         {
@@ -95,19 +73,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     public partial interface IManagedRuleSetDefinitionProperties :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Human-readable display name for the managed rule set version (e.g., 'Default Ruleset 2.2 (Latest, Recommended)').
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Human-readable display name for the managed rule set version (e.g., 'Default Ruleset 2.2 (Latest, Recommended)').",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        string DisplayName { get;  }
         /// <summary>Provisioning state of the managed rule set.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
@@ -163,28 +128,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         SerializedName = @"ruleSetVersion",
         PossibleTypes = new [] { typeof(string) })]
         string RuleSetVersion { get;  }
-        /// <summary>Describes the lifecycle status of the managed rule set version.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Describes the lifecycle status of the managed rule set version.",
-        SerializedName = @"status",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Preview", "GA", "Deprecated", "Supported")]
-        string Status { get;  }
 
     }
     /// Properties for a managed rule set definition.
     internal partial interface IManagedRuleSetDefinitionPropertiesInternal
 
     {
-        /// <summary>
-        /// Human-readable display name for the managed rule set version (e.g., 'Default Ruleset 2.2 (Latest, Recommended)').
-        /// </summary>
-        string DisplayName { get; set; }
         /// <summary>Provisioning state of the managed rule set.</summary>
         string ProvisioningState { get; set; }
         /// <summary>Rule groups of the managed rule set.</summary>
@@ -195,9 +144,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         string RuleSetType { get; set; }
         /// <summary>Version of the managed rule set type.</summary>
         string RuleSetVersion { get; set; }
-        /// <summary>Describes the lifecycle status of the managed rule set version.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Preview", "GA", "Deprecated", "Supported")]
-        string Status { get; set; }
 
     }
 }

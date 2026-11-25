@@ -32,7 +32,7 @@ function New-AzFrontDoorWafCustomRuleGroupByVariableObject {
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("SocketAddr", "GeoLocation", "None", "Asn", "Ja4")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("SocketAddr", "GeoLocation", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # Describes the supported variable for group by.

@@ -18,12 +18,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Resource();
 
-        /// <summary>
-        /// Human-readable display name for the managed rule set version (e.g., 'Default Ruleset 2.2 (Latest, Recommended)').
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inlined)]
-        public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal)Property).DisplayName; }
-
         /// <summary>Resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceInternal)__resource).Id; }
@@ -31,9 +25,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Resource location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inherited)]
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceInternal)__resource).Location = value ?? null; }
-
-        /// <summary>Internal Acessors for DisplayName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal.DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionProperties Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetDefinitionProperties()); set { {_property = value;} } }
@@ -52,9 +43,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 
         /// <summary>Internal Acessors for RuleSetVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal.RuleSetVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal)Property).RuleSetVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal)Property).RuleSetVersion = value ?? null; }
-
-        /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceInternal)__resource).Id = value ?? null; }
@@ -96,10 +84,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inlined)]
         public string RuleSetVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal)Property).RuleSetVersion; }
 
-        /// <summary>Describes the lifecycle status of the managed rule set version.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inlined)]
-        public string Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionPropertiesInternal)Property).Status; }
-
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
@@ -131,19 +115,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResource
     {
-        /// <summary>
-        /// Human-readable display name for the managed rule set version (e.g., 'Default Ruleset 2.2 (Latest, Recommended)').
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Human-readable display name for the managed rule set version (e.g., 'Default Ruleset 2.2 (Latest, Recommended)').",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        string DisplayName { get;  }
         /// <summary>Provisioning state of the managed rule set.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
@@ -199,28 +170,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         SerializedName = @"ruleSetVersion",
         PossibleTypes = new [] { typeof(string) })]
         string RuleSetVersion { get;  }
-        /// <summary>Describes the lifecycle status of the managed rule set version.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Describes the lifecycle status of the managed rule set version.",
-        SerializedName = @"status",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Preview", "GA", "Deprecated", "Supported")]
-        string Status { get;  }
 
     }
     /// Describes the a managed rule set definition.
     internal partial interface IManagedRuleSetDefinitionInternal :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceInternal
     {
-        /// <summary>
-        /// Human-readable display name for the managed rule set version (e.g., 'Default Ruleset 2.2 (Latest, Recommended)').
-        /// </summary>
-        string DisplayName { get; set; }
         /// <summary>Properties for a managed rule set definition.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionProperties Property { get; set; }
         /// <summary>Provisioning state of the managed rule set.</summary>
@@ -233,9 +188,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         string RuleSetType { get; set; }
         /// <summary>Version of the managed rule set type.</summary>
         string RuleSetVersion { get; set; }
-        /// <summary>Describes the lifecycle status of the managed rule set version.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Preview", "GA", "Deprecated", "Supported")]
-        string Status { get; set; }
 
     }
 }

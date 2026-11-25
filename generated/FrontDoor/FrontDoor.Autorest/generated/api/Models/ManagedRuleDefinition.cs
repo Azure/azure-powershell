@@ -53,21 +53,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Internal Acessors for Description</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal.Description { get => this._description; set { {_description = value;} } }
 
-        /// <summary>Internal Acessors for ParanoiaLevel</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal.ParanoiaLevel { get => this._paranoiaLevel; set { {_paranoiaLevel = value;} } }
-
         /// <summary>Internal Acessors for RuleId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleDefinitionInternal.RuleId { get => this._ruleId; set { {_ruleId = value;} } }
-
-        /// <summary>Backing field for <see cref="ParanoiaLevel" /> property.</summary>
-        private string _paranoiaLevel;
-
-        /// <summary>
-        /// Describes the paranoia level of the managed rule. Applicable only for DRS rules. Omitted for Bot Manager, DDoS, and AI
-        /// rules.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
-        public string ParanoiaLevel { get => this._paranoiaLevel; }
 
         /// <summary>Backing field for <see cref="RuleId" /> property.</summary>
         private string _ruleId;
@@ -133,21 +120,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
         string Description { get;  }
-        /// <summary>
-        /// Describes the paranoia level of the managed rule. Applicable only for DRS rules. Omitted for Bot Manager, DDoS, and AI
-        /// rules.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Describes the paranoia level of the managed rule. Applicable only for DRS rules. Omitted for Bot Manager, DDoS, and AI rules.",
-        SerializedName = @"paranoiaLevel",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("PL1", "PL2", "PL3", "PL4")]
-        string ParanoiaLevel { get;  }
         /// <summary>Identifier for the managed rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
@@ -176,12 +148,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         string DefaultState { get; set; }
         /// <summary>Describes the functionality of the managed rule.</summary>
         string Description { get; set; }
-        /// <summary>
-        /// Describes the paranoia level of the managed rule. Applicable only for DRS rules. Omitted for Bot Manager, DDoS, and AI
-        /// rules.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("PL1", "PL2", "PL3", "PL4")]
-        string ParanoiaLevel { get; set; }
         /// <summary>Identifier for the managed rule.</summary>
         string RuleId { get; set; }
 

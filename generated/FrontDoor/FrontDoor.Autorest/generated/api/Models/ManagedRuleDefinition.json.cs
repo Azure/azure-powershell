@@ -82,7 +82,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {_defaultAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("defaultAction"), out var __jsonDefaultAction) ? (string)__jsonDefaultAction : (string)_defaultAction;}
             {_defaultSensitivity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("defaultSensitivity"), out var __jsonDefaultSensitivity) ? (string)__jsonDefaultSensitivity : (string)_defaultSensitivity;}
             {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
-            {_paranoiaLevel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("paranoiaLevel"), out var __jsonParanoiaLevel) ? (string)__jsonParanoiaLevel : (string)_paranoiaLevel;}
             AfterFromJson(json);
         }
 
@@ -124,10 +123,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._description)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._description.ToString()) : null, "description" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._paranoiaLevel)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._paranoiaLevel.ToString()) : null, "paranoiaLevel" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

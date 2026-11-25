@@ -153,14 +153,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).RuleGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupDefinition>) content.GetValueForProperty("RuleGroup",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).RuleGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupDefinition>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleGroupDefinitionTypeConverter.ConvertFrom));
             }
-            if (content.Contains("DisplayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).DisplayName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Status"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).Status, global::System.Convert.ToString);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -221,14 +213,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             if (content.Contains("RuleGroup"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).RuleGroup = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupDefinition>) content.GetValueForProperty("RuleGroup",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).RuleGroup, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupDefinition>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleGroupDefinitionTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("DisplayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).DisplayName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Status"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinitionInternal)this).Status, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

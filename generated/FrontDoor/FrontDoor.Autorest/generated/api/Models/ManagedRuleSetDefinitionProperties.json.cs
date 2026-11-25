@@ -82,8 +82,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {_ruleSetType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("ruleSetType"), out var __jsonRuleSetType) ? (string)__jsonRuleSetType : (string)_ruleSetType;}
             {_ruleSetVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("ruleSetVersion"), out var __jsonRuleSetVersion) ? (string)__jsonRuleSetVersion : (string)_ruleSetVersion;}
             {_ruleGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonArray>("ruleGroups"), out var __jsonRuleGroups) ? If( __jsonRuleGroups as Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupDefinition>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupDefinition) (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleGroupDefinition.FromJson(__u) )) ))() : null : _ruleGroup;}
-            {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
             AfterFromJson(json);
         }
 
@@ -134,14 +132,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
                     }
                     container.Add("ruleGroups",__w);
                 }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._status)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._status.ToString()) : null, "status" ,container.Add );
             }
             AfterToJson(ref container);
             return container;
