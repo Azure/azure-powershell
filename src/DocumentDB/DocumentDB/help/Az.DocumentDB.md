@@ -25,7 +25,7 @@ This includes the default connection string using SCRAM-SHA-256, as well as othe
 List all the replicas for the DocumentDB cluster.
 
 ### [Get-AzDocumentDBUser](Get-AzDocumentDBUser.md)
-Gets the defintion of a DocumentDB cluster user.
+Gets the definition of a DocumentDB cluster user.
 
 ### [New-AzDocumentDBFirewallRule](New-AzDocumentDBFirewallRule.md)
 Create a new firewall rule or create an existing firewall rule on a DocumentDB cluster.

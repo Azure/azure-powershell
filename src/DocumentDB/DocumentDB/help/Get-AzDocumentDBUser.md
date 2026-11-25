@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDocumentDBUser
 
 ## SYNOPSIS
-Gets the defintion of a DocumentDB cluster user.
+Gets the definition of a DocumentDB cluster user.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Get-AzDocumentDBUser -InputObject <IDocumentDbIdentity> [-DefaultProfile <PSObje
 ```
 
 ## DESCRIPTION
-Gets the defintion of a DocumentDB cluster user.
+Gets the definition of a DocumentDB cluster user.
 
 ## EXAMPLES
 
