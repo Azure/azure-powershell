@@ -1,8 +1,8 @@
 if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnOrigin'))
 {
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadCdnEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadCdnEnv.ps1'
   }
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzCdnOrigin.Recording.json'
@@ -18,22 +18,22 @@ Describe 'Update-AzCdnOrigin' {
     BeforeAll {
         $script:endpointName = 'e-clipstest-origin-upd'
         $origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
-        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $origin | Out-Null
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ClassicCdnResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $origin | Out-Null
     }
 
     AfterAll {
-        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -ErrorAction SilentlyContinue
     }
 
     It 'UpdateExpanded' {
-        $u = Update-AzCdnOrigin -Name 'origin1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName 'www.azure.com' -HttpPort 456 -HttpsPort 789
+        $u = Update-AzCdnOrigin -Name 'origin1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName -HostName 'www.azure.com' -HttpPort 456 -HttpsPort 789
         $u.HostName | Should -Be 'www.azure.com'
         $u.HttpPort | Should -Be 456
         $u.HttpsPort | Should -Be 789
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $o = Get-AzCdnOrigin -Name 'origin1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $o = Get-AzCdnOrigin -Name 'origin1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $u = Update-AzCdnOrigin -HostName 'www.azure.com' -HttpPort 123 -HttpsPort 666 -InputObject $o
         $u.HttpPort | Should -Be 123
         $u.HttpsPort | Should -Be 666

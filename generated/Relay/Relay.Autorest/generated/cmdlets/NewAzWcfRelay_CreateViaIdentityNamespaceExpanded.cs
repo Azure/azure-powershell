@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"create a WCF relay. This operation is idempotent.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}", ApiVersion = "2021-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}", ApiVersion = "2026-07-01-preview")]
     public partial class NewAzWcfRelay_CreateViaIdentityNamespaceExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IContext

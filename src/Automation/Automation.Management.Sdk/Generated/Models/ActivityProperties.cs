@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public ActivityProperties(string definition = default(string), System.Collections.Generic.IList<ActivityParameterSet> parameterSets = default(System.Collections.Generic.IList<ActivityParameterSet>), System.Collections.Generic.IList<ActivityOutputType> outputTypes = default(System.Collections.Generic.IList<ActivityOutputType>), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string))
+        public ActivityProperties(string definition = default(string), System.Collections.Generic.IList<ActivityParameterSet> parameterSets = default(System.Collections.Generic.IList<ActivityParameterSet>), System.Collections.Generic.IList<ActivityOutputType> outputTypes = default(System.Collections.Generic.IList<ActivityOutputType>), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string))
 
         {
             this.Definition = definition;
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.

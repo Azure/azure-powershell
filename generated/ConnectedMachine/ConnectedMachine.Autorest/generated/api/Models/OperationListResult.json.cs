@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>The List Compute Operation operation response.</summary>
+    /// <summary>The List of Operations.</summary>
     public partial class OperationListResult
     {
 
@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue) (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OperationValue.FromJson(__u) )) ))() : null : _value;}
+            {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)_nextLink;}
             AfterFromJson(json);
         }
 
@@ -111,6 +112,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                     }
                     container.Add("value",__w);
                 }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

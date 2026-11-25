@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>A list of private endpoint connections.</summary>
+    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial class PrivateEndpointConnectionListResult
     {
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// A list of private endpoint connections.
+    /// The response of a PrivateEndpointConnection list operation.
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial interface IPrivateEndpointConnectionListResult
 

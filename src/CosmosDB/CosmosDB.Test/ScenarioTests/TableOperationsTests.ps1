@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ function Test-TableOperationsCmdlets
   Try{
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true -DisableLocalAuth $true
 
       # create a new table
       $NewTable = New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $ThroughputValue
@@ -103,7 +103,7 @@ function Test-TableOperationsCmdletsUsingInputObject
   Try{
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true -DisableLocalAuth $true
 
       # get the cosmosDBAccount object
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
@@ -165,7 +165,7 @@ function Test-TableThroughputCmdlets
 
   Try{
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true -DisableLocalAuth $true
 
   $NewTable =  New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput  $ThroughputValue
   $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
@@ -211,7 +211,7 @@ function Test-TableMigrateThroughputCmdlets
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true -DisableLocalAuth $true
 
       $NewTable =  New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
@@ -269,7 +269,7 @@ function Test-TableInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
     $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
     Try {
         $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
-        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous
+        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous -DisableLocalAuth $true
 
         # 1. Create a new database
         $NewDatabase = New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -360,7 +360,7 @@ function Test-TableInAccountRestoreOperationsCmdlets
   Try{
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true -BackupPolicyType Continuous
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true -BackupPolicyType Continuous -DisableLocalAuth $true
 
       # create a new table
       $NewTable = New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $ThroughputValue

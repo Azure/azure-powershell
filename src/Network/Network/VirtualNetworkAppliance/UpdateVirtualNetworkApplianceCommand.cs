@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Management.Automation;
 
@@ -67,6 +68,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource ID of another Virtual Network Appliance to use as the capacity provider for this Virtual Network Appliance.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string CapacityProviderId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -90,12 +98,30 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ShouldProcess(Name, "Update Virtual Network Appliance"))
             {
-                var tagsObject = new TagsObject
-                {
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
-                };
+                VirtualNetworkAppliance vnaResponse;
 
-                var vnaResponse = this.VirtualNetworkAppliancesClient.UpdateTags(this.ResourceGroupName, this.Name, tagsObject);
+                if (this.IsParameterBound(c => c.CapacityProviderId))
+                {
+                    // Read-modify-write: preserve all existing properties and only update CapacityProvider (and Tag, if specified).
+                    var existingVna = this.VirtualNetworkAppliancesClient.Get(this.ResourceGroupName, this.Name);
+                    existingVna.CapacityProvider = new SubResource { Id = this.CapacityProviderId };
+
+                    if (this.IsParameterBound(c => c.Tag))
+                    {
+                        existingVna.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+                    }
+
+                    vnaResponse = this.VirtualNetworkAppliancesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, existingVna);
+                }
+                else
+                {
+                    var tagsObject = new TagsObject
+                    {
+                        Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
+                    };
+
+                    vnaResponse = this.VirtualNetworkAppliancesClient.UpdateTags(this.ResourceGroupName, this.Name, tagsObject);
+                }
 
                 var psVna = this.ToPsVirtualNetworkAppliance(vnaResponse);
                 psVna.ResourceGroupName = this.ResourceGroupName;

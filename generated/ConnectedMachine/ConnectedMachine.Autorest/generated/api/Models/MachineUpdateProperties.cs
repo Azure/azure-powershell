@@ -46,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>Timestamp of last upgrade attempt</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; }
+        public global::System.DateTime? AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; }
 
         /// <summary>Backing field for <see cref="CloudMetadata" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata _cloudMetadata;
@@ -58,6 +58,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Specifies the cloud provider (Azure/AWS/GCP...).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public string CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider; }
+
+        /// <summary>Backing field for <see cref="IdentityKeyStore" /> property.</summary>
+        private string _identityKeyStore;
+
+        /// <summary>Identity key store type of the machine</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string IdentityKeyStore { get => this._identityKeyStore; set => this._identityKeyStore = value; }
 
         /// <summary>Backing field for <see cref="LocationData" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILocationData _locationData;
@@ -86,22 +93,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgrade Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.AgentUpgrade { get => (this._agentUpgrade = this._agentUpgrade ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgrade()); set { {_agentUpgrade = value;} } }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptDesiredVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptDesiredVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptDesiredVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptTimestamp</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for CloudMetadata</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.CloudMetadata { get => (this._cloudMetadata = this._cloudMetadata ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadata()); set { {_cloudMetadata = value;} } }
 
         /// <summary>Internal Acessors for CloudMetadataProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for LocationData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILocationData Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal.LocationData { get => (this._locationData = this._locationData ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LocationData()); set { {_locationData = value;} } }
@@ -128,6 +135,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The resource id of the private link scope this machine is assigned to, if any.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string PrivateLinkScopeResourceId { get => this._privateLinkScopeResourceId; set => this._privateLinkScopeResourceId = value; }
+
+        /// <summary>Backing field for <see cref="TpmEkCertificate" /> property.</summary>
+        private string _tpmEkCertificate;
+
+        /// <summary>
+        /// Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource
+        /// onboarding.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string TpmEkCertificate { get => this._tpmEkCertificate; set => this._tpmEkCertificate = value; }
 
         /// <summary>Creates an new <see cref="MachineUpdateProperties" /> instance.</summary>
         public MachineUpdateProperties()
@@ -215,8 +232,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Update = false,
         Description = @"Timestamp of last upgrade attempt",
         SerializedName = @"lastAttemptTimestamp",
-        PossibleTypes = new [] { typeof(string) })]
-        string AgentUpgradeLastAttemptTimestamp { get;  }
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? AgentUpgradeLastAttemptTimestamp { get;  }
         /// <summary>Specifies the cloud provider (Azure/AWS/GCP...).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -228,6 +245,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"provider",
         PossibleTypes = new [] { typeof(string) })]
         string CloudMetadataProvider { get;  }
+        /// <summary>Identity key store type of the machine</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Identity key store type of the machine",
+        SerializedName = @"identityKeyStore",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityKeyStore { get; set; }
         /// <summary>The city or locality where the resource is located.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -307,6 +335,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"privateLinkScopeResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateLinkScopeResourceId { get; set; }
+        /// <summary>
+        /// Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource
+        /// onboarding.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource onboarding.",
+        SerializedName = @"tpmEkCertificate",
+        PossibleTypes = new [] { typeof(string) })]
+        string TpmEkCertificate { get; set; }
 
     }
     /// Describes the ARM updatable properties of a hybrid machine.
@@ -329,11 +371,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Success", "Failed")]
         string AgentUpgradeLastAttemptStatus { get; set; }
         /// <summary>Timestamp of last upgrade attempt</summary>
-        string AgentUpgradeLastAttemptTimestamp { get; set; }
+        global::System.DateTime? AgentUpgradeLastAttemptTimestamp { get; set; }
         /// <summary>The metadata of the cloud environment (Azure/GCP/AWS/OCI...).</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata CloudMetadata { get; set; }
         /// <summary>Specifies the cloud provider (Azure/AWS/GCP...).</summary>
         string CloudMetadataProvider { get; set; }
+        /// <summary>Identity key store type of the machine</summary>
+        string IdentityKeyStore { get; set; }
         /// <summary>Metadata pertaining to the geographic location of the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILocationData LocationData { get; set; }
         /// <summary>The city or locality where the resource is located.</summary>
@@ -352,6 +396,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string ParentClusterResourceId { get; set; }
         /// <summary>The resource id of the private link scope this machine is assigned to, if any.</summary>
         string PrivateLinkScopeResourceId { get; set; }
+        /// <summary>
+        /// Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource
+        /// onboarding.
+        /// </summary>
+        string TpmEkCertificate { get; set; }
 
     }
 }

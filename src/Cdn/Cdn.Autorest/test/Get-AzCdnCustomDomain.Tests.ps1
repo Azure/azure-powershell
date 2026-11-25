@@ -1,8 +1,8 @@
 if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnCustomDomain'))
 {
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadCdnEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadCdnEnv.ps1'
   }
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzCdnCustomDomain.Recording.json'
@@ -16,40 +16,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnCustomDomain'))
 
 Describe 'Get-AzCdnCustomDomain' {
     BeforeAll {
-        $script:subId = $env.SubscriptionId
-        $script:classicCdnEndpointName = 'ps2025-0601-get-domain'
-        $script:customDomainHostName = 'ps2025-0601-get-domain.ps.cdne2e.azfdtest.xyz'
-        $script:customDomainName = 'cd-pstest-get'
-        $location = "westus"
-        $origin = @{ Name = "origin1"; HostName = "host1.hello.com" }
-        $originId = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:classicCdnEndpointName/origins/$($origin.Name)"
-        $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET"
-        $originGroup = @{ Name = "originGroup1"; healthProbeSetting = $healthProbeParametersObject; Origin = @(@{ Id = $originId }) }
-        $defaultOriginGroup = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:classicCdnEndpointName/origingroups/$($originGroup.Name)"
-
-        New-AzCdnEndpoint -Name $script:classicCdnEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
-            -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup | Out-Null
-        New-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -Name $script:customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $script:customDomainHostName | Out-Null
-    }
-
-    AfterAll {
-        Remove-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -Name $script:customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
-        Remove-AzCdnEndpoint -Name $script:classicCdnEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        $script:customDomainName = $null
+        $endpoints = Get-AzCdnEndpoint -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
+        foreach ($endpoint in $endpoints) {
+            $domain = Get-AzCdnCustomDomain -EndpointName $endpoint.Name -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName | Select-Object -First 1
+            if ($domain) {
+                $script:classicCdnEndpointName = $endpoint.Name
+                $script:customDomainName = $domain.Name
+                $script:customDomainHostName = $domain.HostName
+                break
+            }
+        }
+        if (-not $script:customDomainName) {
+            throw 'The configured Classic CDN profile must contain an existing custom domain for query tests.'
+        }
     }
 
     It 'List' {
-        $customDomains = Get-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $customDomains = Get-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $customDomains.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $getDomain = Get-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -Name $script:customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $getDomain = Get-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -Name $script:customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $getDomain.Name | Should -Be $script:customDomainName
         $getDomain.HostName | Should -Be $script:customDomainHostName
     }
 
     It 'GetViaIdentity' {
-        $getDomain = Get-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -Name $script:customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $getDomain = Get-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -Name $script:customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
         $getDomain2 = Get-AzCdnCustomDomain -InputObject $getDomain
         $getDomain2.Name | Should -Be $script:customDomainName
     }

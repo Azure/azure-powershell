@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.

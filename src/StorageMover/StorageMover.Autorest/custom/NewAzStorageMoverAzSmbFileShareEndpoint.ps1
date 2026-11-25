@@ -76,6 +76,19 @@ function New-AzStorageMoverAzSmbFileShareEndpoint {
         [string]
         ${Description},
 
+        [Parameter(ParameterSetName = 'CreateExpanded', HelpMessage="The kind of the endpoint, either Source or Target. Cannot be changed after the endpoint is created.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+        [System.String]
+        ${EndpointKind},
+
+        [Parameter(ParameterSetName = 'CreateExpanded', HelpMessage="Enables this endpoint to be used as one side of a cross-tenant data transfer. Defaults to false.")]
+        [System.Management.Automation.SwitchParameter]
+        ${EnableCrossTenantTransfer},
+
+        [Parameter(ParameterSetName = 'CreateExpanded', HelpMessage="The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.")]
+        [System.String[]]
+        ${AllowedStorageAccount},
+
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -145,6 +158,18 @@ function New-AzStorageMoverAzSmbFileShareEndpoint {
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description
             $null = $PSBoundParameters.Remove("Description")
+        }
+        if ($PSBoundParameters.ContainsKey('EndpointKind')) {
+            $Properties.EndpointKind = $EndpointKind
+            $null = $PSBoundParameters.Remove("EndpointKind")
+        }
+        if ($PSBoundParameters.ContainsKey('EnableCrossTenantTransfer')) {
+            $Properties.EnableCrossTenantTransfer = $EnableCrossTenantTransfer.IsPresent
+            $null = $PSBoundParameters.Remove("EnableCrossTenantTransfer")
+        }
+        if ($PSBoundParameters.ContainsKey('AllowedStorageAccount')) {
+            $Properties.AllowedStorageAccount = $AllowedStorageAccount
+            $null = $PSBoundParameters.Remove("AllowedStorageAccount")
         }
 
         $PSBoundParameters.Add("Property", $Properties)

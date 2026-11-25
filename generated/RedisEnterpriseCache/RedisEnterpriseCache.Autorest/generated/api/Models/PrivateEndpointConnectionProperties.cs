@@ -7,11 +7,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Extensions;
 
-    /// <summary>Properties of the PrivateEndpointConnectProperties.</summary>
+    /// <summary>Properties of the private endpoint connection.</summary>
     public partial class PrivateEndpointConnectionProperties :
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionProperties,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionPropertiesInternal
     {
+
+        /// <summary>Backing field for <see cref="GroupId" /> property.</summary>
+        private System.Collections.Generic.List<string> _groupId;
+
+        /// <summary>The group ids for the private endpoint resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> GroupId { get => this._groupId; }
+
+        /// <summary>Internal Acessors for GroupId</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionPropertiesInternal.GroupId { get => this._groupId; set { {_groupId = value;} } }
 
         /// <summary>Internal Acessors for PrivateEndpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpoint Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionPropertiesInternal.PrivateEndpoint { get => (this._privateEndpoint = this._privateEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpoint()); set { {_privateEndpoint = value;} } }
@@ -28,11 +38,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Backing field for <see cref="PrivateEndpoint" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpoint _privateEndpoint;
 
-        /// <summary>The resource of private end point.</summary>
+        /// <summary>The private endpoint resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpoint PrivateEndpoint { get => (this._privateEndpoint = this._privateEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpoint()); set => this._privateEndpoint = value; }
 
-        /// <summary>The ARM identifier for Private Endpoint</summary>
+        /// <summary>The ARM identifier for private endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
         public string PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointInternal)PrivateEndpoint).Id; }
 
@@ -74,18 +84,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 
         }
     }
-    /// Properties of the PrivateEndpointConnectProperties.
+    /// Properties of the private endpoint connection.
     public partial interface IPrivateEndpointConnectionProperties :
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IJsonSerializable
     {
-        /// <summary>The ARM identifier for Private Endpoint</summary>
+        /// <summary>The group ids for the private endpoint resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The ARM identifier for Private Endpoint",
+        Description = @"The group ids for the private endpoint resource.",
+        SerializedName = @"groupIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> GroupId { get;  }
+        /// <summary>The ARM identifier for private endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The ARM identifier for private endpoint.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointId { get;  }
@@ -141,13 +162,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         string ProvisioningState { get;  }
 
     }
-    /// Properties of the PrivateEndpointConnectProperties.
+    /// Properties of the private endpoint connection.
     internal partial interface IPrivateEndpointConnectionPropertiesInternal
 
     {
-        /// <summary>The resource of private end point.</summary>
+        /// <summary>The group ids for the private endpoint resource.</summary>
+        System.Collections.Generic.List<string> GroupId { get; set; }
+        /// <summary>The private endpoint resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpoint PrivateEndpoint { get; set; }
-        /// <summary>The ARM identifier for Private Endpoint</summary>
+        /// <summary>The ARM identifier for private endpoint.</summary>
         string PrivateEndpointId { get; set; }
         /// <summary>
         /// A collection of information about the state of the connection between service consumer and provider.

@@ -1714,7 +1714,7 @@ function Test-AzureStorageAccountKeySASPolicy
         $stoname = 'sto' + $rgname;
         $stoname2 = 'sto2' + $rgname;
         $stotype = 'Standard_LRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
         $keyExpirationPeriodInDay = 5
         $sasExpirationPeriod = "1.12:05:06"

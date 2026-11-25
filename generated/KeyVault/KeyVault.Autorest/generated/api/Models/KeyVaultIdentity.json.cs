@@ -77,12 +77,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
                 return;
             }
             {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
             {_vaultName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("vaultName"), out var __jsonVaultName) ? (string)__jsonVaultName : (string)_vaultName;}
             {_operationKind = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("operationKind"), out var __jsonOperationKind) ? (string)__jsonOperationKind : (string)_operationKind;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
             {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)_privateEndpointConnectionName;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -107,12 +107,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
                 return container;
             }
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
+            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._vaultName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._vaultName.ToString()) : null, "vaultName" ,container.Add );
             AddIf( null != (((object)this._operationKind)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._operationKind.ToString()) : null, "operationKind" ,container.Add );
-            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             AddIf( null != (((object)this._privateEndpointConnectionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._privateEndpointConnectionName.ToString()) : null, "privateEndpointConnectionName" ,container.Add );
-            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

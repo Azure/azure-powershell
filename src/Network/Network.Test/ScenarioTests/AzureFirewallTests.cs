@@ -37,6 +37,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallAfcConfiguration()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallAfcConfiguration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallCRUDWithZones()
         {
             TestRunner.RunTestScript("Test-AzureFirewallCRUDWithZones");

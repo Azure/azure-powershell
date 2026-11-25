@@ -20,9 +20,28 @@
 
 ## Upcoming Release
 
+## Version 5.5.5
+* Fixed `Method not found` errors on PowerShell 7.6 when a module uses an Azure SDK whose models implement `IJsonModel`.
+    - Az.Accounts now uses the runtime copy of a shared .NET assembly, such as `System.Text.Json`, when it is the same version or newer than the copy Az.Accounts ships, so only one copy is loaded.
+* Upgraded `Azure.Core` dependency from 1.57.0 to 1.64.0.
+* Upgraded `System.ClientModel` dependency from 1.13.0 to 1.16.0.
+* Upgraded MSAL dependencies (`Microsoft.Identity.Client`, `Microsoft.Identity.Client.Extensions.Msal`, `Microsoft.Identity.Client.Broker`) from 4.84.0 to 4.90.0.
+* Upgraded `Microsoft.Identity.Client.NativeInterop` from 0.20.4 to 0.20.6.
+* Upgraded `System.Text.Json`, `System.Memory.Data`, `Microsoft.Bcl.AsyncInterfaces` and related .NET dependencies from 10.0.3 to 10.0.10.
+* Added `System.Net.ServerSentEvents` 10.0.10 as a dependency of `System.ClientModel`.
+
+## Version 5.5.4
+* Fixed `Get-AzAccessToken -ResourceUrl` help; replaced Azure AD Graph with Microsoft Graph.
+* Clarified `Add-AzEnvironment`/`Set-AzEnvironment -AzureKeyVaultDnsSuffix` format.
+* Fixed login terminology.
+
+## Version 5.5.3
+* Fixed `Get-AzSubscription` to throw a clear error instead of returning nothing when `-TenantId` does not match the current Managed Service Identity (MSI) context. [#25710]
+
 ## Version 5.5.2
 * Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
 * Upgraded `System.ClientModel` dependency from 1.12.0 to 1.13.0.
+* Upgraded common library to `1.3.114-preview`.
 
 ## Version 5.5.1
 * Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.

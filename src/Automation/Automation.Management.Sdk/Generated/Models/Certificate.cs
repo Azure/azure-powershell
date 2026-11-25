@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the Certificate class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="thumbprint">Gets the thumbprint of the certificate.
@@ -51,9 +57,9 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public Certificate(string id = default(string), string name = default(string), string type = default(string), string thumbprint = default(string), System.DateTimeOffset expiryTime = default(System.DateTimeOffset), bool isExportable = default(bool), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string))
+        public Certificate(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string thumbprint = default(string), System.DateTimeOffset? expiryTime = default(System.DateTimeOffset?), bool? isExportable = default(bool?), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Thumbprint = thumbprint;
             this.ExpiryTime = expiryTime;
@@ -80,25 +86,25 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets gets the expiry time of the certificate.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.expiryTime")]
-        public System.DateTimeOffset ExpiryTime {get; private set; }
+        public System.DateTimeOffset? ExpiryTime {get; private set; }
 
         /// <summary>
         /// Gets gets the is exportable flag of the certificate.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isExportable")]
-        public bool IsExportable {get; private set; }
+        public bool? IsExportable {get; private set; }
 
         /// <summary>
         /// Gets gets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets gets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.

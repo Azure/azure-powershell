@@ -16,11 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzRelayNamespaceNetworkRuleSet_CreateViaJsonString", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties = new string[] {"IPRule"}, NewOutputProperties = new string[] {"List[IPRule]" } )]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"create NetworkRuleSet for a Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default", ApiVersion = "2021-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default", ApiVersion = "2026-07-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.NotSuggestDefaultParameterSet]
     public partial class NewAzRelayNamespaceNetworkRuleSet_CreateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener,
@@ -150,12 +149,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the Resource group within the Azure subscription.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the Resource group within the Azure subscription.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Relay.ParameterCategory.Path)]
@@ -164,15 +163,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The ID of the target subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(

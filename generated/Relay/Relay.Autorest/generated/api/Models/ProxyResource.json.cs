@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
     /// <summary>
-    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
     /// </summary>
     public partial class ProxyResource
     {
@@ -77,10 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 return;
             }
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            __resource = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Resource(json);
             AfterFromJson(json);
         }
 
@@ -103,22 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
-            }
+            __resource?.ToJson(container, serializationMode);
             AfterToJson(ref container);
             return container;
         }

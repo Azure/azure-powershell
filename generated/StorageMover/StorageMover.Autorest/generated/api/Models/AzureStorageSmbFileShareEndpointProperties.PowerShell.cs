@@ -84,6 +84,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).FileShareName = (string) content.GetValueForProperty("FileShareName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).FileShareName, global::System.Convert.ToString);
             }
+            if (content.Contains("EnableCrossTenantTransfer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).EnableCrossTenantTransfer = (bool?) content.GetValueForProperty("EnableCrossTenantTransfer",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).EnableCrossTenantTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AllowedStorageAccount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).AllowedStorageAccount = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedStorageAccount",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).AllowedStorageAccount, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("EndpointType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal)this).EndpointType = (string) content.GetValueForProperty("EndpointType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal)this).EndpointType, global::System.Convert.ToString);
@@ -124,6 +132,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("FileShareName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).FileShareName = (string) content.GetValueForProperty("FileShareName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).FileShareName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableCrossTenantTransfer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).EnableCrossTenantTransfer = (bool?) content.GetValueForProperty("EnableCrossTenantTransfer",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).EnableCrossTenantTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AllowedStorageAccount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).AllowedStorageAccount = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedStorageAccount",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageSmbFileShareEndpointPropertiesInternal)this).AllowedStorageAccount, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("EndpointType"))
             {

@@ -15,9 +15,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
     {
 
         /// <summary>update an authorization rule for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">The authorization rule parameters.</param>
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -68,9 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -86,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleCreateOrUpdate1(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -137,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleCreateOrUpdate1ViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -200,7 +198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleCreateOrUpdate1ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -252,9 +250,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -269,7 +266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleCreateOrUpdate1ViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -307,9 +304,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -322,7 +318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleCreateOrUpdate1ViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -360,9 +356,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -376,7 +371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleCreateOrUpdate1WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -529,9 +524,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleCreateOrUpdate1" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -545,6 +539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -561,9 +556,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -579,7 +573,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleCreateOrUpdate2(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -630,7 +624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleCreateOrUpdate2ViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -693,7 +687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleCreateOrUpdate2ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -745,9 +739,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -762,7 +755,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleCreateOrUpdate2ViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -800,9 +793,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -815,7 +807,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleCreateOrUpdate2ViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -853,9 +845,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -869,7 +860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleCreateOrUpdate2WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1022,9 +1013,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleCreateOrUpdate2" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -1038,6 +1028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -1067,7 +1058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1127,7 +1118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1176,9 +1167,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="jsonString">Json string supplied to the AuthorizationRuleCreateOrUpdate operation</param>
@@ -1192,7 +1182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1228,9 +1218,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="jsonString">Json string supplied to the AuthorizationRuleCreateOrUpdate operation</param>
@@ -1242,7 +1231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1278,9 +1267,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update an authorization rule for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">The authorization rule parameters.</param>
@@ -1293,7 +1281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1444,9 +1432,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleCreateOrUpdate" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">The authorization rule parameters.</param>
@@ -1459,6 +1446,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -1473,9 +1461,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Deletes a namespace authorization rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1489,7 +1476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleDelete(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1521,9 +1508,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Deletes a hybrid connection authorization rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -1538,7 +1524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleDelete1(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1584,7 +1570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleDelete1ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1692,9 +1678,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleDelete1" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -1707,6 +1692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -1721,9 +1707,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Deletes a WCF relay authorization rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -1738,7 +1723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleDelete2(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1784,7 +1769,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleDelete2ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1892,9 +1877,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleDelete2" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -1907,6 +1891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -1933,7 +1918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2038,9 +2023,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleDelete" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2052,6 +2036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -2064,9 +2049,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Authorization rule for a namespace by name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2079,7 +2063,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleGet(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2111,9 +2095,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Hybrid connection authorization rule for a hybrid connection by name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -2127,7 +2110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleGet1(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2172,7 +2155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleGet1ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2229,7 +2212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleGet1ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2277,9 +2260,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Hybrid connection authorization rule for a hybrid connection by name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -2291,7 +2273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleGet1WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2438,9 +2420,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleGet1" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -2453,6 +2434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -2467,9 +2449,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Get authorizationRule for a WCF relay by name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -2483,7 +2464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleGet2(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2528,7 +2509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleGet2ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2585,7 +2566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleGet2ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2633,9 +2614,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Get authorizationRule for a WCF relay by name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -2647,7 +2627,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleGet2WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2794,9 +2774,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleGet2" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -2809,6 +2788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -2834,7 +2814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2888,7 +2868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2933,9 +2913,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Authorization rule for a namespace by name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2946,7 +2925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> AuthorizationRuleGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3091,9 +3070,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3105,6 +3083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -3117,9 +3096,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Authorization rules for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3131,7 +3109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleList(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3162,9 +3140,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Authorization rules for a hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3177,7 +3154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleList1(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3221,7 +3198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleList1ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3276,7 +3253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult> AuthorizationRuleList1ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3322,9 +3299,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Authorization rules for a hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3335,7 +3311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult> AuthorizationRuleList1WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3481,9 +3457,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleList1" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3495,6 +3470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -3507,20 +3483,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Authorization rules for a WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AuthorizationRuleList2(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AuthorizationRuleList2(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3548,21 +3525,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AuthorizationRuleList2_Call (request, onOk,eventListener,sender);
+                await this.AuthorizationRuleList2_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Authorization rules for a WCF relay.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AuthorizationRuleList2ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AuthorizationRuleList2ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3603,7 +3582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AuthorizationRuleList2_Call (request, onOk,eventListener,sender);
+                await this.AuthorizationRuleList2_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3617,7 +3596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult> AuthorizationRuleList2ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3663,9 +3642,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Authorization rules for a WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3676,7 +3654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult> AuthorizationRuleList2WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3740,7 +3718,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                         }
                         default:
                         {
-                            throw new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.UndeclaredResponseException(_response);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
                         }
                     }
                 }
@@ -3757,12 +3749,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>Actual wire call for <see cref= "AuthorizationRuleList2" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AuthorizationRuleList2_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AuthorizationRuleList2_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3786,7 +3780,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                         }
                         default:
                         {
-                            throw new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.UndeclaredResponseException(_response);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
                         }
                     }
                 }
@@ -3804,9 +3800,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleList2" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3818,6 +3813,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -3841,7 +3837,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task AuthorizationRuleListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3893,7 +3889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult> AuthorizationRuleListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3936,9 +3932,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Authorization rules for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3948,7 +3943,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult> AuthorizationRuleListWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4092,9 +4087,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="AuthorizationRuleList" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -4105,6 +4099,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -4114,10 +4109,3253 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
+        /// <summary>update a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="body">Parameters for creating or updating a Relay cluster.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters for creating or updating a Relay cluster.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters for creating or updating a Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="jsonString">Json string supplied to the ClustersCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="jsonString">Json string supplied to the ClustersCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="body">Parameters for creating or updating a Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersCreateOrUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersCreateOrUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="body">Parameters for creating or updating a Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertMinimumLength(nameof(clusterName),clusterName,6);
+                await eventListener.AssertMaximumLength(nameof(clusterName),clusterName,50);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?!.*--)[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Deletes a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersDelete(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersDelete" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersDelete_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertMinimumLength(nameof(clusterName),clusterName,6);
+                await eventListener.AssertMaximumLength(nameof(clusterName),clusterName,50);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?!.*--)[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$");
+            }
+        }
+
+        /// <summary>Gets a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersGet(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersGetWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersGet" /> method. Call this like the actual call, but you will get validation events
+        /// back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersGet_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertMinimumLength(nameof(clusterName),clusterName,6);
+                await eventListener.AssertMaximumLength(nameof(clusterName),clusterName,50);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?!.*--)[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$");
+            }
+        }
+
+        /// <summary>Lists regions containing available pre-provisioned Relay clusters.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListAvailableClusterRegion(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAvailableRelayClustersList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Relay/availableClusterRegions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListAvailableClusterRegion_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists regions containing available pre-provisioned Relay clusters.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListAvailableClusterRegionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAvailableRelayClustersList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Relay/availableClusterRegions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Relay/availableClusterRegions'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.Relay/availableClusterRegions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListAvailableClusterRegion_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists regions containing available pre-provisioned Relay clusters.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAvailableRelayClustersList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAvailableRelayClustersList> ClustersListAvailableClusterRegionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Relay/availableClusterRegions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Relay/availableClusterRegions'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.Relay/availableClusterRegions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListAvailableClusterRegionWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists regions containing available pre-provisioned Relay clusters.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAvailableRelayClustersList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAvailableRelayClustersList> ClustersListAvailableClusterRegionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Relay/availableClusterRegions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListAvailableClusterRegionWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClustersListAvailableClusterRegionWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAvailableRelayClustersList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAvailableRelayClustersList> ClustersListAvailableClusterRegionWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.AvailableRelayClustersList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersListAvailableClusterRegion" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListAvailableClusterRegion_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAvailableRelayClustersList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.AvailableRelayClustersList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersListAvailableClusterRegion" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListAvailableClusterRegion_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+            }
+        }
+
+        /// <summary>Lists Relay clusters in a resource group.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListByResourceGroup_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists Relay clusters in a resource group.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListByResourceGroup_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists Relay clusters in a resource group.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult> ClustersListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListByResourceGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists Relay clusters in a resource group.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult> ClustersListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListByResourceGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClustersListByResourceGroupWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult> ClustersListByResourceGroupWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayClusterListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersListByResourceGroup" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayClusterListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersListByResourceGroup" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListByResourceGroup_Validate(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+            }
+        }
+
+        /// <summary>Lists Relay clusters in a subscription.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Relay/clusters"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListBySubscription_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists Relay clusters in a subscription.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Relay/clusters$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Relay/clusters'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.Relay/clusters"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListBySubscription_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists Relay clusters in a subscription.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult> ClustersListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Relay/clusters$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Relay/clusters'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.Relay/clusters"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListBySubscriptionWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists Relay clusters in a subscription.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult> ClustersListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.Relay/clusters"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListBySubscriptionWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClustersListBySubscriptionWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult> ClustersListBySubscriptionWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayClusterListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersListBySubscription" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayClusterListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersListBySubscription" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListBySubscription_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+            }
+        }
+
+        /// <summary>Lists Relay namespace resource IDs assigned to a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListNamespaces(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceIdListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/namespaces"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListNamespaces_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists Relay namespace resource IDs assigned to a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListNamespacesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceIdListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)/namespaces$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}/namespaces'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "/namespaces"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListNamespaces_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists Relay namespace resource IDs assigned to a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceIdListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceIdListResult> ClustersListNamespacesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)/namespaces$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}/namespaces'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "/namespaces"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListNamespacesWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists Relay namespace resource IDs assigned to a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceIdListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceIdListResult> ClustersListNamespacesWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/namespaces"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListNamespacesWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersListNamespacesWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceIdListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceIdListResult> ClustersListNamespacesWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespaceIdListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersListNamespaces" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListNamespaces_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceIdListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespaceIdListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersListNamespaces" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListNamespaces_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertMinimumLength(nameof(clusterName),clusterName,6);
+                await eventListener.AssertMaximumLength(nameof(clusterName),clusterName,50);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?!.*--)[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$");
+            }
+        }
+
+        /// <summary>Lists SKUs supported by a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListSkus(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterSkuListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/skus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListSkus_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists SKUs supported by a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersListSkusViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterSkuListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}/skus'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "/skus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersListSkus_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists SKUs supported by a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterSkuListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterSkuListResult> ClustersListSkusViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}/skus'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "/skus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListSkusWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists SKUs supported by a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterSkuListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterSkuListResult> ClustersListSkusWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/skus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersListSkusWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersListSkusWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterSkuListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterSkuListResult> ClustersListSkusWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayClusterSkuListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersListSkus" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListSkus_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterSkuListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayClusterSkuListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersListSkus" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersListSkus_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertMinimumLength(nameof(clusterName),clusterName,6);
+                await eventListener.AssertMaximumLength(nameof(clusterName),clusterName,50);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?!.*--)[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$");
+            }
+        }
+
+        /// <summary>update mutable properties of a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="body">The Relay cluster properties to update.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersUpdate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update mutable properties of a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The Relay cluster properties to update.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update mutable properties of a Relay cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The Relay cluster properties to update.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + clusterName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update mutable properties of a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="jsonString">Json string supplied to the ClustersUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersUpdateViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update mutable properties of a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="jsonString">Json string supplied to the ClustersUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update mutable properties of a Relay cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="body">The Relay cluster properties to update.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersUpdateWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster> ClustersUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersUpdate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Relay cluster.</param>
+        /// <param name="body">The Relay cluster properties to update.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertMinimumLength(nameof(clusterName),clusterName,6);
+                await eventListener.AssertMaximumLength(nameof(clusterName),clusterName,50);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?!.*--)[a-zA-Z][a-zA-Z0-9-]{4,48}[a-zA-Z0-9]$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>update a service hybrid connection. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="body">Parameters supplied to create a hybrid connection.</param>
@@ -4132,7 +7370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridConnectionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4181,7 +7419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4241,7 +7479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection> HybridConnectionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4290,9 +7528,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update a service hybrid connection. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="jsonString">Json string supplied to the HybridConnectionsCreateOrUpdate operation</param>
@@ -4306,7 +7543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridConnectionsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4342,9 +7579,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update a service hybrid connection. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="jsonString">Json string supplied to the HybridConnectionsCreateOrUpdate operation</param>
@@ -4356,7 +7592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection> HybridConnectionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4392,9 +7628,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update a service hybrid connection. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="body">Parameters supplied to create a hybrid connection.</param>
@@ -4407,7 +7642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection> HybridConnectionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4558,9 +7793,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="HybridConnectionsCreateOrUpdate" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="body">Parameters supplied to create a hybrid connection.</param>
@@ -4573,6 +7807,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -4587,9 +7822,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Deletes a hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4603,7 +7837,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridConnectionsDelete(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4647,7 +7881,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4752,9 +7986,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="HybridConnectionsDelete" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4766,6 +7999,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -4778,9 +8012,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Returns the description for the specified hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4793,7 +8026,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridConnectionsGet(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4836,7 +8069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4890,7 +8123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection> HybridConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4935,9 +8168,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Returns the description for the specified hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4948,7 +8180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnection> HybridConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5093,9 +8325,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="HybridConnectionsGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5107,6 +8338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -5119,9 +8351,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Lists the hybrid connection within the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5133,7 +8364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridConnectionsListByNamespace(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5175,7 +8406,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridConnectionsListByNamespaceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5227,7 +8458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnectionListResult> HybridConnectionsListByNamespaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5270,9 +8501,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Lists the hybrid connection within the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5282,7 +8512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IHybridConnectionListResult> HybridConnectionsListByNamespaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5428,9 +8658,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="HybridConnectionsListByNamespace" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -5441,6 +8670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -5451,9 +8681,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Primary and secondary connection strings to the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5466,7 +8695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyListKeys(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5499,9 +8728,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Primary and secondary connection strings to the hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -5515,7 +8743,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyListKeys1(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5561,7 +8789,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyListKeys1ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5619,7 +8847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyListKeys1ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5668,9 +8896,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Primary and secondary connection strings to the hybrid connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -5682,7 +8909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyListKeys1WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5830,9 +9057,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="KeyListKeys1" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -5845,6 +9071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -5859,9 +9086,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Primary and secondary connection strings to the WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -5875,7 +9101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyListKeys2(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5921,7 +9147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyListKeys2ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5979,7 +9205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyListKeys2ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6028,9 +9254,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Primary and secondary connection strings to the WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -6042,7 +9267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyListKeys2WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6190,9 +9415,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="KeyListKeys2" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -6205,6 +9429,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -6230,7 +9455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyListKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6285,7 +9510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyListKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6331,9 +9556,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Primary and secondary connection strings to the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6344,7 +9568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyListKeysWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6490,9 +9714,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="KeyListKeys" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6504,6 +9727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -6516,9 +9740,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">Parameters supplied to regenerate authorization rule.</param>
@@ -6533,7 +9756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyRegenerateKeys(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6572,9 +9795,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>
         /// Regenerates the primary or secondary connection strings to the hybrid connection.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -6590,7 +9812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyRegenerateKeys1(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6644,7 +9866,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyRegenerateKeys1ViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6710,7 +9932,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyRegenerateKeys1ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6765,9 +9987,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>
         /// Regenerates the primary or secondary connection strings to the hybrid connection.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -6782,7 +10003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyRegenerateKeys1ViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6823,9 +10044,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>
         /// Regenerates the primary or secondary connection strings to the hybrid connection.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -6838,7 +10058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyRegenerateKeys1ViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6879,9 +10099,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>
         /// Regenerates the primary or secondary connection strings to the hybrid connection.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -6895,7 +10114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyRegenerateKeys1WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string hybridConnectionName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7047,9 +10266,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="KeyRegenerateKeys1" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="hybridConnectionName">The hybrid connection name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -7063,6 +10281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -7079,9 +10298,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -7097,7 +10315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyRegenerateKeys2(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7149,7 +10367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyRegenerateKeys2ViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7213,7 +10431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyRegenerateKeys2ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7266,9 +10484,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -7283,7 +10500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyRegenerateKeys2ViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7322,9 +10539,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -7337,7 +10553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyRegenerateKeys2ViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7376,9 +10592,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -7392,7 +10607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyRegenerateKeys2WithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7544,9 +10759,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="KeyRegenerateKeys2" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -7560,6 +10774,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -7589,7 +10804,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyRegenerateKeysViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7650,7 +10865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyRegenerateKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7700,9 +10915,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="jsonString">Json string supplied to the KeyRegenerateKeys operation</param>
@@ -7716,7 +10930,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task KeyRegenerateKeysViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7753,9 +10967,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="jsonString">Json string supplied to the KeyRegenerateKeys operation</param>
@@ -7767,7 +10980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyRegenerateKeysViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7804,9 +11017,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">Parameters supplied to regenerate authorization rule.</param>
@@ -7819,7 +11031,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAccessKeys> KeyRegenerateKeysWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7969,9 +11181,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="KeyRegenerateKeys" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">Parameters supplied to regenerate authorization rule.</param>
@@ -7984,6 +11195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -7998,9 +11210,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Check the specified namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="body">Parameters to check availability of the specified namespace name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The request body</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -8012,7 +11223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCheckNameAvailability(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailability body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8044,7 +11255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
 
         /// <summary>Check the specified namespace name availability.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Parameters to check availability of the specified namespace name.</param>
+        /// <param name="body">The request body</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -8056,7 +11267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailability body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8098,7 +11309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
 
         /// <summary>Check the specified namespace name availability.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Parameters to check availability of the specified namespace name.</param>
+        /// <param name="body">The request body</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
@@ -8108,7 +11319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailabilityResult> NamespacesCheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailability body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8149,8 +11360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Check the specified namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCheckNameAvailability operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8162,7 +11372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCheckNameAvailabilityViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8193,8 +11403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Check the specified namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCheckNameAvailability operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -8204,7 +11413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailabilityResult> NamespacesCheckNameAvailabilityViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8235,9 +11444,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Check the specified namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="body">Parameters to check availability of the specified namespace name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The request body</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode"/>.</param>
@@ -8247,7 +11455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailabilityResult> NamespacesCheckNameAvailabilityWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ICheckNameAvailability body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8393,9 +11601,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="NamespacesCheckNameAvailability" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="body">Parameters to check availability of the specified namespace name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The request body</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -8405,15 +11612,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>update Azure Relay namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters supplied to create a namespace resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8427,7 +11634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8461,9 +11668,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8477,7 +11683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateNetworkRuleSet(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8525,7 +11731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateNetworkRuleSetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8583,7 +11789,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet> NamespacesCreateOrUpdateNetworkRuleSetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8630,9 +11836,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdateNetworkRuleSet operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8645,7 +11850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateNetworkRuleSetViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8680,9 +11885,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdateNetworkRuleSet operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8693,7 +11897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet> NamespacesCreateOrUpdateNetworkRuleSetViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8728,9 +11932,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8742,7 +11945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet> NamespacesCreateOrUpdateNetworkRuleSetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8894,9 +12097,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="NamespacesCreateOrUpdateNetworkRuleSet" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8908,6 +12110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -8933,7 +12136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8990,7 +12193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace> NamespacesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9036,9 +12239,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update Azure Relay namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9051,7 +12253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9085,9 +12287,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update Azure Relay namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9098,7 +12299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace> NamespacesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9132,9 +12333,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update Azure Relay namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters supplied to create a namespace resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9146,7 +12346,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace> NamespacesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9201,7 +12401,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -9279,19 +12480,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_originalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
 
-                            // drop the old response
-                            _response?.Dispose();
+                        // drop the old response
+                        _response?.Dispose();
 
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            break;
-                        }
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -9358,285 +12556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: default
-                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var location = _response.GetFirstHeader(@"Location");
-                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                    {
-                        // delay before making the next polling request
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // while we wait, let's grab the headers and get ready to poll.
-                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
-                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
-                            location = _response.GetFirstHeader(@"Location");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
-                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
-                        }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
-                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
-
-                        // and let's look at the current response body and see if we have some information we can give back to the listener
-                        var content = await _response.Content.ReadAsStringAsync();
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the polling call
-                        _response = await sender.SendAsync(request, eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                          // if we got back an OK, take a peek inside and see if it's done
-                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                          {
-                              var error = false;
-                              try {
-                                  if( Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject json)
-                                  {
-                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("status");
-                                      if( state is null )
-                                      {
-                                          // the body doesn't contain any information that has the state of the LRO
-                                          // we're going to just get out, and let the consumer have the result
-                                          break;
-                                      }
-
-                                      switch( state?.ToString()?.ToLower() )
-                                      {
-                                        case "failed":
-                                            error = true;
-                                            break;
-                                        case "succeeded":
-                                        case "canceled":
-                                          // we're done polling.
-                                          break;
-
-                                        default:
-                                          // need to keep polling!
-                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                          continue;
-                                      }
-                                  }
-                              } catch {
-                                  // if we run into a problem peeking into the result,
-                                  // we really don't want to do anything special.
-                              }
-                              if (error) {
-                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.UndeclaredResponseException(_response);
-                              }
-                          }
-
-                        // check for terminal status code
-                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                        {
-                            continue;
-                        }
-                        // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_originalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
-
-                            // drop the old response
-                            _response?.Dispose();
-
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            break;
-                        }
-                    }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespace.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="NamespacesCreateOrUpdate" /> method. Call this like the actual call, but you will get
-        /// validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
-        /// <param name="namespaceName">The namespace name</param>
-        /// <param name="body">Parameters supplied to create a namespace resource.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task NamespacesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(namespaceName),namespaceName);
-                await eventListener.AssertMinimumLength(nameof(namespaceName),namespaceName,6);
-                await eventListener.AssertMaximumLength(nameof(namespaceName),namespaceName,50);
-                await eventListener.AssertNotNull(nameof(body), body);
-                await eventListener.AssertObjectIsValid(nameof(body), body);
-            }
-        }
-
-        /// <summary>
-        /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
-        /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
-        /// <param name="namespaceName">The namespace name</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task NamespacesDelete(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2021-11-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.Relay/namespaces/"
-                        + global::System.Uri.EscapeDataString(namespaceName)
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.NamespacesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>
-        /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
-        /// </summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task NamespacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2021-11-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/namespaces/(?<namespaceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var namespaceName = _match.Groups["namespaceName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.Relay/namespaces/"
-                        + namespaceName
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.NamespacesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref= "NamespacesDelete" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task NamespacesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -9715,19 +12635,291 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
                         {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
-
-                            // drop the old response
-                            _response?.Dispose();
-
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespace.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="NamespacesCreateOrUpdate" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="body">Parameters supplied to create a namespace resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NamespacesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(namespaceName),namespaceName);
+                await eventListener.AssertMinimumLength(nameof(namespaceName),namespaceName,6);
+                await eventListener.AssertMaximumLength(nameof(namespaceName),namespaceName,50);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NamespacesDelete(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Relay/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NamespacesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NamespacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-07-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Relay/namespaces/(?<namespaceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var namespaceName = _match.Groups["namespaceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Relay/namespaces/"
+                        + namespaceName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NamespacesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "NamespacesDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NamespacesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -9768,9 +12960,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="NamespacesDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -9781,6 +12972,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -9791,9 +12983,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Returns the description for the specified namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9805,7 +12996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGet(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9835,9 +13026,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Gets NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9849,7 +13039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGetNetworkRuleSet(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9891,7 +13081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGetNetworkRuleSetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9943,7 +13133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet> NamespacesGetNetworkRuleSetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9986,9 +13176,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Gets NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -9998,7 +13187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet> NamespacesGetNetworkRuleSetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10144,9 +13333,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="NamespacesGetNetworkRuleSet" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -10157,6 +13345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -10178,7 +13367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10229,7 +13418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace> NamespacesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10271,9 +13460,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Returns the description for the specified namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -10283,7 +13471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace> NamespacesGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10426,9 +13614,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="NamespacesGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -10439,6 +13626,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -10451,8 +13639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>
         /// Lists all the available namespaces within the subscription regardless of the resourceGroups.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -10463,7 +13650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10490,9 +13677,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Lists all the available namespaces within the ResourceGroup.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -10503,7 +13689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10543,7 +13729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10592,7 +13778,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceListResult> NamespacesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10632,9 +13818,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Lists all the available namespaces within the ResourceGroup.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -10643,7 +13828,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceListResult> NamespacesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10787,9 +13972,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="NamespacesListByResourceGroup" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -10799,6 +13983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -10819,7 +14004,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10867,7 +14052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceListResult> NamespacesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10906,8 +14091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>
         /// Lists all the available namespaces within the subscription regardless of the resourceGroups.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -10916,7 +14100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceListResult> NamespacesListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11056,8 +14240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="NamespacesList" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -11067,19 +14250,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>
         /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters for updating a namespace resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11088,9 +14270,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NamespacesUpdate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task NamespacesUpdate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11119,7 +14301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.NamespacesUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+                await this.NamespacesUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -11129,7 +14311,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for updating a namespace resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11138,9 +14319,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NamespacesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task NamespacesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11181,7 +14362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.NamespacesUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+                await this.NamespacesUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -11199,7 +14380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace> NamespacesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11247,13 +14428,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>
         /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11261,9 +14440,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NamespacesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NamespacesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11292,16 +14471,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.NamespacesUpdate_Call (request, onOk,onCreated,onDefault,eventListener,sender);
+                await this.NamespacesUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
         /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11312,7 +14490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace> NamespacesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11348,9 +14526,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>
         /// update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters for updating a namespace resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11362,7 +14539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace> NamespacesUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11410,22 +14587,108 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
                     {
                         case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespace.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            return await _result;
-                        }
-                        case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
                             var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespace.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) );
@@ -11464,7 +14727,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>Actual wire call for <see cref= "NamespacesUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11472,17 +14734,109 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task NamespacesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task NamespacesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -11492,12 +14846,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespace.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.Created:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespace.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -11522,9 +14870,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="NamespacesUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters for updating a namespace resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11536,6 +14883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -11547,7 +14895,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Lists all available Relay REST API operations.</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -11558,7 +14906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11582,7 +14930,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Lists all available Relay REST API operations.</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -11594,7 +14942,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11627,7 +14975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Lists all available Relay REST API operations.</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -11637,7 +14985,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11670,7 +15018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Lists all available Relay REST API operations.</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -11679,7 +15027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11830,9 +15178,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update PrivateEndpointConnections of service namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
@@ -11849,7 +15196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11900,7 +15247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11960,7 +15307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12009,9 +15356,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update PrivateEndpointConnections of service namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="jsonString">Json string supplied to the PrivateEndpointConnectionsCreateOrUpdate operation</param>
@@ -12027,7 +15373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12063,9 +15409,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update PrivateEndpointConnections of service namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="jsonString">Json string supplied to the PrivateEndpointConnectionsCreateOrUpdate operation</param>
@@ -12077,7 +15422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12113,9 +15458,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update PrivateEndpointConnections of service namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
@@ -12128,7 +15472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12307,9 +15651,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="PrivateEndpointConnectionsCreateOrUpdate" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
@@ -12322,6 +15665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -12337,9 +15681,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// <summary>
         /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12353,7 +15696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12399,7 +15742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12468,7 +15811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -12547,19 +15890,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_finalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Method.Get);
 
-                            // drop the old response
-                            _response?.Dispose();
+                        // drop the old response
+                        _response?.Dispose();
 
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            break;
-                        }
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -12600,9 +15940,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="PrivateEndpointConnectionsDelete" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12614,6 +15953,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -12625,9 +15965,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Gets a description for the specified Private Endpoint Connection name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12640,7 +15979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12683,7 +16022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12737,7 +16076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12782,9 +16121,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Gets a description for the specified Private Endpoint Connection name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12795,7 +16133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12942,9 +16280,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="PrivateEndpointConnectionsGet" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12956,6 +16293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -12967,9 +16305,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Gets the available PrivateEndpointConnections within a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -12981,7 +16318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13023,7 +16360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13075,7 +16412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13118,9 +16455,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Gets the available PrivateEndpointConnections within a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -13130,7 +16466,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13276,9 +16612,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="PrivateEndpointConnectionsList" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -13289,6 +16624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -13298,12 +16634,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Gets a description for the specified Private Endpoint Connection name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <summary>
+        /// Gets a private link resource by a specified group name for a container registry.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
-        /// <param name="privateLinkResourceName">The PrivateLinkResource name</param>
+        /// <param name="privateLinkResourceName">The name of the private link resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -13314,7 +16651,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesGet(string subscriptionId, string resourceGroupName, string namespaceName, string privateLinkResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13345,7 +16682,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Gets a description for the specified Private Endpoint Connection name.</summary>
+        /// <summary>
+        /// Gets a private link resource by a specified group name for a container registry.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -13357,7 +16696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13401,7 +16740,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Gets a description for the specified Private Endpoint Connection name.</summary>
+        /// <summary>
+        /// Gets a private link resource by a specified group name for a container registry.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -13411,7 +16752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateLinkResource> PrivateLinkResourcesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13455,12 +16796,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Gets a description for the specified Private Endpoint Connection name.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <summary>
+        /// Gets a private link resource by a specified group name for a container registry.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
-        /// <param name="privateLinkResourceName">The PrivateLinkResource name</param>
+        /// <param name="privateLinkResourceName">The name of the private link resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -13469,7 +16811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateLinkResource> PrivateLinkResourcesGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string privateLinkResourceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13614,11 +16956,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="PrivateLinkResourcesGet" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
-        /// <param name="privateLinkResourceName">The PrivateLinkResource name</param>
+        /// <param name="privateLinkResourceName">The name of the private link resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -13628,6 +16969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -13638,10 +16980,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Gets lists of resources that supports Privatelinks.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <summary>Lists the private link resources for a container registry.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -13653,7 +16994,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesList(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateLinkResourcesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13683,7 +17024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Gets lists of resources that supports Privatelinks.</summary>
+        /// <summary>Lists the private link resources for a container registry.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -13695,7 +17036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateLinkResourcesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13737,7 +17078,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Gets lists of resources that supports Privatelinks.</summary>
+        /// <summary>Lists the private link resources for a container registry.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -13747,7 +17088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateLinkResourcesListResult> PrivateLinkResourcesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13789,10 +17130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             }
         }
 
-        /// <summary>Gets lists of resources that supports Privatelinks.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <summary>Lists the private link resources for a container registry.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -13802,7 +17142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateLinkResourcesListResult> PrivateLinkResourcesListWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13946,9 +17286,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="PrivateLinkResourcesList" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -13959,6 +17298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -13969,9 +17309,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update a WCF relay. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="body">Parameters supplied to create a WCF relay.</param>
@@ -13986,7 +17325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task WcfRelaysCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14035,7 +17374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task WcfRelaysCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14095,7 +17434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay> WcfRelaysCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14144,9 +17483,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update a WCF relay. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="jsonString">Json string supplied to the WcfRelaysCreateOrUpdate operation</param>
@@ -14160,7 +17498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task WcfRelaysCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14196,9 +17534,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update a WCF relay. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="jsonString">Json string supplied to the WcfRelaysCreateOrUpdate operation</param>
@@ -14210,7 +17547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay> WcfRelaysCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14246,9 +17583,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>update a WCF relay. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="body">Parameters supplied to create a WCF relay.</param>
@@ -14261,7 +17597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay> WcfRelaysCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay body, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14410,9 +17746,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="WcfRelaysCreateOrUpdate" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="body">Parameters supplied to create a WCF relay.</param>
@@ -14425,6 +17760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -14439,9 +17775,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Deletes a WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14455,7 +17790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task WcfRelaysDelete(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14499,7 +17834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task WcfRelaysDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14604,9 +17939,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="WcfRelaysDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14618,6 +17952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -14630,9 +17965,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Returns the description for the specified WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14646,7 +17980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task WcfRelaysGet(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14690,7 +18024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task WcfRelaysGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14744,7 +18078,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay> WcfRelaysGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14789,9 +18123,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Returns the description for the specified WCF relay.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14802,7 +18135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelay> WcfRelaysGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string relayName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14959,9 +18292,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="WcfRelaysGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="relayName">The relay name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14973,6 +18305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -14985,9 +18318,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Lists the WCF relays within the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -14999,7 +18331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task WcfRelaysListByNamespace(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelaysListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15041,7 +18373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task WcfRelaysListByNamespaceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelaysListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15093,7 +18425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelaysListResult> WcfRelaysListByNamespaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15136,9 +18468,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         }
 
         /// <summary>Lists the WCF relays within the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -15148,7 +18479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IWcfRelaysListResult> WcfRelaysListByNamespaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-01";
+            var apiVersion = @"2026-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15292,9 +18623,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
         /// Validation method for <see cref="WcfRelaysListByNamespace" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -15305,6 +18635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);

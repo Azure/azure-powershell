@@ -8,83 +8,52 @@ schema: 2.0.0
 # New-AzStorageMoverS3WithHmacEndpoint
 
 ## SYNOPSIS
-Creates an S3WithHMAC endpoint resource, which represents a data transfer source.
+Creates an S3 with HMAC endpoint resource, which represents a data transfer source or destination.
 
 ## SYNTAX
 
 ```
 New-AzStorageMoverS3WithHmacEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- -SourceUri <String> -SourceType <String> [-SubscriptionId <String>] [-CredentialsAccessKeyUri <String>]
- [-CredentialsSecretKeyUri <String>] [-OtherSourceTypeDescription <String>] [-Description <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SourceType <String> -SourceUri <String> [-SubscriptionId <String>] [-CredentialsAccessKeyUri <String>]
+ [-CredentialsSecretKeyUri <String>] [-Description <String>] [-EndpointKind <String>]
+ [-OtherSourceTypeDescription <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates an S3WithHMAC endpoint resource, which represents a data transfer source.
-This endpoint type supports S3-compatible storage services such as MinIO, IBM Cloud Object Storage, Google Cloud Storage, Alibaba Cloud OSS, Dell EMC ECS, and other S3-compatible services.
+Creates an S3 with HMAC endpoint resource, which represents a data transfer source or destination.
 
 ## EXAMPLES
 
-### Example 1: Create an S3WithHMAC endpoint
+### Example 1: Create an S3 with HMAC endpoint
 ```powershell
-New-AzStorageMoverS3WithHmacEndpoint -Name "myS3Endpoint" -ResourceGroupName "myResourceGroup" -StorageMoverName "myStorageMover" -SourceUri "https://s3.example.com/bucket" -SourceType "MINIO" -CredentialsAccessKeyUri "https://myKeyVault.vault.azure.net/secrets/accessKey" -CredentialsSecretKeyUri "https://myKeyVault.vault.azure.net/secrets/secretKey" -Description "My S3 endpoint"
+New-AzStorageMoverS3WithHmacEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -SourceUri "https://s3.example.com/bucket" -SourceType "MINIO" -CredentialsAccessKeyUri "https://examples-azureKeyVault.vault.azure.net/secrets/accesskey" -CredentialsSecretKeyUri "https://examples-azureKeyVault.vault.azure.net/secrets/secretkey" -Description "S3 endpoint"
 ```
 
 ```output
-Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myS3Endpoint
-Name                         : myS3Endpoint
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Name                         : myendpoint
 Property                     : {
                                  "endpointType": "S3WithHMAC",
+                                 "description": "S3 endpoint",
                                  "provisioningState": "Succeeded",
                                  "credentials": {
                                    "type": "AzureKeyVaultS3WithHMAC",
-                                   "accessKeyUri": "https://myKeyVault.vault.azure.net/secrets/accessKey",
-                                   "secretKeyUri": "https://myKeyVault.vault.azure.net/secrets/secretKey"
+                                   "accessKeyUri": "https://examples-azureKeyVault.vault.azure.net/secrets/accesskey",
+                                   "secretKeyUri": "https://examples-azureKeyVault.vault.azure.net/secrets/secretkey"
                                  },
                                  "sourceUri": "https://s3.example.com/bucket",
                                  "sourceType": "MINIO"
                                }
-SystemDataCreatedAt          : 7/1/2023 4:30:50 AM
+SystemDataCreatedAt          : 7/18/2024 4:30:50 AM
 SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
 SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 7/1/2023 4:30:50 AM
+SystemDataLastModifiedAt     : 7/18/2024 4:30:50 AM
 SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
 SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command creates an S3WithHMAC endpoint with MinIO as the source type.
-
-### Example 2: Create an S3WithHMAC endpoint with OTHER source type
-```powershell
-New-AzStorageMoverS3WithHmacEndpoint -Name "myOtherS3Endpoint" -ResourceGroupName "myResourceGroup" -StorageMoverName "myStorageMover" -SourceUri "https://s3.custom.com/bucket" -SourceType "OTHER" -OtherSourceTypeDescription "Custom S3-compatible storage" -CredentialsAccessKeyUri "https://myKeyVault.vault.azure.net/secrets/accessKey" -CredentialsSecretKeyUri "https://myKeyVault.vault.azure.net/secrets/secretKey"
-```
-
-```output
-Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myOtherS3Endpoint
-Name                         : myOtherS3Endpoint
-Property                     : {
-                                 "endpointType": "S3WithHMAC",
-                                 "provisioningState": "Succeeded",
-                                 "credentials": {
-                                   "type": "AzureKeyVaultS3WithHMAC",
-                                   "accessKeyUri": "https://myKeyVault.vault.azure.net/secrets/accessKey",
-                                   "secretKeyUri": "https://myKeyVault.vault.azure.net/secrets/secretKey"
-                                 },
-                                 "sourceUri": "https://s3.custom.com/bucket",
-                                 "sourceType": "OTHER",
-                                 "otherSourceTypeDescription": "Custom S3-compatible storage"
-                               }
-SystemDataCreatedAt          : 7/1/2023 4:30:50 AM
-SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
-SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 7/1/2023 4:30:50 AM
-SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
-SystemDataLastModifiedByType : Application
-Type                         : microsoft.storagemover/storagemovers/endpoints
-```
-
-This command creates an S3WithHMAC endpoint with a custom S3-compatible source type.
+This command creates an S3-compatible endpoint with HMAC credentials for a Storage Mover named "mystoragemover".
 
 ## PARAMETERS
 
@@ -135,6 +104,22 @@ Accept wildcard characters: False
 
 ### -Description
 A description for the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointKind
+The kind of the endpoint, either Source or Target.
+Cannot be changed after the endpoint is created.
 
 ```yaml
 Type: System.String
@@ -303,3 +288,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

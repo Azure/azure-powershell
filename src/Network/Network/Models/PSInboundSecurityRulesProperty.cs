@@ -26,5 +26,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int? DestinationPortRange { get; set; }
         public List<string> DestinationPortRanges{ get; set; }
         public List<string> AppliesOn { get; set; }
+        public PSNetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration { get; set; }
     }
 }

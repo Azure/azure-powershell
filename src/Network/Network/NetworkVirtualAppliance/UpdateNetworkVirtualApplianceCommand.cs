@@ -73,9 +73,22 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The address family (IP version) of the Virtual Appliance. Accepts IPv4 and/or IPv6. Omitting the parameter leaves the existing value unchanged.")]
+        [ValidateSet("IPv4", "IPv6", IgnoreCase = true)]
+        public string[] AddressFamily { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The internal load balancer configuration. Omission resets existing settings to Default distribution and a 5-minute timeout.")]
+        public PSNetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
+            ValidateAddressFamily();
+            this.LoadBalancerConfiguration = LoadBalancerConfigurationHelper.Normalize(this.LoadBalancerConfiguration);
             if(!this.IsNetworkVirtualAppliancePresent(this.ResourceGroupName, this.Name))
             {
                 throw new ArgumentException(Properties.Resources.ResourceNotFound);
@@ -102,6 +115,14 @@ namespace Microsoft.Azure.Commands.Network
             }
             networkVirtualAppliance.NvaSku = this.Sku??networkVirtualAppliance.NvaSku;
 
+            // PUT omission resets load balancer settings; do not retain the configuration returned by GET.
+            networkVirtualAppliance.LoadBalancerConfiguration = this.LoadBalancerConfiguration;
+
+            if (this.AddressFamily != null && this.AddressFamily.Length > 0)
+            {
+                networkVirtualAppliance.AddressFamily = this.AddressFamily;
+            }
+
             var networkVirtualApplianceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkVirtualAppliance>(networkVirtualAppliance);
 
             networkVirtualApplianceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
@@ -110,6 +131,16 @@ namespace Microsoft.Azure.Commands.Network
 
             var getNetworkVirtualAppliance = this.GetNetworkVirtualAppliance(this.ResourceGroupName, this.Name);
             return getNetworkVirtualAppliance;
+        }
+
+        private void ValidateAddressFamily()
+        {
+            if (this.AddressFamily == null || this.AddressFamily.Length == 0)
+            {
+                return;
+            }
+
+            this.AddressFamily = AddressFamilyHelper.ValidateAndCanonicalize(this.AddressFamily);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"create (or create  a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}", ApiVersion = "2024-07-31-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}", ApiVersion = "2026-06-16-preview")]
     public partial class NewAzConnectedPrivateLinkScope_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IContext
@@ -102,13 +102,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>Resource location</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource location")]
+        /// <summary>The geo-location where the resource lives</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Resource location",
+        Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.CompleterInfo(
@@ -157,20 +157,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         Description = @"Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.",
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         public string PublicNetworkAccess { get => _parametersBody.PublicNetworkAccess ?? null; set => _parametersBody.PublicNetworkAccess = value; }
 
-        /// <summary>Resource tags</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags")]
+        /// <summary>Enable private link validation for an Azure Arc Extension.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable private link validation for an Azure Arc Extension.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource tags",
+        Description = @"Enable private link validation for an Azure Arc Extension.",
+        SerializedName = @"serviceExtensions",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension[] ServiceExtension { get => _parametersBody.ServiceExtension?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ServiceExtension = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension>(value) : null); }
+
+        /// <summary>Resource tags.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPrivateLinkScopesResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPrivateLinkScopesResourceTags Tag { get => _parametersBody.Tags ?? null /* object */; set => _parametersBody.Tags = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags Tag { get => _parametersBody.Tags ?? null /* object */; set => _parametersBody.Tags = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what

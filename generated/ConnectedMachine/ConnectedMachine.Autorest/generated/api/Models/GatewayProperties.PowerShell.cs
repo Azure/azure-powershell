@@ -129,6 +129,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayPropertiesInternal)this).AllowedFeature = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedFeature",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayPropertiesInternal)this).AllowedFeature, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("GatewayBypass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayPropertiesInternal)this).GatewayBypass = (System.Collections.Generic.List<string>) content.GetValueForProperty("GatewayBypass",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayPropertiesInternal)this).GatewayBypass, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -165,6 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("AllowedFeature"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayPropertiesInternal)this).AllowedFeature = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedFeature",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayPropertiesInternal)this).AllowedFeature, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("GatewayBypass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayPropertiesInternal)this).GatewayBypass = (System.Collections.Generic.List<string>) content.GetValueForProperty("GatewayBypass",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayPropertiesInternal)this).GatewayBypass, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Description(@"Delete a Fleet")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}", ApiVersion = "2026-04-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}", ApiVersion = "2026-08-01")]
     public partial class RemoveAzComputeFleet_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IContext

@@ -15,36 +15,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEdgeActionVersion'))
 }
 
 Describe 'Update-AzEdgeActionVersion' {
-    BeforeAll {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eaupdateverdec01"
+    BeforeAll { Initialize-EdgeActionTestScenario {
+        $script:resourceGroupName = $env.ResourceGroupName
+        $script:edgeActionName = Get-EdgeActionTestFixtureName 'Update-AzEdgeActionVersion'
         $script:version = "v1"
-        
-        # Create edge action and version for testing
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
-        
-        New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
-            -EdgeActionName $script:edgeActionName `
-            -Version $script:version `
-            -DeploymentType "file" `
-            -IsDefaultVersion $false `
-            -Location "global"
-    }
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
+        $null = New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName -Version $script:version `
+            -DeploymentType "file" -IsDefaultVersion "True" -Location "global"
+    } }
 
     AfterAll {
-        # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
     }
 
-    It 'UpdateExpanded' -skip {
-        # Test updating version to make it default
-        # Skipping: Update cmdlet doesn't have -IsDefaultVersion parameter
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $parameters = @{
+            ResourceGroupName = $script:resourceGroupName
+            EdgeActionName = $script:edgeActionName
+            Version = $script:version
+        }
+        $before = Get-AzEdgeActionVersion @parameters
+        $before.IsDefaultVersion | Should -Be "True"
+
+        # PATCH changes tags, not the default version; default changes belong to swapDefault.
+        $null = Update-AzEdgeActionVersion @parameters -Tag @{ Purpose = "updated" }
+        $updated = Get-AzEdgeActionVersion @parameters
+        $updated.Name | Should -Be $script:version
+        $updated.Tag['Purpose'] | Should -Be "updated"
+        $updated.IsDefaultVersion | Should -Be $before.IsDefaultVersion
+        $updated.DeploymentType | Should -Be $before.DeploymentType
     }
 
     It 'UpdateViaJsonString' -skip {

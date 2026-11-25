@@ -17,14 +17,15 @@ Creates an application package in a Batch account.
 ```
 New-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationName] <String>
  [-ApplicationVersion] <String> [-Format] <String> -FilePath <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ActivateOnly
 ```
 New-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationName] <String>
  [-ApplicationVersion] <String> [-Format] <String> [-ActivateOnly] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +54,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -98,6 +114,21 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -189,5 +220,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzBatchApplicationPackage](./Remove-AzBatchApplicationPackage.md)
 
 [Set-AzBatchApplication](./Set-AzBatchApplication.md)
-
-

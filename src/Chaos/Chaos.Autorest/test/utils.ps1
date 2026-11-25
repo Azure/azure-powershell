@@ -44,44 +44,23 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
-    $targetName1 = "microsoft-virtualmachine" # "a" + (RandomString -allChars $false -len 6)
-    $experimentName1 = "azps-experiment-test" # "a" + (RandomString -allChars $false -len 6)
-    $targetName2 = "microsoft-virtualmachine" # "a" + (RandomString -allChars $false -len 6)
-    $experimentName2 = "a" + (RandomString -allChars $false -len 6)
-    
-    $env.Add("targetName1", $targetName1)
-    $env.Add("experimentName1", $experimentName1)
-    $env.Add("targetName2", $targetName2)
-    $env.Add("experimentName2", $experimentName2)
+    $workspaceName1 = "a" + (RandomString -allChars $false -len 6)
+    $scenarioName1 = "a" + (RandomString -allChars $false -len 6)
+    $workspaceName2 = "a" + (RandomString -allChars $false -len 6)
+    $scenarioName2 = "a" + (RandomString -allChars $false -len 6)
 
-    $executionId = "01A16FE8-7E5A-4F0E-BBA5-39A760547872"
-    $env.Add("executionId", $executionId)
-
-    $virtualMachine1 = "azpstest1"
-    $env.Add("virtualMachine1", $virtualMachine1)
-
-    $virtualMachine2 = "azpstest2"
-    $env.Add("virtualMachine2", $virtualMachine2)
+    $env.Add("workspaceName1", $workspaceName1)
+    $env.Add("scenarioName1", $scenarioName1)
+    $env.Add("workspaceName2", $workspaceName2)
+    $env.Add("scenarioName2", $scenarioName2)
 
     $env.Add("location", "eastus")
-
-    ########################## Before running Recode mode, make sure that the: 
-    #  Create Virtual machine named azpstest1 and azpstest2
-    #  Create targetName1 targetName2 in two VMs
-    #  Create experimentName1 and capability in targetName1
-    #  Give experimentName1 permission to VM azpstest1  (https://learn.microsoft.com/en-us/azure/chaos-studio/chaos-studio-quickstart-azure-portal#give-experiment-permission-to-your-vm)
-    #  Run Start-* and Stop-* and copy executionId
 
     write-host "start to create test group"
     $resourceGroup = "azps_test_group_chaos"
     $env.Add("resourceGroup", $resourceGroup)
 
     # New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
-
-    $propertyTarget = @{"type" = "CertificateSubjectIssuer"; "subject" = "CN=example.subject" }
-    $propertyTargetArr = @($propertyTarget)
-    $identitiesTarget = @{"identities" = $propertyTargetArr }
-    New-AzChaosTarget -Name $env.targetName2 -ParentResourceName $env.virtualMachine2 -ResourceGroupName $env.resourceGroup -Location $env.location -Property $identitiesTarget -ParentProviderNamespace Microsoft.Compute -ParentResourceType virtualMachines
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

@@ -24,14 +24,14 @@ title: ComputeManagementClient
 payload-flattening-threshold: 1
 
 # Azure REST API Specs commit
-commit: dddc9b49f352a218d85ca501656ad2270c0c2b2a
+commit: d1995517ad29ee6fe4c6d4ca3953c304d5d5b488
 
 input-file: 
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/common-types/resource-management/v3/types.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/common-types/v1/common.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2026-03-01/ComputeRP.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-01-02/DiskRP.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-03-03/GalleryRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2026-04-01/ComputeRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2026-03-02/DiskRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2026-03-03/GalleryRP.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2021-07-01/skus.json
 
 output-folder: Generated

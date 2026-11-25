@@ -18,5 +18,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// VMSS.
         /// </summary>
         public const string UpgradeDeploymentToStandardIP = "UpgradeDeploymentToStandardIP";
+        /// <summary>
+        /// Indicates a migration process to upgrade the virtual network gateway to
+        /// dual stack (IPv4 and IPv6).
+        /// </summary>
+        public const string UpgradeGatewayToDualStack = "UpgradeGatewayToDualStack";
+        /// <summary>
+        /// Indicates a migration process for the virtual network gateway&#39;s
+        /// point-to-site profile.
+        /// </summary>
+        public const string MigrateGatewayForPointToSiteProfile = "MigrateGatewayForPointToSiteProfile";
     }
 }

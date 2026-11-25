@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the SourceControl class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="sourceType">The source type. Must be one of VsoGit, VsoTfvc, GitHub.
@@ -61,9 +67,9 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="lastModifiedTime">The last modified time.
         /// </param>
-        public SourceControl(string id = default(string), string name = default(string), string type = default(string), string sourceType = default(string), string repoUrl = default(string), string branch = default(string), string folderPath = default(string), bool? autoSync = default(bool?), bool? publishRunbook = default(bool?), string description = default(string), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset))
+        public SourceControl(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string sourceType = default(string), string repoUrl = default(string), string branch = default(string), string folderPath = default(string), bool? autoSync = default(bool?), bool? publishRunbook = default(bool?), string description = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.SourceType = sourceType;
             this.RepoUrl = repoUrl;
@@ -130,12 +136,12 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
     }
 }

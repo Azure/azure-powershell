@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSCloudTask), "18.0.0", "5.0.0", DeprecatedOutputProperties = new string[] { "AuthenticationTokenSettings" }, ChangeDescription = "The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSCloudTask is being deprecated.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTask", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSCloudTask))]
     public class GetBatchTaskCommand : BatchObjectModelCmdletBase
     {

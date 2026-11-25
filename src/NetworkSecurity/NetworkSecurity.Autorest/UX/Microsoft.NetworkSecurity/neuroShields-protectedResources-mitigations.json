@@ -1,0 +1,153 @@
+{
+  "resourceType": "neuroShields/protectedResources/mitigations",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.networksecurity"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkSecurityNeuroShieldMitigation",
+      "description": "Gets a mitigation under a protected resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkSecurity/neuroShields/{neuroShieldName}/protectedResources/{protectedResourceName}/mitigations/{mitigationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networksecurity/get-aznetworksecurityneuroshieldmitigation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MitigationId <String>",
+              "-NeuroShieldName <String>",
+              "-ProtectedResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a mitigation under a protected resource.",
+          "parameters": [
+            {
+              "name": "-MitigationId",
+              "value": "[Path.mitigationId]"
+            },
+            {
+              "name": "-NeuroShieldName",
+              "value": "[Path.neuroShieldName]"
+            },
+            {
+              "name": "-ProtectedResourceName",
+              "value": "[Path.protectedResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkSecurityNeuroShieldMitigationExecution",
+      "description": "Approves and queues a mitigation for execution.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkSecurity/neuroShields/{neuroShieldName}/protectedResources/{protectedResourceName}/mitigations/{mitigationId}/execute",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networksecurity/invoke-aznetworksecurityneuroshieldmitigationexecution"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MitigationId <String>",
+              "-NeuroShieldName <String>",
+              "-ProtectedResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Approves and queues a mitigation for execution.",
+          "parameters": [
+            {
+              "name": "-MitigationId",
+              "value": "[Path.mitigationId]"
+            },
+            {
+              "name": "-NeuroShieldName",
+              "value": "[Path.neuroShieldName]"
+            },
+            {
+              "name": "-ProtectedResourceName",
+              "value": "[Path.protectedResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkSecurityNeuroShieldMitigationRollback",
+      "description": "Rolls back a mitigation when rollback is available.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkSecurity/neuroShields/{neuroShieldName}/protectedResources/{protectedResourceName}/mitigations/{mitigationId}/rollback",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networksecurity/invoke-aznetworksecurityneuroshieldmitigationrollback"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MitigationId <String>",
+              "-NeuroShieldName <String>",
+              "-ProtectedResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Rolls back a mitigation when rollback is available.",
+          "parameters": [
+            {
+              "name": "-MitigationId",
+              "value": "[Path.mitigationId]"
+            },
+            {
+              "name": "-NeuroShieldName",
+              "value": "[Path.neuroShieldName]"
+            },
+            {
+              "name": "-ProtectedResourceName",
+              "value": "[Path.protectedResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

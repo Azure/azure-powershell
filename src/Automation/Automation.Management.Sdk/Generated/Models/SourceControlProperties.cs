@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="lastModifiedTime">The last modified time.
         /// </param>
-        public SourceControlProperties(string repoUrl = default(string), string branch = default(string), string folderPath = default(string), bool? autoSync = default(bool?), bool? publishRunbook = default(bool?), string sourceType = default(string), string description = default(string), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset))
+        public SourceControlProperties(string repoUrl = default(string), string branch = default(string), string folderPath = default(string), bool? autoSync = default(bool?), bool? publishRunbook = default(bool?), string sourceType = default(string), string description = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?))
 
         {
             this.RepoUrl = repoUrl;
@@ -119,12 +119,12 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
     }
 }

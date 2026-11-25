@@ -48,6 +48,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string AcquireStorageAccountLock { get; set; }
 
         /// <summary>
+        /// Gets or sets how Azure Backup accesses the storage account.
+        /// </summary>
+        public string AccessType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed identity used to access the storage account.
+        /// </summary>
+        public IdentityInfo IdentityInfo { get; set; }
+
+        /// <summary>
         /// Constructor. Takes the service client object representing the container 
         /// and converts it in to the PS container model
         /// </summary>
@@ -62,6 +72,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             HealthStatus = protectionContainer.HealthStatus;
             ProtectedItemCount = protectionContainer.ProtectedItemCount;
             AcquireStorageAccountLock = protectionContainer.AcquireStorageAccountLock;
+            AccessType = protectionContainer.AccessType;
+            IdentityInfo = protectionContainer.IdentityInfo;
 
         }
     }

@@ -21,7 +21,7 @@ The operation to update a run command.
 The operation to update a run command.
 .Example
 $tags = @{Tag1="tag1"; Tag2="tag2"}
-Update-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName -Subscription $env.SubscriptionId -Tag $tags
+Update-AzConnectedMachineRunCommand -ResourceGroupName "myResourceGroup" -RunCommandName "myRunCommand" -MachineName "myMachine" -Tag $tags
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -45,11 +45,9 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LicenseName <String>]: The name of the license.
   [LicenseProfileName <String>]: The name of the license profile.
-  [Location <String>]: The location of the Extension being received.
+  [Location <String>]: The name of the Azure region.
   [MachineName <String>]: The name of the hybrid machine.
-  [MetadataName <String>]: Name of the HybridIdentityMetadata.
   [Name <String>]: The name of the hybrid machine.
-  [OSType <String>]: Defines the os type.
   [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
@@ -58,7 +56,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The version of the Extension being received.
 
 MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
@@ -72,11 +70,9 @@ MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LicenseName <String>]: The name of the license.
   [LicenseProfileName <String>]: The name of the license profile.
-  [Location <String>]: The location of the Extension being received.
+  [Location <String>]: The name of the Azure region.
   [MachineName <String>]: The name of the hybrid machine.
-  [MetadataName <String>]: Name of the HybridIdentityMetadata.
   [Name <String>]: The name of the hybrid machine.
-  [OSType <String>]: Defines the os type.
   [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
@@ -85,7 +81,7 @@ MACHINEINPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The version of the Extension being received.
 
 PARAMETER <IRunCommandInputParameter[]>: The parameters used by the script.
@@ -97,7 +93,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
   Value <String>: The run command parameter value.
 
 RUNCOMMANDPROPERTY <IMachineRunCommand>: Describes a Run Command
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tags <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AsyncExecution <Boolean?>]: Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
@@ -106,12 +102,12 @@ RUNCOMMANDPROPERTY <IMachineRunCommand>: Describes a Run Command
   [ErrorBlobUri <String>]: Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
   [OutputBlobManagedIdentityClientId <String>]: Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
   [OutputBlobManagedIdentityObjectId <String>]: Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
-  [OutputBlobUri <String>]: Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. 
+  [OutputBlobUri <String>]: Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
   [Parameter <List<IRunCommandInputParameter>>]: The parameters used by the script.
     Name <String>: The run command parameter name.
     Value <String>: The run command parameter value.
   [ProtectedParameter <List<IRunCommandInputParameter>>]: The parameters used by the script.
-  [RunAsPassword <String>]: Specifies the user account password on the machine when executing the run command.
+  [RunAsPassword <SecureString>]: Specifies the user account password on the machine when executing the run command.
   [RunAsUser <String>]: Specifies the user account on the machine when executing the run command.
   [ScriptUriManagedIdentityClientId <String>]: Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
   [ScriptUriManagedIdentityObjectId <String>]: Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
@@ -158,6 +154,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -269,7 +266,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityMachineExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # Specifies the user account password on the machine when executing the run command.
     ${RunAsPassword},
 
@@ -409,6 +406,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -436,8 +441,6 @@ begin {
             UpdateViaIdentityMachineExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedMachineRunCommand_UpdateViaIdentityMachineExpanded';
         }
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -451,6 +454,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

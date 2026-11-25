@@ -32,7 +32,7 @@ Deletes a Azure Arc PrivateLinkScope.
 
 ### Example 1: Remove a private link scope in a subscription by name
 ```powershell
-Remove-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
+Remove-AzConnectedPrivateLinkScope -ResourceGroupName "myResourceGroup" -ScopeName "myPrivateLinkScope"
 ```
 
 ```output
@@ -152,6 +152,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

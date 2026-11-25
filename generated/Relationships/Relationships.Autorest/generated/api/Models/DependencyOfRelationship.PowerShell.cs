@@ -118,9 +118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("SourceId"))
+            if (content.Contains("TargetId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).SourceId = (string) content.GetValueForProperty("SourceId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).SourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).TargetId = (string) content.GetValueForProperty("TargetId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).TargetId, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -134,9 +134,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipMetadata) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.RelationshipMetadataTypeConverter.ConvertFrom);
             }
-            if (content.Contains("TargetId"))
+            if (content.Contains("SourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).TargetId = (string) content.GetValueForProperty("TargetId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).TargetId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).SourceId = (string) content.GetValueForProperty("SourceId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).SourceId, global::System.Convert.ToString);
             }
             if (content.Contains("TargetTenant"))
             {
@@ -219,9 +219,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("SourceId"))
+            if (content.Contains("TargetId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).SourceId = (string) content.GetValueForProperty("SourceId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).SourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).TargetId = (string) content.GetValueForProperty("TargetId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).TargetId, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -235,9 +235,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipMetadata) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.RelationshipMetadataTypeConverter.ConvertFrom);
             }
-            if (content.Contains("TargetId"))
+            if (content.Contains("SourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).TargetId = (string) content.GetValueForProperty("TargetId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).TargetId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).SourceId = (string) content.GetValueForProperty("SourceId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationshipInternal)this).SourceId, global::System.Convert.ToString);
             }
             if (content.Contains("TargetTenant"))
             {

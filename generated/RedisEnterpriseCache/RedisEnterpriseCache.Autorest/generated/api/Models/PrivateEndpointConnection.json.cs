@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Extensions;
 
-    /// <summary>The Private Endpoint Connection resource.</summary>
+    /// <summary>The private endpoint connection resource.</summary>
     public partial class PrivateEndpointConnection
     {
 

@@ -16,13 +16,14 @@ This operation reverts Migration
 ```
 Stop-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RevertViaIdentity
 ```
 Stop-AzServiceBusMigration -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +39,36 @@ Stop-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myN
 Aborts migration on standard namespace `myNamespace`.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

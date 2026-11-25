@@ -1,8 +1,8 @@
 if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfileResourceUsage'))
 {
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadCdnEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadCdnEnv.ps1'
   }
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzCdnProfileResourceUsage.Recording.json'
@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfileResourceUsage
 
 Describe 'Get-AzCdnProfileResourceUsage'  {
     It 'List' {
-        Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.ClassicCdnProfileName
-        $resourceUsage = Get-AzCdnProfileResourceUsage -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Get-AzCdnProfile -ResourceGroupName $env.ClassicCdnResourceGroupName -Name $env.ClassicCdnProfileName
+        $resourceUsage = Get-AzCdnProfileResourceUsage -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ClassicCdnResourceGroupName
     }
 }

@@ -68,6 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
                 return;
             }
             {_monitoringSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject>("monitoringSettings"), out var __jsonMonitoringSettings) ? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.MonitoringSettings.FromJson(__jsonMonitoringSettings) : _monitoringSetting;}
+            {_costManagementSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject>("costManagementSettings"), out var __jsonCostManagementSettings) ? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CostManagementSettings.FromJson(__jsonCostManagementSettings) : _costManagementSetting;}
             {_resourceMoveDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject>("resourceMoveDetails"), out var __jsonResourceMoveDetails) ? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceMoveDetails.FromJson(__jsonResourceMoveDetails) : _resourceMoveDetail;}
             {_securitySetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject>("securitySettings"), out var __jsonSecuritySettings) ? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.SecuritySettings.FromJson(__jsonSecuritySettings) : _securitySetting;}
             {_featureSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonObject>("featureSettings"), out var __jsonFeatureSettings) ? Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.FeatureSettings.FromJson(__jsonFeatureSettings) : _featureSetting;}
@@ -118,6 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
                 return container;
             }
             AddIf( null != this._monitoringSetting ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) this._monitoringSetting.ToJson(null,serializationMode) : null, "monitoringSettings" ,container.Add );
+            AddIf( null != this._costManagementSetting ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) this._costManagementSetting.ToJson(null,serializationMode) : null, "costManagementSettings" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._resourceMoveDetail ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) this._resourceMoveDetail.ToJson(null,serializationMode) : null, "resourceMoveDetails" ,container.Add );

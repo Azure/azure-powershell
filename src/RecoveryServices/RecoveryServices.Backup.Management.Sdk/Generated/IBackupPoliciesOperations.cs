@@ -15,21 +15,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch scoped results.
+        /// provides pagination parameters to fetch
+        /// scoped results.
         /// </summary>
         /// <remarks>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch scoped results.
+        /// provides pagination parameters to fetch
+        /// scoped results.
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the VaultResource
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,15 +44,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProtectionPolicyResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProtectionPolicyResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string vaultName, string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch scoped results.
+        /// provides pagination parameters to fetch
+        /// scoped results.
         /// </summary>
         /// <remarks>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch scoped results.
+        /// provides pagination parameters to fetch
+        /// scoped results.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

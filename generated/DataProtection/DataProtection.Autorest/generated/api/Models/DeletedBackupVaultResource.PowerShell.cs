@@ -136,6 +136,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("CostManagementSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).CostManagementSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings) content.GetValueForProperty("CostManagementSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).CostManagementSetting, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CostManagementSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ResourceMoveDetail"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ResourceMoveDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceMoveDetails) content.GetValueForProperty("ResourceMoveDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ResourceMoveDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceMoveDetailsTypeConverter.ConvertFrom);
@@ -183,6 +187,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             if (content.Contains("ResourceDeletionInfo"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ResourceDeletionInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceDeletionInfo) content.GetValueForProperty("ResourceDeletionInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ResourceDeletionInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceDeletionInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CostManagementSettingGranularityLevel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).CostManagementSettingGranularityLevel = (string) content.GetValueForProperty("CostManagementSettingGranularityLevel",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).CostManagementSettingGranularityLevel, global::System.Convert.ToString);
             }
             if (content.Contains("ResourceMoveDetailOperationId"))
             {
@@ -329,6 +337,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("CostManagementSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).CostManagementSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings) content.GetValueForProperty("CostManagementSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).CostManagementSetting, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CostManagementSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ResourceMoveDetail"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ResourceMoveDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceMoveDetails) content.GetValueForProperty("ResourceMoveDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ResourceMoveDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceMoveDetailsTypeConverter.ConvertFrom);
@@ -376,6 +388,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             if (content.Contains("ResourceDeletionInfo"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ResourceDeletionInfo = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceDeletionInfo) content.GetValueForProperty("ResourceDeletionInfo",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).ResourceDeletionInfo, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceDeletionInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CostManagementSettingGranularityLevel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).CostManagementSettingGranularityLevel = (string) content.GetValueForProperty("CostManagementSettingGranularityLevel",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal)this).CostManagementSettingGranularityLevel, global::System.Convert.ToString);
             }
             if (content.Contains("ResourceMoveDetailOperationId"))
             {

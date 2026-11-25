@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>Describes the list of Azure Arc PrivateLinkScope resources.</summary>
+    /// <summary>The response of a HybridComputePrivateLinkScope list operation.</summary>
     public partial class HybridComputePrivateLinkScopeListResult
     {
 

@@ -126,25 +126,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("SystemData"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemDataTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.VaultPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Id, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Name, global::System.Convert.ToString);
-            }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("Location"))
             {
@@ -156,11 +140,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("Sku"))
             {
@@ -169,22 +185,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             if (content.Contains("CreateMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).CreateMode = (string) content.GetValueForProperty("CreateMode",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).CreateMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("NetworkAcls"))
             {
@@ -287,25 +287,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("SystemData"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemDataTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.VaultPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Id, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Name, global::System.Convert.ToString);
-            }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("Location"))
             {
@@ -317,11 +301,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("Sku"))
             {
@@ -330,22 +346,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             if (content.Contains("CreateMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).CreateMode = (string) content.GetValueForProperty("CreateMode",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).CreateMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("NetworkAcls"))
             {

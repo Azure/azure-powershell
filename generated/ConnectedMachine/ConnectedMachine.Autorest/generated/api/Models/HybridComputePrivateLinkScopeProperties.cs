@@ -56,6 +56,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string PublicNetworkAccess { get => this._publicNetworkAccess; set => this._publicNetworkAccess = value; }
 
+        /// <summary>Backing field for <see cref="ServiceExtension" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension> _serviceExtension;
+
+        /// <summary>Enable private link validation for an Azure Arc Extension.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension> ServiceExtension { get => this._serviceExtension; set => this._serviceExtension = value; }
+
         /// <summary>Creates an new <see cref="HybridComputePrivateLinkScopeProperties" /> instance.</summary>
         public HybridComputePrivateLinkScopeProperties()
         {
@@ -115,8 +122,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Description = @"Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.",
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>Enable private link validation for an Azure Arc Extension.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Enable private link validation for an Azure Arc Extension.",
+        SerializedName = @"serviceExtensions",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension> ServiceExtension { get; set; }
 
     }
     /// Properties that define a Azure Arc PrivateLinkScope resource.
@@ -136,8 +154,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>
         /// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>Enable private link validation for an Azure Arc Extension.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension> ServiceExtension { get; set; }
 
     }
 }

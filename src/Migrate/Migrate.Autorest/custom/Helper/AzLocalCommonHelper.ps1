@@ -37,6 +37,19 @@ function CheckStorageModuleDependency {
     }
 }
 
+function CheckConnectedMachineModuleDependency {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param()
+
+    process {
+        $module = Get-Module -ListAvailable -Name Az.ConnectedMachine
+        if ($null -eq $module) {
+            $message = "Az.ConnectedMachine Module must be installed to use -MigrateAsArcVM 'true'. Please run 'Install-Module -Name Az.ConnectedMachine' to install and continue."
+            throw $message
+        }
+    }
+}
+
 function GetARGQueryForArcResourceBridge {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param(
@@ -255,6 +268,65 @@ function InvokeAzMigrateGetCommandWithRetries {
         }
 
         return $result
+    }
+}
+
+function Test-ArcMachineReuseEligibility {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        # Subscription that should contain the target Arc-enabled machine.
+        ${TargetSubscriptionId},
+
+        [Parameter(Mandatory)]
+        [string]
+        # Resource group that should contain the target Arc-enabled machine.
+        ${TargetResourceGroupName},
+
+        [Parameter(Mandatory)]
+        [string]
+        # Name of the Arc-enabled machine to be reused (matches -TargetVMName on the cmdlet).
+        ${TargetVMName}
+    )
+
+    process {
+        $arcMachineId = $IdFormats.HybridComputeMachineArmIdTemplate -f $TargetSubscriptionId, $TargetResourceGroupName, $TargetVMName
+
+        # GET the Arc-enabled machine via Az.ConnectedMachine. The module's presence is
+        # validated up-front by CheckConnectedMachineModuleDependency in the calling cmdlet,
+        # so reaching this point implies Az.ConnectedMachine is available.
+        $getErrors = $null
+        $arcMachine = Az.ConnectedMachine\Get-AzConnectedMachine `
+            -SubscriptionId    $TargetSubscriptionId `
+            -ResourceGroupName $TargetResourceGroupName `
+            -Name              $TargetVMName `
+            -ErrorAction       SilentlyContinue `
+            -ErrorVariable     getErrors
+
+        # 1. Existence: a null result means the lookup failed for any reason (not found,
+        #    auth, throttling, network, etc.). We deliberately do not distinguish 404 from
+        #    other failures: the actionable guidance is the same (verify the Arc machine
+        #    exists at the expected resource group and matches -TargetVMName), and including
+        #    the underlying exception message preserves diagnostic detail when present.
+        if ($null -eq $arcMachine) {
+            $underlyingError = if ($getErrors -and $getErrors[0] -and $getErrors[0].Exception) {
+                $getErrors[0].Exception.Message
+            } else {
+                '(no error details available)'
+            }
+            throw ($ArcMachineReuseValidationMessages.NotFound -f $arcMachineId, $underlyingError)
+        }
+
+        # 2. Kind must be unset (any non-empty value blocks reuse).
+        if (-not [string]::IsNullOrEmpty($arcMachine.Kind)) {
+            throw ($ArcMachineReuseValidationMessages.KindIncompatible -f $arcMachineId, $arcMachine.Kind)
+        }
+
+        # Note: status and location checks are intentionally omitted. The DataReplication
+        # service will surface those failures at PUT time if they matter.
+
+        Write-Verbose "Arc machine reuse preflight passed: $arcMachineId"
     }
 }
 
@@ -537,4 +609,137 @@ function New-OffAzureResourceNotFoundException {
     )
 
     return "'$Scenario' '$Name' not found in resource group '$ResourceGroupName' and site '$SiteName'."
+}
+
+function Get-AzMigrateSourceSecureBootState {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        ${MachineId}
+    )
+
+    # Returns $true/$false, or $null when the state cannot be determined. Callers must treat $null
+    # as unknown and fall through to the service rather than blocking the migration.
+    $uri = "{0}?api-version={1}" -f $MachineId, $ApiVersions.OffAzureMachineRead
+
+    try {
+        $response = Invoke-AzRestMethod -Path $uri -Method GET -ErrorAction Stop
+    }
+    catch {
+        Write-Verbose "Could not read Secure Boot state from '$MachineId': $($_.Exception.Message)"
+        return $null
+    }
+
+    if ($null -eq $response -or $response.StatusCode -ne 200) {
+        Write-Verbose "Could not read Secure Boot state from '$MachineId'. Status code: $($response.StatusCode)."
+        return $null
+    }
+
+    try {
+        $properties = ($response.Content | ConvertFrom-Json).properties
+    }
+    catch {
+        Write-Verbose "Could not parse the discovered machine response for '$MachineId'."
+        return $null
+    }
+
+    # Absent on older appliance versions and on clouds still serving the GA contract.
+    if ($null -eq $properties -or
+        'secureBootEnabled' -notin $properties.PSObject.Properties.Name -or
+        $null -eq $properties.secureBootEnabled) {
+        Write-Verbose "Discovered machine '$MachineId' does not report Secure Boot state."
+        return $null
+    }
+
+    return [bool]$properties.secureBootEnabled
+}
+
+function Resolve-AzMigrateTargetSecurityOption {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        # 'Create' leaves the target inheriting the source unless Secure Boot is explicitly chosen.
+        # 'Update' always sends a value, matching how the portal rewrites the field on edit.
+        [Parameter(Mandatory)]
+        [ValidateSet('Create', 'Update')]
+        [string]
+        ${Mode},
+
+        [Parameter()]
+        [string]
+        ${HyperVGeneration},
+
+        [Parameter()]
+        [bool]
+        ${HasTargetVMSecurityOption},
+
+        [Parameter()]
+        [string]
+        ${TargetVMSecurityOption},
+
+        [Parameter()]
+        [bool]
+        ${HasEnableSecureBoot},
+
+        [Parameter()]
+        [bool]
+        ${SecureBootEnabled}
+    )
+
+    # Returns a decision rather than throwing so New- and Set- keep their own error wording, and so
+    # the Secure Boot downgrade check stays out of this function and remains network free.
+    $decision = [PSCustomObject]@{
+        SecurityOption         = $null
+        Gen2Required           = $false
+        VerifySourceSecureBoot = $false
+    }
+
+    if (-not ($HasTargetVMSecurityOption -or $HasEnableSecureBoot)) {
+        return $decision
+    }
+
+    $securityType = if ($HasTargetVMSecurityOption) { $TargetVMSecurityOption } else { $TargetVMSecurityTypes.Standard }
+    $isTrustedLaunch = $securityType -eq $TargetVMSecurityTypes.TrustedLaunch
+
+    if ($Mode -eq 'Create') {
+        $enabled = if ($isTrustedLaunch) { $true } elseif ($HasEnableSecureBoot) { $SecureBootEnabled } else { $false }
+
+        if ($HyperVGeneration -eq "1" -and ($isTrustedLaunch -or $enabled)) {
+            $decision.Gen2Required = $true
+            return $decision
+        }
+
+        # '-TargetVMSecurityOption Standard' on its own is not a choice about Secure Boot, so the
+        # target keeps inheriting the source and no securityOption is sent.
+        if ($isTrustedLaunch) {
+            $decision.SecurityOption = $SecurityOptions.TrustedLaunch
+        }
+        elseif ($HasEnableSecureBoot) {
+            $decision.VerifySourceSecureBoot = (-not $enabled) -and $HyperVGeneration -eq "2"
+            $decision.SecurityOption = if ($enabled) { $SecurityOptions.SecureBootEnabled } else { $SecurityOptions.None }
+        }
+
+        return $decision
+    }
+
+    $enabled = if ($isTrustedLaunch -or -not $HasEnableSecureBoot) { $true } else { $SecureBootEnabled }
+
+    if ($HyperVGeneration -eq "1") {
+        # Only an explicit request is an error. The inherit-Secure-Boot default above is a Gen 2
+        # convention, so on Gen 1 it resolves to None instead of being rejected.
+        if ($isTrustedLaunch -or ($HasEnableSecureBoot -and $enabled)) {
+            $decision.Gen2Required = $true
+            return $decision
+        }
+
+        $enabled = $false
+    }
+
+    $decision.VerifySourceSecureBoot = (-not $enabled) -and $HyperVGeneration -eq "2"
+    $decision.SecurityOption =
+        if ($isTrustedLaunch) { $SecurityOptions.TrustedLaunch }
+        elseif ($enabled) { $SecurityOptions.SecureBootEnabled }
+        else { $SecurityOptions.None }
+
+    return $decision
 }

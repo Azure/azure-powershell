@@ -226,6 +226,12 @@ namespace Microsoft.Azure.Commands.Network
                           "ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.")]
         public SwitchParameter EnablePrivateLinkFastPath { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The routing configuration for this connection.")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -360,6 +366,11 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     vnetGatewayConnection.GatewayCustomBgpIpAddresses.Add(reqaddress);
                 }
+            }
+
+            if (this.RoutingConfiguration != null)
+            {
+                vnetGatewayConnection.RoutingConfiguration = this.RoutingConfiguration;
             }
 
             // Map to the sdk object

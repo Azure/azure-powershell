@@ -16,21 +16,23 @@ Sets an EventHub Authorization Rule
 ```
 Set-AzEventHubAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
  [-SubscriptionId <String>] -Rights <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### SetExpandedEntity
 ```
 Set-AzEventHubAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
  [-SubscriptionId <String>] -EventHubName <String> -Rights <String[]> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubAuthorizationRule -InputObject <IEventHubIdentity> -Rights <String[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,11 +72,41 @@ Updates authorization rule `myAuthRule` on EventHubs entity `myEventHub` from na
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

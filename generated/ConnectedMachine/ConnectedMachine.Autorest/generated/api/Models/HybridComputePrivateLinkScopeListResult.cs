@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>Describes the list of Azure Arc PrivateLinkScope resources.</summary>
+    /// <summary>The response of a HybridComputePrivateLinkScope list operation.</summary>
     public partial class HybridComputePrivateLinkScopeListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopeListResult,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopeListResultInternal
@@ -16,17 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// The URI to get the next set of Azure Arc PrivateLinkScope definitions if too many PrivateLinkScopes where returned in
-        /// the result set.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope> _value;
 
-        /// <summary>List of Azure Arc PrivateLinkScope definitions.</summary>
+        /// <summary>The HybridComputePrivateLinkScope items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope> Value { get => this._value; set => this._value = value; }
 
@@ -36,47 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         }
     }
-    /// Describes the list of Azure Arc PrivateLinkScope resources.
+    /// The response of a HybridComputePrivateLinkScope list operation.
     public partial interface IHybridComputePrivateLinkScopeListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// The URI to get the next set of Azure Arc PrivateLinkScope definitions if too many PrivateLinkScopes where returned in
-        /// the result set.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The URI to get the next set of Azure Arc PrivateLinkScope definitions if too many PrivateLinkScopes where returned in the result set.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of Azure Arc PrivateLinkScope definitions.</summary>
+        /// <summary>The HybridComputePrivateLinkScope items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of Azure Arc PrivateLinkScope definitions.",
+        Description = @"The HybridComputePrivateLinkScope items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope> Value { get; set; }
 
     }
-    /// Describes the list of Azure Arc PrivateLinkScope resources.
+    /// The response of a HybridComputePrivateLinkScope list operation.
     internal partial interface IHybridComputePrivateLinkScopeListResultInternal
 
     {
-        /// <summary>
-        /// The URI to get the next set of Azure Arc PrivateLinkScope definitions if too many PrivateLinkScopes where returned in
-        /// the result set.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of Azure Arc PrivateLinkScope definitions.</summary>
+        /// <summary>The HybridComputePrivateLinkScope items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope> Value { get; set; }
 
     }

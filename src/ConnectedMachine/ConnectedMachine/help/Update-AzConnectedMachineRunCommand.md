@@ -19,7 +19,7 @@ Update-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <St
  [-ErrorBlobManagedIdentityObjectId <String>] [-ErrorBlobUri <String>]
  [-OutputBlobManagedIdentityClientId <String>] [-OutputBlobManagedIdentityObjectId <String>]
  [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
- [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
+ [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <SecureString>] [-RunAsUser <String>]
  [-ScriptUriManagedIdentityClientId <String>] [-ScriptUriManagedIdentityObjectId <String>]
  [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
  [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -40,7 +40,7 @@ Update-AzConnectedMachineRunCommand -RunCommandName <String> -MachineInputObject
  [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
  [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
  [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
- [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
+ [-RunAsPassword <SecureString>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
  [-ScriptUriManagedIdentityObjectId <String>] [-SourceCommandId <String>] [-SourceScript <String>]
  [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -60,7 +60,7 @@ Update-AzConnectedMachineRunCommand -InputObject <IConnectedMachineIdentity> [-A
  [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
  [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
  [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
- [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
+ [-RunAsPassword <SecureString>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
  [-ScriptUriManagedIdentityObjectId <String>] [-SourceCommandId <String>] [-SourceScript <String>]
  [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -81,7 +81,7 @@ The operation to update a run command.
 ### Example 1: Update a run command with tags
 ```powershell
 $tags = @{Tag1="tag1"; Tag2="tag2"}
-Update-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName -Subscription $env.SubscriptionId -Tag $tags
+Update-AzConnectedMachineRunCommand -ResourceGroupName "myResourceGroup" -RunCommandName "myRunCommand" -MachineName "myMachine" -Tag $tags
 ```
 
 ```output
@@ -389,7 +389,7 @@ Accept wildcard characters: False
 Specifies the user account password on the machine when executing the run command.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -525,6 +525,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

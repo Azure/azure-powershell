@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Extensions;
 
-    /// <summary>Model that represents the base Target properties model.</summary>
+    /// <summary>The properties of the target resource.</summary>
     public partial class TargetProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetProperties,
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetPropertiesInternal
@@ -19,14 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 
         }
     }
-    /// Model that represents the base Target properties model.
+    /// The properties of the target resource.
     public partial interface ITargetProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IAssociativeArray<global::System.Object>
     {
 
     }
-    /// Model that represents the base Target properties model.
+    /// The properties of the target resource.
     internal partial interface ITargetPropertiesInternal
 
     {

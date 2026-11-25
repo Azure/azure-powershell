@@ -51,6 +51,8 @@ function setupEnv() {
     $env.srsResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)"
     $env.srsVaultName = "signoff2105app1452vault"
     $env.migVaultName = "ecygqlapp4055vault"
+    # Dedicated vault for New-AzMigrateReplicationPolicy so re-recording it cannot invalidate the migVaultName recordings.
+    $env.migPolicyVaultName = "CBT-GQLPROJ25692vault"
     $env.migFabricName = "ecygqlapp4048replicationfabric"
     $env.migPolicyName= "migrateecygqlapp4055sitepolicy"
     $env.migProtectionContainerName= "ecygqlapp2fd6replicationcontainer"
@@ -106,13 +108,13 @@ function setupEnv() {
     $env.migRunAsAccountName = "9dd70654-9f18-5dcc-993a-c950ac540221"
     $env.migApplianceName = "ecygqlapp"
 
-    $env.hciSubscriptionId = "0daa57b3-f823-4921-a09a-33c048e64022"
-    $env.hciMigResourceGroup = "aszmige2etestCIRG01"
+    $env.hciSubscriptionId = "d41eb627-825d-4419-a14d-c6ad485f4110"
+    $env.hciMigResourceGroup = "aszmige2etestscratchkpihyp"
     $env.hciTargetRgSubId = "586c20df-c465-4f10-8673-65aa4859e7ca"
     $env.hciProjectName = "aszmigtest1c100b4"
     $env.hciSourceApplianceName = "HyperV-1c100b4"
     $env.hciTargetApplianceName = "asz-1c100b4"
-    $env.hciSourceReplicationFabricName = "HyperV-1c100b4409breplicationfabric"
+    $env.hciSourceReplicationFabricName = "HyperV-1c041dbbf3areplicationfabric"
     $env.hciReplicationVaultName = "aszmigtest1c100b4replicationvault"
     $env.hciTgtVirtualSwitchId = "/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/EDGECI-REGISTRATION-rr1s46r1706-LtmqC7DF/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet-s46r1706-cl"
     $env.hciTgtStoragePathId = "/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/EDGECI-REGISTRATION-rr1s46r1706-LtmqC7DF/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage1-724e432974de4c6180b3a90ecf0f34e3"
@@ -127,6 +129,20 @@ function setupEnv() {
     $env.hciNicId2 = "Microsoft:0FA67F11-3C1E-491B-A459-372141FB3B7F\\C284C44D-B38B-4C7A-9B95-69AB6E275F4F"
     $env.hciJobName = "5348d490-92d0-424b-9fe1-6d126cbcee0e"
     $env.hciJobId = "/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationVaults/aszmigtest1c100b4replicationvault/jobs/5348d490-92d0-424b-9fe1-6d126cbcee0e"
+
+    # Trusted Launch / Secure Boot live tests. hciTvmProtectedItemId must point at a Generation 2
+    # item whose source has Secure Boot disabled, otherwise the None case is rejected client-side.
+    $env.hciTvmSubscriptionId = "265ca7e5-909a-455d-9459-7c7041c1c37d"
+    $env.hciTvmMachineId = "/subscriptions/265ca7e5-909a-455d-9459-7c7041c1c37d/resourceGroups/bpuram-tvme2ehv-ecy-rg/providers/Microsoft.OffAzure/HyperVSites/src5185site/machines/dac5820e-571c-435e-8940-5c3299a19f2e"
+    $env.hciTvmOSDiskId = "Microsoft:DAC5820E-571C-435E-8940-5C3299A19F2E\E8731E55-F448-4FB8-B5FD-D3B9B244DCE2\0\0\L"
+    $env.hciTvmNicId = "Microsoft:DAC5820E-571C-435E-8940-5C3299A19F2E\C6CEC83F-A2D9-4E06-855A-AB3451F951B3"
+    $env.hciTvmStoragePathId = "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourcegroups/edgeci-registration-s46r1405-zqcgn3th/providers/microsoft.azurestackhci/storagecontainers/userstorage4-f65c130de71d434eaeab111d3ea02f2a"
+    $env.hciTvmTargetRgId = "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/2503Uninstall"
+    $env.hciTvmVirtualSwitchId = "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/EDGECI-REGISTRATION-s46r1405-ZqcGn3TH/providers/microsoft.azurestackhci/logicalnetworks/s46r1405-lnet"
+    $env.hciTvmSourceApplianceName = "src"
+    $env.hciTvmTargetApplianceName = "tgt"
+    $env.hciTvmTargetVMName = "tvm-secopt-ws19"
+    $env.hciTvmProtectedItemId = "/subscriptions/265ca7e5-909a-455d-9459-7c7041c1c37d/resourceGroups/bpuram-tvme2ehv-ecy-rg/providers/Microsoft.DataReplication/replicationVaults/bpuram-tvme2eh4130replicationvault/protectedItems/160b78de-05c5-49aa-beda-562bfa00b210"
     
     $envFile = 'localEnv.json'
     $env.srsMachineId5 = "/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_50375aa1-275f-5306-3ded-6214508d3d6a"

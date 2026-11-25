@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The volume object containing the subvolume to remove")]
+            HelpMessage = "The volume object containing the quota rule to remove")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolume VolumeObject { get; set; }
 

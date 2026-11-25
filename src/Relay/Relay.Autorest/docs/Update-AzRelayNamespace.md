@@ -17,25 +17,28 @@ This operation is idempotent.
 ### UpdateExpanded (Default)
 ```
 Update-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ClusterArmId <String>] [-MinimumTlsVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzRelayNamespace -InputObject <IRelayIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzRelayNamespace -InputObject <IRelayIdentity> [-ClusterArmId <String>] [-MinimumTlsVersion <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzRelayNamespace -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzRelayNamespace -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +75,36 @@ namespace-pwsh01 lucas-relay-rg    East US  Activating Standard https://namespac
 This cmdlet updates a Relay namespace by pipeline.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterArmId
+Cluster ARM ID of the Namespace.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -134,6 +167,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MinimumTlsVersion
+The minimum TLS version for the namespace.Supported values are 1.2 and 1.3.The service defaults to 1.2 when the property is omitted.Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The namespace name
 
@@ -149,8 +197,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -165,8 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

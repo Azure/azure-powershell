@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             // actually deserialize
             if (content.Contains("ExtensionTarget"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeInternal)this).ExtensionTarget = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTarget) content.GetValueForProperty("ExtensionTarget",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeInternal)this).ExtensionTarget, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ExtensionTargetTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeInternal)this).ExtensionTarget = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeExtensionTargets) content.GetValueForProperty("ExtensionTarget",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeInternal)this).ExtensionTarget, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachineExtensionUpgradeExtensionTargetsTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             // actually deserialize
             if (content.Contains("ExtensionTarget"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeInternal)this).ExtensionTarget = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTarget) content.GetValueForProperty("ExtensionTarget",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeInternal)this).ExtensionTarget, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ExtensionTargetTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeInternal)this).ExtensionTarget = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeExtensionTargets) content.GetValueForProperty("ExtensionTarget",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeInternal)this).ExtensionTarget, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachineExtensionUpgradeExtensionTargetsTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

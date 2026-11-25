@@ -31,25 +31,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.Name { get => this._name; set { {_name = value;} } }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemData Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterSystemData()); set { {_systemData = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SystemData()); set { {_systemData = value;} } }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterResourceInternal.Type { get => this._type; set { {_type = value;} } }
@@ -62,37 +62,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         public string Name { get => this._name; }
 
         /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemData _systemData;
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemData _systemData;
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SecurityPerimeterSystemData()); }
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.SystemData()); }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).CreatedAt; }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).CreatedBy; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).CreatedByType; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).LastModifiedAt; }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).LastModifiedBy; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemDataInternal)SystemData).LastModifiedByType; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISecurityPerimeterSystemData SystemData { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISystemData SystemData { get; set; }
         /// <summary>The timestamp of resource creation (UTC).</summary>
         global::System.DateTime? SystemDataCreatedAt { get; set; }
         /// <summary>The identity that created the resource.</summary>

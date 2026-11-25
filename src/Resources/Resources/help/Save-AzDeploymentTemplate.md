@@ -16,14 +16,14 @@ Saves a deployment template to a file.
 ```
 Save-AzDeploymentTemplate -DeploymentName <String> [-Path <String>] [-Force] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SaveByDeploymentObject
 ```
 Save-AzDeploymentTemplate -DeploymentObject <PSDeployment> [-Path <String>] [-Force] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +46,36 @@ Get-AzDeployment -Name "RolesDeployment" | Save-AzDeploymentTemplate
 This command gets the deployment "RolesDeployment" at the current subscription scope and saves its template.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

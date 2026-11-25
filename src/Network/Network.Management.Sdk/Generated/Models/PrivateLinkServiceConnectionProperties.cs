@@ -42,7 +42,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="privateLinkServiceConnectionState">A collection of read-only information about the state of the connection to
         /// the remote resource.
         /// </param>
-        public PrivateLinkServiceConnectionProperties(string provisioningState = default(string), string privateLinkServiceId = default(string), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), string requestMessage = default(string), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+
+        /// <param name="approvalReference">A reference to an existing approved private endpoint whose connection
+        /// approval state should be inherited by this connection at creation time.
+        /// </param>
+        public PrivateLinkServiceConnectionProperties(string provisioningState = default(string), string privateLinkServiceId = default(string), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), string requestMessage = default(string), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), ApprovalReference approvalReference = default(ApprovalReference))
 
         {
             this.ProvisioningState = provisioningState;
@@ -50,6 +54,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.GroupIds = groupIds;
             this.RequestMessage = requestMessage;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
+            this.ApprovalReference = approvalReference;
             CustomInit();
         }
 
@@ -92,5 +97,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkServiceConnectionState")]
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
+
+        /// <summary>
+        /// Gets or sets a reference to an existing approved private endpoint whose
+        /// connection approval state should be inherited by this connection at
+        /// creation time.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "approvalReference")]
+        public ApprovalReference ApprovalReference {get; set; }
     }
 }

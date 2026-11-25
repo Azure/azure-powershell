@@ -166,6 +166,13 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='galleryImageVersionName'>
         /// The name of the gallery image version to be retrieved.
         /// </param>
+        /// <param name='bypassSoftDelete'>
+        /// Specifies whether to bypass the gallery&#39;s soft-delete policy and
+        /// permanently delete the gallery image version. If true, the version is not
+        /// retained in the recycle bin and cannot be restored. If false or omitted,
+        /// the version is soft-deleted when the gallery&#39;s soft-delete policy is
+        /// enabled and permanently deleted when the policy is disabled.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -175,7 +182,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, bool? bypassSoftDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update a gallery image version.
@@ -266,6 +273,13 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='galleryImageVersionName'>
         /// The name of the gallery image version to be retrieved.
         /// </param>
+        /// <param name='bypassSoftDelete'>
+        /// Specifies whether to bypass the gallery&#39;s soft-delete policy and
+        /// permanently delete the gallery image version. If true, the version is not
+        /// retained in the recycle bin and cannot be restored. If false or omitted,
+        /// the version is soft-deleted when the gallery&#39;s soft-delete policy is
+        /// enabled and permanently deleted when the policy is disabled.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -275,7 +289,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, bool? bypassSoftDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List gallery image versions in a gallery image definition.

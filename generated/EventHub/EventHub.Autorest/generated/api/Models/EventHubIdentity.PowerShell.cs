@@ -137,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ConsumerGroupName = (string) content.GetValueForProperty("ConsumerGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ConsumerGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("FabricShortcutName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).FabricShortcutName = (string) content.GetValueForProperty("FabricShortcutName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).FabricShortcutName, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceAssociationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName = (string) content.GetValueForProperty("ResourceAssociationName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ResourceAssociationName, global::System.Convert.ToString);
@@ -205,6 +209,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("ConsumerGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ConsumerGroupName = (string) content.GetValueForProperty("ConsumerGroupName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).ConsumerGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FabricShortcutName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).FabricShortcutName = (string) content.GetValueForProperty("FabricShortcutName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentityInternal)this).FabricShortcutName, global::System.Convert.ToString);
             }
             if (content.Contains("ResourceAssociationName"))
             {

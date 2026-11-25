@@ -20,9 +20,9 @@ Refreshes the ingestion key for all monitors linked to the same account associat
 .Description
 Refreshes the ingestion key for all monitors linked to the same account associated to the underlying monitor.
 .Example
-Update-AzNewRelicMonitorIngestionKey -MonitorName clientParity-Test-1014 -ResourceGroupName vanshjoshi-clientparity-test
+Update-AzNewRelicMonitorIngestionKey -MonitorName clientParity-Test-1014 -ResourceGroupName azps-newrelic-clientparity-test
 .Example
-Get-AzNewRelicMonitor -Name clientParity-Test-1014 -ResourceGroupName vanshjoshi-clientparity-test | Update-AzNewRelicMonitorIngestionKey
+Get-AzNewRelicMonitor -Name clientParity-Test-1014 -ResourceGroupName azps-newrelic-clientparity-test | Update-AzNewRelicMonitorIngestionKey
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
@@ -141,8 +141,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -1,40 +1,61 @@
 ﻿Running Azure Batch Scenario Tests:
 
-In order to run the scenario tests in Record mode, run these commands with your batch account credentials in your powershell environment.
+The scenario tests (ScenarioTests folder) replay the HTTP requests saved in the SessionRecords folder ("Playback", the
+default). Record a test again only when its requests change. Recording runs against a real Batch account and costs money
+when pools have nodes.
 
-$env:AZURE_BATCH_ACCOUNT = "YOUR_BATCH_ACCOUNT_NAME"
-$env:AZURE_BATCH_ACCESS_KEY = "YOUR_BATCH_ACCOUNT_ACCESS_KEY"
-$env:AZURE_BATCH_ENDPOINT = "YOUR_BATCH_ACCOUNT_ENDPOINT"
-$env:AZURE_BATCH_RESOURCE_GROUP = "YOUR_BATCH_ACCOUNT_RESOURCE_GROUP"
+To record (full steps: documentation/testing-docs/using-azure-test-framework.md):
 
-Also, set the TEST_CSM_ORGID_AUTHENTICATION environment variable to something like this:
-$env:TEST_CSM_ORGID_AUTHENTICATION="SubscriptionId=<subId>;BaseUri=https://management.azure.com/;AADAuthEndpoint=https://login.microsoftonline.com/;ServicePrincipal=<AAD app id>;ServicePrincipalSecret=<AAD app secret>;AADTenant=72f988bf-86f1-41af-91ab-2d7cd011db47"
+1. Sign in to Azure PowerShell with your user account (Connect-AzAccount). The test framework uses that sign-in.
 
-Finally, set the AZURE_TEST_MODE environment variable to "Record"
-$env:AZURE_TEST_MODE="Record"
+2. Point the test framework at the test subscription and switch it to Record mode:
+  Import-Module ./tools/Modules/TestFx-Tasks.psd1
+  Set-TestFxEnvironment -UserId <your e-mail> -SubscriptionId <subscription id> -TenantId <tenant id> -RecorderMode "Record"
+  $env:AZURE_TEST_MODE = "Record"
+This writes C:\Users\<you>\.Azure\testcredentials.json. Instead, you can set
+  $env:TEST_CSM_ORGID_AUTHENTICATION = "Environment=Prod;SubscriptionId=<subscription id>;TenantId=<tenant id>;UserId=<your e-mail>;"
+An existing testcredentials.json overrides $env:TEST_CSM_ORGID_AUTHENTICATION and $env:AZURE_TEST_MODE. Check for an
+old one, and remove it if you use the environment variables.
 
-To save time on recording, the scenario tests assume some basic setup.
-TODO: Tests should automatically run these steps at startup.
-Run the following scripts or equivalent to create a Windows pool and a Linux pool.
-  $context = Get-AzureRmBatchAccountKeys "<Account that will be used for recorded tests>"
-  $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
-  $startTask.CommandLine = "cmd /c echo hello"
-  $imageRef = New-Object Microsoft.Azure.Commands.Batch.Models.PSImageReference -ArgumentList @("0001-com-ubuntu-server-jammy","canonical","22_04-LTS")
-  $virtualMachineConfig = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @($imageRef, "batch.node.ubuntu 22.04")
-  New-AzBatchPool -Id "testIaasPool" -VirtualMachineSize "Standard_A1_v2" -TargetDedicated 1 -VirtualMachineConfiguration $virtualMachineConfig -BatchContext $context
+3. Set the Batch account the tests use. Record in a Batch account that is only for these tests: some tests delete pools
+by name, also pools they didn't create (for example TestPoolCRUD removes pool1 and pool2 at the end, even if it couldn't
+create them). Batch service requests sign in with the account's shared key.
+Set-TestFxEnvironment doesn't change the Azure PowerShell context that Get-AzBatchAccountKey uses, so first select the
+same subscription:
+  Set-AzContext -Subscription <subscription id>
+  $env:AZURE_BATCH_ACCOUNT = "<account name>"
+  $env:AZURE_BATCH_ACCESS_KEY = (Get-AzBatchAccountKey -AccountName "<account name>" -ResourceGroupName "<resource group>").PrimaryAccountKey
+  $env:AZURE_BATCH_ENDPOINT = "https://<account name>.<region>.batch.azure.com"
+  $env:AZURE_BATCH_RESOURCE_GROUP = "<resource group>"
 
+4. Build, then run only the tests you want to record, for example:
+  dotnet test src/Batch/Batch.Test/Batch.Test.csproj -c Debug --no-build --filter "FullyQualifiedName~ScenarioTests.PoolTests.TestPoolCRUD"
+The new recordings replace the files in SessionRecords.
 
-To switch back to Playback mode, set the AZURE_TEST_MODE environment variable to "Playback".
+5. Before you commit them, check the new recordings for secrets (keys, SAS tokens, passwords). The recorder replaces
+most of them with "Sanitized".
+
+6. Switch back to playback: $env:AZURE_TEST_MODE = "Playback", and Set-TestFxEnvironment ... -RecorderMode "Playback"
+(or delete testcredentials.json).
+
+Pools and cost:
+- The tests create the pools they need. Pools with 0 nodes cost nothing; nodes do.
+  Tests that need running nodes (for example ComputeNodeTests and ComputeNodeUserTests) need dedicated core quota in
+  the account.
+- When recording, pools created by a test's C# setup (ScenarioTestHelpers) are deleted after the test, also when the
+  test fails. This clean-up skips a pool that was already there, but the tests' own deletes don't (see step 3). It
+  doesn't cover pools created inside a .ps1 script: after recording, check for pools left behind (Get-AzBatchPool) and
+  remove them.
 
 ==================================================================================================================================
 This project is divided into Unit Tests and Scenario Tests.
 All the Scenario Tests can be found under the ScenarioTests folder.  All other test classes are Unit Tests.
 
 The Unit Tests run in the xUnit test framework.
-xUnit Documentation: http://xunit.github.io/
+xUnit Documentation: https://xunit.net/
 
 The Unit Tests make use of the Moq framework to create mock objects of the PowerShell runtime and the
-Hyak management libraries.
+management libraries.
 Moq Documentation: https://github.com/Moq/moq4/blob/master/README.md
 
 Unit Tests for cmdlets that use the Batch OM make use of BatchClientBehaviors.
@@ -42,6 +63,5 @@ Using this feature, we insert custom behaviors into the OM service requests that
 us to modify the Batch request objects, the actions performed on them, and their responses.
 BatchClientBehaviors Documentation: https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.batch.batchclientbehavior.aspx
 
-The Scenario Tests make use of the HTTP recorder/playback functionality in the Hyak
-management libraries.  See the Azure PowerShell Developer Guide for more information:
-https://github.com/Azure/azure-powershell/wiki/Microsoft-Azure-PowerShell-Developer-Guide#running-scenario-tests
+The Scenario Tests use the record and playback test framework in tools/TestFx. See
+documentation/testing-docs/using-azure-test-framework.md for more information.

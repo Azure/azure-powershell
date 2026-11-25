@@ -13,12 +13,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="Attribute" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes _attribute;
+
+        /// <summary>The attributes of the serviceGroup.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes Attribute { get => (this._attribute = this._attribute ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupAttributes()); set => this._attribute = value; }
+
+        /// <summary>
+        /// The criticality designation of the service group. Valid values range from 0 through 4.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.PropertyOrigin.Inlined)]
+        public int? AttributeCriticality { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributesInternal)Attribute).Criticality; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributesInternal)Attribute).Criticality = value ?? default(int); }
+
         /// <summary>Backing field for <see cref="DisplayName" /> property.</summary>
         private string _displayName;
 
         /// <summary>The display name of the serviceGroup. For example, ServiceGroupTest1</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.PropertyOrigin.Owned)]
         public string DisplayName { get => this._displayName; set => this._displayName = value; }
+
+        /// <summary>Internal Acessors for Attribute</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal.Attribute { get => (this._attribute = this._attribute ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupAttributes()); set { {_attribute = value;} } }
 
         /// <summary>Internal Acessors for Parent</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IParentServiceGroupProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal.Parent { get => (this._parent = this._parent ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ParentServiceGroupProperties()); set { {_parent = value;} } }
@@ -56,6 +72,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
     public partial interface IServiceGroupProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The criticality designation of the service group. Valid values range from 0 through 4.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The criticality designation of the service group. Valid values range from 0 through 4.",
+        SerializedName = @"criticality",
+        PossibleTypes = new [] { typeof(int) })]
+        int? AttributeCriticality { get; set; }
         /// <summary>The display name of the serviceGroup. For example, ServiceGroupTest1</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Info(
         Required = false,
@@ -98,6 +127,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
     internal partial interface IServiceGroupPropertiesInternal
 
     {
+        /// <summary>The attributes of the serviceGroup.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes Attribute { get; set; }
+        /// <summary>
+        /// The criticality designation of the service group. Valid values range from 0 through 4.
+        /// </summary>
+        int? AttributeCriticality { get; set; }
         /// <summary>The display name of the serviceGroup. For example, ServiceGroupTest1</summary>
         string DisplayName { get; set; }
         /// <summary>The details of the parent serviceGroup.</summary>

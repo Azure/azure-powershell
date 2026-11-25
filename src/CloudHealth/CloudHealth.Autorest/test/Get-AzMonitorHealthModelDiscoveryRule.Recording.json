@@ -1,0 +1,190 @@
+{
+  "Get-AzMonitorHealthModelDiscoveryRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/discoveryrules?api-version=2026-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/discoveryrules?api-version=2026-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "36"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000026"
+        ],
+        "CommandName": [
+          "Get-AzMonitorHealthModelDiscoveryRule"
+        ],
+        "FullCommandName": [
+          "Get-AzMonitorHealthModelDiscoveryRule_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000035"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000301"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000036"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "247"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151722Z:00000000-0000-4000-8000-000000000036"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9833C4484EF84D49AF17A76278A51417 Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:22Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:21 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1148"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-r3wz6p/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-r3wz6p/discoveryrules/azps-disc-shared-r3wz6p\",\"name\":\"azps-disc-shared-r3wz6p\",\"type\":\"Microsoft.CloudHealth/healthmodels/discoveryrules\",\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:16:42.9429304Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:16:43.1918501Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared discovery rule\",\"authenticationSetting\":\"azps-auth-shared-r3wz6p\",\"discoverRelationships\":\"Disabled\",\"addRecommendedSignals\":\"Enabled\",\"addResourceHealthSignal\":\"Disabled\",\"specification\":{\"kind\":\"ResourceGraphQuery\",\"resourceGraphQuery\":\"resources | where isnotempty(id) | project id | take 1\"},\"error\":{\"message\":\"Access denied (HTTP 403) running the discovery rule's Azure Resource Graph query. Grant the managed identity Reader on the queried scope (or Service Group Reader on a Service Group).\"},\"entityName\":\"azps-disc-shared-r3wz6p\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMonitorHealthModelDiscoveryRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/discoveryrules/azps-disc-shared-r3wz6p?api-version=2026-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/discoveryrules/azps-disc-shared-r3wz6p?api-version=2026-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "37"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000351"
+        ],
+        "CommandName": [
+          "Get-AzMonitorHealthModelDiscoveryRule"
+        ],
+        "FullCommandName": [
+          "Get-AzMonitorHealthModelDiscoveryRule_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000165"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000237"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000063"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151722Z:00000000-0000-4000-8000-000000000063"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: CF5B0866F65E44898390C9F601A4786B Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:22Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:21 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "1136"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-r3wz6p/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-r3wz6p/discoveryrules/azps-disc-shared-r3wz6p\",\"name\":\"azps-disc-shared-r3wz6p\",\"type\":\"Microsoft.CloudHealth/healthmodels/discoveryrules\",\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:16:42.9429304Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:16:43.1918501Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared discovery rule\",\"authenticationSetting\":\"azps-auth-shared-r3wz6p\",\"discoverRelationships\":\"Disabled\",\"addRecommendedSignals\":\"Enabled\",\"addResourceHealthSignal\":\"Disabled\",\"specification\":{\"kind\":\"ResourceGraphQuery\",\"resourceGraphQuery\":\"resources | where isnotempty(id) | project id | take 1\"},\"error\":{\"message\":\"Access denied (HTTP 403) running the discovery rule's Azure Resource Graph query. Grant the managed identity Reader on the queried scope (or Service Group Reader on a Service Group).\"},\"entityName\":\"azps-disc-shared-r3wz6p\"}}",
+      "isContentBase64": false
+    }
+  }
+}

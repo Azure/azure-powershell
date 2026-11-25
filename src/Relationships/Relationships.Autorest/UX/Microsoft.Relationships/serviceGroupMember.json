@@ -1,6 +1,6 @@
 {
   "resourceType": "serviceGroupMember",
-  "apiVersion": "2023-09-01-preview",
+  "apiVersion": "2026-08-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.relationships"
   },

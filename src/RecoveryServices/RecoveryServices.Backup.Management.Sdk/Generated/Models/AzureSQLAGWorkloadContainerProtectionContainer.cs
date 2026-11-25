@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="protectableObjectType">Type of the protectable object associated with this container
         /// </param>
 
+        /// <param name="sourceLocation">Source location of the container
+        /// </param>
+
         /// <param name="sourceResourceId">ARM ID of the virtual machine represented by this Azure Workload Container
         /// </param>
 
@@ -55,13 +58,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;,
         /// &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;,
         /// &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;,
-        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
+        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;, &#39;SQLInstance&#39;</param>
 
         /// <param name="operationType">Re-Do Operation
         /// Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;, &#39;Rehydrate&#39;</param>
-        public AzureSqlagWorkloadContainerProtectionContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceResourceId = default(string), System.DateTime? lastUpdatedTime = default(System.DateTime?), AzureWorkloadContainerExtendedInfo extendedInfo = default(AzureWorkloadContainerExtendedInfo), string workloadType = default(string), string operationType = default(string))
+        public AzureSqlagWorkloadContainerProtectionContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceLocation = default(string), string sourceResourceId = default(string), System.DateTime? lastUpdatedTime = default(System.DateTime?), AzureWorkloadContainerExtendedInfo extendedInfo = default(AzureWorkloadContainerExtendedInfo), string workloadType = default(string), string operationType = default(string))
 
-        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType, sourceResourceId, lastUpdatedTime, extendedInfo, workloadType, operationType)
+        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType, sourceLocation, sourceResourceId, lastUpdatedTime, extendedInfo, workloadType, operationType)
         {
             CustomInit();
         }

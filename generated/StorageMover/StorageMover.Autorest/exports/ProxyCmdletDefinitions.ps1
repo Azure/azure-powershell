@@ -1758,6 +1758,266 @@ end {
 
 <#
 .Synopsis
+Post action to reconcile the running job.
+.Description
+Post action to reconcile the running job.
+.Example
+Invoke-AzStorageMoverReconcileJobDefinition -JobDefinitionName myJobDefinition -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunResourceId
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
+  [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
+  [EndpointName <String>]: The name of the Endpoint resource.
+  [Id <String>]: Resource identity path
+  [JobDefinitionName <String>]: The name of the Job Definition resource.
+  [JobRunName <String>]: The name of the Job Run resource.
+  [ProjectName <String>]: The name of the Project resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageMoverName <String>]: The name of the Storage Mover resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagemover/invoke-azstoragemoverreconcilejobdefinition
+#>
+function Invoke-AzStorageMoverReconcileJobDefinition {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunResourceId])]
+[CmdletBinding(DefaultParameterSetName='Reconcile', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [Parameter(ParameterSetName='ReconcileViaIdentityProject', Mandatory)]
+    [Parameter(ParameterSetName='ReconcileViaIdentityStorageMover', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Job Definition resource.
+    ${JobDefinitionName},
+
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [Parameter(ParameterSetName='ReconcileViaIdentityStorageMover', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Project resource.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Reconcile', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [System.String]
+    # The name of the Storage Mover resource.
+    ${StorageMoverName},
+
+    [Parameter(ParameterSetName='Reconcile')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ReconcileViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ReconcileViaIdentityProject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${ProjectInputObject},
+
+    [Parameter(ParameterSetName='ReconcileViaIdentityStorageMover', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
+    # Identity Parameter
+    ${StorageMoverInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Reconcile = 'Az.StorageMover.private\Invoke-AzStorageMoverReconcileJobDefinition_Reconcile';
+            ReconcileViaIdentity = 'Az.StorageMover.private\Invoke-AzStorageMoverReconcileJobDefinition_ReconcileViaIdentity';
+            ReconcileViaIdentityProject = 'Az.StorageMover.private\Invoke-AzStorageMoverReconcileJobDefinition_ReconcileViaIdentityProject';
+            ReconcileViaIdentityStorageMover = 'Az.StorageMover.private\Invoke-AzStorageMoverReconcileJobDefinition_ReconcileViaIdentityStorageMover';
+        }
+        if (('Reconcile') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create a Connection resource.
 .Description
 Create a Connection resource.
@@ -2019,6 +2279,8 @@ Create a Job Definition resource, which contains configuration for a single unit
 Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 .Example
 New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AgentName myAgent -SourceName myNfsEndpoint -TargetName myContainerEndpoint -CopyMode "Additive" -Description "job definition"
+.Example
+New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -JobType CloudToCloud -CopyMode Additive -SourceName mySourceEndpoint -TargetName partnerTargetEndpoint -IsCrossTenantJob -CrossTenantEndpointTenantId "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz" -CrossTenantEndpointResourceId "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.StorageMover/storageMovers/partnerStorageMover/endpoints/partnerTargetEndpoint"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
@@ -2158,6 +2420,25 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Full ARM resource ID of the cross-tenant (foreign) endpoint.
+    # On thesource-tenant copy this is the TARGET endpoint; on thetarget-tenant copy this is the SOURCE endpoint.
+    ${CrossTenantEndpointResourceId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The Azure AD tenant ID of the cross-tenant source endpoint.
+    # Required when`isCrossTenantJob` is true.
+    # Cannot be modified after the Job Definition iscreated.
+    ${CrossTenantEndpointTenantId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SaveVerifyFileMD5", "SaveFileMD5", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
@@ -2198,11 +2479,30 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("OnPremToCloud", "CloudToCloud")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates that this Job Definition is a cross-tenant job where thecounterpart endpoint resides in a different Azure AD tenant.
+    # When true,`crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must beprovided.
+    # Defaults to false.
+    # Cannot be modified after the Job Definition iscreated.
+    ${IsCrossTenantJob},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("OnPremToCloud", "CloudToCloud", "OnPremToCloudAgentLess")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # The type of the Job.
     ${JobType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.DateTime]
+    # The last time the mover was synchronized.
+    ${MoverSyncedUntil},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
@@ -2249,7 +2549,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # Type of schedule — Monthly, Weekly, or Daily
@@ -2267,6 +2567,14 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Repeat interval used for sub-daily schedules.
+    ${ScheduleRepeatInterval},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.DateTime]
     # Specific one-time execution date and time
     ${ScheduleStartDate},
@@ -2278,6 +2586,14 @@ param(
     [System.String]
     # The subpath to use when reading from the source Endpoint.
     ${SourceSubpath},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The synchronization mode for the Job Definition.
+    ${SyncMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProjectExpanded')]
@@ -2907,9 +3223,11 @@ end {
 
 <#
 .Synopsis
-Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
+Deletes a Connection resource.
+Returns 409 if there are active jobs using this connection.
 .Description
-Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
+Deletes a Connection resource.
+Returns 409 if there are active jobs using this connection.
 .Example
 Remove-AzStorageMoverConnection -ResourceGroupName "examples-rg" -StorageMoverName "examples-storageMoverName" -Name "example-connection"
 
@@ -4949,6 +5267,15 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.DateTime]
+    # The last time the mover was synchronized.
+    ${MoverSyncedUntil},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # Optional CRON expression for advanced scheduling
     ${ScheduleCronExpression},
@@ -4986,7 +5313,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # Type of schedule — Monthly, Weekly, or Daily
@@ -5006,9 +5333,27 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Repeat interval used for sub-daily schedules.
+    ${ScheduleRepeatInterval},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.DateTime]
     # Specific one-time execution date and time
     ${ScheduleStartDate},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProjectExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityStorageMoverExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The synchronization mode for the Job Definition.
+    ${SyncMode},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
@@ -5750,6 +6095,14 @@ param(
     ${Description},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
@@ -5961,6 +6314,27 @@ param(
     ${Description},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enables this endpoint to be used as one side of a cross-tenant data transfer.
+    # Defaults to false.
+    ${EnableCrossTenantTransfer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+    ${AllowedStorageAccount},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
@@ -6111,6 +6485,8 @@ Creates an AzStorageContainer endpoint resource, which represents a data transfe
 Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
 .Example
 New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
+.Example
+New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -BlobContainerName myContainer -StorageAccountResourceId myAccountResourceId -EndpointKind Target -EnableCrossTenantTransfer -AllowedStorageAccount "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
@@ -6169,6 +6545,27 @@ param(
     [System.String]
     # A description for the endpoint.
     ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enables this endpoint to be used as one side of a cross-tenant data transfer.
+    # Defaults to false.
+    ${EnableCrossTenantTransfer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+    ${AllowedStorageAccount},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6381,6 +6778,14 @@ param(
     ${Description},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
@@ -6531,6 +6936,8 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 Creates a Nfs endpoint resource, which represents a data transfer source or destination.
 .Example
  New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.1" -Export "/" -NfsVersion NFSv3 -Description "Description"
+.Example
+New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.5" -Export "/export" -SourceType FSX-EFS -EndpointKind Source
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
@@ -6585,7 +6992,7 @@ param(
     ${Export},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4", "NFSv4_1")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # The NFS protocol version.
@@ -6596,6 +7003,22 @@ param(
     [System.String]
     # A description for the endpoint.
     ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NfsMount", "FSX-EFS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The source type of the NFS mount endpoint, either NfsMount or FSX-EFS.
+    # Defaults to NfsMount.
+    ${SourceType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6828,6 +7251,14 @@ param(
     ${Description},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
@@ -6978,6 +7409,8 @@ Creates an SMB endpoint resource, which represents a data transfer source or des
 Creates an SMB endpoint resource, which represents a data transfer source or destination.
 .Example
 New-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Host "10.0.0.1" -ShareName "testshare" -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/username1" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/password1"
+.Example
+New-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Host "10.0.0.6" -ShareName "testshare" -SourceType FSX-SMB -EndpointKind Source
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
@@ -7050,6 +7483,22 @@ param(
     [System.String]
     # A description for the endpoint.
     ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SmbMount", "FSX-SMB")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The source type of the SMB mount endpoint, either SmbMount or FSX-SMB.
+    # Defaults to SmbMount.
+    ${SourceType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -8120,6 +8569,20 @@ param(
     ${Description},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enables or disables using this endpoint as one side of a cross-tenant data transfer.
+    # To disable, set this switch to false.
+    ${EnableCrossTenantTransfer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+    # The specified list replaces the existing list; specify an empty array to clear it.
+    ${AllowedStorageAccount},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Azure')]
@@ -8273,6 +8736,10 @@ Updates properties for an AzStorageContainer endpoint resource.
 Properties not specified in the request body will be unchanged.
 .Example
 Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
+.Example
+Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AllowedStorageAccount "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount1", "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount2"
+.Example
+Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -EnableCrossTenantTransfer:$false -AllowedStorageAccount @()
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
@@ -8340,6 +8807,20 @@ param(
     [System.String]
     # A description for the endpoint.
     ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enables or disables using this endpoint as one side of a cross-tenant data transfer.
+    # To disable, set this switch to false.
+    ${EnableCrossTenantTransfer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+    # The specified list replaces the existing list; specify an empty array to clear it.
+    ${AllowedStorageAccount},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

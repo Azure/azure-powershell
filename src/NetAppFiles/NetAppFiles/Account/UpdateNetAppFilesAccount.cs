@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The location of the resource")]
+            HelpMessage = "The location of the resource. Retained for compatibility; account updates do not change the location.")]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.NetApp/netAppAccounts")]
         public string Location { get; set; }
@@ -78,6 +78,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             HelpMessage = "A hashtable which represents the Encryption settings")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccountEncryption Encryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "LDAP server, search, transport security, and bind authentication settings to update on the account.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
 
         [Parameter(
             ParameterSetName = FieldsParameterSet,
@@ -193,11 +199,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
             var netAppAccountBody = new NetAppAccountPatch()
             {
-                Location = Location,
-                ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : null,
+                ActiveDirectories = ActiveDirectory?.ConvertFromPs().ConvertToPatch(),
                 Tags = tagPairs,
-                Encryption = Encryption?.ConvertFromPs(),
-                NfsV4IdDomain = NfsV4IdDomain
+                Encryption = Encryption?.ConvertToPatch(),
+                NfsV4IdDomain = NfsV4IdDomain,
+                LdapConfiguration = LdapConfiguration?.ConvertToPatch()
             };
             if (IdentityType != null && IdentityType.Contains("UserAssigned"))
             {

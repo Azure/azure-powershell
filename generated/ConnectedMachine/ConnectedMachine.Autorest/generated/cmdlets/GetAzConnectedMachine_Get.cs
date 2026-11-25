@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"Retrieves information about the model view or the instance view of a hybrid machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", ApiVersion = "2024-07-31-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", ApiVersion = "2026-06-16-preview")]
     public partial class GetAzConnectedMachine_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IContext
@@ -169,12 +169,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(

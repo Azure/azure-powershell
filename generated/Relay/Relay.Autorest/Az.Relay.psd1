@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Relay.private.dll'
   FormatsToProcess = './Az.Relay.format.ps1xml'
-  FunctionsToExport = 'Get-AzRelayAuthorizationRule', 'Get-AzRelayHybridConnection', 'Get-AzRelayKey', 'Get-AzRelayNamespace', 'Get-AzRelayNamespaceNetworkRuleSet', 'Get-AzWcfRelay', 'New-AzRelayAuthorizationRule', 'New-AzRelayHybridConnection', 'New-AzRelayKey', 'New-AzRelayNamespace', 'New-AzRelayNetworkRuleSetIPRuleObject', 'New-AzWcfRelay', 'Remove-AzRelayAuthorizationRule', 'Remove-AzRelayHybridConnection', 'Remove-AzRelayNamespace', 'Remove-AzWcfRelay', 'Set-AzRelayAuthorizationRule', 'Set-AzRelayHybridConnection', 'Set-AzRelayNamespaceNetworkRuleSet', 'Set-AzWcfRelay', 'Test-AzRelayName', 'Update-AzRelayNamespace'
+  FunctionsToExport = 'Get-AzRelayAuthorizationRule', 'Get-AzRelayCluster', 'Get-AzRelayClusterAvailableClusterRegion', 'Get-AzRelayClusterNamespace', 'Get-AzRelayClusterSku', 'Get-AzRelayHybridConnection', 'Get-AzRelayKey', 'Get-AzRelayNamespace', 'Get-AzRelayNamespaceNetworkRuleSet', 'Get-AzWcfRelay', 'New-AzRelayAuthorizationRule', 'New-AzRelayCluster', 'New-AzRelayHybridConnection', 'New-AzRelayKey', 'New-AzRelayNamespace', 'New-AzRelayNetworkRuleSetIPRuleObject', 'New-AzWcfRelay', 'Remove-AzRelayAuthorizationRule', 'Remove-AzRelayCluster', 'Remove-AzRelayHybridConnection', 'Remove-AzRelayNamespace', 'Remove-AzWcfRelay', 'Set-AzRelayAuthorizationRule', 'Set-AzRelayCluster', 'Set-AzRelayHybridConnection', 'Set-AzRelayNamespaceNetworkRuleSet', 'Set-AzWcfRelay', 'Test-AzRelayName', 'Update-AzRelayNamespace'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Relay'

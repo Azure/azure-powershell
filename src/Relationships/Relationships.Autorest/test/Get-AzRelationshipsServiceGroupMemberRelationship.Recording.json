@@ -1,17 +1,17 @@
 {
-  "Get-AzRelationshipsServiceGroupMemberRelationship+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetodg1kq?api-version=2023-09-01-preview+1": {
+  "Get-AzRelationshipsServiceGroupMemberRelationship+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetgr2f8n?api-version=2026-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetodg1kq?api-version=2023-09-01-preview",
+      "RequestUri": "https://management.azure.com//subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetgr2f8n?api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "659b2452-24ca-4ca7-a4f4-e7a50afc1b22" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "80b63f67-b7ac-4c27-bbf6-13d1bbc828d9" ],
         "CommandName": [ "Get-AzRelationshipsServiceGroupMemberRelationship" ],
         "FullCommandName": [ "Get-AzRelationshipsServiceGroupMemberRelationship_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,43 +22,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Request-Id": [ "7b0d8982-a603-45f6-b026-91bfc3e84175" ],
-        "x-ba-restapi": [ "3.2026.0404.1" ],
-        "x-ms-request-id": [ "westus2:7b0d8982-a603-45f6-b026-91bfc3e84175" ],
-        "mise-correlation-id": [ "d88673c5-66b7-4eba-93bb-2727cc3416a9" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/e4347e4d-9b54-46d0-8646-b63b3a1a03c3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "2bbfbc6b-8e78-41b7-b64b-b69782a77d6c" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260427T142002Z:2bbfbc6b-8e78-41b7-b64b-b69782a77d6c" ],
+        "ETag": [ "\"6c00e427-0000-1100-0000-6ab47d320000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/5efc8ca9-0e3e-40eb-8314-fcf8bfc3b6b8" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "fdd441a1-0b2c-4a54-821b-3f7d13e8c4ff" ],
+        "x-ms-correlation-request-id": [ "84b35c64-ade8-4cdd-9f30-6bdcb8a8934f" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260924T013550Z:84b35c64-ade8-4cdd-9f30-6bdcb8a8934f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4A0FF1E4E19D45AC9917D5DD6098E1C4 Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:20:02Z" ],
-        "Date": [ "Mon, 27 Apr 2026 14:20:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C98AF203A9F44ABE9623439A6909FC3C Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:35:49Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:35:50 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "706" ],
+        "Content-Length": [ "957" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"targetId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Management/serviceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetodg1kq\",\"name\":\"sgmrelgetodg1kq\",\"type\":\"Microsoft.Relationships/serviceGroupMember\"}",
+      "Content": "{\"id\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetgr2f8n\",\"name\":\"sgmrelgetgr2f8n\",\"type\":\"microsoft.relationships/servicegroupmember\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:30:17.4372831Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:30:17.4372831Z\"},\"properties\":{\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzRelationshipsServiceGroupMemberRelationship+[NoContext]+GetViaIdentity+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetodg1kq?api-version=2023-09-01-preview+1": {
+  "Get-AzRelationshipsServiceGroupMemberRelationship+[NoContext]+GetViaIdentity+$GET+https://management.azure.com//subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetgr2f8n?api-version=2026-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetodg1kq?api-version=2023-09-01-preview",
+      "RequestUri": "https://management.azure.com//subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetgr2f8n?api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "da7b8d3e-2282-400d-8929-39d0db61cef4" ],
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "0bea6d59-418c-4f0d-a75e-031815fda2f6" ],
         "CommandName": [ "Get-AzRelationshipsServiceGroupMemberRelationship" ],
         "FullCommandName": [ "Get-AzRelationshipsServiceGroupMemberRelationship_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -69,27 +68,71 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Request-Id": [ "cebd1de2-fbfa-4832-8d49-0fb010ffacf7" ],
-        "x-ba-restapi": [ "3.2026.0404.1" ],
-        "x-ms-request-id": [ "westus2:cebd1de2-fbfa-4832-8d49-0fb010ffacf7" ],
-        "mise-correlation-id": [ "85b82d56-1ba9-4809-b1b9-c7090469bc20" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/1813266b-b90c-4dd9-865c-4b8adaef5f10" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
-        "x-ms-correlation-request-id": [ "cc051791-c70c-433a-b040-6c33a2a29998" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260427T142003Z:cc051791-c70c-433a-b040-6c33a2a29998" ],
+        "ETag": [ "\"6c00e427-0000-1100-0000-6ab47d320000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/0b2bf21b-64f1-43ff-9ebd-731c5cf4a47a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "52497ed8-fda0-4f93-ab1f-08c245d39476" ],
+        "x-ms-correlation-request-id": [ "4dd98eb1-d21c-45d6-ad28-1ade0512caa4" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260924T013550Z:4dd98eb1-d21c-45d6-ad28-1ade0512caa4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 081181F46C9F4AC981252BDAC868C3F1 Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:20:03Z" ],
-        "Date": [ "Mon, 27 Apr 2026 14:20:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DBDE2CAEE8CF43AB90D470783A045EBD Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:35:50Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:35:50 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "706" ],
+        "Content-Length": [ "957" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"targetId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Management/serviceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetodg1kq\",\"name\":\"sgmrelgetodg1kq\",\"type\":\"Microsoft.Relationships/serviceGroupMember\"}",
+      "Content": "{\"id\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetgr2f8n\",\"name\":\"sgmrelgetgr2f8n\",\"type\":\"microsoft.relationships/servicegroupmember\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:30:17.4372831Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:30:17.4372831Z\"},\"properties\":{\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRelationshipsServiceGroupMemberRelationship+[NoContext]+List+$GET+https://management.azure.com//subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember?api-version=2026-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember?api-version=2026-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "81e5ada4-7886-48db-b161-875ec4575d07" ],
+        "CommandName": [ "Get-AzRelationshipsServiceGroupMemberRelationship" ],
+        "FullCommandName": [ "Get-AzRelationshipsServiceGroupMemberRelationship_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/a02bab4c-9bef-467b-860d-8490d959518a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3e3ffd6d-d89d-4f72-9859-aea5e54ac727" ],
+        "x-ms-correlation-request-id": [ "228de7b5-853f-4e75-b2ab-abfe2fe61989" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260924T013550Z:228de7b5-853f-4e75-b2ab-abfe2fe61989" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F1B38809245047D6AB43A32FF1EB4A01 Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:35:50Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:35:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3841" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmrelgetgr2f8n\",\"name\":\"sgmrelgetgr2f8n\",\"type\":\"microsoft.relationships/servicegroupmember\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:30:17.4372831Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:30:17.4372831Z\"},\"properties\":{\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmreluptgr2f8n\",\"name\":\"sgmreluptgr2f8n\",\"type\":\"microsoft.relationships/servicegroupmember\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:31:56.4310249Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:31:56.4310249Z\"},\"properties\":{\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmreldelgr2f8n\",\"name\":\"sgmreldelgr2f8n\",\"type\":\"microsoft.relationships/servicegroupmember\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:34:07.1937377Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:34:07.1937377Z\"},\"properties\":{\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/serviceGroupMember/sgmreldigr2f8n\",\"name\":\"sgmreldigr2f8n\",\"type\":\"microsoft.relationships/servicegroupmember\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:34:41.5037838Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:34:41.5037838Z\"},\"properties\":{\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   }

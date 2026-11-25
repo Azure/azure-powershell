@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 return;
             }
-            {_sasUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("sasUri"), out var __jsonSasUri) ? (string)__jsonSasUri : (string)_sasUri;}
+            {_sasUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("sasUri"), out var __jsonSasUri) ? new System.Net.NetworkCredential("",(string)__jsonSasUri).SecurePassword : _sasUri;}
             AfterFromJson(json);
         }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._sasUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(this._sasUri.ToString()) : null, "sasUri" ,container.Add );
+            AddIf( null != (((object)this._sasUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._sasUri))) : null, "sasUri" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -15,7 +15,8 @@ Create an in-memory object for AfdDomainHttpsParameters.
 ```
 New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <String>
  [-CipherSuiteSetType <String>] [-CustomizedCipherSuiteSet <IAfdDomainHttpsCustomizedCipherSuiteSet>]
- [-MinimumTlsVersion <String>] [-Secret <IResourceReference>] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-Secret <IResourceReference>] [-ServerTlsGroup <String[]>]
+ [-ServerTlsGroupPolicy <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,6 +108,36 @@ subs/rg/profile/secret.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerTlsGroup
+Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerTlsGroupPolicy
+Server TLS group policy that will be used for Https.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

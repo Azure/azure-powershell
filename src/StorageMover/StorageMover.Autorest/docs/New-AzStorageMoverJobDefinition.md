@@ -16,34 +16,42 @@ Create a Job Definition resource, which contains configuration for a single unit
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
  -StorageMoverName <String> -CopyMode <String> -SourceName <String> -TargetName <String>
- [-SubscriptionId <String>] [-AgentName <String>] [-Connection <String[]>] [-DataIntegrityValidation <String>]
- [-Description <String>] [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>] [-JobType <String>]
+ [-SubscriptionId <String>] [-AgentName <String>] [-Connection <String[]>]
+ [-CrossTenantEndpointResourceId <String>] [-CrossTenantEndpointTenantId <String>]
+ [-DataIntegrityValidation <String>] [-Description <String>] [-ExecutionTimeHour <Int32>]
+ [-ExecutionTimeMinute <Single>] [-IsCrossTenantJob] [-JobType <String>] [-MoverSyncedUntil <DateTime>]
  [-PreservePermission] [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>]
  [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>]
- [-ScheduleIsActive] [-ScheduleStartDate <DateTime>] [-SourceSubpath <String>] [-TargetSubpath <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ScheduleIsActive] [-ScheduleRepeatInterval <String>] [-ScheduleStartDate <DateTime>]
+ [-SourceSubpath <String>] [-SyncMode <String>] [-TargetSubpath <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProjectExpanded
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectInputObject <IStorageMoverIdentity> -CopyMode <String>
  -SourceName <String> -TargetName <String> [-AgentName <String>] [-Connection <String[]>]
+ [-CrossTenantEndpointResourceId <String>] [-CrossTenantEndpointTenantId <String>]
  [-DataIntegrityValidation <String>] [-Description <String>] [-ExecutionTimeHour <Int32>]
- [-ExecutionTimeMinute <Single>] [-JobType <String>] [-PreservePermission] [-ScheduleCronExpression <String>]
- [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>]
- [-ScheduleFrequency <String>] [-ScheduleIsActive] [-ScheduleStartDate <DateTime>] [-SourceSubpath <String>]
- [-TargetSubpath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExecutionTimeMinute <Single>] [-IsCrossTenantJob] [-JobType <String>] [-MoverSyncedUntil <DateTime>]
+ [-PreservePermission] [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>]
+ [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>]
+ [-ScheduleIsActive] [-ScheduleRepeatInterval <String>] [-ScheduleStartDate <DateTime>]
+ [-SourceSubpath <String>] [-SyncMode <String>] [-TargetSubpath <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityStorageMoverExpanded
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String>
  -StorageMoverInputObject <IStorageMoverIdentity> -CopyMode <String> -SourceName <String> -TargetName <String>
- [-AgentName <String>] [-Connection <String[]>] [-DataIntegrityValidation <String>] [-Description <String>]
- [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>] [-JobType <String>] [-PreservePermission]
- [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>]
- [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>] [-ScheduleIsActive]
- [-ScheduleStartDate <DateTime>] [-SourceSubpath <String>] [-TargetSubpath <String>]
+ [-AgentName <String>] [-Connection <String[]>] [-CrossTenantEndpointResourceId <String>]
+ [-CrossTenantEndpointTenantId <String>] [-DataIntegrityValidation <String>] [-Description <String>]
+ [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>] [-IsCrossTenantJob] [-JobType <String>]
+ [-MoverSyncedUntil <DateTime>] [-PreservePermission] [-ScheduleCronExpression <String>]
+ [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>]
+ [-ScheduleFrequency <String>] [-ScheduleIsActive] [-ScheduleRepeatInterval <String>]
+ [-ScheduleStartDate <DateTime>] [-SourceSubpath <String>] [-SyncMode <String>] [-TargetSubpath <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -100,6 +108,61 @@ Type                         : microsoft.storagemover/storagemovers/projects/job
 
 This command creates a job definition.
 
+### Example 2: Create a cross-tenant job definition
+```powershell
+New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -JobType CloudToCloud -CopyMode Additive -SourceName mySourceEndpoint -TargetName partnerTargetEndpoint -IsCrossTenantJob -CrossTenantEndpointTenantId "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz" -CrossTenantEndpointResourceId "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.StorageMover/storageMovers/partnerStorageMover/endpoints/partnerTargetEndpoint"
+```
+
+```output
+AgentName                     :
+AgentResourceId               :
+Connection                    :
+CopyMode                      : Additive
+CrossTenantEndpointResourceId : /subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.StorageMover/storageMovers/partnerStorageMover/endpoints/partnerTargetEndpoint
+CrossTenantEndpointTenantId   : zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz
+DataIntegrityValidation       :
+Description                   :
+ExecutionTimeHour             :
+ExecutionTimeMinute           :
+Id                            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/projects/myProject/jobDefinitions/myJob
+IsCrossTenantJob              : True
+JobType                       : CloudToCloud
+LatestJobRunName              :
+LatestJobRunResourceId        :
+LatestJobRunStatus            :
+MoverSyncedUntil              :
+Name                          : myJob
+PreservePermission            :
+ProvisioningState             : Succeeded
+ResourceGroupName             : myResourceGroup
+ScheduleCronExpression        :
+ScheduleDaysOfMonth           :
+ScheduleDaysOfWeek            :
+ScheduleEndDate               :
+ScheduleFrequency             : None
+ScheduleIsActive              : False
+ScheduleRepeatInterval        :
+ScheduleStartDate             :
+SourceName                    : mySourceEndpoint
+SourceResourceId              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/mySourceEndpoint
+SourceSubpath                 :
+SourceTargetMapValue          :
+SyncMode                      :
+SystemDataCreatedAt           : 10/19/2026 10:44:02 AM
+SystemDataCreatedBy           : xxxxxxxxxx
+SystemDataCreatedByType       : User
+SystemDataLastModifiedAt      : 10/19/2026 10:44:02 AM
+SystemDataLastModifiedBy      : xxxxxxxxxx
+SystemDataLastModifiedByType  : User
+TargetName                    : partnerTargetEndpoint
+TargetResourceId              : /subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.StorageMover/storageMovers/partnerStorageMover/endpoints/partnerTargetEndpoint
+TargetSubpath                 :
+Type                          : microsoft.storagemover/storagemovers/projects/jobdefinitions
+```
+
+This command creates a job definition that copies data from a source endpoint in the current tenant to a target endpoint in a partner tenant.
+Both endpoints must enable cross-tenant data transfer and allow each other's storage accounts before a job run can start.
+
 ## PARAMETERS
 
 ### -AgentName
@@ -141,6 +204,39 @@ Parameter Sets: CreateExpanded, CreateViaIdentityProjectExpanded, CreateViaIdent
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CrossTenantEndpointResourceId
+Full ARM resource ID of the cross-tenant (foreign) endpoint.
+On thesource-tenant copy this is the TARGET endpoint; on thetarget-tenant copy this is the SOURCE endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProjectExpanded, CreateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CrossTenantEndpointTenantId
+The Azure AD tenant ID of the cross-tenant source endpoint.
+Required when`isCrossTenantJob` is true.
+Cannot be modified after the Job Definition iscreated.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProjectExpanded, CreateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -229,6 +325,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IsCrossTenantJob
+Indicates that this Job Definition is a cross-tenant job where thecounterpart endpoint resides in a different Azure AD tenant.
+When true,`crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must beprovided.
+Defaults to false.
+Cannot be modified after the Job Definition iscreated.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityProjectExpanded, CreateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JobType
 The type of the Job.
 
@@ -268,6 +382,21 @@ Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoverSyncedUntil
+The last time the mover was synchronized.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: CreateExpanded, CreateViaIdentityProjectExpanded, CreateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -440,6 +569,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScheduleRepeatInterval
+Repeat interval used for sub-daily schedules.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProjectExpanded, CreateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScheduleStartDate
 Specific one-time execution date and time
 
@@ -526,6 +670,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SyncMode
+The synchronization mode for the Job Definition.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProjectExpanded, CreateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

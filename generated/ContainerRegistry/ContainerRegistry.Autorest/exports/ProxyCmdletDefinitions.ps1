@@ -182,8 +182,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -440,8 +439,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -700,8 +698,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -960,8 +957,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1220,8 +1216,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1480,8 +1475,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1668,8 +1662,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1922,8 +1915,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2182,6 +2174,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        ImportExpanded = 'Az.ContainerRegistry.private\Import-AzContainerRegistryImage_ImportExpanded';
+        ImportViaJsonFilePath = 'Az.ContainerRegistry.private\Import-AzContainerRegistryImage_ImportViaJsonFilePath';
+        ImportViaJsonString = 'Az.ContainerRegistry.private\Import-AzContainerRegistryImage_ImportViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -2195,8 +2214,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2484,6 +2502,34 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryAgentPool_CreateExpanded';
+        CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryAgentPool_CreateViaIdentityRegistryExpanded';
+        CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryAgentPool_CreateViaJsonFilePath';
+        CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryAgentPool_CreateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -2497,8 +2543,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2809,6 +2854,34 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryExportPipeline_CreateExpanded';
+        CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryExportPipeline_CreateViaIdentityRegistryExpanded';
+        CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryExportPipeline_CreateViaJsonFilePath';
+        CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryExportPipeline_CreateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -2822,8 +2895,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3143,6 +3215,34 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryImportPipeline_CreateExpanded';
+        CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryImportPipeline_CreateViaIdentityRegistryExpanded';
+        CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryImportPipeline_CreateViaJsonFilePath';
+        CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryImportPipeline_CreateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -3156,8 +3256,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3417,6 +3516,34 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryScopeMap_CreateExpanded';
+        CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryScopeMap_CreateViaIdentityRegistryExpanded';
+        CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryScopeMap_CreateViaJsonFilePath';
+        CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryScopeMap_CreateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -3430,8 +3557,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3717,6 +3843,34 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryToken_CreateExpanded';
+        CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryToken_CreateViaIdentityRegistryExpanded';
+        CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryToken_CreateViaJsonFilePath';
+        CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryToken_CreateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -3730,8 +3884,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4121,6 +4274,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistry_CreateExpanded';
+        CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistry_CreateViaJsonFilePath';
+        CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistry_CreateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -4134,8 +4314,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4394,6 +4573,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryAgentPool_Delete';
+        DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryAgentPool_DeleteViaIdentity';
+        DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryAgentPool_DeleteViaIdentityRegistry';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -4407,8 +4613,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4668,6 +4873,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryExportPipeline_Delete';
+        DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryExportPipeline_DeleteViaIdentity';
+        DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryExportPipeline_DeleteViaIdentityRegistry';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -4681,8 +4913,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -4942,6 +5173,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryImportPipeline_Delete';
+        DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryImportPipeline_DeleteViaIdentity';
+        DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryImportPipeline_DeleteViaIdentityRegistry';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -4955,8 +5213,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -5217,6 +5474,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryReplication_Delete';
+        DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryReplication_DeleteViaIdentity';
+        DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryReplication_DeleteViaIdentityRegistry';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -5230,8 +5514,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -5491,6 +5774,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryScopeMap_Delete';
+        DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryScopeMap_DeleteViaIdentity';
+        DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryScopeMap_DeleteViaIdentityRegistry';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -5504,8 +5814,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -5765,6 +6074,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryToken_Delete';
+        DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryToken_DeleteViaIdentity';
+        DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryToken_DeleteViaIdentityRegistry';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -5778,8 +6114,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -6040,6 +6375,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryWebhook_Delete';
+        DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryWebhook_DeleteViaIdentity';
+        DeleteViaIdentityRegistry = 'Az.ContainerRegistry.private\Remove-AzContainerRegistryWebhook_DeleteViaIdentityRegistry';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -6053,8 +6415,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -6279,6 +6640,32 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ContainerRegistry.private\Remove-AzContainerRegistry_Delete';
+        DeleteViaIdentity = 'Az.ContainerRegistry.private\Remove-AzContainerRegistry_DeleteViaIdentity';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -6292,8 +6679,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -6484,8 +6870,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -6776,6 +7161,35 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryAgentPool_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryAgentPool_UpdateViaIdentityExpanded';
+        UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryAgentPool_UpdateViaIdentityRegistryExpanded';
+        UpdateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryAgentPool_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryAgentPool_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -6789,8 +7203,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -7104,6 +7517,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryExportPipeline_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryExportPipeline_UpdateViaIdentityExpanded';
+        UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryExportPipeline_UpdateViaIdentityRegistryExpanded';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -7117,8 +7557,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -7438,6 +7877,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryImportPipeline_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryImportPipeline_UpdateViaIdentityExpanded';
+        UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryImportPipeline_UpdateViaIdentityRegistryExpanded';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -7451,8 +7917,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -7744,6 +8209,35 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryScopeMap_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryScopeMap_UpdateViaIdentityExpanded';
+        UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryScopeMap_UpdateViaIdentityRegistryExpanded';
+        UpdateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryScopeMap_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryScopeMap_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -7757,8 +8251,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -8080,6 +8573,35 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryToken_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryToken_UpdateViaIdentityExpanded';
+        UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryToken_UpdateViaIdentityRegistryExpanded';
+        UpdateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryToken_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryToken_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -8093,8 +8615,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -8431,6 +8952,35 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryWebhook_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryWebhook_UpdateViaIdentityExpanded';
+        UpdateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistryWebhook_UpdateViaIdentityRegistryExpanded';
+        UpdateViaJsonFilePath = 'Az.ContainerRegistry.private\Update-AzContainerRegistryWebhook_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.ContainerRegistry.private\Update-AzContainerRegistryWebhook_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -8444,8 +8994,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -8845,6 +9394,32 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistry_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.ContainerRegistry.private\Update-AzContainerRegistry_UpdateViaIdentityExpanded';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -8858,8 +9433,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -9091,8 +9665,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -9323,8 +9896,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -9596,8 +10168,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -9870,8 +10441,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -10083,8 +10653,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -10354,8 +10923,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -10807,8 +11375,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -11176,8 +11743,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -11390,8 +11956,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -11677,8 +12242,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

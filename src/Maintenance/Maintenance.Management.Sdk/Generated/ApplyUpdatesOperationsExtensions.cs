@@ -13,13 +13,40 @@ namespace Microsoft.Azure.Management.Maintenance
     public static partial class ApplyUpdatesOperationsExtensions
     {
         /// <summary>
+        /// Get Configuration records within a subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ApplyUpdate> List(this IApplyUpdatesOperations operations)
+        {
+                return ((IApplyUpdatesOperations)operations).ListAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get Configuration records within a subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplyUpdate>> ListAsync(this IApplyUpdatesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Track maintenance updates to resource with parent
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -28,16 +55,16 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Resource parent type
         /// </param>
         /// <param name='resourceParentName'>
-        /// Resource parent identifier
+        /// Resource parent name
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource name
         /// </param>
         /// <param name='applyUpdateName'>
-        /// applyUpdate Id
+        /// The name of the ApplyUpdate
         /// </param>
         public static ApplyUpdate GetParent(this IApplyUpdatesOperations operations, string resourceGroupName, string providerName, string resourceParentType, string resourceParentName, string resourceType, string resourceName, string applyUpdateName)
         {
@@ -51,7 +78,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -60,16 +87,16 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Resource parent type
         /// </param>
         /// <param name='resourceParentName'>
-        /// Resource parent identifier
+        /// Resource parent name
         /// </param>
         /// <param name='resourceType'>
         /// Resource type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource name
         /// </param>
         /// <param name='applyUpdateName'>
-        /// applyUpdate Id
+        /// The name of the ApplyUpdate
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -88,19 +115,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='applyUpdateName'>
-        /// applyUpdate Id
+        /// The name of the ApplyUpdate
         /// </param>
         public static ApplyUpdate Get(this IApplyUpdatesOperations operations, string resourceGroupName, string providerName, string resourceType, string resourceName, string applyUpdateName)
         {
@@ -114,19 +141,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='applyUpdateName'>
-        /// applyUpdate Id
+        /// The name of the ApplyUpdate
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -145,19 +172,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='applyUpdateName'>
-        /// ApplyUpdate name
+        /// The name of the ApplyUpdate
         /// </param>
         public static ApplyUpdate CreateOrUpdateOrCancel(this IApplyUpdatesOperations operations, string resourceGroupName, string providerName, string resourceType, string resourceName, string applyUpdateName, ApplyUpdate applyUpdate)
         {
@@ -171,19 +198,19 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
         /// </param>
         /// <param name='resourceType'>
-        /// Resource type
+        /// Resource parent type
         /// </param>
         /// <param name='resourceName'>
-        /// Resource identifier
+        /// Resource parent name
         /// </param>
         /// <param name='applyUpdateName'>
-        /// ApplyUpdate name
+        /// The name of the ApplyUpdate
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -202,7 +229,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -231,7 +258,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -265,7 +292,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -288,7 +315,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='providerName'>
         /// Resource provider name
@@ -315,9 +342,12 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<ApplyUpdate> List(this IApplyUpdatesOperations operations)
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ApplyUpdate> ListNext(this IApplyUpdatesOperations operations, string nextPageLink)
         {
-                return ((IApplyUpdatesOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IApplyUpdatesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -326,12 +356,15 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ApplyUpdate>> ListAsync(this IApplyUpdatesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplyUpdate>> ListNextAsync(this IApplyUpdatesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

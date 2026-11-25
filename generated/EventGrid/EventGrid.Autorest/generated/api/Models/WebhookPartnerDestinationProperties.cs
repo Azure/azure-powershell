@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthentication Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IWebhookPartnerDestinationPropertiesInternal.ClientAuthentication { get => (this._clientAuthentication = this._clientAuthentication ?? new Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.PartnerClientAuthentication()); set { {_clientAuthentication = value;} } }
 
         /// <summary>Internal Acessors for ClientAuthenticationType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IWebhookPartnerDestinationPropertiesInternal.ClientAuthenticationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal)ClientAuthentication).ClientAuthenticationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal)ClientAuthentication).ClientAuthenticationType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IWebhookPartnerDestinationPropertiesInternal.ClientAuthenticationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal)ClientAuthentication).ClientAuthenticationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal)ClientAuthentication).ClientAuthenticationType = value ?? null; }
 
         /// <summary>Creates an new <see cref="WebhookPartnerDestinationProperties" /> instance.</summary>
         public WebhookPartnerDestinationProperties()

@@ -88,7 +88,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             }
             __resource?.ToJson(container, serializationMode);
             AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
-            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

@@ -47,5 +47,10 @@ namespace Microsoft.Azure.Management.Search.Models
         /// to 12 partitions.
         /// </summary>
         public const string StorageOptimizedL2 = "storage_optimized_l2";
+        /// <summary>
+        /// Serverless tier, offering low-touch, consumption-based, and pay-as-you-go
+        /// experience, with auto-scaling capabilities.
+        /// </summary>
+        public const string Serverless = "serverless";
     }
 }

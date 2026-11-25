@@ -1026,7 +1026,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         /// <summary>
         /// https://stackoverflow.com/a/41622689
         /// Generates Guid based on String. Key assumption for this algorithm is that name is unique (across where it it's being used)
-        /// and if name byte length is less than 16 - it will be fetched directly into guid, if over 16 bytes - then we compute sha-1
+        /// and if name byte length is less than 16 - it will be fetched directly into guid, if 16 bytes or more - then we compute SHA-256
         /// hash from string and then pass it to guid.
         /// </summary>
         /// <param name="name">Unique name which is unique across where this guid will be used.</param>
@@ -1041,10 +1041,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             }
             else
             {
-                using (SHA1 sha1 = SHA1.Create())
+                using (SHA256 sha256 = SHA256.Create())
                 {
-                    byte[] hash = sha1.ComputeHash(buf);
-                    // Hash is 20 bytes, but we need 16. We loose some of "uniqueness", but I doubt it will be fatal
+                    byte[] hash = sha256.ComputeHash(buf);
+                    // Use the first 16 bytes of the 32-byte hash for the GUID.
                     Array.Copy(hash, guid, 16);
                 }
             }

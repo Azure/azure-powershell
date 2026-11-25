@@ -18,19 +18,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ProtectionContainerResource> List(this IDeletedProtectionContainersOperations operations, string resourceGroupName, string vaultName, Microsoft.Rest.Azure.OData.ODataQuery<BMSContainerQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSContainerQueryObject>))
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ProtectionContainerResource> List(this IDeletedProtectionContainersOperations operations, string resourceGroupName, string vaultName, string filter = default(string))
         {
-                return ((IDeletedProtectionContainersOperations)operations).ListAsync(resourceGroupName, vaultName, odataQuery).GetAwaiter().GetResult();
+                return ((IDeletedProtectionContainersOperations)operations).ListAsync(resourceGroupName, vaultName, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -39,22 +38,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionContainerResource>> ListAsync(this IDeletedProtectionContainersOperations operations, string resourceGroupName, string vaultName, Microsoft.Rest.Azure.OData.ODataQuery<BMSContainerQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSContainerQueryObject>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionContainerResource>> ListAsync(this IDeletedProtectionContainersOperations operations, string resourceGroupName, string vaultName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vaultName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vaultName, filter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

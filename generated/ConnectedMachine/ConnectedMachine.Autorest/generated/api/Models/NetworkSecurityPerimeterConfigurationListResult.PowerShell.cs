@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>A list of network security perimeter configurations.</summary>
+    /// <summary>The response of a NetworkSecurityPerimeterConfiguration list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkSecurityPerimeterConfigurationListResultTypeConverter))]
     public partial class NetworkSecurityPerimeterConfigurationListResult
     {
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// A list of network security perimeter configurations.
+    /// The response of a NetworkSecurityPerimeterConfiguration list operation.
     [System.ComponentModel.TypeConverter(typeof(NetworkSecurityPerimeterConfigurationListResultTypeConverter))]
     public partial interface INetworkSecurityPerimeterConfigurationListResult
 

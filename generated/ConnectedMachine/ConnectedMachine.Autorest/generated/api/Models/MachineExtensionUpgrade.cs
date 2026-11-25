@@ -14,11 +14,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     {
 
         /// <summary>Backing field for <see cref="ExtensionTarget" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTarget _extensionTarget;
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeExtensionTargets _extensionTarget;
 
         /// <summary>Describes the Extension Target Properties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTarget ExtensionTarget { get => (this._extensionTarget = this._extensionTarget ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ExtensionTarget()); set => this._extensionTarget = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeExtensionTargets ExtensionTarget { get => (this._extensionTarget = this._extensionTarget ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachineExtensionUpgradeExtensionTargets()); set => this._extensionTarget = value; }
 
         /// <summary>Creates an new <see cref="MachineExtensionUpgrade" /> instance.</summary>
         public MachineExtensionUpgrade()
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Update = true,
         Description = @"Describes the Extension Target Properties.",
         SerializedName = @"extensionTargets",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTarget) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTarget ExtensionTarget { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeExtensionTargets) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeExtensionTargets ExtensionTarget { get; set; }
 
     }
     /// Describes the Machine Extension Upgrade Properties.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
     {
         /// <summary>Describes the Extension Target Properties.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTarget ExtensionTarget { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgradeExtensionTargets ExtensionTarget { get; set; }
 
     }
 }

@@ -11,16 +11,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     using System;
 
     /// <summary>
-    /// Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
+    /// Deletes a Connection resource. Returns 409 if there are active jobs using this connection.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzStorageMoverConnection_DeleteViaIdentityStorageMover", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"Deletes a Connection resource. Returns 409 if there are active jobs using this connection.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}", ApiVersion = "2025-12-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}", ApiVersion = "2026-05-01")]
     public partial class RemoveAzStorageMoverConnection_DeleteViaIdentityStorageMover : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IContext

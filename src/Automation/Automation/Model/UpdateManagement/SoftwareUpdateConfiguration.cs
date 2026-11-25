@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             this.ResourceGroupName = ResourceGroupName;
             AutomationAccountName = automationAccountName;
             Name = suc.Name;
-            CreationTime = suc.CreationTime;
+            CreationTime = suc.CreationTime.GetValueOrDefault();
             ScheduleConfiguration = new Schedule
             {
                 Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), suc.Frequency, true),
-                StartTime = suc.StartTime,
+                StartTime = suc.StartTime.GetValueOrDefault(),
                 NextRun = suc.NextRun
             };
             UpdateConfiguration = new UpdateConfiguration()
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
                 Duration = suc.UpdateConfiguration.Duration,
                 AzureVirtualMachines = suc.UpdateConfiguration.AzureVirtualMachines
             };
-            LastModifiedTime = suc.LastModifiedTime;
+            LastModifiedTime = suc.LastModifiedTime.GetValueOrDefault();
             ProvisioningState = suc.ProvisioningState;
         }
 
@@ -58,14 +58,14 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
         {
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
-            this.CreationTime = suc.CreationTime;
+            this.CreationTime = suc.CreationTime.GetValueOrDefault();
             this.Description = suc.ScheduleInfo.Description;
             this.ErrorInfo = suc.Error == null ? null : new ErrorInfo
             {
                 Code = suc.Error.Code,
                 Message = suc.Error.Message
             };
-            this.LastModifiedTime = suc.LastModifiedTime;
+            this.LastModifiedTime = suc.LastModifiedTime.GetValueOrDefault();
             this.Name = suc.Name;
             this.ProvisioningState = suc.ProvisioningState;
             var schedule = new Sdk.Schedule

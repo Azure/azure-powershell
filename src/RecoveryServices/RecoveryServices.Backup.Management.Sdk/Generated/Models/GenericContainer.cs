@@ -42,14 +42,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="protectableObjectType">Type of the protectable object associated with this container
         /// </param>
 
+        /// <param name="sourceLocation">Source location of the container
+        /// </param>
+
         /// <param name="fabricName">Name of the container&#39;s fabric
         /// </param>
 
         /// <param name="extendedInformation">Extended information (not returned in List container API calls)
         /// </param>
-        public GenericContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string fabricName = default(string), GenericContainerExtendedInfo extendedInformation = default(GenericContainerExtendedInfo))
+        public GenericContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceLocation = default(string), string fabricName = default(string), GenericContainerExtendedInfo extendedInformation = default(GenericContainerExtendedInfo))
 
-        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType)
+        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType, sourceLocation)
         {
             this.FabricName = fabricName;
             this.ExtendedInformation = extendedInformation;

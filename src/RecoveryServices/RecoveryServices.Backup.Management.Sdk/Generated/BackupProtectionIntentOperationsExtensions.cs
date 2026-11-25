@@ -18,22 +18,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ProtectionIntentResource> List(this IBackupProtectionIntentOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<ProtectionIntentQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectionIntentQueryObject>), string skipToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<ProtectionIntentResource> List(this IBackupProtectionIntentOperations operations, string vaultName, string resourceGroupName, string filter = default(string), string skipToken = default(string))
         {
-                return ((IBackupProtectionIntentOperations)operations).ListAsync(vaultName, resourceGroupName, odataQuery, skipToken).GetAwaiter().GetResult();
+                return ((IBackupProtectionIntentOperations)operations).ListAsync(vaultName, resourceGroupName, filter, skipToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -42,15 +41,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -58,9 +56,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionIntentResource>> ListAsync(this IBackupProtectionIntentOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<ProtectionIntentQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectionIntentQueryObject>), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectionIntentResource>> ListAsync(this IBackupProtectionIntentOperations operations, string vaultName, string resourceGroupName, string filter = default(string), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, odataQuery, skipToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, filter, skipToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

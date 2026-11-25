@@ -17,11 +17,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Relay/namespaces"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzRelayNamespace_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties = new string[] {"PrivateEndpointConnection"}, NewOutputProperties = new string[] {"List[PrivateEndpointConnection]" } )]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"Lists all the available namespaces within the subscription regardless of the resourceGroups.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/namespaces", ApiVersion = "2021-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/namespaces", ApiVersion = "2026-07-01-preview")]
     public partial class GetAzRelayNamespace_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IContext
@@ -129,15 +128,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The ID of the target subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(

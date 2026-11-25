@@ -42,12 +42,18 @@ namespace Microsoft.Azure.Commands.Compute
         public string VMName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMSize)]
         [ValidateNotNullOrEmpty]
         public string VMSize { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The preferred VM size. Azure may deploy a compatible alternative. Cannot be used with VMSize.")]
+        [AllowEmptyString]
+        public string PreferredVMSize { get; set; }
 
         [Parameter(
             Position = 2,
@@ -115,8 +121,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
-        [PSArgumentCompleter("Regular", "Spot")]
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot", "SpotPlus")]
         public string Priority { get; set; }
 
         [Parameter(
@@ -141,6 +147,11 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -197,6 +208,13 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies processor frequency behavior.")]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
 	
@@ -247,6 +265,15 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.VMSize) && this.IsParameterBound(c => c.PreferredVMSize))
+            {
+                throw new ArgumentException("-VMSize and -PreferredVMSize cannot be used together.");
+            }
+            if (!this.IsParameterBound(c => c.VMSize) && !this.IsParameterBound(c => c.PreferredVMSize))
+            {
+                throw new ArgumentException("Specify either -VMSize or -PreferredVMSize.");
+            }
+
             var vm = new PSVirtualMachine
             {
                 Name = this.VMName,
@@ -308,6 +335,11 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.HardwareProfile.VmSize = this.VMSize;
             }
 
+            if (this.IsParameterBound(c => c.PreferredVMSize))
+            {
+                vm.FlexProfile = new FlexProfile(this.PreferredVMSize);
+            }
+
             if (this.IsParameterBound(c => c.vCPUCountAvailable))
             {
                 if (vm.HardwareProfile == null)
@@ -332,6 +364,15 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                 }
                 vm.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
+            }
+
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (vm.HardwareProfile == null)
+                {
+                    vm.HardwareProfile = new HardwareProfile();
+                }
+                vm.HardwareProfile.ProcessorMode = this.ProcessorMode;
             }
 
             if (this.EnableUltraSSD.IsPresent)
@@ -380,10 +421,24 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
             }
 
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
+            }
+
             if (this.IsParameterBound(c => c.CapacityReservationGroupId))
             {
                 vm.CapacityReservation = new CapacityReservationProfile();
                 vm.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
+            }
+
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                if (vm.CapacityReservation == null)
+                {
+                    vm.CapacityReservation = new CapacityReservationProfile();
+                }
+                vm.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
             }
 	    
 	        if (this.IsParameterBound(c => c.UserData))

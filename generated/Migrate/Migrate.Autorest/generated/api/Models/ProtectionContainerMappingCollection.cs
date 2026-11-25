@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>Link to fetch rest of the data.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping> _value;
 
-        /// <summary>List of container mappings.</summary>
+        /// <summary>The ProtectionContainerMapping items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping> Value { get => this._value; set => this._value = value; }
 
@@ -37,25 +37,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     public partial interface IProtectionContainerMappingCollection :
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IJsonSerializable
     {
-        /// <summary>Link to fetch rest of the data.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Link to fetch rest of the data.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of container mappings.</summary>
+        /// <summary>The ProtectionContainerMapping items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of container mappings.",
+        Description = @"The ProtectionContainerMapping items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping> Value { get; set; }
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     internal partial interface IProtectionContainerMappingCollectionInternal
 
     {
-        /// <summary>Link to fetch rest of the data.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of container mappings.</summary>
+        /// <summary>The ProtectionContainerMapping items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping> Value { get; set; }
 
     }

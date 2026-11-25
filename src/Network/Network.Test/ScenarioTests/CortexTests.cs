@@ -54,6 +54,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestVirtualHubIPv6CRUD()
+        {
+            TestRunner.RunTestScript("Test-VirtualHubIPv6CRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestVirtualHubEnableOnlyIpv6PeeringCRUD()
+        {
+            TestRunner.RunTestScript("Test-VirtualHubEnableOnlyIpv6PeeringCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
         public void TestStaticRoutesConfig()
         {
             TestRunner.RunTestScript("Test-StaticRoutesConfigCRUD");

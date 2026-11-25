@@ -29,7 +29,7 @@ For information on how to develop for `Az.CloudHsm`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 55cb134eeb9f92c8df1f6437a9e1130c4c2c4cc5
+commit: e35ce3d9e784cc6c298ae85608b9f79e7c833d28
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -38,7 +38,7 @@ require:
 # - (this-folder)/relative-path-to-your-local-readme.md
 
 input-file: 
-    - $(repo)/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2025-03-31/cloudhsm.json
+    - $(repo)/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/HardwareSecurityModules/preview/2025-12-01-preview/openapi.json
 try-require: 
   - $(repo)/specification/hardwaresecuritymodules/resource-manager/readme.powershell.md
 
@@ -53,6 +53,25 @@ title: CloudHsm
 # nested-object-to-string: true
 
 directive:
+  # The 2025-12-01-preview openapi.json also contains the Dedicated HSM, Payment HSM and Operations APIs.
+  # This module only covers Cloud HSM, so remove those paths and the definitions that only they use.
+  - from: openapi.json
+    where: $
+    transform: >-
+      for (const p of Object.keys($.paths || {})) {
+        if (/\/(dedicatedHSMs|paymentHsmClusters)(\/|$)/.test(p) || /\/providers\/Microsoft\.HardwareSecurityModules\/operations$/.test(p)) {
+          delete $.paths[p];
+        }
+      }
+      const unused = ['ApiEntityReference', 'EndpointDependency', 'EndpointDetail', 'Error', 'HsmState', 'JsonWebKeyType',
+        'NetworkInterface', 'NetworkProfile', 'OutboundEnvironmentEndpoint', 'OutboundEnvironmentEndpointCollection', 'Sku', 'SkuName'];
+      for (const d of Object.keys($.definitions || {})) {
+        if (/^(DedicatedHsm|PaymentHsm)/.test(d) || unused.includes(d)) {
+          delete $.definitions[d];
+        }
+      }
+      return $;
+
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required

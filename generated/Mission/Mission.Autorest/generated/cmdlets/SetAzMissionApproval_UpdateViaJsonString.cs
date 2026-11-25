@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mission.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Mission.Models.IApprovalResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Description(@"update a ApprovalResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Mission/approvals/{approvalName}", ApiVersion = "2026-03-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Mission/approvals/{approvalName}", ApiVersion = "2026-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.NotSuggestDefaultParameterSet]
     public partial class SetAzMissionApproval_UpdateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Mission.Runtime.IEventListener,

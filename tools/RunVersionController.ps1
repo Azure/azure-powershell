@@ -495,6 +495,10 @@ switch ($PSCmdlet.ParameterSetName)
     {
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName $ReleaseType $AssignedVersion
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName $ReleaseType  $AssignedVersion
+        if ($LASTEXITCODE -ne 0)
+        {
+            throw "VersionController failed with exit code $LASTEXITCODE"
+        }
         Update-AzPreview
     }
 
@@ -536,6 +540,10 @@ switch ($PSCmdlet.ParameterSetName)
 
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $ReleaseType
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $ReleaseType
+        if ($LASTEXITCODE -ne 0)
+        {
+            throw "VersionController failed with exit code $LASTEXITCODE"
+        }
 
         $versionBump = Bump-AzVersion
         # Each release needs to update AzPreview.psd1 and dotnet csv

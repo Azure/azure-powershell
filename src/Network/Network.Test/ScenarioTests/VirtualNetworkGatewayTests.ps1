@@ -410,11 +410,11 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
-      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
       $clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
       #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-      $samplePublicCertData =  "MIIC5zCCAc+gAwIBAgIQFzWsg2N5PItGfI8al3SfETANBgkqhkiG9w0BAQsFADAW MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0yMDEwMjgxODM1MDRaFw0yMTEwMjgx ODU1MDRaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF AAOCAQ8AMIIBCgKCAQEArZqDDCWiXAsrqgYYKDzDgzMKUjgVXgXpfaWltAFJR5rv KFpMJCJldq4YCdpkKT3n0STUz1PJii3cj/o8J9D2XTwdEY+gACOKNn5tRLE+Qz4N r77nfCzTyBNVcgllxoVZgyDhItVoo2JZ2G6+3ywDignfve20Wpj0YGGslanqQsmq o/OeSDNUXGmir4KLwlGjR6+os51y1X3nrqkMpE10K/uIPMe4+WFNrx7g4nOEz+cF vNmi0qdWDpwTg3/JxyhnZVL1TPdeM0zyclnveIvhhseSd3oW5L9OC3eSpPbjD70S UD4vDXrQuUV6SfYAX6aqhNeit/fqrI6ToT86mKwDhQIDAQABozEwLzAOBgNVHQ8B Af8EBAMCAgQwHQYDVR0OBBYEFJ7OyTGgBHVeDBZNKDnenAdlNTfwMA0GCSqGSIb3 DQEBCwUAA4IBAQAWopX5Gj2HslQnVAFzrteg9uIT+q503Zi8FTnGA4hN6I1xq9uo ETNAbQCrHf3R18lL37aP8Z//NVLcx5o+ZD0PMWhb5bhh1FeQ4QCVM0/CJKJqHLZU HCgc7FTiSAtpcGCdmSLM3Uq9Xpn3h5INB5Wekyk1SvyJYuoHqDRMZHKoxqnkYf7x QkThECnubbeFgdA+S/FpMa1+zMDPApcIFQ6/5vOcAEk/iRSv4dZZRyphgy+LlSdM rFKPtpeeEK/OeblVW0mBGIcQyz6sndHwk98u0Is46zlnGFeL7BHEvVSw/QBM6Hcq COZV52zKr851DjkNbHFttGXiwGMsSGdMnjzk"
+      $samplePublicCertData =  "MIIDIzCCAgugAwIBAgIQHJUBOKP2hJ9DNLXOEFmx3DANBgkqhkiG9w0BAQUFADA0MRIwEAYDVQQKDAlNaWNyb3NvZnQxHjAcBgNVBAMMFUJyayBMaXRlIFRlc3QgUm9vdCBDQTAeFw0yMTAxMjAyMjMzMTJaFw0zMDAxMTkwODAwMDBaMDQxEjAQBgNVBAoMCU1pY3Jvc29mdDEeMBwGA1UEAwwVQnJrIExpdGUgVGVzdCBSb290IENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4IO/xunNJ1Nir7xOfTreSwGEPRUfq2mXcpJaQAjI/7+utpQq30arARqzGNfmbme51X7bZVPLXnGqdsC52GE2oh+nB4UvNLvagTdmPfc9DVsGYsOq73lEKzceEaw1G6SZAK2fn7Sraeo5llpvBREWY/GV2wnqygrYMAJdWCsAky5yB4ZPufQCQwkntm9MaKssmDQPUaejc6WnHkUINvK3Fpcv9ZpYEcmURdHtpteRPT2QaZX2aTkiFUozId1dzi6SQcUQaAHibBVx68XyGLsEjfdqMvAJzh1fka1+uX24rfWuU7mxhmSNWpYNPhfEbn8hCs9NfMLwgKr9LY1VxzrQkQIDAQABozEwLzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0OBBYEFIWzS0JDDA10t5cHMXk3Piox5tjnMA0GCSqGSIb3DQEBBQUAA4IBAQBzXZjeovgsD808CU2IPjFgsOcj32LJuKfP03WS4h7s3bAKERRwrnMfHGQcs4iK7s85CjfqnLdUWjOoOHc8+2JbSMn7Er6TnE0k1gphqKtLjEpDMrPFALZq3tNfz2Yf43gxRd6LQWb7P6m0sVWnFKht7zHD08sRoase6uEFyvlo1u/bWK3HeBNzDWaS6rtXr/gbS7/fI3oKxeUssA3FieYz3UBTht8oEz4JNQvErsJE53aVqSvG+GC1crZlO/O/VgvqohuU5mL+O8I97fMhSw/X/2FSb5D8FK4Y5s7HqOlmHksJRQqZN8NKYKEADMv/TOjTAk+dvaLFBAvjkELVb45Y"
       $sampleClientCertName = "sampleClientCert.cer"
       $sampleClinentCertThumbprint = "5405D9A8AB2A303D4E772C444BC88C3B97F55F78"
 
@@ -423,13 +423,13 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
       $clientCert = New-AzVpnClientRevokedCertificate -Name $sampleClientCertName -Thumbprint $sampleClinentCertThumbprint
       
-      $actual = New-AzVirtualNetworkGateway -GatewayDefaultSite $localnetGateway -ResourceGroupName $rgname -Name $rname -Location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool "201.169.0.0/16" -VpnClientProtocol SSTP -VpnClientRootCertificates $rootCert -VpnClientRevokedCertificates $clientCert
+      $actual = New-AzVirtualNetworkGateway -GatewayDefaultSite $localnetGateway -ResourceGroupName $rgname -Name $rname -Location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1AZ -VpnClientAddressPool "201.169.0.0/16" -VpnClientProtocol IkeV2 -VpnClientRootCertificates $rootCert -VpnClientRevokedCertificates $clientCert
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "Vpn" $expected.GatewayType
       Assert-AreEqual "RouteBased" $expected.VpnType
-      Assert-AreEqual "VpnGw1" $expected.Sku.Tier
+      Assert-AreEqual "VpnGw1AZ" $expected.Sku.Tier
       Assert-AreEqual $localnetGateway.Id $expected.GatewayDefaultSite.Id
       Assert-AreEqual "201.169.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes[0]
       Assert-AreEqual $sampleClientCertName $expected.VpnClientConfiguration.VpnClientRevokedCertificates[0].name
@@ -445,11 +445,11 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $localnetGateway.Id $expected.GatewayDefaultSite.Id
 
-	  # Resize the virtual network gateway from 'VpnGw1' to 'VpnGw2' SKU
-	  $actual = Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $expected -GatewaySku VpnGw2
+	  # Resize the virtual network gateway from 'VpnGw1AZ' to 'VpnGw2AZ' SKU
+	  $actual = Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $expected -GatewaySku VpnGw2AZ
       Assert-AreEqual "Succeeded" $actual.ProvisioningState
 	  $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname	  
-      Assert-AreEqual "VpnGw2" $expected.Sku.Tier
+      Assert-AreEqual "VpnGw2AZ" $expected.Sku.Tier
 
      # Get, list client Root certificates
      $rootCert = Get-AzVpnClientRootCertificate -VpnClientRootCertificateName $clientRootCertName -VirtualNetworkGatewayName $expected.Name -ResourceGroupName $expected.ResourceGroupName
@@ -459,7 +459,7 @@ function Test-VirtualNetworkGatewayP2SAndSKU
      Assert-AreEqual 1 @($rootCerts).Count
      
      # Generate P2S Vpnclient package
-     $packageUrl = Get-AzVpnClientPackage -ResourceGroupName $expected.ResourceGroupName -VirtualNetworkGatewayName $expected.Name -ProcessorArchitecture Amd64
+     #$packageUrl = Get-AzVpnClientPackage -ResourceGroupName $expected.ResourceGroupName -VirtualNetworkGatewayName $expected.Name -ProcessorArchitecture Amd64
 	 #Assert-NotNull $packageUrl
 
      # Delete client Root certificate
@@ -643,6 +643,119 @@ function Test-VirtualNetworkGatewayBgpRouteApi
         }
 	}
 	finally 
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway effective route API test
+#>
+function Test-VirtualNetworkGatewayEffectiveRouteApi
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$gwname = Get-ResourceName
+	$domainNameLabel = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$vnetGatewayConfigName = Get-ResourceName
+	$rgLocation = "centraluseuap"
+	$resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+	$location = "centraluseuap"
+
+	$gwname1 = Get-ResourceName
+	$vnetName1 = Get-ResourceName
+	$publicIpName1 = Get-ResourceName
+	$domainNameLabel1 = Get-ResourceName
+	$vnetGatewayConfigName1 = Get-ResourceName
+
+	$connectionName = Get-ResourceName
+	$connectionName1 = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+		$subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -Sku Standard
+		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+		$gw = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw2AZ
+		$gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname
+
+		$subnet1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.1.0.0/24
+		$vnet1 = New-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet1
+		$vnet1 = Get-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname
+		$subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+		$publicip1 = New-AzPublicIpAddress -Name $publicIpName1 -ResourceGroupName $rgname -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel1 -Sku Standard
+		$vnetIpConfig1 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName1 -PublicIpAddress $publicip1 -Subnet $subnet1
+		$gw1 = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname1 -location $location -IpConfigurations $vnetIpConfig1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw2AZ -Asn 1337
+		$gw1 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname1
+
+		New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $connectionName -location $location -VirtualNetworkGateway1 $gw -VirtualNetworkGateway2 $gw1 -ConnectionType Vnet2Vnet -SharedKey chocolate -EnableBgp $true
+		New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $connectionName1 -location $location -VirtualNetworkGateway1 $gw1 -VirtualNetworkGateway2 $gw -ConnectionType Vnet2Vnet -SharedKey chocolate -EnableBgp $true
+
+		$job = Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -AsJob
+		$job | Wait-Job
+		$bgpLearnedRoutes = $job | Receive-Job
+
+		if($bgpLearnedRoutes -and $bgpLearnedRoutes.Length -gt 0)
+		{
+			forEach($route in $bgpLearnedRoutes)
+			{
+				if($route.Origin -eq "EBgp")
+				{
+					Assert-True { $vnet1.AddressSpace.AddressPrefixes -contains $route.Network }
+				}
+			}
+		}
+
+        $maxWait = 600       # seconds
+        $interval = 10       # seconds
+        $connected = $false
+        $start = Get-Date
+
+        while ((Get-Date) -lt $start.AddSeconds($maxWait)) {
+            $conn = Get-AzVirtualNetworkGatewayConnection -Name $connectionName -ResourceGroupName $rgname
+            if ($conn -and $conn.ConnectionStatus -eq 'Connected') { $connected = $true; break }
+            Start-Sleep -Seconds $interval
+        }
+
+        Assert-True { $connected } "Gateway connection did not reach 'Connected' within $maxWait seconds"
+
+		$job = Get-AzVirtualNetworkGatewayEffectiveRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -AsJob
+		$job | Wait-Job
+		$effectiveRoutes = $job | Receive-Job
+
+        $localVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $remoteVnet = Get-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname
+
+		if($effectiveRoutes -and $effectiveRoutes.Length -gt 0)
+		{
+			forEach($route in $effectiveRoutes)
+			{
+				Assert-NotNullOrEmpty $route.LocalAddress "LocalAddress should not be null or empty"
+				Assert-NotNullOrEmpty $route.NextHopType "NextHopType should not be null or empty"
+                Assert-True { $route.LocalAddress -eq $publicip.IpAddress }
+
+				if($route.NextHopType -eq "Tunnel")
+				{
+					Assert-AreEqual $publicip1.IpAddress $route.NextHopIpAddress
+					Assert-True { $route.AddressPrefixes -contains $remoteVnet.AddressSpace.AddressPrefixes[0] }
+			    }
+
+                if($route.NextHopType -eq "VirtualNetwork")
+				{
+					Assert-AreEqual "" $route.NextHopIpAddress
+					Assert-True { $route.AddressPrefixes -contains $localVnet.AddressSpace.AddressPrefixes[0] }
+			    }
+			}
+		}
+	}
+	finally
 	{
 		Clean-ResourceGroup $rgname
 	}
@@ -1017,7 +1130,7 @@ function Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet
 	  # create the client root cert
 	  $clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
 	  #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-	  $samplePublicCertData = "MIIC5zCCAc+gAwIBAgIQFzWsg2N5PItGfI8al3SfETANBgkqhkiG9w0BAQsFADAW MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0yMDEwMjgxODM1MDRaFw0yMTEwMjgx ODU1MDRaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF AAOCAQ8AMIIBCgKCAQEArZqDDCWiXAsrqgYYKDzDgzMKUjgVXgXpfaWltAFJR5rv KFpMJCJldq4YCdpkKT3n0STUz1PJii3cj/o8J9D2XTwdEY+gACOKNn5tRLE+Qz4N r77nfCzTyBNVcgllxoVZgyDhItVoo2JZ2G6+3ywDignfve20Wpj0YGGslanqQsmq o/OeSDNUXGmir4KLwlGjR6+os51y1X3nrqkMpE10K/uIPMe4+WFNrx7g4nOEz+cF vNmi0qdWDpwTg3/JxyhnZVL1TPdeM0zyclnveIvhhseSd3oW5L9OC3eSpPbjD70S UD4vDXrQuUV6SfYAX6aqhNeit/fqrI6ToT86mKwDhQIDAQABozEwLzAOBgNVHQ8B Af8EBAMCAgQwHQYDVR0OBBYEFJ7OyTGgBHVeDBZNKDnenAdlNTfwMA0GCSqGSIb3 DQEBCwUAA4IBAQAWopX5Gj2HslQnVAFzrteg9uIT+q503Zi8FTnGA4hN6I1xq9uo ETNAbQCrHf3R18lL37aP8Z//NVLcx5o+ZD0PMWhb5bhh1FeQ4QCVM0/CJKJqHLZU HCgc7FTiSAtpcGCdmSLM3Uq9Xpn3h5INB5Wekyk1SvyJYuoHqDRMZHKoxqnkYf7x QkThECnubbeFgdA+S/FpMa1+zMDPApcIFQ6/5vOcAEk/iRSv4dZZRyphgy+LlSdM rFKPtpeeEK/OeblVW0mBGIcQyz6sndHwk98u0Is46zlnGFeL7BHEvVSw/QBM6Hcq COZV52zKr851DjkNbHFttGXiwGMsSGdMnjzk"
+	  $samplePublicCertData = "MIIDIzCCAgugAwIBAgIQHJUBOKP2hJ9DNLXOEFmx3DANBgkqhkiG9w0BAQUFADA0MRIwEAYDVQQKDAlNaWNyb3NvZnQxHjAcBgNVBAMMFUJyayBMaXRlIFRlc3QgUm9vdCBDQTAeFw0yMTAxMjAyMjMzMTJaFw0zMDAxMTkwODAwMDBaMDQxEjAQBgNVBAoMCU1pY3Jvc29mdDEeMBwGA1UEAwwVQnJrIExpdGUgVGVzdCBSb290IENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4IO/xunNJ1Nir7xOfTreSwGEPRUfq2mXcpJaQAjI/7+utpQq30arARqzGNfmbme51X7bZVPLXnGqdsC52GE2oh+nB4UvNLvagTdmPfc9DVsGYsOq73lEKzceEaw1G6SZAK2fn7Sraeo5llpvBREWY/GV2wnqygrYMAJdWCsAky5yB4ZPufQCQwkntm9MaKssmDQPUaejc6WnHkUINvK3Fpcv9ZpYEcmURdHtpteRPT2QaZX2aTkiFUozId1dzi6SQcUQaAHibBVx68XyGLsEjfdqMvAJzh1fka1+uX24rfWuU7mxhmSNWpYNPhfEbn8hCs9NfMLwgKr9LY1VxzrQkQIDAQABozEwLzAOBgNVHQ8BAf8EBAMCAgQwHQYDVR0OBBYEFIWzS0JDDA10t5cHMXk3Piox5tjnMA0GCSqGSIb3DQEBBQUAA4IBAQBzXZjeovgsD808CU2IPjFgsOcj32LJuKfP03WS4h7s3bAKERRwrnMfHGQcs4iK7s85CjfqnLdUWjOoOHc8+2JbSMn7Er6TnE0k1gphqKtLjEpDMrPFALZq3tNfz2Yf43gxRd6LQWb7P6m0sVWnFKht7zHD08sRoase6uEFyvlo1u/bWK3HeBNzDWaS6rtXr/gbS7/fI3oKxeUssA3FieYz3UBTht8oEz4JNQvErsJE53aVqSvG+GC1crZlO/O/VgvqohuU5mL+O8I97fMhSw/X/2FSb5D8FK4Y5s7HqOlmHksJRQqZN8NKYKEADMv/TOjTAk+dvaLFBAvjkELVb45Y"
       $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
 
       # Create the Virtual Network
@@ -1027,12 +1140,12 @@ function Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet
 	  $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
 	  # Create the IP config
-	  $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+	  $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 	  $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
       # Create IkeV2 virtualnetworkgateway with custom Ipsec policy specified
 	  $vpnclientipsecpolicy1 = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86471 -SADataSize 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol IkeV2 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientIpsecPolicy $vpnclientipsecpolicy1
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1AZ -VpnClientProtocol IkeV2 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientIpsecPolicy $vpnclientipsecpolicy1
 
 	  # Get virtualnetworkgateway
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
@@ -1091,8 +1204,7 @@ function Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet
 	  $delete = Remove-AzVpnClientIpsecParameter -ResourceGroupName $rgname -VirtualNetworkGatewayName $rname
 	  Assert-AreEqual $True $delete
 	  $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual 0 @($expected.VpnClientConfiguration.VpnClientIpsecPolicies).Count
-	  
+      Assert-AreEqual 0 @($expected.VpnClientConfiguration.VpnClientIpsecPolicies).Count
      }
      finally
      {

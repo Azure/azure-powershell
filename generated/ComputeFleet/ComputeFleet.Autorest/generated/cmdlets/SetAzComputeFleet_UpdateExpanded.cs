@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Description(@"update a Fleet")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}", ApiVersion = "2026-04-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}", ApiVersion = "2026-08-01")]
     public partial class SetAzComputeFleet_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IContext
@@ -542,30 +542,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
         SerializedName = @"zones",
         PossibleTypes = new [] { typeof(string) })]
         public string[] Zone { get => _resourceBody.Zone?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.Zone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
-
-        /// <summary>Distribution strategy used for zone allocation policy.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Distribution strategy used for zone allocation policy.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Distribution strategy used for zone allocation policy.",
-        SerializedName = @"distributionStrategy",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("BestEffortSingleZone", "Prioritized")]
-        public string ZoneAllocationPolicyDistributionStrategy { get => _resourceBody.ZoneAllocationPolicyDistributionStrategy ?? null; set => _resourceBody.ZoneAllocationPolicyDistributionStrategy = value; }
-
-        /// <summary>Zone preferences, required when zone distribution strategy is Prioritized.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Zone preferences, required when zone distribution strategy is Prioritized.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Zone preferences, required when zone distribution strategy is Prioritized.",
-        SerializedName = @"zonePreferences",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[] ZoneAllocationPolicyZonePreference { get => _resourceBody.ZoneAllocationPolicyZonePreference?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.ZoneAllocationPolicyZonePreference = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference>(value) : null); }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

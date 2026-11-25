@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Version = container.Version;
             this.EnableNfsV3AllSquash = container.EnableNfsV3AllSquash;
             this.EnableNfsV3RootSquash = container.EnableNfsV3RootSquash;
+            this.BlobAccessPointConfiguration = container.BlobAccessPointConfiguration;
         }
 
         public PSContainer(BlobContainer container)
@@ -82,6 +83,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Version = container.Version;
             this.EnableNfsV3AllSquash = container.EnableNfsV3AllSquash;
             this.EnableNfsV3RootSquash = container.EnableNfsV3RootSquash;
+            this.BlobAccessPointConfiguration = container.BlobAccessPointConfiguration;
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.List, Position = 0)]
@@ -140,6 +142,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? EnableNfsV3AllSquash { get; set; }
 
         public PSImmutableStorageWithVersioning ImmutableStorageWithVersioning { get; set; }
+
+        public BlobAccessPointConfigurationConnection BlobAccessPointConfiguration { get; set; }
 
         public static string ParseResourceGroupFromId(string idFromServer)
         {
