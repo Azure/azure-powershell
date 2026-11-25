@@ -7,40 +7,37 @@ namespace Microsoft.Azure.Management.Search.Models
 {
 
     /// <summary>
-    /// Defines values for ResourceType.
+    /// Defines values for CheckNameAvailabilityInputType.
     /// </summary>
 
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ResourceType
+    public enum CheckNameAvailabilityInputType
     {
-        /// <summary>
-        /// &#39;searchServices&#39; is the only resource type whose name can be validated.
-        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "searchServices")]
         SearchServices
     }
-    internal static class ResourceTypeEnumExtension
+    internal static class CheckNameAvailabilityInputTypeEnumExtension
     {
-        internal static string ToSerializedValue(this ResourceType? value)
+        internal static string ToSerializedValue(this CheckNameAvailabilityInputType? value)
         {
-            return value == null ? null : ((ResourceType)value).ToSerializedValue();
+            return value == null ? null : ((CheckNameAvailabilityInputType)value).ToSerializedValue();
         }
-        internal static string ToSerializedValue(this ResourceType value)
+        internal static string ToSerializedValue(this CheckNameAvailabilityInputType value)
         {
             switch( value )
             {
-                case ResourceType.SearchServices:
+                case CheckNameAvailabilityInputType.SearchServices:
                     return "searchServices";
             }
             return null;
         }
-        internal static ResourceType? ParseResourceType(this string value)
+        internal static CheckNameAvailabilityInputType? ParseCheckNameAvailabilityInputType(this string value)
         {
             switch( value )
             {
                 case "searchServices":
-                    return ResourceType.SearchServices;
+                    return CheckNameAvailabilityInputType.SearchServices;
             }
             return null;
         }

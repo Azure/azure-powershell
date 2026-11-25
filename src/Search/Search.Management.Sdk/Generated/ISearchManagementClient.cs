@@ -42,10 +42,9 @@ namespace Microsoft.Azure.Management.Search
 
 
         /// <summary>
-        /// The unique identifier for a Microsoft Azure subscription. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -75,34 +74,9 @@ namespace Microsoft.Azure.Management.Search
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the IAdminKeysOperations
-        /// </summary>
-        IAdminKeysOperations AdminKeys { get; }
-
-        /// <summary>
-        /// Gets the IQueryKeysOperations
-        /// </summary>
-        IQueryKeysOperations QueryKeys { get; }
-
-        /// <summary>
         /// Gets the IServicesOperations
         /// </summary>
         IServicesOperations Services { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
-        /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations
-        /// </summary>
-        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
-
-        /// <summary>
-        /// Gets the ISharedPrivateLinkResourcesOperations
-        /// </summary>
-        ISharedPrivateLinkResourcesOperations SharedPrivateLinkResources { get; }
 
         /// <summary>
         /// Gets the IUsagesOperations
@@ -110,9 +84,34 @@ namespace Microsoft.Azure.Management.Search
         IUsagesOperations Usages { get; }
 
         /// <summary>
+        /// Gets the IQueryKeysOperations
+        /// </summary>
+        IQueryKeysOperations QueryKeys { get; }
+
+        /// <summary>
+        /// Gets the IAdminKeysOperations
+        /// </summary>
+        IAdminKeysOperations AdminKeys { get; }
+
+        /// <summary>
         /// Gets the INetworkSecurityPerimeterConfigurationsOperations
         /// </summary>
         INetworkSecurityPerimeterConfigurationsOperations NetworkSecurityPerimeterConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the ISharedPrivateLinkResourcesOperations
+        /// </summary>
+        ISharedPrivateLinkResourcesOperations SharedPrivateLinkResources { get; }
 
         /// <summary>
         /// Gets the quota usage for a search SKU in the given subscription.
@@ -120,11 +119,13 @@ namespace Microsoft.Azure.Management.Search
         /// <remarks>
         /// Gets the quota usage for a search SKU in the given subscription.
         /// </remarks>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='location'>
-        /// The unique location name for a Microsoft Azure geographic region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='skuName'>
         /// The unique SKU name that identifies a billable tier.
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Management.Search
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<QuotaUsageResult>> UsageBySubscriptionSkuWithHttpMessagesAsync(string location, string skuName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<QuotaUsageResult>> UsageBySubscriptionSkuWithHttpMessagesAsync(string location, string skuName, System.Guid? clientRequestId = default(System.Guid?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

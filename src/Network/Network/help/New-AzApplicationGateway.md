@@ -36,7 +36,7 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS] [-EnableConfidentialCompute]
  [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
  [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
@@ -68,7 +68,7 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicyId <String>] [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS] [-EnableConfidentialCompute]
  [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>]
  [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
@@ -101,7 +101,7 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS] [-EnableConfidentialCompute]
  [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
  [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
@@ -133,7 +133,7 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS] [-EnableConfidentialCompute]
  [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
  [-Zone <String[]>] [-Tag <Hashtable>] -Identity <PSManagedServiceIdentity> [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
@@ -412,6 +412,21 @@ Whether the default server header is disabled in responses.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableConfidentialCompute
+Whether Confidential Compute is enabled on the application gateway. When set, the gateway instances run on confidential virtual machines. Supported only for the Standard_v2 and WAF_v2 SKU tiers, cannot be combined with -EnableFIPS, and cannot be changed after the application gateway is created. Requires Network API version 2026-05-01 or later.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

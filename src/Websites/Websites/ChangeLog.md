@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* CodeQL scan rules ignored.
 
 ## Version 4.3.0
 * Added `AsyncScalingEnabled` to `New-AzAppServicePlan` and `Set-AzAppServicePlan` to enable or disable asynchronous scaling for dedicated App Service plans

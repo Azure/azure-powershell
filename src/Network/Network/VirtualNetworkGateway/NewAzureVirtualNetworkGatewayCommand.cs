@@ -449,10 +449,13 @@ namespace Microsoft.Azure.Commands.Network
 
             }
             vnetGateway.GatewayType = this.GatewayType;
-            if (this.ExtendedLocation != null && (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute"))
+            if (!string.IsNullOrEmpty(this.ExtendedLocation))
             {
                 vnetGateway.ExtendedLocation = new PSExtendedLocation(this.ExtendedLocation);
-                vnetGateway.VNetExtendedLocationResourceId = this.VNetExtendedLocationResourceId;
+                if (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute")
+                {
+                    vnetGateway.VNetExtendedLocationResourceId = this.VNetExtendedLocationResourceId;
+                }
             }
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;

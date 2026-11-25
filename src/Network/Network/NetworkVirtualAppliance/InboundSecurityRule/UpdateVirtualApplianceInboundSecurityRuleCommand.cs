@@ -117,6 +117,7 @@ namespace Microsoft.Azure.Commands.Network
 
             foreach(var rule in this.Rule)
             {
+                rule.LoadBalancerConfiguration = LoadBalancerConfigurationHelper.NormalizeRule(rule.LoadBalancerConfiguration, this.RuleType);
                 inboundSecurityRuleParameters.Rules.Add(NetworkResourceManagerProfile.Mapper.Map<InboundSecurityRules>(rule));
             }
 
