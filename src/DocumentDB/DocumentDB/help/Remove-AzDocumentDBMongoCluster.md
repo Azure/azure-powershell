@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDocumentDBMongoCluster
 
 ## SYNOPSIS
-Deletes a mongo cluster.
+Deletes a DocumentDB cluster.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzDocumentDBMongoCluster -InputObject <IDocumentDbIdentity> [-DefaultProf
 ```
 
 ## DESCRIPTION
-Deletes a mongo cluster.
+Deletes a DocumentDB cluster.
 
 ## EXAMPLES
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the mongo cluster.
+The name of the DocumentDB cluster.
 
 ```yaml
 Type: System.String

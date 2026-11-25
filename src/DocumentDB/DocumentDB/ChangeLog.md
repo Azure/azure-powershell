@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated DocumentDB cmdlets from API version `2026-06-01` to `2026-09-01`.
+    - Generated from the unchanged published September Swagger specification.
+* Added `Planned` promotion support to `Switch-AzDocumentDBMongoCluster`.
+    - Planned promotion waits for the replica to catch up with the primary before switching roles.
+    - Forced promotion remains available for disaster recovery and can result in data loss.
+* Corrected output metadata and help for `Switch-AzDocumentDBMongoCluster`.
+    - No output is returned by default; `PassThru` returns Boolean true on success.
+    - Aligned promotion examples and safety guidance for Planned and Forced.
+* Clarified that `New-AzDocumentDBUser` requires a Microsoft Entra principal object ID,
+  not an application (client) ID.
 
 ## Version 0.1.0
 * First preview release for module Az.DocumentDB

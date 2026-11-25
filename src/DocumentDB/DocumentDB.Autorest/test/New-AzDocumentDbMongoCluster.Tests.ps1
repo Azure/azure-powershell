@@ -49,7 +49,10 @@ Describe 'New-AzDocumentDBMongoCluster' {
 
         # Connection strings are available for the provisioned cluster.
         $cs = Get-AzDocumentDBMongoClusterConnectionString -MongoClusterName $cluster -ResourceGroupName $rg
-        @($cs.ConnectionString).Count | Should -BeGreaterThan 0
+        (@($cs).Count -gt 0) | Should -Be $true
+        foreach ($entry in @($cs)) {
+            [string]::IsNullOrEmpty($entry.ConnectionString1) | Should -Be $false
+        }
 
         # Update the cluster (tags). The update is asynchronous and the service keeps a
         # brief internal lock even after it settles, so every mutating call is wrapped in a

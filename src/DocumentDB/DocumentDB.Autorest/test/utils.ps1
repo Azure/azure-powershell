@@ -120,6 +120,10 @@ function setupEnv() {
     $env.promoteCluster = $env.AddWithCache('promoteCluster', 'cli-mc-' + (RandomString $false 6), $UsePreviousConfigForRecord)
     $env.promoteReplica = $env.AddWithCache('promoteReplica', 'cli-mc-rep-' + (RandomString $false 6), $UsePreviousConfigForRecord)
 
+    $env.plannedRg = $env.AddWithCache('plannedRg', 'clitest-docdb-planned-' + (RandomString $false 6), $UsePreviousConfigForRecord)
+    $env.plannedCluster = $env.AddWithCache('plannedCluster', 'cli-mc-' + (RandomString $false 6), $UsePreviousConfigForRecord)
+    $env.plannedReplica = $env.AddWithCache('plannedReplica', 'cli-mc-rep-' + (RandomString $false 6), $UsePreviousConfigForRecord)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

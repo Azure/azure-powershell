@@ -97,7 +97,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Microsoft Entra object (client) ID of the user or service principal.
+The Microsoft Entra object ID of the user or service principal.
+This is not the application (client) ID; no ID lookup or conversion is performed.
 
 ```yaml
 Type: System.String

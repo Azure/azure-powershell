@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDocumentDBFirewallRule
 
 ## SYNOPSIS
-Gets information about a mongo cluster firewall rule.
+Gets information about a DocumentDB cluster firewall rule.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Get-AzDocumentDBFirewallRule -InputObject <IDocumentDbIdentity> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-Gets information about a mongo cluster firewall rule.
+Gets information about a DocumentDB cluster firewall rule.
 
 ## EXAMPLES
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -MongoClusterName
-The name of the mongo cluster.
+The name of the DocumentDB cluster.
 
 ```yaml
 Type: System.String
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the mongo cluster firewall rule.
+The name of the DocumentDB cluster firewall rule.
 
 ```yaml
 Type: System.String

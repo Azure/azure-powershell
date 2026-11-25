@@ -10,15 +10,23 @@ Promote a replica mongo cluster to a primary role.
 Promote a replica mongo cluster to a primary role. As a safety check, the expected source
 (primary) cluster must be provided and is validated against the replica's actual source
 cluster; promotion only proceeds when they match.
+Use Planned to wait for replication to catch up before promotion. Forced promotes
+without waiting for replication and may result in data loss; use it only for disaster recovery.
 .Example
-Switch-AzDocumentDBMongoCluster -Name MyReplica -ResourceGroupName MyResourceGroup -SourceCluster MySourceCluster -Mode Switchover -PromoteOption Forced
+Switch-AzDocumentDBMongoCluster -Name myReplica -ResourceGroupName myResourceGroup `
+    -SourceCluster myCluster -Mode Switchover -PromoteOption Planned -Confirm
+.Example
+Switch-AzDocumentDBMongoCluster -Name myReplica -ResourceGroupName myResourceGroup `
+    -SourceCluster myCluster -Mode Switchover -PromoteOption Forced -Confirm
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IMongoCluster
+System.Boolean
+
+By default, this cmdlet returns no output. With -PassThru, it returns true on success.
 .Link
 https://learn.microsoft.com/powershell/module/az.documentdb/switch-azdocumentdbmongocluster
 #>
 function Switch-AzDocumentDBMongoCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Models.IMongoCluster])]
+[OutputType([System.Boolean])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -58,10 +66,11 @@ param(
     ${Mode},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.PSArgumentCompleterAttribute("Forced")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.PSArgumentCompleterAttribute("Forced", "Planned")]
     [Microsoft.Azure.PowerShell.Cmdlets.DocumentDB.Category('Body')]
     [System.String]
     # The promote option to apply to the operation.
+    # Planned waits for replication to catch up; Forced may result in data loss.
     ${PromoteOption},
 
     [Parameter()]
@@ -156,10 +165,6 @@ param(
                 throw "The replica's actual source cluster '$actualSource' does not match the provided -SourceCluster '$expectedSource'. Promotion aborted."
             }
 
-            # 'PromoteOption' has a single service-defined value ('Forced') that the request
-            # always applies; it is exposed for command-surface parity with the Azure CLI and
-            # is not forwarded to the internal operation.
-            $null = $PSBoundParameters.Remove('PromoteOption')
             $null = $PSBoundParameters.Remove('SourceCluster')
             foreach ($commonParam in 'WhatIf', 'Confirm') { $null = $PSBoundParameters.Remove($commonParam) }
             $PSBoundParameters['SubscriptionId'] = $SubscriptionId
