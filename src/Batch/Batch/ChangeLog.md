@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 4.1.3
+
 * Changed `New-AzBatchApplicationPackage` to attempt cleanup after a failed upload only if the version was not found before the create or update request and the later read shows it `Pending` with the same non-blank ETag. Another upload of the same version can still race with the delete.
 * Fixed `New-AzBatchComputeNodeUser` and `Set-AzBatchComputeNodeUser` sending the expiry time 0001-01-01 when `-ExpiryTime` isn't specified. They now omit `expiryTime` when it isn't specified, so the service default applies.
 * Fixed `Get-AzBatchSupportedVirtualMachineSku -MaxResultCount` returning every VM size. It now returns at most that many.

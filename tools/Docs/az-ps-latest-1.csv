@@ -2,7 +2,7 @@ pac0,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-releas
 pac1,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ADDomainServices.0.3.0.zip;sourceType=sa]Az.ADDomainServices,0.3.0
 pac2,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Advisor.3.0.0.zip;sourceType=sa]Az.Advisor,3.0.0
 pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.AIInfraOptimization.0.1.0.zip;sourceType=sa]Az.AIInfraOptimization,0.1.0
-pac4,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Aks.7.2.1.zip;sourceType=sa]Az.Aks,7.2.1
+pac4,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Aks.7.2.2.zip;sourceType=sa]Az.Aks,7.2.2
 pac5,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.AksArc.0.2.0.zip;sourceType=sa]Az.AksArc,0.2.0
 pac6,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Alb.0.1.4.zip;sourceType=sa]Az.Alb,0.1.4
 pac7,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.AlertsManagement.0.8.0.zip;sourceType=sa]Az.AlertsManagement,0.8.0
@@ -19,7 +19,7 @@ pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac18,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automanage.2.0.0.zip;sourceType=sa]Az.Automanage,2.0.0
 pac19,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automation.1.13.0.zip;sourceType=sa]Az.Automation,1.13.0
 pac20,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BareMetal.0.2.0.zip;sourceType=sa]Az.BareMetal,0.2.0
-pac21,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Batch.4.1.2.zip;sourceType=sa]Az.Batch,4.1.2
+pac21,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Batch.4.1.3.zip;sourceType=sa]Az.Batch,4.1.3
 pac22,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Billing.2.3.0.zip;sourceType=sa]Az.Billing,2.3.0
 pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BillingBenefits.0.2.1.zip;sourceType=sa]Az.BillingBenefits,0.2.1
 pac24,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Blueprint.0.5.1.zip;sourceType=sa]Az.Blueprint,0.5.1

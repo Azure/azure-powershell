@@ -1,3 +1,47 @@
+## 17.1.0 - December 2026
+#### Az.Aks 7.2.2
+* Fixed 'Get-AzAksCluster -Id' ignoring the subscription embedded in the resource ID and using the current context subscription instead
+    - The cmdlet now correctly uses the subscription from the provided resource ID
+    - Fixed issue [#29928]
+
+#### Az.Batch 4.1.3
+* Changed 'New-AzBatchApplicationPackage' to attempt cleanup after a failed upload only if the version was not found before the create or update request and the later read shows it 'Pending' with the same non-blank ETag. Another upload of the same version can still race with the delete.
+* Fixed 'New-AzBatchComputeNodeUser' and 'Set-AzBatchComputeNodeUser' sending the expiry time 0001-01-01 when '-ExpiryTime' isn't specified. They now omit 'expiryTime' when it isn't specified, so the service default applies.
+* Fixed 'Get-AzBatchSupportedVirtualMachineSku -MaxResultCount' returning every VM size. It now returns at most that many.
+* Fixed 'New-AzBatchPool', 'Set-AzBatchPool', 'New-AzBatchTask' and other cmdlets failing with 'Object reference not set to an instance of an object' when an environment setting has no value.
+* Fixed 'Set-AzBatchPool', 'New-AzBatchTask' and other cmdlets dropping the identity reference of resource files, which nodes use to download the files from Azure Storage.
+* Fixed 'New-AzBatchPool', 'New-AzBatchTask', 'New-AzBatchJob' and other cmdlets sending an empty bind mount list, which mounts no folders into the container, when 'ContainerHostBatchBindMounts' of a 'PSTaskContainerSettings' object was set or changed after the object was created.
+* Started moving Az.Batch from 'Microsoft.Azure.Batch' (Track 1) to 'Azure.Compute.Batch' (Track 2). No cmdlet uses the new SDK yet.
+    - Added 'Azure.Compute.Batch' 1.0.0 as a dependency.
+    - Added a conversion that shows 'Azure.Compute.Batch' errors the same way as today's errors.
+    - Added helpers that keep '-MaxCount', '-Select' and '-Expand' working the same way with 'Azure.Compute.Batch'.
+    - Added workarounds for three 'Azure.Compute.Batch' 1.0.0 issues until a newer version fixes them: counts and sizes the service sends as numbers, registry server addresses, and VM extension settings that aren't text.
+    - Added the mapping between 'Azure.Compute.Batch' and the PS objects that several cmdlets share (start task, resource files, user identity, container settings, application packages, metadata).
+    - Added reading statistics in full precision: 'Azure.Compute.Batch' 1.0.0 keeps only about 7 digits of 16 statistics values.
+
+#### Az.Network 8.5.0
+* Added load balancer configuration for managed NVAs in hubs and VNets and individual Permanent Internet Ingress rules.
+    - Added 'New-AzNetworkVirtualApplianceLoadBalancerConfiguration' and '-LoadBalancerConfiguration' on NVA creation/update and ingress rule builders.
+    - Supports Default, SourceIP, and SourceIPProtocol distribution with idle timeouts from 4 to 100 minutes.
+    - Omitting configuration on NVA update resets existing settings to Default distribution and a 5-minute timeout, matching REST PUT semantics.
+* Upgraded Network SDK to API version '2026-05-01'.
+
+#### Az.NetworkSecurity 0.1.1
+* Fixed module help metadata so the Az.NetworkSecurity reference documentation can be published.
+
+#### Az.RecoveryServices 7.17.0
+* Updated Az.RecoveryServices.SiteRecovery to use API version 2026-11-01.
+* Added Confidential VM (CVM) support for Azure-to-Azure replication, including per-disk encryption settings and failover identity configuration.
+
+#### Az.Search 0.13.0
+* Added support for the 2026-11-01 Resource Provider API.
+* Added support for the Serverless SKU.
+* Added 'KnowledgeRetrievalMode' to 'New-AzSearchService' and 'Set-AzSearchService' to configure the agentic retrieval billing plan.
+* Added knowledge retrieval billing-plan information to search service output.
+
+#### Az.Websites 4.3.1
+* CodeQL scan rules ignored.
+
 ## 17.0.0 - November 2026
 #### Az.Accounts 5.5.5
 * Fixed 'Method not found' errors on PowerShell 7.6 when a module uses an Azure SDK whose models implement 'IJsonModel'.
