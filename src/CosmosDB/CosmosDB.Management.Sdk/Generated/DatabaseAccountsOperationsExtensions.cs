@@ -13,6 +13,107 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class DatabaseAccountsOperationsExtensions
     {
         /// <summary>
+        /// Checks that the Azure Cosmos DB account name already exists. A valid
+        /// account name may contain only lowercase letters, numbers, and the &#39;-&#39;
+        /// character, and must be between 3 and 50 characters.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static bool CheckNameExists(this IDatabaseAccountsOperations operations, string accountName)
+        {
+                return ((IDatabaseAccountsOperations)operations).CheckNameExistsAsync(accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Checks that the Azure Cosmos DB account name already exists. A valid
+        /// account name may contain only lowercase letters, numbers, and the &#39;-&#39;
+        /// character, and must be between 3 and 50 characters.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<bool> CheckNameExistsAsync(this IDatabaseAccountsOperations operations, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CheckNameExistsWithHttpMessagesAsync(accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the Azure Cosmos DB database accounts available under the
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseAccountGetResults> List(this IDatabaseAccountsOperations operations)
+        {
+                return ((IDatabaseAccountsOperations)operations).ListAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the Azure Cosmos DB database accounts available under the
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseAccountGetResults>> ListAsync(this IDatabaseAccountsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the Azure Cosmos DB database accounts available under the given
+        /// resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseAccountGetResults> ListByResourceGroup(this IDatabaseAccountsOperations operations, string resourceGroupName)
+        {
+                return ((IDatabaseAccountsOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the Azure Cosmos DB database accounts available under the given
+        /// resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseAccountGetResults>> ListByResourceGroupAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Retrieves the properties of an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
@@ -47,45 +148,6 @@ namespace Microsoft.Azure.Management.CosmosDB
         public static async System.Threading.Tasks.Task<DatabaseAccountGetResults> GetAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates the properties of an existing Azure Cosmos DB database account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static DatabaseAccountGetResults Update(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters)
-        {
-                return ((IDatabaseAccountsOperations)operations).UpdateAsync(resourceGroupName, accountName, updateParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates the properties of an existing Azure Cosmos DB database account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DatabaseAccountGetResults> UpdateAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -127,6 +189,45 @@ namespace Microsoft.Azure.Management.CosmosDB
         public static async System.Threading.Tasks.Task<DatabaseAccountGetResults> CreateOrUpdateAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountCreateUpdateParameters createUpdateParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, createUpdateParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates the properties of an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static DatabaseAccountGetResults Update(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters)
+        {
+                return ((IDatabaseAccountsOperations)operations).UpdateAsync(resourceGroupName, accountName, updateParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the properties of an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseAccountGetResults> UpdateAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -218,37 +319,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the
-        /// subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<DatabaseAccountGetResults> List(this IDatabaseAccountsOperations operations)
-        {
-                return ((IDatabaseAccountsOperations)operations).ListAsync().GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the
-        /// subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DatabaseAccountGetResults>> ListAsync(this IDatabaseAccountsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the given
-        /// resource group.
+        /// Lists the connection strings for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -256,14 +328,17 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<DatabaseAccountGetResults> ListByResourceGroup(this IDatabaseAccountsOperations operations, string resourceGroupName)
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static DatabaseAccountListConnectionStringsResult ListConnectionStrings(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName)
         {
-                return ((IDatabaseAccountsOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+                return ((IDatabaseAccountsOperations)operations).ListConnectionStringsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the given
-        /// resource group.
+        /// Lists the connection strings for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -271,12 +346,15 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<DatabaseAccountGetResults>> ListByResourceGroupAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabaseAccountListConnectionStringsResult> ListConnectionStringsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListConnectionStringsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -321,8 +399,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists the connection strings for the specified Azure Cosmos DB database
-        /// account.
+        /// Retrieves metric definitions for the given database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -333,14 +410,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static DatabaseAccountListConnectionStringsResult ListConnectionStrings(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<MetricDefinition> ListMetricDefinitions(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName)
         {
-                return ((IDatabaseAccountsOperations)operations).ListConnectionStringsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((IDatabaseAccountsOperations)operations).ListMetricDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists the connection strings for the specified Azure Cosmos DB database
-        /// account.
+        /// Retrieves metric definitions for the given database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -354,9 +430,62 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DatabaseAccountListConnectionStringsResult> ListConnectionStringsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MetricDefinition>> ListMetricDefinitionsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListConnectionStringsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Metric> ListMetrics(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter)
+        {
+                return ((IDatabaseAccountsOperations)operations).ListMetricsAsync(resourceGroupName, accountName, filter).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Metric>> ListMetricsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, accountName, filter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -567,96 +696,6 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Checks that the Azure Cosmos DB account name already exists. A valid
-        /// account name may contain only lowercase letters, numbers, and the &#39;-&#39;
-        /// character, and must be between 3 and 50 characters.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static bool CheckNameExists(this IDatabaseAccountsOperations operations, string accountName)
-        {
-                return ((IDatabaseAccountsOperations)operations).CheckNameExistsAsync(accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Checks that the Azure Cosmos DB account name already exists. A valid
-        /// account name may contain only lowercase letters, numbers, and the &#39;-&#39;
-        /// character, and must be between 3 and 50 characters.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<bool> CheckNameExistsAsync(this IDatabaseAccountsOperations operations, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CheckNameExistsWithHttpMessagesAsync(accountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return.
-        /// The parameters that can be filtered are name.value (name of the metric, can
-        /// have an or of multiple names), startTime, endTime, and timeGrain. The
-        /// supported operator is eq.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<Metric> ListMetrics(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter)
-        {
-                return ((IDatabaseAccountsOperations)operations).ListMetricsAsync(resourceGroupName, accountName, filter).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return.
-        /// The parameters that can be filtered are name.value (name of the metric, can
-        /// have an or of multiple names), startTime, endTime, and timeGrain. The
-        /// supported operator is eq.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Metric>> ListMetricsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, accountName, filter, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Retrieves the usages (most recent data) for the given database account.
         /// </summary>
         /// <param name='operations'>
@@ -673,7 +712,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// supported parameter is name.value (name of the metric, can have an or of
         /// multiple names).
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Usage> ListUsages(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter = default(string))
+        public static Microsoft.Rest.Azure.IPage<Usage> ListUsages(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter = default(string))
         {
                 return ((IDatabaseAccountsOperations)operations).ListUsagesAsync(resourceGroupName, accountName, filter).GetAwaiter().GetResult();
         }
@@ -698,87 +737,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Usage>> ListUsagesAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Usage>> ListUsagesAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListUsagesWithHttpMessagesAsync(resourceGroupName, accountName, filter, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieves metric definitions for the given database account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<MetricDefinition> ListMetricDefinitions(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName)
-        {
-                return ((IDatabaseAccountsOperations)operations).ListMetricDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves metric definitions for the given database account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MetricDefinition>> ListMetricDefinitionsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates the properties of an existing Azure Cosmos DB database account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static DatabaseAccountGetResults BeginUpdate(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters)
-        {
-                return ((IDatabaseAccountsOperations)operations).BeginUpdateAsync(resourceGroupName, accountName, updateParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates the properties of an existing Azure Cosmos DB database account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DatabaseAccountGetResults> BeginUpdateAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -820,6 +781,45 @@ namespace Microsoft.Azure.Management.CosmosDB
         public static async System.Threading.Tasks.Task<DatabaseAccountGetResults> BeginCreateOrUpdateAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountCreateUpdateParameters createUpdateParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, createUpdateParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates the properties of an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static DatabaseAccountGetResults BeginUpdate(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters)
+        {
+                return ((IDatabaseAccountsOperations)operations).BeginUpdateAsync(resourceGroupName, accountName, updateParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the properties of an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseAccountGetResults> BeginUpdateAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -1031,6 +1031,177 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginRegenerateKeyWithHttpMessagesAsync(resourceGroupName, accountName, keyToRegenerate, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Lists all the Azure Cosmos DB database accounts available under the
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseAccountGetResults> ListNext(this IDatabaseAccountsOperations operations, string nextPageLink)
+        {
+                return ((IDatabaseAccountsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the Azure Cosmos DB database accounts available under the
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseAccountGetResults>> ListNextAsync(this IDatabaseAccountsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the Azure Cosmos DB database accounts available under the given
+        /// resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseAccountGetResults> ListByResourceGroupNext(this IDatabaseAccountsOperations operations, string nextPageLink)
+        {
+                return ((IDatabaseAccountsOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the Azure Cosmos DB database accounts available under the given
+        /// resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseAccountGetResults>> ListByResourceGroupNextAsync(this IDatabaseAccountsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves metric definitions for the given database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MetricDefinition> ListMetricDefinitionsNext(this IDatabaseAccountsOperations operations, string nextPageLink)
+        {
+                return ((IDatabaseAccountsOperations)operations).ListMetricDefinitionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves metric definitions for the given database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MetricDefinition>> ListMetricDefinitionsNextAsync(this IDatabaseAccountsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMetricDefinitionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Metric> ListMetricsNext(this IDatabaseAccountsOperations operations, string nextPageLink)
+        {
+                return ((IDatabaseAccountsOperations)operations).ListMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Metric>> ListMetricsNextAsync(this IDatabaseAccountsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the usages (most recent data) for the given database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Usage> ListUsagesNext(this IDatabaseAccountsOperations operations, string nextPageLink)
+        {
+                return ((IDatabaseAccountsOperations)operations).ListUsagesNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the usages (most recent data) for the given database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Usage>> ListUsagesNextAsync(this IDatabaseAccountsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListUsagesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
     }

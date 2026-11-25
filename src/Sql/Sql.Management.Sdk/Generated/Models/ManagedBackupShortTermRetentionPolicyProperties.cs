@@ -27,10 +27,20 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="retentionDays">The backup retention period in days. This is how many days Point-in-Time
         /// Restore will be supported.
         /// </param>
-        public ManagedBackupShortTermRetentionPolicyProperties(int? retentionDays = default(int?))
+
+        /// <param name="lockImmutability">Whether to lock the immutability of the backups governed by this short term
+        /// retention policy.
+        /// </param>
+
+        /// <param name="immutabilityStatus">The immutability status of the backups governed by this short term
+        /// retention policy.
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;, &#39;Locked&#39;</param>
+        public ManagedBackupShortTermRetentionPolicyProperties(int? retentionDays = default(int?), bool? lockImmutability = default(bool?), string immutabilityStatus = default(string))
 
         {
             this.RetentionDays = retentionDays;
+            this.LockImmutability = lockImmutability;
+            this.ImmutabilityStatus = immutabilityStatus;
             CustomInit();
         }
 
@@ -46,5 +56,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "retentionDays")]
         public int? RetentionDays {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to lock the immutability of the backups governed by
+        /// this short term retention policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lockImmutability")]
+        public bool? LockImmutability {get; set; }
+
+        /// <summary>
+        /// Gets the immutability status of the backups governed by this short term
+        /// retention policy. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;, &#39;Locked&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "immutabilityStatus")]
+        public string ImmutabilityStatus {get; private set; }
     }
 }

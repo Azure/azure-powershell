@@ -14,15 +14,16 @@ Update a serviceGroup
 
 ### UpdateExpanded (Default)
 ```
-Update-AzServiceGroup -Name <String> [-DisplayName <String>] [-ParentResourceId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzServiceGroup -Name <String> [-AttributeCriticality <Int32>] [-DisplayName <String>]
+ [-ParentResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzServiceGroup -InputObject <IServiceGroupsIdentity> [-DisplayName <String>]
- [-ParentResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzServiceGroup -InputObject <IServiceGroupsIdentity> [-AttributeCriticality <Int32>]
+ [-DisplayName <String>] [-ParentResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -85,6 +86,22 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AttributeCriticality
+The criticality designation of the service group.
+Valid values range from 0 through 4.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

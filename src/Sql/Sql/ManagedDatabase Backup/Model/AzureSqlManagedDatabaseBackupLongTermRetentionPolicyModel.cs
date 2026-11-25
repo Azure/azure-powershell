@@ -56,6 +56,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
         public int? WeekOfYear { get; set; }
 
         /// <summary>
+        /// Gets or sets whether time-based immutability is enabled for future LTR backups.
+        /// </summary>
+        public string TimeBasedImmutability { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time-based immutability mode for future LTR backups.
+        /// </summary>
+        public string TimeBasedImmutabilityMode { get; set; }
+
+        /// <summary>
         /// Gets or sets the location
         /// </summary>
         public string Location { get; set; }

@@ -18,16 +18,7 @@ Test QueryRegionInfo
 #>
 function Test-QueryRegionInfo
 {
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"    
-    try
-    {        
-        # get regionInfo list 
-        $regionInfo = Get-AzNetAppFilesRegionInfo -Location $resourceLocation
-        Assert-NotNull $regionInfo        
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $resourceGroup
-    }
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $regionInfo = Get-AzNetAppFilesRegionInfo -Location $resourceLocation
+    Assert-NotNull $regionInfo
 }

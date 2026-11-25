@@ -75,6 +75,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("EnableCrossTenantTransfer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageBlobContainerEndpointUpdatePropertiesInternal)this).EnableCrossTenantTransfer = (bool?) content.GetValueForProperty("EnableCrossTenantTransfer",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageBlobContainerEndpointUpdatePropertiesInternal)this).EnableCrossTenantTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AllowedStorageAccount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageBlobContainerEndpointUpdatePropertiesInternal)this).AllowedStorageAccount = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedStorageAccount",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageBlobContainerEndpointUpdatePropertiesInternal)this).AllowedStorageAccount, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("EndpointType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdatePropertiesInternal)this).EndpointType = (string) content.GetValueForProperty("EndpointType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdatePropertiesInternal)this).EndpointType, global::System.Convert.ToString);
@@ -100,6 +108,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("EnableCrossTenantTransfer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageBlobContainerEndpointUpdatePropertiesInternal)this).EnableCrossTenantTransfer = (bool?) content.GetValueForProperty("EnableCrossTenantTransfer",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageBlobContainerEndpointUpdatePropertiesInternal)this).EnableCrossTenantTransfer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AllowedStorageAccount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageBlobContainerEndpointUpdatePropertiesInternal)this).AllowedStorageAccount = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedStorageAccount",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IAzureStorageBlobContainerEndpointUpdatePropertiesInternal)this).AllowedStorageAccount, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("EndpointType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdatePropertiesInternal)this).EndpointType = (string) content.GetValueForProperty("EndpointType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdatePropertiesInternal)this).EndpointType, global::System.Convert.ToString);

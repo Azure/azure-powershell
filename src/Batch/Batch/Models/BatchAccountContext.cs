@@ -15,6 +15,8 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Properties;
+using Microsoft.Azure.Commands.Batch.Track2;
+using Microsoft.Azure.Commands.Batch.Track2.Workarounds;
 using Microsoft.Azure.Commands.Batch.Utils;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Rest;
@@ -26,6 +28,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Collections.Generic;
+using AzureNamedKeyCredential = Azure.AzureNamedKeyCredential;
+using HttpPipelinePosition = Azure.Core.HttpPipelinePosition;
+using RetryMode = Azure.Core.RetryMode;
+using Track2BatchClient = Azure.Compute.Batch.BatchClient;
+using Track2BatchClientOptions = Azure.Compute.Batch.BatchClientOptions;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -36,6 +43,7 @@ namespace Microsoft.Azure.Commands.Batch
     {
         private AccountKeyType keyInUse;
         private BatchClient batchOMClient;
+        private Track2BatchClient track2Client;
         private IAzureContext azureContext;
 
         /// <summary>
@@ -175,6 +183,10 @@ namespace Microsoft.Azure.Commands.Batch
                     this.batchOMClient.Dispose();
                     this.batchOMClient = null;
                 }
+                if (this.HasKeys && value != this.keyInUse)
+                {
+                    this.track2Client = null;
+                }
                 this.keyInUse = value;
             }
         }
@@ -217,6 +229,50 @@ namespace Microsoft.Azure.Commands.Batch
                 }
                 return this.batchOMClient;
             }
+        }
+
+        /// <summary>
+        /// The Track 2 (Azure.Compute.Batch) client for this account. Uses the same sign-in as the Track 1 client:
+        /// shared key when the context has keys, otherwise Microsoft Entra ID for the current cloud.
+        /// </summary>
+        internal Track2BatchClient Track2Client
+        {
+            get
+            {
+                if (this.track2Client == null)
+                {
+                    Uri endpoint = new Uri(TaskTenantUrl);
+                    Track2BatchClientOptions options = CreateTrack2ClientOptions();
+                    if (this.HasKeys)
+                    {
+                        string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
+                        this.track2Client = new Track2BatchClient(endpoint, new AzureNamedKeyCredential(AccountName, key), options);
+                    }
+                    else
+                    {
+                        this.track2Client = new Track2BatchClient(endpoint, new BatchTokenCredential(new BatchAadTokenProvider(this.azureContext)), options);
+                    }
+                }
+                return this.track2Client;
+            }
+        }
+
+        /// <summary>
+        /// Options for the Track 2 client. Retries and time-outs are the same as Track 1's (Microsoft.Azure.Batch
+        /// 16.3.1): exponential retry starting at 1 second, up to 6 retries; 1 minute per request, 3 minutes for the
+        /// requests Track 1 treated as long running. Tests override this to send the requests to a test handler.
+        /// </summary>
+        protected virtual Track2BatchClientOptions CreateTrack2ClientOptions()
+        {
+            Track2BatchClientOptions options = new Track2BatchClientOptions();
+            options.Retry.Mode = RetryMode.Exponential;
+            options.Retry.Delay = TimeSpan.FromSeconds(1);
+            options.Retry.MaxRetries = 6;
+            options.Retry.NetworkTimeout = BatchRequestTimeoutPolicy.RequestTimeout;
+            options.AddPolicy(new BatchRequestTimeoutPolicy(), HttpPipelinePosition.PerCall);
+            options.AddPolicy(new BatchWorkaroundsPolicy(), HttpPipelinePosition.PerCall);
+            options.AddPolicy(new BatchUserAgentPolicy(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue.ToString()), HttpPipelinePosition.PerRetry);
+            return options;
         }
 
         public BatchAccountContext(IAzureContext azureContext)

@@ -70,7 +70,14 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="afcConfiguration">AFC configuration for the Azure Firewall.
         /// </param>
-        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), AfcConfiguration afcConfiguration = default(AfcConfiguration))
+
+        /// <param name="aiSecurityAddOn">Indicates whether the AI security add-on is enabled for the Azure Firewall.
+        /// </param>
+
+        /// <param name="tcpIdleTimeoutInMinutes">The TCP idle timeout for the Azure Firewall, in minutes. Valid values range
+        /// from 4 to 64, inclusive.
+        /// </param>
+        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), AfcConfiguration afcConfiguration = default(AfcConfiguration), bool? aiSecurityAddOn = default(bool?), int? tcpIdleTimeoutInMinutes = default(int?))
 
         {
             this.ApplicationRuleCollections = applicationRuleCollections;
@@ -88,6 +95,8 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AdditionalProperties = additionalProperties;
             this.AutoscaleConfiguration = autoscaleConfiguration;
             this.AfcConfiguration = afcConfiguration;
+            this.AiSecurityAddOn = aiSecurityAddOn;
+            this.TcpIdleTimeoutInMinutes = tcpIdleTimeoutInMinutes;
             CustomInit();
         }
 
@@ -190,6 +199,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "afcConfiguration")]
         public AfcConfiguration AfcConfiguration {get; private set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether the AI security add-on is enabled for the
+        /// Azure Firewall.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "aiSecurityAddOn")]
+        public bool? AiSecurityAddOn {get; set; }
+
+        /// <summary>
+        /// Gets or sets the TCP idle timeout for the Azure Firewall, in minutes. Valid
+        /// values range from 4 to 64, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tcpIdleTimeoutInMinutes")]
+        public int? TcpIdleTimeoutInMinutes {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -243,6 +266,17 @@ namespace Microsoft.Azure.Management.Network.Models
                 this.AutoscaleConfiguration.Validate();
             }
 
+            if (this.TcpIdleTimeoutInMinutes != null)
+            {
+                if (this.TcpIdleTimeoutInMinutes > 64)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "TcpIdleTimeoutInMinutes", 64);
+                }
+                if (this.TcpIdleTimeoutInMinutes < 4)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "TcpIdleTimeoutInMinutes", 4);
+                }
+            }
         }
     }
 }

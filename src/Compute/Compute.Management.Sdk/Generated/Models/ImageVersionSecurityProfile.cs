@@ -26,10 +26,15 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="uefiSettings">Contains UEFI settings for the image version.
         /// </param>
-        public ImageVersionSecurityProfile(GalleryImageVersionUefiSettings uefiSettings = default(GalleryImageVersionUefiSettings))
+
+        /// <param name="secretsProvisioningSettings">Specifies the secrets provisioning settings for the gallery image version.
+        /// Used on create or update to configure secrets provisioning.
+        /// </param>
+        public ImageVersionSecurityProfile(GalleryImageVersionUefiSettings uefiSettings = default(GalleryImageVersionUefiSettings), SecretsProvisioningSettings secretsProvisioningSettings = default(SecretsProvisioningSettings))
 
         {
             this.UefiSettings = uefiSettings;
+            this.SecretsProvisioningSettings = secretsProvisioningSettings;
             CustomInit();
         }
 
@@ -44,5 +49,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "uefiSettings")]
         public GalleryImageVersionUefiSettings UefiSettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the secrets provisioning settings for the gallery
+        /// image version. Used on create or update to configure secrets provisioning.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "secretsProvisioningSettings")]
+        public SecretsProvisioningSettings SecretsProvisioningSettings {get; set; }
     }
 }

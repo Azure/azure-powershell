@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties
+Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -62,7 +62,7 @@ INPUTOBJECT <IEdgeActionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.edgeaction/deploy-azedgeactionversioncode
 #>
 function Deploy-AzEdgeActionVersionCode {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion])]
 [CmdletBinding(DefaultParameterSetName='DeployExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Deploy', Mandatory)]
@@ -281,9 +281,9 @@ end {
 
 <#
 .Synopsis
-A long-running resource action.
+Get the version code for the edge action version.
 .Description
-A long-running resource action.
+Get the version code for the edge action version.
 .Example
 Get-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
 .Example
@@ -480,9 +480,9 @@ end {
 
 <#
 .Synopsis
-A long-running resource action.
+Swap the default version for the edge action.
 .Description
-A long-running resource action.
+Swap the default version for the edge action.
 .Example
 Switch-AzEdgeActionVersionDefault -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v2"
 

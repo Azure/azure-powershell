@@ -24,15 +24,15 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the SearchServiceProperties class.
         /// </summary>
 
-        /// <param name="replicaCount">The number of replicas in the search service. If specified, it must be a
-        /// value between 1 and 12 inclusive for standard SKUs or between 1 and 3
-        /// inclusive for basic SKU.
+        /// <param name="replicaCount">The number of replicas in the dedicated search service. If specified, it
+        /// must be a value between 1 and 12 inclusive for standard SKUs or between 1
+        /// and 3 inclusive for basic SKU.
         /// </param>
 
-        /// <param name="partitionCount">The number of partitions in the search service; if specified, it can be 1,
-        /// 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs.
-        /// For &#39;standard3&#39; services with hostingMode set to &#39;highDensity&#39;, the allowed
-        /// values are between 1 and 3.
+        /// <param name="partitionCount">The number of partitions in the dedicated search service; if specified, it
+        /// can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for
+        /// standard SKUs. For &#39;standard3&#39; services with hostingMode set to
+        /// &#39;highDensity&#39;, the allowed values are between 1 and 3.
         /// </param>
 
         /// <param name="endpoint">The endpoint of the Azure AI Search service.
@@ -41,19 +41,19 @@ namespace Microsoft.Azure.Management.Search.Models
         /// <param name="hostingMode">Applicable only for the standard3 SKU. You can set this property to enable
         /// up to 3 high density partitions that allow up to 1000 indexes, which is
         /// much higher than the maximum indexes allowed for any other SKU. For the
-        /// standard3 SKU, the value is either &#39;default&#39; or &#39;highDensity&#39;. For all
-        /// other SKUs, this value must be &#39;default&#39;.
-        /// Possible values include: &#39;default&#39;, &#39;highDensity&#39;</param>
+        /// standard3 SKU, the value is either &#39;Default&#39; or &#39;HighDensity&#39;. For all
+        /// other SKUs, this value must be &#39;Default&#39;.
+        /// Possible values include: &#39;Default&#39;, &#39;HighDensity&#39;</param>
 
         /// <param name="computeType">Configure this property to support the search service using either the
         /// Default Compute or Azure Confidential Compute.
-        /// Possible values include: &#39;default&#39;, &#39;confidential&#39;</param>
+        /// Possible values include: &#39;Default&#39;, &#39;Confidential&#39;</param>
 
-        /// <param name="publicNetworkAccess">This value can be set to &#39;enabled&#39; to avoid breaking changes on existing
-        /// customer resources and templates. If set to &#39;disabled&#39;, traffic over public
+        /// <param name="publicNetworkAccess">This value can be set to &#39;Enabled&#39; to avoid breaking changes on existing
+        /// customer resources and templates. If set to &#39;Disabled&#39;, traffic over public
         /// interface is not allowed, and private endpoint connections would be the
         /// exclusive access method.
-        /// Possible values include: &#39;enabled&#39;, &#39;disabled&#39;, &#39;securedByPerimeter&#39;</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;</param>
 
         /// <param name="status">The status of the search service. Possible values include: &#39;running&#39;: The
         /// search service is running and no provisioning operations are underway.
@@ -110,10 +110,15 @@ namespace Microsoft.Azure.Management.Search.Models
         /// true.
         /// </param>
 
-        /// <param name="semanticSearch">Sets options that control the availability of semantic search. This
-        /// configuration is only possible for certain Azure AI Search SKUs in certain
-        /// locations.
+        /// <param name="semanticSearch">Specifies the availability and billing plan for semantic search on the
+        /// Azure AI Search service. This configuration is only available for certain
+        /// pricing tiers in certain regions.
         /// Possible values include: &#39;disabled&#39;, &#39;free&#39;, &#39;standard&#39;</param>
+
+        /// <param name="knowledgeRetrieval">Specifies the billing plan for agentic retrieval on the Azure AI Search
+        /// service. This configuration is only available for certain pricing tiers in
+        /// certain regions.
+        /// Possible values include: &#39;free&#39;, &#39;standard&#39;</param>
 
         /// <param name="privateEndpointConnections">The list of private endpoint connections to the Azure AI Search service.
         /// </param>
@@ -132,7 +137,7 @@ namespace Microsoft.Azure.Management.Search.Models
         /// <param name="serviceUpgradedAt">The date and time the search service was last upgraded. This field will be
         /// null until the service gets upgraded for the first time.
         /// </param>
-        public SearchServiceProperties(int? replicaCount = default(int?), int? partitionCount = default(int?), string endpoint = default(string), HostingMode? hostingMode = default(HostingMode?), string computeType = default(string), string publicNetworkAccess = default(string), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), System.Collections.Generic.IList<string> dataExfiltrationProtections = default(System.Collections.Generic.IList<string>), EncryptionWithCmk encryptionWithCmk = default(EncryptionWithCmk), bool? disableLocalAuth = default(bool?), DataPlaneAuthOptions authOptions = default(DataPlaneAuthOptions), string semanticSearch = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>), string eTag = default(string), string upgradeAvailable = default(string), System.DateTime? serviceUpgradedAt = default(System.DateTime?))
+        public SearchServiceProperties(int? replicaCount = default(int?), int? partitionCount = default(int?), string endpoint = default(string), HostingMode? hostingMode = default(HostingMode?), string computeType = default(string), string publicNetworkAccess = default(string), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), System.Collections.Generic.IList<string> dataExfiltrationProtections = default(System.Collections.Generic.IList<string>), EncryptionWithCmk encryptionWithCmk = default(EncryptionWithCmk), bool? disableLocalAuth = default(bool?), DataPlaneAuthOptions authOptions = default(DataPlaneAuthOptions), string semanticSearch = default(string), string knowledgeRetrieval = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>), string eTag = default(string), string upgradeAvailable = default(string), System.DateTime? serviceUpgradedAt = default(System.DateTime?))
 
         {
             this.ReplicaCount = replicaCount;
@@ -150,6 +155,7 @@ namespace Microsoft.Azure.Management.Search.Models
             this.DisableLocalAuth = disableLocalAuth;
             this.AuthOptions = authOptions;
             this.SemanticSearch = semanticSearch;
+            this.KnowledgeRetrieval = knowledgeRetrieval;
             this.PrivateEndpointConnections = privateEndpointConnections;
             this.SharedPrivateLinkResources = sharedPrivateLinkResources;
             this.ETag = eTag;
@@ -165,17 +171,17 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets the number of replicas in the search service. If specified, it
-        /// must be a value between 1 and 12 inclusive for standard SKUs or between 1
-        /// and 3 inclusive for basic SKU.
+        /// Gets or sets the number of replicas in the dedicated search service. If
+        /// specified, it must be a value between 1 and 12 inclusive for standard SKUs
+        /// or between 1 and 3 inclusive for basic SKU.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "replicaCount")]
         public int? ReplicaCount {get; set; }
 
         /// <summary>
-        /// Gets or sets the number of partitions in the search service; if specified,
-        /// it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for
-        /// standard SKUs. For &#39;standard3&#39; services with hostingMode set to
+        /// Gets or sets the number of partitions in the dedicated search service; if
+        /// specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only
+        /// valid for standard SKUs. For &#39;standard3&#39; services with hostingMode set to
         /// &#39;highDensity&#39;, the allowed values are between 1 and 3.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "partitionCount")]
@@ -191,24 +197,24 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Gets or sets applicable only for the standard3 SKU. You can set this
         /// property to enable up to 3 high density partitions that allow up to 1000
         /// indexes, which is much higher than the maximum indexes allowed for any
-        /// other SKU. For the standard3 SKU, the value is either &#39;default&#39; or
-        /// &#39;highDensity&#39;. For all other SKUs, this value must be &#39;default&#39;. Possible values include: &#39;default&#39;, &#39;highDensity&#39;
+        /// other SKU. For the standard3 SKU, the value is either &#39;Default&#39; or
+        /// &#39;HighDensity&#39;. For all other SKUs, this value must be &#39;Default&#39;. Possible values include: &#39;Default&#39;, &#39;HighDensity&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hostingMode")]
         public HostingMode? HostingMode {get; set; }
 
         /// <summary>
         /// Gets or sets configure this property to support the search service using
-        /// either the Default Compute or Azure Confidential Compute. Possible values include: &#39;default&#39;, &#39;confidential&#39;
+        /// either the Default Compute or Azure Confidential Compute. Possible values include: &#39;Default&#39;, &#39;Confidential&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "computeType")]
         public string ComputeType {get; set; }
 
         /// <summary>
-        /// Gets or sets this value can be set to &#39;enabled&#39; to avoid breaking changes
-        /// on existing customer resources and templates. If set to &#39;disabled&#39;, traffic
+        /// Gets or sets this value can be set to &#39;Enabled&#39; to avoid breaking changes
+        /// on existing customer resources and templates. If set to &#39;Disabled&#39;, traffic
         /// over public interface is not allowed, and private endpoint connections
-        /// would be the exclusive access method. Possible values include: &#39;enabled&#39;, &#39;disabled&#39;, &#39;securedByPerimeter&#39;
+        /// would be the exclusive access method. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicNetworkAccess")]
         public string PublicNetworkAccess {get; set; }
@@ -292,12 +298,20 @@ namespace Microsoft.Azure.Management.Search.Models
         public DataPlaneAuthOptions AuthOptions {get; set; }
 
         /// <summary>
-        /// Gets or sets sets options that control the availability of semantic search.
-        /// This configuration is only possible for certain Azure AI Search SKUs in
-        /// certain locations. Possible values include: &#39;disabled&#39;, &#39;free&#39;, &#39;standard&#39;
+        /// Gets or sets specifies the availability and billing plan for semantic
+        /// search on the Azure AI Search service. This configuration is only available
+        /// for certain pricing tiers in certain regions. Possible values include: &#39;disabled&#39;, &#39;free&#39;, &#39;standard&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "semanticSearch")]
         public string SemanticSearch {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the billing plan for agentic retrieval on the Azure
+        /// AI Search service. This configuration is only available for certain pricing
+        /// tiers in certain regions. Possible values include: &#39;free&#39;, &#39;standard&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "knowledgeRetrieval")]
+        public string KnowledgeRetrieval {get; set; }
 
         /// <summary>
         /// Gets the list of private endpoint connections to the Azure AI Search
@@ -362,6 +376,7 @@ namespace Microsoft.Azure.Management.Search.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "PartitionCount", 1);
                 }
             }
+
 
 
 

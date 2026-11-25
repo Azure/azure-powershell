@@ -294,3 +294,59 @@ function Test-ExpressRoutePortAuthorizationCRUD
     }
 }
 
+<#
+.SYNOPSIS
+Tests retrieving the authorization key for an ExpressRoute port authorization.
+#>
+function Test-ExpressRoutePortAuthorizationKey
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $rname = Get-ResourceName
+	$resourceTypeParent = "Microsoft.Network/expressRoutePorts"
+    $location = Get-ProviderLocation $resourceTypeParent
+	$peeringLocation = "Azure"
+	$encapsulation = "QinQ"
+	$bandwidthInGbps = 10.0
+    $authorizationName = "testkey1"
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create the ExpressRoutePort
+        $expressRoutePort = New-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps
+
+        #verification
+        Assert-NotNull $expressRoutePort
+        Assert-AreEqual $rname $expressRoutePort.Name
+
+        # add a new authorization
+        Get-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname | Add-AzExpressRoutePortAuthorization -Name $authorizationName
+
+        # get the authorization
+        $a = $expressRoutePort | Get-AzExpressRoutePortAuthorization -Name $authorizationName
+        Assert-AreEqual $authorizationName $a.Name
+
+        # get the authorization key by name
+        $key = Get-AzExpressRoutePortAuthorizationKey -ResourceGroupName $rgname -ExpressRoutePortName $rname -Name $authorizationName
+        Assert-NotNull $key
+        Assert-NotNull $key.AuthorizationKey
+
+        # get the authorization key from the port object (pipeline)
+        $keyFromObject = $expressRoutePort | Get-AzExpressRoutePortAuthorizationKey -Name $authorizationName
+        Assert-NotNull $keyFromObject
+        Assert-AreEqual $key.AuthorizationKey $keyFromObject.AuthorizationKey
+
+        # Delete ExpressRoutePort
+        $removeExpressRoutePort = Remove-AzExpressRoutePort -ResourceGroupName $rgname -Name $rname -PassThru -Force
+        Assert-AreEqual $true $removeExpressRoutePort
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+

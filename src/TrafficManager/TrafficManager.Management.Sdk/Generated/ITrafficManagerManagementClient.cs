@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Management.TrafficManager
 
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -55,23 +55,18 @@ namespace Microsoft.Azure.Management.TrafficManager
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
-
-        /// <summary>
-        /// Gets the IEndpointsOperations
-        /// </summary>
-        IEndpointsOperations Endpoints { get; }
 
         /// <summary>
         /// Gets the IProfilesOperations
@@ -84,14 +79,19 @@ namespace Microsoft.Azure.Management.TrafficManager
         IGeographicHierarchiesOperations GeographicHierarchies { get; }
 
         /// <summary>
-        /// Gets the IHeatMapOperations
-        /// </summary>
-        IHeatMapOperations HeatMap { get; }
-
-        /// <summary>
         /// Gets the ITrafficManagerUserMetricsKeysOperations
         /// </summary>
         ITrafficManagerUserMetricsKeysOperations TrafficManagerUserMetricsKeys { get; }
+
+        /// <summary>
+        /// Gets the IEndpointsOperations
+        /// </summary>
+        IEndpointsOperations Endpoints { get; }
+
+        /// <summary>
+        /// Gets the IHeatMapOperations
+        /// </summary>
+        IHeatMapOperations HeatMap { get; }
 
     }
 }

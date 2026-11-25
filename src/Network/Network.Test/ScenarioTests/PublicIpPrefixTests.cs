@@ -36,6 +36,14 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsgdev)]
+        public void TestPublicIpPrefixFirstPartyServiceTag()
+        {
+            TestRunner.RunTestScript("Test-PublicIpPrefixFirstPartyServiceTag");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestGlobalPublicIpPrefixCRUD()
         {
@@ -56,6 +64,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestPublicIpPrefixInEdgeZone()
         {
             TestRunner.RunTestScript("Test-PublicIpPrefixInEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpPrefixStandardV2UpgradedToV2()
+        {
+            TestRunner.RunTestScript("Test-PublicIpPrefixStandardV2UpgradedToV2");
         }
     }
 }

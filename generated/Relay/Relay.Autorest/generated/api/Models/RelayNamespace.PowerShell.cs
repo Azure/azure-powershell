@@ -109,17 +109,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespacePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SkuTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespacePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -133,13 +157,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("SkuName"))
             {
@@ -148,30 +172,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("SkuTier"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SkuTier, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -204,6 +204,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("MinimumTlsVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).ClusterArmId = (string) content.GetValueForProperty("ClusterArmId",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).ClusterArmId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -222,17 +230,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespacePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SkuTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.RelayNamespacePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -246,13 +278,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("SkuName"))
             {
@@ -261,30 +293,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("SkuTier"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SkuTier, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -317,6 +325,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("MinimumTlsVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).ClusterArmId = (string) content.GetValueForProperty("ClusterArmId",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespaceInternal)this).ClusterArmId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

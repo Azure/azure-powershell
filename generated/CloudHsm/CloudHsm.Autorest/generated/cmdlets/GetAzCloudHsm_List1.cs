@@ -11,17 +11,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
     using System;
 
     /// <summary>
-    /// The List operation gets information about the Cloud HSM Clusters associated with the subscription.
+    /// The List operation gets information about the Cloud HSM Clusters associated with the subscription and within the specified
+    /// resource group.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
+    /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudHsm_List1")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Description(@"The List operation gets information about the Cloud HSM Clusters associated with the subscription.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Description(@"The List operation gets information about the Cloud HSM Clusters associated with the subscription and within the specified resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters", ApiVersion = "2025-03-31")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters", ApiVersion = "2025-12-01-preview")]
     public partial class GetAzCloudHsm_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IContext
@@ -125,6 +126,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
+        private string _resourceGroupName;
+
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the resource group. The name is case insensitive.",
+        SerializedName = @"resourceGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.ParameterCategory.Path)]
+        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
         /// <summary>Backing field for <see cref="Skiptoken" /> property.</summary>
         private string _skiptoken;
@@ -380,13 +395,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.CloudHsmClustersListBySubscription(SubscriptionId, this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null, onOk, onDefault, this, Pipeline);
+                        await this.Client.CloudHsmClustersListByResourceGroup(SubscriptionId, ResourceGroupName, this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,Skiptoken=this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Skiptoken=this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -518,7 +533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Method.Get );
                             await ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.CloudHsmClustersListBySubscription_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                            await this.Client.CloudHsmClustersListByResourceGroup_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
                 }

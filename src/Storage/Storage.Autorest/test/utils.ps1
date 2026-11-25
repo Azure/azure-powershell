@@ -59,9 +59,61 @@ function setupEnv() {
     $env.NspResourceGroup = "nsprg"
     $env.NspAccount = "nspaccount"
 
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    $fixturePath = [Environment]::GetEnvironmentVariable('AZURE_STORAGE_MANAGEMENT_TEST_FIXTURES')
+    if (-not [string]::IsNullOrWhiteSpace($fixturePath)) {
+        $fixtureJson = Get-Content -LiteralPath $fixturePath -Raw
+        if ($fixtureJson -match '"(?:secretAccessKey|accessKeyId)"\s*:') {
+            throw 'Recording fixtures must reference credential environment variables, not contain access keys.'
+        }
+        $env.ManagementApi = ($fixtureJson | ConvertFrom-Json).ManagementApi
+        if ($null -eq $env.ManagementApi) {
+            throw 'The recording fixture file requires a ManagementApi object.'
+        }
+        if ($env.ManagementApi.SubscriptionId -and $env.ManagementApi.SubscriptionId -ne $env.SubscriptionId) {
+            throw 'The ManagementApi fixture subscription does not match the current Azure context.'
+        }
+    }
+
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env -Depth 100)
 }
 function cleanupEnv() {
-    # Clean resources you create for
+    if ($TestMode -eq 'record') {
+        Protect-StorageManagementRecording
+    }
 }
 
+function Get-StorageManagementFixture {
+    param([Parameter(Mandatory = $true)][string]$Name)
+    $value = $env.ManagementApi.$Name
+    if ($null -eq $value -or ($value -is [string] -and [string]::IsNullOrWhiteSpace($value))) {
+        throw "The ManagementApi recording fixture requires $Name. Configure AZURE_STORAGE_MANAGEMENT_TEST_FIXTURES before recording."
+    }
+    return $value
+}
+
+function Protect-StorageManagementRecording {
+    $path = Join-Path $PSScriptRoot 'ManagementApiUpgrade.BlobAccessPoint.Recording.json'
+    if ($TestMode -ne 'record' -or -not (Test-Path -LiteralPath $path)) {
+        return
+    }
+    $recording = Get-Content -LiteralPath $path -Raw | ConvertFrom-Json
+    foreach ($entry in $recording.PSObject.Properties) {
+        foreach ($message in @($entry.Value.Request, $entry.Value.Response)) {
+            if ([string]::IsNullOrEmpty($message.Content)) {
+                continue
+            }
+            $content = $message.Content
+            if ($message.isContentBase64) {
+                $content = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($content))
+            }
+            $content = [regex]::Replace($content,
+                '("(?:secretAccessKey|accessKeyId)"\s*:\s*)"(?:[^"\\]|\\.)*"',
+                '${1}"REDACTED"', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
+            if ($message.isContentBase64) {
+                $content = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($content))
+            }
+            $message.Content = $content
+        }
+    }
+    [IO.File]::WriteAllText($path, ($recording | ConvertTo-Json -Depth 100), [Text.UTF8Encoding]::new($false))
+}

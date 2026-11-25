@@ -12,9 +12,9 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 This command creates a database named default for a Redis Enterprise cache named MyCache.
 
-### Example 2: Create a georeplicated database for a Redis Enterprise cache
+### Example 2: Create the default database for a cache in an active geo-replication group
 ```powershell
-New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache1/databases/default"}','{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default"}'
+New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache1/databases/default"}','{id:"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default"}'
 ```
 
 ```output
@@ -24,4 +24,23 @@ default Microsoft.Cache/redisEnterprise/databases
 
 ```
 
-This command creates a georeplicated database named default for a Redis Enterprise cache named MyCache2. This database is supposed to be linked with a database default of a preexisting cache MyCache1
+This command creates the default database on MyCache2 and adds the cache to the active geo-replication group containing MyCache1.
+
+### Example 3: Create a database with keyspace notifications enabled
+```powershell
+New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -NotifyKeyspaceEvents "AKE" |
+    Format-List Name, ClientProtocol, ClusteringPolicy, EvictionPolicy, NotifyKeyspaceEvents, Port, ProvisioningState, ResourceState
+```
+
+```output
+Name                 : default
+ClientProtocol       : Encrypted
+ClusteringPolicy     : OSSCluster
+EvictionPolicy       : NoEviction
+NotifyKeyspaceEvents : AKE
+Port                 : 10000
+ProvisioningState    : Succeeded
+ResourceState        : Running
+```
+
+This command creates a database named default with all keyspace notifications enabled (AKE) for a Redis Enterprise cache named MyCache.

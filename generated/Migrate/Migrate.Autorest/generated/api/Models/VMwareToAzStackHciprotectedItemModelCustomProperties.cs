@@ -26,6 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ActiveLocation { get => this._activeLocation; }
 
+        /// <summary>Backing field for <see cref="ConvertToGen2" /> property.</summary>
+        private bool? _convertToGen2;
+
+        /// <summary>Gets or sets a value indicating whether conversion to Gen 2 is required.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public bool? ConvertToGen2 { get => this._convertToGen2; set => this._convertToGen2 = value; }
+
         /// <summary>Backing field for <see cref="CustomLocationRegion" /> property.</summary>
         private string _customLocationRegion;
 
@@ -198,6 +205,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Internal Acessors for TargetVMBiosId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareToAzStackHciprotectedItemModelCustomPropertiesInternal.TargetVMBiosId { get => this._targetVMBiosId; set { {_targetVMBiosId = value;} } }
 
+        /// <summary>Backing field for <see cref="MigrateAsArcVM" /> property.</summary>
+        private bool? _migrateAsArcVM;
+
+        /// <summary>Gets or sets a value indicating whether VM is to be migrated as Arc VM.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public bool? MigrateAsArcVM { get => this._migrateAsArcVM; set => this._migrateAsArcVM = value; }
+
         /// <summary>Backing field for <see cref="MigrationProgressPercentage" /> property.</summary>
         private int? _migrationProgressPercentage;
 
@@ -298,6 +312,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Gets or sets the run as account Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string RunAsAccountId { get => this._runAsAccountId; set => this._runAsAccountId = value; }
+
+        /// <summary>Backing field for <see cref="SecurityOption" /> property.</summary>
+        private string _securityOption;
+
+        /// <summary>Gets or sets the security options for this VM.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string SecurityOption { get => this._securityOption; set => this._securityOption = value; }
 
         /// <summary>Backing field for <see cref="SourceApplianceName" /> property.</summary>
         private string _sourceApplianceName;
@@ -469,6 +490,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("Primary", "Recovery")]
         string ActiveLocation { get;  }
+        /// <summary>Gets or sets a value indicating whether conversion to Gen 2 is required.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Gets or sets a value indicating whether conversion to Gen 2 is required.",
+        SerializedName = @"convertToGen2",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ConvertToGen2 { get; set; }
         /// <summary>Gets or sets the location of Azure Arc HCI custom location resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = true,
@@ -606,6 +638,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"lastReplicationUpdateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastReplicationUpdateTime { get;  }
+        /// <summary>Gets or sets a value indicating whether VM is to be migrated as Arc VM.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Gets or sets a value indicating whether VM is to be migrated as Arc VM.",
+        SerializedName = @"migrateAsArcVM",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? MigrateAsArcVM { get; set; }
         /// <summary>Gets or sets the migration progress percentage.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -764,6 +807,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"runAsAccountId",
         PossibleTypes = new [] { typeof(string) })]
         string RunAsAccountId { get; set; }
+        /// <summary>Gets or sets the security options for this VM.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Gets or sets the security options for this VM.",
+        SerializedName = @"securityOption",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("None", "SecureBootEnabled", "EnablevTPM", "TrustedLaunch")]
+        string SecurityOption { get; set; }
         /// <summary>Gets or sets the source appliance name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -982,6 +1037,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Gets or sets the location of the protected item.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("Primary", "Recovery")]
         string ActiveLocation { get; set; }
+        /// <summary>Gets or sets a value indicating whether conversion to Gen 2 is required.</summary>
+        bool? ConvertToGen2 { get; set; }
         /// <summary>Gets or sets the location of Azure Arc HCI custom location resource.</summary>
         string CustomLocationRegion { get; set; }
         /// <summary>Gets or sets the list of disks to replicate.</summary>
@@ -1011,6 +1068,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         global::System.DateTime? LastRecoveryPointReceived { get; set; }
         /// <summary>Gets or sets the latest timestamp that replication status is updated.</summary>
         global::System.DateTime? LastReplicationUpdateTime { get; set; }
+        /// <summary>Gets or sets a value indicating whether VM is to be migrated as Arc VM.</summary>
+        bool? MigrateAsArcVM { get; set; }
         /// <summary>Gets or sets the migration progress percentage.</summary>
         int? MigrationProgressPercentage { get; set; }
         /// <summary>Gets or sets the list of VM NIC to replicate.</summary>
@@ -1043,6 +1102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string ResyncState { get; set; }
         /// <summary>Gets or sets the run as account Id.</summary>
         string RunAsAccountId { get; set; }
+        /// <summary>Gets or sets the security options for this VM.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("None", "SecureBootEnabled", "EnablevTPM", "TrustedLaunch")]
+        string SecurityOption { get; set; }
         /// <summary>Gets or sets the source appliance name.</summary>
         string SourceApplianceName { get; set; }
         /// <summary>Gets or sets the source VM CPU cores.</summary>

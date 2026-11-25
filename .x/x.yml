@@ -1,0 +1,17 @@
+schema_version: 1
+repository: Azure/azure-powershell
+profile:
+  base_branch: main
+  kind: powershell
+  module_root: src
+  target_kind: psmodule
+  workflow: full
+  live_test: true
+  live_test_workflow: live-test-powershell.yml
+  triage_agent: Fixer
+  triage_handoffs: {}
+  triage_labels:
+  - bug
+  needs_info_label: agent-assist-needs-info
+  title_style: powershell
+  pr_doc_url: https://github.com/Azure/azure-powershell/blob/main/CONTRIBUTING.md

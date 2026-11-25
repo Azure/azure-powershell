@@ -150,7 +150,7 @@ function Set-AzServiceBusRule{
         [Parameter(HelpMessage = "Value that indicates whether the rule action requires preprocessing.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Management.Automation.SwitchParameter]
-        # Value that indicates whether the rule action requires preprocessing. 
+        # Value that indicates whether the rule action requires preprocessing.
         ${ActionRequiresPreprocessing},
 
         [Parameter(HelpMessage = "SQL expression. e.g. MyProperty='ABC'")]
@@ -218,7 +218,18 @@ function Set-AzServiceBusRule{
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
 	)
-	process{
+    dynamicparam {
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command 'Az.ServiceBus.private\New-AzServiceBusRule_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) { $dynamicParameters.Add($entry.Key, $entry.Value) }
+            }
+        }
+        return $dynamicParameters
+    }
+    process{
 		try{
             $hasSqlExpression = $PSBoundParameters.Remove('SqlExpression')
             $hasSqlFilterRequiresPreprocessing = $PSBoundParameters.Remove('SqlFilterRequiresPreprocessing')
@@ -236,8 +247,8 @@ function Set-AzServiceBusRule{
             $hasActionSqlExpression = $PSBoundParameters.Remove('ActionSqlExpression')
             $hasActionRequiresPreprocessing = $PSBoundParameters.Remove('ActionRequiresPreprocessing')
 
-            $rule = Get-AzServiceBusRule @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusRule' -BoundParameters $PSBoundParameters
+            $rule = Get-AzServiceBusRule @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

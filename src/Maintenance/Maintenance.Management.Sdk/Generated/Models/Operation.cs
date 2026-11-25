@@ -8,9 +8,13 @@ namespace Microsoft.Azure.Management.Maintenance.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents an operation returned by the GetOperations request
+    /// Details of a REST API operation, returned from the Resource Provider
+    /// Operations API
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
+    /// <remarks>
+    /// Details of a REST API operation, returned from the Resource Provider
+    /// Operations API
+    /// </remarks>
     public partial class Operation
     {
         /// <summary>
@@ -25,28 +29,33 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// Initializes a new instance of the Operation class.
         /// </summary>
 
-        /// <param name="name">Name of the operation
+        /// <param name="name">The name of the operation, as per Resource-Based Access Control (RBAC).
+        /// Examples: &#34;Microsoft.Compute/virtualMachines/write&#34;,
+        /// &#34;Microsoft.Compute/virtualMachines/capture/action&#34;
         /// </param>
 
-        /// <param name="display">Display name of the operation
+        /// <param name="isDataAction">Whether the operation applies to data-plane. This is &#34;true&#34; for data-plane
+        /// operations and &#34;false&#34; for ARM/control-plane operations.
         /// </param>
 
-        /// <param name="origin">Origin of the operation
+        /// <param name="display">Localized display information for this particular operation.
         /// </param>
 
-        /// <param name="properties">Properties of the operation
-        /// </param>
+        /// <param name="origin">The intended executor of the operation; as in Resource Based Access Control
+        /// (RBAC) and audit logs UX. Default value is &#34;user,system&#34;
+        /// Possible values include: &#39;user&#39;, &#39;system&#39;, &#39;user,system&#39;</param>
 
-        /// <param name="isDataAction">Indicates whether the operation is a data action
-        /// </param>
-        public Operation(string name = default(string), OperationInfo display = default(OperationInfo), string origin = default(string), object properties = default(object), bool? isDataAction = default(bool?))
+        /// <param name="actionType">Enum. Indicates the action type. &#34;Internal&#34; refers to actions that are for
+        /// internal only APIs.
+        /// Possible values include: &#39;Internal&#39;</param>
+        public Operation(string name = default(string), bool? isDataAction = default(bool?), OperationDisplay display = default(OperationDisplay), string origin = default(string), string actionType = default(string))
 
         {
             this.Name = name;
+            this.IsDataAction = isDataAction;
             this.Display = display;
             this.Origin = origin;
-            this.Properties = properties;
-            this.IsDataAction = isDataAction;
+            this.ActionType = actionType;
             CustomInit();
         }
 
@@ -57,33 +66,38 @@ namespace Microsoft.Azure.Management.Maintenance.Models
 
 
         /// <summary>
-        /// Gets or sets name of the operation
+        /// Gets the name of the operation, as per Resource-Based Access Control
+        /// (RBAC). Examples: &#34;Microsoft.Compute/virtualMachines/write&#34;,
+        /// &#34;Microsoft.Compute/virtualMachines/capture/action&#34;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
+        public string Name {get; private set; }
 
         /// <summary>
-        /// Gets or sets display name of the operation
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "display")]
-        public OperationInfo Display {get; set; }
-
-        /// <summary>
-        /// Gets or sets origin of the operation
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "origin")]
-        public string Origin {get; set; }
-
-        /// <summary>
-        /// Gets or sets properties of the operation
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public object Properties {get; set; }
-
-        /// <summary>
-        /// Gets or sets indicates whether the operation is a data action
+        /// Gets whether the operation applies to data-plane. This is &#34;true&#34; for
+        /// data-plane operations and &#34;false&#34; for ARM/control-plane operations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isDataAction")]
-        public bool? IsDataAction {get; set; }
+        public bool? IsDataAction {get; private set; }
+
+        /// <summary>
+        /// Gets or sets localized display information for this particular operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "display")]
+        public OperationDisplay Display {get; set; }
+
+        /// <summary>
+        /// Gets the intended executor of the operation; as in Resource Based Access
+        /// Control (RBAC) and audit logs UX. Default value is &#34;user,system&#34; Possible values include: &#39;user&#39;, &#39;system&#39;, &#39;user,system&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "origin")]
+        public string Origin {get; private set; }
+
+        /// <summary>
+        /// Gets enum. Indicates the action type. &#34;Internal&#34; refers to actions that are
+        /// for internal only APIs. Possible values include: &#39;Internal&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "actionType")]
+        public string ActionType {get; private set; }
     }
 }

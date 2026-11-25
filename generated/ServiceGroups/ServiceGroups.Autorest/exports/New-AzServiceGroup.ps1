@@ -42,6 +42,13 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Category('Body')]
+    [System.Int32]
+    # The criticality designation of the service group.
+    # Valid values range from 0 through 4.
+    ${AttributeCriticality},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Category('Body')]
     [System.String]
     # The display name of the serviceGroup.
     # For example, ServiceGroupTest1

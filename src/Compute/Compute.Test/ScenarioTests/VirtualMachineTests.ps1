@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -4272,6 +4272,129 @@ function Test-VirtualMachineStop
 
 <#
 .SYNOPSIS
+Test Stop-AzVM ForceDeallocate parameter metadata and parameter set behavior.
+#>
+function Test-VirtualMachineStopForceDeallocate
+{
+    # Step 1: Verify the new parameter is exposed on the cmdlet as an optional switch.
+    $stopVmCommand = Get-Command Stop-AzVM -ErrorAction Stop;
+    $forceDeallocateParameter = $stopVmCommand.Parameters["ForceDeallocate"];
+
+    Assert-NotNull $forceDeallocateParameter;
+    Assert-AreEqual ([System.Management.Automation.SwitchParameter].FullName) $forceDeallocateParameter.ParameterType.FullName;
+
+    # ForceDeallocate is offered on the non-hibernate stop sets (like -StayProvisioned / -SkipShutdown),
+    # so it binds with the plain resource-group and id stop scenarios but not with -Hibernate.
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupNameParameterSetName" };
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "IdParameterSetName" };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupHibernateParameterSet") };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "IdHibernateParameterSet") };
+
+    # Step 2: Verify supported combinations bind successfully without issuing live requests.
+    $vmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm";
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Force -WhatIf;
+    Stop-AzVM -Id $vmId -ForceDeallocate -Force -WhatIf;
+
+    # Step 3: Verify existing stop combinations still bind successfully.
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -StayProvisioned -SkipShutdown -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Hibernate -Force -WhatIf;
+
+    # Step 4: Verify ForceDeallocate cannot be combined with Hibernate, StayProvisioned, or
+    # SkipShutdown. Hibernate lives in a separate parameter set, so the combination fails at
+    # parameter binding; StayProvisioned / SkipShutdown share ForceDeallocate's sets and are
+    # rejected by the cmdlet's runtime validation.
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Hibernate -Force -WhatIf -ErrorAction Stop; } "Parameter set cannot be resolved";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -StayProvisioned -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -SkipShutdown -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+}
+
+<#
+.SYNOPSIS
+Test Stop-AzVM -ForceDeallocate end to end against a live virtual machine.
+
+.DESCRIPTION
+This scenario creates a real VM and force deallocates it via Stop-AzVM -ForceDeallocate,
+then asserts the VM reaches the deallocated power state. It must be recorded in Record mode
+against a live subscription (see documentation/testing-docs/using-azure-test-framework.md).
+
+NOTE: -ForceDeallocate is intended for VMs with ZoneMovement enabled. The enablement cmdlet
+(Set-AzVMZoneMovement) is delivered in a separate change; when recording this test, target a
+subscription/VM where the ForceDeallocate operation is accepted by the service.
+#>
+function Test-VirtualMachineStopForceDeallocateExecution
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    # Zone movement (and therefore -ForceDeallocate) is available in the eastus2euap canary region.
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a zone-resilient VM pinned to a specific availability zone.
+        $vmname = 'vm' + $rgname;
+        $vmsize = "Standard_D2s_v4";
+        $domainNameLabel = "d1" + $rgname;
+        $zone = "3";
+        $vmconfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone $zone -SecurityType "Standard";
+
+        # Linux image (the subscription policy disallows non-compliant Windows VMs).
+        $publisherName = "Canonical";
+        $offer = "0001-com-ubuntu-server-jammy";
+        $sku = "22_04-lts-gen2";
+        $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest';
+
+        # A zone-resilient VM requires a zone-redundant (ZRS) OS disk.
+        $vmconfig = Set-AzVMOSDisk -VM $vmconfig -Name ($vmname + '-osdisk') -StorageAccountType "StandardSSD_ZRS" -CreateOption FromImage -Caching ReadWrite;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -Sku Standard -AllocationMethod Static -Zone $zone -DomainNameLabel $domainNameLabel;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id;
+
+        # OS & credentials
+        $user = "usertest";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName $computerName -Credential $cred;
+
+        # Enable zone movement so the VM qualifies for -ForceDeallocate.
+        $vmconfig = Set-AzVMZoneMovement -VM $vmconfig -IsEnabled $true;
+        Assert-AreEqual $true $vmconfig.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
+
+        # Confirm zone movement is enabled on the created VM.
+        $createdVm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $true $createdVm.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        # Force deallocate the running VM.
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -ForceDeallocate -Force;
+
+        # Verify the VM reached the deallocated power state.
+        $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        $powerState = ($vmStatus.Statuses | Where-Object { $_.Code -like "PowerState/*" }).Code;
+        Assert-AreEqual "PowerState/deallocated" $powerState;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Managed Disk
 #>
 function Test-VirtualMachineRemoteDesktop
@@ -5396,6 +5519,94 @@ function Test-CapacityReservation
     }
 }
 
+<#
+.SYNOPSIS
+Tests the creation of Future capacity reservations using the ScheduleProfileStart and
+MinimumCommitmentDayCount parameters of New-AzCapacityReservation, and verifies the read-only
+ScheduleProfile and instance view ReservationStateInfo returned by Get-AzCapacityReservation.
+
+.NOTES
+Re-recording this test (Record mode) requires:
+- The target region ('eastus2euap') to have Future Capacity Reservations enabled.
+- The subscription to have one of the AFEC feature flags registered:
+  Microsoft.Compute/TestSubscription or Microsoft.Compute/FutureCapacityReservation.
+#>
+function Test-CapacityReservationFutureReservation
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
+    $zone = "1"
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Step 1: create a capacity reservation group
+        $CRGName = 'CRG' + $rgname;
+        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc -Zone $zone;
+
+        $sku1 = "Standard_DS1_v2"
+        $sku2 = "Standard_A2_v2"
+
+        # The start dates are computed from the current date, so the exact value returned by the
+        # service is only deterministic when the test runs live. Guard the start-date assertions to
+        # Record mode; in Playback the recorded response carries the date from the recording session.
+        $testMode = Get-ComputeTestMode;
+
+        # ModifiableUntil is only populated if the start date is 8+ weeks away from today
+        $start1 = (Get-Date).AddDays(10).ToString("yyyy-MM-dd");
+
+        # start2 includes an explicit time component and offset, which should also be accepted,
+        # though the service will only consider the date when setting the scheduled start
+        $start2Date = (Get-Date).AddDays(90).ToString("yyyy-MM-dd");
+        $start2 = $start2Date + "T02:30:00+00:00";
+
+        # Step 2: create a future reservation with only ScheduleProfileStart. The service
+        # populates MinimumCommitmentDays with a default value.
+        $CRName1 = "cr1" + $rgname;
+        $cr1 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1 -Sku $sku1 -CapacityToReserve 4 -Location $loc -Zone $zone -ScheduleProfileStart $start1;
+        Assert-NotNull $cr1.ScheduleProfile;
+        if ($testMode -eq 'Record') {
+            Assert-AreEqual ([datetimeoffset]$start1).Date ([datetimeoffset]$cr1.ScheduleProfile.Start).Date;
+        }
+        Assert-NotNull $cr1.ScheduleProfile.MinimumCommitmentDays;
+        Assert-Null $cr1.ScheduleProfile.ModifiableUntil;
+
+        # Step 3: create a future reservation with both ScheduleProfileStart and MinimumCommitmentDayCount
+        $CRName2 = "cr2" + $rgname;
+        $cr2 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2 -Sku $sku2 -CapacityToReserve 4 -Location $loc -Zone $zone -ScheduleProfileStart $start2 -MinimumCommitmentDayCount 30;
+        if ($testMode -eq 'Record') {
+            Assert-AreEqual ([datetimeoffset]$start2).Date ([datetimeoffset]$cr2.ScheduleProfile.Start).Date;
+        }
+        Assert-AreEqual 30 $cr2.ScheduleProfile.MinimumCommitmentDays;
+
+        # Step 4: verify the schedule profile persisted server-side, including the read-only ModifiableUntil
+        $cr2 = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2;
+        if ($testMode -eq 'Record') {
+            Assert-AreEqual ([datetimeoffset]$start2).Date ([datetimeoffset]$cr2.ScheduleProfile.Start).Date;
+        }
+        Assert-AreEqual 30 $cr2.ScheduleProfile.MinimumCommitmentDays;
+        Assert-NotNull $cr2.ScheduleProfile.ModifiableUntil;
+
+        # Step 5: the instance view of a future reservation contains the reservation state
+        $cr2InstanceView = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2 -InstanceView;
+        Assert-NotNull $cr2InstanceView.InstanceView.ReservationStateInfo;
+        Assert-NotNull $cr2InstanceView.InstanceView.ReservationStateInfo.ReservationState;
+
+        # remove CRs
+        Remove-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1
+        Remove-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2
+        $CR = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName
+        Assert-AreEqual 0 $CR.count
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}
+
 function Test-VMwithSSHKey
 {
     # Setup
@@ -5975,6 +6186,126 @@ function Test-VMvCPUFeatures
     {
         # Cleanup
         Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test processor mode support in New-AzVMConfig, New-AzVM, and Update-AzVM.
+#>
+function Test-VMProcessorModeFeatures
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = "eastus2euap"
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # Step 1: Verify New-AzVMConfig processor mode values and omission behavior
+        $vmConfigDeterministic = New-AzVMConfig -VMName ("det" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmConfigDeterministic.HardwareProfile.ProcessorMode
+
+        $vmConfigOpportunistic = New-AzVMConfig -VMName ("opp" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Opportunistic"
+        Assert-AreEqual "Opportunistic" $vmConfigOpportunistic.HardwareProfile.ProcessorMode
+
+        $vmConfigDefault = New-AzVMConfig -VMName ("default" + $rgname) -VMSize "Standard_E2pds_v8"
+        Assert-Null $vmConfigDefault.HardwareProfile.ProcessorMode
+
+        # Step 2: Record the service validation response for the requested preview configuration
+        $vmName = "vm" + $rgname
+        $domainNameLabel = "d" + $rgname
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ("admin01", $securePassword)
+
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmName -Credential $cred -DomainNameLabel $domainNameLabel -Image "Win2019Datacenter" -Size "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        } "Standard_E2pds_v8"
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test SpotPlus priority on a virtual machine.
+
+.DESCRIPTION
+SpotPlus is the next generation of Azure Spot. It is accepted wherever 'Spot' is accepted on the
+-Priority parameter, and -EvictionPolicy / -MaxPrice keep their Spot semantics. Priority is
+create-time only and cannot be changed afterwards.
+Requires the 'Microsoft.Compute/SpotPlus' subscription feature and a region where it is enabled.
+#>
+function Test-VirtualMachineSpotPlusPriority
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = 'eastus2';
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2s_v5';
+        $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
+
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Priority 'SpotPlus' -EvictionPolicy 'Deallocate' -MaxPrice -1 -SecurityType $stnd;
+
+        # SpotPlus maps onto the virtual machine model before the request is sent.
+        Assert-AreEqual 'SpotPlus' $p.Priority;
+        Assert-AreEqual 'Deallocate' $p.EvictionPolicy;
+        Assert-AreEqual -1 $p.BillingProfile.MaxPrice;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+
+        # OS & Image
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        # Use an explicit image reference. Get-DefaultCRPImage queries 'locations/publishers',
+        # which does not support the 2026-04-01 api-version that SpotPlus requires.
+        $p = Set-AzVMSourceImage -VM $p -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version 'latest';
+
+        # Create a SpotPlus Virtual Machine. This mirrors the documented New-AzVMConfig example:
+        # a config object piped into New-AzVM, which uses the default parameter set and therefore
+        # exercises the best-effort BGInfo extension step on the way through.
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        # The service round-trips SpotPlus and never downgrades it to Spot.
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -DisplayHint Expand;
+        Assert-AreEqual "SpotPlus" $vm.Priority;
+        Assert-AreEqual "Deallocate" $vm.EvictionPolicy;
+        Assert-AreEqual -1 $vm.BillingProfile.MaxPrice;
+
+        $vmstate = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        Assert-AreEqual "PowerState/running" $vmstate.Statuses[1].Code;
+
+        # Priority is create-time only, so the max price cannot be changed afterwards.
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm -MaxPrice 0.2; } `
+            "Max price change is not allowed.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }
 
@@ -7528,6 +7859,100 @@ function Test-CapacityReservationGroupResourceIdsOnly
 
 <#
 .SYNOPSIS
+Test Open Capacity Reservation Group parameter mapping and record the service validation
+response while the preview feature is unavailable in the test subscription.
+#>
+function Test-OpenCapacityReservationGroup
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Record the service validation response for the requested preview configuration.
+        $openCRGName = 'openCRG' + $rgname;
+        Assert-ThrowsContains {
+            New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $openCRGName -Location $loc -Zone "1" -ReservationType "Open";
+        } "OpenCapacityReservation";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the -DisableCapacityReservationAssignment parameter on New-AzVMConfig, New-AzVM and Update-AzVM.
+Verifies local parameter mapping and validation, and records the service validation response while
+the preview feature is unavailable in the test subscription.
+#>
+function Test-VMDisableCapacityReservationAssignment
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmsize = "Standard_DS1_v2";
+        $stnd = "Standard";
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Step 1: the switch sets the property on the virtual machine configuration object
+        $vmConfig = New-AzVMConfig -VMName ('cfg' + $rgname) -VMSize $vmsize -DisableCapacityReservationAssignment;
+        Assert-NotNull $vmConfig.CapacityReservation;
+        Assert-AreEqual $true $vmConfig.CapacityReservation.DisableCapacityReservationAssignment;
+        Assert-Null $vmConfig.CapacityReservation.CapacityReservationGroup;
+
+        # Opting out and explicitly associating a capacity reservation group are opposing intents.
+        $crgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/crg";
+        Assert-ThrowsContains {
+            New-AzVMConfig -VMName ('cfg2' + $rgname) -VMSize $vmsize -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
+        } "cannot be used together";
+
+        # Record the service validation response when creating an opted-out virtual machine.
+        $vmname1 = '1' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Name $vmname1 -Credential $cred -DomainNameLabel $domainNameLabel1 -Size $vmsize -Location $loc -SecurityType $stnd -DisableCapacityReservationAssignment;
+        } "OpenCapacityReservation";
+
+        # Create a regular VM, then record the same service validation response for Update-AzVM.
+        $vmname2 = '2' + $rgname;
+        $domainNameLabel2 = "d2" + $rgname;
+        $vm2 = New-AzVM -ResourceGroupName $rgname -Name $vmname2 -Credential $cred -DomainNameLabel $domainNameLabel2 -Size $vmsize -Location $loc -SecurityType $stnd;
+
+        $vm2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
+        Assert-Null $vm2.CapacityReservation;
+
+        Assert-ThrowsContains {
+            Update-AzVM -ResourceGroupName $rgname -VM $vm2 -DisableCapacityReservationAssignment;
+        } "OpenCapacityReservation";
+
+        Assert-ThrowsContains {
+            Update-AzVM -ResourceGroupName $rgname -VM $vm2 -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
+        } "cannot be used together";
+
+        Remove-AzVm -ResourceGroupName $rgname -Name $vmname2 -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machines with explicit Standard securityType.
 Ensures the SecurityProfile is null, and with no other img info,
 defaults to Win2022AE image.
@@ -7978,6 +8403,90 @@ function Test-VirtualMachineAddProxyAgentExtension
 
 <#
 .SYNOPSIS
+Test-VirtualMachineProxyAgentUseLocalFileRules validates WireServer and IMDS local file rules settings on a VM.
+#>
+function Test-VirtualMachineProxyAgentUseLocalFileRules
+{
+    $resourceGroupName = Get-ComputeTestResourceName
+    $adminUsername = Get-ComputeTestResourceName
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+    $credential = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword)
+    $vmName = Get-ComputeTestResourceName
+    $location = "eastus2"
+    $virtualNetworkName = $vmName + "vnet"
+    $subnetName = $vmName + "subnet"
+    $networkInterfaceName = $vmName + "nic"
+
+    try
+    {
+        # Validate the parameter matrix on an in-memory VM configuration.
+        $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $true
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -ImdsUseLocalFileRules $false
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $null -ImdsUseLocalFileRules $null
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+
+        # Persist both settings and verify create and update behavior through the Compute resource provider.
+        New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24"
+        $virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+        $networkInterface = New-AzNetworkInterface -Name $networkInterfaceName -ResourceGroupName $resourceGroupName -Location $location -SubnetId $virtualNetwork.Subnets[0].Id
+
+        $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+        $vm = Set-AzVMOperatingSystem -VM $vm -Linux -ComputerName $vmName -Credential $credential
+        $vm = Set-AzVMSourceImage -VM $vm -PublisherName "Canonical" -Offer "0001-com-ubuntu-server-jammy" -Skus "22_04-lts" -Version "22.04.202510230"
+        $vm = Set-AzVMBootDiagnostic -VM $vm -Disable
+        $vm = Add-AzVMNetworkInterface -VM $vm -Id $networkInterface.Id
+        $vm = Set-AzVMSecurityProfile -VM $vm -SecurityType "Standard"
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -AddProxyAgentExtension $true -WireServerMode "Audit" -WireServerUseLocalFileRules $true -ImdsMode "Enforce" -ImdsUseLocalFileRules $false
+        New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm
+
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm
+
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+    }
+    finally
+    {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Test-VirtualMachineGalleryApplicationFlags tests GalleryApplication Creation and Addition of TreatFailureAsDeploymentFailure and EnableAutomaticUpgrade flags
 #>
 function Test-VirtualMachineGalleryApplicationFlags
@@ -8284,5 +8793,361 @@ function Test-VMStorageFaultDomainAlignment
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Creates the network prerequisites shared by FlexProfile config-based scenarios.
+#>
+function New-FlexProfileTestNetwork
+{
+    param([string] $ResourceGroupName, [string] $Location)
+
+    $subnet = New-AzVirtualNetworkSubnetConfig -Name 'default' -AddressPrefix '10.0.0.0/24'
+    $vnet = New-AzVirtualNetwork -Name 'flex-vnet' -ResourceGroupName $ResourceGroupName `
+        -Location $Location -AddressPrefix '10.0.0.0/16' -Subnet $subnet
+    New-AzNetworkInterface -Name 'flex-nic' -ResourceGroupName $ResourceGroupName `
+        -Location $Location -SubnetId $vnet.Subnets[0].Id
+}
+
+<#
+.SYNOPSIS
+Builds a complete Windows VM config using a real NIC and explicit image reference.
+#>
+function New-FlexProfileTestConfig
+{
+    param([hashtable] $Parameters, [string] $NicId, [System.Management.Automation.PSCredential] $Credential)
+
+    $vm = New-AzVMConfig @Parameters -SecurityType Standard
+    $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName 'flexvm' -Credential $Credential
+    $vm = Set-AzVMSourceImage -VM $vm -PublisherName 'MicrosoftWindowsServer' `
+        -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition' -Version 'latest'
+    $vm = Add-AzVMNetworkInterface -VM $vm -Id $NicId
+    Set-AzVMOSDisk -VM $vm -CreateOption FromImage -StorageAccountType Standard_LRS
+}
+
+<#
+.SYNOPSIS
+Checks preferred size and actual deployed size without assuming they are identical.
+#>
+function Assert-FlexProfileRoundTrip
+{
+    param([object] $VM, [string] $PreferredSize)
+
+    Assert-AreEqual $PreferredSize $VM.FlexProfile.PreferredVMSize
+    # Capacity can select a compatible alternative: never assert actual == preferred.
+    Assert-NotNull $VM.HardwareProfile.VmSize
+}
+
+<#
+.SYNOPSIS
+Tests FlexProfile (PreferredVMSize) end to end in a single resource group to avoid repeated setup:
+New-AzVMConfig binding and validation, New-AzVM/Get-AzVM/Update-AzVM lifecycle (create, roundtrip,
+tag preservation, preferred resize, invalid updates, opt-out and fixed-to-Flow conversion).
+.DESCRIPTION
+Requires FlexProfile support and Dsv5 quota in the selected Compute test region.
+Shared feature registration must not be changed; SubscriptionNotRegisteredForFeature
+propagation is covered by mocked SDK request tests instead.
+#>
+function Test-FlexProfile
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = 'eastasia'
+    $size = 'Standard_D2s_v5'
+    $nextSize = 'Standard_D4s_v5'
+    $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+    $cred = New-Object System.Management.Automation.PSCredential ('admin01', $password)
+    try
+    {
+        # Step 1: Preserve positional fixed-size configuration.
+        $fixed = New-AzVMConfig 'fixed-vm' $size
+        Assert-AreEqual $size $fixed.HardwareProfile.VmSize
+        Assert-Null $fixed.FlexProfile
+
+        # Step 2: Bind preferred size by name and pipeline in both identity parameter sets.
+        $preferred = New-AzVMConfig -VMName 'preferred-vm' -PreferredVMSize $size
+        Assert-AreEqual $size $preferred.FlexProfile.PreferredVMSize
+        Assert-Null $preferred.HardwareProfile.VmSize
+
+        $pipeline = [PSCustomObject]@{ VMName = 'pipeline-vm'; PreferredVMSize = $size } | New-AzVMConfig
+        Assert-AreEqual 'pipeline-vm' $pipeline.Name
+        Assert-AreEqual $size $pipeline.FlexProfile.PreferredVMSize
+        Assert-Null $pipeline.HardwareProfile.VmSize
+
+        $aliasPipeline = [PSCustomObject]@{ Name = 'pipeline-alias'; PreferredVMSize = $size } | New-AzVMConfig
+        Assert-AreEqual 'pipeline-alias' $aliasPipeline.Name
+        Assert-AreEqual $size $aliasPipeline.FlexProfile.PreferredVMSize
+
+        $fixedPipeline = [PSCustomObject]@{ VMName = 'pipeline-fixed'; VMSize = $size } | New-AzVMConfig
+        Assert-AreEqual $size $fixedPipeline.HardwareProfile.VmSize
+        Assert-Null $fixedPipeline.FlexProfile
+
+        $identity = New-AzVMConfig -VMName 'identity-vm' -PreferredVMSize $size -IdentityType SystemAssigned
+        Assert-AreEqual $size $identity.FlexProfile.PreferredVMSize
+        Assert-AreEqual 'SystemAssigned' $identity.Identity.Type
+        $identityPipeline = [PSCustomObject]@{ VMName = 'identity-pipeline'; PreferredVMSize = $size } |
+            New-AzVMConfig -IdentityType SystemAssigned
+        Assert-AreEqual $size $identityPipeline.FlexProfile.PreferredVMSize
+        Assert-AreEqual 'SystemAssigned' $identityPipeline.Identity.Type
+
+        # Step 3: Preserve CPU customizations without setting a fixed size.
+        foreach ($mode in @('Deterministic', 'Opportunistic'))
+        {
+            $cpu = New-AzVMConfig -VMName 'cpu-vm' -PreferredVMSize $size `
+                -vCPUCountAvailable 2 -vCPUCountPerCore 1 -ProcessorMode $mode
+            Assert-AreEqual $size $cpu.FlexProfile.PreferredVMSize
+            Assert-Null $cpu.HardwareProfile.VmSize
+            Assert-AreEqual 2 $cpu.HardwareProfile.VmSizeProperties.VCPUsAvailable
+            Assert-AreEqual 1 $cpu.HardwareProfile.VmSizeProperties.VCPUsPerCore
+            Assert-AreEqual $mode $cpu.HardwareProfile.ProcessorMode
+        }
+
+        # Step 4: Reject conflicting or missing sizes before allocating resources.
+        Assert-ThrowsContains { New-AzVMConfig -VMName 'both' -VMSize $size -PreferredVMSize $size } 'PreferredVMSize'
+        Assert-ThrowsContains { New-AzVMConfig -VMName 'both-empty' -VMSize $size -PreferredVMSize '' } 'PreferredVMSize'
+        Assert-ThrowsContains { New-AzVMConfig -VMName 'neither' } 'PreferredVMSize'
+        Assert-ThrowsContains { New-AzVMConfig -VMName 'identity-neither' -IdentityType SystemAssigned } 'PreferredVMSize'
+        Assert-ThrowsContains {
+            [PSCustomObject]@{ VMName = 'pipeline-both'; VMSize = $size; PreferredVMSize = $size } | New-AzVMConfig
+        } 'PreferredVMSize'
+        Assert-ThrowsContains {
+            New-AzVMConfig -VMName 'identity-both' -IdentityType SystemAssigned -VMSize $size -PreferredVMSize $size
+        } 'PreferredVMSize'
+        Assert-ThrowsContains {
+            New-AzVM -Name 'both' -Size $size -PreferredVMSize $size -Credential $cred -ErrorAction Stop
+        } 'PreferredVMSize'
+
+        # Step 5: Empty is bound and reaches service required-parameter validation.
+        $empty = New-AzVMConfig -VMName 'empty' -PreferredVMSize ''
+        Assert-NotNull $empty.FlexProfile
+        Assert-AreEqual '' $empty.FlexProfile.PreferredVMSize
+        Assert-Null $empty.HardwareProfile.VmSize
+        $nullPreferred = New-AzVMConfig -VMName 'null-preferred' -PreferredVMSize $null
+        Assert-NotNull $nullPreferred.FlexProfile
+        Assert-Null $nullPreferred.FlexProfile.PreferredVMSize
+        Assert-Null $nullPreferred.HardwareProfile.VmSize
+        $nullPipeline = [PSCustomObject]@{ VMName = 'null-pipeline'; PreferredVMSize = $null } | New-AzVMConfig
+        Assert-NotNull $nullPipeline.FlexProfile
+        Assert-Null $nullPipeline.FlexProfile.PreferredVMSize
+        Assert-Null $nullPipeline.HardwareProfile.VmSize
+
+        # Step 6: Create the shared resource group.
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # Step 7: Create preferred-size VMs using the simple and config paths.
+        $simpleName = 'flexsimple'
+        $simple = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $simpleName `
+            -PreferredVMSize $size -Credential $cred -Image Win2022AzureEditionCore -SecurityType Standard `
+            -DomainNameLabel ($simpleName + '-' + $rgname) `
+            -InformationVariable creationInformation
+        $defaultSizeMessages = @($creationInformation | Where-Object { $_.MessageData -like 'No Size value has been provided*' })
+        Assert-AreEqual 0 $defaultSizeMessages.Count
+        Assert-FlexProfileRoundTrip -VM $simple -PreferredSize $size
+        Assert-FlexProfileRoundTrip -VM (Get-AzVM -ResourceGroupName $rgname -Name $simpleName) -PreferredSize $size
+        $listed = Get-AzVM -ResourceGroupName $rgname | Where-Object { $_.Name -eq $simpleName }
+        Assert-FlexProfileRoundTrip -VM $listed -PreferredSize $size
+
+        $nic = New-FlexProfileTestNetwork -ResourceGroupName $rgname -Location $loc
+        $name = 'config' + $rgname
+        $config = New-FlexProfileTestConfig -Parameters @{ VMName = $name; PreferredVMSize = $size } `
+            -NicId $nic.Id -Credential $cred
+        $config | New-AzVM -ResourceGroupName $rgname -Location $loc
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $size
+
+        # Step 8: Re-submit an existing Flow VM through New-AzVM without losing either profile.
+        $roundTripActualSize = $vm.HardwareProfile.VmSize
+        New-AzVM -VM $vm -ResourceGroupName $rgname -Location $loc
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $size
+        Assert-AreEqual $roundTripActualSize $vm.HardwareProfile.VmSize
+
+        # Step 9: Preserve FlexProfile on tag-only updates; mocked requests cover NoWait parity.
+        $vm | Update-AzVM -ResourceGroupName $rgname -Tag @{ purpose = 'flex-profile' }
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $size
+        Assert-AreEqual 'flex-profile' $vm.Tags['purpose']
+
+        # Step 10: Resize through PreferredVMSize without mutating the supplied VM.
+        Stop-AzVM -ResourceGroupName $rgname -Name $name -Force
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
+        $actualSize = $vm.HardwareProfile.VmSize
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -PreferredVMSize $nextSize
+        Assert-AreEqual $actualSize $vm.HardwareProfile.VmSize
+        Assert-AreEqual $size $vm.FlexProfile.PreferredVMSize
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $nextSize
+        Start-AzVM -ResourceGroupName $rgname -Name $name
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $nextSize
+        Assert-NotNull $vm.HardwareProfile.VmSize
+
+        # Step 11: Reject invalid changes and verify that each rejection leaves service state unchanged.
+        $stableActualSize = $vm.HardwareProfile.VmSize
+        $invalid = Get-AzVM -ResourceGroupName $rgname -Name $name
+        $invalid.HardwareProfile.VmSize = if ($stableActualSize -eq 'Standard_D8s_v5') { $size } else { 'Standard_D8s_v5' }
+        Assert-False { $invalid.HardwareProfile.VmSize -eq $stableActualSize }
+        $invalidRequests = @(
+            @{
+                Action = { Update-AzVM -ResourceGroupName $rgname -VM $vm -PreferredVMSize 'Not_A_Real_VM_Size' }
+                ErrorCode = 'InvalidParameter'
+            },
+            @{
+                Action = { Update-AzVM -ResourceGroupName $rgname -VM $vm -PreferredVMSize '' }
+                ErrorCode = 'InvalidParameter'
+            },
+            @{
+                Action = { Update-AzVM -ResourceGroupName $rgname -VM $invalid }
+                ErrorCode = 'InvalidParameter'
+            }
+        )
+        foreach ($request in $invalidRequests)
+        {
+            Assert-ThrowsContains $request.Action $request.ErrorCode
+            $unchanged = Get-AzVM -ResourceGroupName $rgname -Name $name
+            Assert-AreEqual $nextSize $unchanged.FlexProfile.PreferredVMSize
+            Assert-AreEqual $stableActualSize $unchanged.HardwareProfile.VmSize
+        }
+
+        # Step 12: Opt out by explicitly removing FlexProfile and selecting a fixed size.
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
+        $vm.FlexProfile = $null
+        $vm.HardwareProfile.VmSize = $size
+        Update-AzVM -ResourceGroupName $rgname -VM $vm
+        $fixed = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-Null $fixed.FlexProfile
+        Assert-AreEqual $size $fixed.HardwareProfile.VmSize
+
+        # Step 13: A direct fixed-to-Flow switch must not retain hardwareProfile.vmSize.
+        $direct = Get-AzVM -ResourceGroupName $rgname -Name $name
+        $direct.FlexProfile = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.FlexProfile -ArgumentList $nextSize
+        Assert-AreEqual $size $direct.HardwareProfile.VmSize
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $direct } 'InvalidParameter'
+        $unchanged = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-Null $unchanged.FlexProfile
+        Assert-AreEqual $size $unchanged.HardwareProfile.VmSize
+
+        # Step 14: The PreferredVMSize parameter performs the valid fixed-to-Flow conversion.
+        Update-AzVM -ResourceGroupName $rgname -VM $fixed -PreferredVMSize $size
+        Assert-Null $fixed.FlexProfile
+        Assert-AreEqual $size $fixed.HardwareProfile.VmSize
+        Assert-FlexProfileRoundTrip -VM (Get-AzVM -ResourceGroupName $rgname -Name $name) -PreferredSize $size
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue
+    }
+}
+
+<#
+.SYNOPSIS
+Tests each FlexProfile validation independently so placement capacity cannot block other cases.
+#>
+function Test-FlexProfileValidation
+{
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateSet('AvailabilitySet', 'ProximityPlacementGroup', 'CapacityReservation', 'Vmss',
+            'Host', 'HostGroup', 'EmptyPreferredSize', 'InvalidPreferredSize', 'NullPreferredSize')]
+        [string] $ValidationCase
+    )
+
+    $rgname = Get-ComputeTestResourceName
+    $loc = 'eastasia'
+    $size = 'Standard_D2s_v5'
+    $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+    $cred = New-Object System.Management.Automation.PSCredential ('admin01', $password)
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+        $parameters = @{ VMName = 'validation-vm'; PreferredVMSize = $size }
+        $nic = $null
+        $expectedError = 'InvalidParameter'
+        switch ($ValidationCase)
+        {
+            'AvailabilitySet'
+            {
+                $availability = New-AzAvailabilitySet -ResourceGroupName $rgname -Name 'flex-as' `
+                    -Location $loc -Sku Aligned -PlatformFaultDomainCount 2 -PlatformUpdateDomainCount 5
+                $parameters.AvailabilitySetId = $availability.Id
+            }
+            'ProximityPlacementGroup'
+            {
+                $ppg = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name 'flex-ppg' `
+                    -Location $loc -ProximityPlacementGroupType Standard
+                $parameters.ProximityPlacementGroupId = $ppg.Id
+            }
+            'CapacityReservation'
+            {
+                # Keep this rejection test independent of reservable capacity.
+                $reservation = New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name 'flex-crg' -Location $loc
+                $parameters.CapacityReservationGroupId = $reservation.Id
+                $expectedError = "FlexProfile is not supported with 'capacityReservation"
+            }
+            'Vmss'
+            {
+                $nic = New-FlexProfileTestNetwork -ResourceGroupName $rgname -Location $loc
+                $ipConfig = New-AzVmssIpConfig -Name 'ipconfig1' -SubnetId $nic.IpConfigurations[0].Subnet.Id
+                $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 0 -SkuName $size `
+                    -OrchestrationMode Flexible -PlatformFaultDomainCount 1 -SecurityType Standard
+                $vmssConfig = Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig `
+                    -Name 'nicconfig1' -Primary $true -IPConfiguration $ipConfig -NetworkApiVersion '2020-11-01'
+                $vmssConfig = Set-AzVmssOSProfile -VirtualMachineScaleSet $vmssConfig `
+                    -ComputerNamePrefix 'flexvm' -AdminUsername $cred.UserName -AdminPassword $cred.Password
+                $vmssConfig = Set-AzVmssStorageProfile -VirtualMachineScaleSet $vmssConfig `
+                    -OsDiskCreateOption FromImage -ManagedDisk Standard_LRS -ImageReferencePublisher 'MicrosoftWindowsServer' `
+                    -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2022-datacenter-azure-edition' -ImageReferenceVersion 'latest'
+                $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName 'flex-vmss' -VirtualMachineScaleSet $vmssConfig
+                $parameters.VmssId = $vmss.Id
+            }
+            { $_ -in @('Host', 'HostGroup') }
+            {
+                $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name 'flex-hg' -Location $loc `
+                    -PlatformFaultDomain 1 -SupportAutomaticPlacement $true
+                $hostResource = New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroup.Name `
+                    -Name 'flex-host' -Location $loc -Sku DSv5-Type1
+                $parameters.HostId = $hostResource.Id
+            }
+            'EmptyPreferredSize'
+            {
+                $parameters.PreferredVMSize = ''
+            }
+            'InvalidPreferredSize'
+            {
+                $parameters.PreferredVMSize = 'Not_A_Real_VM_Size'
+            }
+        }
+
+        if ($ValidationCase -eq 'NullPreferredSize')
+        {
+            Assert-ThrowsContains {
+                New-AzVM -ResourceGroupName $rgname -Location $loc -Name 'nullpreferred' `
+                    -PreferredVMSize $null -Credential $cred -Image Win2022AzureEditionCore -SecurityType Standard `
+                    -DomainNameLabel ('nullpreferred-' + $rgname)
+            } "'PreferredVMSize' cannot be null."
+        }
+        elseif ($ValidationCase -eq 'HostGroup')
+        {
+            Assert-ThrowsContains {
+                New-AzVM -ResourceGroupName $rgname -Location $loc -Name 'hostgroup-vm' `
+                    -PreferredVMSize $size -HostGroupId $hostGroup.Id -Credential $cred `
+                    -Image Win2022AzureEditionCore -SecurityType Standard -DomainNameLabel ('hostgroup-' + $rgname)
+            } "FlexProfile is not supported with 'hostGroup'"
+        }
+        else
+        {
+            if ($null -eq $nic)
+            {
+                $nic = New-FlexProfileTestNetwork -ResourceGroupName $rgname -Location $loc
+            }
+            $config = New-FlexProfileTestConfig -Parameters $parameters -NicId $nic.Id -Credential $cred
+            Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $config } $expectedError
+        }
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue
     }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<MongoDBDatabaseGetResults> ListMongoDBDatabases(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<MongoDBDatabaseGetResults> ListMongoDBDatabases(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IMongoDbResourcesOperations)operations).ListMongoDBDatabasesAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MongoDBDatabaseGetResults>> ListMongoDBDatabasesAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MongoDBDatabaseGetResults>> ListMongoDBDatabasesAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListMongoDBDatabasesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -191,192 +191,6 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the RUs per second of the MongoDB database under an existing Azure
-        /// Cosmos DB database account with the provided name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults GetMongoDBDatabaseThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IMongoDbResourcesOperations)operations).GetMongoDBDatabaseThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the RUs per second of the MongoDB database under an existing Azure
-        /// Cosmos DB database account with the provided name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> GetMongoDBDatabaseThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults UpdateMongoDBDatabaseThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
-        {
-                return ((IMongoDbResourcesOperations)operations).UpdateMongoDBDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> UpdateMongoDBDatabaseThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
-        /// autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults MigrateMongoDBDatabaseToAutoscale(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IMongoDbResourcesOperations)operations).MigrateMongoDBDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
-        /// autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateMongoDBDatabaseToAutoscaleAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.MigrateMongoDBDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
-        /// throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults MigrateMongoDBDatabaseToManualThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IMongoDbResourcesOperations)operations).MigrateMongoDBDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
-        /// throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateMongoDBDatabaseToManualThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.MigrateMongoDBDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists the MongoDB collection under an existing Azure Cosmos DB database
         /// account.
         /// </summary>
@@ -392,7 +206,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<MongoDBCollectionGetResults> ListMongoDBCollections(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        public static Microsoft.Rest.Azure.IPage<MongoDBCollectionGetResults> ListMongoDBCollections(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
                 return ((IMongoDbResourcesOperations)operations).ListMongoDBCollectionsAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
@@ -416,7 +230,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MongoDBCollectionGetResults>> ListMongoDBCollectionsAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MongoDBCollectionGetResults>> ListMongoDBCollectionsAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListMongoDBCollectionsWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -576,6 +390,57 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.DeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves continuous backup information for a Mongodb collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        public static BackupInformation RetrieveContinuousBackupInformation(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ContinuousBackupRestoreLocation location)
+        {
+                return ((IMongoDbResourcesOperations)operations).RetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, collectionName, location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves continuous backup information for a Mongodb collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BackupInformation> RetrieveContinuousBackupInformationAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -789,14 +654,11 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role
-        /// Definition with the given Id.
+        /// Gets the RUs per second of the MongoDB database under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -804,45 +666,45 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static MongoRoleDefinitionGetResults GetMongoRoleDefinition(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName)
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults GetMongoDBDatabaseThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
-                return ((IMongoDbResourcesOperations)operations).GetMongoRoleDefinitionAsync(mongoRoleDefinitionId, resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((IMongoDbResourcesOperations)operations).GetMongoDBDatabaseThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role
-        /// Definition with the given Id.
+        /// Gets the RUs per second of the MongoDB database under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MongoRoleDefinitionGetResults> GetMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> GetMongoDBDatabaseThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetMongoRoleDefinitionWithHttpMessagesAsync(mongoRoleDefinitionId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB Mongo Role Definition.
+        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -850,44 +712,45 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static MongoRoleDefinitionGetResults CreateUpdateMongoRoleDefinition(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName, MongoRoleDefinitionCreateUpdateParameters createUpdateMongoRoleDefinitionParameters)
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults UpdateMongoDBDatabaseThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
         {
-                return ((IMongoDbResourcesOperations)operations).CreateUpdateMongoRoleDefinitionAsync(mongoRoleDefinitionId, resourceGroupName, accountName, createUpdateMongoRoleDefinitionParameters).GetAwaiter().GetResult();
+                return ((IMongoDbResourcesOperations)operations).UpdateMongoDBDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB Mongo Role Definition.
+        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MongoRoleDefinitionGetResults> CreateUpdateMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName, MongoRoleDefinitionCreateUpdateParameters createUpdateMongoRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> UpdateMongoDBDatabaseThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(mongoRoleDefinitionId, resourceGroupName, accountName, createUpdateMongoRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB Mongo Role Definition.
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -895,32 +758,86 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static void DeleteMongoRoleDefinition(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName)
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults MigrateMongoDBDatabaseToAutoscale(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
-                ((IMongoDbResourcesOperations)operations).DeleteMongoRoleDefinitionAsync(mongoRoleDefinitionId, resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((IMongoDbResourcesOperations)operations).MigrateMongoDBDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB Mongo Role Definition.
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateMongoDBDatabaseToAutoscaleAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteMongoRoleDefinitionWithHttpMessagesAsync(mongoRoleDefinitionId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.MigrateMongoDBDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults MigrateMongoDBDatabaseToManualThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        {
+                return ((IMongoDbResourcesOperations)operations).MigrateMongoDBDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateMongoDBDatabaseToManualThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.MigrateMongoDBDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Retrieves the list of all Azure Cosmos DB Mongo Role Definitions.
@@ -934,7 +851,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<MongoRoleDefinitionGetResults> ListMongoRoleDefinitions(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<MongoRoleDefinitionGetResults> ListMongoRoleDefinitions(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IMongoDbResourcesOperations)operations).ListMongoRoleDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -954,7 +871,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MongoRoleDefinitionGetResults>> ListMongoRoleDefinitionsAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MongoRoleDefinitionGetResults>> ListMongoRoleDefinitionsAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListMongoRoleDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -962,60 +879,57 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role
         /// Definition with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static MongoUserDefinitionGetResults GetMongoUserDefinition(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName)
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
+        /// </param>
+        public static MongoRoleDefinitionGetResults GetMongoRoleDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId)
         {
-                return ((IMongoDbResourcesOperations)operations).GetMongoUserDefinitionAsync(mongoUserDefinitionId, resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((IMongoDbResourcesOperations)operations).GetMongoRoleDefinitionAsync(resourceGroupName, accountName, mongoRoleDefinitionId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role
         /// Definition with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MongoUserDefinitionGetResults> GetMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MongoRoleDefinitionGetResults> GetMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetMongoUserDefinitionWithHttpMessagesAsync(mongoUserDefinitionId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetMongoRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoRoleDefinitionId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB Mongo User Definition.
+        /// Creates or updates an Azure Cosmos DB Mongo Role Definition.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1023,44 +937,44 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static MongoUserDefinitionGetResults CreateUpdateMongoUserDefinition(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName, MongoUserDefinitionCreateUpdateParameters createUpdateMongoUserDefinitionParameters)
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
+        /// </param>
+        public static MongoRoleDefinitionGetResults CreateUpdateMongoRoleDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId, MongoRoleDefinitionCreateUpdateParameters createUpdateMongoRoleDefinitionParameters)
         {
-                return ((IMongoDbResourcesOperations)operations).CreateUpdateMongoUserDefinitionAsync(mongoUserDefinitionId, resourceGroupName, accountName, createUpdateMongoUserDefinitionParameters).GetAwaiter().GetResult();
+                return ((IMongoDbResourcesOperations)operations).CreateUpdateMongoRoleDefinitionAsync(resourceGroupName, accountName, mongoRoleDefinitionId, createUpdateMongoRoleDefinitionParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB Mongo User Definition.
+        /// Creates or updates an Azure Cosmos DB Mongo Role Definition.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<MongoUserDefinitionGetResults> CreateUpdateMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName, MongoUserDefinitionCreateUpdateParameters createUpdateMongoUserDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MongoRoleDefinitionGetResults> CreateUpdateMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId, MongoRoleDefinitionCreateUpdateParameters createUpdateMongoRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateUpdateMongoUserDefinitionWithHttpMessagesAsync(mongoUserDefinitionId, resourceGroupName, accountName, createUpdateMongoUserDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoRoleDefinitionId, createUpdateMongoRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB Mongo User Definition.
+        /// Deletes an existing Azure Cosmos DB Mongo Role Definition.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1068,32 +982,38 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static void DeleteMongoUserDefinition(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName)
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
+        /// </param>
+        public static MongoDbResourcesDeleteMongoRoleDefinitionHeaders DeleteMongoRoleDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId)
         {
-                ((IMongoDbResourcesOperations)operations).DeleteMongoUserDefinitionAsync(mongoUserDefinitionId, resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((IMongoDbResourcesOperations)operations).DeleteMongoRoleDefinitionAsync(resourceGroupName, accountName, mongoRoleDefinitionId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB Mongo User Definition.
+        /// Deletes an existing Azure Cosmos DB Mongo Role Definition.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
         /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MongoDbResourcesDeleteMongoRoleDefinitionHeaders> DeleteMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteMongoUserDefinitionWithHttpMessagesAsync(mongoUserDefinitionId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteMongoRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoRoleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Retrieves the list of all Azure Cosmos DB Mongo User Definition.
@@ -1107,7 +1027,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<MongoUserDefinitionGetResults> ListMongoUserDefinitions(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<MongoUserDefinitionGetResults> ListMongoUserDefinitions(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IMongoDbResourcesOperations)operations).ListMongoUserDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -1127,7 +1047,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MongoUserDefinitionGetResults>> ListMongoUserDefinitionsAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MongoUserDefinitionGetResults>> ListMongoUserDefinitionsAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListMongoUserDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1135,7 +1055,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves continuous backup information for a Mongodb collection.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User
+        /// Definition with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1146,19 +1067,17 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
         /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        public static BackupInformation RetrieveContinuousBackupInformation(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ContinuousBackupRestoreLocation location)
+        public static MongoUserDefinitionGetResults GetMongoUserDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId)
         {
-                return ((IMongoDbResourcesOperations)operations).RetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, collectionName, location).GetAwaiter().GetResult();
+                return ((IMongoDbResourcesOperations)operations).GetMongoUserDefinitionAsync(resourceGroupName, accountName, mongoUserDefinitionId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves continuous backup information for a Mongodb collection.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User
+        /// Definition with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1169,20 +1088,107 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupInformation> RetrieveContinuousBackupInformationAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MongoUserDefinitionGetResults> GetMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.RetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, location, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetMongoUserDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoUserDefinitionId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
+        /// </param>
+        public static MongoUserDefinitionGetResults CreateUpdateMongoUserDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId, MongoUserDefinitionCreateUpdateParameters createUpdateMongoUserDefinitionParameters)
+        {
+                return ((IMongoDbResourcesOperations)operations).CreateUpdateMongoUserDefinitionAsync(resourceGroupName, accountName, mongoUserDefinitionId, createUpdateMongoUserDefinitionParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MongoUserDefinitionGetResults> CreateUpdateMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId, MongoUserDefinitionCreateUpdateParameters createUpdateMongoUserDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateMongoUserDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoUserDefinitionId, createUpdateMongoUserDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
+        /// </param>
+        public static MongoDbResourcesDeleteMongoUserDefinitionHeaders DeleteMongoUserDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId)
+        {
+                return ((IMongoDbResourcesOperations)operations).DeleteMongoUserDefinitionAsync(resourceGroupName, accountName, mongoUserDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MongoDbResourcesDeleteMongoUserDefinitionHeaders> DeleteMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteMongoUserDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoUserDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -1273,145 +1279,6 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginDeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults BeginUpdateMongoDBDatabaseThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
-        {
-                return ((IMongoDbResourcesOperations)operations).BeginUpdateMongoDBDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginUpdateMongoDBDatabaseThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginUpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
-        /// autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults BeginMigrateMongoDBDatabaseToAutoscale(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IMongoDbResourcesOperations)operations).BeginMigrateMongoDBDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
-        /// autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateMongoDBDatabaseToAutoscaleAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginMigrateMongoDBDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
-        /// throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults BeginMigrateMongoDBDatabaseToManualThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IMongoDbResourcesOperations)operations).BeginMigrateMongoDBDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
-        /// throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateMongoDBDatabaseToManualThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginMigrateMongoDBDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
             }
         }
         /// <summary>
@@ -1514,6 +1381,57 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginDeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves continuous backup information for a Mongodb collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        public static BackupInformation BeginRetrieveContinuousBackupInformation(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ContinuousBackupRestoreLocation location)
+        {
+                return ((IMongoDbResourcesOperations)operations).BeginRetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, collectionName, location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves continuous backup information for a Mongodb collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='collectionName'>
+        /// Cosmos DB collection name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BackupInformation> BeginRetrieveContinuousBackupInformationAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -1674,181 +1592,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB Mongo Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static MongoRoleDefinitionGetResults BeginCreateUpdateMongoRoleDefinition(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName, MongoRoleDefinitionCreateUpdateParameters createUpdateMongoRoleDefinitionParameters)
-        {
-                return ((IMongoDbResourcesOperations)operations).BeginCreateUpdateMongoRoleDefinitionAsync(mongoRoleDefinitionId, resourceGroupName, accountName, createUpdateMongoRoleDefinitionParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB Mongo Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoRoleDefinitionGetResults> BeginCreateUpdateMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName, MongoRoleDefinitionCreateUpdateParameters createUpdateMongoRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(mongoRoleDefinitionId, resourceGroupName, accountName, createUpdateMongoRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Mongo Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static void BeginDeleteMongoRoleDefinition(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName)
-        {
-                ((IMongoDbResourcesOperations)operations).BeginDeleteMongoRoleDefinitionAsync(mongoRoleDefinitionId, resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Mongo Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoRoleDefinitionId'>
-        /// The ID for the Role Definition {dbName.roleName}.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoRoleDefinitionId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteMongoRoleDefinitionWithHttpMessagesAsync(mongoRoleDefinitionId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB Mongo User Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static MongoUserDefinitionGetResults BeginCreateUpdateMongoUserDefinition(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName, MongoUserDefinitionCreateUpdateParameters createUpdateMongoUserDefinitionParameters)
-        {
-                return ((IMongoDbResourcesOperations)operations).BeginCreateUpdateMongoUserDefinitionAsync(mongoUserDefinitionId, resourceGroupName, accountName, createUpdateMongoUserDefinitionParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB Mongo User Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoUserDefinitionGetResults> BeginCreateUpdateMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName, MongoUserDefinitionCreateUpdateParameters createUpdateMongoUserDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateUpdateMongoUserDefinitionWithHttpMessagesAsync(mongoUserDefinitionId, resourceGroupName, accountName, createUpdateMongoUserDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Mongo User Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static void BeginDeleteMongoUserDefinition(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName)
-        {
-                ((IMongoDbResourcesOperations)operations).BeginDeleteMongoUserDefinitionAsync(mongoUserDefinitionId, resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Mongo User Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='mongoUserDefinitionId'>
-        /// The ID for the User Definition {dbName.userName}.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string mongoUserDefinitionId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteMongoUserDefinitionWithHttpMessagesAsync(mongoUserDefinitionId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Retrieves continuous backup information for a Mongodb collection.
+        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1862,16 +1606,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        public static BackupInformation BeginRetrieveContinuousBackupInformation(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ContinuousBackupRestoreLocation location)
+        public static ThroughputSettingsGetResults BeginUpdateMongoDBDatabaseThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
         {
-                return ((IMongoDbResourcesOperations)operations).BeginRetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, collectionName, location).GetAwaiter().GetResult();
+                return ((IMongoDbResourcesOperations)operations).BeginUpdateMongoDBDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves continuous backup information for a Mongodb collection.
+        /// Update RUs per second of the an Azure Cosmos DB MongoDB database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1885,15 +1626,422 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginUpdateMongoDBDatabaseThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults BeginMigrateMongoDBDatabaseToAutoscale(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        {
+                return ((IMongoDbResourcesOperations)operations).BeginMigrateMongoDBDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupInformation> BeginRetrieveContinuousBackupInformationAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateMongoDBDatabaseToAutoscaleAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, location, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginMigrateMongoDBDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults BeginMigrateMongoDBDatabaseToManualThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        {
+                return ((IMongoDbResourcesOperations)operations).BeginMigrateMongoDBDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateMongoDBDatabaseToManualThroughputAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginMigrateMongoDBDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Mongo Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
+        /// </param>
+        public static MongoRoleDefinitionGetResults BeginCreateUpdateMongoRoleDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId, MongoRoleDefinitionCreateUpdateParameters createUpdateMongoRoleDefinitionParameters)
+        {
+                return ((IMongoDbResourcesOperations)operations).BeginCreateUpdateMongoRoleDefinitionAsync(resourceGroupName, accountName, mongoRoleDefinitionId, createUpdateMongoRoleDefinitionParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Mongo Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MongoRoleDefinitionGetResults> BeginCreateUpdateMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId, MongoRoleDefinitionCreateUpdateParameters createUpdateMongoRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoRoleDefinitionId, createUpdateMongoRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Mongo Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
+        /// </param>
+        public static MongoDbResourcesDeleteMongoRoleDefinitionHeaders BeginDeleteMongoRoleDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId)
+        {
+                return ((IMongoDbResourcesOperations)operations).BeginDeleteMongoRoleDefinitionAsync(resourceGroupName, accountName, mongoRoleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Mongo Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoRoleDefinitionId'>
+        /// The ID for the Role Definition {dbName.roleName}.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MongoDbResourcesDeleteMongoRoleDefinitionHeaders> BeginDeleteMongoRoleDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoRoleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteMongoRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoRoleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
+        /// </param>
+        public static MongoUserDefinitionGetResults BeginCreateUpdateMongoUserDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId, MongoUserDefinitionCreateUpdateParameters createUpdateMongoUserDefinitionParameters)
+        {
+                return ((IMongoDbResourcesOperations)operations).BeginCreateUpdateMongoUserDefinitionAsync(resourceGroupName, accountName, mongoUserDefinitionId, createUpdateMongoUserDefinitionParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MongoUserDefinitionGetResults> BeginCreateUpdateMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId, MongoUserDefinitionCreateUpdateParameters createUpdateMongoUserDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateUpdateMongoUserDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoUserDefinitionId, createUpdateMongoUserDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
+        /// </param>
+        public static MongoDbResourcesDeleteMongoUserDefinitionHeaders BeginDeleteMongoUserDefinition(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId)
+        {
+                return ((IMongoDbResourcesOperations)operations).BeginDeleteMongoUserDefinitionAsync(resourceGroupName, accountName, mongoUserDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='mongoUserDefinitionId'>
+        /// The ID for the User Definition {dbName.userName}.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MongoDbResourcesDeleteMongoUserDefinitionHeaders> BeginDeleteMongoUserDefinitionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string mongoUserDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteMongoUserDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, mongoUserDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Lists the MongoDB databases under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MongoDBDatabaseGetResults> ListMongoDBDatabasesNext(this IMongoDbResourcesOperations operations, string nextPageLink)
+        {
+                return ((IMongoDbResourcesOperations)operations).ListMongoDBDatabasesNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the MongoDB databases under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MongoDBDatabaseGetResults>> ListMongoDBDatabasesNextAsync(this IMongoDbResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMongoDBDatabasesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MongoDBCollectionGetResults> ListMongoDBCollectionsNext(this IMongoDbResourcesOperations operations, string nextPageLink)
+        {
+                return ((IMongoDbResourcesOperations)operations).ListMongoDBCollectionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MongoDBCollectionGetResults>> ListMongoDBCollectionsNextAsync(this IMongoDbResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMongoDBCollectionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Mongo Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MongoRoleDefinitionGetResults> ListMongoRoleDefinitionsNext(this IMongoDbResourcesOperations operations, string nextPageLink)
+        {
+                return ((IMongoDbResourcesOperations)operations).ListMongoRoleDefinitionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Mongo Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MongoRoleDefinitionGetResults>> ListMongoRoleDefinitionsNextAsync(this IMongoDbResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMongoRoleDefinitionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MongoUserDefinitionGetResults> ListMongoUserDefinitionsNext(this IMongoDbResourcesOperations operations, string nextPageLink)
+        {
+                return ((IMongoDbResourcesOperations)operations).ListMongoUserDefinitionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Mongo User Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MongoUserDefinitionGetResults>> ListMongoUserDefinitionsNextAsync(this IMongoDbResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMongoUserDefinitionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

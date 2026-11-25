@@ -88,6 +88,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// premium block blobs storage account type.
         /// Possible values include: &#39;Hot&#39;, &#39;Cool&#39;, &#39;Premium&#39;, &#39;Cold&#39;, &#39;Smart&#39;</param>
 
+        /// <param name="turboTier">Configures Turbo Tier for the storage account.
+        /// </param>
+
         /// <param name="routingPreference">Maintains information about the network routing choice opted by the user
         /// for data transfer
         /// </param>
@@ -242,7 +245,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="dataCollaborationPolicyProperties">Data Collaboration policy for the storage account.
         /// </param>
-        public StorageAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), Identity identity = default(Identity), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), ProvisioningState? provisioningState = default(ProvisioningState?), CustomDomain customDomain = default(CustomDomain), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), KeyCreationTime keyCreationTime = default(KeyCreationTime), Endpoints secondaryEndpoints = default(Endpoints), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?), string largeFileSharesState = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), BlobRestoreStatus blobRestoreStatus = default(BlobRestoreStatus), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), StorageAccountSkuConversionStatus storageAccountSkuConversionStatus = default(StorageAccountSkuConversionStatus), string dnsEndpointType = default(string), bool? isSkuConversionBlocked = default(bool?), bool? accountMigrationInProgress = default(bool?), GeoPriorityReplicationStatus geoPriorityReplicationStatus = default(GeoPriorityReplicationStatus), StorageAccountSharedKeyAccessProperties allowSharedKeyAccessForServices = default(StorageAccountSharedKeyAccessProperties), StorageDataCollaborationPolicyProperties dataCollaborationPolicyProperties = default(StorageDataCollaborationPolicyProperties))
+
+        /// <param name="allowCrossTenantDelegationSas">Allow or disallow cross AAD tenant user delegation SAS (shared access
+        /// signature). The default interpretation is false for this property.
+        /// </param>
+        public StorageAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), Identity identity = default(Identity), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), ProvisioningState? provisioningState = default(ProvisioningState?), CustomDomain customDomain = default(CustomDomain), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), RoutingPreference routingPreference = default(RoutingPreference), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), KeyCreationTime keyCreationTime = default(KeyCreationTime), Endpoints secondaryEndpoints = default(Endpoints), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?), string largeFileSharesState = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), BlobRestoreStatus blobRestoreStatus = default(BlobRestoreStatus), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), StorageAccountSkuConversionStatus storageAccountSkuConversionStatus = default(StorageAccountSkuConversionStatus), string dnsEndpointType = default(string), bool? isSkuConversionBlocked = default(bool?), bool? accountMigrationInProgress = default(bool?), GeoPriorityReplicationStatus geoPriorityReplicationStatus = default(GeoPriorityReplicationStatus), StorageAccountSharedKeyAccessProperties allowSharedKeyAccessForServices = default(StorageAccountSharedKeyAccessProperties), StorageDataCollaborationPolicyProperties dataCollaborationPolicyProperties = default(StorageDataCollaborationPolicyProperties), TurboTier turboTier = default(TurboTier), bool? allowCrossTenantDelegationSas = default(bool?))
 
         : base(location, id, name, type, systemData, tags)
         {
@@ -258,6 +265,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.KeyPolicy = keyPolicy;
             this.Encryption = encryption;
             this.AccessTier = accessTier;
+            this.TurboTier = turboTier;
             this.RoutingPreference = routingPreference;
             this.PrimaryEndpoints = primaryEndpoints;
             this.PrimaryLocation = primaryLocation;
@@ -297,6 +305,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.GeoPriorityReplicationStatus = geoPriorityReplicationStatus;
             this.AllowSharedKeyAccessForServices = allowSharedKeyAccessForServices;
             this.DataCollaborationPolicyProperties = dataCollaborationPolicyProperties;
+            this.AllowCrossTenantDelegationSas = allowCrossTenantDelegationSas;
             CustomInit();
         }
 
@@ -383,6 +392,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.accessTier")]
         public AccessTier? AccessTier {get; private set; }
+
+        /// <summary>
+        /// Gets or sets configures Turbo Tier for the storage account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.turboTier")]
+        public TurboTier TurboTier {get; set; }
 
         /// <summary>
         /// Gets or sets maintains information about the network routing choice opted
@@ -660,6 +675,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dataCollaborationPolicyProperties")]
         public StorageDataCollaborationPolicyProperties DataCollaborationPolicyProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets allow or disallow cross AAD tenant user delegation SAS (shared
+        /// access signature). The default interpretation is false for this property.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allowCrossTenantDelegationSas")]
+        public bool? AllowCrossTenantDelegationSas {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -696,6 +718,10 @@ namespace Microsoft.Azure.Management.Storage.Models
             }
 
 
+            if (this.TurboTier != null)
+            {
+                this.TurboTier.Validate();
+            }
 
 
 

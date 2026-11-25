@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Extensions;
 
-    /// <summary>Model that represents the base Target properties model.</summary>
+    /// <summary>The properties of the target resource.</summary>
     public partial class TargetProperties
     {
 

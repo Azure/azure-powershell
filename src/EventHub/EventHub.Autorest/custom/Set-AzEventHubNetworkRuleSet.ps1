@@ -53,7 +53,7 @@ function Set-AzEventHubNetworkRuleSet{
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. ")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
-        #This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. 
+        #This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = "Value that indicates whether Trusted Service Access is Enabled or not.")]
@@ -139,7 +139,18 @@ function Set-AzEventHubNetworkRuleSet{
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
 	)
-	process{
+    dynamicparam {
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command 'Az.EventHub.private\New-AzEventHubNetworkRuleSet_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) { $dynamicParameters.Add($entry.Key, $entry.Value) }
+            }
+        }
+        return $dynamicParameters
+    }
+    process{
 		try{
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
             $hasTrustedServiceAccessEnabled = $PSBoundParameters.Remove('TrustedServiceAccessEnabled')
@@ -150,8 +161,8 @@ function Set-AzEventHubNetworkRuleSet{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $networkRuleSet = Get-AzEventHubNetworkRuleSet @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubNetworkRuleSet' -BoundParameters $PSBoundParameters
+            $networkRuleSet = Get-AzEventHubNetworkRuleSet @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

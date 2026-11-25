@@ -13,6 +13,358 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class TableResourcesOperationsExtensions
     {
         /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<TableRoleAssignmentResource> ListTableRoleAssignments(this ITableResourcesOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((ITableResourcesOperations)operations).ListTableRoleAssignmentsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TableRoleAssignmentResource>> ListTableRoleAssignmentsAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListTableRoleAssignmentsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
+        /// Assignment with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static TableRoleAssignmentResource GetTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((ITableResourcesOperations)operations).GetTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
+        /// Assignment with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<TableRoleAssignmentResource> GetTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static TableRoleAssignmentResource CreateUpdateTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters)
+        {
+                return ((ITableResourcesOperations)operations).CreateUpdateTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateTableRoleAssignmentParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<TableRoleAssignmentResource> CreateUpdateTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateTableRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static TableResourcesDeleteTableRoleAssignmentHeaders DeleteTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((ITableResourcesOperations)operations).DeleteTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<TableResourcesDeleteTableRoleAssignmentHeaders> DeleteTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<TableRoleDefinitionResource> ListTableRoleDefinitions(this ITableResourcesOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((ITableResourcesOperations)operations).ListTableRoleDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TableRoleDefinitionResource>> ListTableRoleDefinitionsAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListTableRoleDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
+        /// Definition with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static TableRoleDefinitionResource GetTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((ITableResourcesOperations)operations).GetTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
+        /// Definition with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<TableRoleDefinitionResource> GetTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static TableRoleDefinitionResource CreateUpdateTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters)
+        {
+                return ((ITableResourcesOperations)operations).CreateUpdateTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateTableRoleDefinitionParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<TableRoleDefinitionResource> CreateUpdateTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateTableRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static TableResourcesDeleteTableRoleDefinitionHeaders DeleteTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((ITableResourcesOperations)operations).DeleteTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<TableResourcesDeleteTableRoleDefinitionHeaders> DeleteTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Lists the Tables under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
@@ -24,7 +376,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<TableGetResults> ListTables(this ITableResourcesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<TableGetResults> ListTables(this ITableResourcesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((ITableResourcesOperations)operations).ListTablesAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -44,7 +396,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<TableGetResults>> ListTablesAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TableGetResults>> ListTablesAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListTablesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -186,6 +538,51 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.DeleteTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves continuous backup information for a table.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        public static BackupInformation RetrieveContinuousBackupInformation(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location)
+        {
+                return ((ITableResourcesOperations)operations).RetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, tableName, location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves continuous backup information for a table.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BackupInformation> RetrieveContinuousBackupInformationAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, tableName, location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -371,274 +768,6 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves continuous backup information for a table.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='tableName'>
-        /// Cosmos DB table name.
-        /// </param>
-        public static BackupInformation RetrieveContinuousBackupInformation(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location)
-        {
-                return ((ITableResourcesOperations)operations).RetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, tableName, location).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves continuous backup information for a table.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='tableName'>
-        /// Cosmos DB table name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<BackupInformation> RetrieveContinuousBackupInformationAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.RetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, tableName, location, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
-        /// Definition with the given Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        public static TableRoleDefinitionResource GetTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
-        {
-                return ((ITableResourcesOperations)operations).GetTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
-        /// Definition with the given Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<TableRoleDefinitionResource> GetTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB Table Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        public static TableRoleDefinitionResource CreateUpdateTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters)
-        {
-                return ((ITableResourcesOperations)operations).CreateUpdateTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateTableRoleDefinitionParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB Table Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<TableRoleDefinitionResource> CreateUpdateTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateUpdateTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateTableRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Table Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        public static TableResourcesDeleteTableRoleDefinitionHeaders DeleteTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
-        {
-                return ((ITableResourcesOperations)operations).DeleteTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Table Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<TableResourcesDeleteTableRoleDefinitionHeaders> DeleteTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<TableRoleDefinitionResource> ListTableRoleDefinitions(this ITableResourcesOperations operations, string resourceGroupName, string accountName)
-        {
-                return ((ITableResourcesOperations)operations).ListTableRoleDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<TableRoleDefinitionResource>> ListTableRoleDefinitionsAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListTableRoleDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
-        /// Assignment with the given Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        public static TableRoleAssignmentResource GetTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
-        {
-                return ((ITableResourcesOperations)operations).GetTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Table Role
-        /// Assignment with the given Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<TableRoleAssignmentResource> GetTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates or updates an Azure Cosmos DB Table Role Assignment.
         /// </summary>
         /// <param name='operations'>
@@ -653,9 +782,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='roleAssignmentId'>
         /// The GUID for the Role Assignment.
         /// </param>
-        public static TableRoleAssignmentResource CreateUpdateTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters)
+        public static TableRoleAssignmentResource BeginCreateUpdateTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters)
         {
-                return ((ITableResourcesOperations)operations).CreateUpdateTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateTableRoleAssignmentParameters).GetAwaiter().GetResult();
+                return ((ITableResourcesOperations)operations).BeginCreateUpdateTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateTableRoleAssignmentParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -676,9 +805,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<TableRoleAssignmentResource> CreateUpdateTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<TableRoleAssignmentResource> BeginCreateUpdateTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateUpdateTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateTableRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateUpdateTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateTableRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -698,9 +827,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='roleAssignmentId'>
         /// The GUID for the Role Assignment.
         /// </param>
-        public static TableResourcesDeleteTableRoleAssignmentHeaders DeleteTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        public static TableResourcesDeleteTableRoleAssignmentHeaders BeginDeleteTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
         {
-                return ((ITableResourcesOperations)operations).DeleteTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+                return ((ITableResourcesOperations)operations).BeginDeleteTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -721,15 +850,15 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<TableResourcesDeleteTableRoleAssignmentHeaders> DeleteTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<TableResourcesDeleteTableRoleAssignmentHeaders> BeginDeleteTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDeleteTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
         }
         /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
+        /// Creates or updates an Azure Cosmos DB Table Role Definition.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -740,13 +869,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<TableRoleAssignmentResource> ListTableRoleAssignments(this ITableResourcesOperations operations, string resourceGroupName, string accountName)
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static TableRoleDefinitionResource BeginCreateUpdateTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters)
         {
-                return ((ITableResourcesOperations)operations).ListTableRoleAssignmentsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((ITableResourcesOperations)operations).BeginCreateUpdateTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateTableRoleDefinitionParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
+        /// Creates or updates an Azure Cosmos DB Table Role Definition.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -756,15 +888,63 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<TableRoleAssignmentResource>> ListTableRoleAssignmentsAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<TableRoleDefinitionResource> BeginCreateUpdateTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListTableRoleAssignmentsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateUpdateTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateTableRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static TableResourcesDeleteTableRoleDefinitionHeaders BeginDeleteTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((ITableResourcesOperations)operations).BeginDeleteTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<TableResourcesDeleteTableRoleDefinitionHeaders> BeginDeleteTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -855,6 +1035,51 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginDeleteTableWithHttpMessagesAsync(resourceGroupName, accountName, tableName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves continuous backup information for a table.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        public static BackupInformation BeginRetrieveContinuousBackupInformation(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location)
+        {
+                return ((ITableResourcesOperations)operations).BeginRetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, tableName, location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves continuous backup information for a table.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='tableName'>
+        /// Cosmos DB table name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BackupInformation> BeginRetrieveContinuousBackupInformationAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, tableName, location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -993,228 +1218,102 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves continuous backup information for a table.
+        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='tableName'>
-        /// Cosmos DB table name.
-        /// </param>
-        public static BackupInformation BeginRetrieveContinuousBackupInformation(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location)
+        public static Microsoft.Rest.Azure.IPage<TableRoleAssignmentResource> ListTableRoleAssignmentsNext(this ITableResourcesOperations operations, string nextPageLink)
         {
-                return ((ITableResourcesOperations)operations).BeginRetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, tableName, location).GetAwaiter().GetResult();
+                return ((ITableResourcesOperations)operations).ListTableRoleAssignmentsNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves continuous backup information for a table.
+        /// Retrieves the list of all Azure Cosmos DB Table Role Assignments.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='tableName'>
-        /// Cosmos DB table name.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupInformation> BeginRetrieveContinuousBackupInformationAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string tableName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TableRoleAssignmentResource>> ListTableRoleAssignmentsNextAsync(this ITableResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, tableName, location, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListTableRoleAssignmentsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB Table Role Definition.
+        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        public static TableRoleDefinitionResource BeginCreateUpdateTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters)
+        public static Microsoft.Rest.Azure.IPage<TableRoleDefinitionResource> ListTableRoleDefinitionsNext(this ITableResourcesOperations operations, string nextPageLink)
         {
-                return ((ITableResourcesOperations)operations).BeginCreateUpdateTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateTableRoleDefinitionParameters).GetAwaiter().GetResult();
+                return ((ITableResourcesOperations)operations).ListTableRoleDefinitionsNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB Table Role Definition.
+        /// Retrieves the list of all Azure Cosmos DB Table Role Definitions.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<TableRoleDefinitionResource> BeginCreateUpdateTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, TableRoleDefinitionResource createUpdateTableRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TableRoleDefinitionResource>> ListTableRoleDefinitionsNextAsync(this ITableResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateUpdateTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateTableRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListTableRoleDefinitionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// Lists the Tables under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        public static TableResourcesDeleteTableRoleDefinitionHeaders BeginDeleteTableRoleDefinition(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        public static Microsoft.Rest.Azure.IPage<TableGetResults> ListTablesNext(this ITableResourcesOperations operations, string nextPageLink)
         {
-                return ((ITableResourcesOperations)operations).BeginDeleteTableRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+                return ((ITableResourcesOperations)operations).ListTablesNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB Table Role Definition.
+        /// Lists the Tables under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<TableResourcesDeleteTableRoleDefinitionHeaders> BeginDeleteTableRoleDefinitionAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<TableGetResults>> ListTablesNextAsync(this ITableResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteTableRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        public static TableRoleAssignmentResource BeginCreateUpdateTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters)
-        {
-                return ((ITableResourcesOperations)operations).BeginCreateUpdateTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateTableRoleAssignmentParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB Table Role Assignment.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<TableRoleAssignmentResource> BeginCreateUpdateTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, TableRoleAssignmentResource createUpdateTableRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateUpdateTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateTableRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListTablesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        public static TableResourcesDeleteTableRoleAssignmentHeaders BeginDeleteTableRoleAssignment(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
-        {
-                return ((ITableResourcesOperations)operations).BeginDeleteTableRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB Table Role Assignment.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<TableResourcesDeleteTableRoleAssignmentHeaders> BeginDeleteTableRoleAssignmentAsync(this ITableResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginDeleteTableRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
             }
         }
     }

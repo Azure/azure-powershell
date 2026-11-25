@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         Standard2 = 3,
         Standard3 = 4,
         Storage_Optimized_L1 = 5,
-        Storage_Optimized_L2 = 6
+        Storage_Optimized_L2 = 6,
+        Serverless = 7
     }
 
     internal static class PSSkuNameEnumExtension
@@ -45,6 +46,8 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
                     return PSSkuName.Storage_Optimized_L1;
                 case "storage_optimized_l2":
                     return PSSkuName.Storage_Optimized_L2;
+                case "serverless":
+                    return PSSkuName.Serverless;
             }
             return null;
         }

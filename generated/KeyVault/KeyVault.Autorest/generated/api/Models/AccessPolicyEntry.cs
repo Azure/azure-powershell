@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @" Application ID of the client making request on behalf of a principal",
+        Description = @"Application ID of the client making request on behalf of a principal",
         SerializedName = @"applicationId",
         PossibleTypes = new [] { typeof(string) })]
         string ApplicationId { get; set; }

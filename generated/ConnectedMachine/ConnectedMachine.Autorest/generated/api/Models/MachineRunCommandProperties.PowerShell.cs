@@ -143,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("RunAsPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal)this).RunAsPassword = (string) content.GetValueForProperty("RunAsPassword",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal)this).RunAsPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal)this).RunAsPassword = (System.Security.SecureString) content.GetValueForProperty("RunAsPassword",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal)this).RunAsPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("TimeoutInSecond"))
             {
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("RunAsPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal)this).RunAsPassword = (string) content.GetValueForProperty("RunAsPassword",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal)this).RunAsPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal)this).RunAsPassword = (System.Security.SecureString) content.GetValueForProperty("RunAsPassword",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommandPropertiesInternal)this).RunAsPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("TimeoutInSecond"))
             {

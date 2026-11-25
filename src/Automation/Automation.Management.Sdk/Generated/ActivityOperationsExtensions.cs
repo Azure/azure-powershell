@@ -13,6 +13,51 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class ActivityOperationsExtensions
     {
         /// <summary>
+        /// Retrieve a list of activities in the module identified by module name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='moduleName'>
+        /// The module name.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Activity> ListByModule(this IActivityOperations operations, string resourceGroupName, string automationAccountName, string moduleName)
+        {
+                return ((IActivityOperations)operations).ListByModuleAsync(resourceGroupName, automationAccountName, moduleName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieve a list of activities in the module identified by module name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='moduleName'>
+        /// The module name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Activity>> ListByModuleAsync(this IActivityOperations operations, string resourceGroupName, string automationAccountName, string moduleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByModuleWithHttpMessagesAsync(resourceGroupName, automationAccountName, moduleName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Retrieve the activity in the module identified by module name and activity
         /// name.
         /// </summary>
@@ -20,13 +65,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='moduleName'>
-        /// The name of module.
+        /// The module name.
         /// </param>
         /// <param name='activityName'>
         /// The name of activity.
@@ -44,13 +89,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='moduleName'>
-        /// The name of module.
+        /// The module name.
         /// </param>
         /// <param name='activityName'>
         /// The name of activity.
@@ -61,51 +106,6 @@ namespace Microsoft.Azure.Management.Automation
         public static async System.Threading.Tasks.Task<Activity> GetAsync(this IActivityOperations operations, string resourceGroupName, string automationAccountName, string moduleName, string activityName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, automationAccountName, moduleName, activityName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieve a list of activities in the module identified by module name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='moduleName'>
-        /// The name of module.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<Activity> ListByModule(this IActivityOperations operations, string resourceGroupName, string automationAccountName, string moduleName)
-        {
-                return ((IActivityOperations)operations).ListByModuleAsync(resourceGroupName, automationAccountName, moduleName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieve a list of activities in the module identified by module name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='moduleName'>
-        /// The name of module.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Activity>> ListByModuleAsync(this IActivityOperations operations, string resourceGroupName, string automationAccountName, string moduleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByModuleWithHttpMessagesAsync(resourceGroupName, automationAccountName, moduleName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

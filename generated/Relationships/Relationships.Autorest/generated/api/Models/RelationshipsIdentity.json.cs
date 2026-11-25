@@ -76,6 +76,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             }
             {_resourceUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("resourceUri"), out var __jsonResourceUri) ? (string)__jsonResourceUri : (string)_resourceUri;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_serviceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("serviceGroupName"), out var __jsonServiceGroupName) ? (string)__jsonServiceGroupName : (string)_serviceGroupName;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -101,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             }
             AddIf( null != (((object)this._resourceUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._resourceUri.ToString()) : null, "resourceUri" ,container.Add );
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
+            AddIf( null != (((object)this._serviceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._serviceGroupName.ToString()) : null, "serviceGroupName" ,container.Add );
+            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

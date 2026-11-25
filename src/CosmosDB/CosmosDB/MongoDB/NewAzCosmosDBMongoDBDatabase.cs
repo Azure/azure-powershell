@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 readMongoDatabaseGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoDBDatabase(ResourceGroupName, AccountName, Name);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {

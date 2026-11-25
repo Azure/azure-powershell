@@ -60,6 +60,7 @@ PARAMETER <IBackupVaultResource>: Backup Vault Resource
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AzureMonitorAlertsForAllJobFailure <String>]: 
+  [CostManagementSettingGranularityLevel <String>]: Settings for granularity level
   [CrossRegionRestoreState <String>]: CrossRegionRestore state
   [CrossSubscriptionRestoreState <String>]: CrossSubscriptionRestore state
   [ETag <String>]: Optional ETag.
@@ -146,6 +147,13 @@ param(
     # Parameter to Enable or Disable built-in azure monitor alerts for job failures.
     # Security alerts cannot be disabled.
     ${AzureMonitorAlertsForAllJobFailure},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Settings for granularity level
+    ${CostManagementSettingGranularityLevel},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "Enabled")]

@@ -137,6 +137,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).DataIntegrityValidation = (string) content.GetValueForProperty("DataIntegrityValidation",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).DataIntegrityValidation, global::System.Convert.ToString);
             }
+            if (content.Contains("SyncMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).SyncMode = (string) content.GetValueForProperty("SyncMode",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).SyncMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("MoverSyncedUntil"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).MoverSyncedUntil = (global::System.DateTime?) content.GetValueForProperty("MoverSyncedUntil",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).MoverSyncedUntil, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("ScheduleFrequency"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleFrequency = (string) content.GetValueForProperty("ScheduleFrequency",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleFrequency, global::System.Convert.ToString);
@@ -168,6 +176,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("ScheduleEndDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleEndDate = (global::System.DateTime?) content.GetValueForProperty("ScheduleEndDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ScheduleRepeatInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleRepeatInterval = (string) content.GetValueForProperty("ScheduleRepeatInterval",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleRepeatInterval, global::System.Convert.ToString);
             }
             if (content.Contains("ExecutionTimeMinute"))
             {
@@ -222,6 +234,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).DataIntegrityValidation = (string) content.GetValueForProperty("DataIntegrityValidation",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).DataIntegrityValidation, global::System.Convert.ToString);
             }
+            if (content.Contains("SyncMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).SyncMode = (string) content.GetValueForProperty("SyncMode",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).SyncMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("MoverSyncedUntil"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).MoverSyncedUntil = (global::System.DateTime?) content.GetValueForProperty("MoverSyncedUntil",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).MoverSyncedUntil, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("ScheduleFrequency"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleFrequency = (string) content.GetValueForProperty("ScheduleFrequency",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleFrequency, global::System.Convert.ToString);
@@ -253,6 +273,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("ScheduleEndDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleEndDate = (global::System.DateTime?) content.GetValueForProperty("ScheduleEndDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ScheduleRepeatInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleRepeatInterval = (string) content.GetValueForProperty("ScheduleRepeatInterval",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParametersInternal)this).ScheduleRepeatInterval, global::System.Convert.ToString);
             }
             if (content.Contains("ExecutionTimeMinute"))
             {

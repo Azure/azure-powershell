@@ -14,6 +14,7 @@
 
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -155,9 +156,23 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Interface configurations for NVA deployed in VNet.")]
         public PSNetworkVirtualApplianceInterfaceConfigProperties[] NvaInterfaceConfiguration { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The address family (IP version) of the Virtual Appliance. Accepts IPv4 and/or IPv6. Omitting the parameter defaults to IPv4-only.")]
+        [ValidateSet("IPv4", "IPv6", IgnoreCase = true)]
+        public string[] AddressFamily { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The internal load balancer configuration. Omission uses Default distribution and a 5-minute timeout.")]
+        public PSNetworkVirtualApplianceLoadBalancerConfiguration LoadBalancerConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
+
+            ValidateAddressFamily();
+            this.LoadBalancerConfiguration = LoadBalancerConfigurationHelper.Normalize(this.LoadBalancerConfiguration);
 
 			      if (!string.IsNullOrEmpty(VirtualHubId) && NvaInterfaceConfiguration != null)
 			      {
@@ -196,6 +211,7 @@ namespace Microsoft.Azure.Commands.Network
             networkVirtualAppliance.VirtualHub = new PSResourceId();
             networkVirtualAppliance.VirtualHub.Id = this.VirtualHubId;
             networkVirtualAppliance.VirtualApplianceAsn = this.VirtualApplianceAsn;
+            networkVirtualAppliance.LoadBalancerConfiguration = this.LoadBalancerConfiguration;
             networkVirtualAppliance.NvaSku = this.Sku;
             networkVirtualAppliance.Identity = this.Identity;
             networkVirtualAppliance.BootStrapConfigurationBlobs = this.BootStrapConfigurationBlob;
@@ -221,6 +237,10 @@ namespace Microsoft.Azure.Commands.Network
                 networkVirtualAppliance.NvaInterfaceConfigurations = this.NvaInterfaceConfiguration;
             }
 
+            networkVirtualAppliance.AddressFamily = (this.AddressFamily != null && this.AddressFamily.Length > 0)
+                ? new List<string>(this.AddressFamily)
+                : new List<string> { IPv4 };
+
             var networkVirtualApplianceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkVirtualAppliance>(networkVirtualAppliance);
 
             networkVirtualApplianceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
@@ -229,6 +249,16 @@ namespace Microsoft.Azure.Commands.Network
             
             var getNetworkVirtualAppliance = this.GetNetworkVirtualAppliance(this.ResourceGroupName, this.Name);
             return getNetworkVirtualAppliance;
+        }
+
+        private void ValidateAddressFamily()
+        {
+            if (this.AddressFamily == null || this.AddressFamily.Length == 0)
+            {
+                return;
+            }
+
+            this.AddressFamily = AddressFamilyHelper.ValidateAndCanonicalize(this.AddressFamily);
         }
     }
 }

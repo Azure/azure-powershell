@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.PowerShell;
 
-    /// <summary>List of private endpoint connections associated with the specified resource.</summary>
+    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial class PrivateEndpointConnectionListResult
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             return ToJsonString();
         }
     }
-    /// List of private endpoint connections associated with the specified resource.
+    /// The response of a PrivateEndpointConnection list operation.
     [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionListResultTypeConverter))]
     public partial interface IPrivateEndpointConnectionListResult
 

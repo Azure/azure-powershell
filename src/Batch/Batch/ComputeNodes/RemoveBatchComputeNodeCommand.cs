@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSComputeNode ComputeNode { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DeallocationOption", "18.0.0", "5.0.0", ChangeDescription = "The Batch API has deprecated the RetainedData value, and a newer API version removes it, so RetainedData is being removed from this parameter (Requeue, Terminate and TaskCompletion stay). Use TaskCompletion instead, and upload task data to Azure Storage in your task.")]
         [Parameter]
         public ComputeNodeDeallocationOption? DeallocationOption { get; set; }
 

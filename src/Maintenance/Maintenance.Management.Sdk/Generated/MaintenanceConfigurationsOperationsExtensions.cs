@@ -13,16 +13,43 @@ namespace Microsoft.Azure.Management.Maintenance
     public static partial class MaintenanceConfigurationsOperationsExtensions
     {
         /// <summary>
+        /// Get Configuration records within a subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MaintenanceConfiguration> List(this IMaintenanceConfigurationsOperations operations)
+        {
+                return ((IMaintenanceConfigurationsOperations)operations).ListAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get Configuration records within a subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MaintenanceConfiguration>> ListAsync(this IMaintenanceConfigurationsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Get Configuration record
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         public static MaintenanceConfiguration Get(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName)
         {
@@ -36,10 +63,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -58,10 +85,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         public static MaintenanceConfiguration CreateOrUpdate(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName, MaintenanceConfiguration configuration)
         {
@@ -75,10 +102,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -91,55 +118,16 @@ namespace Microsoft.Azure.Management.Maintenance
             }
         }
         /// <summary>
-        /// Delete Configuration record
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Resource Group Name
-        /// </param>
-        /// <param name='resourceName'>
-        /// Maintenance Configuration Name
-        /// </param>
-        public static MaintenanceConfiguration Delete(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName)
-        {
-                return ((IMaintenanceConfigurationsOperations)operations).DeleteAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete Configuration record
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Resource Group Name
-        /// </param>
-        /// <param name='resourceName'>
-        /// Maintenance Configuration Name
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MaintenanceConfiguration> DeleteAsync(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Patch configuration record
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         public static MaintenanceConfiguration Update(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName, MaintenanceConfiguration configuration)
         {
@@ -153,10 +141,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -169,14 +157,56 @@ namespace Microsoft.Azure.Management.Maintenance
             }
         }
         /// <summary>
+        /// Delete Configuration record
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the MaintenanceConfiguration
+        /// </param>
+        public static MaintenanceConfiguration Delete(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName)
+        {
+                return ((IMaintenanceConfigurationsOperations)operations).DeleteAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete Configuration record
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the MaintenanceConfiguration
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MaintenanceConfiguration> DeleteAsync(this IMaintenanceConfigurationsOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Get Configuration records within a subscription
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<MaintenanceConfiguration> List(this IMaintenanceConfigurationsOperations operations)
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MaintenanceConfiguration> ListNext(this IMaintenanceConfigurationsOperations operations, string nextPageLink)
         {
-                return ((IMaintenanceConfigurationsOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IMaintenanceConfigurationsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -185,12 +215,15 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MaintenanceConfiguration>> ListAsync(this IMaintenanceConfigurationsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MaintenanceConfiguration>> ListNextAsync(this IMaintenanceConfigurationsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

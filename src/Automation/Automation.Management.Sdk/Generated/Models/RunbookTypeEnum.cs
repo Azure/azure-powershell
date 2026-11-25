@@ -13,14 +13,45 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class RunbookTypeEnum
     {
+        /// <summary>
+        /// Script
+        /// </summary>
         public const string Script = "Script";
+        /// <summary>
+        /// Graph
+        /// </summary>
         public const string Graph = "Graph";
+        /// <summary>
+        /// PowerShellWorkflow
+        /// </summary>
         public const string PowerShellWorkflow = "PowerShellWorkflow";
+        /// <summary>
+        /// PowerShell
+        /// </summary>
         public const string PowerShell = "PowerShell";
+        /// <summary>
+        /// GraphPowerShellWorkflow
+        /// </summary>
         public const string GraphPowerShellWorkflow = "GraphPowerShellWorkflow";
+        /// <summary>
+        /// GraphPowerShell
+        /// </summary>
         public const string GraphPowerShell = "GraphPowerShell";
+        /// <summary>
+        /// Python2
+        /// </summary>
         public const string Python2 = "Python2";
+        /// <summary>
+        /// Python3
+        /// </summary>
         public const string Python3 = "Python3";
+        /// <summary>
+        /// Python
+        /// </summary>
+        public const string Python = "Python";
+        /// <summary>
+        /// PowerShell72
+        /// </summary>
         public const string PowerShell72 = "PowerShell72";
     }
 }

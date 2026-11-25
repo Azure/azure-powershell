@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ServiceGroups.private.dll'
   FormatsToProcess = './Az.ServiceGroups.format.ps1xml'
-  FunctionsToExport = 'Get-AzServiceGroup', 'Get-AzServiceGroupAncestor', 'New-AzServiceGroup', 'Remove-AzServiceGroup', 'Update-AzServiceGroup'
+  FunctionsToExport = 'Get-AzServiceGroup', 'New-AzServiceGroup', 'Remove-AzServiceGroup', 'Update-AzServiceGroup'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ServiceGroups'

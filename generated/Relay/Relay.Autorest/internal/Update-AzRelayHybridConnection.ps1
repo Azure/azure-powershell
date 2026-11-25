@@ -39,25 +39,27 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <IHybridConnection>: Description of hybrid connection resource.
   [RequiresClientAuthorization <Boolean?>]: Returns true if client authorization is needed for this hybrid connection; otherwise, false.
@@ -90,7 +92,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update')]
@@ -98,8 +101,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]

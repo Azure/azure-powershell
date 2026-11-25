@@ -198,6 +198,201 @@ function Test-AccountCrud
 
 <#
 .SYNOPSIS
+Refreshes the existing LDAP fixture's bind password without changing its secret or configuration.
+#>
+function Test-AccountLdapBindPasswordRefresh
+{
+    $resourceGroup = "sdk-py-test-rg"
+    $accountName = "na-ldap-test"
+    $account = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $account.ProvisioningState
+    Assert-NotNull $account.LdapConfiguration
+    Assert-AreEqual "Simple" $account.LdapConfiguration.BindAuthenticationLevel
+    Assert-NotNullOrEmpty $account.LdapConfiguration.BindDN
+    Assert-NotNullOrEmpty $account.LdapConfiguration.BindPasswordAkvConfig.AzureKeyVaultUri
+    Assert-NotNullOrEmpty $account.LdapConfiguration.BindPasswordAkvConfig.SecretName
+    $configurationBefore = $account.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress
+
+    $result = @(Update-AzNetAppFilesAccountLdapBindPassword -ResourceGroupName $resourceGroup -Name $accountName -PassThru -Confirm:$false -ErrorAction Stop)
+    Assert-AreEqual 1 $result.Count
+    Assert-AreEqual $true $result[0]
+
+    $result = @(Update-AzNetAppFilesAccountLdapBindPassword -ResourceId $account.Id -PassThru -Confirm:$false -ErrorAction Stop)
+    Assert-AreEqual 1 $result.Count
+    Assert-AreEqual $true $result[0]
+
+    $result = @($account | Update-AzNetAppFilesAccountLdapBindPassword -Confirm:$false -ErrorAction Stop)
+    Assert-AreEqual 0 $result.Count
+
+    $after = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $after.ProvisioningState
+    Assert-AreEqual $account.Id $after.Id
+    Assert-AreEqual $configurationBefore ($after.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+}
+
+<#
+.SYNOPSIS
+Reapplies the existing LDAP domain with a partial update and verifies other settings are preserved.
+#>
+function Test-AccountLdapConfigurationUpdate
+{
+    $resourceGroup = "sdk-py-test-rg"
+    $accountName = "na-ldap-test"
+    $before = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $before.ProvisioningState
+    Assert-NotNullOrEmpty $before.LdapConfiguration.Domain
+    Assert-NotNull $before.LdapConfiguration.BindPasswordAkvConfig
+    $configurationBefore = $before.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress
+
+    $updated = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName `
+        -LdapConfiguration @{ Domain = $before.LdapConfiguration.Domain } -Confirm:$false -ErrorAction Stop
+    Assert-AreEqual $before.Id $updated.Id
+    Assert-AreEqual "Succeeded" $updated.ProvisioningState
+    Assert-AreEqual $configurationBefore ($updated.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+
+    $after = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $after.ProvisioningState
+    Assert-AreEqual $configurationBefore ($after.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+}
+
+<#
+.SYNOPSIS
+Records temporary-account LDAP configuration APIs using a test CA, without validating LDAP connectivity or authentication.
+#>
+function Test-AccountLdapConfigurationCreate
+{
+    $resourceGroup = "sdk-py-test-rg"
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    Assert-AreEqual "0661b131-4a11-479b-96bf-2f95acca2f73" $subscriptionId
+    $accountName = Get-ResourceName
+    $identityId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/dap-bind-uksouth-identity"
+    # Public-only test CA: API configuration coverage, not trust in the existing LDAP server.
+    $certificate = "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM4akNDQWRxZ0F3SUJBZ0lKQU43M0lQb1BtelluTUEwR0NTcUdTSWIzRFFFQkN3VUFNQ1l4SkRBaUJnTlZCQU1URzFCdmQyVnkKVTJobGJHd2dURVJCVUNCQlVFa2dWR1Z6ZENCRFFUQWVGdzB5TmpFeE1ETXhPVEkzTWpoYUZ3MHlOekV4TURNeE9UTXlNamhhTUNZeApKREFpQmdOVkJBTVRHMUJ2ZDJWeVUyaGxiR3dnVEVSQlVDQkJVRWtnVkdWemRDQkRRVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFECmdnRVBBRENDQVFvQ2dnRUJBTnkrZUtoNVVaVmh6aGtqTHZDNDNueTBMaEhYcjVXaC8vZnBwZFpYWGNjcU0xWWc2d1VWUlRCRFVBNGYKY2VCeDNPS3NtK3EzeFlIeEkxYzFocmNwUERFMlpyVFZxTFF6aVcyUXp3KzNoZVg5M210U3AxZCtuWjZ5Snhzd1Q2MUZjM242Z2JENApnU1IxZHBSQVlXajZmV2ZscXd0SkJtN0VUWjhodG1YMnRNanFwNWdRNWZINjVMQkROOWZzaURzM3hrSHNDTjlvVmk2czJpOXlzbGlZCkJoQmFtbW9HdHVLdEZzM3BaWmltWnBTTVdnRW1yUjM1RlJNUHVFTmNkd2NRakpXSjd4dDVCZ3pvd3Q0SzJKTUxUd296aVZqc3pScFQKMnhEdDk4Q3MzbVRpQXVDREJDQ1kycmNsTjhBa05MaWlRRktkbm4vVGNaYWplRi9BSXZ2eUVGRUNBd0VBQWFNak1DRXdEd1lEVlIwVApBUUgvQkFVd0F3RUIvekFPQmdOVkhROEJBZjhFQkFNQ0FRWXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRGZMV0JYaWZCUmFwYkdYCnRtOUhySHhod2ZLbWh1WkxEc3RTQlpGOG9mQ3V0K3pJeWxIcVVlOU9GN0NUWkJzTGJ5MGl1eGJ2bU5pbEtrZ0xkYUw5YXYzcjloM1AKbnA2bHJaUlVQYllNSnA3SXhhaFZUdWJDSjJBV3BieWVBS0tZNlBvRVhCQkFZSk80TGNQQzRpM295azhWOWQwTlpyTUpoV2tXTmJtKwp4MWN1M2VTYkUveXQwRHZyK3BlNU52dGF2T0x3YjQzUFc4c1RxSjVpcU9rNmJNYXdyTncyM1Zxb3pOS3hwZ2l4dGVJL3dEWDJwSjk0Ci9RaGZOYWxBTXRON1hrVVZYcFVBTGJOeDArVXhCSWszckNEZElqUlN0S2Z3TVJ4b2RDWjhqQi9LYmtjM1RCSUNNZWdOd1ZnVmIvM3EKVjVxT0pHKzArbU5ML1ZFYmpseWpPazA9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+    $configuration = @{
+        Domain = "contoso.com"
+        LdapServers = @("10.0.2.4")
+        SecureLdapType = "LdapOverTLS"
+        ServerCACertificate = $certificate
+        CertificateCNHost = "ipaserver.contoso.com"
+        LdapPort = 389
+        BindAuthenticationLevel = "Simple"
+        BindDN = "uid=ldapuser,cn=users,cn=accounts,dc=contoso,dc=com"
+        BindPasswordAkvConfig = @{
+            AzureKeyVaultUri = "https://ldapbind-uksouth-kv-1.vault.azure.net"
+            SecretName = "ldapuser-password"
+            UserAssignedIdentity = $identityId
+        }
+    }
+    $accounts = @(Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -ErrorAction Stop)
+    Assert-AreEqual 0 @($accounts | Where-Object { ($_.Name -split '/')[-1] -eq $accountName }).Count
+    try
+    {
+        $account = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -Location "westus2" -IdentityType "UserAssigned" -UserAssignedIdentity $identityId -LdapConfiguration $configuration -ErrorAction Stop
+        Assert-AreEqual "Succeeded" $account.ProvisioningState
+        $account = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+        Assert-AreEqual "Succeeded" $account.ProvisioningState
+        Assert-AreEqual $configuration.Domain $account.LdapConfiguration.Domain
+        Assert-AreEqual $configuration.LdapServers[0] $account.LdapConfiguration.LdapServers[0]
+        Assert-AreEqual $configuration.SecureLdapType $account.LdapConfiguration.SecureLdapType
+        Assert-AreEqual $configuration.CertificateCNHost $account.LdapConfiguration.CertificateCNHost
+        Assert-AreEqual $configuration.LdapPort $account.LdapConfiguration.LdapPort
+        Assert-AreEqual $configuration.BindAuthenticationLevel $account.LdapConfiguration.BindAuthenticationLevel
+        Assert-AreEqual $configuration.BindDN $account.LdapConfiguration.BindDN
+        Assert-AreEqual $configuration.BindPasswordAkvConfig.SecretName $account.LdapConfiguration.BindPasswordAkvConfig.SecretName
+        Assert-AreEqual $configuration.BindPasswordAkvConfig.AzureKeyVaultUri $account.LdapConfiguration.BindPasswordAkvConfig.AzureKeyVaultUri
+        $newUserDN = "cn=users,cn=accounts,dc=contoso,dc=com"
+        Assert-True { $account.LdapConfiguration.UserDN -ne $newUserDN }
+        $account.LdapConfiguration.UserDN = $newUserDN
+        $expectedConfiguration = $account.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress
+        $configuration.UserDN = $newUserDN
+        $updated = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -LdapConfiguration $configuration -Confirm:$false -ErrorAction Stop
+        Assert-AreEqual "Succeeded" $updated.ProvisioningState
+        Assert-AreEqual $newUserDN $updated.LdapConfiguration.UserDN
+        Assert-AreEqual $expectedConfiguration ($updated.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+        $after = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+        Assert-AreEqual "Succeeded" $after.ProvisioningState
+        Assert-AreEqual $newUserDN $after.LdapConfiguration.UserDN
+        Assert-AreEqual $expectedConfiguration ($after.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+    }
+    finally
+    {
+        # Delete only the collision-checked temporary account, never the shared fixture.
+        $accounts = @(Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -ErrorAction Stop)
+        if (@($accounts | Where-Object { ($_.Name -split '/')[-1] -eq $accountName }).Count -ne 0)
+        {
+            Remove-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -Confirm:$false -ErrorAction Stop
+        }
+        $accounts = @(Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -ErrorAction Stop)
+        Assert-AreEqual 0 @($accounts | Where-Object { ($_.Name -split '/')[-1] -eq $accountName }).Count
+    }
+}
+
+<#
+.SYNOPSIS
+Validates LDAP input binding and password-refresh WhatIf behavior without contacting Azure.
+#>
+function Test-AccountLdapParameterBinding
+{
+    $configuration = [Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapConfiguration]@{
+        Domain = "example.com"
+        LdapServers = @("192.0.2.4", "192.0.2.5")
+        SecureLdapType = "LdapOverTLS"
+        ServerCACertificate = "test-certificate"
+        CertificateCNHost = "ldap.example.com"
+        DnsServers = @("192.0.2.6")
+        LdapPort = 636
+        UserDN = "ou=users,dc=example,dc=com"
+        GroupDN = "ou=groups,dc=example,dc=com"
+        NetGroupDN = "ou=netgroups,dc=example,dc=com"
+        BindAuthenticationLevel = "Simple"
+        BindDN = "cn=bind,dc=example,dc=com"
+        BindPasswordAkvConfig = @{
+            AzureKeyVaultUri = "https://example.vault.azure.net/"
+            SecretName = "ldap-bind-password"
+            UserAssignedIdentity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity"
+        }
+    }
+
+    Assert-AreEqual 2 $configuration.LdapServers.Count
+    Assert-AreEqual "192.0.2.4" $configuration.LdapServers[0]
+    Assert-AreEqual "192.0.2.5" $configuration.LdapServers[1]
+    Assert-AreEqual "192.0.2.6" $configuration.DnsServers[0]
+    Assert-AreEqual "ldap-bind-password" $configuration.BindPasswordAkvConfig.SecretName
+
+    foreach ($commandName in @("New-AzNetAppFilesAccount", "Set-AzNetAppFilesAccount", "Update-AzNetAppFilesAccount"))
+    {
+        $command = Get-Command $commandName -ErrorAction Stop
+        Assert-AreEqual $configuration.GetType() $command.Parameters["LdapConfiguration"].ParameterType
+        foreach ($parameterSet in $command.ParameterSets)
+        {
+            $parameter = @($parameterSet.Parameters | Where-Object { $_.Name -eq "LdapConfiguration" })
+            Assert-AreEqual 1 $parameter.Count
+            Assert-AreEqual $false $parameter[0].IsMandatory
+        }
+    }
+
+    $account = [Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount]@{
+        Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.NetApp/netAppAccounts/test-account"
+        Name = "test-account"
+        ResourceGroupName = "test-rg"
+        LdapConfiguration = $configuration
+    }
+    Assert-AreEqual "example.com" $account.LdapConfiguration.Domain
+    Assert-AreEqual "LdapOverTLS" $account.LdapConfiguration.SecureLdapType
+    Assert-AreEqual 636 $account.LdapConfiguration.LdapPort
+    Assert-AreEqual "Simple" $account.LdapConfiguration.BindAuthenticationLevel
+
+    Assert-AreEqual "Update-AzNetAppFilesAccountLdapBindPassword" (Get-Alias Update-AnfAccountLdapBindPassword -ErrorAction Stop).Definition
+    $result = @(Update-AzNetAppFilesAccountLdapBindPassword -ResourceGroupName "test-rg" -Name "test-account" -WhatIf -PassThru -ErrorAction Stop)
+    Assert-AreEqual 0 $result.Count
+    $result = @(Update-AzNetAppFilesAccountLdapBindPassword -ResourceId $account.Id -WhatIf -PassThru -ErrorAction Stop)
+    Assert-AreEqual 0 $result.Count
+    $result = @($account | Update-AzNetAppFilesAccountLdapBindPassword -WhatIf -PassThru -ErrorAction Stop)
+    Assert-AreEqual 0 $result.Count
+}
+
+<#
+.SYNOPSIS
 Test Account CMK CRUD operations
 #>
 function Test-AccountCMK
@@ -244,6 +439,7 @@ function Test-AccountCMK
     $vnetName = $resourceGroup + "-vnet"
 
     $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
+    $cmkPrincipalId = $null
 
     try
     {
@@ -274,7 +470,8 @@ function Test-AccountCMK
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         #set access policy account identity, and the permissions "Get," "Encrypt," and "Decrypt."       
-        Set-AzKeyVaultAccessPolicy -ResourceGroupname $kvResourceGroup -VaultName $keyVaultName  -ObjectId $retrievedAcc.Identity.PrincipalId -PermissionsToKeys get,encrypt,decrypt -BypassObjectIdValidation
+        $cmkPrincipalId = $retrievedAcc.Identity.PrincipalId
+        Set-AzKeyVaultAccessPolicy -ResourceGroupname $kvResourceGroup -VaultName $keyVaultName -ObjectId $cmkPrincipalId -PermissionsToKeys get,encrypt,decrypt -BypassObjectIdValidation
                 
 
         #subnet for akv
@@ -378,8 +575,17 @@ function Test-AccountCMK
     }
     finally
     {
-        # Cleanup
-        Clean-ResourceGroup $resourceGroup
+        try
+        {
+            Clean-ResourceGroup $resourceGroup
+        }
+        finally
+        {
+            if ($cmkPrincipalId)
+            {
+                Remove-AzKeyVaultAccessPolicy -ResourceGroupName $kvResourceGroup -VaultName $keyVaultName -ObjectId $cmkPrincipalId -ErrorAction Stop
+            }
+        }
     }
 }
 

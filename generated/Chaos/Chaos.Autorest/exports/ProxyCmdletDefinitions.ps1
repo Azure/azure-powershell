@@ -16,369 +16,93 @@
 
 <#
 .Synopsis
-Get a Capability Type resource for given Target Type and location.
+Get a discovered resource.
 .Description
-Get a Capability Type resource for given Target Type and location.
+Get a discovered resource.
 .Example
-Get-AzChaosCapabilityType -LocationName eastus -TargetTypeName microsoft-virtualmachine
+Get-AzChaosDiscoveredResource -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
 .Example
-Get-AzChaosCapabilityType -LocationName eastus -TargetTypeName microsoft-virtualmachine -Name Shutdown-1.0
+Get-AzChaosDiscoveredResource -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-vm
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityType
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IDiscoveredResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 
-LOCATIONINPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
-
-TARGETTYPEINPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/get-azchaoscapabilitytype
+https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosdiscoveredresource
 #>
-function Get-AzChaosCapabilityType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityType])]
+function Get-AzChaosDiscoveredResource {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IDiscoveredResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Alias('DiscoveredResourceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Location resource name.
-    ${LocationName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityTargetType', Mandatory)]
-    [Alias('CapabilityTypeName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a Capability Type resource name.
-    ${Name},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # GUID that represents an Azure subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a Target Type resource name.
-    ${TargetTypeName},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
-    # Identity Parameter
-    ${LocationInputObject},
-
-    [Parameter(ParameterSetName='GetViaIdentityTargetType', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
-    # Identity Parameter
-    ${TargetTypeInputObject},
-
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Query')]
-    [System.String]
-    # String that sets the continuation token.
-    ${ContinuationToken},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.Chaos.private\Get-AzChaosCapabilityType_Get';
-            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosCapabilityType_GetViaIdentity';
-            GetViaIdentityLocation = 'Az.Chaos.private\Get-AzChaosCapabilityType_GetViaIdentityLocation';
-            GetViaIdentityTargetType = 'Az.Chaos.private\Get-AzChaosCapabilityType_GetViaIdentityTargetType';
-            List = 'Az.Chaos.private\Get-AzChaosCapabilityType_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Get a Capability resource that extends a Target resource.
-.Description
-Get a Capability resource that extends a Target resource.
-.Example
-Get-AzChaosCapability -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -TargetName microsoft-virtualmachine
-.Example
-Get-AzChaosCapability -Name Shutdown-1.0 -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -TargetName microsoft-virtualmachine
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
-
-TARGETINPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
-.Link
-https://learn.microsoft.com/powershell/module/az.chaos/get-azchaoscapability
-#>
-function Get-AzChaosCapability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityTarget', Mandatory)]
-    [Alias('CapabilityName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a Capability resource name.
+    # Name of the discovered resource.
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a resource provider namespace.
-    ${ParentProviderNamespace},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource name.
-    ${ParentResourceName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource type.
-    ${ParentResourceType},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -386,15 +110,16 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Target resource name.
-    ${TargetName},
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
@@ -402,17 +127,11 @@ param(
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='GetViaIdentityTarget', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
-    ${TargetInputObject},
-
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Query')]
-    [System.String]
-    # String that sets the continuation token.
-    ${ContinuationToken},
+    ${WorkspaceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -470,6 +189,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -489,14 +216,12 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Chaos.private\Get-AzChaosCapability_Get';
-            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosCapability_GetViaIdentity';
-            GetViaIdentityTarget = 'Az.Chaos.private\Get-AzChaosCapability_GetViaIdentityTarget';
-            List = 'Az.Chaos.private\Get-AzChaosCapability_List';
+            Get = 'Az.Chaos.private\Get-AzChaosDiscoveredResource_Get';
+            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosDiscoveredResource_GetViaIdentity';
+            GetViaIdentityWorkspace = 'Az.Chaos.private\Get-AzChaosDiscoveredResource_GetViaIdentityWorkspace';
+            List = 'Az.Chaos.private\Get-AzChaosDiscoveredResource_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -510,6 +235,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -555,98 +283,847 @@ end {
 
 <#
 .Synopsis
-Execution details of an experiment resource.
+Get the latest scenario configuration resource permission fix result.
 .Description
-Execution details of an experiment resource.
+Get the latest scenario configuration resource permission fix result.
 .Example
-Get-AzChaosExecutionExperimentDetail -ExperimentName experiment-test -ResourceGroupName azps_test_group_chaos -ExecutionId 13E31E28-45F4-402E-99B4-DF19A78E457E
+Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default -WhatIfMode
+Get-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
+.Example
+Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
+Get-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetails
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IPermissionsFix
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-EXPERIMENTINPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
-
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SUBSCRIPTIONINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosexecutionexperimentdetail
+https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosscenarioconfigurationresourcepermission
 #>
-function Get-AzChaosExecutionExperimentDetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetails])]
-[CmdletBinding(DefaultParameterSetName='Execution', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Get-AzChaosScenarioConfigurationResourcePermission {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IPermissionsFix])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Execution', Mandatory)]
-    [Parameter(ParameterSetName='ExecutionViaIdentityExperiment', Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # GUID that represents a Experiment execution detail.
-    ${ExecutionId},
-
-    [Parameter(ParameterSetName='Execution', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a Experiment resource name.
-    ${ExperimentName},
-
-    [Parameter(ParameterSetName='Execution', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Execution')]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityScenario', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario definition.
+    ${ScenarioConfigurationName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
+
+    [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ExecutionViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='ExecutionViaIdentityExperiment', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityScenario', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
-    ${ExperimentInputObject},
+    ${ScenarioInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${SubscriptionInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationResourcePermission_Get';
+            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationResourcePermission_GetViaIdentity';
+            GetViaIdentityScenario = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationResourcePermission_GetViaIdentityScenario';
+            GetViaIdentitySubscription = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationResourcePermission_GetViaIdentitySubscription';
+            GetViaIdentityWorkspace = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationResourcePermission_GetViaIdentityWorkspace';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get the latest scenario configuration validation result.
+.Description
+Get the latest scenario configuration validation result.
+.Example
+Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
+Get-AzChaosScenarioConfigurationValidation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
+.Example
+Get-AzChaosScenarioConfigurationValidation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName canary
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IValidation
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SUBSCRIPTIONINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+.Link
+https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosscenarioconfigurationvalidation
+#>
+function Get-AzChaosScenarioConfigurationValidation {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IValidation])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityScenario', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario definition.
+    ${ScenarioConfigurationName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityScenario', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${ScenarioInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${SubscriptionInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationValidation_Get';
+            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationValidation_GetViaIdentity';
+            GetViaIdentityScenario = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationValidation_GetViaIdentityScenario';
+            GetViaIdentitySubscription = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationValidation_GetViaIdentitySubscription';
+            GetViaIdentityWorkspace = 'Az.Chaos.private\Get-AzChaosScenarioConfigurationValidation_GetViaIdentityWorkspace';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a scenario definition.
+.Description
+Get a scenario definition.
+.Example
+Get-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario
+.Example
+Get-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioConfiguration
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+.Link
+https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosscenarioconfiguration
+#>
+function Get-AzChaosScenarioConfiguration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioConfiguration])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityScenario', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Alias('ScenarioConfigurationName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario definition.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityScenario', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${ScenarioInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -704,6 +1181,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -723,13 +1208,13 @@ begin {
         }
 
         $mapping = @{
-            Execution = 'Az.Chaos.private\Get-AzChaosExecutionExperimentDetail_Execution';
-            ExecutionViaIdentity = 'Az.Chaos.private\Get-AzChaosExecutionExperimentDetail_ExecutionViaIdentity';
-            ExecutionViaIdentityExperiment = 'Az.Chaos.private\Get-AzChaosExecutionExperimentDetail_ExecutionViaIdentityExperiment';
+            Get = 'Az.Chaos.private\Get-AzChaosScenarioConfiguration_Get';
+            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosScenarioConfiguration_GetViaIdentity';
+            GetViaIdentityScenario = 'Az.Chaos.private\Get-AzChaosScenarioConfiguration_GetViaIdentityScenario';
+            GetViaIdentityWorkspace = 'Az.Chaos.private\Get-AzChaosScenarioConfiguration_GetViaIdentityWorkspace';
+            List = 'Az.Chaos.private\Get-AzChaosScenarioConfiguration_List';
         }
-        if (('Execution') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -743,6 +1228,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -788,82 +1276,404 @@ end {
 
 <#
 .Synopsis
-Get an execution of an Experiment resource.
+Get a scenario run.
+This endpoint is also the polling target for ScenarioConfigurations.execute and ScenarioRuns.cancel (final-state-via: location).
+While the run is in progress the service returns 202 with a Location header pointing back to this URL; clients must keep polling until they receive 200, which carries the final ScenarioRun body.
 .Description
-Get an execution of an Experiment resource.
+Get a scenario run.
+This endpoint is also the polling target for ScenarioConfigurations.execute and ScenarioRuns.cancel (final-state-via: location).
+While the run is in progress the service returns 202 with a Location header pointing back to this URL; clients must keep polling until they receive 200, which carries the final ScenarioRun body.
 .Example
-Get-AzChaosExperimentExecution -ExperimentName experiment-test -ResourceGroupName azps_test_group_chaos
+Get-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario
 .Example
-Get-AzChaosExperimentExecution -ExperimentName experiment-test -ResourceGroupName azps_test_group_chaos -ExecutionId 13E31E28-45F4-402E-99B4-DF19A78E457E
+Get-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -RunId 11111111-1111-1111-1111-111111111111
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecution
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-EXPERIMENTINPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
-
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosexperimentexecution
+https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosscenariorun
 #>
-function Get-AzChaosExperimentExecution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecution])]
+function Get-AzChaosScenarioRun {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioRun])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityExperiment', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # GUID that represents a Experiment execution detail.
-    ${ExecutionId},
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityScenario', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # The name of the ScenarioRun
+    ${RunId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Experiment resource name.
-    ${ExperimentName},
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityScenario', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${ScenarioInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.Chaos.private\Get-AzChaosScenarioRun_Get';
+            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosScenarioRun_GetViaIdentity';
+            GetViaIdentityScenario = 'Az.Chaos.private\Get-AzChaosScenarioRun_GetViaIdentityScenario';
+            GetViaIdentityWorkspace = 'Az.Chaos.private\Get-AzChaosScenarioRun_GetViaIdentityWorkspace';
+            List = 'Az.Chaos.private\Get-AzChaosScenarioRun_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a scenario.
+.Description
+Get a scenario.
+.Example
+Get-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
+.Example
+Get-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+.Link
+https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosscenario
+#>
+function Get-AzChaosScenario {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
+    [Alias('ScenarioName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -871,8 +1681,16 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
@@ -880,11 +1698,11 @@ param(
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='GetViaIdentityExperiment', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
-    ${ExperimentInputObject},
+    ${WorkspaceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -942,6 +1760,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -961,14 +1787,12 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Chaos.private\Get-AzChaosExperimentExecution_Get';
-            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosExperimentExecution_GetViaIdentity';
-            GetViaIdentityExperiment = 'Az.Chaos.private\Get-AzChaosExperimentExecution_GetViaIdentityExperiment';
-            List = 'Az.Chaos.private\Get-AzChaosExperimentExecution_List';
+            Get = 'Az.Chaos.private\Get-AzChaosScenario_Get';
+            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosScenario_GetViaIdentity';
+            GetViaIdentityWorkspace = 'Az.Chaos.private\Get-AzChaosScenario_GetViaIdentityWorkspace';
+            List = 'Az.Chaos.private\Get-AzChaosScenario_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -982,6 +1806,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1027,60 +1854,329 @@ end {
 
 <#
 .Synopsis
-Get a Experiment resource.
+Get the latest workspace evaluation result.
 .Description
-Get a Experiment resource.
+Get the latest workspace evaluation result.
 .Example
-Get-AzChaosExperiment
+Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
+Get-AzChaosWorkspaceEvaluation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
 .Example
-Get-AzChaosExperiment -ResourceGroupName azps_test_group_chaos
-.Example
-Get-AzChaosExperiment -ResourceGroupName azps_test_group_chaos -Name experiment-test
+Initialize-AzChaosWorkspace -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Location eastus -Scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg'
+Get-AzChaosWorkspaceEvaluation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SUBSCRIPTIONINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosexperiment
+https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosworkspaceevaluation
 #>
-function Get-AzChaosExperiment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment])]
+function Get-AzChaosWorkspaceEvaluation {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${SubscriptionInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.Chaos.private\Get-AzChaosWorkspaceEvaluation_Get';
+            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosWorkspaceEvaluation_GetViaIdentity';
+            GetViaIdentitySubscription = 'Az.Chaos.private\Get-AzChaosWorkspaceEvaluation_GetViaIdentitySubscription';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a Workspace resource.
+.Description
+Get a Workspace resource.
+.Example
+Get-AzChaosWorkspace -ResourceGroupName contoso-rg
+.Example
+Get-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspace
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+.Link
+https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosworkspace
+#>
+function Get-AzChaosWorkspace {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('ExperimentName')]
+    [Alias('WorkspaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Experiment resource name.
+    # String that represents a Workspace resource name.
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -1089,7 +2185,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1104,14 +2201,6 @@ param(
     [System.String]
     # String that sets the continuation token.
     ${ContinuationToken},
-
-    [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Query')]
-    [System.Management.Automation.SwitchParameter]
-    # Optional value that indicates whether to filter results based on if the Experiment is currently running.
-    # If null, then the results will not be filtered.
-    ${Running},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1169,6 +2258,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1188,14 +2285,12 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Chaos.private\Get-AzChaosExperiment_Get';
-            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosExperiment_GetViaIdentity';
-            List = 'Az.Chaos.private\Get-AzChaosExperiment_List';
-            List1 = 'Az.Chaos.private\Get-AzChaosExperiment_List1';
+            Get = 'Az.Chaos.private\Get-AzChaosWorkspace_Get';
+            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosWorkspace_GetViaIdentity';
+            List = 'Az.Chaos.private\Get-AzChaosWorkspace_List';
+            List1 = 'Az.Chaos.private\Get-AzChaosWorkspace_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1209,6 +2304,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1254,339 +2352,157 @@ end {
 
 <#
 .Synopsis
-Get a Target Type resources for given location.
+Execute the scenario execution with the given scenario configuration.
 .Description
-Get a Target Type resources for given location.
+Execute the scenario execution with the given scenario configuration.
 .Example
-Get-AzChaosTargetType -LocationName eastus
+Invoke-AzChaosScenarioConfigurationExecution -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
 .Example
-Get-AzChaosTargetType -LocationName eastus -Name Microsoft-KeyVault
+Invoke-AzChaosScenarioConfigurationExecution -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default -NoWait
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 
-LOCATIONINPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/get-azchaostargettype
+https://learn.microsoft.com/powershell/module/az.chaos/invoke-azchaosscenarioconfigurationexecution
 #>
-function Get-AzChaosTargetType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+function Invoke-AzChaosScenarioConfigurationExecution {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioRun])]
+[CmdletBinding(DefaultParameterSetName='Execute', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='Execute', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Location resource name.
-    ${LocationName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory)]
-    [Alias('TargetTypeName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a Target Type resource name.
-    ${Name},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # GUID that represents an Azure subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
-    # Identity Parameter
-    ${LocationInputObject},
-
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Query')]
-    [System.String]
-    # String that sets the continuation token.
-    ${ContinuationToken},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.Chaos.private\Get-AzChaosTargetType_Get';
-            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosTargetType_GetViaIdentity';
-            GetViaIdentityLocation = 'Az.Chaos.private\Get-AzChaosTargetType_GetViaIdentityLocation';
-            List = 'Az.Chaos.private\Get-AzChaosTargetType_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Get a Target resource that extends a tracked regional resource.
-.Description
-Get a Target resource that extends a tracked regional resource.
-.Example
-Get-AzChaosTarget -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos
-.Example
-Get-AzChaosTarget -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -Name microsoft-virtualmachine
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITarget
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
-.Link
-https://learn.microsoft.com/powershell/module/az.chaos/get-azchaostarget
-#>
-function Get-AzChaosTarget {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITarget])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('TargetName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a Target resource name.
-    ${Name},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource provider namespace.
-    ${ParentProviderNamespace},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource name.
-    ${ParentResourceName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource type.
-    ${ParentResourceType},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='Execute', Mandatory)]
+    [Parameter(ParameterSetName='ExecuteViaIdentityScenario', Mandatory)]
+    [Parameter(ParameterSetName='ExecuteViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario definition.
+    ${ScenarioConfigurationName},
+
+    [Parameter(ParameterSetName='Execute', Mandatory)]
+    [Parameter(ParameterSetName='ExecuteViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
+
+    [Parameter(ParameterSetName='Execute')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # GUID that represents an Azure subscription ID.
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Execute', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='ExecuteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Query')]
-    [System.String]
-    # String that sets the continuation token.
-    ${ContinuationToken},
+    [Parameter(ParameterSetName='ExecuteViaIdentityScenario', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${ScenarioInputObject},
+
+    [Parameter(ParameterSetName='ExecuteViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1596,6 +2512,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
@@ -1616,6 +2538,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
@@ -1644,6 +2572,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1663,13 +2599,12 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Chaos.private\Get-AzChaosTarget_Get';
-            GetViaIdentity = 'Az.Chaos.private\Get-AzChaosTarget_GetViaIdentity';
-            List = 'Az.Chaos.private\Get-AzChaosTarget_List';
+            Execute = 'Az.Chaos.private\Invoke-AzChaosScenarioConfigurationExecution_Execute';
+            ExecuteViaIdentity = 'Az.Chaos.private\Invoke-AzChaosScenarioConfigurationExecution_ExecuteViaIdentity';
+            ExecuteViaIdentityScenario = 'Az.Chaos.private\Invoke-AzChaosScenarioConfigurationExecution_ExecuteViaIdentityScenario';
+            ExecuteViaIdentityWorkspace = 'Az.Chaos.private\Invoke-AzChaosScenarioConfigurationExecution_ExecuteViaIdentityWorkspace';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Execute') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1683,6 +2618,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1728,69 +2666,95 @@ end {
 
 <#
 .Synopsis
-Create a Capability resource that extends a Target resource.
+Create a scenario definition.
 .Description
-Create a Capability resource that extends a Target resource.
+Create a scenario definition.
 .Example
-New-AzChaosCapability -Name Shutdown-1.0 -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -TargetName microsoft-virtualmachine
+$scenarioId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Chaos/workspaces/contoso-workspace/scenarios/contoso-scenario'
+New-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default -ScenarioId $scenarioId
+.Example
+$scenarioId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Chaos/workspaces/contoso-workspace/scenarios/contoso-scenario'
+New-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name canary -ScenarioId $scenarioId `
+    -FilterLocation 'eastus' -FilterZone '1' -ExclusionType 'Microsoft.Compute/virtualMachines'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
+EXCLUSIONTAG <IKeyValuePair[]>: Array of tag key-value pairs. Resources with matching tags are excluded.
+  Key <String>: The name of the setting for the action.
+  Value <String>: The value of the setting for the action.
 
-TARGETINPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+PARAMETER <IKeyValuePair[]>: Runtime parameter values for the scenario. Keys must match parameter names defined in the scenario.
+  Key <String>: The name of the setting for the action.
+  Value <String>: The value of the setting for the action.
+
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/new-azchaoscapability
+https://learn.microsoft.com/powershell/module/az.chaos/new-azchaosscenarioconfiguration
 #>
-function New-AzChaosCapability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability])]
+function New-AzChaosScenarioConfiguration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityTargetExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Alias('CapabilityName')]
+    [Parameter(Mandatory)]
+    [Alias('ScenarioConfigurationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Capability resource name.
+    # Name of the scenario definition.
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -1798,32 +2762,18 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a resource provider namespace.
-    ${ParentProviderNamespace},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource name.
-    ${ParentResourceName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource type.
-    ${ParentResourceType},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaJsonFilePath')]
@@ -1831,7 +2781,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -1839,257 +2790,103 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Target resource name.
-    ${TargetName},
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityScenarioExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
-    ${InputObject},
+    ${ScenarioInputObject},
 
-    [Parameter(ParameterSetName='CreateViaIdentityTargetExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
-    ${TargetInputObject},
+    ${WorkspaceInputObject},
 
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityScenarioExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
+    # Resource ID of the scenario this configuration applies to.
+    ${ScenarioId},
 
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityScenarioExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
+    [System.String[]]
+    # Array of specific resource IDs to exclude from fault injection.
+    ${ExclusionResource},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityScenarioExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IKeyValuePair[]]
+    # Array of tag key-value pairs.
+    # Resources with matching tags are excluded.
+    ${ExclusionTag},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityScenarioExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String[]]
+    # Array of resource types.
+    # All resources of these types are excluded.
+    ${ExclusionType},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityScenarioExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String[]]
+    # Array of Azure location strings.
+    # Only resources in these locations are included.Null or omitted means all locations (no filter).
+    # Empty array means include nothing.
+    ${FilterLocation},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityScenarioExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String[]]
+    # Array of physical availability zone identifiers in '{region}-az{N}' format (for example, 'westus2-az1').
+    # Only resources in the corresponding logical zone for each subscription are included.
+    # At execution time, each physical zone is resolved to per-subscription logical zones via the Azure locations API.
+    # The resolved mapping is surfaced on the scenario run response.
+    # Null or omitted means physical zone targeting is not used.
+    # Only one physical zone is supported in preview.
+    # Mutually exclusive with the zones filter; set one or the other, not both.
+    ${FilterPhysicalZone},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityScenarioExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String[]]
+    # Array of availability zone identifiers ("1", "2", "3", "zone-redundant").Only resources whose zones intersect this list are included.Null or omitted means all zones (including non-zonal).
+    # Empty array means include nothing.Mutually exclusive with `physicalZones` — set one or the other, not both.
+    ${FilterZone},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.Chaos.private\New-AzChaosCapability_CreateExpanded';
-            CreateViaIdentityExpanded = 'Az.Chaos.private\New-AzChaosCapability_CreateViaIdentityExpanded';
-            CreateViaIdentityTargetExpanded = 'Az.Chaos.private\New-AzChaosCapability_CreateViaIdentityTargetExpanded';
-            CreateViaJsonFilePath = 'Az.Chaos.private\New-AzChaosCapability_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.Chaos.private\New-AzChaosCapability_CreateViaJsonString';
-        }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create a Experiment resource.
-.Description
-Create a Experiment resource.
-.Example
-New-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos -JsonFilePath "C:\Users\abc\Desktop\jsonStr.json"
-.Example
-$jsonStr = '
-{
-  "location": "eastus",
-  "identity": {
-    "type": "SystemAssigned"
-  },
-  "properties": {
-    "steps": [
-      {
-        "name": "step1",
-        "branches": [
-          {
-            "name": "branch1",
-            "actions": [
-              {
-                "type": "continuous",
-                "name": "urn:csci:microsoft:virtualMachine:shutdown/1.0",
-                "selectorId": "selector1",
-                "duration": "PT10M",
-                "parameters": [
-                  {
-                    "key": "abruptShutdown",
-                    "value": "false"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "selectors": [
-      {
-        "type": "List",
-        "id": "selector1",
-        "targets": [
-          {
-            "type": "ChaosTarget",
-            "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest1/providers/Microsoft.Chaos/targets/microsoft-virtualmachine"
-          }
-        ]
-      }
-    ]
-  }
-}'
-
-New-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos -JsonString $jsonStr
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment
-.Link
-https://learn.microsoft.com/powershell/module/az.chaos/new-azchaosexperiment
-#>
-function New-AzChaosExperiment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment])]
-[CmdletBinding(DefaultParameterSetName='CreateViaJsonFilePath', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('ExperimentName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a Experiment resource name.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # GUID that represents an Azure subscription ID.
-    ${SubscriptionId},
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityScenarioExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IKeyValuePair[]]
+    # Runtime parameter values for the scenario.
+    # Keys must match parameter names defined in the scenario.
+    ${Parameter},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
@@ -2171,6 +2968,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2190,12 +2995,13 @@ begin {
         }
 
         $mapping = @{
-            CreateViaJsonFilePath = 'Az.Chaos.private\New-AzChaosExperiment_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.Chaos.private\New-AzChaosExperiment_CreateViaJsonString';
+            CreateExpanded = 'Az.Chaos.private\New-AzChaosScenarioConfiguration_CreateExpanded';
+            CreateViaIdentityScenarioExpanded = 'Az.Chaos.private\New-AzChaosScenarioConfiguration_CreateViaIdentityScenarioExpanded';
+            CreateViaIdentityWorkspaceExpanded = 'Az.Chaos.private\New-AzChaosScenarioConfiguration_CreateViaIdentityWorkspaceExpanded';
+            CreateViaJsonFilePath = 'Az.Chaos.private\New-AzChaosScenarioConfiguration_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Chaos.private\New-AzChaosScenarioConfiguration_CreateViaJsonString';
         }
-        if (('CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2209,6 +3015,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2254,54 +3063,83 @@ end {
 
 <#
 .Synopsis
-Create a Target resource that extends a tracked regional resource.
+Create a scenario.
 .Description
-Create a Target resource that extends a tracked regional resource.
+Create a scenario.
 .Example
-$property = @{"type"="CertificateSubjectIssuer";"subject"="CN=example.subject"}
-$propertyArr = @($property)
-$identities = @{"identities"=$propertyArr}
-New-AzChaosTarget -Name microsoft-virtualmachine -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -Location eastus -Property $identities
+$action = New-AzChaosScenarioActionObject -Name 'stop-vm' -ActionId 'microsoft-compute-shutdown/1.0' -Duration 'PT10M'
+New-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario -Description 'Shut down the target virtual machine.' -Action $action
+.Example
+New-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario -JsonFilePath .\scenario.json
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITarget
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+ACTION <IScenarioAction[]>: Array of actions that define the scenario's orchestration.
+  ActionId <String>: Identifier of the action and version (e.g., "microsoft-compute-shutdown/1.0").
+  Duration <String>: ISO 8601 duration for how long the action runs (e.g., PT30M for 30 minutes). Supports template macro syntax (%%\{parameters.\<name\>\}%%).
+  Name <String>: Unique name for the action.
+  [Description <String>]: Human-readable description of what this action does.
+  [ExternalResourceId <String>]: The resource ID of the external resource.
+  [Parameter <List<IKeyValuePair>>]: Action-specific parameter values.
+    Key <String>: The name of the setting for the action.
+    Value <String>: The value of the setting for the action.
+  [RunAfterBehavior <String>]: Defines how multiple dependencies are evaluated.
+  [RunAfterItem <List<IActionDependency>>]: Array of action dependencies.
+    Name <String>: Name of the action this depends on.
+    [OnActionLifecycle <String>]: The lifecycle state of the dependency action that triggers this action to start.
+  [Timeout <String>]: ISO 8601 duration for maximum action execution time. Supports template macro syntax.
+  [WaitBefore <String>]: ISO 8601 duration to wait before action starts (e.g., PT30S for 30 seconds). Supports template macro syntax.
+
+PARAMETER <IScenarioParameter[]>: Parameter definitions for the scenario.
+  Name <String>: The name of the parameter.
+  Type <String>: Parameter data type.
+  [Default <String>]: Default value for the parameter.
+  [Description <String>]: Description of the parameter.
+  [Required <Boolean?>]: Whether this parameter is required.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/new-azchaostarget
+https://learn.microsoft.com/powershell/module/az.chaos/new-azchaosscenario
 #>
-function New-AzChaosTarget {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITarget])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function New-AzChaosScenario {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentityWorkspaceExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Alias('TargetName')]
+    [Parameter(Mandatory)]
+    [Alias('ScenarioName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Target resource name.
+    # Name of the scenario.
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -2309,31 +3147,8 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a resource provider namespace.
-    ${ParentProviderNamespace},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource name.
-    ${ParentResourceName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource type.
-    ${ParentResourceType},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2342,29 +3157,285 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
-    ${InputObject},
+    ${WorkspaceInputObject},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioAction[]]
+    # Array of actions that define the scenario's orchestration.
+    ${Action},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.String]
-    # Location of the target resource.
+    # Description of what this scenario does.
+    ${Description},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioParameter[]]
+    # Parameter definitions for the scenario.
+    ${Parameter},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.Chaos.private\New-AzChaosScenario_CreateExpanded';
+            CreateViaIdentityWorkspaceExpanded = 'Az.Chaos.private\New-AzChaosScenario_CreateViaIdentityWorkspaceExpanded';
+            CreateViaJsonFilePath = 'Az.Chaos.private\New-AzChaosScenario_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Chaos.private\New-AzChaosScenario_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create a Workspace resource.
+.Description
+Create a Workspace resource.
+.Example
+New-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Location eastus -Scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg' -EnableSystemAssignedIdentity
+.Example
+$scopes = @(
+    '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg',
+    '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/payments-rg'
+)
+New-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Location eastus -Scope $scopes -EnableSystemAssignedIdentity -Tag @{ team = 'resilience'; env = 'prod' }
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspace
+.Link
+https://learn.microsoft.com/powershell/module/az.chaos/new-azchaosworkspace
+#>
+function New-AzChaosWorkspace {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspace])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('WorkspaceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetProperties]))]
+    [System.String[]]
+    # The intended workspace-level resource scope to be used by child scenarios.
+    ${Scope},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # The properties of the target resource.
-    ${Property},
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
@@ -2387,6 +3458,12 @@ param(
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -2406,6 +3483,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
@@ -2434,6 +3517,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2453,14 +3544,11 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.Chaos.private\New-AzChaosTarget_CreateExpanded';
-            CreateViaIdentityExpanded = 'Az.Chaos.private\New-AzChaosTarget_CreateViaIdentityExpanded';
-            CreateViaJsonFilePath = 'Az.Chaos.private\New-AzChaosTarget_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.Chaos.private\New-AzChaosTarget_CreateViaJsonString';
+            CreateExpanded = 'Az.Chaos.private\New-AzChaosWorkspace_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Chaos.private\New-AzChaosWorkspace_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Chaos.private\New-AzChaosWorkspace_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2474,6 +3562,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2519,11 +3610,13 @@ end {
 
 <#
 .Synopsis
-Delete a Capability that extends a Target resource.
+Delete a scenario definition.
 .Description
-Delete a Capability that extends a Target resource.
+Delete a scenario definition.
 .Example
-Remove-AzChaosCapability -Name Shutdown-1.0 -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -TargetName microsoft-virtualmachine
+Remove-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
+.Example
+Get-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default | Remove-AzChaosScenarioConfiguration
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
@@ -2535,89 +3628,122 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 
-TARGETINPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaoscapability
+https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaosscenarioconfiguration
 #>
-function Remove-AzChaosCapability {
+function Remove-AzChaosScenarioConfiguration {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Parameter(ParameterSetName='DeleteViaIdentityTarget', Mandatory)]
-    [Alias('CapabilityName')]
+    [Parameter(ParameterSetName='DeleteViaIdentityScenario', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityWorkspace', Mandatory)]
+    [Alias('ScenarioConfigurationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Capability resource name.
+    # Name of the scenario definition.
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a resource provider namespace.
-    ${ParentProviderNamespace},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource name.
-    ${ParentResourceName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource type.
-    ${ParentResourceType},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Target resource name.
-    ${TargetName},
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
@@ -2625,11 +3751,17 @@ param(
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='DeleteViaIdentityTarget', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeleteViaIdentityScenario', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
-    ${TargetInputObject},
+    ${ScenarioInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2693,6 +3825,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2712,13 +3852,12 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.Chaos.private\Remove-AzChaosCapability_Delete';
-            DeleteViaIdentity = 'Az.Chaos.private\Remove-AzChaosCapability_DeleteViaIdentity';
-            DeleteViaIdentityTarget = 'Az.Chaos.private\Remove-AzChaosCapability_DeleteViaIdentityTarget';
+            Delete = 'Az.Chaos.private\Remove-AzChaosScenarioConfiguration_Delete';
+            DeleteViaIdentity = 'Az.Chaos.private\Remove-AzChaosScenarioConfiguration_DeleteViaIdentity';
+            DeleteViaIdentityScenario = 'Az.Chaos.private\Remove-AzChaosScenarioConfiguration_DeleteViaIdentityScenario';
+            DeleteViaIdentityWorkspace = 'Az.Chaos.private\Remove-AzChaosScenarioConfiguration_DeleteViaIdentityWorkspace';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2732,6 +3871,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2777,11 +3919,13 @@ end {
 
 <#
 .Synopsis
-Delete a Experiment resource.
+Delete a scenario.
 .Description
-Delete a Experiment resource.
+Delete a scenario.
 .Example
-Remove-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos
+Remove-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario
+.Example
+Get-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario | Remove-AzChaosScenario
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
@@ -2793,46 +3937,325 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaosexperiment
+https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaosscenario
 #>
-function Remove-AzChaosExperiment {
+function Remove-AzChaosScenario {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('ExperimentName')]
+    [Parameter(ParameterSetName='DeleteViaIdentityWorkspace', Mandatory)]
+    [Alias('ScenarioName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Experiment resource name.
+    # Name of the scenario.
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.Chaos.private\Remove-AzChaosScenario_Delete';
+            DeleteViaIdentity = 'Az.Chaos.private\Remove-AzChaosScenario_DeleteViaIdentity';
+            DeleteViaIdentityWorkspace = 'Az.Chaos.private\Remove-AzChaosScenario_DeleteViaIdentityWorkspace';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete a Workspace resource.
+.Description
+Delete a Workspace resource.
+.Example
+Remove-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace
+.Example
+Remove-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -PassThru
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+.Link
+https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaosworkspace
+#>
+function Remove-AzChaosWorkspace {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Alias('WorkspaceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2915,6 +4338,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2934,12 +4365,10 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.Chaos.private\Remove-AzChaosExperiment_Delete';
-            DeleteViaIdentity = 'Az.Chaos.private\Remove-AzChaosExperiment_DeleteViaIdentity';
+            Delete = 'Az.Chaos.private\Remove-AzChaosWorkspace_Delete';
+            DeleteViaIdentity = 'Az.Chaos.private\Remove-AzChaosWorkspace_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2953,6 +4382,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2998,296 +4430,215 @@ end {
 
 <#
 .Synopsis
-Delete a Target resource that extends a tracked regional resource.
+Fixes resource permissions for the given scenario configuration.
 .Description
-Delete a Target resource that extends a tracked regional resource.
+Fixes resource permissions for the given scenario configuration.
 .Example
-Remove-AzChaosTarget -Name microsoft-virtualmachine -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos
+Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
+.Example
+Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default -WhatIfMode
+.Example
+Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default -WhatIf
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFixResourcePermissionsRequest
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IPermissionsFix
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+BODY <IFixResourcePermissionsRequest>: Request body for fixing resource permissions.
+  [WhatIf <Boolean?>]: Optional value that indicates whether to run a "dry run" of fixing resource permissions.
+
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaostarget
+https://learn.microsoft.com/powershell/module/az.chaos/repair-azchaosscenarioconfigurationresourcepermission
 #>
-function Remove-AzChaosTarget {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Repair-AzChaosScenarioConfigurationResourcePermission {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IPermissionsFix])]
+[CmdletBinding(DefaultParameterSetName='FixExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('TargetName')]
+    [Parameter(ParameterSetName='Fix', Mandatory)]
+    [Parameter(ParameterSetName='FixExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FixViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='FixViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Target resource name.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource provider namespace.
-    ${ParentProviderNamespace},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource name.
-    ${ParentResourceName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource type.
-    ${ParentResourceType},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Delete')]
+    [Parameter(ParameterSetName='Fix', Mandatory)]
+    [Parameter(ParameterSetName='FixExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FixViaIdentityScenario', Mandatory)]
+    [Parameter(ParameterSetName='FixViaIdentityScenarioExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FixViaIdentityWorkspace', Mandatory)]
+    [Parameter(ParameterSetName='FixViaIdentityWorkspaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FixViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='FixViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario definition.
+    ${ScenarioConfigurationName},
+
+    [Parameter(ParameterSetName='Fix', Mandatory)]
+    [Parameter(ParameterSetName='FixExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FixViaIdentityWorkspace', Mandatory)]
+    [Parameter(ParameterSetName='FixViaIdentityWorkspaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FixViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='FixViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
+
+    [Parameter(ParameterSetName='Fix')]
+    [Parameter(ParameterSetName='FixExpanded')]
+    [Parameter(ParameterSetName='FixViaJsonFilePath')]
+    [Parameter(ParameterSetName='FixViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Fix', Mandatory)]
+    [Parameter(ParameterSetName='FixExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FixViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='FixViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='FixViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='FixViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
     ${InputObject},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.Chaos.private\Remove-AzChaosTarget_Delete';
-            DeleteViaIdentity = 'Az.Chaos.private\Remove-AzChaosTarget_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Start a Experiment resource.
-.Description
-Start a Experiment resource.
-.Example
-Start-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
-.Link
-https://learn.microsoft.com/powershell/module/az.chaos/start-azchaosexperiment
-#>
-function Start-AzChaosExperiment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment])]
-[CmdletBinding(DefaultParameterSetName='Start', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Start', Mandatory)]
-    [Alias('ExperimentName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a Experiment resource name.
-    ${Name},
-
-    [Parameter(ParameterSetName='Start', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Start')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # GUID that represents an Azure subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='StartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='FixViaIdentityScenario', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='FixViaIdentityScenarioExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
-    ${InputObject},
+    ${ScenarioInputObject},
+
+    [Parameter(ParameterSetName='FixViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='FixViaIdentityWorkspaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
+
+    [Parameter(ParameterSetName='Fix', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='FixViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='FixViaIdentityScenario', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='FixViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IFixResourcePermissionsRequest]
+    # Request body for fixing resource permissions.
+    ${Body},
+
+    [Parameter(ParameterSetName='FixExpanded')]
+    [Parameter(ParameterSetName='FixViaIdentityExpanded')]
+    [Parameter(ParameterSetName='FixViaIdentityScenarioExpanded')]
+    [Parameter(ParameterSetName='FixViaIdentityWorkspaceExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Optional value that indicates whether to run a "dry run" of fixing resource permissions.
+    ${WhatIfMode},
+
+    [Parameter(ParameterSetName='FixViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Fix operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='FixViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Json string supplied to the Fix operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3357,6 +4708,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3376,12 +4735,18 @@ begin {
         }
 
         $mapping = @{
-            Start = 'Az.Chaos.private\Start-AzChaosExperiment_Start';
-            StartViaIdentity = 'Az.Chaos.private\Start-AzChaosExperiment_StartViaIdentity';
+            Fix = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_Fix';
+            FixExpanded = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_FixExpanded';
+            FixViaIdentity = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_FixViaIdentity';
+            FixViaIdentityExpanded = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_FixViaIdentityExpanded';
+            FixViaIdentityScenario = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_FixViaIdentityScenario';
+            FixViaIdentityScenarioExpanded = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_FixViaIdentityScenarioExpanded';
+            FixViaIdentityWorkspace = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_FixViaIdentityWorkspace';
+            FixViaIdentityWorkspaceExpanded = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_FixViaIdentityWorkspaceExpanded';
+            FixViaJsonFilePath = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_FixViaJsonFilePath';
+            FixViaJsonString = 'Az.Chaos.private\Repair-AzChaosScenarioConfigurationResourcePermission_FixViaJsonString';
         }
-        if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Fix', 'FixExpanded', 'FixViaJsonFilePath', 'FixViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3395,6 +4760,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3440,63 +4808,139 @@ end {
 
 <#
 .Synopsis
-Cancel a running Experiment resource.
+Cancel the currently running scenario execution.
 .Description
-Cancel a running Experiment resource.
+Cancel the currently running scenario execution.
 .Example
-Stop-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos
+Stop-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -RunId 22222222-2222-2222-2222-222222222222
+.Example
+Get-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -RunId 22222222-2222-2222-2222-222222222222 | Stop-AzChaosScenarioRun
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/stop-azchaosexperiment
+https://learn.microsoft.com/powershell/module/az.chaos/stop-azchaosscenariorun
 #>
-function Stop-AzChaosExperiment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment])]
+function Stop-AzChaosScenarioRun {
+[OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Cancel', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Cancel', Mandatory)]
-    [Alias('ExperimentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Experiment resource name.
-    ${Name},
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Cancel', Mandatory)]
+    [Parameter(ParameterSetName='CancelViaIdentityScenario', Mandatory)]
+    [Parameter(ParameterSetName='CancelViaIdentityWorkspace', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents an Azure resource group.
-    ${ResourceGroupName},
+    # The name of the ScenarioRun
+    ${RunId},
+
+    [Parameter(ParameterSetName='Cancel', Mandatory)]
+    [Parameter(ParameterSetName='CancelViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
 
     [Parameter(ParameterSetName='Cancel')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Cancel', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
 
     [Parameter(ParameterSetName='CancelViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
@@ -3504,6 +4948,345 @@ param(
     # Identity Parameter
     ${InputObject},
 
+    [Parameter(ParameterSetName='CancelViaIdentityScenario', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${ScenarioInputObject},
+
+    [Parameter(ParameterSetName='CancelViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Cancel = 'Az.Chaos.private\Stop-AzChaosScenarioRun_Cancel';
+            CancelViaIdentity = 'Az.Chaos.private\Stop-AzChaosScenarioRun_CancelViaIdentity';
+            CancelViaIdentityScenario = 'Az.Chaos.private\Stop-AzChaosScenarioRun_CancelViaIdentityScenario';
+            CancelViaIdentityWorkspace = 'Az.Chaos.private\Stop-AzChaosScenarioRun_CancelViaIdentityWorkspace';
+        }
+        if (('Cancel') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Validate the given scenario configuration.
+.Description
+Validate the given scenario configuration.
+.Example
+Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
+.Example
+$validation = Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
+if ($validation.Status -eq 'Succeeded') {
+    Write-Host 'The scenario configuration is valid.'
+} else {
+    Write-Host "Validation returned '$($validation.Status)'."
+    $validation.ErrorPermission | Format-List ResourceId, MissingPermission, RecommendedRole
+}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IValidation
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+SCENARIOINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+
+WORKSPACEINPUTOBJECT <IChaosIdentity>: Identity Parameter
+  [ActionName <String>]: String that represents an Action resource name.
+  [CapabilityName <String>]: String that represents a Capability resource name.
+  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
+  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
+  [ExperimentName <String>]: String that represents a Experiment resource name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TargetName <String>]: String that represents a Target resource name.
+  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
+.Link
+https://learn.microsoft.com/powershell/module/az.chaos/test-azchaosscenarioconfiguration
+#>
+function Test-AzChaosScenarioConfiguration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IValidation])]
+[CmdletBinding(DefaultParameterSetName='Validate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Validate', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityScenario', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityWorkspace', Mandatory)]
+    [Alias('ScenarioConfigurationName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario definition.
+    ${Name},
+
+    [Parameter(ParameterSetName='Validate', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Validate', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityWorkspace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # Name of the scenario.
+    ${ScenarioName},
+
+    [Parameter(ParameterSetName='Validate')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Validate', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [System.String]
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ValidateViaIdentityScenario', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${ScenarioInputObject},
+
+    [Parameter(ParameterSetName='ValidateViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -3572,6 +5355,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3591,12 +5382,12 @@ begin {
         }
 
         $mapping = @{
-            Cancel = 'Az.Chaos.private\Stop-AzChaosExperiment_Cancel';
-            CancelViaIdentity = 'Az.Chaos.private\Stop-AzChaosExperiment_CancelViaIdentity';
+            Validate = 'Az.Chaos.private\Test-AzChaosScenarioConfiguration_Validate';
+            ValidateViaIdentity = 'Az.Chaos.private\Test-AzChaosScenarioConfiguration_ValidateViaIdentity';
+            ValidateViaIdentityScenario = 'Az.Chaos.private\Test-AzChaosScenarioConfiguration_ValidateViaIdentityScenario';
+            ValidateViaIdentityWorkspace = 'Az.Chaos.private\Test-AzChaosScenarioConfiguration_ValidateViaIdentityWorkspace';
         }
-        if (('Cancel') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Validate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3610,6 +5401,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3655,117 +5449,81 @@ end {
 
 <#
 .Synopsis
-Update a Capability resource that extends a Target resource.
+Refreshes recommendation status for all scenarios in a given workspace.
 .Description
-Update a Capability resource that extends a Target resource.
+Refreshes recommendation status for all scenarios in a given workspace.
 .Example
-Update-AzChaosCapability -Name Shutdown-1.0 -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -TargetName microsoft-virtualmachine
+Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
+.Example
+$evaluation = Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
+$evaluation | Format-List Status, NumScenariosToEvaluate, NumScenariosEvaluatedSucceeded, NumScenariosEvaluatedFailed
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
-
-TARGETINPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/update-azchaoscapability
+https://learn.microsoft.com/powershell/module/az.chaos/update-azchaosworkspacerecommendation
 #>
-function Update-AzChaosCapability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Update-AzChaosWorkspaceRecommendation {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation])]
+[CmdletBinding(DefaultParameterSetName='Refresh', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityTargetExpanded', Mandatory)]
-    [Alias('CapabilityName')]
+    [Parameter(ParameterSetName='Refresh', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Capability resource name.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource provider namespace.
-    ${ParentProviderNamespace},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource name.
-    ${ParentResourceName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource type.
-    ${ParentResourceType},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='Refresh')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Refresh', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Target resource name.
-    ${TargetName},
+    # String that represents a Workspace resource name.
+    ${WorkspaceName},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RefreshViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
     # Identity Parameter
     ${InputObject},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityTargetExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
-    # Identity Parameter
-    ${TargetInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3775,6 +5533,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
@@ -3795,6 +5559,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
@@ -3823,6 +5593,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3842,13 +5620,10 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.Chaos.private\Update-AzChaosCapability_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Chaos.private\Update-AzChaosCapability_UpdateViaIdentityExpanded';
-            UpdateViaIdentityTargetExpanded = 'Az.Chaos.private\Update-AzChaosCapability_UpdateViaIdentityTargetExpanded';
+            Refresh = 'Az.Chaos.private\Update-AzChaosWorkspaceRecommendation_Refresh';
+            RefreshViaIdentity = 'Az.Chaos.private\Update-AzChaosWorkspaceRecommendation_RefreshViaIdentity';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Refresh') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3862,6 +5637,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3907,76 +5685,74 @@ end {
 
 <#
 .Synopsis
-Update a Experiment resource.
+Update a Workspace resource.
 .Description
-Update a Experiment resource.
+Update a Workspace resource.
 .Example
-Update-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos -Location eastus -Tag @{"a"="1"}
+Update-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg','/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/payments-rg'
 .Example
-Update-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos -Location eastus -UserAssignedIdentity "/subscriptions/{subId}/resourcegroups/azps_test_group_chaos/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami" -EnableSystemAssignedIdentity:$false
+Update-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Tag @{ env = 'prod'; owner = 'resilience-team' }
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
+  [ActionName <String>]: String that represents an Action resource name.
   [CapabilityName <String>]: String that represents a Capability resource name.
   [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
+  [DiscoveredResourceName <String>]: Name of the discovered resource.
   [ExecutionId <String>]: GUID that represents a Experiment execution detail.
   [ExperimentName <String>]: String that represents a Experiment resource name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ParentProviderNamespace <String>]: The parent resource provider namespace.
+  [ParentResourceName <String>]: The parent resource name.
+  [ParentResourceType <String>]: The parent resource type.
+  [PrivateAccessName <String>]: The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The name of the ScenarioRun
+  [ScenarioConfigurationName <String>]: Name of the scenario definition.
+  [ScenarioName <String>]: Name of the scenario.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TargetName <String>]: String that represents a Target resource name.
   [TargetTypeName <String>]: String that represents a Target Type resource name.
-
-SELECTOR <ISelector[]>: List of selectors.
-  Id <String>: String of the selector ID.
-  Type <String>: Enum of the selector type.
-
-STEP <IStep[]>: List of steps.
-  Branch <List<IBranch>>: List of branches.
-    Action <List<IAction>>: List of actions.
-      Name <String>: String that represents a Capability URN.
-      Type <String>: Enum that discriminates between action models.
-    Name <String>: String of the branch name.
-  Name <String>: String of the step name.
+  [VersionName <String>]: String that represents an Action Version resource name.
+  [WorkspaceName <String>]: String that represents a Workspace resource name.
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/update-azchaosexperiment
+https://learn.microsoft.com/powershell/module/az.chaos/update-azchaosworkspace
 #>
-function Update-AzChaosExperiment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment])]
+function Update-AzChaosWorkspace {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('ExperimentName')]
+    [Alias('WorkspaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents a Experiment resource name.
+    # String that represents a Workspace resource name.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [System.String]
-    # String that represents an Azure resource group.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # GUID that represents an Azure subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -3988,28 +5764,15 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.Nullable[System.Boolean]]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector[]]
-    # List of selectors.
-    ${Selector},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep[]]
-    # List of steps.
-    ${Step},
+    [System.String[]]
+    # The intended workspace-level resource scope to be used by child scenarios.
+    ${Scope},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
@@ -4094,6 +5857,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4113,12 +5884,10 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.Chaos.private\Update-AzChaosExperiment_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Chaos.private\Update-AzChaosExperiment_UpdateViaIdentityExpanded';
+            UpdateExpanded = 'Az.Chaos.private\Update-AzChaosWorkspace_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Chaos.private\Update-AzChaosWorkspace_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4132,6 +5901,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4177,151 +5949,107 @@ end {
 
 <#
 .Synopsis
-Update a Target resource that extends a tracked regional resource.
+Stand up a ready-to-use Chaos Studio workspace end to end.
 .Description
-Update a Target resource that extends a tracked regional resource.
+Stand up a ready-to-use Chaos Studio workspace end to end.
+This is a first-day
+workflow cmdlet that runs the five setup steps: ensure the resource group exists,
+create the workspace with a system-assigned managed identity, grant that identity
+the Reader role on each scope, evaluate scenarios, and report the discovered
+scenarios plus suggested next commands.
+Discovery and evaluation run under the
+workspace identity and cannot enumerate resources without the Reader grant.
+Pass
+-SkipPermission to opt out of the RBAC grant.
+Pass -SkipEvaluationWait to run a
+single evaluation attempt instead of waiting out Azure Resource Graph propagation.
+The default Reader grant enables discovery and evaluation only; most run actions
+need additional permissions.
+Use Repair-AzChaosScenarioConfigurationResourcePermission
+after creating a scenario configuration to inspect or grant those permissions.
 .Example
-$property = @{"type"="CertificateSubjectIssuer";"subject"="CN=example.subject"}
-$propertyArr = @($property)
-$identities = @{"identities"=$propertyArr}
-Update-AzChaosTarget -Name microsoft-virtualmachine -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -Location eastus -Property $identities
+Initialize-AzChaosWorkspace -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Location eastus -Scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg'
+.Example
+$scopes = @(
+    '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg',
+    '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/payments-rg'
+)
+Initialize-AzChaosWorkspace -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Location eastus -Scope $scopes -SkipPermission -SkipEvaluationWait
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITarget
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IChaosIdentity>: Identity Parameter
-  [AsyncOperationId <String>]: The operation Id.
-  [CapabilityName <String>]: String that represents a Capability resource name.
-  [CapabilityTypeName <String>]: String that represents a Capability Type resource name.
-  [ExecutionId <String>]: GUID that represents a Experiment execution detail.
-  [ExperimentName <String>]: String that represents a Experiment resource name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [LocationName <String>]: String that represents a Location resource name.
-  [ParentProviderNamespace <String>]: String that represents a resource provider namespace.
-  [ParentResourceName <String>]: String that represents a resource name.
-  [ParentResourceType <String>]: String that represents a resource type.
-  [ResourceGroupName <String>]: String that represents an Azure resource group.
-  [SubscriptionId <String>]: GUID that represents an Azure subscription ID.
-  [TargetName <String>]: String that represents a Target resource name.
-  [TargetTypeName <String>]: String that represents a Target Type resource name.
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario
 .Link
-https://learn.microsoft.com/powershell/module/az.chaos/update-azchaostarget
+https://learn.microsoft.com/powershell/module/az.chaos/initialize-azchaosworkspace
 #>
-function Update-AzChaosTarget {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITarget])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Initialize-AzChaosWorkspace {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario])]
+[CmdletBinding(DefaultParameterSetName='InitializeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('TargetName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.String]
-    # String that represents a Target resource name.
-    ${Name},
+    # Name of the workspace.
+    ${WorkspaceName},
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.String]
-    # String that represents a resource provider namespace.
-    ${ParentProviderNamespace},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource name.
-    ${ParentResourceName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents a resource type.
-    ${ParentResourceType},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [System.String]
-    # String that represents an Azure resource group.
+    # Name of the resource group.
+    # The resource group is created in -Location if it does not already exist.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # GUID that represents an Azure subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.String]
-    # Location of the target resource.
+    # The geo-location where the workspace lives.
     ${Location},
 
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String[]]
+    # The list of ARM resource scopes the workspace discovers and evaluates.
+    ${Scope},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetProperties]))]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.Collections.Hashtable]
-    # The properties of the target resource.
-    ${Property},
+    # Resource tags applied to the workspace.
+    ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.DefaultInfo(Script='"Reader"')]
+    [System.String]
+    # The role definition name granted to the workspace identity on each scope.
+    # Defaults to Reader.
+    ${RoleDefinitionName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Do not grant the workspace identity an RBAC role on the scopes.
+    ${SkipPermission},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Run a single evaluation attempt instead of waiting for Azure Resource Graph propagation.
+    ${SkipEvaluationWait},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.Management.Automation.PSObject]
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    ${DefaultProfile}
 )
 
 begin {
@@ -4331,6 +6059,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4350,17 +6086,10 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.Chaos.private\Update-AzChaosTarget_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Chaos.private\Update-AzChaosTarget_UpdateViaIdentityExpanded';
+            InitializeExpanded = 'Az.Chaos.custom\Initialize-AzChaosWorkspace';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
+        if (('InitializeExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('RoleDefinitionName') ) {
+            $PSBoundParameters['RoleDefinitionName'] = "Reader"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4369,6 +6098,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4414,32 +6146,790 @@ end {
 
 <#
 .Synopsis
-Create an in-memory object for Action.
+Evaluate a workspace end to end.
 .Description
-Create an in-memory object for Action.
+Evaluate a workspace end to end.
+This is a workflow cmdlet: it discovers the in-scope
+resources and evaluates which scenarios apply to them, producing per-scenario
+recommendation statuses.
+Its identity is the discovery-plus-evaluation workflow,
+independent of how many API operations implement it.
 .Example
-New-AzChaosActionObject -Name "urn:csci:microsoft:virtualMachine:shutdown/1.0" -Type "continuous"
+Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
+.Example
+Invoke-AzChaosWorkspaceScenarioEvaluation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -NoWait
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Action
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PowerShell.AsyncOperationResponse
 .Link
-https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosactionobject
+https://learn.microsoft.com/powershell/module/az.chaos/invoke-azchaosworkspacescenarioevaluation
 #>
-function New-AzChaosActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Action])]
+function Invoke-AzChaosWorkspaceScenarioEvaluation {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IWorkspaceEvaluation], [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PowerShell.AsyncOperationResponse])]
+[CmdletBinding(DefaultParameterSetName='EvaluateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Name of the workspace.
+    ${WorkspaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Name of the resource group.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously and return before the evaluation completes.
+    ${NoWait},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            EvaluateExpanded = 'Az.Chaos.custom\Invoke-AzChaosWorkspaceScenarioEvaluation';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ActionDependency.
+.Description
+Create an in-memory object for ActionDependency.
+.Example
+$dependency = New-AzChaosActionDependencyObject -Name 'stop-primary-vm' -OnActionLifecycle 'Success'
+New-AzChaosScenarioActionObject -Name 'stop-secondary-vm' -ActionId 'microsoft-compute-shutdown/1.0' -Duration 'PT5M' -RunAfterItem $dependency
+.Example
+$dependencies = @(
+    New-AzChaosActionDependencyObject -Name 'stop-zone-two' -OnActionLifecycle 'AnyTerminal'
+    New-AzChaosActionDependencyObject -Name 'stop-zone-three' -OnActionLifecycle 'AnyTerminal'
+)
+New-AzChaosScenarioActionObject -Name 'stop-zone-one' -ActionId 'microsoft-compute-shutdown/1.0' -Duration 'PT2M' -RunAfterItem $dependencies
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionDependency
+.Link
+https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosactiondependencyobject
+#>
+function New-AzChaosActionDependencyObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionDependency])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.String]
-    # String that represents a Capability URN.
+    # Name of the action this depends on.
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("AnyTerminal", "Start", "Running", "Success", "Failure", "Skipped")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # The lifecycle state of the dependency action that triggers this action to start.
+    ${OnActionLifecycle}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.Chaos.custom\New-AzChaosActionDependencyObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for KeyValuePair.
+.Description
+Create an in-memory object for KeyValuePair.
+.Example
+New-AzChaosKeyValuePairObject -Key 'pressureLevel' -Value '95'
+.Example
+$parameters = @(
+    New-AzChaosKeyValuePairObject -Key 'pressureLevel' -Value '95'
+    New-AzChaosKeyValuePairObject -Key 'target' -Value 'all'
+)
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.KeyValuePair
+.Link
+https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaoskeyvaluepairobject
+#>
+function New-AzChaosKeyValuePairObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.KeyValuePair])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # The name of the setting for the action.
+    ${Key},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # The value of the setting for the action.
+    ${Value}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.Chaos.custom\New-AzChaosKeyValuePairObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ScenarioAction.
+.Description
+Create an in-memory object for ScenarioAction.
+.Example
+New-AzChaosScenarioActionObject -Name 'stop-vm' -ActionId 'microsoft-compute-shutdown/1.0' -Duration 'PT10M'
+.Example
+$cpuParam = New-AzChaosKeyValuePairObject -Key 'pressureLevel' -Value '95'
+New-AzChaosScenarioActionObject -Name 'cpu-pressure' -ActionId 'microsoft-compute-cpuPressure/1.0' -Duration 'PT5M' -WaitBefore 'PT1M' -Parameter $cpuParam
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioAction
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PARAMETER <IKeyValuePair[]>: Action-specific parameter values.
+  Key <String>: The name of the setting for the action.
+  Value <String>: The value of the setting for the action.
+
+RUNAFTERITEM <IActionDependency[]>: Array of action dependencies.
+  Name <String>: Name of the action this depends on.
+  [OnActionLifecycle <String>]: The lifecycle state of the dependency action that triggers this action to start.
+.Link
+https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosscenarioactionobject
+#>
+function New-AzChaosScenarioActionObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioAction])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Identifier of the action and version (e.g., "microsoft-compute-shutdown/1.0").
+    ${ActionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # ISO 8601 duration for how long the action runs (e.g., PT30M for 30 minutes).
+    # Supports template macro syntax (%%\{parameters.\<name\>\}%%).
+    ${Duration},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Unique name for the action.
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Human-readable description of what this action does.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # The resource ID of the external resource.
+    ${ExternalResourceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IKeyValuePair[]]
+    # Action-specific parameter values.
+    ${Parameter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Any", "All", "AtLeastOne")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Defines how multiple dependencies are evaluated.
+    ${RunAfterBehavior},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionDependency[]]
+    # Array of action dependencies.
+    ${RunAfterItem},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # ISO 8601 duration for maximum action execution time.
+    # Supports template macro syntax.
+    ${Timeout},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # ISO 8601 duration to wait before action starts (e.g., PT30S for 30 seconds).
+    # Supports template macro syntax.
+    ${WaitBefore}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.Chaos.custom\New-AzChaosScenarioActionObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ScenarioParameter.
+.Description
+Create an in-memory object for ScenarioParameter.
+.Example
+New-AzChaosScenarioParameterObject -Name 'region' -Type 'string' -Required $true -Description 'The Azure region to target.'
+.Example
+New-AzChaosScenarioParameterObject -Name 'duration' -Type 'string' -Required $false -Default 'PT10M'
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioParameter
+.Link
+https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosscenarioparameterobject
+#>
+function New-AzChaosScenarioParameterObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioParameter])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # The name of the parameter.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("string", "number", "boolean", "object", "array")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Parameter data type.
+    ${Type},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Default value for the parameter.
+    ${Default},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Description of the parameter.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Boolean]
+    # Whether this parameter is required.
+    ${Required}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.Chaos.custom\New-AzChaosScenarioParameterObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Start a scenario run for a scenario configuration.
+.Description
+Start a scenario run for a scenario configuration.
+This is a workflow cmdlet: it
+validates the scenario configuration first and starts the run only if validation
+succeeds, mirroring the Azure Portal where validation precedes the Run action.
+Pass
+-SkipValidation to bypass the pre-flight check.
+For a catalog (non-custom) scenario
+the workspace must have been evaluated before a run can start; if it has not, the
+cmdlet fails with a friendly error and does not trigger evaluation as a side effect.
+.Example
+Start-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
+.Example
+Start-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default -SkipValidation -NoWait
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioRun
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PowerShell.AsyncOperationResponse
+.Link
+https://learn.microsoft.com/powershell/module/az.chaos/start-azchaosscenariorun
+#>
+function Start-AzChaosScenarioRun {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenarioRun], [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PowerShell.AsyncOperationResponse])]
+[CmdletBinding(DefaultParameterSetName='StartExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ScenarioConfigurationName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Name of the scenario configuration to run.
     ${Name},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
     [System.String]
-    # Enum that discriminates between action models.
-    ${Type}
+    # Name of the scenario.
+    ${ScenarioName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Name of the workspace.
+    ${WorkspaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # Name of the resource group.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Bypass the pre-flight validation of the scenario configuration.
+    ${SkipValidation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously and return before the scenario run completes.
+    ${NoWait},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile}
 )
 
 begin {
@@ -4449,6 +6939,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4468,7 +6966,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.Chaos.custom\New-AzChaosActionObject';
+            StartExpanded = 'Az.Chaos.custom\Start-AzChaosScenarioRun';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4477,352 +6975,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for Branch.
-.Description
-Create an in-memory object for Branch.
-.Example
-$actionObj = New-AzChaosActionObject -Name "urn:csci:microsoft:virtualMachine:shutdown/1.0" -Type "continuous"
-New-AzChaosBranchObject -Action $actionObj -Name "branch1"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Branch
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-ACTION <IAction[]>: List of actions.
-  Name <String>: String that represents a Capability URN.
-  Type <String>: Enum that discriminates between action models.
-.Link
-https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosbranchobject
-#>
-function New-AzChaosBranchObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Branch])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAction[]]
-    # List of actions.
-    ${Action},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [System.String]
-    # String of the branch name.
-    ${Name}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.Chaos.custom\New-AzChaosBranchObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for Selector.
-.Description
-Create an in-memory object for Selector.
-.Example
-New-AzChaosSelectorObject -Id "selector1" -Type List
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Selector
-.Link
-https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosselectorobject
-#>
-function New-AzChaosSelectorObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Selector])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [System.String]
-    # String of the selector ID.
-    ${Id},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("List", "Query")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [System.String]
-    # Enum of the selector type.
-    ${Type}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.Chaos.custom\New-AzChaosSelectorObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for Step.
-.Description
-Create an in-memory object for Step.
-.Example
-$actionObj = New-AzChaosActionObject -Name "urn:csci:microsoft:virtualMachine:shutdown/1.0" -Type "continuous"
-$branchObj = New-AzChaosBranchObject -Action $actionObj -Name "branch1"
-New-AzChaosStepObject -Branch $branchObj -Name "step1"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Step
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BRANCH <IBranch[]>: List of branches.
-  Action <List<IAction>>: List of actions.
-    Name <String>: String that represents a Capability URN.
-    Type <String>: Enum that discriminates between action models.
-  Name <String>: String of the branch name.
-.Link
-https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosstepobject
-#>
-function New-AzChaosStepObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Step])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IBranch[]]
-    # List of branches.
-    ${Branch},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Category('Body')]
-    [System.String]
-    # String of the step name.
-    ${Name}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.Chaos.custom\New-AzChaosStepObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

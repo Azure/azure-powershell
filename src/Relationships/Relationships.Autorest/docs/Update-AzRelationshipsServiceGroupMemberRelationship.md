@@ -14,15 +14,15 @@ Update a ServiceGroupMemberRelationship
 
 ### UpdateExpanded (Default)
 ```
-Update-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> [-TargetId <String>]
- [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> [-SourceId <String>]
+ [-SourceTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRelationshipsServiceGroupMemberRelationship -InputObject <IRelationshipsIdentity>
- [-TargetId <String>] [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-SourceId <String>] [-SourceTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,12 +31,12 @@ Update a ServiceGroupMemberRelationship
 
 ## EXAMPLES
 
-### Example 1: Update a ServiceGroupMember relationship target
+### Example 1: Update a ServiceGroupMember relationship source
 ```powershell
-Update-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/newServiceGroup"
+Update-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -SourceId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 ```
 
-Updates the ServiceGroupMember relationship to point to a different Service Group.
+Updates the source resource represented by the ServiceGroupMember relationship.
 
 ## PARAMETERS
 
@@ -131,8 +131,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetId
-The relationship target resource id.
+### -SourceId
+The relationship source resource id.
+Must be a service group.
 
 ```yaml
 Type: System.String
@@ -146,8 +147,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetTenant
-The relationship target tenant id.
+### -SourceTenant
+The relationship source tenant id.
 
 ```yaml
 Type: System.String

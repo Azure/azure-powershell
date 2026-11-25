@@ -129,6 +129,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)this).FullyQualifiedDomainName = (System.Collections.Generic.List<string>) content.GetValueForProperty("FullyQualifiedDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)this).FullyQualifiedDomainName, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("ServiceTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)this).ServiceTag = (System.Collections.Generic.List<string>) content.GetValueForProperty("ServiceTag",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)this).ServiceTag, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -165,6 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("FullyQualifiedDomainName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)this).FullyQualifiedDomainName = (System.Collections.Generic.List<string>) content.GetValueForProperty("FullyQualifiedDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)this).FullyQualifiedDomainName, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ServiceTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)this).ServiceTag = (System.Collections.Generic.List<string>) content.GetValueForProperty("ServiceTag",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INspAccessRulePropertiesInternal)this).ServiceTag, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

@@ -120,6 +120,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnforceCertificateNameCheck = (bool?) content.GetValueForProperty("EnforceCertificateNameCheck",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnforceCertificateNameCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("CertificateNameCheckValidationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).CertificateNameCheckValidationMode = (string) content.GetValueForProperty("CertificateNameCheckValidationMode",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).CertificateNameCheckValidationMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomCertificateSubject"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).CustomCertificateSubject = (System.Collections.Generic.List<string>) content.GetValueForProperty("CustomCertificateSubject",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).CustomCertificateSubject, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("SharedPrivateLinkResourceStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceStatus = (string) content.GetValueForProperty("SharedPrivateLinkResourceStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceStatus, global::System.Convert.ToString);
@@ -208,6 +216,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("EnforceCertificateNameCheck"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnforceCertificateNameCheck = (bool?) content.GetValueForProperty("EnforceCertificateNameCheck",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnforceCertificateNameCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("CertificateNameCheckValidationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).CertificateNameCheckValidationMode = (string) content.GetValueForProperty("CertificateNameCheckValidationMode",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).CertificateNameCheckValidationMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomCertificateSubject"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).CustomCertificateSubject = (System.Collections.Generic.List<string>) content.GetValueForProperty("CustomCertificateSubject",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).CustomCertificateSubject, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("SharedPrivateLinkResourceStatus"))
             {

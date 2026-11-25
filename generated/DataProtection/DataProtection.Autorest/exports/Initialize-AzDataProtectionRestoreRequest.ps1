@@ -204,7 +204,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Management.Automation.PSObject]
     # Restore configuration for restore.
-    # Use this parameter to restore with AzureKubernetesService.
+    # Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.
     ${RestoreConfiguration},
 
     [Parameter(ParameterSetName='AlternateLocationFullRecovery')]

@@ -20,23 +20,15 @@ function Test-QuotaLimit
 {
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     $quotaLimitName = "totalTiBsPerSubscription"
-    try
-    {        
-        # get limits list 
-        $retrievedLimits = Get-AzNetAppFilesQuotaLimit -Location $resourceLocation
-        Assert-NotNull $retrievedLimits
-        Assert-True {$retrievedLimits.Length -gt 0}
+    # get limits list
+    $retrievedLimits = Get-AzNetAppFilesQuotaLimit -Location $resourceLocation
+    Assert-NotNull $retrievedLimits
+    Assert-True {$retrievedLimits.Length -gt 0}
 
-        # get limit by name 
-        $retrievedLimit = Get-AzNetAppFilesQuotaLimit -Location $resourceLocation -Name $quotaLimitName
-        Assert-NotNull $retrievedLimit
-        Assert-AreEqual "$resourceLocation/$quotaLimitName" $retrievedLimit.Name
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $resourceGroup
-    }
+    # get limit by name
+    $retrievedLimit = Get-AzNetAppFilesQuotaLimit -Location $resourceLocation -Name $quotaLimitName
+    Assert-NotNull $retrievedLimit
+    Assert-AreEqual "$resourceLocation/$quotaLimitName" $retrievedLimit.Name
 }
 
 <#

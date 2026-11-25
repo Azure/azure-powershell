@@ -73,6 +73,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_maxProvisionedIop = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("maxProvisionedIOPS"), out var __jsonMaxProvisionedIops) ? (int?)__jsonMaxProvisionedIops : _maxProvisionedIop;}
             {_minProvisionedBandwidthMiBPerSec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("minProvisionedBandwidthMiBPerSec"), out var __jsonMinProvisionedBandwidthMiBPerSec) ? (int?)__jsonMinProvisionedBandwidthMiBPerSec : _minProvisionedBandwidthMiBPerSec;}
             {_maxProvisionedBandwidthMiBPerSec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("maxProvisionedBandwidthMiBPerSec"), out var __jsonMaxProvisionedBandwidthMiBPerSec) ? (int?)__jsonMaxProvisionedBandwidthMiBPerSec : _maxProvisionedBandwidthMiBPerSec;}
+            {_guardrailIoScalar = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("guardrailIOScalar"), out var __jsonGuardrailIoScalar) ? (double?)__jsonGuardrailIoScalar : _guardrailIoScalar;}
+            {_guardrailBandwidthScalar = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("guardrailBandwidthScalar"), out var __jsonGuardrailBandwidthScalar) ? (double?)__jsonGuardrailBandwidthScalar : _guardrailBandwidthScalar;}
             AfterFromJson(json);
         }
 
@@ -130,6 +132,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._maxProvisionedBandwidthMiBPerSec ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber((int)this._maxProvisionedBandwidthMiBPerSec) : null, "maxProvisionedBandwidthMiBPerSec" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._guardrailIoScalar ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber((double)this._guardrailIoScalar) : null, "guardrailIOScalar" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._guardrailBandwidthScalar ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber((double)this._guardrailBandwidthScalar) : null, "guardrailBandwidthScalar" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

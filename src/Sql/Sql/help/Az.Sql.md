@@ -476,6 +476,9 @@ Revalidates the Server Encryption Protector AKV key
 ### [Lock-AzSqlDatabaseLongTermRetentionBackupImmutability](Lock-AzSqlDatabaseLongTermRetentionBackupImmutability.md)
 Locks the time-based immutability policy for an LTR backup.
 
+### [Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability](Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability.md)
+Locks the time-based immutability policy for a Managed Instance LTR backup.
+
 ### [Move-AzSqlInstanceDatabase](Move-AzSqlInstanceDatabase.md)
 Move managed database to another managed instance.
 
@@ -656,6 +659,12 @@ Removes an Azure SQL Managed Instance database.
 ### [Remove-AzSqlInstanceDatabaseLongTermRetentionBackup](Remove-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
 Deletes a long term retention backup.
 
+### [Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability](Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability.md)
+Removes an unlocked time-based immutability policy from a Managed Instance LTR backup.
+
+### [Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold](Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold.md)
+Removes legal hold immutability from a Managed Instance LTR backup. (Public Preview)
+
 ### [Remove-AzSqlInstanceDatabaseSensitivityClassification](Remove-AzSqlInstanceDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the Azure SQL Managed Instance database.
 
@@ -769,6 +778,9 @@ Modifies the configuration of an Instance Failover Group.
 
 ### [Set-AzSqlDatabaseLongTermRetentionBackupLegalHold](Set-AzSqlDatabaseLongTermRetentionBackupLegalHold.md)
 Set legal hold immutability on an LTR backup. (Public Preview)
+
+### [Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold](Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold.md)
+Sets legal hold immutability on a Managed Instance LTR backup. (Public Preview)
 
 ### [Set-AzSqlDatabaseRecommendedActionState](Set-AzSqlDatabaseRecommendedActionState.md)
 Updates the state of an Azure SQL Database recommended action.

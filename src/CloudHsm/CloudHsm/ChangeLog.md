@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Updated to API 2025-12-01-preview.
+* Added `New-AzCloudHsm -Sku` completions: `Standard_B1v2`, `Standard_B5v2`, `Standard_B10v2`, `Standard_B15v2`, `Standard_B20v2`.
+* Changed `ICloudHsmCluster.IdentityUserAssignedIdentity` from `IUserAssignedIdentities` to `IManagedServiceIdentityUserAssignedIdentities`.
+
 ## Version 0.1.0
 * First preview release for module Az.CloudHsm
 

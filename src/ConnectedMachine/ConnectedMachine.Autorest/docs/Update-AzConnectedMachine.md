@@ -65,7 +65,7 @@ The operation to update a hybrid machine.
 
 ### Example 1: Update a hybrid machine
 ```powershell
-Update-AzConnectedMachine -Name $env.MachineName -ResourceGroupName $env.ResourceGroupName -PrivateLinkScopeResourceId $env.PrivateLinkScopeUri
+Update-AzConnectedMachine -Name "myMachine" -ResourceGroupName "myResourceGroup" -PrivateLinkScopeResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/privateLinkScopes/myScope"
 ```
 
 ```output
@@ -265,7 +265,7 @@ Accept wildcard characters: False
 Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

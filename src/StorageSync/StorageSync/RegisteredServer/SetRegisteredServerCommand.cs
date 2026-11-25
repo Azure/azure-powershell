@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Commands.StorageSync.Interop.DataObjects;
+using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <value>The name.</value>
         [Parameter(Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.RegisteredServerNameParameter)]
         [ValidateNotNullOrEmpty]
@@ -98,9 +99,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public PSRegisteredServer InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating the policy to use for regular download sync sessions.
+        /// Gets or sets a value indicating whether to configure the registered server to use a managed identity.
         /// </summary>
-        /// <value>The local cache mode.</value>
+        /// <value>Whether to configure the registered server to use a managed identity.</value>
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
@@ -141,6 +142,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 bool? identity = default;
 
+                string localServerId;
+                Guid localServerGuid;
+                using (IEcsManagement ecsManagement = StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement())
+                {
+                    int hr = ecsManagement.GetSyncServerId(out localServerId);
+                    if (hr != 0 || !Guid.TryParse(localServerId, out localServerGuid))
+                    {
+                        throw new PSArgumentException("Unable to retrieve the local ServerId. Ensure the Azure File Sync agent is installed and running.");
+                    }
+                }
+
                 if (this.IsParameterBound(c => c.InputObject))
                 {
                     resourceName = InputObject.ServerId;
@@ -149,9 +161,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
                 else
                 {
-                    resourceName = ServerId;
+                    resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
                     resourceGroupName = ResourceGroupName;
                     storageSyncServiceName = StorageSyncServiceName;
+                }
+
+                if (!Guid.TryParse(resourceName, out Guid resourceServerGuid))
+                {
+                    throw new PSArgumentException($"The ServerId '{resourceName}' is not a valid GUID.");
+                }
+                
+                if (resourceServerGuid != localServerGuid)
+                {
+                    throw new PSArgumentException($"The ServerId '{resourceName}' does not match the local machine's ServerId '{localServerGuid}'. Run this command on the correct server.");
                 }
 
                 if (this.IsParameterBound(c => c.Identity))
@@ -159,10 +181,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     identity = Identity;
                 }
 
-                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, ServerId);
+                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, resourceServerGuid);
                 if (registeredServer == null)
                 {
-                    throw new PSArgumentException($"Server {ServerId} not found.");
+                    throw new PSArgumentException($"Server {resourceName} not found.");
                 }
                 if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterName.ToString())
                 {
@@ -181,13 +203,35 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 };
 
                 LocalServerType serverTypeFromRegistry = StorageSyncClientWrapper.StorageSyncResourceManager.GetServerTypeFromRegistry();
-                ServerApplicationIdentity serverApplicationIdentity = serverManagedIdentityProvider.GetServerApplicationIdentityAsync(serverTypeFromRegistry, throwIfNotFound: false).GetAwaiter().GetResult();
+                ServerApplicationIdentity serverApplicationIdentity;
+                try
+                {
+                    serverApplicationIdentity = serverManagedIdentityProvider
+                        .GetServerApplicationIdentityAsync(serverTypeFromRegistry, throwIfNotFound: true)
+                        .GetAwaiter()
+                        .GetResult();
+                }
+                catch (Exception ex)
+                {
+                    string guidance = serverTypeFromRegistry == LocalServerType.HybridServer
+                        ? "This server is not registered as Azure Arc-enabled. Run 'azcmagent show' to confirm Agent Status is Connected, then restart FileSyncSvc so the agent re-detects the Azure Arc registration."
+                        : "Failed to acquire a managed identity token. Run this cmdlet from an elevated PowerShell session on the registered server. Azure Arc's local identity endpoint only issues tokens to local Administrators or members of 'Hybrid agent extension applications'.";
+
+                    throw new PSArgumentException(
+                        $"Not able to set the server's identity. Server type from registry is '{serverTypeFromRegistry}'. {guidance} Underlying error: {ex.Message}",
+                        ex);
+                }
+
                 Guid applicationId = serverApplicationIdentity?.ApplicationId ?? Guid.Empty;
 
                 if (applicationId == Guid.Empty)
                 {
                     StorageSyncClientWrapper.VerboseLogger.Invoke($"Unable to retrieve a managed identity to patch this server.");
-                    throw new PSArgumentException("Not able to set the server's identity. Please ensure this server has Azure Arc installed and connected or Azure VM has a system assigned managed identity enabled.");
+                    throw new PSArgumentException(
+                        $"Not able to set the server's identity. Server type from registry is '{serverTypeFromRegistry}'. " +
+                        (serverTypeFromRegistry == LocalServerType.HybridServer
+                            ? "This server is not registered as Azure Arc-enabled. Run 'azcmagent show' to confirm Agent Status is Connected, then restart FileSyncSvc so the agent re-detects the Azure Arc registration."
+                            : "No managed identity was returned. Run this cmdlet from an elevated PowerShell session on the registered server and confirm that the server has a system-assigned managed identity."));
                 }
                 else
                 {
@@ -200,12 +244,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterNode.ToString())
                 {
                     // this is unexpected scenario but can happen if the server is not registered properly
-                    if (string.IsNullOrEmpty(registeredServer.ClusterId) || Guid.Parse(registeredServer.ClusterId) == Guid.Empty)
+                    if (!Guid.TryParse(registeredServer.ClusterId, out Guid custerId) || custerId == Guid.Empty)
                     {
                         throw new PSArgumentException($"Cluster Id is not available for cluster node server {registeredServer.Id}. Please contact administrator for further troubleshooting.");
                     }
 
-                    RegisteredServer clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, registeredServer.ClusterId.ToString());
+                    RegisteredServer clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, custerId);
                     if (clusterNameServer == null)
                     {
                         throw new PSArgumentException($"Cluster  {registeredServer.ClusterName} not found.");
@@ -288,7 +332,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     RegisteredServer resource = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(
                         resourceGroupName,
                         storageSyncServiceName,
-                        resourceName,
+                        resourceServerGuid,
                         new RegisteredServerUpdateParameters()
                         {
                             Identity = identity,

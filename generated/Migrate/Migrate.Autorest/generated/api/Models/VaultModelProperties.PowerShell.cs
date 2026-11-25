@@ -138,6 +138,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).VaultType = (string) content.GetValueForProperty("VaultType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).VaultType, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateEndpointState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PrivateEndpointState = (string) content.GetValueForProperty("PrivateEndpointState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PrivateEndpointState, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -166,6 +178,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             if (content.Contains("VaultType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).VaultType = (string) content.GetValueForProperty("VaultType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).VaultType, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PrivateEndpointState = (string) content.GetValueForProperty("PrivateEndpointState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PrivateEndpointState, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicNetworkAccess"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

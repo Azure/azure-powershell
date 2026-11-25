@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string GraphEndpoint { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 10, Mandatory = false, ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Dns suffix of Azure Key Vault service. Example is vault-int.azure-int.net")]
+           HelpMessage = "Dns suffix of Azure Key Vault service.")]
         [Parameter(ParameterSetName = MetadataParameterSet, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dns suffix of Azure Key Vault service")]
         public string AzureKeyVaultDnsSuffix { get; set; }
 

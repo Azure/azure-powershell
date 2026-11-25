@@ -19,20 +19,21 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
         /// resource group.
         /// </param>
-        public static AdminKeyResult Get(this IAdminKeysOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static AdminKeyResult Get(this IAdminKeysOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IAdminKeysOperations)operations).GetAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IAdminKeysOperations)operations).GetAsync(resourceGroupName, searchServiceName, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -42,23 +43,24 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
         /// resource group.
         /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<AdminKeyResult> GetAsync(this IAdminKeysOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<AdminKeyResult> GetAsync(this IAdminKeysOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, searchServiceName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -70,12 +72,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -85,9 +83,14 @@ namespace Microsoft.Azure.Management.Search
         /// Specifies which key to regenerate. Valid values include &#39;primary&#39; and
         /// &#39;secondary&#39;.
         /// </param>
-        public static AdminKeyResult Regenerate(this IAdminKeysOperations operations, string resourceGroupName, string searchServiceName, AdminKeyKind keyKind, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static AdminKeyResult Regenerate(this IAdminKeysOperations operations, string resourceGroupName, string searchServiceName, AdminKeyKind keyKind, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IAdminKeysOperations)operations).RegenerateAsync(resourceGroupName, searchServiceName, keyKind, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IAdminKeysOperations)operations).RegenerateAsync(resourceGroupName, searchServiceName, keyKind, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -97,12 +100,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -112,12 +111,17 @@ namespace Microsoft.Azure.Management.Search
         /// Specifies which key to regenerate. Valid values include &#39;primary&#39; and
         /// &#39;secondary&#39;.
         /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<AdminKeyResult> RegenerateAsync(this IAdminKeysOperations operations, string resourceGroupName, string searchServiceName, AdminKeyKind keyKind, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<AdminKeyResult> RegenerateAsync(this IAdminKeysOperations operations, string resourceGroupName, string searchServiceName, AdminKeyKind keyKind, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.RegenerateWithHttpMessagesAsync(resourceGroupName, searchServiceName, keyKind, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.RegenerateWithHttpMessagesAsync(resourceGroupName, searchServiceName, keyKind, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource ID of the first party service tag associated with the public IP tag.")]
+        [ResourceIdCompleter("Microsoft.Network/firstPartyServiceTags")]
+        public string FirstPartyServiceTagId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -53,11 +60,12 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(ipTag);
         }
 
-        private PSPublicIpTag CreatePublicIpTag()
+        internal PSPublicIpTag CreatePublicIpTag()
         {
             var ipTag = new PSPublicIpTag();
             ipTag.IpTagType = this.IpTagType;
             ipTag.Tag = this.Tag;
+            ipTag.FirstPartyServiceTagId = this.FirstPartyServiceTagId;
             return ipTag;
         }
     }

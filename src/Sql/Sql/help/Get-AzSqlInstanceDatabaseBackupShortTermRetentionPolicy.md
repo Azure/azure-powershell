@@ -33,7 +33,8 @@ Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceId <String>
 
 ## DESCRIPTION
 The **Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy** cmdlet gets the short term retention policy registered to this database.
-The policy is the retention period, in days, for point-in-time restore backups.
+The policy includes the retention period in days for point-in-time restore backups.
+The returned `ImmutabilityStatus` property indicates the current backup immutability status and can be `Disabled`, `Enabled`, or `Locked`.
 
 ## EXAMPLES
 
@@ -48,6 +49,7 @@ InstanceName      : instance01
 DatabaseName      : database01
 DeletionDate      :
 RetentionDays     : 7
+ImmutabilityStatus: Enabled
 ```
 
 This command gets the short term retention policy for database01.
@@ -63,6 +65,7 @@ InstanceName      : instance01
 DatabaseName      : database01
 DeletionDate      :
 RetentionDays     : 7
+ImmutabilityStatus: Locked
 ```
 
 This command gets the short term retention policy for database01 via piping in a database object.
@@ -78,12 +81,14 @@ InstanceName      : instance01
 DatabaseName      : database01
 DeletionDate      : 2019-03-03 12:00:17 AM
 RetentionDays     : 7
+ImmutabilityStatus: Enabled
 
 ResourceGroupName : resourcegroup01
 InstanceName      : instance01
 DatabaseName      : database01
 DeletionDate      : 2019-03-02 11:00:16 PM
 RetentionDays     : 7
+ImmutabilityStatus: Enabled
 ```
 
 This command gets the short term retention policy for all deleted databases named database01 via piping in a deleted database object.

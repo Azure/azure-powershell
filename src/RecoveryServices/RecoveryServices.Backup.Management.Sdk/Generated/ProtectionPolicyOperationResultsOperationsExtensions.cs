@@ -18,23 +18,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='policyName'>
-        /// Backup policy name whose operation&#39;s result needs to be fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents the operation whose result needs to be
-        /// fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
-        public static ProtectionPolicyResource Get(this IProtectionPolicyOperationResultsOperations operations, string vaultName, string resourceGroupName, string policyName, string operationId)
+        public static ProtectionPolicyResource Get(this IProtectionPolicyOperationResultsOperations operations, string resourceGroupName, string vaultName, string policyName, string operationId)
         {
-                return ((IProtectionPolicyOperationResultsOperations)operations).GetAsync(vaultName, resourceGroupName, policyName, operationId).GetAwaiter().GetResult();
+                return ((IProtectionPolicyOperationResultsOperations)operations).GetAsync(resourceGroupName, vaultName, policyName, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -43,26 +41,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='policyName'>
-        /// Backup policy name whose operation&#39;s result needs to be fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents the operation whose result needs to be
-        /// fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionPolicyResource> GetAsync(this IProtectionPolicyOperationResultsOperations operations, string vaultName, string resourceGroupName, string policyName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionPolicyResource> GetAsync(this IProtectionPolicyOperationResultsOperations operations, string resourceGroupName, string vaultName, string policyName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, policyName, operationId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, policyName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -18,7 +18,7 @@ Set-AzServiceBusNetworkRuleSet -NamespaceName <String> -ResourceGroupName <Strin
  [-PublicNetworkAccess <String>] [-TrustedServiceAccessEnabled] [-DefaultAction <String>]
  [-IPRule <INwRuleSetIPRules[]>] [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -26,7 +26,8 @@ Set-AzServiceBusNetworkRuleSet -NamespaceName <String> -ResourceGroupName <Strin
 Set-AzServiceBusNetworkRuleSet -InputObject <IServiceBusIdentity> [-PublicNetworkAccess <String>]
  [-TrustedServiceAccessEnabled] [-DefaultAction <String>] [-IPRule <INwRuleSetIPRules[]>]
  [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,11 +124,41 @@ Enabled Trusted Service Access on the ServiceBus namespace `myNamespace`.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

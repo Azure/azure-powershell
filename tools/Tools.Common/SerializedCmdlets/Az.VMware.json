@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.VMware",
-  "ModuleVersion": "0.9.1",
+  "ModuleVersion": "0.10.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -13703,6 +13703,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "VcfLicense": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
               "IdentitySource": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource]",
               "Zone": "System.Collections.Generic.List`1[System.String]",
               "ManagementClusterHost": "System.Collections.Generic.List`1[System.String]",
@@ -13715,6 +13716,7 @@
               "AvailabilityZone": "System.Nullable`1[System.Int32]",
               "VcenterPassword": "System.Security.SecureString",
               "NsxtPassword": "System.Security.SecureString",
+              "EndpointHcxCloudManagerIP": "System.String",
               "NetworkBlock": "System.String",
               "NsxPublicIPQuotaRaised": "System.String",
               "NsxtCertificateThumbprint": "System.String",
@@ -13722,32 +13724,29 @@
               "ProvisioningState": "System.String",
               "SecondaryCircuitExpressRouteId": "System.String",
               "SecondaryCircuitExpressRoutePrivatePeeringId": "System.String",
-              "SecondaryCircuitPrimarySubnet": "System.String",
               "SecondaryCircuitSecondarySubnet": "System.String",
-              "AvailabilityStrategy": "System.String",
+              "ManagementNetwork": "System.String",
               "SkuFamily": "System.String",
               "SkuName": "System.String",
               "SkuSize": "System.String",
               "SkuTier": "System.String",
               "VcenterCertificateThumbprint": "System.String",
-              "VcfLicenseKind": "System.String",
-              "VcfLicenseProvisioningState": "System.String",
+              "AvailabilityStrategy": "System.String",
               "VirtualNetworkId": "System.String",
-              "ManagementNetwork": "System.String",
+              "SecondaryCircuitPrimarySubnet": "System.String",
               "EndpointHcxCloudManager": "System.String",
               "ManagementClusterVsanDatastoreName": "System.String",
               "ManagementClusterProvisioningState": "System.String",
-              "EndpointHcxCloudManagerIP": "System.String",
               "EndpointNsxtManager": "System.String",
               "EndpointNsxtManagerIP": "System.String",
               "EndpointVcenterIP": "System.String",
               "EndpointVcsa": "System.String",
-              "DnsZoneType": "System.String",
-              "CircuitSecondarySubnet": "System.String",
-              "IdentityPrincipalId": "System.String",
-              "CircuitPrimarySubnet": "System.String",
               "EncryptionStatus": "System.String",
+              "DnsZoneType": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "CircuitSecondarySubnet": "System.String",
               "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
               "Internet": "System.String",
               "KeyVaultPropertyAutoDetectedKeyVersion": "System.String",
               "KeyVaultPropertyKeyName": "System.String",
@@ -13755,9 +13754,9 @@
               "KeyVaultPropertyKeyVaultUrl": "System.String",
               "KeyVaultPropertyKeyVersion": "System.String",
               "VmotionNetwork": "System.String",
+              "CircuitPrimarySubnet": "System.String",
               "CircuitExpressRoutePrivatePeeringId": "System.String",
               "CircuitExpressRouteId": "System.String",
-              "IdentityType": "System.String",
               "KeyVaultPropertyVersionType": "System.String"
             }
           },
@@ -35231,6 +35230,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "VcfLicense": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
               "IdentitySource": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource]",
               "Zone": "System.Collections.Generic.List`1[System.String]",
               "ManagementClusterHost": "System.Collections.Generic.List`1[System.String]",
@@ -35243,6 +35243,7 @@
               "AvailabilityZone": "System.Nullable`1[System.Int32]",
               "VcenterPassword": "System.Security.SecureString",
               "NsxtPassword": "System.Security.SecureString",
+              "EndpointHcxCloudManagerIP": "System.String",
               "NetworkBlock": "System.String",
               "NsxPublicIPQuotaRaised": "System.String",
               "NsxtCertificateThumbprint": "System.String",
@@ -35250,32 +35251,29 @@
               "ProvisioningState": "System.String",
               "SecondaryCircuitExpressRouteId": "System.String",
               "SecondaryCircuitExpressRoutePrivatePeeringId": "System.String",
-              "SecondaryCircuitPrimarySubnet": "System.String",
               "SecondaryCircuitSecondarySubnet": "System.String",
-              "AvailabilityStrategy": "System.String",
+              "ManagementNetwork": "System.String",
               "SkuFamily": "System.String",
               "SkuName": "System.String",
               "SkuSize": "System.String",
               "SkuTier": "System.String",
               "VcenterCertificateThumbprint": "System.String",
-              "VcfLicenseKind": "System.String",
-              "VcfLicenseProvisioningState": "System.String",
+              "AvailabilityStrategy": "System.String",
               "VirtualNetworkId": "System.String",
-              "ManagementNetwork": "System.String",
+              "SecondaryCircuitPrimarySubnet": "System.String",
               "EndpointHcxCloudManager": "System.String",
               "ManagementClusterVsanDatastoreName": "System.String",
               "ManagementClusterProvisioningState": "System.String",
-              "EndpointHcxCloudManagerIP": "System.String",
               "EndpointNsxtManager": "System.String",
               "EndpointNsxtManagerIP": "System.String",
               "EndpointVcenterIP": "System.String",
               "EndpointVcsa": "System.String",
-              "DnsZoneType": "System.String",
-              "CircuitSecondarySubnet": "System.String",
-              "IdentityPrincipalId": "System.String",
-              "CircuitPrimarySubnet": "System.String",
               "EncryptionStatus": "System.String",
+              "DnsZoneType": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "CircuitSecondarySubnet": "System.String",
               "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
               "Internet": "System.String",
               "KeyVaultPropertyAutoDetectedKeyVersion": "System.String",
               "KeyVaultPropertyKeyName": "System.String",
@@ -35283,9 +35281,9 @@
               "KeyVaultPropertyKeyVaultUrl": "System.String",
               "KeyVaultPropertyKeyVersion": "System.String",
               "VmotionNetwork": "System.String",
+              "CircuitPrimarySubnet": "System.String",
               "CircuitExpressRoutePrivatePeeringId": "System.String",
               "CircuitExpressRouteId": "System.String",
-              "IdentityType": "System.String",
               "KeyVaultPropertyVersionType": "System.String"
             }
           },
@@ -35496,6 +35494,19 @@
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "VcfLicense",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Kind": "System.String",
+              "ProvisioningState": "System.String"
+            }
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -35940,6 +35951,25 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "VcfLicense",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Kind": "System.String",
+                    "ProvisioningState": "System.String"
+                  }
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -39635,6 +39665,320 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzVMwareVcf5LicenseObject",
+      "Name": "New-AzVMwareVcf5LicenseObject",
+      "ClassName": "New-AzVMwareVcf5LicenseObject",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 0,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Vcf5License",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Vcf5License, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Label": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel]",
+              "EndDate": "System.DateTime",
+              "Core": "System.Int32",
+              "LicenseKey": "System.Security.SecureString",
+              "BroadcomContractNumber": "System.String",
+              "BroadcomSiteId": "System.String",
+              "Kind": "System.String",
+              "ProvisioningState": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [
+                  {
+                    "Name": "eventListener",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener"
+                  }
+                ],
+                "ReturnType": "System.Threading.Tasks.Task"
+              },
+              {
+                "Name": "FromJson",
+                "Parameters": [
+                  {
+                    "Name": "node",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcf5License"
+              },
+              {
+                "Name": "ToJson",
+                "Parameters": [
+                  {
+                    "Name": "container",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject"
+                  },
+                  {
+                    "Name": "serializationMode",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode"
+              },
+              {
+                "Name": "DeserializeFromDictionary",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Collections.IDictionary"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcf5License"
+              },
+              {
+                "Name": "DeserializeFromPSObject",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Management.Automation.PSObject"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcf5License"
+              },
+              {
+                "Name": "FromJsonString",
+                "Parameters": [
+                  {
+                    "Name": "jsonText",
+                    "Type": "System.String"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcf5License"
+              },
+              {
+                "Name": "ToJsonString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Core",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Int32",
+            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EndDate",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.DateTime",
+            "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "BroadcomContractNumber",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "BroadcomSiteId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Label",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel[], Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "LicenseKey",
+          "Type": {
+            "Namespace": "System.Security",
+            "Name": "System.Security.SecureString",
+            "AssemblyQualifiedName": "System.Security.SecureString, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProgressAction",
+          "AliasList": [
+            "proga"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ActionPreference",
+            "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Core",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Int32",
+                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EndDate",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.DateTime",
+                  "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "BroadcomContractNumber",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "BroadcomSiteId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Label",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel[], Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LicenseKey",
+                "Type": {
+                  "Namespace": "System.Security",
+                  "Name": "System.Security.SecureString",
+                  "AssemblyQualifiedName": "System.Security.SecureString, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -64743,6 +65087,7 @@
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud",
             "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
+              "VcfLicense": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
               "IdentitySource": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource]",
               "Zone": "System.Collections.Generic.List`1[System.String]",
               "ManagementClusterHost": "System.Collections.Generic.List`1[System.String]",
@@ -64755,6 +65100,7 @@
               "AvailabilityZone": "System.Nullable`1[System.Int32]",
               "VcenterPassword": "System.Security.SecureString",
               "NsxtPassword": "System.Security.SecureString",
+              "EndpointHcxCloudManagerIP": "System.String",
               "NetworkBlock": "System.String",
               "NsxPublicIPQuotaRaised": "System.String",
               "NsxtCertificateThumbprint": "System.String",
@@ -64762,32 +65108,29 @@
               "ProvisioningState": "System.String",
               "SecondaryCircuitExpressRouteId": "System.String",
               "SecondaryCircuitExpressRoutePrivatePeeringId": "System.String",
-              "SecondaryCircuitPrimarySubnet": "System.String",
               "SecondaryCircuitSecondarySubnet": "System.String",
-              "AvailabilityStrategy": "System.String",
+              "ManagementNetwork": "System.String",
               "SkuFamily": "System.String",
               "SkuName": "System.String",
               "SkuSize": "System.String",
               "SkuTier": "System.String",
               "VcenterCertificateThumbprint": "System.String",
-              "VcfLicenseKind": "System.String",
-              "VcfLicenseProvisioningState": "System.String",
+              "AvailabilityStrategy": "System.String",
               "VirtualNetworkId": "System.String",
-              "ManagementNetwork": "System.String",
+              "SecondaryCircuitPrimarySubnet": "System.String",
               "EndpointHcxCloudManager": "System.String",
               "ManagementClusterVsanDatastoreName": "System.String",
               "ManagementClusterProvisioningState": "System.String",
-              "EndpointHcxCloudManagerIP": "System.String",
               "EndpointNsxtManager": "System.String",
               "EndpointNsxtManagerIP": "System.String",
               "EndpointVcenterIP": "System.String",
               "EndpointVcsa": "System.String",
-              "DnsZoneType": "System.String",
-              "CircuitSecondarySubnet": "System.String",
-              "IdentityPrincipalId": "System.String",
-              "CircuitPrimarySubnet": "System.String",
               "EncryptionStatus": "System.String",
+              "DnsZoneType": "System.String",
+              "IdentityPrincipalId": "System.String",
+              "CircuitSecondarySubnet": "System.String",
               "IdentityTenantId": "System.String",
+              "IdentityType": "System.String",
               "Internet": "System.String",
               "KeyVaultPropertyAutoDetectedKeyVersion": "System.String",
               "KeyVaultPropertyKeyName": "System.String",
@@ -64795,9 +65138,9 @@
               "KeyVaultPropertyKeyVaultUrl": "System.String",
               "KeyVaultPropertyKeyVersion": "System.String",
               "VmotionNetwork": "System.String",
+              "CircuitPrimarySubnet": "System.String",
               "CircuitExpressRoutePrivatePeeringId": "System.String",
               "CircuitExpressRouteId": "System.String",
-              "IdentityType": "System.String",
               "KeyVaultPropertyVersionType": "System.String"
             }
           },
@@ -65071,6 +65414,19 @@
             "Namespace": "System.Security",
             "Name": "System.Security.SecureString",
             "AssemblyQualifiedName": "System.Security.SecureString, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "VcfLicense",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Kind": "System.String",
+              "ProvisioningState": "System.String"
+            }
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -65549,6 +65905,25 @@
                   "Namespace": "System.Security",
                   "Name": "System.Security.SecureString",
                   "AssemblyQualifiedName": "System.Security.SecureString, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "VcfLicense",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Kind": "System.String",
+                    "ProvisioningState": "System.String"
+                  }
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -66108,6 +66483,25 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "VcfLicense",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Kind": "System.String",
+                    "ProvisioningState": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Zone",
                 "Type": {
                   "Namespace": "System",
@@ -66599,6 +66993,25 @@
                   "Namespace": "System.Security",
                   "Name": "System.Security.SecureString",
                   "AssemblyQualifiedName": "System.Security.SecureString, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "VcfLicense",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Kind": "System.String",
+                    "ProvisioningState": "System.String"
+                  }
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -68380,6 +68793,15 @@
         "Type": "System.String"
       }
     },
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Kind": "System.String",
+        "ProvisioningState": "System.String"
+      }
+    },
     "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource]",
@@ -68558,6 +68980,36 @@
       "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptStringExecutionParameter, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Value": "System.String"
+      }
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Key": "System.String",
+        "Value": "System.String"
+      }
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcf5License": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcf5License",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcf5License, Az.VMware.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Label": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILabel]",
+        "EndDate": "System.DateTime",
+        "Core": "System.Int32",
+        "LicenseKey": "System.Security.SecureString",
+        "BroadcomContractNumber": "System.String",
+        "BroadcomSiteId": "System.String"
       }
     },
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMHostPlacementPolicyProperties": {

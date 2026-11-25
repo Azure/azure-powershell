@@ -8,6 +8,7 @@ options:
     module-version: 1.0.0
     prefix: "Az"
     subject-prefix: "PostgreSqlFlexibleServer"
+    enable-change-safety: true
     service-name: PostgreSqlFlexibleServer
     module-name: "{prefix}.{service-name}"
     output-folder: "{output-dir}"

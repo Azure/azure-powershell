@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FleetspaceResource>> CreateWithHttpMessagesAsync(string resourceGroupName, string fleetName, string fleetspaceName, FleetspaceResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FleetspaceResource,FleetspaceCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string fleetName, string fleetspaceName, FleetspaceResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update the properties of an existing Azure Cosmos DB fleetspace under a
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FleetspaceResource>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string fleetName, string fleetspaceName, FleetspaceResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FleetspaceResource,FleetspaceCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string fleetName, string fleetspaceName, FleetspaceResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update the properties of an existing Azure Cosmos DB fleetspace under a

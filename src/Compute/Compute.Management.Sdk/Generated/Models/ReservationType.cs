@@ -14,14 +14,24 @@ namespace Microsoft.Azure.Management.Compute.Models
     public static class ReservationType
     {
         /// <summary>
-        /// To consume on demand allocated capacity reservation when a capacity
-        /// reservation group is provided.
+        /// Reservations that enable a VM to consume capacity from an explicitly
+        /// associated capacity reservation group and fall back to the publicly
+        /// available capacity if the reservation is full.
         /// </summary>
         public const string Targeted = "Targeted";
         /// <summary>
-        /// To consume scheduled allocated block capacity reservation when a capacity
-        /// reservation group is provided.
+        /// Block capacity reservations that enable a VM to consume capacity only from
+        /// this capacity block when it is associated using a capacity reservation
+        /// group.
         /// </summary>
         public const string Block = "Block";
+        /// <summary>
+        /// Reservations that a VM consumes when it is eligible from an implicitly
+        /// associated capacity reservation group with the matching VM size and zone
+        /// without associating that capacity reservation group, and fall back to the
+        /// publicly available capacity if the reservation is full. Minimum
+        /// api-version: 2026-04-01.
+        /// </summary>
+        public const string Open = "Open";
     }
 }

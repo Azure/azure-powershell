@@ -113,6 +113,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             AddIf( null != this._excludeKbsRequiringReboot ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonBoolean((bool)this._excludeKbsRequiringReboot) : null, "excludeKbsRequiringReboot" ,container.Add );
             AddIf( null != this._maxPatchPublishDate ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._maxPatchPublishDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "maxPatchPublishDate" ,container.Add );
+            if (null != this._patchNameMasksToInclude)
+            {
+                var __h = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.XNodeArray();
+                foreach( var __i in this._patchNameMasksToInclude )
+                {
+                    AddIf(null != (((object)__i)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
+                }
+                container.Add("patchNameMasksToInclude",__h);
+            }
+            if (null != this._patchNameMasksToExclude)
+            {
+                var __c = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.XNodeArray();
+                foreach( var __d in this._patchNameMasksToExclude )
+                {
+                    AddIf(null != (((object)__d)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(__d.ToString()) : null ,__c.Add);
+                }
+                container.Add("patchNameMasksToExclude",__c);
+            }
             AfterToJson(ref container);
             return container;
         }
@@ -134,6 +152,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {_kbNumbersToExclude = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("kbNumbersToExclude"), out var __jsonKbNumbersToExclude) ? If( __jsonKbNumbersToExclude as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _kbNumbersToExclude;}
             {_excludeKbsRequiringReboot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonBoolean>("excludeKbsRequiringReboot"), out var __jsonExcludeKbsRequiringReboot) ? (bool?)__jsonExcludeKbsRequiringReboot : _excludeKbsRequiringReboot;}
             {_maxPatchPublishDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("maxPatchPublishDate"), out var __jsonMaxPatchPublishDate) ? global::System.DateTime.TryParse((string)__jsonMaxPatchPublishDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonMaxPatchPublishDateValue) ? __jsonMaxPatchPublishDateValue : _maxPatchPublishDate : _maxPatchPublishDate;}
+            {_patchNameMasksToInclude = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("patchNameMasksToInclude"), out var __jsonPatchNameMasksToInclude) ? If( __jsonPatchNameMasksToInclude as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _patchNameMasksToInclude;}
+            {_patchNameMasksToExclude = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("patchNameMasksToExclude"), out var __jsonPatchNameMasksToExclude) ? If( __jsonPatchNameMasksToExclude as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__b, (__a)=>(string) (__a is Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString ___z ? (string)(___z.ToString()) : null)) ))() : null : _patchNameMasksToExclude;}
             AfterFromJson(json);
         }
     }
