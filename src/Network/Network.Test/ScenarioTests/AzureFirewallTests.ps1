@@ -2134,6 +2134,56 @@ function Test-AzureFirewallCRUDRouteServerIdHub {
 
 <#
 .SYNOPSIS
+Tests AzureFirewall TcpIdleTimeoutInMinutes
+#>
+function Test-AzureFirewallCRUDTcpIdleTimeout {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/NonProd"
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag
+
+        # Values outside the supported range (4 to 64) are rejected by parameter validation
+        Assert-ThrowsContains { New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -TcpIdleTimeoutInMinutes 3 } "TcpIdleTimeoutInMinutes"
+        Assert-ThrowsContains { New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -TcpIdleTimeoutInMinutes 65 } "TcpIdleTimeoutInMinutes"
+
+        # Create AzureFirewall with a TCP idle timeout
+        New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -TcpIdleTimeoutInMinutes 15
+
+        # Verify
+        $azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual 15 $azFirewall.TcpIdleTimeoutInMinutes
+
+        # Update the TCP idle timeout
+        $azFirewall.TcpIdleTimeoutInMinutes = 30
+        Set-AzFirewall -AzureFirewall $azFirewall
+        $azfw = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+
+        Assert-AreEqual 30 $azfw.TcpIdleTimeoutInMinutes
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests  Get Azure Firewall LearnedPrefixes
 #>
 function Test-GetAzureFirewallLearnedIpPrefixes {

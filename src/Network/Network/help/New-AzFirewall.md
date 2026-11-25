@@ -25,9 +25,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>]
  [-HubIPAddress <PSAzureFirewallHubIpAddresses>] [-FirewallPolicyId <String>] [-AllowActiveFTP]
  [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization] [-RouteServerId <String>]
- [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
- [<CommonParameters>]
+ [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-TcpIdleTimeoutInMinutes <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### OldIpConfigurationParameterValues
@@ -42,9 +42,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>]
  [-HubIPAddress <PSAzureFirewallHubIpAddresses>] [-FirewallPolicyId <String>] [-AllowActiveFTP]
  [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization] [-RouteServerId <String>]
- [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
- [<CommonParameters>]
+ [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-TcpIdleTimeoutInMinutes <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### IpConfigurationParameterValues
@@ -59,9 +59,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-SkuName <String>] [-SkuTier <String>] [-VirtualHubId <String>]
  [-HubIPAddress <PSAzureFirewallHubIpAddresses>] [-FirewallPolicyId <String>] [-AllowActiveFTP]
  [-EnableFatFlowLogging] [-EnableDnstapLogging] [-EnableUDPLogOptimization] [-RouteServerId <String>]
- [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
- [<CommonParameters>]
+ [-MinCapacity <Int32>] [-MaxCapacity <Int32>] [-TcpIdleTimeoutInMinutes <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -742,6 +742,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TcpIdleTimeoutInMinutes
+The TCP idle timeout for the Azure Firewall, in minutes.
+Valid values range from 4 to 64, inclusive.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
