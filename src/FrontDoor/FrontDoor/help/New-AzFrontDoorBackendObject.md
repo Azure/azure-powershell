@@ -16,7 +16,7 @@ Create an in-memory object for Backend.
 New-AzFrontDoorBackendObject [-Address <String>] [-BackendHostHeader <String>] [-EnabledState <String>]
  [-HttpPort <Int32>] [-HttpsPort <Int32>] [-Priority <Int32>] [-PrivateLinkAlias <String>]
  [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
- [-Weight <Int32>] [<CommonParameters>]
+ [-Weight <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -198,6 +198,21 @@ Populating this optional field indicates that this backend is 'Private'.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

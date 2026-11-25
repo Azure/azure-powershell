@@ -28,14 +28,14 @@ For information on how to develop for `Az.FrontDoor`, see [how-to.md](how-to.md)
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 3a617d58ce1d84caade01a3a682ec5c06a9088d9
+commit: 530ebfb31d6cf1b28f2c475013b0657d1a01c2a6
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/FrontDoor/stable/2025-11-01/openapi.json
+  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/FrontDoor/stable/2026-04-01/openapi.json
 
 try-require: 
   - $(repo)/specification/xxx/resource-manager/readme.powershell.md
@@ -127,6 +127,15 @@ directive:
       cmdlet-name: New-AzFrontDoorWafCustomRuleGroupByVariableObject
     - model-name: ManagedRuleExclusion
       cmdlet-name: New-AzFrontDoorWafManagedRuleExclusionObject
+    # Preserve the existing WAF exception helpers when regenerating model cmdlets.
+    - model-name: ManagedRuleSetException
+      cmdlet-name: New-AzFrontDoorWafManagedRuleSetExceptionObject
+    - model-name: ManagedRuleSetScope
+      cmdlet-name: New-AzFrontDoorWafManagedRuleSetScopeObject
+    - model-name: RuleGroupScope
+      cmdlet-name: New-AzFrontDoorWafRuleGroupScopeObject
+    - model-name: RuleScope
+      cmdlet-name: New-AzFrontDoorWafRuleScopeObject
     # - model-name: ManagedRuleSet
     #   cmdlet-name: New-AzFrontDoorWafManagedRuleObject
     - model-name: PolicySettingsLogScrubbing

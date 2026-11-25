@@ -14,7 +14,7 @@ Create an in-memory object for ManagedRuleGroupOverride.
 
 ```
 New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName <String> [-Exclusion <IManagedRuleExclusion[]>]
- [-ManagedRuleOverride <IManagedRuleOverride[]>] [<CommonParameters>]
+ [-ManagedRuleOverride <IManagedRuleOverride[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +63,21 @@ If none specified, all rules in the group will be disabled.
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleOverride[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

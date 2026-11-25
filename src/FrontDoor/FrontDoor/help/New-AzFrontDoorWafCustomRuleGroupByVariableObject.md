@@ -13,7 +13,7 @@ Create an in-memory object for GroupByVariable.
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafCustomRuleGroupByVariableObject -VariableName <String>
+New-AzFrontDoorWafCustomRuleGroupByVariableObject -VariableName <String> [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -37,6 +37,21 @@ Create CustomRuleGroupByVariable object for custom rule object
 Use cmdlet "New-AzFrontDoorWafCustomRuleGroupByVariableObject" to pass -CustomRule parameter
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -VariableName
 Describes the supported variable for group by.

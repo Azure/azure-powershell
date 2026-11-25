@@ -16,6 +16,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorWafManagedRule
 
 Describe 'Get-AzFrontDoorWafManagedRuleSetDefinition' {
     It 'List' {
-        { Get-AzFrontDoorWafManagedRuleSetDefinition } | Should -Not -Throw
+        $ruleSets = @(Get-AzFrontDoorWafManagedRuleSetDefinition -SubscriptionId $env.SubscriptionId)
+        $ruleSets | Should -Not -BeNullOrEmpty
+
+        foreach ($ruleSet in $ruleSets) {
+            $ruleSet.DisplayName | Should -Not -BeNullOrEmpty
+            $ruleSet.Status | Should -Not -BeNullOrEmpty
+        }
+
+        $defaultRuleSets = @($ruleSets | Where-Object { $_.RuleSetType -in @('DefaultRuleSet', 'Microsoft_DefaultRuleSet') })
+        $defaultRuleSets | Should -Not -BeNullOrEmpty
+        foreach ($ruleSet in $defaultRuleSets) {
+            $rules = @($ruleSet.RuleGroup.Rule)
+            $rules | Should -Not -BeNullOrEmpty
+            foreach ($rule in $rules) {
+                $rule.ParanoiaLevel | Should -BeIn @('PL1', 'PL2', 'PL3', 'PL4')
+            }
+        }
     }
 }

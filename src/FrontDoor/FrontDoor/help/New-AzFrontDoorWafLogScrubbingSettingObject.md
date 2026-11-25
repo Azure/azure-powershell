@@ -14,7 +14,7 @@ Create an in-memory object for PolicySettingsLogScrubbing.
 
 ```
 New-AzFrontDoorWafLogScrubbingSettingObject [-ScrubbingRule <IWebApplicationFirewallScrubbingRules[]>]
- [-State <String>] [<CommonParameters>]
+ [-State <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,21 @@ New-AzFrontDoorWafLogScrubbingSettingObject -State Enabled -ScrubbingRule @($Log
 Need to create a LogScrubbingRule object before using.
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ScrubbingRule
 List of log scrubbing rules applied to the Web Application Firewall logs.

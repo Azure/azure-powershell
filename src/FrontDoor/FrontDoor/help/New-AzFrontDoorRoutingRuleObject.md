@@ -20,7 +20,7 @@ New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <
  [-WebApplicationFirewallPolicyLinkId <String>] [-Id <String>] [-BackendPoolName <String>]
  [-CacheDuration <TimeSpan>] [-DynamicCompression <String>] [-QueryParameter <String>]
  [-QueryParameterStripDirective <String>] [-CustomForwardingPath <String>] [-ForwardingProtocol <String>]
- [-EnableCaching <Boolean>] [<CommonParameters>]
+ [-EnableCaching <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByFieldsWithRedirectParameterSet
@@ -30,7 +30,7 @@ New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <
  [-PatternsToMatch <String[]>] [-RouteConfiguration <IRouteConfiguration>] [-RuleEngineName <String>]
  [-WebApplicationFirewallPolicyLinkId <String>] [-Id <String>] [-CustomFragment <String>]
  [-CustomHost <String>] [-CustomPath <String>] [-CustomQueryString <String>] [-RedirectProtocol <String>]
- [-RedirectType <String>] [<CommonParameters>]
+ [-RedirectType <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -362,6 +362,21 @@ The route patterns of the rule.
 Type: System.String[]
 Parameter Sets: (All)
 Aliases: PatternToMatch
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

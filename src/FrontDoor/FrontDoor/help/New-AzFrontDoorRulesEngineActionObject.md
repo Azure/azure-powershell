@@ -19,7 +19,7 @@ New-AzFrontDoorRulesEngineActionObject [-RequestHeaderAction <IHeaderAction[]>]
  [-BackendPoolName <String>] [-FrontDoorName <String>] [-ResourceGroupName <String>]
  [-CacheDuration <TimeSpan>] [-DynamicCompression <String>] [-QueryParameter <String>]
  [-QueryParameterStripDirective <String>] [-CustomForwardingPath <String>] [-ForwardingProtocol <String>]
- [-EnableCaching <Boolean>] [<CommonParameters>]
+ [-EnableCaching <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByFieldsWithRedirectParameterSet
@@ -27,7 +27,7 @@ New-AzFrontDoorRulesEngineActionObject [-RequestHeaderAction <IHeaderAction[]>]
 New-AzFrontDoorRulesEngineActionObject [-RequestHeaderAction <IHeaderAction[]>]
  [-ResponseHeaderAction <IHeaderAction[]>] [-RouteConfigurationOverride <IRouteConfiguration>]
  [-CustomFragment <String>] [-CustomHost <String>] [-CustomPath <String>] [-CustomQueryString <String>]
- [-RedirectProtocol <String>] [-RedirectType <String>]
+ [-RedirectProtocol <String>] [-RedirectType <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -226,6 +226,21 @@ The name of the Front Door to which this routing rule belongs.
 Type: System.String
 Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

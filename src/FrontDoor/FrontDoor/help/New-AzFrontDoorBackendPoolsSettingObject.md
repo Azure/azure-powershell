@@ -14,7 +14,7 @@ Create an in-memory object for BackendPoolsSettings.
 
 ```
 New-AzFrontDoorBackendPoolsSettingObject [-EnforceCertificateNameCheck <String>]
- [-SendRecvTimeoutInSeconds <Int32>] [<CommonParameters>]
+ [-SendRecvTimeoutInSeconds <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +58,21 @@ No effect on non-HTTPS requests.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

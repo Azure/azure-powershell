@@ -106,7 +106,7 @@ This setting is only applicable to Premium_AzureFrontDoor.
 Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
-Type: System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -231,7 +231,7 @@ This setting is only applicable to Premium_AzureFrontDoor.
 Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
-Type: System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: CreateExpanded
 Aliases:
 
