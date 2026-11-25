@@ -50,6 +50,7 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+EnableConfidentialCompute           :
 ForceFirewallPolicyAssociation      :
 Zones                               : {}
 OperationalState                    : Running
@@ -111,6 +112,7 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+EnableConfidentialCompute           :
 ForceFirewallPolicyAssociation      :
 Zones                               : {}
 OperationalState                    : Running
@@ -172,6 +174,7 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+EnableConfidentialCompute           :
 ForceFirewallPolicyAssociation      :
 Zones                               : {}
 OperationalState                    : Running
@@ -233,6 +236,7 @@ AutoscaleConfiguration              :
 CustomErrorConfigurations           : {}
 EnableHttp2                         :
 EnableFips                          :
+EnableConfidentialCompute           :
 ForceFirewallPolicyAssociation      :
 Zones                               : {}
 OperationalState                    : Running

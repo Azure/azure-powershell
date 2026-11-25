@@ -27,6 +27,9 @@
 
 ## Version 8.4.1
 * Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
+* Added `-EnableConfidentialCompute` parameter to `New-AzApplicationGateway` and `EnableConfidentialCompute` property to `PSApplicationGateway` to create Application Gateways on Confidential Compute
+    - Supported only on Standard_v2 and WAF_v2 (Web Application Firewall) SKUs, cannot be combined with FIPS (Federal Information Processing Standards) and cannot be changed after creation
+    - Requires Network API version 2026-05-01 [Azure/azure-rest-api-specs#47799](https://github.com/Azure/azure-rest-api-specs/pull/47799)
 
 ## Version 8.4.0
 * Updated replication vault Private Link to API 2026-05-01 and Network SDK to 2026-03-01/2026-01-01.

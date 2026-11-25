@@ -38,6 +38,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>EnableConfidentialCompute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>ForceFirewallPolicyAssociation</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -83,6 +87,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>EnableFips</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableConfidentialCompute</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
