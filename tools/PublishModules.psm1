@@ -480,22 +480,30 @@ function Save-PackageLocally {
         if (Find-Module -Name $ModuleName -RequiredVersion $RequiredVersion -Repository $TempRepo -ErrorAction SilentlyContinue) {
             Write-Output "Required dependency $ModuleName, $RequiredVersion found in the repo $TempRepo"
         } else {
+            $repositoryParams = @{ Repository = 'PSGallery' }
             if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
                 $PSRepositoryUrl = $Env:DEFAULT_PS_REPOSITORY_URL
                 $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
-                $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+                $repositoryParams.Repository = $Env:DEFAULT_PS_REPOSITORY_NAME
+                $repositoryParams.Credential = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
             }
             else {
                 $PSRepositoryUrl = "https://www.powershellgallery.com/api/v2"
             }
             Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
-            Write-Output "Downloading the package from $PSRepositoryUrl to the path $TempRepoPath"
-            # We try to download the package from the PSRepositoryUrl as we are likely intending to use the existing version of the module.
-            # If the module not found in PSRepositoryUrl, the following command would fail and hence publish to local repo process would fail as well
-            if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
-                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg -TrustRepository -Verbose
-            } else {
-                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg -TrustRepository -Verbose
+            $downloadPath = Join-Path ([IO.Path]::GetTempPath()) ([guid]::NewGuid().ToString())
+            $null = New-Item -ItemType Directory -Path $downloadPath -ErrorAction Stop
+            try {
+                Write-Output "Downloading $ModuleName and its dependencies from $PSRepositoryUrl to $downloadPath"
+                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $downloadPath @repositoryParams -AsNupkg -TrustRepository -Verbose -ErrorAction Stop
+                foreach ($package in Get-ChildItem -LiteralPath $downloadPath -Filter '*.nupkg' -File -ErrorAction Stop) {
+                    $destination = Join-Path $TempRepoPath $package.Name
+                    if (-not (Test-Path -LiteralPath $destination)) {
+                        Move-Item -LiteralPath $package.FullName -Destination $destination -ErrorAction Stop
+                    }
+                }
+            } finally {
+                Remove-Item -LiteralPath $downloadPath -Recurse -Force
             }
             $NupkgFilePath = Join-Path -Path $TempRepoPath -ChildPath "$ModuleName.$RequiredVersion.nupkg"
             $ModulePaths = $env:PSModulePath -split ';'
