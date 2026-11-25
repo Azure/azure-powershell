@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added PowerShell 7.6 to the built-in Function App stack definitions used when the ARM (Azure Resource Manager) stacks API is unavailable
+    - PowerShell 7.6 is now the default PowerShell runtime in the built-in definitions, replacing PowerShell 7.4 which reached end-of-life on November 10 2026
 
 ## Version 5.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)

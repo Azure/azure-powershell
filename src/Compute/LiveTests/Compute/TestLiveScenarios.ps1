@@ -22,7 +22,7 @@ Invoke-LiveTestScenario -Name "Operate a virtual machine." -Description "Test cr
     $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Name $nsgName -Location $location -SecurityRules $nsgRuleHighRiskPorts
     $nic = New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -Subnet $vnet.Subnets[0] -NetworkSecurityGroup $nsg
 
-    $vmCfg = New-AzVMConfig -VMName $vmName -VMSize Standard_D2s_v3
+    $vmCfg = New-AzVMConfig -VMName $vmName -VMSize Standard_D2s_v5
     $vmCfg | Set-AzVMSecurityProfile -SecurityType TrustedLaunch
     $vmCfg | Set-AzVMOSDisk -Name $osDiskName -StorageAccountType StandardSSD_LRS -CreateOption FromImage -DeleteOption Delete
     $vmCfg | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $localAdminCred -ProvisionVMAgent -EnableAutoUpdate
@@ -38,7 +38,7 @@ Invoke-LiveTestScenario -Name "Operate a virtual machine." -Description "Test cr
     Assert-AreEqual $rgName $actual.ResourceGroupName
     Assert-AreEqual $vmName $actual.Name
     Assert-AreEqual "Succeeded" $actual.ProvisioningState
-    Assert-AreEqual "Standard_D2s_v3" $actual.HardwareProfile.VmSize
+    Assert-AreEqual "Standard_D2s_v5" $actual.HardwareProfile.VmSize
     Assert-AreEqual $nic.Id $actual.NetworkProfile.NetworkInterfaces[0].Id
     Assert-AreEqual "TrustedLaunch" $actual.SecurityProfile.SecurityType
     Assert-AreEqual $computerName $actual.OSProfile.ComputerName

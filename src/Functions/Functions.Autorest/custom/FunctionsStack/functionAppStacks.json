@@ -2243,12 +2243,111 @@
           "value": "7",
           "minorVersions": [
             {
+              "displayText": "PowerShell 7.6",
+              "value": "7.6",
+              "stackSettings": {
+                "windowsRuntimeSettings": {
+                  "runtimeVersion": "7.6",
+                  "isDefault": true,
+                  "isPreview": false,
+                  "isHidden": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "powershell"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "powerShellVersion": "7.6",
+                    "netFrameworkVersion": "v10.0"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Tue Nov 14 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+                },
+                "linuxRuntimeSettings": {
+                  "runtimeVersion": "PowerShell|7.6",
+                  "isDefault": true,
+                  "isPreview": false,
+                  "isHidden": false,
+                  "remoteDebuggingSupported": false,
+                  "appInsightsSettings": {
+                    "isSupported": true
+                  },
+                  "gitHubActionSettings": {
+                    "isSupported": true
+                  },
+                  "appSettingsDictionary": {
+                    "FUNCTIONS_WORKER_RUNTIME": "powershell"
+                  },
+                  "siteConfigPropertiesDictionary": {
+                    "use32BitWorkerProcess": false,
+                    "linuxFxVersion": "PowerShell|7.6"
+                  },
+                  "supportedFunctionsExtensionVersions": [
+                    "~4"
+                  ],
+                  "supportedFunctionsExtensionVersionsInfo": [
+                    {
+                      "version": "~4",
+                      "isDeprecated": false,
+                      "isDefault": true
+                    }
+                  ],
+                  "endOfLifeDate": "Tue Nov 14 2028 00:00:00 GMT+0000 (Coordinated Universal Time)",
+                  "Sku": [
+                    {
+                      "skuCode": "FC1",
+                      "instanceMemoryMB": [
+                        {
+                          "size": 512,
+                          "isDefault": false
+                        },
+                        {
+                          "size": 2048,
+                          "isDefault": true
+                        },
+                        {
+                          "size": 4096,
+                          "isDefault": false
+                        }
+                      ],
+                      "maximumInstanceCount": {
+                        "lowestMaximumInstanceCount": 1,
+                        "highestMaximumInstanceCount": 1000,
+                        "defaultValue": 100
+                      },
+                      "functionAppConfigProperties": {
+                        "runtime": {
+                          "name": "powershell",
+                          "version": "7.6"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
               "displayText": "PowerShell 7.4",
               "value": "7.4",
               "stackSettings": {
                 "windowsRuntimeSettings": {
                   "runtimeVersion": "7.4",
-                  "isDefault": true,
+                  "isDefault": false,
                   "isPreview": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,
@@ -2280,7 +2379,7 @@
                 },
                 "linuxRuntimeSettings": {
                   "runtimeVersion": "PowerShell|7.4",
-                  "isDefault": true,
+                  "isDefault": false,
                   "isPreview": false,
                   "isHidden": false,
                   "remoteDebuggingSupported": false,
