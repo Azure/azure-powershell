@@ -28,11 +28,18 @@ function Install-PowerShell {
     } else {
       dotnet --version
       dotnet new tool-manifest --force
-      if ( 'latest' -eq $requiredPsVersion ) {
-        dotnet tool install PowerShell
+      if ($LASTEXITCODE -ne 0) {
+        throw "Failed to create the .NET tool manifest (exit code $LASTEXITCODE)."
       }
-      else {
-        dotnet tool install PowerShell --version $requiredPsVersion 
+
+      $toolConfig = Join-Path $PSScriptRoot 'PowerShellTool.NuGet.Config'
+      $installArgs = @('tool', 'install', 'PowerShell', '--configfile', $toolConfig)
+      if ($requiredPsVersion -ne 'latest') {
+        $installArgs += @('--version', $requiredPsVersion)
+      }
+      dotnet @installArgs
+      if ($LASTEXITCODE -ne 0) {
+        throw "Failed to install PowerShell $requiredPsVersion (dotnet exit code $LASTEXITCODE)."
       }
       dotnet tool list
     }
