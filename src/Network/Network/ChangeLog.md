@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.5.0
 * Fixed `New-AzVirtualNetworkGateway` to include a non-empty `ExtendedLocation` for VPN gateways.
 * Added load balancer configuration for managed NVAs in hubs and VNets and individual Permanent Internet Ingress rules.
     - Added `New-AzNetworkVirtualApplianceLoadBalancerConfiguration` and `-LoadBalancerConfiguration` on NVA creation/update and ingress rule builders.
