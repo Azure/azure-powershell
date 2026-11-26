@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public DscConfigurationProperties(DscConfigurationProvisioningState? provisioningState = default(DscConfigurationProvisioningState?), int? jobCount = default(int?), System.Collections.Generic.IDictionary<string, DscConfigurationParameter> parameters = default(System.Collections.Generic.IDictionary<string, DscConfigurationParameter>), ContentSource source = default(ContentSource), string state = default(string), bool? logVerbose = default(bool?), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), int nodeConfigurationCount = default(int), string description = default(string))
+        public DscConfigurationProperties(DscConfigurationPropertiesProvisioningState? provisioningState = default(DscConfigurationPropertiesProvisioningState?), int? jobCount = default(int?), System.Collections.Generic.IDictionary<string, DscConfigurationParameter> parameters = default(System.Collections.Generic.IDictionary<string, DscConfigurationParameter>), ContentSource source = default(ContentSource), string state = default(string), bool? logVerbose = default(bool?), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), int? nodeConfigurationCount = default(int?), string description = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the provisioning state of the configuration. Possible values include: &#39;Succeeded&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
-        public DscConfigurationProvisioningState? ProvisioningState {get; set; }
+        public DscConfigurationPropertiesProvisioningState? ProvisioningState {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the job count of the configuration.
@@ -115,19 +115,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets the number of compiled node configurations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nodeConfigurationCount")]
-        public int NodeConfigurationCount {get; set; }
+        public int? NodeConfigurationCount {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.

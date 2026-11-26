@@ -122,6 +122,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="isManagedIdentityInUse">Specifies whether Managed Identity is used to access blob storage
         /// </param>
 
+        /// <param name="requiredFields">Specifies the required fields to include in audit events (optional).
+        /// Each item must be a valid audit_event field name.
+        /// Can only be specified when isAzureMonitorTargetEnabled is true.
+        /// For the complete list of valid field names, see the audit_event table
+        /// schema documentation.
+        /// </param>
+
         /// <param name="state">Specifies the state of the audit. If state is Enabled, storageEndpoint or
         /// isAzureMonitorTargetEnabled are required.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
@@ -146,7 +153,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="storageAccountSubscriptionId">Specifies the blob storage subscription Id.
         /// </param>
-        public DatabaseBlobAuditingPolicyProperties(BlobAuditingPolicyState state, int? retentionDays = default(int?), System.Collections.Generic.IList<string> auditActionsAndGroups = default(System.Collections.Generic.IList<string>), bool? isStorageSecondaryKeyInUse = default(bool?), bool? isAzureMonitorTargetEnabled = default(bool?), int? queueDelayMS = default(int?), bool? isManagedIdentityInUse = default(bool?), string storageEndpoint = default(string), string storageAccountAccessKey = default(string), System.Guid? storageAccountSubscriptionId = default(System.Guid?))
+        public DatabaseBlobAuditingPolicyProperties(BlobAuditingPolicyState state, int? retentionDays = default(int?), System.Collections.Generic.IList<string> auditActionsAndGroups = default(System.Collections.Generic.IList<string>), bool? isStorageSecondaryKeyInUse = default(bool?), bool? isAzureMonitorTargetEnabled = default(bool?), int? queueDelayMS = default(int?), bool? isManagedIdentityInUse = default(bool?), System.Collections.Generic.IList<string> requiredFields = default(System.Collections.Generic.IList<string>), string storageEndpoint = default(string), string storageAccountAccessKey = default(string), System.Guid? storageAccountSubscriptionId = default(System.Guid?))
 
         {
             this.RetentionDays = retentionDays;
@@ -155,6 +162,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.IsAzureMonitorTargetEnabled = isAzureMonitorTargetEnabled;
             this.QueueDelayMS = queueDelayMS;
             this.IsManagedIdentityInUse = isManagedIdentityInUse;
+            this.RequiredFields = requiredFields;
             this.State = state;
             this.StorageEndpoint = storageEndpoint;
             this.StorageAccountAccessKey = storageAccountAccessKey;
@@ -286,6 +294,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         public bool? IsManagedIdentityInUse {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the required fields to include in audit events
+        /// (optional).
+        /// Each item must be a valid audit_event field name.
+        /// Can only be specified when isAzureMonitorTargetEnabled is true.
+        /// For the complete list of valid field names, see the audit_event table
+        /// schema documentation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiredFields")]
+        public System.Collections.Generic.IList<string> RequiredFields {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies the state of the audit. If state is Enabled,
         /// storageEndpoint or isAzureMonitorTargetEnabled are required. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
@@ -329,6 +348,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 

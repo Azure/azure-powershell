@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
-    /// <summary>The response from the list namespace operation.</summary>
+    /// <summary>The response of a AuthorizationRule list operation.</summary>
     public partial class AuthorizationRuleListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRuleListResultInternal
@@ -16,16 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// Link to the next set of results. Not empty if value contains incomplete list of authorization rules.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> _value;
 
-        /// <summary>Result of the list authorization rules operation.</summary>
+        /// <summary>The AuthorizationRule items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> Value { get => this._value; set => this._value = value; }
 
@@ -35,45 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 
         }
     }
-    /// The response from the list namespace operation.
+    /// The response of a AuthorizationRule list operation.
     public partial interface IAuthorizationRuleListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if value contains incomplete list of authorization rules.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Link to the next set of results. Not empty if value contains incomplete list of authorization rules.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>Result of the list authorization rules operation.</summary>
+        /// <summary>The AuthorizationRule items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Result of the list authorization rules operation.",
+        Description = @"The AuthorizationRule items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> Value { get; set; }
 
     }
-    /// The response from the list namespace operation.
+    /// The response of a AuthorizationRule list operation.
     internal partial interface IAuthorizationRuleListResultInternal
 
     {
-        /// <summary>
-        /// Link to the next set of results. Not empty if value contains incomplete list of authorization rules.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>Result of the list authorization rules operation.</summary>
+        /// <summary>The AuthorizationRule items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule> Value { get; set; }
 
     }

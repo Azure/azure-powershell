@@ -1,6 +1,6 @@
 {
   "resourceType": "storageMovers/connections",
-  "apiVersion": "2025-12-01",
+  "apiVersion": "2026-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.storagemover"
   },
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzStorageMoverConnection",
-      "description": "Deletes a Connection resource.\\nReturns 409 if there are active jobs using this connection.",
+      "description": "Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Deletes a Connection resource.\\nReturns 409 if there are active jobs using this connection.",
+          "description": "Deletes a Connection resource. Returns 409 if there are active jobs using this connection.",
           "parameters": [
             {
               "name": "-Name",

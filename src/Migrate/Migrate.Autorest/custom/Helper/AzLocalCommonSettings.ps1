@@ -28,11 +28,16 @@ $ApiVersions = @{
     HyperVSites          = "2020-01-01";
     ProtectedItem        = "2021-02-16-preview";
     AzLocal              = "2021-09-01-preview";
+    # The module is generated against OffAzure 2020-01-01, which has no secureBootEnabled on its
+    # machine models. Read that one field at the newer version instead of regenerating, since
+    # every OffAzure operationId was renamed after 2020-01-01.
+    OffAzureMachineRead  = "2024-12-01-preview";
 }
 
 # Role definition GUIDs for storage account creation
 $RoleDefinitionIds = @{
     ContributorId                = "b24988ac-6180-42a0-ab88-20f7382dd24c";
+    StorageAccountContributorId  = "17d1049b-9a84-46fb-8f53-869881c3d3ab";
     StorageBlobDataContributorId = "ba92f5b4-2d11-453d-a403-e96b0029c9fe";
 }
 
@@ -108,6 +113,20 @@ $OsTypes = @{
     OtherGuestFamily = "otherguestfamily";
 }
 
+# User-facing security types on the Local replication cmdlets.
+$TargetVMSecurityTypes = @{
+    Standard      = "Standard";
+    TrustedLaunch = "TrustedLaunch";
+}
+
+# Wire values for the service 'securityOption' field. 'EnablevTPM' is omitted deliberately:
+# it means vTPM without Secure Boot, which the service always rejects (error 2109020).
+$SecurityOptions = @{
+    None              = "None";
+    SecureBootEnabled = "SecureBootEnabled";
+    TrustedLaunch     = "TrustedLaunch";
+}
+
 $VmReplicationValidationMessage = "Replication could not be initiated. Please ensure the necessary changes are made, and allow up to 30 minutes before re-trying."
 $VmReplicationValidationMessages = @{
     VmPoweredOff            = "The VM is currently powered off. $VmReplicationValidationMessage";
@@ -125,14 +144,20 @@ $ArcResourceBridgeValidationMessages = @{
     NoClusters = "There are no Azure Local clusters found in the selected resource group."
 }
 
+$ArcMachineReuseValidationMessages = @{
+    NotFound         = "Unable to validate Azure Arc-enabled machine '{0}'. Please ensure the Arc machine exists at the specified resource group and matches the naming given in -TargetVMName. Underlying error: {1}";
+    KindIncompatible = "Azure Arc-enabled machine '{0}' has Kind='{1}', which is not compatible with Azure Local migration reuse. Only Arc machines with an unset Kind can be reused.";
+}
+
 $IdFormats = @{
-    ResourceGroupArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}"
-    MachineArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
-    StoragePathArmIdTemplate    = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/storageContainers/{2}"
-    LogicalNetworkArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/logicalnetworks/{2}"
-    MigrateProjectArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
-    ProtectedItemArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
-    ToLocalJobArmIdTemplate     = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/jobs/{3}"
+    ResourceGroupArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}"
+    MachineArmIdTemplate              = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
+    StoragePathArmIdTemplate          = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/storageContainers/{2}"
+    LogicalNetworkArmIdTemplate       = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/logicalnetworks/{2}"
+    MigrateProjectArmIdTemplate       = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
+    ProtectedItemArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
+    ToLocalJobArmIdTemplate           = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/jobs/{3}"
+    HybridComputeMachineArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.HybridCompute/machines/{2}"
 }
 
 $TargetVMCPUCores = @{

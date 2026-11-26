@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Rest.Azure;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -293,11 +295,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag indicating whether subvolume operations are enabled on the volume (Enabled, Disabled)")]        
-        public SwitchParameter EnableSubvolume { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Specifies whether the volume operates in Breakthrough Mode. Possible values include: 'Enabled', 'Disabled'")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string BreakthroughMode { get; set; }
@@ -441,7 +438,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     ProximityPlacementGroup = ProximityPlacementGroup,
                     VolumeSpecName = VolumeSpecName,
                     PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
-                    EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
                     BreakthroughMode = BreakthroughMode,
                     EncryptionKeySource = EncryptionKeySource,
                     KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
@@ -518,7 +514,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 ProximityPlacementGroup = ProximityPlacementGroup,
                 VolumeSpecName = VolumeSpecName,
                 PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
-                EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
                 EncryptionKeySource = EncryptionKeySource,
                 KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
                 DeleteBaseSnapshot = DeleteBaseSnapshot,

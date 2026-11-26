@@ -1,0 +1,122 @@
+{
+  "Get-AzAIInfraOptimizationVMSkuRecommendation+[NoContext]+RecommendExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AIInfraOptimization/locations/eastus2/recommendVmSku?api-version=2026-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AIInfraOptimization/locations/eastus2/recommendVmSku?api-version=2026-06-01-preview",
+      "Content": "{\r\n  \"model\": {\r\n    \"parameterCount\": 7615616512,\r\n    \"weightPrecision\": \"BF16\",\r\n    \"numLayers\": 28,\r\n    \"numKeyValueHeads\": 4,\r\n    \"headDim\": 128\r\n  },\r\n  \"workload\": {\r\n    \"tokenBudget\": {\r\n      \"promptTokens\": 2048,\r\n      \"maxOutputTokens\": 512\r\n    },\r\n    \"maxConcurrentRequestsPerReplica\": 8\r\n  },\r\n  \"deployment\": {\r\n    \"replicaCount\": 2\r\n  },\r\n  \"optimization\": {\r\n    \"rankingPreference\": \"Cost\"\r\n  },\r\n  \"subscriptionOptions\": {\r\n    \"includeQuota\": true\r\n  },\r\n  \"targetVmSizes\": [ \"Standard_NC24ads_A100_v4\", \"Standard_NC40ads_H100_v5\" ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "562" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9e0b0df5-1f15-45f7-8e9f-e1be2997e32e/japaneast/873e3982-2cea-48ab-9b9e-1e2f12c9a149" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "cc2ca509-1195-4fc1-af4f-78e62db0e6e1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "7184e45c-9a92-4a95-8280-8861e6312746" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20261106T064439Z:7184e45c-9a92-4a95-8280-8861e6312746" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B5FF47319E104466A0D1AB2691CA6FBC Ref B: TYO201151004052 Ref C: 2026-11-06T06:44:39Z" ],
+        "Date": [ "Fri, 06 Nov 2026 06:44:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2565" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"options\":[{\"vmSize\":\"Standard_NC24ads_A100_v4\",\"recommendationRank\":1,\"readiness\":{\"status\":\"QuotaIncreaseRequired\",\"reason\":\"Increase quota before placement can be evaluated for this topology.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":2,\"accelerator\":{\"model\":\"A100\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":80}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":3.673,\"deploymentHourly\":7.346,\"source\":\"AzureRetail\"},\"quota\":{\"status\":\"Unavailable\",\"reason\":\"Insufficient quota for deployment (regular). Required vCPUs: 48, regional vCPU quota available: 100, SKU family \u0027StandardNCADSA100v4Family\u0027 vCPU quota available: 0.\",\"maxAvailableReplicaCount\":0,\"increase\":{\"limits\":[{\"name\":\"StandardNCADSA100v4Family vCPUs\",\"currentUsage\":0,\"currentLimit\":0,\"requiredLimit\":48}],\"portalUrl\":\"https://portal.azure.com/#view/Microsoft_Azure_Capacity/QuotaMenuBlade/~/myQuotas\"}},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nca100v4-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":994,\"ttftMs\":1639.7}},{\"vmSize\":\"Standard_NC40ads_H100_v5\",\"recommendationRank\":2,\"readiness\":{\"status\":\"QuotaIncreaseRequired\",\"reason\":\"Increase quota before placement can be evaluated for this topology.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":2,\"accelerator\":{\"model\":\"H100 NVL\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":94}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":6.98,\"deploymentHourly\":13.96,\"source\":\"AzureRetail\"},\"quota\":{\"status\":\"Unavailable\",\"reason\":\"Insufficient quota for deployment (regular). Required vCPUs: 80, regional vCPU quota available: 100, SKU family \u0027StandardNCadsH100v5Family\u0027 vCPU quota available: 0.\",\"maxAvailableReplicaCount\":0,\"increase\":{\"limits\":[{\"name\":\"StandardNCadsH100v5Family vCPUs\",\"currentUsage\":0,\"currentLimit\":0,\"requiredLimit\":80}],\"portalUrl\":\"https://portal.azure.com/#view/Microsoft_Azure_Capacity/QuotaMenuBlade/~/myQuotas\"}},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/ncadsh100v5-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":2051,\"ttftMs\":696.7}}],\"sizing\":{\"model\":{\"parameterCount\":7615616512,\"weightPrecision\":\"BF16\"},\"workload\":{\"maxConcurrentRequestsPerReplica\":8,\"contextLength\":2560},\"memory\":{\"modelWeightsGiB\":14.19,\"kvCacheGiBPerRequest\":0.14,\"kvCacheGiBTotal\":1.09,\"modelAndKvCacheGiB\":15.28},\"basis\":{\"parameterCountSource\":\"Request\",\"modelWeightsCalculation\":\"EstimatedFromParameterCount\",\"contextLengthSource\":\"Request\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAIInfraOptimizationVMSkuRecommendation+[NoContext]+RecommendViaJsonFilePath+$POST+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AIInfraOptimization/locations/eastus2/recommendVmSku?api-version=2026-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AIInfraOptimization/locations/eastus2/recommendVmSku?api-version=2026-06-01-preview",
+      "Content": "ew0KICAibW9kZWwiOiB7DQogICAgImh1Z2dpbmdGYWNlTW9kZWxJZCI6ICJRd2VuL1F3ZW4yLjUtN0ItSW5zdHJ1Y3QiDQogIH0sDQogICJ3b3JrbG9hZCI6IHsNCiAgICAibWF4Q29uY3VycmVudFJlcXVlc3RzUGVyUmVwbGljYSI6IDQNCiAgfQ0KfQ0K",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "144" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9e0b0df5-1f15-45f7-8e9f-e1be2997e32e/japaneast/04e6c965-6fed-499c-8d48-f0e66c7b9e5a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "672f2b83-a6ef-4312-ab97-29e7e7bdf651" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "de8b25bc-c1f1-403d-bd3b-ecdd2c16088e" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20261106T064441Z:de8b25bc-c1f1-403d-bd3b-ecdd2c16088e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 94BFFAB87246484C8F7D3F86D3F10F7A Ref B: TYO201151004052 Ref C: 2026-11-06T06:44:40Z" ],
+        "Date": [ "Fri, 06 Nov 2026 06:44:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6774" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"options\":[{\"vmSize\":\"Standard_NC4as_T4_v3\",\"recommendationRank\":1,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":2,\"estimatedTotalNodeCount\":2,\"accelerator\":{\"model\":\"T4\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":16}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":0.526,\"deploymentHourly\":1.052,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/ncast4v3-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":81,\"ttftMs\":4983.3}},{\"vmSize\":\"Standard_NC8as_T4_v3\",\"recommendationRank\":2,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":2,\"estimatedTotalNodeCount\":2,\"accelerator\":{\"model\":\"T4\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":16}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":0.752,\"deploymentHourly\":1.504,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/ncast4v3-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":81,\"ttftMs\":4983.3}},{\"vmSize\":\"Standard_NC16as_T4_v3\",\"recommendationRank\":3,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":2,\"estimatedTotalNodeCount\":2,\"accelerator\":{\"model\":\"T4\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":16}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":1.204,\"deploymentHourly\":2.408,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/ncast4v3-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":81,\"ttftMs\":4983.3}},{\"vmSize\":\"Standard_NV36ads_A10_v5\",\"recommendationRank\":4,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":1,\"accelerator\":{\"model\":\"A10\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":24}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":3.2,\"deploymentHourly\":3.2,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nvadsa10v5-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":102,\"ttftMs\":3155.8}},{\"vmSize\":\"Standard_NC24ads_A100_v4\",\"recommendationRank\":5,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":1,\"accelerator\":{\"model\":\"A100\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":80}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":3.673,\"deploymentHourly\":3.673,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nca100v4-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":337,\"ttftMs\":1288.3}},{\"vmSize\":\"Standard_NC64as_T4_v3\",\"recommendationRank\":6,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":1,\"accelerator\":{\"model\":\"T4\",\"countPerVm\":4,\"memoryGiBPerAccelerator\":16}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":4.352,\"deploymentHourly\":4.352,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/ncast4v3-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":137,\"ttftMs\":2511.7}},{\"vmSize\":\"Standard_NV36adms_A10_v5\",\"recommendationRank\":7,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":1,\"accelerator\":{\"model\":\"A10\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":24}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":4.52,\"deploymentHourly\":4.52,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nvadsa10v5-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":102,\"ttftMs\":3155.8}},{\"vmSize\":\"Standard_NC144lds_xl_RTXPRO6000BSE_v6\",\"recommendationRank\":8,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":1,\"accelerator\":{\"model\":\"RTX PRO 6000\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":96}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":5.5,\"deploymentHourly\":5.5,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":354,\"ttftMs\":252.8}},{\"vmSize\":\"Standard_NC144ds_xl_RTXPRO6000BSE_v6\",\"recommendationRank\":9,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":1,\"accelerator\":{\"model\":\"RTX PRO 6000\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":96}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":6.38,\"deploymentHourly\":6.38,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nc-rtxpro6000-bse-v6-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":354,\"ttftMs\":252.8}},{\"vmSize\":\"Standard_NV72ads_A10_v5\",\"recommendationRank\":10,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":1,\"accelerator\":{\"model\":\"A10\",\"countPerVm\":2,\"memoryGiBPerAccelerator\":24}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":6.52,\"deploymentHourly\":6.52,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nvadsa10v5-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":173,\"ttftMs\":1597.9}}],\"sizing\":{\"model\":{\"parameterCount\":7615616512,\"weightPrecision\":\"FP16\",\"huggingFaceModelId\":\"Qwen/Qwen2.5-7B-Instruct\"},\"workload\":{\"maxConcurrentRequestsPerReplica\":4,\"contextLength\":4096},\"memory\":{\"modelWeightsGiB\":14.19,\"kvCacheGiBPerRequest\":0.22,\"kvCacheGiBTotal\":0.88,\"modelAndKvCacheGiB\":15.06},\"basis\":{\"parameterCountSource\":\"HuggingFace\",\"modelWeightsCalculation\":\"ArtifactSize\",\"contextLengthSource\":\"Default\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAIInfraOptimizationVMSkuRecommendation+[NoContext]+RecommendViaJsonString+$POST+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AIInfraOptimization/locations/eastus2/recommendVmSku?api-version=2026-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.AIInfraOptimization/locations/eastus2/recommendVmSku?api-version=2026-06-01-preview",
+      "Content": "{\r\n  \"model\": {\r\n    \"huggingFaceModelId\": \"Qwen/Qwen2.5-7B-Instruct\"\r\n  },\r\n  \"targetVmSizes\": [\r\n    \"Standard_NC24ads_A100_v4\",\r\n    \"Standard_NC40ads_H100_v5\"\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "170" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9e0b0df5-1f15-45f7-8e9f-e1be2997e32e/japaneast/7a3c154f-e112-493d-b74b-7a0c652b1e61" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "678d8670-bd19-4a20-a51b-046bfbd80816" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "8f0b7519-45d7-4682-80dd-15dbecf79f6e" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20261106T064442Z:8f0b7519-45d7-4682-80dd-15dbecf79f6e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2F51135FC9D0475AB72C94FA75EA208F Ref B: TYO201151004052 Ref C: 2026-11-06T06:44:41Z" ],
+        "Date": [ "Fri, 06 Nov 2026 06:44:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1701" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"options\":[{\"vmSize\":\"Standard_NC24ads_A100_v4\",\"recommendationRank\":1,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":1,\"accelerator\":{\"model\":\"A100\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":80}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":3.673,\"deploymentHourly\":3.673,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nca100v4-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":92,\"ttftMs\":352.1}},{\"vmSize\":\"Standard_NC40ads_H100_v5\",\"recommendationRank\":2,\"readiness\":{\"status\":\"VerificationRequired\",\"reason\":\"Quota or placement evidence must be verified before attempting deployment.\"},\"topology\":{\"estimatedNodeCountPerReplica\":1,\"estimatedTotalNodeCount\":1,\"accelerator\":{\"model\":\"H100 NVL\",\"countPerVm\":1,\"memoryGiBPerAccelerator\":94}},\"cost\":{\"currencyCode\":\"USD\",\"vmHourly\":6.98,\"deploymentHourly\":6.98,\"source\":\"AzureRetail\"},\"documentationUrl\":\"https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/ncadsh100v5-series\",\"performanceEstimate\":{\"deploymentOutputTokensPerSecond\":162,\"ttftMs\":168.1}}],\"sizing\":{\"model\":{\"parameterCount\":7615616512,\"weightPrecision\":\"FP16\",\"huggingFaceModelId\":\"Qwen/Qwen2.5-7B-Instruct\"},\"workload\":{\"maxConcurrentRequestsPerReplica\":1,\"contextLength\":4096},\"memory\":{\"modelWeightsGiB\":14.19,\"kvCacheGiBPerRequest\":0.22,\"kvCacheGiBTotal\":0.22,\"modelAndKvCacheGiB\":14.4},\"basis\":{\"parameterCountSource\":\"HuggingFace\",\"modelWeightsCalculation\":\"ArtifactSize\",\"contextLengthSource\":\"Default\"}}}",
+      "isContentBase64": false
+    }
+  }
+}

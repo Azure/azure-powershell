@@ -51,13 +51,24 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="softDeletedTime">The timestamp for when the resource is soft-deleted. In dateTime offset
         /// format.
         /// </param>
-        public GallerySoftDeletedResource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string resourceArmId = default(string), string softDeletedArtifactType = default(string), string softDeletedTime = default(string))
+
+        /// <param name="consumptionEndTime">The timestamp after which a soft-deleted gallery image version is no longer
+        /// consumable for VM/VMSS creation or VMSS scale out. It is calculated from
+        /// the soft-deleted time plus the retention period. In dateTime offset format.
+        /// </param>
+
+        /// <param name="hardDeletionTargetTime">The timestamp at which a soft-deleted gallery image version is permanently
+        /// (hard) deleted and can no longer be recovered. In dateTime offset format.
+        /// </param>
+        public GallerySoftDeletedResource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string resourceArmId = default(string), string softDeletedArtifactType = default(string), string softDeletedTime = default(string), System.DateTime? consumptionEndTime = default(System.DateTime?), System.DateTime? hardDeletionTargetTime = default(System.DateTime?))
 
         : base(location, id, name, type, tags)
         {
             this.ResourceArmId = resourceArmId;
             this.SoftDeletedArtifactType = softDeletedArtifactType;
             this.SoftDeletedTime = softDeletedTime;
+            this.ConsumptionEndTime = consumptionEndTime;
+            this.HardDeletionTargetTime = hardDeletionTargetTime;
             CustomInit();
         }
 
@@ -85,6 +96,23 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.softDeletedTime")]
         public string SoftDeletedTime {get; set; }
+
+        /// <summary>
+        /// Gets the timestamp after which a soft-deleted gallery image version is no
+        /// longer consumable for VM/VMSS creation or VMSS scale out. It is calculated
+        /// from the soft-deleted time plus the retention period. In dateTime offset
+        /// format.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.consumptionEndTime")]
+        public System.DateTime? ConsumptionEndTime {get; private set; }
+
+        /// <summary>
+        /// Gets the timestamp at which a soft-deleted gallery image version is
+        /// permanently (hard) deleted and can no longer be recovered. In dateTime
+        /// offset format.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hardDeletionTargetTime")]
+        public System.DateTime? HardDeletionTargetTime {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using System.Text;
 using System.Text.RegularExpressions;
 using static Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PowerShell.PsProxyOutputExtensions;
@@ -197,6 +198,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PowerShell
         {
             return (!VariantGroup.IsInternal && IsAzure) ? $@"{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()" : "";
         }
+    }
+
+    internal class DynamicParamOutput : BaseOutput
+    {
+        public DynamicParamOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
+        }
+
+        // Change Safety: only emit a dynamicparam block when the wrapped command actually declares dynamic
+        // parameters, either via IDynamicParameters (compiled private cmdlets) or via its own `dynamicparam`
+        // block (custom-fronted cmdlets, which wrap a hand-written function in custom/ instead of a private
+        // cmdlet). For every other cmdlet this emits nothing (zero diff), so it is a no-op that just forwards
+        // the wrapped command's runtime parameters through the proxy.
+        private bool HasDynamicParameters() => VariantGroup.Variants.Any(v =>
+        {
+            if (v.IsFunction)
+            {
+                // FunctionInfo.ScriptBlock.Ast is a FunctionDefinitionAst (the `function Name { ... }` wrapper);
+                // its Body (a ScriptBlockAst) is what actually exposes the DynamicParamBlock property.
+                var ast = (v.Info as FunctionInfo)?.ScriptBlock?.Ast;
+                var scriptBlockAst = ast as ScriptBlockAst ?? (ast as FunctionDefinitionAst)?.Body;
+                return scriptBlockAst?.DynamicParamBlock != null;
+            }
+            var implementingType = (v.Info as CmdletInfo)?.ImplementingType;
+            return implementingType != null && typeof(IDynamicParameters).IsAssignableFrom(implementingType);
+        });
+
+        private string GetParameterSetToCmdletMapping()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"{Indent}$mapping = @{{");
+            foreach (var variant in VariantGroup.Variants)
+            {
+                sb.AppendLine($@"{Indent}{Indent}{variant.VariantName} = '{variant.PrivateModuleName}\{variant.PrivateCmdletName}';");
+            }
+            sb.Append($"{Indent}}}");
+            return sb.ToString();
+        }
+
+        public override string ToString() => !HasDynamicParameters() ? String.Empty : $@"dynamicparam {{
+{Indent}$parameterSet = $PSCmdlet.ParameterSetName
+{GetParameterSetToCmdletMapping()}
+{Indent}if (-not $mapping.ContainsKey($parameterSet)) {{ $parameterSet = @($mapping.Keys)[0] }}
+{Indent}try {{
+{Indent}{Indent}$targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+{Indent}{Indent}$dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object {{ $_.Value.IsDynamic }})
+{Indent}{Indent}if ($dynamicParams.Length -gt 0) {{
+{Indent}{Indent}{Indent}$paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+{Indent}{Indent}{Indent}foreach ($param in $dynamicParams) {{
+{Indent}{Indent}{Indent}{Indent}$param = $param.Value
+{Indent}{Indent}{Indent}{Indent}if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {{
+{Indent}{Indent}{Indent}{Indent}{Indent}$dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+{Indent}{Indent}{Indent}{Indent}{Indent}$paramDictionary.Add($param.Name, $dynParam)
+{Indent}{Indent}{Indent}{Indent}}}
+{Indent}{Indent}{Indent}}}
+{Indent}{Indent}{Indent}return $paramDictionary
+{Indent}{Indent}}}
+{Indent}}} catch {{
+{Indent}{Indent}throw
+{Indent}}}
+}}
+
+";
     }
 
     internal class BeginOutput : BaseOutput
@@ -639,6 +703,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PowerShell
         public static ParameterTypeOutput ToParameterTypeOutput(this Type parameterType) => new ParameterTypeOutput(parameterType);
 
         public static ParameterNameOutput ToParameterNameOutput(this string parameterName, bool isLast) => new ParameterNameOutput(parameterName, isLast);
+
+        public static DynamicParamOutput ToDynamicParamOutput(this VariantGroup variantGroup) => new DynamicParamOutput(variantGroup);
 
         public static BeginOutput ToBeginOutput(this VariantGroup variantGroup) => new BeginOutput(variantGroup);
 

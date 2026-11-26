@@ -42,7 +42,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="protectableObjectType">Type of the protectable object associated with this container
         /// </param>
-        public ProtectionContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string))
+
+        /// <param name="sourceLocation">Source location of the container
+        /// </param>
+        public ProtectionContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceLocation = default(string))
 
         {
             this.FriendlyName = friendlyName;
@@ -50,6 +53,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.RegistrationStatus = registrationStatus;
             this.HealthStatus = healthStatus;
             this.ProtectableObjectType = protectableObjectType;
+            this.SourceLocation = sourceLocation;
             CustomInit();
         }
 
@@ -89,5 +93,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protectableObjectType")]
         public string ProtectableObjectType {get; set; }
+
+        /// <summary>
+        /// Gets source location of the container
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceLocation")]
+        public string SourceLocation {get; private set; }
     }
 }

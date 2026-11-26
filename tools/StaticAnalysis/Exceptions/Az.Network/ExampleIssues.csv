@@ -1,2 +1,3 @@
 "Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
 "Az.Network","Add-AzVirtualNetworkPeering","2","5","Invalid_Cmdlet","5000","1","New-AzResourceGroup is not a valid command name.","New-AzResourceGroup -Name $rgName  -Location westcentralus","Check the spell of New-AzResourceGroup."
+"Az.Network","Get-AzVirtualNetworkGatewayEffectiveRoute","1","1","Invalid_Cmdlet","5000","1","Get-AzVirtualNetworkGatewayEffectiveRoute is not a valid command name.","Get-AzVirtualNetworkGatewayEffectiveRoute -ResourceGroupName resourceGroup -VirtualNetworkGatewayName gatewayName","Check the spell of Get-AzVirtualNetworkGatewayEffectiveRoute."

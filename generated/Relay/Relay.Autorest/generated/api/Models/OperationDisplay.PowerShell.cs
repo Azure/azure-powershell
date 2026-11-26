@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PowerShell;
 
-    /// <summary>Operation display payload</summary>
+    /// <summary>Localized display information for this particular operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(OperationDisplayTypeConverter))]
     public partial class OperationDisplay
     {
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             return ToJsonString();
         }
     }
-    /// Operation display payload
+    /// Localized display information for this particular operation.
     [System.ComponentModel.TypeConverter(typeof(OperationDisplayTypeConverter))]
     public partial interface IOperationDisplay
 

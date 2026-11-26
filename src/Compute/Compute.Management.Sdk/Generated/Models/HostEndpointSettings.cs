@@ -34,11 +34,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="inVMAccessControlProfileReferenceId">Specifies the InVMAccessControlProfileVersion resource id in the format of
         /// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}
         /// </param>
-        public HostEndpointSettings(string mode = default(string), string inVMAccessControlProfileReferenceId = default(string))
+
+        /// <param name="useLocalFileRules">When set to true, instructs the GuestProxyAgent inside the VM to load
+        /// additional access control rules defined in a local file on the VM.
+        /// </param>
+        public HostEndpointSettings(string mode = default(string), string inVMAccessControlProfileReferenceId = default(string), bool? useLocalFileRules = default(bool?))
 
         {
             this.Mode = mode;
             this.InVMAccessControlProfileReferenceId = inVMAccessControlProfileReferenceId;
+            this.UseLocalFileRules = useLocalFileRules;
             CustomInit();
         }
 
@@ -65,5 +70,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "inVMAccessControlProfileReferenceId")]
         public string InVMAccessControlProfileReferenceId {get; set; }
+
+        /// <summary>
+        /// Gets or sets when set to true, instructs the GuestProxyAgent inside the VM
+        /// to load additional access control rules defined in a local file on the VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "useLocalFileRules")]
+        public bool? UseLocalFileRules {get; set; }
     }
 }

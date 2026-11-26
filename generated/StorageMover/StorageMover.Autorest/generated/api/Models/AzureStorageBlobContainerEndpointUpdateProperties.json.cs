@@ -66,6 +66,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 return;
             }
             __endpointBaseUpdateProperties = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.EndpointBaseUpdateProperties(json);
+            {_enableCrossTenantTransfer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonBoolean>("enableCrossTenantTransfer"), out var __jsonEnableCrossTenantTransfer) ? (bool?)__jsonEnableCrossTenantTransfer : _enableCrossTenantTransfer;}
+            {_allowedStorageAccount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray>("allowedStorageAccounts"), out var __jsonAllowedStorageAccounts) ? If( __jsonAllowedStorageAccounts as Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _allowedStorageAccount;}
             AfterFromJson(json);
         }
 
@@ -103,6 +105,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 return container;
             }
             __endpointBaseUpdateProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._enableCrossTenantTransfer ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonBoolean((bool)this._enableCrossTenantTransfer) : null, "enableCrossTenantTransfer" ,container.Add );
+            if (null != this._allowedStorageAccount)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.XNodeArray();
+                foreach( var __x in this._allowedStorageAccount )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("allowedStorageAccounts",__w);
+            }
             AfterToJson(ref container);
             return container;
         }

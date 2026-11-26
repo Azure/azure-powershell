@@ -67,10 +67,11 @@ param(
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
+    [Alias('ManagementGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The name of the management group.
-    ${ManagementGroupName},
+    ${ManagementGroupId},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
     [Alias('ResourceId')]

@@ -36,8 +36,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " Azure Backup service (for example: resource name of the VM).";
             public const string ResourceId = "ID of the Azure Resource containing items to be protected by Azure Backup service. Currently, only Azure VM resource IDs are supported.";
             public const string ContainerObj = "Container object that needs to be re registered.";
-            public const string ForceOption = "Force registers container (prevents confirmation dialog). This parameter is optional.";
+            public const string ForceOption = "Force registers or re-registers the container (prevents confirmation dialog). This parameter is optional.";
             public const string ForceUnregister = "Force unregisters container (prevents confirmation dialog). This parameter is optional.";
+            public const string ContainerSubscriptionId = "Subscription ID of the subscription containing the containers to discover during registration, for cross-subscription container discovery. This parameter is optional.";
         }
 
         internal static class Common
@@ -74,6 +75,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureBackupResourceGroup = "Custom resource group name to store the instant recovery points of managed virtual machines. This is optional";
             public const string AzureBackupResourceGroupSuffix = "Custom resource group name suffix to store the instant recovery points of managed virtual machines. This is optional";
             public const string SnapshotConsistencyType = "Snapshot consistency type to be used for backup. If set to OnlyCrashConsistent, all associated items will have crash consistent snapshot. Possible values are OnlyCrashConsistent, Default";
+            public const string InstantRPRetentionRangeInDays = "Instant recovery point retention range in days for SQL (MSSQL) Instance snapshot policies.";
+            public const string UserAssignedIdentityId = "ARM ID of the user-assigned managed identity used for SQL (MSSQL) Instance snapshot backup.";
         }
 
         internal static class Job
@@ -96,6 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
             public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
             public const string ProtectedItem = "Specifies the item to be protected with the given policy.";
+            public const string ChildDatabaseName = "List of child database names to protect under a SQL (MSSQL) Instance snapshot protection. Applicable when protecting a SQL Instance with an MSSQLInstance (snapshot) policy.";
             public const string SuspendItem = "Specifies the item for which the backup needs to be suspended.";
             public const string ProtectableItem = "Specifies the protectable item to be protected using Azure Backup.";
             public const string ProtectionStatus = "Protection status of Item";
@@ -113,7 +117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureFileShareName = "Azure FileShare Name.";
             public const string AzureFileStorageAccountName = "Azure file share storage account name";
             public const string AzureFileStorageAccountResourceGroupName = "Azure file share storage account resource group name";
-            public const string BackupType = "Specifies the type of backup to be taken for an on-demand backup. Allowed values are “CopyOnlyFull”, “Full”, “Differential”, “Log”.";
+            public const string BackupType = "Specifies the type of backup to be taken for an on-demand backup. Allowed values are \u201CCopyOnlyFull\u201D, \u201CFull\u201D, \u201CDifferential\u201D, \u201CLog\u201D, \u201CSnapshotFull\u201D, \u201CSnapshotCopyOnlyFull\u201D.";
             public const string EnableCompression = "A switch which will specify that the requested on-demand SQL backup should be compressed.";
             public const string ParentID = "Specified the ARM ID of an Instance or AG.";
             public const string FriendlyName = "FriendlyName of the backed up item";
@@ -123,6 +127,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string excludeAllDataDisks = "Option to specify to backup OS disks only";
             public const string ReprotectItem = "Specifies the backup item for which this cmdlet reverts the deletion."; 
             public const string containerSubscriptionId = "Subscription ID of the Azure Virtual Machine to be protected. Use this parameter to configure backup for a VM that resides in a different subscription than the Recovery Services vault (Cross Subscription Backup).";
+            public const string AccessType = "Specifies how backup accesses the storage account for Azure Files backup. Allowed values: 'KeyBased' (shared key, default) or 'IdentityBased' (vault managed identity via RBAC). When 'IdentityBased', an identity must be provided via -IsSystemAssignedIdentity or -UserAssignedIdentityArmUrl.";
+            public const string IsSystemAssignedIdentity = "Switch to use the vault's system-assigned managed identity to access the storage account for identity-based Azure Files backup.";
+            public const string UserAssignedIdentityArmUrl = "The ARM resource id (ARM URL) of the user-assigned managed identity used to access the storage account for identity-based Azure Files backup.";
+            public const string ForceReregister = "Forces re-registration of the storage account when the access type or identity changes (prevents the confirmation prompt).";
+            public const string SourceScanItem = "Specifies the backup item for which Source Scan (Microsoft Defender for Cloud) is to be configured.";
+            public const string SourceScanState = "Specifies the Source Scan state to set for the item. Allowed values are Enabled, Disabled.";
+            public const string SourceScanForceOption = "Forces the Source Scan configuration change (prevents confirmation dialog). This parameter is optional.";
+            public const string SourceScanPassThru = "Returns the updated backup item after the Source Scan configuration operation completes.";
         }
 
         internal static class ProtectableItem
@@ -155,6 +167,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string DestinationTier = "Destination Tier for Recovery Point move. Currently the only acceptable value is 'VaultArchive' ";
             public const string RehydratePriority = "Rehydration priority for an archived recovery point while triggering the restore. Acceptable values are Standard, High.";
             public const string RehydrateDuration = "Duration in days for which to keep the archived recovery point rehydrated. Value can range from 10 to 30 days, default value is 15 days.";
+            public const string GetLatestRecoveryPointOnly = "When set, only the latest recovery point for the item is fetched.";
+            public const string BaseSnapshotRecoveryPointId = "Id of the base snapshot recovery point. Used to fetch recovery points relative to a base snapshot.";
+            public const string BaseRecoveryPointDatasourceId = "Id of the datasource of the base snapshot recovery point.";
+            public const string RestorePointQueryType = "Restore point query type to filter the recovery points to fetch for SQL (MSSQL) items. Accepted values: Full, Differential, FullAndDifferential, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot. Defaults to FullAndDifferential. Use Get-AzRecoveryServicesBackupRecoveryLogChain to retrieve point-in-time log ranges.";
+            public const string RecoveryMode = "Recovery mode for SQL (MSSQL) snapshot recovery. Accepted values: SnapshotAttachAndRecover, SnapshotAttach, RecoveryUsingSnapshot. To list point-in-time log ranges on top of a base snapshot, use Get-AzRecoveryServicesBackupRecoveryLogChain with -BaseSnapshotRecoveryPointId and -BaseRecoveryPointDatasourceId.";
         }
 
         internal static class RestoreDisk
@@ -164,6 +181,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
             public const string RecoveryConfig = "Recovery config";
             public const string UseSecondaryReg = "Trigger restore to secondary region (Cross Region Restore)";
+            public const string DisksToDetachOnClash = "List of disk ARM IDs to detach in case of a filesystem clash during SQL (MSSQL) snapshot restore.";
+            public const string TargetInstanceDatabaseName = "Target database name for SQL (MSSQL) Instance snapshot restore. Overrides the default '<targetInstance>/*_restored_<timestamp>' value; may be instance-qualified (e.g. 'mssqlserver/*_lh_20261012_230309').";
         }
 
         internal static class RestoreVM
@@ -196,6 +215,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetFileShareName = "The File Share to which the file share has to be restored to.";
             public const string TargetFolder = "The folder under which the file share has to be restored to within the targetFileShareName.Leave the variable empty to restore under root folder.";
             public const string MultipleSourceFilePath = "Used for Multiple files restore from a file share. The paths of the items to be restored within the file share.";
+            public const string IsSystemAssignedIdentity = "Switch to use the vault's system-assigned managed identity to access the storage account for identity-based Azure Files restore. The restore identity may differ from the identity registered on the storage account.";
+            public const string UserAssignedIdentityArmUrl = "The ARM resource id (ARM URL) of the user-assigned managed identity used to access the storage account for identity-based Azure Files restore. The restore identity may differ from the identity registered on the storage account.";
+            public const string TargetSubscriptionId = "ID of the target subscription to which the file share should be restored. Use this parameter for Cross Subscription Restore (CSR) of Azure Files.";
         }
 
         internal static class ProtectionCheck
@@ -217,6 +239,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RestoeAsFiles = "Specifies to restore Database as files in a machine.";
             public const string FilePath = "Specifies the filepath which is used for restore operation.";
             public const string FromFull = "Specifies the Full RecoveryPoint to which Log backups will be applied.";
+            public const string RecoveryMode = "Recovery mode for SQL (MSSQL) Instance snapshot restore. Accepted values: SnapshotAttachAndRecover (default), SnapshotAttach, RecoveryUsingSnapshot.";
+            public const string NoRecoveryMode = "Restore the database(s) in NORECOVERY mode, leaving them non-recoverable so that further restores can be applied.";
+            public const string TargetDirectoryMapping = "Target directory mapping for SnapshotAttach restore, as a hashtable (for example @{ all = 'C:/temp' }).";
         }
 
         internal static class DSMove

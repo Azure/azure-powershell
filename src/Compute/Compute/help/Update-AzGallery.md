@@ -20,6 +20,8 @@ Update-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Descr
  [-PublisherUri <String>] [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
  [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
  [-UserAssignedIdentity <String[]>] [-RemoveUserAssignedIdentity <String[]>]
+ [-EnableSoftDelete] [-DisableSoftDelete] [-SoftDeleteRetentionPeriodInDays <Int32>]
+ [-SoftDeleteGracePeriodInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -32,6 +34,8 @@ Update-AzGallery [-ResourceId] <String> [-AsJob] [-Description <String>] [-Tag <
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
  [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
  [-UserAssignedIdentity <String[]>] [-RemoveUserAssignedIdentity <String[]>]
+ [-EnableSoftDelete] [-DisableSoftDelete] [-SoftDeleteRetentionPeriodInDays <Int32>]
+ [-SoftDeleteGracePeriodInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -44,6 +48,8 @@ Update-AzGallery [-InputObject] <PSGallery> [-AsJob] [-Description <String>] [-T
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
  [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
  [-UserAssignedIdentity <String[]>] [-RemoveUserAssignedIdentity <String[]>]
+ [-EnableSoftDelete] [-DisableSoftDelete] [-SoftDeleteRetentionPeriodInDays <Int32>]
+ [-SoftDeleteGracePeriodInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -113,6 +119,14 @@ Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -RemoveUserAssign
 
 Update a gallery to remove a specific user-assigned managed identity.
 
+### Example 9
+```powershell
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName `
+    -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30
+```
+
+Enable soft delete and set the retention period for gallery image versions.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -175,8 +189,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DisableSoftDelete
+Disables soft delete for future gallery image version deletions. Cannot be used together with -EnableSoftDelete.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisableSystemAssignedIdentity
 Disables system-assigned managed identity on the gallery. Cannot be used together with -EnableSystemAssignedIdentity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSoftDelete
+Enables soft delete for gallery image versions. Cannot be used together with -DisableSoftDelete.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -412,6 +456,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SoftDeleteGracePeriodInDays
+The number of days a simulated hard-deleted gallery image version remains recoverable. Changing this value does not enable or disable soft delete.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteRetentionPeriodInDays
+The number of days a soft-deleted gallery image version is retained. Changing this value does not enable or disable soft delete.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -52,13 +52,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Minimum api-version: 2021-11-01.
         /// </param>
 
-        /// <param name="scheduleProfile">Defines the schedule for Block-type capacity reservations. Specifies the
-        /// schedule during which capacity reservation is active and VM or VMSS
-        /// resource can be allocated using reservation. This property is required and
-        /// only supported when the capacity reservation group type is &#39;Block&#39;. The
-        /// scheduleProfile, start, and end fields are immutable after creation.
-        /// Minimum API version: 2025-04-01. Please refer to
-        /// https://aka.ms/blockcapacityreservation for more details.
+        /// <param name="scheduleProfile">Defines the schedule for Block and Future capacity reservations. Specifies
+        /// the schedule during which capacity reservation is active and VM or VMSS
+        /// resource can be allocated using reservation. For Block capacity
+        /// reservations, the scheduleProfile, start, and end fields are immutable
+        /// after creation. Please refer to https://aka.ms/blockcapacityreservation for
+        /// more details. Minimum API version for Block capacity reservations:
+        /// 2025-04-01. Future capacity reservations must use this property with only a
+        /// start time, which can be changed until the ‘modifiableUntil’ time. Please
+        /// refer to https://aka.ms/futurecapacityreservation for more details. Minimum
+        /// API version for Future capacity reservations: 2026-04-01.
         /// </param>
         public CapacityReservationProperties(string reservationId = default(string), int? platformFaultDomainCount = default(int?), System.Collections.Generic.IList<SubResourceReadOnly> virtualMachinesAssociated = default(System.Collections.Generic.IList<SubResourceReadOnly>), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), CapacityReservationInstanceView instanceView = default(CapacityReservationInstanceView), System.DateTime? timeCreated = default(System.DateTime?), ScheduleProfile scheduleProfile = default(ScheduleProfile))
 
@@ -130,13 +133,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         public System.DateTime? TimeCreated {get; private set; }
 
         /// <summary>
-        /// Gets or sets defines the schedule for Block-type capacity reservations.
-        /// Specifies the schedule during which capacity reservation is active and VM
-        /// or VMSS resource can be allocated using reservation. This property is
-        /// required and only supported when the capacity reservation group type is
-        /// &#39;Block&#39;. The scheduleProfile, start, and end fields are immutable after
-        /// creation. Minimum API version: 2025-04-01. Please refer to
-        /// https://aka.ms/blockcapacityreservation for more details.
+        /// Gets or sets defines the schedule for Block and Future capacity
+        /// reservations. Specifies the schedule during which capacity reservation is
+        /// active and VM or VMSS resource can be allocated using reservation. For
+        /// Block capacity reservations, the scheduleProfile, start, and end fields are
+        /// immutable after creation. Please refer to
+        /// https://aka.ms/blockcapacityreservation for more details. Minimum API
+        /// version for Block capacity reservations: 2025-04-01. Future capacity
+        /// reservations must use this property with only a start time, which can be
+        /// changed until the ‘modifiableUntil’ time. Please refer to
+        /// https://aka.ms/futurecapacityreservation for more details. Minimum API
+        /// version for Future capacity reservations: 2026-04-01.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scheduleProfile")]
         public ScheduleProfile ScheduleProfile {get; set; }

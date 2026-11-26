@@ -14,21 +14,21 @@ Create a serviceGroup
 
 ### CreateExpanded (Default)
 ```
-New-AzServiceGroup -Name <String> [-DisplayName <String>] [-Kind <String>] [-ParentResourceId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzServiceGroup -Name <String> [-AttributeCriticality <Int32>] [-DisplayName <String>] [-Kind <String>]
+ [-ParentResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzServiceGroup -Name <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzServiceGroup -Name <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +81,22 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AttributeCriticality
+The criticality designation of the service group.
+Valid values range from 0 through 4.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

@@ -134,7 +134,7 @@ function Set-AzServiceBusQueue{
         [System.String]
         ${Status},
 
-        
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -195,6 +195,22 @@ function Set-AzServiceBusQueue{
         ${ProxyUseDefaultCredentials}
 	)
 
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.ServiceBus.private\New-AzServiceBusQueue_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
+
     process{
         try{
             $hasAutoDeleteOnIdle = $PSBoundParameters.Remove('AutoDeleteOnIdle')
@@ -214,8 +230,8 @@ function Set-AzServiceBusQueue{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $queue = Get-AzServiceBusQueue @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusQueue' -BoundParameters $PSBoundParameters
+            $queue = Get-AzServiceBusQueue @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

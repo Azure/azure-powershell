@@ -15,6 +15,7 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 ```
 New-AzStorageMoverAzSmbFileShareEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
  [-SubscriptionId <String>] -StorageAccountResourceId <String> -FileShareName <String> [-Description <String>]
+ [-EndpointKind <String>] [-EnableCrossTenantTransfer] [-AllowedStorageAccount <String[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,6 +52,21 @@ This command creates an Azure Storage SMB file share endpoint.
 
 ## PARAMETERS
 
+### -AllowedStorageAccount
+The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -68,6 +84,38 @@ Accept wildcard characters: False
 
 ### -Description
 A description for the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableCrossTenantTransfer
+Enables this endpoint to be used as one side of a cross-tenant data transfer.
+Defaults to false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointKind
+The kind of the endpoint, either Source or Target.
+Cannot be changed after the endpoint is created.
 
 ```yaml
 Type: System.String

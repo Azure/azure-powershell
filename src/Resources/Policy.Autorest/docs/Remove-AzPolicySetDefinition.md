@@ -32,7 +32,7 @@ Remove-AzPolicySetDefinition -InputObject <IPolicyIdentity> [-Force] [-DefaultPr
 
 ### ManagementGroupName
 ```
-Remove-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-Force] [-Version <String>]
+Remove-AzPolicySetDefinition -ManagementGroupId <String> -Name <String> [-Force] [-Version <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -135,13 +135,13 @@ Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupName
+### -ManagementGroupId
 The name of the management group.
 
 ```yaml
 Type: System.String
 Parameter Sets: ManagementGroupName
-Aliases:
+Aliases: ManagementGroupName
 
 Required: True
 Position: Named

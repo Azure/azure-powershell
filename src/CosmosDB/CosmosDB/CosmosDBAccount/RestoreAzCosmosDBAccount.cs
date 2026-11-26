@@ -73,6 +73,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.SourceBackupLocationHelpMessage)]
         public string SourceBackupLocation { get; set; }
 
+        // Hidden, undocumented parameter used only by internal test scenario tests to satisfy the
+        // subscription-level policy requiring disableLocalAuth on new DatabaseAccounts PUT requests.
+        // Not shown in help/IntelliSense and not intended for customer use.
+        [Parameter(Mandatory = false, DontShow = true)]
+        public bool? DisableLocalAuth { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DateTime utcRestoreDateTime;
@@ -153,7 +159,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Kind = apiKind,
                 CreateMode = CreateMode.Restore,
                 RestoreParameters = restoreParameters.ToSDKModel(),
-                PublicNetworkAccess = PublicNetworkAccess
+                PublicNetworkAccess = PublicNetworkAccess,
+                DisableLocalAuth = DisableLocalAuth
             };
 
             if (ShouldProcess(TargetDatabaseAccountName,

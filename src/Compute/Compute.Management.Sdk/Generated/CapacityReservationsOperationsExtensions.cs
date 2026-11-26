@@ -220,8 +220,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -244,8 +249,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -364,8 +374,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -388,8 +403,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -111,6 +111,13 @@ param(
     # Security alerts cannot be disabled.
     ${AzureMonitorAlertsForAllJobFailure},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Settings for granularity level
+    ${CostManagementSettingGranularityLevel},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -284,6 +291,13 @@ param(
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Cost Management Granularity of the vault.
+    # Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
+    ${CostManagementGranularity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]

@@ -114,6 +114,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).Name, global::System.Convert.ToString);
             }
+            if (content.Contains("ServiceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).ServiceGroupName = (string) content.GetValueForProperty("ServiceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).ServiceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -142,6 +154,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             if (content.Contains("Name"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).ServiceGroupName = (string) content.GetValueForProperty("ServiceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).ServiceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

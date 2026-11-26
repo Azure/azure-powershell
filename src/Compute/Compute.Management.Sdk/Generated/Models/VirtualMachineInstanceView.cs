@@ -85,7 +85,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="interconnectInstanceView">The Interconnect runtime view of the Virtual Machine. Minimum api-version:
         /// 2026-03-01.
         /// </param>
-        public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), System.Collections.Generic.IList<DiskInstanceView> disks = default(System.Collections.Generic.IList<DiskInstanceView>), System.Collections.Generic.IList<VirtualMachineExtensionInstanceView> extensions = default(System.Collections.Generic.IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), string assignedHost = default(string), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), VirtualMachinePatchStatus patchStatus = default(VirtualMachinePatchStatus), bool? isVMInStandbyPool = default(bool?), InterconnectInstanceView interconnectInstanceView = default(InterconnectInstanceView))
+
+        /// <param name="capacityReservationType">Specifies which type of capacity reservation the virtual machine will
+        /// consume capacity from if eligible or whether it is explicitly opted out
+        /// from being associated and consuming capacity from any reserved capacity
+        /// available in the subscription. Minimum api-version: 2026-04-01.
+        /// Possible values include: &#39;NotEligible&#39;, &#39;Targeted&#39;, &#39;Open&#39;, &#39;Disabled&#39;,
+        /// &#39;Block&#39;</param>
+        public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), System.Collections.Generic.IList<DiskInstanceView> disks = default(System.Collections.Generic.IList<DiskInstanceView>), System.Collections.Generic.IList<VirtualMachineExtensionInstanceView> extensions = default(System.Collections.Generic.IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), string assignedHost = default(string), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), VirtualMachinePatchStatus patchStatus = default(VirtualMachinePatchStatus), bool? isVMInStandbyPool = default(bool?), InterconnectInstanceView interconnectInstanceView = default(InterconnectInstanceView), string capacityReservationType = default(string))
 
         {
             this.PlatformUpdateDomain = platformUpdateDomain;
@@ -106,6 +113,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.PatchStatus = patchStatus;
             this.IsVMInStandbyPool = isVMInStandbyPool;
             this.InterconnectInstanceView = interconnectInstanceView;
+            this.CapacityReservationType = capacityReservationType;
             CustomInit();
         }
 
@@ -232,5 +240,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectInstanceView")]
         public InterconnectInstanceView InterconnectInstanceView {get; private set; }
+
+        /// <summary>
+        /// Gets specifies which type of capacity reservation the virtual machine will
+        /// consume capacity from if eligible or whether it is explicitly opted out
+        /// from being associated and consuming capacity from any reserved capacity
+        /// available in the subscription. Minimum api-version: 2026-04-01. Possible values include: &#39;NotEligible&#39;, &#39;Targeted&#39;, &#39;Open&#39;, &#39;Disabled&#39;, &#39;Block&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "capacityReservationType")]
+        public string CapacityReservationType {get; private set; }
     }
 }

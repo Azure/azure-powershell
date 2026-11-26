@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {_redisVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("redisVersion"), out var __jsonRedisVersion) ? (string)__jsonRedisVersion : (string)_redisVersion;}
             {_deferUpgrade = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("deferUpgrade"), out var __jsonDeferUpgrade) ? (string)__jsonDeferUpgrade : (string)_deferUpgrade;}
             {_accessKeysAuthentication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("accessKeysAuthentication"), out var __jsonAccessKeysAuthentication) ? (string)__jsonAccessKeysAuthentication : (string)_accessKeysAuthentication;}
+            {_notifyKeyspaceEvents = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("notifyKeyspaceEvents"), out var __jsonNotifyKeyspaceEvents) ? (string)__jsonNotifyKeyspaceEvents : (string)_notifyKeyspaceEvents;}
             AfterFromJson(json);
         }
 
@@ -151,6 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             }
             AddIf( null != (((object)this._deferUpgrade)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(this._deferUpgrade.ToString()) : null, "deferUpgrade" ,container.Add );
             AddIf( null != (((object)this._accessKeysAuthentication)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(this._accessKeysAuthentication.ToString()) : null, "accessKeysAuthentication" ,container.Add );
+            AddIf( null != (((object)this._notifyKeyspaceEvents)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(this._notifyKeyspaceEvents.ToString()) : null, "notifyKeyspaceEvents" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

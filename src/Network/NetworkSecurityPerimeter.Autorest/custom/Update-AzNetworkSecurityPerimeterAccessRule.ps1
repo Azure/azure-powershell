@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime paramters
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -79,7 +79,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
 
         # Azure parameters
-        
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -134,7 +134,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
 
         # Body paramters
-        
+
         [Parameter(HelpMessage = "Address Prefix")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String[]]
@@ -181,11 +181,24 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
     )
 
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
 
- 
     process {
         try {
-            
             # 1. GET
 
             # body params and AsJob
@@ -201,13 +214,13 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             $null = $PSBoundParameters.Remove('Confirm')
 
 
-            $GETObject = Get-AzNetworkSecurityPerimeterAccessRule @PSBoundParameters
-
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterAccessRule' -BoundParameters $PSBoundParameters
+            $GETObject = Get-AzNetworkSecurityPerimeterAccessRule @readParameters
             # 2. PUT
 
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName', 'ProfileName'
 
-            ForEach($pathParam in $pathParams){        
+            ForEach($pathParam in $pathParams){
                 $null = $PSBoundParameters.Remove($pathParam)
             }
 
@@ -221,7 +234,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
                     $GETObject.$key = $variable
                 }
             }
-            
+
             # Call PUT method
             New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 

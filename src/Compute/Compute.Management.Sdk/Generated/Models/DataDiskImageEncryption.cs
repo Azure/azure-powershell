@@ -27,15 +27,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="diskEncryptionSetId">A relative URI containing the resource ID of the disk encryption set.
         /// </param>
 
+        /// <param name="securityProfile">This property specifies the security profile of a data disk image.
+        /// </param>
+
         /// <param name="lun">This property specifies the logical unit number of the data disk. This
         /// value is used to identify data disks within the Virtual Machine and
         /// therefore must be unique for each data disk attached to the Virtual
         /// Machine.
         /// </param>
-        public DataDiskImageEncryption(int lun, string diskEncryptionSetId = default(string))
+        public DataDiskImageEncryption(int lun, string diskEncryptionSetId = default(string), DataDiskImageSecurityProfile securityProfile = default(DataDiskImageSecurityProfile))
 
         : base(diskEncryptionSetId)
         {
+            this.SecurityProfile = securityProfile;
             this.Lun = lun;
             CustomInit();
         }
@@ -45,6 +49,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets this property specifies the security profile of a data disk
+        /// image.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "securityProfile")]
+        public DataDiskImageSecurityProfile SecurityProfile {get; set; }
 
         /// <summary>
         /// Gets or sets this property specifies the logical unit number of the data
@@ -62,7 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
+
         }
     }
 }

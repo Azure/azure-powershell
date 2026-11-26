@@ -10,3 +10,12 @@ KubernetesClusterRestoreCriteria Skip           {excludeNS1, excludeNS2}        
 ```
 
 This command can be used to create a restore configuration client object used for Kubernetes cluster restore. RestoreHookReferences is a list of references to RestoreHooks that should be executed during restore.
+
+### Example 2: Create a RestoreConfiguration for item level restore with AzureCosmosDB
+```powershell
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1", "db1/col2", "db2")
+```
+
+This command creates a restore configuration client object for Azure Cosmos DB item level restore.
+The -ResourceIdentifier parameter is required for AzureCosmosDB and lists database names or database/container names; this example selects containers col1 and col2 in database db1, and the whole database db2.
+Pass this object to Initialize-AzDataProtectionRestoreRequest with -RestoreConfiguration, together with -ItemLevelRecovery.

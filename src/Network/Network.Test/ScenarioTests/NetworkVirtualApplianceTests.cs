@@ -28,6 +28,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestNetworkVirtualApplianceLoadBalancerConfigurationHub()
+        {
+            TestRunner.RunTestScript("Test-NetworkVirtualApplianceLoadBalancerConfigurationHub");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestNetworkVirtualApplianceSourceIPLoadBalancerConfigurationVnet()
+        {
+            TestRunner.RunTestScript("Test-NetworkVirtualApplianceSourceIPLoadBalancerConfigurationVnet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestNetworkVirtualApplianceCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-NetworkVirtualApplianceCRUD"));
@@ -49,12 +65,28 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualApplianceSiteCRUD");
         }
 
-		    [Fact]
-		    [Trait(Category.AcceptanceType, Category.CheckIn)]
-		    [Trait(Category.Owner, NrpTeamAlias.nvadev)]
-		    public void TestNVAInVNetCRUD()
-		    {
-			    TestRunner.RunTestScript("Test-NVAInVnetCRUD");
-		    }
+			[Fact]
+			[Trait(Category.AcceptanceType, Category.CheckIn)]
+			[Trait(Category.Owner, NrpTeamAlias.nvadev)]
+			public void TestNVAInVNetCRUD()
+			{
+				TestRunner.RunTestScript("Test-NVAInVnetCRUD");
+			}
+
+			[Fact]
+			[Trait(Category.AcceptanceType, Category.CheckIn)]
+			[Trait(Category.Owner, NrpTeamAlias.nvadev)]
+			public void TestNetworkVirtualApplianceDualStackHub()
+			{
+				TestRunner.RunTestScript("Test-NetworkVirtualApplianceDualStackHub");
+			}
+
+			[Fact]
+			[Trait(Category.AcceptanceType, Category.CheckIn)]
+			[Trait(Category.Owner, NrpTeamAlias.nvadev)]
+			public void TestNetworkVirtualApplianceDualStackVnet()
+			{
+				TestRunner.RunTestScript("Test-NetworkVirtualApplianceDualStackVnet");
+			}
 	}
 }

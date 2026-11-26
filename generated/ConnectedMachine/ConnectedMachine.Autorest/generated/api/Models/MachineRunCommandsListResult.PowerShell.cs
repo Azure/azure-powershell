@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>Describes the Run Commands List Result.</summary>
+    /// <summary>Paged collection of MachineRunCommand items</summary>
     [System.ComponentModel.TypeConverter(typeof(MachineRunCommandsListResultTypeConverter))]
     public partial class MachineRunCommandsListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// Describes the Run Commands List Result.
+    /// Paged collection of MachineRunCommand items
     [System.ComponentModel.TypeConverter(typeof(MachineRunCommandsListResultTypeConverter))]
     public partial interface IMachineRunCommandsListResult
 

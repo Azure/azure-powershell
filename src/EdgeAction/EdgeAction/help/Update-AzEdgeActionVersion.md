@@ -8,15 +8,21 @@ schema: 2.0.0
 # Update-AzEdgeActionVersion
 
 ## SYNOPSIS
-Update a EdgeActionVersion
+Update the tags of an Edge Action version.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags; the current expanded serializer omits `-Tag @{}`.
+Null tags are rejected.
+Version properties are not changed.
+If deploymentType or isDefaultVersion is supplied, it must match the existing value; use `Switch-AzEdgeActionVersionDefault` to change the default version.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Version <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Version <String> [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -35,9 +41,9 @@ Update-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> 
 
 ### UpdateViaIdentityEdgeActionExpanded
 ```
-Update-AzEdgeActionVersion -Version <String> -EdgeActionInputObject <IEdgeActionIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzEdgeActionVersion -Version <String> -EdgeActionInputObject <IEdgeActionIdentity>
+ [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityEdgeAction
@@ -49,12 +55,18 @@ Update-AzEdgeActionVersion -Version <String> -EdgeActionInputObject <IEdgeAction
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-DeploymentType <String>]
+ [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a EdgeActionVersion
+Update the tags of an Edge Action version.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags. The current expanded serializer omits `-Tag @{}`, producing an empty PATCH when no other fields are supplied.
+Null tags are rejected.
+Version properties are not changed.
+If deploymentType or isDefaultVersion is supplied, it must match the existing value; use `Switch-AzEdgeActionVersionDefault` to change the default version.
 
 ## EXAMPLES
 
@@ -71,6 +83,13 @@ v1   global   Succeeded
 
 Updates the specified edge action version with the provided tags.
 
+### Example 2: Clear all tags with an explicit JSON body
+```powershell
+Update-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -JsonString '{"tags":{}}'
+```
+
+Removes all tags without changing the default version or deployment type. Use the JSON parameter set because the expanded serializer omits an empty `-Tag @{}` object.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -78,7 +97,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -94,8 +113,25 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentType
+The deployment type for the Edge Action version.
+Set this value when creating the version.
+When updating an existing version, any supplied value must match the existing value.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -149,6 +185,25 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IsDefaultVersion
+Indicates whether this is the default version.
+When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
+If another default version exists, supplying true is rejected.
+When updating an existing version, any supplied value must match the existing value.
+Use `Switch-AzEdgeActionVersionDefault` to change the default version.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Update operation
 
@@ -184,7 +239,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -195,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-Concrete tracked resource types can be created by aliasing this type using a specific property type.
+The type used for update operations of the EdgeActionVersion.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate
@@ -276,7 +331,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases: cf
 
 Required: False
@@ -292,7 +347,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases: wi
 
 Required: False

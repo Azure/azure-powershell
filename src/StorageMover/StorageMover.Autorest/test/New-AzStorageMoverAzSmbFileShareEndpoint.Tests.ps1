@@ -74,4 +74,28 @@ Describe 'New/Update-AzStorageMoverAzSmbFileShareEndpoint' {
         $fsendpoint.Property.FileShareName | Should -Be "testfs"
         $fsendpoint.Property.StorageAccountResourceId | Should -Be $env.StoraccId
     }
+
+    It 'CreateExpandedWithEndpointKind' {
+        $endpointName = "smbsharext"
+        $endpoint = New-AzStorageMoverAzSmbFileShareEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -StorageAccountResourceId $env.EndpointStorageAccountId -FileShareName $env.EndpointFileShareName -EndpointKind Source
+        $endpoint.Property.EndpointType | Should -Be "AzureStorageSmbFileShare"
+        $endpoint.Property.EndpointKind | Should -Be "Source"
+
+        $endpoint = Get-AzStorageMoverEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName
+        $endpoint.Property.EndpointKind | Should -Be "Source"
+    }
+
+    It 'CreateExpandedCrossTenantRequest' {
+        # The service does not accept cross-tenant settings on Azure SMB file share endpoints yet, so this checks the request offline.
+        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
+        $endpoint = New-AzStorageMoverAzSmbFileShareEndpoint -Name "smbsharexto" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -StorageAccountResourceId $env.EndpointStorageAccountId -FileShareName $env.EndpointFileShareName -EnableCrossTenantTransfer -AllowedStorageAccount $env.PartnerStorageAccountId
+        $request = $endpoint.Property.ToJsonString() | ConvertFrom-Json
+        $request.enableCrossTenantTransfer | Should -Be $true
+        $request.allowedStorageAccounts | Should -Be $env.PartnerStorageAccountId
+
+        $endpoint = New-AzStorageMoverAzSmbFileShareEndpoint -Name "smbsharexto" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -StorageAccountResourceId $env.EndpointStorageAccountId -FileShareName $env.EndpointFileShareName
+        $request = $endpoint.Property.ToJsonString() | ConvertFrom-Json
+        $request.PSObject.Properties.Name | Should -Not -Contain "enableCrossTenantTransfer"
+        $request.PSObject.Properties.Name | Should -Not -Contain "allowedStorageAccounts"
+    }
 }

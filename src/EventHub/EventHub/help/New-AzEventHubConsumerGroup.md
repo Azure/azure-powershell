@@ -16,33 +16,36 @@ Create an Event Hubs consumer group as a nested resource within a Namespace.
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventHubName <String> -NamespaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventHubName <String> -NamespaceInputObject <IEventHubIdentity>
  [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventHubName <String> -NamespaceInputObject <IEventHubIdentity>
  -Parameter <IConsumerGroup> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityEventhubExpanded
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventhubInputObject <IEventHubIdentity> [-UserMetadata <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityEventhub
 ```
 New-AzEventHubConsumerGroup -Name <String> -EventhubInputObject <IEventHubIdentity> -Parameter <IConsumerGroup>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +72,36 @@ UserMetadata                 : Test ConsumerGroup
 Creates a new consumer group `myConsumerGroup` for EventHubs entity `myEventHub`.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

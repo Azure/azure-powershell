@@ -5408,6 +5408,22 @@
 							  <PropertyName>BootStrapConfigurationBlobs</PropertyName>
 						  </ListItem>
 						  <ListItem>
+							  <Label>AddressFamily</Label>
+							  <PropertyName>AddressFamily</PropertyName>
+						  </ListItem>
+                          <ListItem>
+                              <Label>LoadBalancerConfiguration</Label>
+                              <PropertyName>LoadBalancerConfiguration</PropertyName>
+                          </ListItem>
+						  <ListItem>
+							  <Label>AddressPrefixV6</Label>
+							  <PropertyName>AddressPrefixV6</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>PrivateIpAddressV6</Label>
+							  <PropertyName>PrivateIpAddressV6</PropertyName>
+						  </ListItem>
+						  <ListItem>
 							  <Label>VirtualHub</Label>
 							  <PropertyName>VirtualHubText</PropertyName>
 						  </ListItem>

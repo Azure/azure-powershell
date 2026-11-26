@@ -19,7 +19,7 @@ Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
  [-SupportOrdering] [-MaxSizeInMegabytes <Int32>] [-MaxMessageSizeInKilobytes <Int64>] [-Status <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -28,7 +28,8 @@ Set-AzServiceBusTopic -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <Tim
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-EnableExpress] [-SupportOrdering] [-MaxSizeInMegabytes <Int32>]
  [-MaxMessageSizeInKilobytes <Int64>] [-Status <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,6 +108,21 @@ Updates a ServiceBus topic `myTopic` within namespace `myNamespace` using InputO
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -128,6 +144,21 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the service gateway.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the create or updates address locations in service
+        /// Parameters supplied to create or update address locations in service
         /// gateway operation.
         /// </param>
         /// <param name='customHeaders'>
@@ -256,7 +256,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> UpdateAddressLocationsWithHttpMessagesAsync(string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceGatewayActionOkResponseBody>> UpdateAddressLocationsWithHttpMessagesAsync(string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates, updates, or deletes services within the service gateway.
@@ -281,7 +284,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the service gateway.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the create or updates services in service gateway
+        /// Parameters supplied to create or update services in service gateway
         /// operation.
         /// </param>
         /// <param name='customHeaders'>
@@ -293,7 +296,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> UpdateServicesWithHttpMessagesAsync(string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceGatewayActionOkResponseBody>> UpdateServicesWithHttpMessagesAsync(string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a service gateway.
@@ -346,86 +352,6 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string serviceGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Creates or updates address locations within the service gateway.
-        /// The request supports both full and partial update modes at two levels:
-        /// location and address.
-        /// Full update replaces all existing data.
-        /// Partial update modifies only the specified entries:
-        /// For location-level partial updates, if no address is provided, the existing
-        /// address will be deleted.
-        /// For address-level partial updates, if no services are provided, the
-        /// existing services will be considered for deletion.
-        /// </summary>
-        /// <remarks>
-        /// Creates or updates address locations within the service gateway.
-        /// The request supports both full and partial update modes at two levels:
-        /// location and address.
-        /// Full update replaces all existing data.
-        /// Partial update modifies only the specified entries:
-        /// For location-level partial updates, if no address is provided, the existing
-        /// address will be deleted.
-        /// For address-level partial updates, if no services are provided, the
-        /// existing services will be considered for deletion.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='serviceGatewayName'>
-        /// The name of the service gateway.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the create or updates address locations in service
-        /// gateway operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginUpdateAddressLocationsWithHttpMessagesAsync(string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Creates, updates, or deletes services within the service gateway.
-        /// The request supports both full and partial update modes at the service
-        /// level.
-        /// Full update replaces all existing services with the new list provided in
-        /// the request.
-        /// Partial update modifies only the specified services.
-        /// </summary>
-        /// <remarks>
-        /// Creates, updates, or deletes services within the service gateway.
-        /// The request supports both full and partial update modes at the service
-        /// level.
-        /// Full update replaces all existing services with the new list provided in
-        /// the request.
-        /// Partial update modifies only the specified services.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='serviceGatewayName'>
-        /// The name of the service gateway.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the create or updates services in service gateway
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginUpdateServicesWithHttpMessagesAsync(string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all the service gateways in a subscription.

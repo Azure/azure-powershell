@@ -68,6 +68,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>Internal Acessors for ScheduleExecutionTime</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISchedulerTime Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdatePropertiesInternal.ScheduleExecutionTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).ExecutionTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).ExecutionTime = value ?? null /* model class */; }
 
+        /// <summary>Backing field for <see cref="MoverSyncedUntil" /> property.</summary>
+        private global::System.DateTime? _moverSyncedUntil;
+
+        /// <summary>The last time the mover was synchronized.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public global::System.DateTime? MoverSyncedUntil { get => this._moverSyncedUntil; set => this._moverSyncedUntil = value; }
+
         /// <summary>Backing field for <see cref="Schedule" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfo _schedule;
 
@@ -99,9 +106,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
         public bool? ScheduleIsActive { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).IsActive; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).IsActive = value ?? default(bool); }
 
+        /// <summary>Repeat interval used for sub-daily schedules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public string ScheduleRepeatInterval { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).RepeatInterval; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).RepeatInterval = value ?? null; }
+
         /// <summary>Specific one-time execution date and time</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
         public global::System.DateTime? ScheduleStartDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).StartDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).StartDate = value ?? default(global::System.DateTime); }
+
+        /// <summary>Backing field for <see cref="SyncMode" /> property.</summary>
+        private string _syncMode;
+
+        /// <summary>The synchronization mode for the Job Definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public string SyncMode { get => this._syncMode; set => this._syncMode = value; }
 
         /// <summary>Creates an new <see cref="JobDefinitionUpdateProperties" /> instance.</summary>
         public JobDefinitionUpdateProperties()
@@ -198,6 +216,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         PossibleTypes = new [] { typeof(float) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("0", "30")]
         float? ExecutionTimeMinute { get; set; }
+        /// <summary>The last time the mover was synchronized.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The last time the mover was synchronized.",
+        SerializedName = @"moverSyncedUntil",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? MoverSyncedUntil { get; set; }
         /// <summary>Optional CRON expression for advanced scheduling</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -252,7 +281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         Description = @"Type of schedule — Monthly, Weekly, or Daily",
         SerializedName = @"frequency",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
         string ScheduleFrequency { get; set; }
         /// <summary>Whether the schedule is currently active</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
@@ -265,6 +294,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         SerializedName = @"isActive",
         PossibleTypes = new [] { typeof(bool) })]
         bool? ScheduleIsActive { get; set; }
+        /// <summary>Repeat interval used for sub-daily schedules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Repeat interval used for sub-daily schedules.",
+        SerializedName = @"repeatInterval",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScheduleRepeatInterval { get; set; }
         /// <summary>Specific one-time execution date and time</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -276,6 +316,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         SerializedName = @"startDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? ScheduleStartDate { get; set; }
+        /// <summary>The synchronization mode for the Job Definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The synchronization mode for the Job Definition.",
+        SerializedName = @"syncMode",
+        PossibleTypes = new [] { typeof(string) })]
+        string SyncMode { get; set; }
 
     }
     /// Job definition properties.
@@ -304,6 +355,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("0", "30")]
         float? ExecutionTimeMinute { get; set; }
+        /// <summary>The last time the mover was synchronized.</summary>
+        global::System.DateTime? MoverSyncedUntil { get; set; }
         /// <summary>Schedule information for the Job Definition.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfo Schedule { get; set; }
         /// <summary>Optional CRON expression for advanced scheduling</summary>
@@ -317,12 +370,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>Time of day to execute (hours and minutes)</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISchedulerTime ScheduleExecutionTime { get; set; }
         /// <summary>Type of schedule — Monthly, Weekly, or Daily</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
         string ScheduleFrequency { get; set; }
         /// <summary>Whether the schedule is currently active</summary>
         bool? ScheduleIsActive { get; set; }
+        /// <summary>Repeat interval used for sub-daily schedules.</summary>
+        string ScheduleRepeatInterval { get; set; }
         /// <summary>Specific one-time execution date and time</summary>
         global::System.DateTime? ScheduleStartDate { get; set; }
+        /// <summary>The synchronization mode for the Job Definition.</summary>
+        string SyncMode { get; set; }
 
     }
 }

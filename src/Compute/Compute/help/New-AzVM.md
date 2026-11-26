@@ -26,12 +26,13 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-DiskControllerType <String>]
  [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SshKeyType <String>]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
  [-AlignRegionalDisksToVMZone] [-EnableProxyAgent] [-AddProxyAgentExtension]
  [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
+ [-DisableCapacityReservationAssignment] [-PreferredVMSize <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -59,8 +60,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProcessorMode <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DisableCapacityReservationAssignment]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +77,14 @@ Then use the following cmdlets to set different properties of the virtual machin
 <br>
 
 The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.<br>
+In this parameter set, **PreferredVMSize** opts into the preview FlexProfile instead of using a fixed **Size**.
+Do not explicitly specify both **Size** and **PreferredVMSize**. When **PreferredVMSize** is supplied, the default **Size** is not sent.
+Azure may deploy the preferred size or a compatible alternative based on capacity and placement.
+**PreferredVMSize** is not available in `DiskFileParameterSet` or `DefaultParameterSet`.
+For configuration-based creation, set `FlexProfile` with **New-AzVMConfig -PreferredVMSize** and pass the completed object to **New-AzVM -VM**; the configured FlexProfile is forwarded.
+
+FlexProfile is a preview feature that requires registration of the `Microsoft.Compute/FlexProfileEnabled` subscription feature and availability in the target region.
+Supported VM families vary by region. Azure validates unsupported placements and empty preferred-size strings.
 <br>
 
 See [Quickstart: Create a Windows virtual machine in Azure with PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell) for tutorial. <br>
@@ -379,6 +388,31 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 
 This example shows how the simple cmdlet call with minimal parameters will result in a TrustedLaunch enabled VM with a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
+### Example 14: Create a VM with a specific processor mode
+```powershell
+New-AzVM -ResourceGroupName "myResourceGroup" -Location "westus" -Name "myVM" -Credential (Get-Credential) -Size "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+```
+
+This command creates a VM and sets processor frequency behavior to deterministic mode.
+
+### Example 15: Create a SpotPlus VM
+```powershell
+New-AzVM -ResourceGroupName "MyResourceGroup" -Name "MySpotPlusVM" -Location "eastus2" -Credential (Get-Credential) -Size "Standard_D2s_v5" -Image "Win2022AzureEdition" -Priority "SpotPlus" -EvictionPolicy "Delete" -MaxPrice -1
+```
+
+This command creates a Spot Plus VM, the next generation of Azure Spot that provides higher reliability and longer running time than 'Spot' at a discounted price.
+Eviction and billing behave the same as 'Spot', so '-EvictionPolicy' and '-MaxPrice' are used the same way.
+Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
+
+### Example 16: Create a VM with a preferred size
+```powershell
+$location = "eastus2"
+New-AzVM -ResourceGroupName "myRG" -Location $location -Name "myFlexVM" -Credential (Get-Credential) -Image "Win2022AzureEdition" -PreferredVMSize "Standard_D4s_v5"
+```
+
+Use a region enabled for the registered FlexProfile preview. This example omits **Size** and lets Azure choose the preferred size or a compatible alternative.
+For configuration-based creation, use **New-AzVMConfig -PreferredVMSize**, configure the operating system, image, and networking, and pass the object to **New-AzVM -VM**.
+
 ## PARAMETERS
 
 ### -AddProxyAgentExtension
@@ -564,6 +598,22 @@ Indicates that this cmdlet does not install the **BG Info** extension on the vir
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment.
+When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
 Required: False
@@ -1044,10 +1094,31 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PreferredVMSize
+Specifies the preferred VM size for the preview FlexProfile, for example `Standard_D4s_v5`.
+Azure may deploy a compatible alternative based on capacity and placement.
+Available only in `SimpleParameterSet`; do not explicitly combine it with **Size**.
+The request sets `FlexProfile.PreferredVMSize` and omits `HardwareProfile.VmSize`, rather than sending the default **Size**.
+For **New-AzVM -VM**, configure the FlexProfile on the input object instead.
+This feature requires preview registration and regional availability. Azure validates unsupported placements and empty strings.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Priority
-The priority for the virtual machine.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
 'Spot' is for spot virtual machine.
+'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml
@@ -1059,6 +1130,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProcessorMode
+Specifies processor frequency behavior. Typical values are `Deterministic` and `Opportunistic`.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -1200,6 +1286,8 @@ Accept wildcard characters: False
 ### -Size
 The Virtual Machine Size. [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region.<br>
 The Default Value is: Standard_D2s_v3.
+In `SimpleParameterSet`, do not explicitly combine **Size** with **PreferredVMSize**.
+When **PreferredVMSize** is supplied, the default size is not sent.
 
 ```yaml
 Type: System.String
@@ -1385,6 +1473,7 @@ Accept wildcard characters: False
 Specifies a local virtual machine to create.
 To obtain a virtual machine object, use the New-AzVMConfig cmdlet.
 Other cmdlets can be used to configure the virtual machine, such as Set-AzVMOperatingSystem, Set-AzVMSourceImage, and Add-AzVMNetworkInterface.
+The object's `FlexProfile` is forwarded to Azure. To use a preferred size, create the configuration with **New-AzVMConfig -PreferredVMSize** instead of **VMSize**.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine

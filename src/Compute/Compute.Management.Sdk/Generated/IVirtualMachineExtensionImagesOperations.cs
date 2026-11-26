@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='orderby'>
         /// 
         /// </param>
+        /// <param name='expand'>
+        /// Expand the response to include additional read-only metadata. Allowed
+        /// values: `properties` — returns extended metadata (`releaseCategory`,
+        /// `urgencyLevel`, `runProfile`).
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -75,7 +80,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VirtualMachineExtensionImage>>> ListVersionsWithHttpMessagesAsync(string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VirtualMachineExtensionImage>>> ListVersionsWithHttpMessagesAsync(string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string), string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a virtual machine extension image.

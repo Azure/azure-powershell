@@ -20,9 +20,9 @@ Create a ServiceGroupMemberRelationship
 .Description
 Create a ServiceGroupMemberRelationship
 .Example
-New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
+New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -SourceId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 .Example
-New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001" -Name "subMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
+New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001" -Name "subMembership" -SourceId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationship
@@ -48,14 +48,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category('Body')]
     [System.String]
-    # The relationship target resource id.
-    ${TargetId},
+    # The relationship source resource id.
+    # Must be a service group.
+    ${SourceId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category('Body')]
     [System.String]
-    # The relationship target tenant id.
-    ${TargetTenant},
+    # The relationship source tenant id.
+    ${SourceTenant},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category('Body')]

@@ -7,6 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
+    /// <summary>
+    /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(SettingsTypeConverter))]
     public partial class Settings
     {
@@ -257,6 +260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
+    /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
     [System.ComponentModel.TypeConverter(typeof(SettingsTypeConverter))]
     public partial interface ISettings
 

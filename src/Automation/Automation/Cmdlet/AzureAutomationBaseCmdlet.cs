@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             catch (ErrorResponseException errorResponseException)
             {
                 // if errorResponseException.Body.Code is null or empty, check if errorResponseException.Response.Content is available.
-                if (string.IsNullOrEmpty(errorResponseException.Body?.Code) && string.IsNullOrEmpty(errorResponseException.Body?.Message))
+                if (string.IsNullOrEmpty(errorResponseException.Body?.Error?.Code) && string.IsNullOrEmpty(errorResponseException.Body?.Error?.Message))
                 {
                     if (!string.IsNullOrEmpty(errorResponseException.Response.Content))
                     {
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     }
                 }
 
-                throw new ErrorResponseException(errorResponseException.Body?.Message, errorResponseException);
+                throw new ErrorResponseException(errorResponseException.Body?.Error?.Message, errorResponseException);
             }
         }
 

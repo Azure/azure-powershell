@@ -229,11 +229,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             {
                 var keyValue = dictionary[keyEntry];
 
-                result.Add(keyEntry, keyValue.Cast<object>().ToArray());
+                result.Add(keyEntry, keyValue == null ? null : keyValue.Cast<object>().ToArray());
             }
 
             return result;
-        }       
+        }
 
         public static AuthenticationSettingsContract ToAuthenticationSettings(PsApiManagementApi psApiManagementApi)
         {

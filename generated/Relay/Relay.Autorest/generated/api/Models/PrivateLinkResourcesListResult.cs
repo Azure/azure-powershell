@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         string NextLink { get; set; }
         /// <summary>A collection of private link resources</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,

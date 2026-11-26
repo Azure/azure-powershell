@@ -296,7 +296,10 @@ namespace Microsoft.Azure.Management.Compute.Models
             }
 
 
-
+            if (this.VirtualMachineProfile != null)
+            {
+                this.VirtualMachineProfile.Validate();
+            }
 
 
             if (this.PriorityMixPolicy != null)

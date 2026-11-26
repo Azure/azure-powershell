@@ -19,9 +19,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdateProperties __endpointBaseUpdateProperties = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.EndpointBaseUpdateProperties();
 
+        /// <summary>Backing field for <see cref="AllowedStorageAccount" /> property.</summary>
+        private System.Collections.Generic.List<string> _allowedStorageAccount;
+
+        /// <summary>
+        /// Replaces the list of partner-tenant storage account ARM IDs allowed to be
+        /// the other side of a cross-tenant data transfer pair with this endpoint.
+        /// Omit an entry to remove it; include an entry to add it. Removing an entry
+        /// blocks future job runs that reference that storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> AllowedStorageAccount { get => this._allowedStorageAccount; set => this._allowedStorageAccount = value; }
+
         /// <summary>A description for the Endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inherited)]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdatePropertiesInternal)__endpointBaseUpdateProperties).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdatePropertiesInternal)__endpointBaseUpdateProperties).Description = value ?? null; }
+
+        /// <summary>Backing field for <see cref="EnableCrossTenantTransfer" /> property.</summary>
+        private bool? _enableCrossTenantTransfer;
+
+        /// <summary>
+        /// Opt-in flag enabling this endpoint to be used as one side of a cross-tenant
+        /// data transfer pair. Defaults to false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public bool? EnableCrossTenantTransfer { get => this._enableCrossTenantTransfer; set => this._enableCrossTenantTransfer = value; }
 
         /// <summary>The Endpoint resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Constant]
@@ -52,11 +74,57 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdateProperties
     {
+        /// <summary>
+        /// Replaces the list of partner-tenant storage account ARM IDs allowed to be
+        /// the other side of a cross-tenant data transfer pair with this endpoint.
+        /// Omit an entry to remove it; include an entry to add it. Removing an entry
+        /// blocks future job runs that reference that storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Replaces the list of partner-tenant storage account ARM IDs allowed to be
+        the other side of a cross-tenant data transfer pair with this endpoint.
+        Omit an entry to remove it; include an entry to add it. Removing an entry
+        blocks future job runs that reference that storage account.",
+        SerializedName = @"allowedStorageAccounts",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> AllowedStorageAccount { get; set; }
+        /// <summary>
+        /// Opt-in flag enabling this endpoint to be used as one side of a cross-tenant
+        /// data transfer pair. Defaults to false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Opt-in flag enabling this endpoint to be used as one side of a cross-tenant
+        data transfer pair. Defaults to false.",
+        SerializedName = @"enableCrossTenantTransfer",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EnableCrossTenantTransfer { get; set; }
 
     }
     internal partial interface IAzureStorageBlobContainerEndpointUpdatePropertiesInternal :
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseUpdatePropertiesInternal
     {
+        /// <summary>
+        /// Replaces the list of partner-tenant storage account ARM IDs allowed to be
+        /// the other side of a cross-tenant data transfer pair with this endpoint.
+        /// Omit an entry to remove it; include an entry to add it. Removing an entry
+        /// blocks future job runs that reference that storage account.
+        /// </summary>
+        System.Collections.Generic.List<string> AllowedStorageAccount { get; set; }
+        /// <summary>
+        /// Opt-in flag enabling this endpoint to be used as one side of a cross-tenant
+        /// data transfer pair. Defaults to false.
+        /// </summary>
+        bool? EnableCrossTenantTransfer { get; set; }
 
     }
 }

@@ -39,6 +39,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
+        /// Get a user-assigned managed identity resource (Microsoft.ManagedIdentity/userAssignedIdentities).
+        /// Used to resolve the identity's clientId and principalId from its ARM id.
+        /// </summary>
+        /// <param name="identityArmId">ARM id of the user-assigned managed identity</param>
+        /// <returns>Generic resource returned from the service</returns>
+        public GenericResource GetUserAssignedIdentityResource(string identityArmId)
+        {
+            // Use the API version shipped by the official Az.ManagedServiceIdentity module. It is GA across all
+            // clouds/regions and exposes the stable clientId/principalId fields we read; newer versions add no
+            // fields we consume and may lag in sovereign/air-gapped clouds.
+            GenericResource resource = RMAdapter.Client.Resources.GetByIdWithHttpMessagesAsync(
+                identityArmId,
+                "2023-01-31",
+                null,
+                cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
+            return resource;
+        }
+
+        /// <summary>
         /// Get storage accounts according to the query params
         /// </summary>
         /// <param name="storageAccountName">Name of the container to unregister</param>
@@ -55,64 +74,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             // switch subscription context 
             string subscriptionContext = RMAdapter.Client.SubscriptionId;
-            RMAdapter.Client.SubscriptionId = (subscriptionId != null)? subscriptionId: RMAdapter.Client.SubscriptionId;
-
-            Func<RestAzureNS.IPage<GenericResource>> listAsync =
-            () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
-                getItemQueryParams,
-                cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
-
-            Func<string, RestAzureNS.IPage<GenericResource>> listNextAsync =
-                nextLink => RMAdapter.Client.Resources.ListNextWithHttpMessagesAsync(
-                    nextLink,
-                    cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
-
-            storageAccounts = HelperUtils.GetPagedRMList(listAsync, listNextAsync);
-            storageAccount = storageAccounts.Find(account =>
-                string.Compare(account.Name, storageAccountName) == 0);
-
-            if (storageAccount == null)
+            try
             {
-                getItemQueryParams = new ODataQuery<GenericResourceFilter>(q =>
-                q.ResourceType == "Microsoft.Storage/storageAccounts");
-                listAsync = () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
+                RMAdapter.Client.SubscriptionId = !string.IsNullOrEmpty(subscriptionId) ?
+                    subscriptionId : RMAdapter.Client.SubscriptionId;
+
+                Func<RestAzureNS.IPage<GenericResource>> listAsync =
+                () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
                     getItemQueryParams,
                     cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
 
-                listNextAsync = nextLink => RMAdapter.Client.Resources.ListNextWithHttpMessagesAsync(
+                Func<string, RestAzureNS.IPage<GenericResource>> listNextAsync =
+                    nextLink => RMAdapter.Client.Resources.ListNextWithHttpMessagesAsync(
                     nextLink,
                     cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
 
                 storageAccounts = HelperUtils.GetPagedRMList(listAsync, listNextAsync);
                 storageAccount = storageAccounts.Find(account =>
                     string.Compare(account.Name, storageAccountName) == 0);
+
+                if (storageAccount == null)
+                {
+                    getItemQueryParams = new ODataQuery<GenericResourceFilter>(q =>
+                    q.ResourceType == "Microsoft.Storage/storageAccounts");
+                    listAsync = () => RMAdapter.Client.Resources.ListWithHttpMessagesAsync(
+                        getItemQueryParams,
+                        cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
+
+                    listNextAsync = nextLink => RMAdapter.Client.Resources.ListNextWithHttpMessagesAsync(
+                        nextLink,
+                        cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
+
+                    storageAccounts = HelperUtils.GetPagedRMList(listAsync, listNextAsync);
+                    storageAccount = storageAccounts.Find(account =>
+                        string.Compare(account.Name, storageAccountName) == 0);
+                }
+
+                return storageAccount;
             }
-
-            RMAdapter.Client.SubscriptionId = subscriptionContext;
-
-            return storageAccount;
+            finally
+            {
+                RMAdapter.Client.SubscriptionId = subscriptionContext;
+            }
         }
 
-        /// <summary>
-        /// Gets the VM as a generic resource in the given subscription. Used to validate a
-        /// cross-subscription (CSB) VM's existence and region before enabling backup, since discovery
-        /// does not run cross-subscription.
-        /// </summary>
-        /// <param name="vmName">Name of the virtual machine</param>
-        /// <param name="vmResourceGroupName">Resource group of the virtual machine</param>
-        /// <param name="subscriptionId">Subscription the virtual machine resides in</param>
-        /// <returns>Generic resource returned from the service</returns>
-        public GenericResource GetVmResource(string vmName, string vmResourceGroupName, string subscriptionId)
-        {
-            string vmResourceId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}",
-                subscriptionId, vmResourceGroupName, vmName);
-
-            return RMAdapter.Client.Resources.GetByIdWithHttpMessagesAsync(
-                vmResourceId,
-                "2023-03-01",
-                null,
-                cancellationToken: RMAdapter.CmdletCancellationToken).GetAwaiter().GetResult().Body;
-        }
     }
 }

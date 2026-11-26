@@ -14,7 +14,7 @@
   "datasourceType": "Microsoft.DBforPostgreSQL/servers/databases",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "AlternateLocation", "RestoreAsFiles" ],
-  "itemLevelRecoveyEnabled": false,
+  "itemLevelRecoveryEnabled": false,
   "fileNamePrefixDisabled": false,
   "addBackupDatasourceParametersList": false,
   "backupConfigurationRequired": false,

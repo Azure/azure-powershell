@@ -454,6 +454,14 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Error occurred when creating storage account for boot diagnostics.  Keep creating a VM with disabling boot diagnostics.  : {0}</value>
     <comment>{0} = exception</comment>
   </data>
+  <data name="ErrorDuringInstallingBginfoExtension" xml:space="preserve">
+    <value>An error occurred while installing the BGInfo extension. The virtual machine was created successfully without it: {0}</value>
+    <comment>{0} = exception</comment>
+  </data>
+  <data name="BginfoExtensionVersionLookupFailed" xml:space="preserve">
+    <value>Could not determine the latest available BGInfo extension version. Using the default version {0}: {1}</value>
+    <comment>{0} = default extension version, {1} = exception</comment>
+  </data>
   <data name="UsingExistingStorageAccountForBootDiagnostics" xml:space="preserve">
     <value>Since the VM is created using premium storage or managed disk, existing standard storage account, {0}, is used for boot diagnostics.</value>
     <comment>{0} = existing standard storage account name</comment>

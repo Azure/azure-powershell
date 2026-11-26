@@ -18,15 +18,17 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='location'>
-        /// The unique location name for a Microsoft Azure geographic region.
+        /// The name of the Azure region.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<QuotaUsageResult> ListBySubscription(this IUsagesOperations operations, string location, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        public static Microsoft.Rest.Azure.IPage<QuotaUsageResult> ListBySubscription(this IUsagesOperations operations, string location, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IUsagesOperations)operations).ListBySubscriptionAsync(location, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IUsagesOperations)operations).ListBySubscriptionAsync(location, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -35,18 +37,20 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='location'>
-        /// The unique location name for a Microsoft Azure geographic region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<QuotaUsageResult>> ListBySubscriptionAsync(this IUsagesOperations operations, string location, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<QuotaUsageResult>> ListBySubscriptionAsync(this IUsagesOperations operations, string location, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(location, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(location, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -60,9 +64,9 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<QuotaUsageResult> ListBySubscriptionNext(this IUsagesOperations operations, string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        public static Microsoft.Rest.Azure.IPage<QuotaUsageResult> ListBySubscriptionNext(this IUsagesOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IUsagesOperations)operations).ListBySubscriptionNextAsync(nextPageLink, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IUsagesOperations)operations).ListBySubscriptionNextAsync(nextPageLink, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -77,9 +81,9 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<QuotaUsageResult>> ListBySubscriptionNextAsync(this IUsagesOperations operations, string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<QuotaUsageResult>> ListBySubscriptionNextAsync(this IUsagesOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

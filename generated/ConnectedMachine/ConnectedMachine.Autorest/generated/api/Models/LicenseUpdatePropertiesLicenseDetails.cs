@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Description = @"Describes the license target server.",
         SerializedName = @"target",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2", "Windows Server 2016")]
         string Target { get; set; }
         /// <summary>Describes the license core type (pCore or vCore).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Activated", "Deactivated")]
         string State { get; set; }
         /// <summary>Describes the license target server.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2", "Windows Server 2016")]
         string Target { get; set; }
         /// <summary>Describes the license core type (pCore or vCore).</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("pCore", "vCore")]

@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>Timestamp of last upgrade attempt</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; }
+        public global::System.DateTime? AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; }
 
         /// <summary>Backing field for <see cref="AgentVersion" /> property.</summary>
         private string _agentVersion;
@@ -127,11 +127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         public string CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider; }
 
         /// <summary>Backing field for <see cref="DetectedProperty" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties _detectedProperty;
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesDetectedProperties _detectedProperty;
 
         /// <summary>Detected properties from the machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties DetectedProperty { get => (this._detectedProperty = this._detectedProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DetectedProperties()); }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesDetectedProperties DetectedProperty { get => (this._detectedProperty = this._detectedProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachinePropertiesDetectedProperties()); }
 
         /// <summary>Backing field for <see cref="DisplayName" /> property.</summary>
         private string _displayName;
@@ -218,6 +218,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public long? HardwareProfileTotalPhysicalMemoryInByte { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).TotalPhysicalMemoryInByte; }
 
+        /// <summary>Backing field for <see cref="HardwareResourceId" /> property.</summary>
+        private string _hardwareResourceId;
+
+        /// <summary>
+        /// Specifies the resource ID of the associated hardware device. Only settable by HCI RP.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string HardwareResourceId { get => this._hardwareResourceId; set => this._hardwareResourceId = value; }
+
+        /// <summary>Backing field for <see cref="IdentityKeyStore" /> property.</summary>
+        private string _identityKeyStore;
+
+        /// <summary>Specifies the identity key store a machine is using.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string IdentityKeyStore { get => this._identityKeyStore; set => this._identityKeyStore = value; }
+
         /// <summary>Backing field for <see cref="LastStatusChange" /> property.</summary>
         private global::System.DateTime? _lastStatusChange;
 
@@ -269,43 +285,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfiguration { get => (this._agentConfiguration = this._agentConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentConfiguration()); set { {_agentConfiguration = value;} } }
 
         /// <summary>Internal Acessors for AgentConfigurationConfigMode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationConfigMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ConfigMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ConfigMode = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationConfigMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ConfigMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ConfigMode = value ?? null; }
 
         /// <summary>Internal Acessors for AgentConfigurationExtensionsAllowList</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConfigurationExtension> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsAllowList { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsAllowList; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsAllowList = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConfigurationExtension> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsAllowList { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsAllowList; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsAllowList = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AgentConfigurationExtensionsBlockList</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConfigurationExtension> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsBlockList { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsBlockList; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsBlockList = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConfigurationExtension> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsBlockList { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsBlockList; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsBlockList = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AgentConfigurationExtensionsEnabled</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsEnabled = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationExtensionsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ExtensionsEnabled = value ?? null; }
 
         /// <summary>Internal Acessors for AgentConfigurationGuestConfigurationEnabled</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationGuestConfigurationEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).GuestConfigurationEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).GuestConfigurationEnabled = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationGuestConfigurationEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).GuestConfigurationEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).GuestConfigurationEnabled = value ?? null; }
 
         /// <summary>Internal Acessors for AgentConfigurationIncomingConnectionsPort</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationIncomingConnectionsPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).IncomingConnectionsPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).IncomingConnectionsPort = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationIncomingConnectionsPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).IncomingConnectionsPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).IncomingConnectionsPort = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AgentConfigurationProxyBypass</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationProxyBypass { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyBypass; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyBypass = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationProxyBypass { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyBypass; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyBypass = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for AgentConfigurationProxyUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationProxyUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentConfigurationProxyUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentConfigurationInternal)AgentConfiguration).ProxyUrl = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgrade</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgrade Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentUpgrade { get => (this._agentUpgrade = this._agentUpgrade ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgrade()); set { {_agentUpgrade = value;} } }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptDesiredVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptDesiredVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptDesiredVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptDesiredVersion = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptMessage = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptStatus = value ?? null; }
 
         /// <summary>Internal Acessors for AgentUpgradeLastAttemptTimestamp</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentUpgradeLastAttemptTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).LastAttemptTimestamp = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for AgentVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.AgentVersion { get => this._agentVersion; set { {_agentVersion = value;} } }
@@ -314,10 +330,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.CloudMetadata { get => (this._cloudMetadata = this._cloudMetadata ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadata()); set { {_cloudMetadata = value;} } }
 
         /// <summary>Internal Acessors for CloudMetadataProvider</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.CloudMetadataProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadataInternal)CloudMetadata).Provider = value ?? null; }
 
         /// <summary>Internal Acessors for DetectedProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.DetectedProperty { get => (this._detectedProperty = this._detectedProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DetectedProperties()); set { {_detectedProperty = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesDetectedProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.DetectedProperty { get => (this._detectedProperty = this._detectedProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachinePropertiesDetectedProperties()); set { {_detectedProperty = value;} } }
 
         /// <summary>Internal Acessors for DisplayName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.DisplayName { get => this._displayName; set { {_displayName = value;} } }
@@ -335,22 +351,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.FirmwareProfile { get => (this._firmwareProfile = this._firmwareProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.FirmwareProfile()); set { {_firmwareProfile = value;} } }
 
         /// <summary>Internal Acessors for FirmwareProfileSerialNumber</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.FirmwareProfileSerialNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfileInternal)FirmwareProfile).SerialNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfileInternal)FirmwareProfile).SerialNumber = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.FirmwareProfileSerialNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfileInternal)FirmwareProfile).SerialNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfileInternal)FirmwareProfile).SerialNumber = value ?? null; }
 
         /// <summary>Internal Acessors for FirmwareProfileType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.FirmwareProfileType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfileInternal)FirmwareProfile).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfileInternal)FirmwareProfile).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.FirmwareProfileType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfileInternal)FirmwareProfile).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfileInternal)FirmwareProfile).Type = value ?? null; }
 
         /// <summary>Internal Acessors for HardwareProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.HardwareProfile { get => (this._hardwareProfile = this._hardwareProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.HardwareProfile()); set { {_hardwareProfile = value;} } }
 
         /// <summary>Internal Acessors for HardwareProfileNumberOfCpuSocket</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.HardwareProfileNumberOfCpuSocket { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).NumberOfCpuSocket; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).NumberOfCpuSocket = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.HardwareProfileNumberOfCpuSocket { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).NumberOfCpuSocket; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).NumberOfCpuSocket = value ?? default(int); }
 
         /// <summary>Internal Acessors for HardwareProfileProcessor</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.HardwareProfileProcessor { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).Processor; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).Processor = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.HardwareProfileProcessor { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).Processor; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).Processor = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for HardwareProfileTotalPhysicalMemoryInByte</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.HardwareProfileTotalPhysicalMemoryInByte { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).TotalPhysicalMemoryInByte; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).TotalPhysicalMemoryInByte = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.HardwareProfileTotalPhysicalMemoryInByte { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).TotalPhysicalMemoryInByte; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfileInternal)HardwareProfile).TotalPhysicalMemoryInByte = value ?? default(long); }
 
         /// <summary>Internal Acessors for LastStatusChange</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.LastStatusChange { get => this._lastStatusChange; set { {_lastStatusChange = value;} } }
@@ -363,6 +379,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>Internal Acessors for NetworkProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.NetworkProfile { get => (this._networkProfile = this._networkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.NetworkProfile()); set { {_networkProfile = value;} } }
+
+        /// <summary>Internal Acessors for NetworkProfileNetworkInterface</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.NetworkProfileNetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for OSEdition</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.OSEdition { get => this._oSEdition; set { {_oSEdition = value;} } }
@@ -383,16 +402,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatuses Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.ServiceStatuses { get => (this._serviceStatuses = this._serviceStatuses ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatuses()); set { {_serviceStatuses = value;} } }
 
         /// <summary>Internal Acessors for ServiceStatusesExtensionService</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.ServiceStatusesExtensionService { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatusesInternal)ServiceStatuses).ExtensionService; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatusesInternal)ServiceStatuses).ExtensionService = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.ServiceStatusesExtensionService { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatusesInternal)ServiceStatuses).ExtensionService; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatusesInternal)ServiceStatuses).ExtensionService = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ServiceStatusesGuestConfigurationService</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.ServiceStatusesGuestConfigurationService { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatusesInternal)ServiceStatuses).GuestConfigurationService; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatusesInternal)ServiceStatuses).GuestConfigurationService = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.ServiceStatusesGuestConfigurationService { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatusesInternal)ServiceStatuses).GuestConfigurationService; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatusesInternal)ServiceStatuses).GuestConfigurationService = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Status</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.Status { get => this._status; set { {_status = value;} } }
 
+        /// <summary>Internal Acessors for StatusReason</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.StatusReason { get => this._statusReason; set { {_statusReason = value;} } }
+
         /// <summary>Internal Acessors for StorageProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.StorageProfile { get => (this._storageProfile = this._storageProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.StorageProfile()); set { {_storageProfile = value;} } }
+
+        /// <summary>Internal Acessors for StorageProfileDisk</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.StorageProfileDisk { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfileInternal)StorageProfile).Disk; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfileInternal)StorageProfile).Disk = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for VMUuid</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal.VMUuid { get => this._vMUuid; set { {_vMUuid = value;} } }
@@ -413,7 +438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>The list of network interfaces.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> NetworkProfileNetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> NetworkProfileNetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface; }
 
         /// <summary>Backing field for <see cref="OSEdition" /> property.</summary>
         private string _oSEdition;
@@ -494,6 +519,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string Status { get => this._status; }
 
+        /// <summary>Backing field for <see cref="StatusReason" /> property.</summary>
+        private string _statusReason;
+
+        /// <summary>
+        /// Indicates whether the service has detected that this Arc machine is a clone of another onboarded machine. Service-computed;
+        /// not settable by the user.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string StatusReason { get => this._statusReason; }
+
         /// <summary>Backing field for <see cref="StorageProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfile _storageProfile;
 
@@ -503,7 +538,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>The disks on the machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> StorageProfileDisk { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfileInternal)StorageProfile).Disk; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfileInternal)StorageProfile).Disk = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> StorageProfileDisk { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfileInternal)StorageProfile).Disk; }
+
+        /// <summary>Backing field for <see cref="TpmEkCertificate" /> property.</summary>
+        private string _tpmEkCertificate;
+
+        /// <summary>
+        /// Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource
+        /// onboarding.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string TpmEkCertificate { get => this._tpmEkCertificate; set => this._tpmEkCertificate = value; }
 
         /// <summary>Backing field for <see cref="VMId" /> property.</summary>
         private string _vMId;
@@ -708,8 +753,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Update = false,
         Description = @"Timestamp of last upgrade attempt",
         SerializedName = @"lastAttemptTimestamp",
-        PossibleTypes = new [] { typeof(string) })]
-        string AgentUpgradeLastAttemptTimestamp { get;  }
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? AgentUpgradeLastAttemptTimestamp { get;  }
         /// <summary>The hybrid machine agent full version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -754,8 +799,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Update = false,
         Description = @"Detected properties from the machine.",
         SerializedName = @"detectedProperties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties DetectedProperty { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesDetectedProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesDetectedProperties DetectedProperty { get;  }
         /// <summary>Specifies the hybrid machine display name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -910,6 +955,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"totalPhysicalMemoryInBytes",
         PossibleTypes = new [] { typeof(long) })]
         long? HardwareProfileTotalPhysicalMemoryInByte { get;  }
+        /// <summary>
+        /// Specifies the resource ID of the associated hardware device. Only settable by HCI RP.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies the resource ID of the associated hardware device. Only settable by HCI RP.",
+        SerializedName = @"hardwareResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string HardwareResourceId { get; set; }
+        /// <summary>Specifies the identity key store a machine is using.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies the identity key store a machine is using.",
+        SerializedName = @"identityKeyStore",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("TPM", "Default")]
+        string IdentityKeyStore { get; set; }
         /// <summary>The time of the last status change.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -1120,8 +1190,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Description = @"The status of the hybrid machine agent.",
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Connected", "Disconnected", "Error")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Connected", "Disconnected", "Error", "AwaitingConnection")]
         string Status { get;  }
+        /// <summary>
+        /// Indicates whether the service has detected that this Arc machine is a clone of another onboarded machine. Service-computed;
+        /// not settable by the user.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Indicates whether the service has detected that this Arc machine is a clone of another onboarded machine. Service-computed; not settable by the user.",
+        SerializedName = @"statusReason",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Cloned")]
+        string StatusReason { get;  }
         /// <summary>The disks on the machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -1133,6 +1218,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"disks",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> StorageProfileDisk { get;  }
+        /// <summary>
+        /// Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource
+        /// onboarding.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource onboarding.",
+        SerializedName = @"tpmEkCertificate",
+        PossibleTypes = new [] { typeof(string) })]
+        string TpmEkCertificate { get; set; }
         /// <summary>Specifies the hybrid machine unique ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -1203,7 +1302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Success", "Failed")]
         string AgentUpgradeLastAttemptStatus { get; set; }
         /// <summary>Timestamp of last upgrade attempt</summary>
-        string AgentUpgradeLastAttemptTimestamp { get; set; }
+        global::System.DateTime? AgentUpgradeLastAttemptTimestamp { get; set; }
         /// <summary>The hybrid machine agent full version.</summary>
         string AgentVersion { get; set; }
         /// <summary>
@@ -1215,7 +1314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Specifies the cloud provider (Azure/AWS/GCP...).</summary>
         string CloudMetadataProvider { get; set; }
         /// <summary>Detected properties from the machine.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties DetectedProperty { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesDetectedProperties DetectedProperty { get; set; }
         /// <summary>Specifies the hybrid machine display name.</summary>
         string DisplayName { get; set; }
         /// <summary>Specifies the DNS fully qualified display name.</summary>
@@ -1248,6 +1347,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor> HardwareProfileProcessor { get; set; }
         /// <summary>The total physical memory on the machine</summary>
         long? HardwareProfileTotalPhysicalMemoryInByte { get; set; }
+        /// <summary>
+        /// Specifies the resource ID of the associated hardware device. Only settable by HCI RP.
+        /// </summary>
+        string HardwareResourceId { get; set; }
+        /// <summary>Specifies the identity key store a machine is using.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("TPM", "Default")]
+        string IdentityKeyStore { get; set; }
         /// <summary>The time of the last status change.</summary>
         global::System.DateTime? LastStatusChange { get; set; }
         /// <summary>Specifies the License related properties for a machine.</summary>
@@ -1297,12 +1403,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The state of the guest configuration service on the Arc-enabled machine.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus ServiceStatusesGuestConfigurationService { get; set; }
         /// <summary>The status of the hybrid machine agent.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Connected", "Disconnected", "Error")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Connected", "Disconnected", "Error", "AwaitingConnection")]
         string Status { get; set; }
+        /// <summary>
+        /// Indicates whether the service has detected that this Arc machine is a clone of another onboarded machine. Service-computed;
+        /// not settable by the user.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Cloned")]
+        string StatusReason { get; set; }
         /// <summary>Information about the machine's storage</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfile StorageProfile { get; set; }
         /// <summary>The disks on the machine.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> StorageProfileDisk { get; set; }
+        /// <summary>
+        /// Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource
+        /// onboarding.
+        /// </summary>
+        string TpmEkCertificate { get; set; }
         /// <summary>Specifies the hybrid machine unique ID.</summary>
         string VMId { get; set; }
         /// <summary>Specifies the Arc Machine's unique SMBIOS ID</summary>

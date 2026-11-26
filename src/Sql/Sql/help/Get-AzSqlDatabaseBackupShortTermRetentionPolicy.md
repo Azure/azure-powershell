@@ -15,7 +15,8 @@ Gets a backup short term retention policy.
 ### PolicyByResourceServerDatabaseSet (Default)
 ```
 Get-AzSqlDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
@@ -32,7 +33,8 @@ Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceId <String> [-DefaultPr
 
 ## DESCRIPTION
 The **Get-AzSqlDatabaseBackupShortTermRetentionPolicy** cmdlet gets the short term retention policy registered to this database.
-The policy is the retention period in days and differential backup interval in hours, for point-in-time restore backups.
+The policy includes the retention period in days and differential backup interval in hours for point-in-time restore backups.
+The returned `ImmutabilityStatus` property indicates the current backup immutability status and can be `Disabled`, `Enabled`, or `Locked`.
 
 ## EXAMPLES
 
@@ -42,9 +44,9 @@ Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup
 ```
 
 ```output
-ResourceGroupName ServerName  DatabaseName RetentionDays DiffBackupIntervalInHours
------------------ ----------  ------------ ------------- -------------------------
-resourcegroup01   server01    database01   7             24
+ResourceGroupName ServerName  DatabaseName RetentionDays DiffBackupIntervalInHours ImmutabilityStatus
+----------------- ----------  ------------ ------------- --------------------------------------------
+resourcegroup01   server01    database01   7             24                        Enabled
 ```
 
 This command gets the short term retention policy for database01.
@@ -55,9 +57,9 @@ Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -Datab
 ```
 
 ```output
-ResourceGroupName ServerName  DatabaseName RetentionDays DiffBackupIntervalInHours
------------------ ----------  ------------ ------------- -------------------------
-resourcegroup01   server01    database01   7             24
+ResourceGroupName ServerName  DatabaseName RetentionDays DiffBackupIntervalInHours ImmutabilityStatus
+----------------- ----------  ------------ ------------- --------------------------------------------
+resourcegroup01   server01    database01   7             24                        Locked
 ```
 
 This command gets the short term retention policy for database01 via piping in a database object.

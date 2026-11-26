@@ -60,6 +60,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayUrlPathMap> UrlPathMaps { get; set; }
 
+        public List<PSApplicationGatewayAdvancedRoutingMap> AdvancedRoutingMaps { get; set; }
+
+        public List<PSApplicationGatewayAdvancedRoutingConditionSet> AdvancedRoutingConditionSets { get; set; }
+
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
         public List<PSApplicationGatewayRoutingRule> RoutingRules { get; set; }
@@ -85,6 +89,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableFips { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableConfidentialCompute { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableRequestBuffering
@@ -124,6 +131,28 @@ namespace Microsoft.Azure.Commands.Network.Models
                 this.GlobalConfiguration.EnableResponseBuffering = value;
             }
         
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? DisableDefaultServerHeaderInResponse
+        {
+            get
+            {
+                return this.GlobalConfiguration?.DisableDefaultServerHeaderInResponse;
+            }
+
+            set
+            {
+                if (this.GlobalConfiguration == null && !string.Equals(this.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(this.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                }
+
+                if (this.GlobalConfiguration != null)
+                {
+                    this.GlobalConfiguration.DisableDefaultServerHeaderInResponse = value;
+                }
+            }
         }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -243,6 +272,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string UrlPathMapsText
         {
             get { return JsonConvert.SerializeObject(UrlPathMaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string AdvancedRoutingMapsText
+        {
+            get { return JsonConvert.SerializeObject(AdvancedRoutingMaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string AdvancedRoutingConditionSetsText
+        {
+            get { return JsonConvert.SerializeObject(AdvancedRoutingConditionSets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

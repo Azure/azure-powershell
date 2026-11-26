@@ -29,12 +29,14 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CapacityReservationGroup", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSCapacityReservationGroup))]
+    [CmdletPreview("The Open Capacity Reservation feature is in preview")]
     public class NewAzureCapacityReservationGroup : ComputeAutomationBaseCmdlet
     {
 
@@ -75,6 +77,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Allows a Capacity Reservation Group to be shared across subscriptions. Pass \"\" to unshare all subscriptions.  It is an array of strings; Contains an array of Arm resource ids of subscriptions\r\neg : \"/subscriptions/{subscriptionId1}\", \"/subscriptions/{subscriptionId2}\"\r\n")]
         public string[] SharingProfile { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the type of the capacity reservation group. 'Targeted' reservations are consumed by virtual machines that are explicitly associated with the group. 'Block' reservations are consumed only from the capacity block. 'Open' reservations are implicitly consumed by eligible virtual machines with a matching VM size and zone without associating the group. The reservation type cannot be changed after the group is created.")]
+        [PSArgumentCompleter("Targeted", "Block", "Open")]
+        public string ReservationType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -92,6 +101,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.Zone))
                     {
                         capacityReservationGroup.Zones = this.Zone;
+                    }
+                    if (this.IsParameterBound(c => c.ReservationType))
+                    {
+                        capacityReservationGroup.ReservationType = this.ReservationType;
                     }
                     if (this.IsParameterBound(c => c.SharingProfile))
                     {

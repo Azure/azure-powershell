@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell;
 
-    /// <summary>List of vaults</summary>
+    /// <summary>The response of a DeletedVault list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(DeletedVaultListResultTypeConverter))]
     public partial class DeletedVaultListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             return ToJsonString();
         }
     }
-    /// List of vaults
+    /// The response of a DeletedVault list operation.
     [System.ComponentModel.TypeConverter(typeof(DeletedVaultListResultTypeConverter))]
     public partial interface IDeletedVaultListResult
 

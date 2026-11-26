@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.PowerShell;
 
-    /// <summary>The SKU type for the edge action</summary>
+    /// <summary>
+    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
+    /// value, is rejected.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(SkuTypeUpdateTypeConverter))]
     public partial class SkuTypeUpdate
     {
@@ -162,7 +165,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             return ToJsonString();
         }
     }
-    /// The SKU type for the edge action
+    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
+    /// value, is rejected.
     [System.ComponentModel.TypeConverter(typeof(SkuTypeUpdateTypeConverter))]
     public partial interface ISkuTypeUpdate
 

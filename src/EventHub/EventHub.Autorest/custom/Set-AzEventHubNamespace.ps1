@@ -21,7 +21,7 @@ Updates an EventHub Namespace
 
 function Set-AzEventHubNamespace{
     [Alias("Set-AzEventHubNamespaceV2")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace])]    
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
@@ -187,6 +187,21 @@ function Set-AzEventHubNamespace{
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.EventHub.private\New-AzEventHubNamespace_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
     process{
         try{
             $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
@@ -197,7 +212,7 @@ function Set-AzEventHubNamespace{
             $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
             $hasMaximumThroughputUnit = $PSBoundParameters.Remove('MaximumThroughputUnit')
             $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
-            $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption') 
+            $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption')
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
             $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
             $hasTag = $PSBoundParameters.Remove('Tag')
@@ -208,8 +223,8 @@ function Set-AzEventHubNamespace{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $eventHubNamespace = Get-AzEventHubNamespace @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubNamespace' -BoundParameters $PSBoundParameters
+            $eventHubNamespace = Get-AzEventHubNamespace @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

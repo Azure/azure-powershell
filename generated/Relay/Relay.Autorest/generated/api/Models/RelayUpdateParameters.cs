@@ -19,11 +19,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceNamespacePatch __resourceNamespacePatch = new Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ResourceNamespacePatch();
 
+        /// <summary>Cluster ARM ID of the Namespace.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inlined)]
+        public string ClusterArmId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)Property).ClusterArmId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)Property).ClusterArmId = value ?? null; }
+
         /// <summary>The time the namespace was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inlined)]
         public global::System.DateTime? CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)Property).CreatedAt; }
 
-        /// <summary>Resource ID.</summary>
+        /// <summary>
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).Id; }
 
@@ -64,10 +70,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).Name = value ?? null; }
 
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).Type = value ?? null; }
 
-        /// <summary>Resource name.</summary>
+        /// <summary>
+        /// The minimum TLS version for the namespace.
+        /// Supported values are 1.2 and 1.3.
+        /// The service defaults to 1.2 when the property is omitted.
+        /// Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inlined)]
+        public string MinimumTlsVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)Property).MinimumTlsVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)Property).MinimumTlsVersion = value ?? null; }
+
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).Name; }
 
@@ -115,11 +151,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inlined)]
         public string Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)Property).Status; }
 
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).SystemDataLastModifiedByType; }
+
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceNamespacePatchTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceNamespacePatchInternal)__resourceNamespacePatch).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceNamespacePatchInternal)__resourceNamespacePatch).Tag = value ?? null /* model class */; }
 
-        /// <summary>Resource type.</summary>
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)__resourceNamespacePatch).Type; }
 
@@ -150,6 +218,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceNamespacePatch
     {
+        /// <summary>Cluster ARM ID of the Namespace.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Cluster ARM ID of the Namespace.",
+        SerializedName = @"clusterArmId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ClusterArmId { get; set; }
         /// <summary>The time the namespace was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
@@ -172,6 +251,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         SerializedName = @"metricId",
         PossibleTypes = new [] { typeof(string) })]
         string MetricId { get;  }
+        /// <summary>
+        /// The minimum TLS version for the namespace.
+        /// Supported values are 1.2 and 1.3.
+        /// The service defaults to 1.2 when the property is omitted.
+        /// Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The minimum TLS version for the namespace.
+        Supported values are 1.2 and 1.3.
+        The service defaults to 1.2 when the property is omitted.
+        Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.",
+        SerializedName = @"minimumTlsVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("1.2", "1.3")]
+        string MinimumTlsVersion { get; set; }
         /// <summary>List of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
@@ -270,10 +369,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
     internal partial interface IRelayUpdateParametersInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceNamespacePatchInternal
     {
+        /// <summary>Cluster ARM ID of the Namespace.</summary>
+        string ClusterArmId { get; set; }
         /// <summary>The time the namespace was created.</summary>
         global::System.DateTime? CreatedAt { get; set; }
         /// <summary>Identifier for Azure Insights metrics.</summary>
         string MetricId { get; set; }
+        /// <summary>
+        /// The minimum TLS version for the namespace.
+        /// Supported values are 1.2 and 1.3.
+        /// The service defaults to 1.2 when the property is omitted.
+        /// Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("1.2", "1.3")]
+        string MinimumTlsVersion { get; set; }
         /// <summary>List of private endpoint connections.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>Description of Relay namespace.</summary>

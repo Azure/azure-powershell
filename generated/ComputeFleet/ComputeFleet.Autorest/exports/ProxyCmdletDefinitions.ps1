@@ -20,9 +20,11 @@ List VirtualMachineScaleSet resources by Fleet
 .Description
 List VirtualMachineScaleSet resources by Fleet
 .Example
-Get-AzComputeFleetVirtualMachineScaleSet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001"
+Get-AzComputeFleetVirtualMachineScaleSet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, OperationStatus
 .Example
-Get-AzComputeFleetVirtualMachineScaleSet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" | Select-Object Name, Id, OperationStatus
+Get-AzComputeFleetVirtualMachineScaleSet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Id, OperationStatus
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSet
@@ -205,9 +207,15 @@ List VirtualMachine resources of a Launch mode Fleet.
 .Description
 List VirtualMachine resources of a Launch mode Fleet.
 .Example
-Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "fleet-ps-tst"
+Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, OperationStatus
 .Example
-Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Id, OperationStatus
+Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Id, OperationStatus
+.Example
+Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Where-Object OperationStatus -ne "Succeeded" |
+    Select-Object Name, OperationStatus
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachine
@@ -403,11 +411,18 @@ Get a Fleet
 .Description
 Get a Fleet
 .Example
-Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Location, ProvisioningState, Mode, RegularPriorityProfileCapacity, RegularPriorityProfileAllocationStrategy
+Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Location, ProvisioningState, Mode, RegularPriorityProfileCapacity, RegularPriorityProfileAllocationStrategy
 .Example
-Get-AzComputeFleet -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Location, ProvisioningState, Mode
+Get-AzComputeFleet -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Location, ProvisioningState, Mode
 .Example
-Get-AzComputeFleet | Select-Object Name, Location, ResourceGroupName, ProvisioningState, Mode
+Get-AzComputeFleet -SubscriptionId (Get-AzContext).Subscription.Id |
+    Select-Object Name, Location, ResourceGroupName, ProvisioningState, Mode
+.Example
+$fleet = Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
+Get-AzComputeFleet -InputObject $fleet |
+    Select-Object Name, Mode, ProvisioningState
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
@@ -617,7 +632,7 @@ Create a Fleet
 Create a Fleet
 .Example
 $resourceGroupName = "myResourceGroup"
-$location = "eastus"
+$location = "centralus"
 $fleetName = "fleet1"
 $vmNamePrefix = "fleet1prefix"
 $adminPassword = Read-Host "Enter admin password" -AsSecureString
@@ -630,8 +645,6 @@ $ipConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachi
 $ipConfig.Name = "nic-ipConfig"
 $ipConfig.Primary = $true
 $ipConfig.SubnetId = $subnetId
-$ipConfig.PublicIPAddressConfigurationName = "nic-publicip"
-$ipConfig.IdleTimeoutInMinute = 15
 
 # Build NIC Configuration
 $nicConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetNetworkConfiguration]::new()
@@ -650,13 +663,14 @@ $storageProfile.ImageReferenceVersion = "latest"
 $storageProfile.OSDiskCreateOption = "fromImage"
 $storageProfile.OSDiskCaching = "ReadWrite"
 $storageProfile.OSDiskOstype = "Linux"
-$storageProfile.ManagedDiskStorageAccountType = "Premium_LRS"
+$storageProfile.ManagedDiskStorageAccountType = "Standard_LRS"
 
 # Build OSProfile
 $osProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetOSProfile]::new()
 $osProfile.AdminUsername = "azureUser"
 $osProfile.ComputerNamePrefix = $fleetName
 $osProfile.AdminPassword = $adminPassword
+$osProfile.LinuxConfigurationDisablePasswordAuthentication = $false
 
 # Build BaseVirtualMachineProfile
 $baseVMProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.BaseVirtualMachineProfile]::new()
@@ -666,8 +680,7 @@ $baseVMProfile.NetworkProfileNetworkApiVersion = "2020-11-01"
 $baseVMProfile.NetworkProfileNetworkInterfaceConfiguration = @($nicConfig)
 $baseVMProfile.SecurityProfileSecurityType = "TrustedLaunch"
 $baseVMProfile.UefiSettingSecureBootEnabled = $true
-$baseVMProfile.UefiSettingVTpmEnabled = $false
-$baseVMProfile.LicenseType = "None"
+$baseVMProfile.UefiSettingVTpmEnabled = $true
 
 # Build VM Sizes Profile
 $vmSize1 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
@@ -684,11 +697,13 @@ New-AzComputeFleet -Name $fleetName `
     -VMSizesProfile $vmSizesProfile `
     -ComputeProfileBaseVirtualMachineProfile $baseVMProfile `
     -ComputeProfileComputeApiVersion "2024-11-01" `
-    -RegularPriorityProfileCapacity 5 `
-    -RegularPriorityProfileMinCapacity 0 `
+    -RegularPriorityProfileCapacity 1 `
+    -RegularPriorityProfileMinCapacity 1 `
     -RegularPriorityProfileAllocationStrategy "LowestPrice"
 .Example
-New-AzComputeFleet -Name "spotfleet1" -ResourceGroupName "myResourceGroup" -JsonFilePath "C:\fleet-config.json"
+$jsonFilePath = Join-Path -Path $PWD.Path -ChildPath "fleet-config.json"
+New-AzComputeFleet -Name "fleet-json" -ResourceGroupName "myResourceGroup" `
+    -JsonFilePath $jsonFilePath | Select-Object Name, Location, Mode, ProvisioningState
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet
@@ -1057,10 +1072,6 @@ VMATTRIBUTE <IVMAttributes>: Attribute based Fleet.
 VMSIZESPROFILE <IVMSizeProfile[]>: List of VM sizes supported for Compute Fleet
   Name <String>: The Sku name (e.g. 'Standard_DS1_v2')
   [Rank <Int32?>]: The rank of the VM size. This is used with 'RegularPriorityAllocationStrategy.Prioritized'         The lower the number, the higher the priority. Starting with 0.
-
-ZONEALLOCATIONPOLICYZONEPREFERENCE <IZonePreference[]>: Zone preferences, required when zone distribution strategy is Prioritized.
-  Zone <String>: Name of the zone.
-  [Rank <Int32?>]: The rank of the zone. This is used with 'Prioritized' ZoneDistributionStrategy.         The lower the number, the higher the priority, starting with 0.         0 is the highest rank. If not specified, defaults to lowest rank.
 .Link
 https://learn.microsoft.com/powershell/module/az.computefleet/new-azcomputefleet
 #>
@@ -1292,20 +1303,6 @@ param(
     # Zones in which the Compute Fleet is available
     ${Zone},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("BestEffortSingleZone", "Prioritized")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Distribution strategy used for zone allocation policy.
-    ${ZoneAllocationPolicyDistributionStrategy},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]]
-    # Zone preferences, required when zone distribution strategy is Prioritized.
-    ${ZoneAllocationPolicyZonePreference},
-
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
     [System.String]
@@ -1483,9 +1480,12 @@ Delete a Fleet
 .Description
 Delete a Fleet
 .Example
-Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst"
+Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
 .Example
-Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst" -PassThru
+Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup" -PassThru
+.Example
+$fleet = Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
+Remove-AzComputeFleet -InputObject $fleet -PassThru
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
@@ -1707,16 +1707,18 @@ Update a Fleet
 .Description
 Update a Fleet
 .Example
-Set-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
-    -Location "eastus2euap" `
-    -Tag @{ EnableVMManagementPolicy = "true"; environment = "test" } | Select-Object Name, Location, Mode, Tag, ProvisioningState
+Set-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" `
+    -Location "centralus" `
+    -Tag @{ environment = "test" } |
+    Select-Object Name, Location, Mode, Tag, ProvisioningState
 .Example
-Set-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
-    -Location "eastus2euap" `
-    -SpotPriorityProfileCapacity 10 `
+Set-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" `
+    -Location "centralus" `
+    -SpotPriorityProfileCapacity 3 `
     -SpotPriorityProfileAllocationStrategy "LowestPrice" `
     -SpotPriorityProfileEvictionPolicy "Delete" `
-    -Tag @{ EnableVMManagementPolicy = "true" } | Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
+    -Tag @{ environment = "test" } |
+    Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet
@@ -2085,10 +2087,6 @@ VMATTRIBUTE <IVMAttributes>: Attribute based Fleet.
 VMSIZESPROFILE <IVMSizeProfile[]>: List of VM sizes supported for Compute Fleet
   Name <String>: The Sku name (e.g. 'Standard_DS1_v2')
   [Rank <Int32?>]: The rank of the VM size. This is used with 'RegularPriorityAllocationStrategy.Prioritized'         The lower the number, the higher the priority. Starting with 0.
-
-ZONEALLOCATIONPOLICYZONEPREFERENCE <IZonePreference[]>: Zone preferences, required when zone distribution strategy is Prioritized.
-  Zone <String>: Name of the zone.
-  [Rank <Int32?>]: The rank of the zone. This is used with 'Prioritized' ZoneDistributionStrategy.         The lower the number, the higher the priority, starting with 0.         0 is the highest rank. If not specified, defaults to lowest rank.
 .Link
 https://learn.microsoft.com/powershell/module/az.computefleet/set-azcomputefleet
 #>
@@ -2320,20 +2318,6 @@ param(
     # Zones in which the Compute Fleet is available
     ${Zone},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("BestEffortSingleZone", "Prioritized")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Distribution strategy used for zone allocation policy.
-    ${ZoneAllocationPolicyDistributionStrategy},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]]
-    # Zone preferences, required when zone distribution strategy is Prioritized.
-    ${ZoneAllocationPolicyZonePreference},
-
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
     [System.String]
@@ -2511,11 +2495,13 @@ Update a Fleet
 .Description
 Update a Fleet
 .Example
-Update-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
-    -Tag @{ EnableVMManagementPolicy = "true"; environment = "staging" } | Select-Object Name, Tag, ProvisioningState
+Update-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" `
+    -Tag @{ environment = "staging" } |
+    Select-Object Name, Tag, ProvisioningState
 .Example
-Get-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" | Update-AzComputeFleet `
-    -SpotPriorityProfileCapacity 8 | Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
+Get-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" |
+    Update-AzComputeFleet -SpotPriorityProfileCapacity 3 |
+    Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
@@ -2893,10 +2879,6 @@ VMATTRIBUTE <IVMAttributes>: Attribute based Fleet.
 VMSIZESPROFILE <IVMSizeProfile[]>: List of VM sizes supported for Compute Fleet
   Name <String>: The Sku name (e.g. 'Standard_DS1_v2')
   [Rank <Int32?>]: The rank of the VM size. This is used with 'RegularPriorityAllocationStrategy.Prioritized'         The lower the number, the higher the priority. Starting with 0.
-
-ZONEALLOCATIONPOLICYZONEPREFERENCE <IZonePreference[]>: Zone preferences, required when zone distribution strategy is Prioritized.
-  Zone <String>: Name of the zone.
-  [Rank <Int32?>]: The rank of the zone. This is used with 'Prioritized' ZoneDistributionStrategy.         The lower the number, the higher the priority, starting with 0.         0 is the highest rank. If not specified, defaults to lowest rank.
 .Link
 https://learn.microsoft.com/powershell/module/az.computefleet/update-azcomputefleet
 #>
@@ -3127,20 +3109,6 @@ param(
     [System.String[]]
     # Zones in which the Compute Fleet is available
     ${Zone},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("BestEffortSingleZone", "Prioritized")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Distribution strategy used for zone allocation policy.
-    ${ZoneAllocationPolicyDistributionStrategy},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]]
-    # Zone preferences, required when zone distribution strategy is Prioritized.
-    ${ZoneAllocationPolicyZonePreference},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

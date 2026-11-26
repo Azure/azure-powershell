@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="nextRun">ext run time of the update.
         /// </param>
-        public SoftwareUpdateConfigurationCollectionItem(string name = default(string), string id = default(string), UpdateConfiguration updateConfiguration = default(UpdateConfiguration), SoftwareUpdateConfigurationTasks tasks = default(SoftwareUpdateConfigurationTasks), string frequency = default(string), System.DateTimeOffset startTime = default(System.DateTimeOffset), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string provisioningState = default(string), System.DateTimeOffset? nextRun = default(System.DateTimeOffset?))
+        public SoftwareUpdateConfigurationCollectionItem(string name = default(string), string id = default(string), UpdateConfiguration updateConfiguration = default(UpdateConfiguration), SoftwareUpdateConfigurationTasks tasks = default(SoftwareUpdateConfigurationTasks), string frequency = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string provisioningState = default(string), System.DateTimeOffset? nextRun = default(System.DateTimeOffset?))
 
         {
             this.Name = name;
@@ -117,21 +117,21 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets the start time of the update.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startTime")]
-        public System.DateTimeOffset StartTime {get; set; }
+        public System.DateTimeOffset? StartTime {get; set; }
 
         /// <summary>
         /// Gets creation time of the software update configuration, which only appears
         /// in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets last time software update configuration was modified, which only
         /// appears in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
 
         /// <summary>
         /// Gets provisioning state for the software update configuration, which only

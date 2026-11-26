@@ -15,7 +15,8 @@ Creates an AzStorageContainer endpoint resource, which represents a data transfe
 ```
 New-AzStorageMoverAzStorageContainerEndpoint -Name <String> -ResourceGroupName <String>
  -StorageMoverName <String> -BlobContainerName <String> -StorageAccountResourceId <String>
- [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-AllowedStorageAccount <String[]>] [-Description <String>]
+ [-EnableCrossTenantTransfer] [-EndpointKind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -54,7 +55,56 @@ Type                         : microsoft.storagemover/storagemovers/endpoints
 
 This command creates a AzStorageContainer endpoint for a Storage mover.
 
+### Example 2: Create an AzStorageContainer endpoint for cross-tenant data transfer
+```powershell
+New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -BlobContainerName myContainer -StorageAccountResourceId myAccountResourceId -EndpointKind Target -EnableCrossTenantTransfer -AllowedStorageAccount "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount"
+```
+
+```output
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
+IdentityPrincipalId          : 00000000-0000-0000-0000-000000000000
+IdentityTenantId             : 00000000-0000-0000-0000-000000000000
+IdentityType                 : SystemAssigned
+IdentityUserAssignedIdentity : {
+                               }
+Name                         : myEndpoint
+Property                     : {
+                                 "endpointType": "AzureStorageBlobContainer",
+                                 "endpointKind": "Target",
+                                 "provisioningState": "Succeeded",
+                                 "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
+                                 "blobContainerName": "myContainer",
+                                 "enableCrossTenantTransfer": true,
+                                 "allowedStorageAccounts": [ "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount" ]
+                               }
+ResourceGroupName            : myResourceGroup
+SystemDataCreatedAt          : 10/19/2026 10:43:52 AM
+SystemDataCreatedBy          : xxxxxxxxxx
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/19/2026 10:43:52 AM
+SystemDataLastModifiedBy     : xxxxxxxxxx
+SystemDataLastModifiedByType : User
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command creates an AzStorageContainer target endpoint that can be used as one side of a cross-tenant data transfer with the listed partner-tenant storage account.
+
 ## PARAMETERS
+
+### -AllowedStorageAccount
+The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BlobContainerName
 The name of the Storage blob container that is the target destination.
@@ -88,6 +138,38 @@ Accept wildcard characters: False
 
 ### -Description
 A description for the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableCrossTenantTransfer
+Enables this endpoint to be used as one side of a cross-tenant data transfer.
+Defaults to false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointKind
+The kind of the endpoint, either Source or Target.
+Cannot be changed after the endpoint is created.
 
 ```yaml
 Type: System.String

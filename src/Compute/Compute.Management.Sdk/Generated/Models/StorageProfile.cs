@@ -57,7 +57,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// zone. This is applicable only for VMs with placement property set. Please
         /// note that this change is irreversible. Minimum api-version: 2024-11-01.
         /// </param>
-        public StorageProfile(ImageReference imageReference = default(ImageReference), OSDisk osDisk = default(OSDisk), System.Collections.Generic.IList<DataDisk> dataDisks = default(System.Collections.Generic.IList<DataDisk>), string diskControllerType = default(string), bool? alignRegionalDisksToVMZone = default(bool?))
+
+        /// <param name="diskApiVersion">Specifies the Disk API version used when applying additionalDiskProperties
+        /// to managed disks. The value must be in the format YYYY-MM-DD (e.g.,
+        /// &#34;2026-03-02&#34;).
+        /// Possible values include: &#39;2025-01-02&#39;, &#39;2026-03-02&#39;</param>
+        public StorageProfile(ImageReference imageReference = default(ImageReference), OSDisk osDisk = default(OSDisk), System.Collections.Generic.IList<DataDisk> dataDisks = default(System.Collections.Generic.IList<DataDisk>), string diskControllerType = default(string), bool? alignRegionalDisksToVMZone = default(bool?), string diskApiVersion = default(string))
 
         {
             this.ImageReference = imageReference;
@@ -65,6 +70,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.DataDisks = dataDisks;
             this.DiskControllerType = diskControllerType;
             this.AlignRegionalDisksToVMZone = alignRegionalDisksToVMZone;
+            this.DiskApiVersion = diskApiVersion;
             CustomInit();
         }
 
@@ -123,6 +129,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "alignRegionalDisksToVMZone")]
         public bool? AlignRegionalDisksToVMZone {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the Disk API version used when applying
+        /// additionalDiskProperties to managed disks. The value must be in the format
+        /// YYYY-MM-DD (e.g., &#34;2026-03-02&#34;). Possible values include: &#39;2025-01-02&#39;, &#39;2026-03-02&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diskApiVersion")]
+        public string DiskApiVersion {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -146,6 +160,7 @@ namespace Microsoft.Azure.Management.Compute.Models
                     }
                 }
             }
+
 
         }
     }

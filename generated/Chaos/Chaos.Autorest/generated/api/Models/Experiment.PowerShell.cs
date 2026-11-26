@@ -102,17 +102,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("SystemData"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SystemDataTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -134,41 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("SystemDataCreatedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -178,13 +170,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityTenantId, global::System.Convert.ToString);
             }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CustomerDataStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorage = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICustomerDataStorageProperties) content.GetValueForProperty("CustomerDataStorage",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorage, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CustomerDataStoragePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Step"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Step = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep>) content.GetValueForProperty("Step",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Step, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.StepTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Step = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep>) content.GetValueForProperty("Step",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Step, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentStepTypeConverter.ConvertFrom));
             }
             if (content.Contains("Selector"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Selector = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector>) content.GetValueForProperty("Selector",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Selector, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SelectorTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Selector = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector>) content.GetValueForProperty("Selector",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Selector, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosTargetSelectorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CustomerDataStorageAccountResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorageAccountResourceId = (string) content.GetValueForProperty("CustomerDataStorageAccountResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorageAccountResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomerDataStorageBlobContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorageBlobContainerName = (string) content.GetValueForProperty("CustomerDataStorageBlobContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorageBlobContainerName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -203,17 +215,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("SystemData"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SystemDataTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -235,41 +271,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("SystemDataCreatedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -279,13 +283,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityTenantId, global::System.Convert.ToString);
             }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CustomerDataStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorage = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICustomerDataStorageProperties) content.GetValueForProperty("CustomerDataStorage",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorage, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CustomerDataStoragePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Step"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Step = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep>) content.GetValueForProperty("Step",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Step, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.StepTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Step = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep>) content.GetValueForProperty("Step",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Step, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentStepTypeConverter.ConvertFrom));
             }
             if (content.Contains("Selector"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Selector = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector>) content.GetValueForProperty("Selector",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Selector, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SelectorTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Selector = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector>) content.GetValueForProperty("Selector",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).Selector, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosTargetSelectorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CustomerDataStorageAccountResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorageAccountResourceId = (string) content.GetValueForProperty("CustomerDataStorageAccountResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorageAccountResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomerDataStorageBlobContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorageBlobContainerName = (string) content.GetValueForProperty("CustomerDataStorageBlobContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal)this).CustomerDataStorageBlobContainerName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

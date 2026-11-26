@@ -7,6 +7,84 @@ a year with major versions of the Az PowerShell module.
 
 Preview modules are not included in this list. Read more about [module version types](azureps-support-lifecycle.md#module-version-types).
 
+## Az.Batch
+
+### `Get-AzBatchJob`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSJobManagerTask (in the JobManagerTask property of the returned PSCloudJob) is being deprecated.
+  - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `Get-AzBatchJobSchedule`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSJobManagerTask (in JobSpecification.JobManagerTask of the returned PSCloudJobSchedule) is being deprecated.
+  - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `Get-AzBatchPoolUsageMetric`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The Batch service retired the pool usage metrics API on 30 September 2024, so this cmdlet is being deprecated without a replacement. See https://github.com/Azure/Batch/issues/140.
+  - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `Get-AzBatchTask`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSCloudTask is being deprecated.
+  - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `New-AzBatchJob`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-JobManagerTask`
+    - The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSJobManagerTask is being deprecated.
+    - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `New-AzBatchJobSchedule`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-JobSpecification`
+    - The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSJobManagerTask (in JobSpecification.JobManagerTask) is being deprecated.
+    - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `New-AzBatchTask`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-AuthenticationTokenSettings`
+    - The Batch service retired task authentication tokens on 30 September 2024, so this parameter is being deprecated without a replacement. See https://github.com/Azure/Batch/issues/140.
+    - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+  - `-Tasks`
+    - The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSCloudTask is being deprecated.
+    - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `Remove-AzBatchComputeNode`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-DeallocationOption`
+    - The Batch API has deprecated the RetainedData value, and a newer API version removes it, so RetainedData is being removed from this parameter (Requeue, Terminate and TaskCompletion stay). Use TaskCompletion instead, and upload task data to Azure Storage in your task.
+    - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `Reset-AzBatchComputeNode`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ReimageOption`
+    - The Batch API has deprecated the RetainedData value, and a newer API version removes it, so RetainedData is being removed from this parameter (Requeue, Terminate and TaskCompletion stay). Use TaskCompletion instead, and upload task data to Azure Storage in your task.
+    - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `Restart-AzBatchComputeNode`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-RebootOption`
+    - The Batch API has deprecated the RetainedData value, and a newer API version removes it, so RetainedData is being removed from this parameter (Requeue, Terminate and TaskCompletion stay). Use TaskCompletion instead, and upload task data to Azure Storage in your task.
+    - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
+### `Start-AzBatchPoolResize`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ComputeNodeDeallocationOption`
+    - The Batch API has deprecated the RetainedData value, and a newer API version removes it, so RetainedData is being removed from this parameter (Requeue, Terminate and TaskCompletion stay). Use TaskCompletion instead, and upload task data to Azure Storage in your task.
+    - This change is expected to take effect from Az.Batch version: 5.0.0 and Az version: 18.0.0
+
 ## Az.Cdn
 
 ### `New-AzFrontDoorCdnSecretCustomerCertificateParametersObject`
@@ -462,7 +540,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
   - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `NewAzManagedServicesDefinition_CreateExpanded`
   - `-Authorization`
     - The parameter : 'Authorization' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -618,7 +696,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
-- Parameter breaking-change will happen to parameter set `NewAzDiagnosticSetting_CreateExpanded`
+- Parameter breaking-change will happen to all parameter sets
   - `-Log`
     - The parameter : 'Log' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -665,7 +743,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `NewAzSubscriptionDiagnosticSetting_CreateExpanded`
   - `-Log`
     - The parameter : 'Log' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -756,26 +834,6 @@ Preview modules are not included in this list. Read more about [module version t
   - May 2025 onwards, this command will return a schedule policy object for Enhanced policy by default for AzureVM workload
   - This change is expected to take effect from Az.RecoveryServices version: 8.0.0 and Az version: 14.0.0
 
-## Az.Relay
-
-### `Get-AzRelayNamespace`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace' is changing
-  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection'
-  - The following properties are being added to the output type : 'List[PrivateEndpointConnection]'
-  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect in 'Az.Relay' from version : '9.0.0'
-
-### `Get-AzRelayNamespaceNetworkRuleSet`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet' is changing
-  - The following properties in the output type are being deprecated : 'IPRule'
-  - The following properties are being added to the output type : 'List[IPRule]'
-  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect in 'Az.Relay' from version : '9.0.0'
-
 ## Az.Resources
 
 ### `Get-AzRoleDefinition`
@@ -826,6 +884,8 @@ Preview modules are not included in this list. Read more about [module version t
     The type of the parameter is changing from 'Array' to 'List'.
     - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
     - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
+
+- Parameter breaking-change will happen to parameter set `UpdateAzRoleManagementPolicy_UpdateExpanded`
 
 ## Az.StackHCI
 

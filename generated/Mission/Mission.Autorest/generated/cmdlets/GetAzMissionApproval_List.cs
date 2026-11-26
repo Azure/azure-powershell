@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mission.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Mission.Models.IApprovalResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Description(@"List ApprovalResource resources by parent")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Mission/approvals", ApiVersion = "2026-03-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Mission/approvals", ApiVersion = "2026-04-01")]
     public partial class GetAzMissionApproval_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Mission.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Mission.Runtime.IContext

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class ContentSourceType
     {
+        /// <summary>
+        /// embeddedContent
+        /// </summary>
         public const string EmbeddedContent = "embeddedContent";
+        /// <summary>
+        /// uri
+        /// </summary>
         public const string Uri = "uri";
     }
 }

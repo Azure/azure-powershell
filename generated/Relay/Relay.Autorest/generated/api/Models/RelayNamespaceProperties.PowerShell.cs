@@ -141,6 +141,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
+            if (content.Contains("MinimumTlsVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).ClusterArmId = (string) content.GetValueForProperty("ClusterArmId",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).ClusterArmId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -189,6 +197,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("MinimumTlsVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).ClusterArmId = (string) content.GetValueForProperty("ClusterArmId",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespacePropertiesInternal)this).ClusterArmId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

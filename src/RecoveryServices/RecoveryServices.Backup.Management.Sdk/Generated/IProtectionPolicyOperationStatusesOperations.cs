@@ -15,31 +15,31 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Provides the status of the asynchronous operations like backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// Operation Status enum for all the possible states of an operation. Some
-        /// operations create jobs. This method returns the list of jobs associated
-        /// with operation.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the Operation Status enum for all the possible
+        /// states of an operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with
+        /// operation.
         /// </summary>
         /// <remarks>
         /// Provides the status of the asynchronous operations like backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// Operation Status enum for all the possible states of an operation. Some
-        /// operations create jobs. This method returns the list of jobs associated
-        /// with operation.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the Operation Status enum for all the possible
+        /// states of an operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with
+        /// operation.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='policyName'>
-        /// Backup policy name whose operation&#39;s status needs to be fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents an operation whose status needs to be
-        /// fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OperationStatus>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OperationStatus>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string policyName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

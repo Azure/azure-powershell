@@ -45,6 +45,38 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitMultiCloudWithActivationKeyCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitMultiCloudWithActivationKeyCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitMultiCloudMutualExclusion()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitMultiCloudMutualExclusion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitOnExpressRouteLagCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitOnExpressRouteLagCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
         {
             TestRunner.RunTestScript("Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
@@ -72,6 +104,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestExpressRouteCircuitAuthorizationCRUD()
         {
             TestRunner.RunTestScript("Test-ExpressRouteCircuitAuthorizationCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitAuthorizationKey()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitAuthorizationKey");
         }
 
         [Fact]

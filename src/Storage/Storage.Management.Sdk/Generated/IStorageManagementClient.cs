@@ -79,6 +79,11 @@ namespace Microsoft.Azure.Management.Storage
         IStorageAccountsOperations StorageAccounts { get; }
 
         /// <summary>
+        /// Gets the IContextCachesOperations
+        /// </summary>
+        IContextCachesOperations ContextCaches { get; }
+
+        /// <summary>
         /// Gets the IDeletedAccountsOperations
         /// </summary>
         IDeletedAccountsOperations DeletedAccounts { get; }
@@ -92,6 +97,21 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the ISkusOperations
         /// </summary>
         ISkusOperations Skus { get; }
+
+        /// <summary>
+        /// Gets the IContextCacheContainersOperations
+        /// </summary>
+        IContextCacheContainersOperations ContextCacheContainers { get; }
+
+        /// <summary>
+        /// Gets the IAdvancedPlatformMetricsOperations
+        /// </summary>
+        IAdvancedPlatformMetricsOperations AdvancedPlatformMetrics { get; }
+
+        /// <summary>
+        /// Gets the IBlobAccessPointConfigurationsOperations
+        /// </summary>
+        IBlobAccessPointConfigurationsOperations BlobAccessPointConfigurations { get; }
 
         /// <summary>
         /// Gets the IBlobServicesOperations
@@ -197,6 +217,11 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the ITableOperations
         /// </summary>
         ITableOperations Table { get; }
+
+        /// <summary>
+        /// Gets the IBlobAccessPointConnectionTestsOperations
+        /// </summary>
+        IBlobAccessPointConnectionTestsOperations BlobAccessPointConnectionTests { get; }
 
     }
 }

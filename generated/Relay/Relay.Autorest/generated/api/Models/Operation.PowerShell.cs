@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PowerShell;
 
-    /// <summary>A Relay REST API operation</summary>
+    /// <summary>
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(OperationTypeConverter))]
     public partial class Operation
     {
@@ -125,9 +127,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).Origin, global::System.Convert.ToString);
             }
-            if (content.Contains("Property"))
+            if (content.Contains("ActionType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).ActionType = (string) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).ActionType, global::System.Convert.ToString);
             }
             if (content.Contains("DisplayProvider"))
             {
@@ -178,9 +180,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).Origin, global::System.Convert.ToString);
             }
-            if (content.Contains("Property"))
+            if (content.Contains("ActionType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).ActionType = (string) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal)this).ActionType, global::System.Convert.ToString);
             }
             if (content.Contains("DisplayProvider"))
             {
@@ -218,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             return ToJsonString();
         }
     }
-    /// A Relay REST API operation
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
     [System.ComponentModel.TypeConverter(typeof(OperationTypeConverter))]
     public partial interface IOperation
 

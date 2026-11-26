@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Description(@"update a serviceGroup")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.HttpPath(Path = "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}", ApiVersion = "2024-02-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.HttpPath(Path = "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}", ApiVersion = "2026-08-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.NotSuggestDefaultParameterSet]
     public partial class UpdateAzServiceGroup_UpdateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener,

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="restoreParameters">Parameters to indicate the information about the restore
         /// </param>
 
-        /// <param name="createMode">Enum to indicate the mode of resource creation.
+        /// <param name="createMode">Enum to indicate the mode of account creation.
         /// Possible values include: &#39;Default&#39;, &#39;Restore&#39;</param>
         public TableResource(string id, ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string))
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public ResourceRestoreParameters RestoreParameters {get; set; }
 
         /// <summary>
-        /// Gets or sets enum to indicate the mode of resource creation. Possible values include: &#39;Default&#39;, &#39;Restore&#39;
+        /// Gets or sets enum to indicate the mode of account creation. Possible values include: &#39;Default&#39;, &#39;Restore&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createMode")]
         public string CreateMode {get; set; }

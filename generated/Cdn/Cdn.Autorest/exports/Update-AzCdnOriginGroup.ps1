@@ -39,9 +39,7 @@ To create the parameters described below, construct a hash table containing the 
 
 ENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
@@ -54,7 +52,6 @@ ENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
 
 HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
   [ProbeIntervalInSecond <Int32?>]: The number of seconds between health probes.Default is 240sec.
@@ -64,9 +61,7 @@ HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
@@ -79,7 +74,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
 
 ORIGIN <IResourceReference[]>: The source of the content being delivered via CDN within given origin group.
   [Id <String>]: Resource ID.
@@ -102,9 +96,7 @@ ORIGINGROUPUPDATEPROPERTY <IOriginGroupUpdateParameters>: Origin group propertie
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
@@ -117,7 +109,6 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
 
 RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionParameters>: The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
   [HttpErrorRange <List<IHttpErrorRangeParameters>>]: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
@@ -321,6 +312,38 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateExpanded';
+        UpdateViaIdentityEndpoint = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityEndpoint';
+        UpdateViaIdentityEndpointExpanded = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityEndpointExpanded';
+        UpdateViaIdentityExpanded = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityExpanded';
+        UpdateViaIdentityProfile = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityProfile';
+        UpdateViaIdentityProfileExpanded = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaIdentityProfileExpanded';
+        UpdateViaJsonFilePath = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.Cdn.private\Update-AzCdnOriginGroup_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
 
 begin {
     try {

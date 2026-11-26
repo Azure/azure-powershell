@@ -33,15 +33,24 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="originalId">The original ID of the server before deletion.
         /// </param>
 
+        /// <param name="originalResourceGroup">The resource group of the original server before deletion.
+        /// </param>
+
         /// <param name="fullyQualifiedDomainName">The fully qualified domain name of the server.
         /// </param>
-        public DeletedServerProperties(string version = default(string), System.DateTime? deletionTime = default(System.DateTime?), string originalId = default(string), string fullyQualifiedDomainName = default(string))
+
+        /// <param name="scheduledPurgeTime">The date and time when the deleted server will be permanently deleted
+        /// (purged).
+        /// </param>
+        public DeletedServerProperties(string version = default(string), System.DateTime? deletionTime = default(System.DateTime?), string originalId = default(string), string originalResourceGroup = default(string), string fullyQualifiedDomainName = default(string), System.DateTime? scheduledPurgeTime = default(System.DateTime?))
 
         {
             this.Version = version;
             this.DeletionTime = deletionTime;
             this.OriginalId = originalId;
+            this.OriginalResourceGroup = originalResourceGroup;
             this.FullyQualifiedDomainName = fullyQualifiedDomainName;
+            this.ScheduledPurgeTime = scheduledPurgeTime;
             CustomInit();
         }
 
@@ -70,9 +79,22 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string OriginalId {get; private set; }
 
         /// <summary>
+        /// Gets the resource group of the original server before deletion.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "originalResourceGroup")]
+        public string OriginalResourceGroup {get; private set; }
+
+        /// <summary>
         /// Gets the fully qualified domain name of the server.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "fullyQualifiedDomainName")]
         public string FullyQualifiedDomainName {get; private set; }
+
+        /// <summary>
+        /// Gets the date and time when the deleted server will be permanently deleted
+        /// (purged).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scheduledPurgeTime")]
+        public System.DateTime? ScheduledPurgeTime {get; private set; }
     }
 }

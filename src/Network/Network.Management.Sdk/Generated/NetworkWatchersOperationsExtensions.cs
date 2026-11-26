@@ -353,6 +353,267 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Lists all connection analyzers in the specified network watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ConnectionAnalyzer> ConnectionAnalyzersList(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName)
+        {
+                return ((INetworkWatchersOperations)operations).ConnectionAnalyzersListAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all connection analyzers in the specified network watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionAnalyzer>> ConnectionAnalyzersListAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ConnectionAnalyzersListWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified connection analyzer by name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        public static ConnectionAnalyzer ConnectionAnalyzersGet(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName)
+        {
+                return ((INetworkWatchersOperations)operations).ConnectionAnalyzersGetAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified connection analyzer by name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionAnalyzer> ConnectionAnalyzersGetAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ConnectionAnalyzersGetWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a connection analyzer in the specified network watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        public static ConnectionAnalyzer ConnectionAnalyzersCreate(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, ConnectionAnalyzer body)
+        {
+                return ((INetworkWatchersOperations)operations).ConnectionAnalyzersCreateAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a connection analyzer in the specified network watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionAnalyzer> ConnectionAnalyzersCreateAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, ConnectionAnalyzer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ConnectionAnalyzersCreateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates the tags of the specified connection analyzer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        public static ConnectionAnalyzer ConnectionAnalyzersUpdateTags(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, TagsObject body)
+        {
+                return ((INetworkWatchersOperations)operations).ConnectionAnalyzersUpdateTagsAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the tags of the specified connection analyzer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionAnalyzer> ConnectionAnalyzersUpdateTagsAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, TagsObject body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ConnectionAnalyzersUpdateTagsWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified connection analyzer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        public static void ConnectionAnalyzersDelete(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName)
+        {
+                ((INetworkWatchersOperations)operations).ConnectionAnalyzersDeleteAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified connection analyzer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task ConnectionAnalyzersDeleteAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.ConnectionAnalyzersDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Queries the specified connection analyzer for diagnostic results.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        public static ConnectionAnalyzerQueryStatusResult ConnectionAnalyzersQuery(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName)
+        {
+                return ((INetworkWatchersOperations)operations).ConnectionAnalyzersQueryAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Queries the specified connection analyzer for diagnostic results.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionAnalyzerQueryStatusResult> ConnectionAnalyzersQueryAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ConnectionAnalyzersQueryWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Verifies the possibility of establishing a direct TCP connection from a
         /// virtual machine to a given endpoint including another VM or an arbitrary
         /// remote server.
@@ -887,6 +1148,138 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Creates or updates a connection analyzer in the specified network watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        public static ConnectionAnalyzer BeginConnectionAnalyzersCreate(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, ConnectionAnalyzer body)
+        {
+                return ((INetworkWatchersOperations)operations).BeginConnectionAnalyzersCreateAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a connection analyzer in the specified network watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionAnalyzer> BeginConnectionAnalyzersCreateAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, ConnectionAnalyzer body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginConnectionAnalyzersCreateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified connection analyzer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        public static void BeginConnectionAnalyzersDelete(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName)
+        {
+                ((INetworkWatchersOperations)operations).BeginConnectionAnalyzersDeleteAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified connection analyzer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginConnectionAnalyzersDeleteAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginConnectionAnalyzersDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Queries the specified connection analyzer for diagnostic results.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        public static ConnectionAnalyzerQueryStatusResult BeginConnectionAnalyzersQuery(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName)
+        {
+                return ((INetworkWatchersOperations)operations).BeginConnectionAnalyzersQueryAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Queries the specified connection analyzer for diagnostic results.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionAnalyzerName'>
+        /// The name of the connection analyzer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionAnalyzerQueryStatusResult> BeginConnectionAnalyzersQueryAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string connectionAnalyzerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginConnectionAnalyzersQueryWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionAnalyzerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Verifies the possibility of establishing a direct TCP connection from a
         /// virtual machine to a given endpoint including another VM or an arbitrary
         /// remote server.
@@ -1280,6 +1673,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkWatcher>> ListNextAsync(this INetworkWatchersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all connection analyzers in the specified network watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ConnectionAnalyzer> ConnectionAnalyzersListNext(this INetworkWatchersOperations operations, string nextPageLink)
+        {
+                return ((INetworkWatchersOperations)operations).ConnectionAnalyzersListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all connection analyzers in the specified network watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionAnalyzer>> ConnectionAnalyzersListNextAsync(this INetworkWatchersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ConnectionAnalyzersListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

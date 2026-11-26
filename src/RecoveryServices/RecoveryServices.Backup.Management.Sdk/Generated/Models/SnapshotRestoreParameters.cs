@@ -29,11 +29,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="logPointInTimeForDbRecovery">
         /// </param>
-        public SnapshotRestoreParameters(bool? skipAttachAndMount = default(bool?), string logPointInTimeForDbRecovery = default(string))
+
+        /// <param name="disksToDetachOnClash">List of disk ARM IDs the customer should detach in case of filesystem
+        /// clash.
+        /// </param>
+        public SnapshotRestoreParameters(bool? skipAttachAndMount = default(bool?), string logPointInTimeForDbRecovery = default(string), System.Collections.Generic.IList<string> disksToDetachOnClash = default(System.Collections.Generic.IList<string>))
 
         {
             this.SkipAttachAndMount = skipAttachAndMount;
             this.LogPointInTimeForDbRecovery = logPointInTimeForDbRecovery;
+            this.DisksToDetachOnClash = disksToDetachOnClash;
             CustomInit();
         }
 
@@ -54,5 +59,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "logPointInTimeForDBRecovery")]
         public string LogPointInTimeForDbRecovery {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of disk ARM IDs the customer should detach in case of
+        /// filesystem clash.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "disksToDetachOnClash")]
+        public System.Collections.Generic.IList<string> DisksToDetachOnClash {get; set; }
     }
 }

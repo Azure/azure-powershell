@@ -23,4 +23,16 @@ Describe 'Update-AzStorageMoverJobDefinition' {
         $job.Description | Should -Be $updateDescription
         $job.Name | Should -Be $jobName 
     }
+
+    It 'UpdateExpandedSyncAndHourlyRequest' {
+        # Hourly schedules and synchronization settings are not recorded live yet, so this checks the request model offline.
+        $update = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.JobDefinitionUpdateParameters]::New()
+        $update.ScheduleFrequency = "Hourly"
+        $update.ScheduleRepeatInterval = "PT1H"
+        $update.SyncMode = "FullScan"
+        $request = ($update.ToJsonString() | ConvertFrom-Json).properties
+        $request.schedule.frequency | Should -Be "Hourly"
+        $request.schedule.repeatInterval | Should -Be "PT1H"
+        $request.syncMode | Should -Be "FullScan"
+    }
 }

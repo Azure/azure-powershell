@@ -30,6 +30,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
     {
         private const int IndentSize = 2;
 
+        private static readonly HashSet<string> ExcludedResourceTopLevelProperties = new HashSet<string>(StringComparer.Ordinal)
+        {
+            "apiVersion",
+            "extension",
+            "id",
+            "identifiers",
+            "name",
+            "resourceGroup",
+            "type"
+        };
+
         private static readonly string[] AllWhatIfTopLevelChangeTypes = new[]
         {
             "Create",
@@ -142,6 +153,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             if (!string.IsNullOrEmpty(this.whatIfResult?.Name))
             {
                 this.builder.Append("Name: ", Color.Green).AppendLine(this.whatIfResult.Name);
+                hasInfo = true;
+            }
+
+            if (this.whatIfResult?.Tags?.Any() == true)
+            {
+                string tags = string.Join(", ", this.whatIfResult.Tags
+                    .OrderBy(tag => tag.Key, StringComparer.Ordinal)
+                    .Select(tag => $"{tag.Key}={tag.Value}"));
+                this.builder.Append("Tags: ", Color.Green).AppendLine(tags);
                 hasInfo = true;
             }
 
@@ -531,6 +551,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         private void FormatResourceChange(PSDeploymentStackWhatIfResourceChange resourceChange)
         {
             FormatResourceHeadingLine(resourceChange);
+            this.builder.PushIndent(new string(' ', IndentSize));
 
             if (resourceChange.ManagementStatusChange != null)
             {
@@ -542,9 +563,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 FormatPrimitiveChange(resourceChange.DenyStatusChange, "Deny Status");
             }
 
-            bool formattedCreatedProperties = FormatCreatedResourceProperties(resourceChange);
+            bool hasResourceConfiguration = FormatResourceConfiguration(resourceChange);
 
-            if (!formattedCreatedProperties && resourceChange.ResourceConfigurationChanges?.Delta != null)
+            if (!hasResourceConfiguration && resourceChange.ResourceConfigurationChanges?.Delta != null)
             {
                 foreach (var delta in resourceChange.ResourceConfigurationChanges.Delta)
                 {
@@ -563,6 +584,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     }
                 }
             }
+
+            this.builder.PopIndent();
         }
 
         private static bool ShouldSuppressResourcePropertyDelta(PSDeploymentStackWhatIfPropertyChange delta)
@@ -595,28 +618,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     string.Equals(delta.ChangeType, "Modify", StringComparison.OrdinalIgnoreCase));
         }
 
-        private bool FormatCreatedResourceProperties(PSDeploymentStackWhatIfResourceChange resourceChange)
+        private bool FormatResourceConfiguration(PSDeploymentStackWhatIfResourceChange resourceChange)
         {
-            if (!string.Equals(resourceChange.ChangeType, "Create", StringComparison.OrdinalIgnoreCase) ||
-                !(resourceChange.ResourceConfigurationChanges?.After is JObject after))
+            JObject configuration = null;
+            if (string.Equals(resourceChange.ChangeType, "Create", StringComparison.OrdinalIgnoreCase))
+            {
+                configuration = resourceChange.ResourceConfigurationChanges?.After as JObject;
+            }
+            else if (string.Equals(resourceChange.ChangeType, "Delete", StringComparison.OrdinalIgnoreCase))
+            {
+                configuration = resourceChange.ResourceConfigurationChanges?.Before as JObject;
+            }
+
+            if (configuration == null || !configuration.HasValues)
             {
                 return false;
             }
 
-            JToken properties = after.GetValue("properties", StringComparison.OrdinalIgnoreCase);
-            if (properties == null || properties.Type == JTokenType.Null)
-            {
-                return false;
-            }
+            var properties = configuration.Properties()
+                .Where(property => !ExcludedResourceTopLevelProperties.Contains(property.Name))
+                .OrderBy(property => property.Name == "properties")
+                .ThenBy(property => property.Name, StringComparer.Ordinal);
 
-            return FormatPrimitiveChange(
-                new PSDeploymentStackWhatIfPropertyChange
+            foreach (var property in properties)
+            {
+                if (!IsNullValue(property.Value))
                 {
-                    Path = "properties",
-                    ChangeType = "Create",
-                    After = properties
-                },
-                "properties");
+                    FormatPropertyValue(resourceChange.ChangeType, property.Name, property.Value.ToString(Formatting.Indented));
+                }
+            }
+
+            return true;
         }
 
         private void FormatResourceHeadingLine(PSDeploymentStackWhatIfResourceChange resourceChange)
@@ -807,7 +839,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 changeType = Equals(before, after) ? "NoEffect" : "Modify";
             }
 
-            var (symbol, color) = GetChangeTypeFormatting(changeType);
             string formattedValue;
 
             if (string.Equals(changeType, "Modify", StringComparison.OrdinalIgnoreCase))
@@ -820,15 +851,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 formattedValue = FormatValue(value);
             }
 
+            return FormatPropertyValue(changeType, path, formattedValue);
+        }
+
+        private bool FormatPropertyValue(string changeType, string path, string formattedValue)
+        {
+            var (symbol, color) = GetChangeTypeFormatting(changeType);
             this.builder.Append(symbol, color).Append(" ");
             this.builder.Append(path).Append(":");
 
             if (formattedValue.IndexOfAny(new[] { '\r', '\n' }) >= 0)
             {
-                this.builder.AppendLine();
+                string[] lines = formattedValue.Replace("\r\n", "\n").Split('\n');
+                this.builder.Append(" ").Append(lines[0], color).AppendLine();
                 this.builder.PushIndent(new string(' ', IndentSize));
 
-                foreach (string line in formattedValue.Replace("\r\n", "\n").Split('\n'))
+                foreach (string line in lines.Skip(1))
                 {
                     this.builder.Append(line, color).AppendLine();
                 }
