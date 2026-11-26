@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Workspace properties that can be patched.</summary>
+    /// <summary>Workspace properties that can be patched.A patch model</summary>
     public partial class WorkspacePatch :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspacePatch,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspacePatchInternal
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Workspace properties that can be patched.
+    /// Workspace properties that can be patched.A patch model
     public partial interface IWorkspacePatch :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspacePatchTags Tag { get; set; }
 
     }
-    /// Workspace properties that can be patched.
+    /// Workspace properties that can be patched.A patch model
     internal partial interface IWorkspacePatchInternal
 
     {

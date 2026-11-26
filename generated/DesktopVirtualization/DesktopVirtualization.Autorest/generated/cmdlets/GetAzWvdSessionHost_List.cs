@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHost))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"List sessionHosts.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts", ApiVersion = "2025-10-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts", ApiVersion = "2026-04-01-preview")]
     public partial class GetAzWvdSessionHost_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
@@ -212,17 +212,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Path)]
         public string[] SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="VMPath" /> property.</summary>
+        private string _vMPath;
+
+        /// <summary>The path to the VM.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The path to the VM.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The path to the VM.",
+        SerializedName = @"vmPath",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Query)]
+        public string VMPath { get => this._vMPath; set => this._vMPath = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -428,13 +442,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.SessionHostsList(SubscriptionId, ResourceGroupName, HostPoolName, this.InvocationInformation.BoundParameters.ContainsKey("PageSize") ? PageSize : default(int?), this.InvocationInformation.BoundParameters.ContainsKey("IsDescending") ? IsDescending : default(global::System.Management.Automation.SwitchParameter?), this.InvocationInformation.BoundParameters.ContainsKey("InitialSkip") ? InitialSkip : default(int?), onOk, onDefault, this, Pipeline);
+                        await this.Client.SessionHostsList(SubscriptionId, ResourceGroupName, HostPoolName, this.InvocationInformation.BoundParameters.ContainsKey("PageSize") ? PageSize : default(int?), this.InvocationInformation.BoundParameters.ContainsKey("IsDescending") ? IsDescending : default(global::System.Management.Automation.SwitchParameter?), this.InvocationInformation.BoundParameters.ContainsKey("InitialSkip") ? InitialSkip : default(int?), this.InvocationInformation.BoundParameters.ContainsKey("VMPath") ? VMPath : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,HostPoolName=HostPoolName,PageSize=this.InvocationInformation.BoundParameters.ContainsKey("PageSize") ? PageSize : default(int?),IsDescending=this.InvocationInformation.BoundParameters.ContainsKey("IsDescending") ? IsDescending : default(global::System.Management.Automation.SwitchParameter?),InitialSkip=this.InvocationInformation.BoundParameters.ContainsKey("InitialSkip") ? InitialSkip : default(int?)})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,HostPoolName=HostPoolName,PageSize=this.InvocationInformation.BoundParameters.ContainsKey("PageSize") ? PageSize : default(int?),IsDescending=this.InvocationInformation.BoundParameters.ContainsKey("IsDescending") ? IsDescending : default(global::System.Management.Automation.SwitchParameter?),InitialSkip=this.InvocationInformation.BoundParameters.ContainsKey("InitialSkip") ? InitialSkip : default(int?),VMPath=this.InvocationInformation.BoundParameters.ContainsKey("VMPath") ? VMPath : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -472,12 +486,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -494,7 +508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

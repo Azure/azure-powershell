@@ -73,6 +73,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {_applicationGroupType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("applicationGroupType"), out var __jsonApplicationGroupType) ? (string)__jsonApplicationGroupType : (string)_applicationGroupType;}
             {_cloudPcResource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonBoolean>("cloudPcResource"), out var __jsonCloudPcResource) ? (bool?)__jsonCloudPcResource : _cloudPcResource;}
             {_showInFeed = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonBoolean>("showInFeed"), out var __jsonShowInFeed) ? (bool?)__jsonShowInFeed : _showInFeed;}
+            {_oboTenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("oboTenantId"), out var __jsonOboTenantId) ? (string)__jsonOboTenantId : (string)_oboTenantId;}
+            {_deploymentScope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("deploymentScope"), out var __jsonDeploymentScope) ? (string)__jsonDeploymentScope : (string)_deploymentScope;}
             AfterFromJson(json);
         }
 
@@ -124,6 +126,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 AddIf( null != this._cloudPcResource ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonBoolean((bool)this._cloudPcResource) : null, "cloudPcResource" ,container.Add );
             }
             AddIf( null != this._showInFeed ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonBoolean((bool)this._showInFeed) : null, "showInFeed" ,container.Add );
+            AddIf( null != (((object)this._oboTenantId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._oboTenantId.ToString()) : null, "oboTenantId" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._deploymentScope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._deploymentScope.ToString()) : null, "deploymentScope" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

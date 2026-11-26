@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzWvdApplicationGroup
 
 ## SYNOPSIS
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Register-AzWvdApplicationGroup -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 
 ## DESCRIPTION
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 
 ## EXAMPLES
 

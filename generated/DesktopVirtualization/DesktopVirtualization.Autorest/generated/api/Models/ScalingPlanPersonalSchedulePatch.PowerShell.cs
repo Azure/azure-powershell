@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             // actually deserialize
             if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalScheduleProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalSchedulePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalSchedulePatchPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("RampUpStartTime"))
             {
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             // actually deserialize
             if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalScheduleProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalSchedulePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalSchedulePatchPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("RampUpStartTime"))
             {

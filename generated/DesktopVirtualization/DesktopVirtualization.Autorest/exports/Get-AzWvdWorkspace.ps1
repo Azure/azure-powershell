@@ -41,7 +41,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -54,7 +54,7 @@ https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvd
 #>
 function Get-AzWvdWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspace])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('WorkspaceName')]
@@ -64,7 +64,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -87,19 +87,19 @@ param(
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
     [System.Int32]
     # Initial number of items to skip.
     ${InitialSkip},
 
-    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether the collection is descending.
     ${IsDescending},
 
-    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
     [System.Int32]
     # Number of items per page.

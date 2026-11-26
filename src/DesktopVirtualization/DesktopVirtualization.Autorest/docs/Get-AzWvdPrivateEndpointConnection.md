@@ -8,25 +8,26 @@ schema: 2.0.0
 # Get-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Get a private endpoint connection.
+Get a PrivateEndpointConnectionWithSystemData
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
+Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -56,13 +57,12 @@ Get-AzWvdPrivateEndpointConnection -Name <String> -WorkspaceInputObject <IDeskto
 
 ### List1
 ```
-Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a private endpoint connection.
+Get a PrivateEndpointConnectionWithSystemData
 
 ## EXAMPLES
 
@@ -158,7 +158,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -173,7 +173,7 @@ Initial number of items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -203,7 +203,7 @@ Indicates whether the collection is descending.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List1
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the private endpoint connection associated with the Azure resource.
+The name parameter for private endpoint
 
 ```yaml
 Type: System.String
@@ -233,7 +233,7 @@ Number of items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -295,7 +295,7 @@ The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get1, List1
 Aliases:
 
 Required: True

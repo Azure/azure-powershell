@@ -96,7 +96,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -106,6 +106,10 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [WorkspaceName <String>]: The name of the workspace
 
 SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
+  [CreateDeleteRampDownMaximumHostPoolSize <Int32?>]: Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have a session host config property.
+  [CreateDeleteRampDownMinimumHostPoolSize <Int32?>]: Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when this limit is met. This requires the assigned hostpool to have a session host config property.
+  [CreateDeleteRampUpMaximumHostPoolSize <Int32?>]: Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have a session host config property.
+  [CreateDeleteRampUpMinimumHostPoolSize <Int32?>]: Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when this limit is met. This requires the assigned hostpool to have a session host config property.
   [DaysOfWeek <List<String>>]: Set of days of the week on which this schedule is active.
   [Name <String>]: Name of the ScalingPlanPooledSchedule.
   [OffPeakLoadBalancingAlgorithm <String>]: Load balancing algorithm for off-peak period.
@@ -128,6 +132,7 @@ SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
   [RampUpMinimumHostsPct <Int32?>]: Minimum host percentage for ramp up period.
   [RampUpStartTimeHour <Int32?>]: The hour.
   [RampUpStartTimeMinute <Int32?>]: The minute.
+  [ScalingMethod <String>]: The desired scaling method to be used to scale the hosts in the assigned host pool.
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
 #>

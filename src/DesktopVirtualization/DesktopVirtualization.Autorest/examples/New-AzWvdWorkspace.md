@@ -1,4 +1,4 @@
-### Example 1: Create a Windows Virtual Desktop Workspace by name
+### Example 1: Create a Azure Virtual Desktop Workspace by name
 ```powershell
 New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -14,9 +14,9 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command creates a Windows Virtual Desktop Workspace in a Resource Group.
+This command creates a Azure Virtual Desktop Workspace in a Resource Group.
 
-### Example 2: Create a Windows Virtual Desktop Workspace by name
+### Example 2: Create a Azure Virtual Desktop Workspace by name
 ```powershell
 New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -32,5 +32,5 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command creates a Windows Virtual Desktop Workspace in a Resource Group.
+This command creates a Azure Virtual Desktop Workspace in a Resource Group.
 

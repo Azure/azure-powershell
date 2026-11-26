@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"create an App Attach package.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}", ApiVersion = "2025-10-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}", ApiVersion = "2026-04-01-preview")]
     public partial class NewAzWvdAppAttachPackage_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
@@ -63,6 +63,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.DesktopVirtualizationClient Client => Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.ClientAPI;
 
+        /// <summary>Field that can be populated with custom data and filtered on in list GET calls</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Field that can be populated with custom data and filtered on in list GET calls")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Field that can be populated with custom data and filtered on in list GET calls",
+        SerializedName = @"customData",
+        PossibleTypes = new [] { typeof(string) })]
+        public string CustomData { get => _appAttachPackageBody.CustomData ?? null; set => _appAttachPackageBody.CustomData = value; }
+
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
@@ -72,6 +83,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>DeploymentScope type for AppAttachPackage.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "DeploymentScope type for AppAttachPackage.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"DeploymentScope type for AppAttachPackage.",
+        SerializedName = @"deploymentScope",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        public string DeploymentScope { get => _appAttachPackageBody.DeploymentScope ?? null; set => _appAttachPackageBody.DeploymentScope = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -115,45 +138,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
         /// <summary>Date certificate expires, found in the appxmanifest.xml.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Date certificate expires, found in the appxmanifest.xml. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Date certificate expires, found in the appxmanifest.xml.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Date certificate expires, found in the appxmanifest.xml. ",
+        Description = @"Date certificate expires, found in the appxmanifest.xml.",
         SerializedName = @"certificateExpiry",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         public global::System.DateTime ImageCertificateExpiry { get => _appAttachPackageBody.ImageCertificateExpiry ?? default(global::System.DateTime); set => _appAttachPackageBody.ImageCertificateExpiry = value; }
 
         /// <summary>Certificate name found in the appxmanifest.xml.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Certificate name found in the appxmanifest.xml. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Certificate name found in the appxmanifest.xml.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Certificate name found in the appxmanifest.xml. ",
+        Description = @"Certificate name found in the appxmanifest.xml.",
         SerializedName = @"certificateName",
         PossibleTypes = new [] { typeof(string) })]
         public string ImageCertificateName { get => _appAttachPackageBody.ImageCertificateName ?? null; set => _appAttachPackageBody.ImageCertificateName = value; }
 
         /// <summary>User friendly Name to be displayed in the portal.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User friendly Name to be displayed in the portal. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User friendly Name to be displayed in the portal.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"User friendly Name to be displayed in the portal. ",
+        Description = @"User friendly Name to be displayed in the portal.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         public string ImageDisplayName { get => _appAttachPackageBody.ImageDisplayName ?? null; set => _appAttachPackageBody.ImageDisplayName = value; }
 
         /// <summary>Make this version of the package the active one across the hostpool.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Make this version of the package the active one across the hostpool. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Make this version of the package the active one across the hostpool.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Make this version of the package the active one across the hostpool. ",
+        Description = @"Make this version of the package the active one across the hostpool.",
         SerializedName = @"isActive",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter ImageIsActive { get => _appAttachPackageBody.ImageIsActive ?? default(global::System.Management.Automation.SwitchParameter); set => _appAttachPackageBody.ImageIsActive = value; }
@@ -182,12 +205,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public global::System.Management.Automation.SwitchParameter ImageIsRegularRegistration { get => _appAttachPackageBody.ImageIsRegularRegistration ?? default(global::System.Management.Automation.SwitchParameter); set => _appAttachPackageBody.ImageIsRegularRegistration = value; }
 
         /// <summary>Date Package was last updated, found in the appxmanifest.xml.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Date Package was last updated, found in the appxmanifest.xml. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Date Package was last updated, found in the appxmanifest.xml.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Date Package was last updated, found in the appxmanifest.xml. ",
+        Description = @"Date Package was last updated, found in the appxmanifest.xml.",
         SerializedName = @"lastUpdated",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         public global::System.DateTime ImageLastUpdated { get => _appAttachPackageBody.ImageLastUpdated ?? default(global::System.DateTime); set => _appAttachPackageBody.ImageLastUpdated = value; }
@@ -205,24 +228,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 
         /// <summary>List of package applications.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of package applications. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of package applications.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"List of package applications. ",
+        Description = @"List of package applications.",
         SerializedName = @"packageApplications",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications) })]
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications[] ImagePackageApplication { get => _appAttachPackageBody.ImagePackageApplication?.ToArray() ?? null /* fixedArrayOf */; set => _appAttachPackageBody.ImagePackageApplication = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications>(value) : null); }
 
         /// <summary>List of package dependencies.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of package dependencies. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of package dependencies.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"List of package dependencies. ",
+        Description = @"List of package dependencies.",
         SerializedName = @"packageDependencies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies) })]
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies[] ImagePackageDependency { get => _appAttachPackageBody.ImagePackageDependency?.ToArray() ?? null /* fixedArrayOf */; set => _appAttachPackageBody.ImagePackageDependency = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies>(value) : null); }
@@ -230,45 +253,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>
         /// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. ",
+        Description = @"Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.",
         SerializedName = @"packageFamilyName",
         PossibleTypes = new [] { typeof(string) })]
         public string ImagePackageFamilyName { get => _appAttachPackageBody.ImagePackageFamilyName ?? null; set => _appAttachPackageBody.ImagePackageFamilyName = value; }
 
         /// <summary>Package Full Name from appxmanifest.xml.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Package Full Name from appxmanifest.xml. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Package Full Name from appxmanifest.xml.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Package Full Name from appxmanifest.xml. ",
+        Description = @"Package Full Name from appxmanifest.xml.",
         SerializedName = @"packageFullName",
         PossibleTypes = new [] { typeof(string) })]
         public string ImagePackageFullName { get => _appAttachPackageBody.ImagePackageFullName ?? null; set => _appAttachPackageBody.ImagePackageFullName = value; }
 
         /// <summary>Package Name from appxmanifest.xml.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Package Name from appxmanifest.xml. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Package Name from appxmanifest.xml.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Package Name from appxmanifest.xml. ",
+        Description = @"Package Name from appxmanifest.xml.",
         SerializedName = @"packageName",
         PossibleTypes = new [] { typeof(string) })]
         public string ImagePackageName { get => _appAttachPackageBody.ImagePackageName ?? null; set => _appAttachPackageBody.ImagePackageName = value; }
 
         /// <summary>Relative Path to the package inside the image.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Relative Path to the package inside the image. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Relative Path to the package inside the image.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Relative Path to the package inside the image. ",
+        Description = @"Relative Path to the package inside the image.",
         SerializedName = @"packageRelativePath",
         PossibleTypes = new [] { typeof(string) })]
         public string ImagePackageRelativePath { get => _appAttachPackageBody.ImagePackageRelativePath ?? null; set => _appAttachPackageBody.ImagePackageRelativePath = value; }
@@ -285,12 +308,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public string ImagePath { get => _appAttachPackageBody.ImagePath ?? null; set => _appAttachPackageBody.ImagePath = value; }
 
         /// <summary>Package version found in the appxmanifest.xml.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Package version found in the appxmanifest.xml. ")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Package version found in the appxmanifest.xml.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Package version found in the appxmanifest.xml. ",
+        Description = @"Package version found in the appxmanifest.xml.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
         public string ImageVersion { get => _appAttachPackageBody.ImageVersion ?? null; set => _appAttachPackageBody.ImageVersion = value; }
@@ -342,6 +365,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         [global::System.Management.Automation.Alias("AppAttachPackageName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
+
+        /// <summary>
+        /// Lookback url to third party control plane, is null for native app attach packages
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Lookback url to third party control plane, is null for native app attach packages")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Lookback url to third party control plane, is null for native app attach packages",
+        SerializedName = @"packageLookbackUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PackageLookbackUrl { get => _appAttachPackageBody.PackageLookbackUrl ?? null; set => _appAttachPackageBody.PackageLookbackUrl = value; }
+
+        /// <summary>Specific name of package owner, is "AppAttach" for native app attach packages</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specific name of package owner, is \"AppAttach\" for native app attach packages")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specific name of package owner, is ""AppAttach"" for native app attach packages",
+        SerializedName = @"packageOwnerName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PackageOwnerName { get => _appAttachPackageBody.PackageOwnerName ?? null; set => _appAttachPackageBody.PackageOwnerName = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.HttpPipeline" /> that the remote call will use.

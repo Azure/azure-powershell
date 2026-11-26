@@ -27,10 +27,12 @@ Describe 'Update-AzWvdHostPool' {
                                 -MaxSessionLimit 5 `
                                 -VMTemplate '{option1}' `
                                 -CustomRdpProperty $null `
+                                -ConditionalRdpProperty 'redirectclipboard:i:1:authcontext:c5' `
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'RailApplications' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
                 $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -42,6 +44,7 @@ Describe 'Update-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not correct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
+                $hostPool.ConditionalRdpProperty | Should -Be 'redirectclipboard:i:1:authcontext:c5'
                 $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
@@ -57,6 +60,7 @@ Describe 'Update-AzWvdHostPool' {
                                 -MaxSessionLimit 6 `
                                 -VMTemplate '{option2}' `
                                 -CustomRdpProperty $null `
+                                -ConditionalRdpProperty 'drivestoredirect:s:*:authcontext:c30' `
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
@@ -71,6 +75,7 @@ Describe 'Update-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option2}'
                 # @todo not correct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
+                $hostPool.ConditionalRdpProperty | Should -Be 'drivestoredirect:s:*:authcontext:c30'
                 $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false3
@@ -90,6 +95,7 @@ Describe 'Update-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option2}'
                 # @todo not correct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
+                $hostPool.ConditionalRdpProperty | Should -Be 'drivestoredirect:s:*:authcontext:c30'
                 $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false

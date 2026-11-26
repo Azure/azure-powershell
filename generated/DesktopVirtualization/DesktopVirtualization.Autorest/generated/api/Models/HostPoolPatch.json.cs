@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             __resource = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Resource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolPatchProperties.FromJson(__jsonProperties) : _property;}
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolPatchTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }

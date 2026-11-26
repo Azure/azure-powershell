@@ -109,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"User friendly Name to be displayed in the portal. ",
+        Description = @"User friendly Name to be displayed in the portal.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Make this version of the package the active one across the hostpool. ",
+        Description = @"Make this version of the package the active one across the hostpool.",
         SerializedName = @"isActive",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsActive { get; set; }
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Date Package was last updated, found in the appxmanifest.xml. ",
+        Description = @"Date Package was last updated, found in the appxmanifest.xml.",
         SerializedName = @"lastUpdated",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastUpdated { get; set; }
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of package applications. ",
+        Description = @"List of package applications.",
         SerializedName = @"packageApplications",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications> PackageApplication { get; set; }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of package dependencies. ",
+        Description = @"List of package dependencies.",
         SerializedName = @"packageDependencies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies> PackageDependency { get; set; }
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. ",
+        Description = @"Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.",
         SerializedName = @"packageFamilyName",
         PossibleTypes = new [] { typeof(string) })]
         string PackageFamilyName { get; set; }
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package Name from appxmanifest.xml. ",
+        Description = @"Package Name from appxmanifest.xml.",
         SerializedName = @"packageName",
         PossibleTypes = new [] { typeof(string) })]
         string PackageName { get; set; }
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Relative Path to the package inside the image. ",
+        Description = @"Relative Path to the package inside the image.",
         SerializedName = @"packageRelativePath",
         PossibleTypes = new [] { typeof(string) })]
         string PackageRelativePath { get; set; }
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package version found in the appxmanifest.xml. ",
+        Description = @"Package version found in the appxmanifest.xml.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
         string Version { get; set; }

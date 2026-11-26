@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List the private link resources available for this workspace.
+List the private link resources available for this hostpool.
 .Description
-List the private link resources available for this workspace.
+List the private link resources available for this hostpool.
 .Example
 Get-AzWvdPrivateLinkResource -ResourceGroupName ResourceGroupName -WorkspaceName workspaceName
 .Example
@@ -40,6 +40,12 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the host pool within the specified resource group
+    ${HostPoolName},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -48,17 +54,11 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the workspace
     ${WorkspaceName},
-
-    [Parameter(ParameterSetName='List1', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the host pool within the specified resource group
-    ${HostPoolName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]

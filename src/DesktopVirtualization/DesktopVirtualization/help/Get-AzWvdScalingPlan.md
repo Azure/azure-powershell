@@ -12,7 +12,7 @@ Get a scaling plan.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzWvdScalingPlan [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -26,15 +26,15 @@ Get-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId
 
 ### List2
 ```
-Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] -HostPoolName <String>
- [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
+Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
+ [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
-Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
- [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
+Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] -HostPoolName <String>
+ [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ Get a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Scaling Plan by name
+### Example 1: Get a Azure Virtual Desktop Scaling Plan by name
 ```powershell
 Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
 ```
@@ -60,9 +60,9 @@ Location      Name             Type
 westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
 ```
 
-This command gets a Windows Virtual Desktop Scaling Plan in a Resource Group.
+This command gets a Azure Virtual Desktop Scaling Plan in a Resource Group.
 
-### Example 2: List Windows Virtual Desktop Scaling Plans
+### Example 2: List Azure Virtual Desktop Scaling Plans
 ```powershell
 Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName
 ```
@@ -74,7 +74,7 @@ westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
 westcentralus scalingPlan2     Microsoft.DesktopVirtualization/scalingplans
 ```
 
-This command lists all the Windows Virtual Desktop Scaling Plans in a Resource Group.
+This command lists all the Azure Virtual Desktop Scaling Plans in a Resource Group.
 
 ## PARAMETERS
 
@@ -99,7 +99,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: List2
+Parameter Sets: List1
 Aliases:
 
 Required: True
@@ -114,7 +114,7 @@ Initial number of items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1, List2, List
+Parameter Sets: List, List2, List1
 Aliases:
 
 Required: False
@@ -144,7 +144,7 @@ Indicates whether the collection is descending.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List1, List2, List
+Parameter Sets: List, List2, List1
 Aliases:
 
 Required: False
@@ -174,7 +174,7 @@ Number of items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1, List2, List
+Parameter Sets: List, List2, List1
 Aliases:
 
 Required: False
@@ -190,7 +190,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List2, List
+Parameter Sets: Get, List2, List1
 Aliases:
 
 Required: True
@@ -206,7 +206,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List2, List
+Parameter Sets: List, Get, List2, List1
 Aliases:
 
 Required: False

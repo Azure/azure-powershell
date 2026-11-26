@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get a private endpoint connection.
+Get a PrivateEndpointConnectionWithSystemData
 .Description
-Get a private endpoint connection.
+Get a PrivateEndpointConnectionWithSystemData
 .Example
 Get-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -workspaceName WorkspaceName -privateEndpointConnectionName privateName
 .Example
@@ -45,7 +45,7 @@ HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -62,7 +62,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -79,7 +79,7 @@ WORKSPACEINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -95,13 +95,20 @@ function Get-AzWvdPrivateEndpointConnection {
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [System.String]
+    # The name of the host pool within the specified resource group
+    ${HostPoolName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='Get1', Mandatory)]
     [Parameter(ParameterSetName='GetViaIdentityHostPool', Mandatory)]
     [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
     [Alias('PrivateEndpointConnectionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
-    # The name of the private endpoint connection associated with the Azure resource.
+    # The name parameter for private endpoint
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -125,19 +132,12 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-    [System.String]
-    # The name of the workspace
-    ${WorkspaceName},
-
     [Parameter(ParameterSetName='Get1', Mandatory)]
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
-    # The name of the host pool within the specified resource group
-    ${HostPoolName},
+    # The name of the workspace
+    ${WorkspaceName},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='GetViaIdentity1', Mandatory, ValueFromPipeline)]
@@ -158,19 +158,19 @@ param(
     # Identity Parameter
     ${WorkspaceInputObject},
 
-    [Parameter(ParameterSetName='List1')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
     [System.Int32]
     # Initial number of items to skip.
     ${InitialSkip},
 
-    [Parameter(ParameterSetName='List1')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether the collection is descending.
     ${IsDescending},
 
-    [Parameter(ParameterSetName='List1')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
     [System.Int32]
     # Number of items per page.

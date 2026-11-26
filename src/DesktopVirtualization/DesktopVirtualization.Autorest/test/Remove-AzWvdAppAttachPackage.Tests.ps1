@@ -55,11 +55,20 @@ Describe 'Remove-AzWvdAppAttachPackage' {
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId 
 
-        $packages = Get-AzWvdAppAttachPackage `
+        $notFound = $null
+        try {
+            $null = Get-AzWvdAppAttachPackage `
                 -ResourceGroupName $env.ResourceGroup `
-                -SubscriptionId $env.SubscriptionId  
+                -SubscriptionId $env.SubscriptionId `
+                -Name 'TestPackage' `
+                -ErrorAction Stop
+        }
+        catch {
+            $notFound = $_
+        }
 
-        $packages.Length | Should -Be 0
+        $notFound | Should -Not -BeNullOrEmpty
+        $notFound.Exception.Message | Should -Match 'ResourceNotFound|was not found|appattachpackages/TestPackage'
 
     }
 }
