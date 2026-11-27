@@ -86,10 +86,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 {
                     return new ManagedCertificateParameters(json);
                 }
-                case "UrlSigningKey":
-                {
-                    return new UrlSigningKeyParameters(json);
-                }
             }
             return new SecretParameters(json);
         }

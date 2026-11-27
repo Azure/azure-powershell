@@ -13,60 +13,52 @@ namespace Microsoft.Azure.Management.Search
     public static partial class PrivateEndpointConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Updates a private endpoint connection to the search service in the given
-        /// resource group.
+        /// Gets a list of all private endpoint connections in the given service.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
         /// resource group.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure AI Search service
-        /// with the specified resource group.
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
-        public static PrivateEndpointConnection Update(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByService(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IPrivateEndpointConnectionsOperations)operations).UpdateAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, properties, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionsOperations)operations).ListByServiceAsync(resourceGroupName, searchServiceName, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Updates a private endpoint connection to the search service in the given
-        /// resource group.
+        /// Gets a list of all private endpoint connections in the given service.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
         /// resource group.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure AI Search service
-        /// with the specified resource group.
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> UpdateAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByServiceAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, properties, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByServiceWithHttpMessagesAsync(resourceGroupName, searchServiceName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -78,12 +70,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -93,9 +81,14 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the private endpoint connection to the Azure AI Search service
         /// with the specified resource group.
         /// </param>
-        public static PrivateEndpointConnection Get(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static PrivateEndpointConnection Get(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IPrivateEndpointConnectionsOperations)operations).GetAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionsOperations)operations).GetAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -105,12 +98,8 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -120,12 +109,78 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the private endpoint connection to the Azure AI Search service
         /// with the specified resource group.
         /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> GetAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> GetAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates a private endpoint connection to the search service in the given
+        /// resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static PrivateEndpointConnection Update(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), System.Guid? clientRequestId = default(System.Guid?))
+        {
+                return ((IPrivateEndpointConnectionsOperations)operations).UpdateAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, properties, clientRequestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates a private endpoint connection to the search service in the given
+        /// resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> UpdateAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, properties, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -133,16 +188,17 @@ namespace Microsoft.Azure.Management.Search
         /// <summary>
         /// Disconnects the private endpoint connection and deletes it from the search
         /// service.
+        /// Returns 200 (OK) with the deleted connection details on successful
+        /// deletion, or 404 (Not Found) if the connection does not exist.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -152,24 +208,30 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the private endpoint connection to the Azure AI Search service
         /// with the specified resource group.
         /// </param>
-        public static PrivateEndpointConnection Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
+        /// </param>
+        public static PrivateEndpointConnection Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IPrivateEndpointConnectionsOperations)operations).DeleteAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionsOperations)operations).DeleteAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Disconnects the private endpoint connection and deletes it from the search
         /// service.
+        /// Returns 200 (OK) with the deleted connection details on successful
+        /// deletion, or 404 (Not Found) if the connection does not exist.
+        /// NOTE: The behavior of returning 404 is inconsistent with ARM guidelines.
+        /// Clients should expect a 204 response in future versions and avoid new
+        /// dependencies on the 404 response.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='searchServiceName'>
         /// The name of the Azure AI Search service associated with the specified
@@ -179,61 +241,17 @@ namespace Microsoft.Azure.Management.Search
         /// The name of the private endpoint connection to the Azure AI Search service
         /// with the specified resource group.
         /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> DeleteAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets a list of all private endpoint connections in the given service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByService(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
-        {
-                return ((IPrivateEndpointConnectionsOperations)operations).ListByServiceAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a list of all private endpoint connections in the given service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='searchManagementRequestOptions'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can
-        /// obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='searchServiceName'>
-        /// The name of the Azure AI Search service associated with the specified
-        /// resource group.
+        /// <param name='clientRequestId'>
+        /// A client-generated GUID value that identifies this request. If specified,
+        /// this will be included in response information as a way to track the
+        /// request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByServiceAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> DeleteAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByServiceWithHttpMessagesAsync(resourceGroupName, searchServiceName, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, searchServiceName, privateEndpointConnectionName, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -247,9 +265,9 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByServiceNext(this IPrivateEndpointConnectionsOperations operations, string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByServiceNext(this IPrivateEndpointConnectionsOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?))
         {
-                return ((IPrivateEndpointConnectionsOperations)operations).ListByServiceNextAsync(nextPageLink, searchManagementRequestOptions).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionsOperations)operations).ListByServiceNextAsync(nextPageLink, clientRequestId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -264,9 +282,9 @@ namespace Microsoft.Azure.Management.Search
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByServiceNextAsync(this IPrivateEndpointConnectionsOperations operations, string nextPageLink, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpointConnection>> ListByServiceNextAsync(this IPrivateEndpointConnectionsOperations operations, string nextPageLink, System.Guid? clientRequestId = default(System.Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByServiceNextWithHttpMessagesAsync(nextPageLink, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByServiceNextWithHttpMessagesAsync(nextPageLink, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

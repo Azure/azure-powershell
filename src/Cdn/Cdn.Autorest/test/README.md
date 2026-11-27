@@ -15,3 +15,15 @@ Custom cmdlets generally encompass additional functionality not described in the
 
 ## Usage
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.
+
+## Existing test resources
+Configure recording and playback in `env.json`; live mode uses `localEnv.json`.
+
+- `ClassicCdnProfileResourceId` identifies an existing Classic CDN profile. `loadEnv.ps1` derives `ClassicCdnProfileName` and `ClassicCdnResourceGroupName` from this ID. Classic tests use that resource group, independently of the Azure Front Door `ResourceGroupName`.
+- `EdgeActionResourceId` identifies an existing EdgeAction used only as a delivery-rule reference. Tests must not update or delete that EdgeAction.
+
+New Microsoft Classic CDN profiles are no longer supported. The profile creation test asserts the service rejection rather than expecting successful creation. Profile query and update tests reuse the configured profile, and update tests restore its original tags. Profile deletion tests are skipped because a disposable profile cannot be created.
+
+New Classic custom-domain onboarding is also rejected. Domain creation tests assert that rejection. Query tests discover an existing domain under the configured profile without changing it; domain deletion tests verify idempotent deletion of a missing domain on a temporary endpoint, not deletion of existing domains.
+
+Environment cleanup deletes only a test resource group created by the current setup, never the existing Classic profile's resource group.

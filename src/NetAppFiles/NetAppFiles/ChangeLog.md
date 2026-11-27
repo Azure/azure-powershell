@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
+* Updated to API version 2026-08-01.
+* Added Lightweight Directory Access Protocol (LDAP) configuration support to `New-AzNetAppFilesAccount`, `Set-AzNetAppFilesAccount`, and `Update-AzNetAppFilesAccount`, and added `LdapConfiguration` to account output.
+* Added `Update-AzNetAppFilesAccountLdapBindPassword` to refresh the LDAP bind password from Azure Key Vault.
+
 ## Version 1.4.1
 * Added deprecation notices to Azure NetApp Files subvolume cmdlets
 * Added breaking change notices for removing `EnableSubvolume` and the `EnableSubvolumes` volume output property

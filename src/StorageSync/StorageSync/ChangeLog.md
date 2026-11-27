@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.7.2
+* Updated the `Set-AzStorageSyncServer` help description to explain that the cmdlet patches a server's managed identity and re-establishes the trust relationship between the server and its storage sync service, and updated the example to use a placeholder for `ServerId`
+
 ## Version 2.7.1
 * Preserved `Set-AzStorageSyncServer` identity token errors and added server-specific guidance.
 * Added `ServerId` to the help example and documented elevated sessions for Azure Arc-enabled servers.

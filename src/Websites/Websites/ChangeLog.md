@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added Change Safety support for additional cmdlets.
+* CodeQL scan rules ignored.
 
 ## Version 4.3.0
 * Added `AsyncScalingEnabled` to `New-AzAppServicePlan` and `Set-AzAppServicePlan` to enable or disable asynchronous scaling for dedicated App Service plans

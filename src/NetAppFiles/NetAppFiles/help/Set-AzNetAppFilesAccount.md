@@ -15,21 +15,23 @@ Updates an Azure NetApp Files (ANF) account with the new data set. Useful for de
 ### ByFieldsParameterSet (Default)
 ```
 Set-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
- [-NfsV4IdDomain <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-NfsV4IdDomain <String>] [-LdapConfiguration <PSNetAppFilesLdapConfiguration>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceActiveDirectory
 ```
 Set-AzNetAppFilesAccount -Location <String> -Name <String> [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Set-AzNetAppFilesAccount -Location <String> -Name <String> [-Tag <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-LdapConfiguration <PSNetAppFilesLdapConfiguration>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -56,7 +58,36 @@ ProvisioningState : Succeeded
 
 This command performs an update on the given account. The absence of the active directory means it will be removed from the account.
 
+### Example 2: Set an account with LDAP configuration
+```powershell
+Set-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Location "westus2" -Name "MyAnfAccount" -LdapConfiguration @{
+    Domain = "example.com"
+    LdapServers = @("10.0.0.4")
+    SecureLdapType = "None"
+    BindAuthenticationLevel = "Anonymous"
+}
+```
+
+Sets the account's LDAP configuration. As with other Set operations, omitting ActiveDirectory removes the account's Active Directory configuration. Use Update-AzNetAppFilesAccount for a partial update.
+
 ## PARAMETERS
+
+### -LdapConfiguration
+LDAP settings for the account. Accepts a PSNetAppFilesLdapConfiguration object or a hashtable with `Domain`, `LdapServers`, `SecureLdapType` (`None` or `LdapOverTLS`), `ServerCACertificate`, `CertificateCNHost`, `DnsServers`, `LdapPort`, `UserDN`, `GroupDN`, `NetGroupDN`, `BindAuthenticationLevel` (`Anonymous` or `Simple`), `BindDN`, and `BindPasswordAkvConfig`.
+
+For LDAP over TLS, supply the Base64-encoded LDAP server CA certificate, certificate common-name host, and DNS server IPv4 addresses. `BindPasswordAkvConfig` contains `AzureKeyVaultUri`, `SecretName`, and `UserAssignedIdentity`, referencing the Key Vault secret containing the bind password.
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ActiveDirectory
 A hashtable array which represents the active directories

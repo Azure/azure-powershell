@@ -1,0 +1,95 @@
+{
+  "resourceType": "storageAccounts/blobAccessPointConfigurations",
+  "apiVersion": "2026-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storage"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageBlobAccessPointConfiguration",
+      "description": "Get the specified Blob Access Point configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/get-azstorageblobaccesspointconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the specified Blob Access Point configuration.",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.blobAccessPointConfigurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStorageBlobAccessPointConfiguration",
+      "description": "Delete a Blob Access Point configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/remove-azstorageblobaccesspointconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Blob Access Point configuration.",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.blobAccessPointConfigurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

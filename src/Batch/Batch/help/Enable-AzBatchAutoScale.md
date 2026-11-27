@@ -16,7 +16,8 @@ Enables automatic scaling of a pool.
 ```
 Enable-AzBatchAutoScale [-Id] <String> [[-AutoScaleFormula] <String>]
  [[-AutoScaleEvaluationInterval] <TimeSpan>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +35,21 @@ The first command defines a formula, and then saves it to the $Formula variable.
 The second command enables automatic scaling on the pool named MyPool using the formula in $Formula.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AutoScaleEvaluationInterval
 Specifies the amount of time (in minutes) that elapses before the pool size is automatically adjusted according to the AutoScale formula.
@@ -79,6 +95,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

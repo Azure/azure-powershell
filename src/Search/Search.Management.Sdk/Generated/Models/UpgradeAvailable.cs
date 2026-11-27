@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Management.Search.Models
     public static class UpgradeAvailable
     {
         /// <summary>
-        /// An upgrade is currently not available for the service.
+        /// An upgrade is currently not available for the dedicated service.
         /// </summary>
         public const string NotAvailable = "notAvailable";
         /// <summary>
-        /// There is an upgrade available for the service.
+        /// There is an upgrade available for the dedicated service.
         /// </summary>
         public const string Available = "available";
     }

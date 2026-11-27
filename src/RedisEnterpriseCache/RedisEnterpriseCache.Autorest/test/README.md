@@ -16,23 +16,28 @@ Custom cmdlets generally encompass additional functionality not described in the
 ## Usage
 `ChangeSafety.Tests.ps1` adds creation, update and deletion `-AcquirePolicyToken`
 cases with their own `ChangeSafety.Recording.json` and `ChangeSafety.env.json`.
-They use the resource group owned by the unchanged module setup/cleanup.
+They use a dedicated resource group owned by the module's scenario-based
+setup/cleanup. Selecting this suite does not provision the migration fixtures.
 Record/Live assert a nonempty policy header on outgoing writes; the existing
 recorder blacklist filters its value. Playback does not acquire a token or run
 that transport assertion. GET-header isolation is not asserted.
 
 Record this suite with `-Record -TestName RedisEnterpriseCache-ChangeSafety`.
-Preserve the original `env.json` and legacy scenario recording when recording
-only this suite; commit only the new recording and matching fixture metadata.
+The suite keeps its own fixture metadata and recording normalization, separate
+from the shared environment replacement used by the upstream scenarios.
 After the recorded cases finish, test-level normalization replaces signed
 polling URL query values (`t`, `c`, `s`, `h`) with `Sanitized` in request lookup
 keys, request URIs and `Azure-AsyncOperation`/`Location` response headers.
 It preserves API versions and response payloads, rejects lookup-key collisions,
-and does not modify live requests, the recorder, or setup/cleanup.
+and does not modify live requests or the recorder.
 `RecordingNormalization.Tests.ps1` covers this normalization offline on
 PowerShell Core and Windows PowerShell.
-The existing harness initializes recording files even for unselected scenarios,
-so restore untouched legacy inputs before full Playback. Do not record access
-keys or grant access to the legacy scenario's hardcoded user.
+The existing harness can initialize recording files even for unselected scenarios,
+so preserve unselected recordings before a focused Record run.
+
+The existing Change Safety recording was captured against API `2025-07-01`.
+It must be regenerated with the original Record workflow for the module's current
+`2026-09-01` API before relying on its Playback results; do not rewrite API versions
+in the recording.
 
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.

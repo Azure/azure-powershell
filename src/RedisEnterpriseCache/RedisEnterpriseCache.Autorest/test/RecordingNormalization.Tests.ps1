@@ -117,4 +117,35 @@ Describe 'RedisEnterpriseCache recording sanitization' {
         [IO.File]::ReadAllText($recordingPath) | Should -BeExactly '{"entry":'
         Test-Path "$recordingPath.tmp" | Should -Be $false
     }
+
+    It 'selects the dedicated Change Safety fixture without provisioning migration resources' {
+        $TestName = @('RedisEnterpriseCache-ChangeSafety')
+        $selected = @(Get-SelectedTestScenarios)
+        $selected.Count | Should -Be 1
+        $selected[0].Fixture | Should -Be 'None'
+        $selected[0].ResourceGroupProperty | Should -Be 'ResourceGroupName'
+        $selected[0].EnvironmentProperties | Should -Contain 'ResourceGroupName'
+        $selected[0].EnvironmentProperties | Should -Contain 'ClusterName'
+    }
+
+    It 'includes Change Safety alongside all upstream scenarios in a full run' {
+        $TestName = $null
+        $selected = @(Get-SelectedTestScenarios)
+        $selected.Count | Should -Be 8
+        @($selected | Where-Object TestName -eq 'RedisEnterpriseCache-ChangeSafety').Count | Should -Be 1
+        @($selected | Where-Object Fixture -eq 'BalancedMigration').Count | Should -Be 3
+        @($selected | Where-Object Fixture -eq 'EnterpriseMigration').Count | Should -Be 1
+    }
+
+    It 'leaves the dedicated Change Safety recording out of shared environment replacement' {
+        $TestName = @('RedisEnterpriseCache-ChangeSafety')
+        $environmentPath = Join-Path $PSScriptRoot 'env.json'
+        Mock Get-Content { throw 'The dedicated recording must not be rewritten by the shared sanitizer.' }
+        Mock Set-Content {}
+        Invoke-ScenarioRecordingSanitizer
+        Assert-MockCalled Get-Content -Times 0 -Exactly
+        Assert-MockCalled Set-Content -Times 1 -Exactly -ParameterFilter {
+            $Path -eq $environmentPath
+        }
+    }
 }

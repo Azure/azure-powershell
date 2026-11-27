@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             RecorderUtilities.JsonPathSanitizers.Add("$..accessKey");
             RecorderUtilities.JsonPathSanitizers.Add("$..secretKey");
+            RecorderUtilities.JsonPathSanitizers.Add("$..certificateObject");
         }
 
         [Fact]

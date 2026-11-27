@@ -11,3 +11,27 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 ```
 
 This command updates the minimum TLS version and adds a tag to the Redis Enterprise cache named MyCache.
+
+### Example 2: Update maintenance window on a Redis Enterprise cache
+```powershell
+$windows = @(
+    @{Type="Weekly"; ScheduleDayOfWeek="Monday"; StartHourUtc=6; Duration="PT10H"}
+    @{Type="Weekly"; ScheduleDayOfWeek="Thursday"; StartHourUtc=6; Duration="PT10H"}
+)
+$cache = Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -MaintenanceConfigurationMaintenanceWindow $windows
+$cache | Format-List Name, ProvisioningState, ResourceState
+$cache.MaintenanceConfigurationMaintenanceWindow | Format-Table Type, ScheduleDayOfWeek, StartHourUtc, Duration
+```
+
+```output
+Name              : MyCache
+ProvisioningState : Succeeded
+ResourceState     : Running
+
+Type   ScheduleDayOfWeek StartHourUtc Duration
+----   ----------------- ------------ --------
+Weekly Monday                       6 PT10H
+Weekly Thursday                     6 PT10H
+```
+
+This command updates the maintenance windows on the Redis Enterprise cache named MyCache to Mondays and Thursdays at 6:00 AM UTC for 10 hours. At least 2 maintenance windows are required.

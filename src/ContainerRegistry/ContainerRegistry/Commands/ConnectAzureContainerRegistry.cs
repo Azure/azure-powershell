@@ -16,11 +16,14 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
+    using PowerShell = System.Management.Automation.PowerShell;
+
     [Cmdlet("Connect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistry", DefaultParameterSetName = WithoutNameAndPasswordParameterSet)]
     [OutputType(typeof(bool))]
     public class ConnectAzureContainerRegistry : ContainerRegistryCmdletBase
@@ -32,6 +35,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Mandatory = true, HelpMessage = "Azure Container Registry Name.", ParameterSetName = WithNameAndPasswordParameterSet)]
         [Alias("RegistryName")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern(ContainerRegistryDataPlaneClient.RegistryNamePattern)]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "User Name For Azure Container Registry.", ParameterSetName = WithNameAndPasswordParameterSet)]
@@ -63,18 +67,39 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 this.Password = this.RegistryDataPlaneClient.GetRefreshToken();
             }
 
-            string LoginScript = string.Format("'{2}' | docker login {0} -u {1} --password-stdin", this.RegistryDataPlaneClient.GetEndPoint(), this.UserName, this.Password);
             if (ExposeToken) {
                 WriteWarning("You can perform manual login using the provided access token, for example: 'docker login <loginServer> -u 00000000-0000-0000-0000-000000000000 -p <accessToken>'");
                 var cred = new
                 {
-                    loginServer = Name + ".azurecr.io",
+                    loginServer = this.RegistryDataPlaneClient.GetEndPoint(),
                     accessToken = this.Password.ConvertToSecureString()
                 };
                 WriteObject(cred);
             } else
             {
-                WriteObject(this.ExecuteScript<object>(LoginScript));
+                using (var powershell = PowerShell.Create(RunspaceMode.CurrentRunspace))
+                {
+                    powershell.AddCommand("docker")
+                        .AddArgument("login")
+                        .AddArgument(this.RegistryDataPlaneClient.GetEndPoint())
+                        .AddArgument("-u")
+                        .AddArgument(this.UserName)
+                        .AddArgument("--password-stdin");
+                    var output = powershell.Invoke<object>(new[] { this.Password });
+                    foreach (var error in powershell.Streams.Error)
+                    {
+                        WriteError(error);
+                    }
+                    foreach (var verbose in powershell.Streams.Verbose)
+                    {
+                        WriteVerbose(verbose.Message);
+                    }
+                    foreach (var warning in powershell.Streams.Warning)
+                    {
+                        WriteWarning(warning.Message);
+                    }
+                    WriteObject(new List<object>(output));
+                }
             }
         }
     }
