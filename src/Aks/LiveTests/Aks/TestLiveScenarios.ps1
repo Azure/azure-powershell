@@ -33,8 +33,8 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
 
     $snet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName | Get-AzVirtualNetworkSubnetConfig -Name $snetName
 
-    $ipTag = New-AzPublicIpTag -IpTagType FirstPartyUsage -Tag "/NonProd"
-    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag
+    $ipTagParams = Get-LiveTestPublicIpTagParameter
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -Sku Standard @ipTagParams
 
     $kubeVersion = (Get-AzAksVersion -Location $location).OrchestratorVersion | Sort-Object -Descending | Select-Object -Skip 2 -First 1
 
@@ -213,8 +213,8 @@ Invoke-LiveTestScenario -Name "Test_AKS_AzureContainerLinux" -Description "Test 
 
     $snet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName | Get-AzVirtualNetworkSubnetConfig -Name $snetName
 
-    $ipTag = New-AzPublicIpTag -IpTagType FirstPartyUsage -Tag "/NonProd"
-    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag
+    $ipTagParams = Get-LiveTestPublicIpTagParameter
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -Sku Standard @ipTagParams
 
     $kubeVersion = (Get-AzAksVersion -Location $location).OrchestratorVersion | Sort-Object -Descending | Select-Object -Skip 2 -First 1
 

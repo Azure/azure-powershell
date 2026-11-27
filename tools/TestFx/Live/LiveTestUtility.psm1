@@ -34,6 +34,7 @@ New-Variable -Name CommandDelay -Value 10 -Scope Script -Option Constant
 New-Variable -Name ScenarioMaxRetryCount -Value 3 -Scope Script -Option Constant
 New-Variable -Name ScenarioMaxDelay -Value 20 -Scope Script -Option Constant
 New-Variable -Name ScenarioDelay -Value 5 -Scope Script -Option Constant
+New-Variable -Name PublicIpTagEnabled -Value $null -Scope Script
 
 New-Variable -Name LiveTestAnalysisDirectory -Value (Join-Path -Path $DataLocation -ChildPath "LiveTestAnalysis") -Scope Script -Option Constant
 New-Variable -Name LiveTestRawDirectory -Value (Join-Path -Path $script:LiveTestAnalysisDirectory -ChildPath "Raw") -Scope Script -Option Constant
@@ -450,6 +451,41 @@ function Invoke-LiveTestScenario {
         }
 
         Write-Output "##[endgroup]"
+    }
+}
+
+function Get-LiveTestPublicIpTagParameter {
+    [CmdletBinding()]
+    [OutputType([hashtable])]
+    param ()
+
+    # Public IP service tags require the Microsoft.Network/AllowBringYourOwnPublicIpAddress feature,
+    # which does not survive subscription/tenant rebuilds. Only apply the tag when the feature is registered.
+    if ($null -eq $script:PublicIpTagEnabled) {
+        $enabled = ${env:LIVETESTPUBLICIPTAGENABLED}
+        if ([string]::IsNullOrWhiteSpace($enabled)) {
+            try {
+                $feature = Get-AzProviderFeature -ProviderNamespace "Microsoft.Network" -FeatureName "AllowBringYourOwnPublicIpAddress" -ErrorAction Stop
+                $script:PublicIpTagEnabled = $feature.RegistrationState -eq "Registered"
+            }
+            catch {
+                $script:PublicIpTagEnabled = $false
+            }
+        }
+        else {
+            $script:PublicIpTagEnabled = $enabled -eq "true"
+        }
+
+        if (!$script:PublicIpTagEnabled) {
+            Write-Host "##[warning]Feature Microsoft.Network/AllowBringYourOwnPublicIpAddress is not registered. Public IPs will be created without the FirstPartyUsage service tag."
+        }
+    }
+
+    if ($script:PublicIpTagEnabled) {
+        @{ IpTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/NonProd" }
+    }
+    else {
+        @{}
     }
 }
 

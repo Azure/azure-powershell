@@ -114,6 +114,16 @@ jobs:
     retryCountOnTaskFailure: 3
 
   - task: PowerShell@2
+    displayName: Initialize live test subscription
+    condition: succeeded()
+    continueOnError: true
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InitializeLiveTestSubscription.ps1'
+
+  - task: PowerShell@2
     displayName: Run end-to-end live scenarios
     condition: succeeded()
     inputs:
