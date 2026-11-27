@@ -46,7 +46,7 @@ HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -63,7 +63,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -74,7 +74,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 
 MSIXPACKAGE <IMsixPackagePatch>: MSIX Package properties that can be patched.
   [DisplayName <String>]: Display name for MSIX Package.
-  [IsActive <Boolean?>]: Set a version of the package to be active across hostpool. 
+  [IsActive <Boolean?>]: Set a version of the package to be active across hostpool.
   [IsRegularRegistration <Boolean?>]: Set Registration mode. Regular or Delayed.
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdmsixpackage

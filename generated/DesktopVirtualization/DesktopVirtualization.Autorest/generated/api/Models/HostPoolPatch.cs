@@ -38,6 +38,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public bool? AgentUpdateUseSessionHostLocalTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).AgentUpdateUseSessionHostLocalTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).AgentUpdateUseSessionHostLocalTime = value ?? default(bool); }
 
+        /// <summary>
+        /// Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string AllowRdpShortPathWithPrivateLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).AllowRdpShortPathWithPrivateLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).AllowRdpShortPathWithPrivateLink = value ?? null; }
+
+        /// <summary>
+        /// The conditional RDP properties of the host pool, serialized as a string in the format of `<rdpPropertyName>:<type>:<value>:<conditionType>:<conditionValue>`.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string ConditionalRdpProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).ConditionalRdpProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).ConditionalRdpProperty = value ?? null; }
+
         /// <summary>Custom rdp property of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string CustomRdpProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).CustomRdpProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).CustomRdpProperty = value ?? null; }
@@ -45,6 +57,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Description of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).Description = value ?? null; }
+
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string DirectUdp { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).DirectUdp; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).DirectUdp = value ?? null; }
 
         /// <summary>Friendly name of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
@@ -57,31 +77,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__resource).Id; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity _identity;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity _identity;
 
         /// <summary>The managed service identities assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity()); set => this._identity = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity()); set => this._identity = value; }
 
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId; }
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; }
 
         /// <summary>
         /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId; }
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).TenantId; }
 
-        /// <summary>Type of managed service identity (either system assigned, or none).</summary>
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).Type = value ?? null; }
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).Type = value ?? null; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>The type of the load balancer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string LoadBalancerType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).LoadBalancerType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).LoadBalancerType = value ?? null; }
+
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string ManagedPrivateUdp { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).ManagedPrivateUdp; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).ManagedPrivateUdp = value ?? null; }
 
         /// <summary>The max session limit of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
@@ -91,13 +129,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAgentUpdatePatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal.AgentUpdate { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).AgentUpdate; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).AgentUpdate = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity()); set { {_identity = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.HostPoolPatchProperties()); set { {_property = value;} } }
@@ -160,6 +198,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string PublicNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).PublicNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).PublicNetworkAccess = value ?? null; }
 
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string PublicUdp { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).PublicUdp; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).PublicUdp = value ?? null; }
+
         /// <summary>Expiration time of registration token.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public global::System.DateTime? RegistrationInfoExpirationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).RegistrationInfoExpirationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).RegistrationInfoExpirationTime = value ?? default(global::System.DateTime); }
@@ -167,6 +213,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>The type of resetting the token.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string RegistrationInfoRegistrationTokenOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).RegistrationInfoRegistrationTokenOperation; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).RegistrationInfoRegistrationTokenOperation = value ?? null; }
+
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string RelayUdp { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).RelayUdp; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchPropertiesInternal)Property).RelayUdp = value ?? null; }
 
         /// <summary>The ring number of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
@@ -314,6 +368,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"useSessionHostLocalTime",
         PossibleTypes = new [] { typeof(bool) })]
         bool? AgentUpdateUseSessionHostLocalTime { get; set; }
+        /// <summary>
+        /// Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.",
+        SerializedName = @"allowRDPShortPathWithPrivateLink",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string AllowRdpShortPathWithPrivateLink { get; set; }
+        /// <summary>
+        /// The conditional RDP properties of the host pool, serialized as a string in the format of `<rdpPropertyName>:<type>:<value>:<conditionType>:<conditionValue>`.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The conditional RDP properties of the host pool, serialized as a string in the format of `<rdpPropertyName>:<type>:<value>:<conditionType>:<conditionValue>`.",
+        SerializedName = @"conditionalRdpProperty",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConditionalRdpProperty { get; set; }
         /// <summary>Custom rdp property of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -336,6 +417,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
         string Description { get; set; }
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections",
+        SerializedName = @"directUDP",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
+        string DirectUdp { get; set; }
         /// <summary>Friendly name of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -373,18 +470,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
         string IdentityTenantId { get;  }
-        /// <summary>Type of managed service identity (either system assigned, or none).</summary>
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Type of managed service identity (either system assigned, or none).",
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>The type of the load balancer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -397,6 +511,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst", "Persistent", "MultiplePersistent")]
         string LoadBalancerType { get; set; }
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections",
+        SerializedName = @"managedPrivateUDP",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
+        string ManagedPrivateUdp { get; set; }
         /// <summary>The max session limit of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -446,6 +576,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enabled", "Disabled", "EnabledForSessionHostsOnly", "EnabledForClientsOnly")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections",
+        SerializedName = @"publicUDP",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
+        string PublicUdp { get; set; }
         /// <summary>Expiration time of registration token.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -469,6 +615,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Delete", "None", "Update")]
         string RegistrationInfoRegistrationTokenOperation { get; set; }
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections",
+        SerializedName = @"relayUDP",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
+        string RelayUdp { get; set; }
         /// <summary>The ring number of HostPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -591,14 +753,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string AgentUpdateType { get; set; }
         /// <summary>Whether to use localTime of the virtual machine.</summary>
         bool? AgentUpdateUseSessionHostLocalTime { get; set; }
+        /// <summary>
+        /// Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string AllowRdpShortPathWithPrivateLink { get; set; }
+        /// <summary>
+        /// The conditional RDP properties of the host pool, serialized as a string in the format of `<rdpPropertyName>:<type>:<value>:<conditionType>:<conditionValue>`.
+        /// </summary>
+        string ConditionalRdpProperty { get; set; }
         /// <summary>Custom rdp property of HostPool.</summary>
         string CustomRdpProperty { get; set; }
         /// <summary>Description of HostPool.</summary>
         string Description { get; set; }
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
+        string DirectUdp { get; set; }
         /// <summary>Friendly name of HostPool.</summary>
         string FriendlyName { get; set; }
         /// <summary>The managed service identities assigned to this resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity Identity { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity Identity { get; set; }
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
@@ -607,12 +785,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         string IdentityTenantId { get; set; }
-        /// <summary>Type of managed service identity (either system assigned, or none).</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned")]
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>The type of the load balancer.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst", "DepthFirst", "Persistent", "MultiplePersistent")]
         string LoadBalancerType { get; set; }
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
+        string ManagedPrivateUdp { get; set; }
         /// <summary>The max session limit of HostPool.</summary>
         int? MaxSessionLimit { get; set; }
         /// <summary>PersonalDesktopAssignment type for HostPool.</summary>
@@ -628,6 +821,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Enabled to allow this resource to be access from the public network</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enabled", "Disabled", "EnabledForSessionHostsOnly", "EnabledForClientsOnly")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
+        string PublicUdp { get; set; }
         /// <summary>The registration info of HostPool.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoPatch RegistrationInfo { get; set; }
         /// <summary>Expiration time of registration token.</summary>
@@ -635,6 +835,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>The type of resetting the token.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Delete", "None", "Update")]
         string RegistrationInfoRegistrationTokenOperation { get; set; }
+        /// <summary>
+        /// Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type
+        /// when making connections. This means that this connection is possible, but is not guaranteed, as there are other factors
+        /// that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
+        string RelayUdp { get; set; }
         /// <summary>The ring number of HostPool.</summary>
         int? Ring { get; set; }
         /// <summary>ClientId for the registered Relying Party used to issue WVD SSO certificates.</summary>

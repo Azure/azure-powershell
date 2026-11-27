@@ -66,17 +66,19 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 APPATTACHPACKAGE <AppAttachPackage>: 
+  [CustomData <String>]: Field that can be populated with custom data and filtered on in list GET calls
+  [DeploymentScope <String>]: DeploymentScope type for AppAttachPackage.
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
-  [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml. 
-  [ImageCertificateName <String>]: Certificate name found in the appxmanifest.xml. 
-  [ImageDisplayName <String>]: User friendly Name to be displayed in the portal. 
-  [ImageIsActive <Boolean?>]: Make this version of the package the active one across the hostpool. 
+  [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml.
+  [ImageCertificateName <String>]: Certificate name found in the appxmanifest.xml.
+  [ImageDisplayName <String>]: User friendly Name to be displayed in the portal.
+  [ImageIsActive <Boolean?>]: Make this version of the package the active one across the hostpool.
   [ImageIsPackageTimestamped <String>]: Is package timestamped so it can ignore the certificate expiry date
   [ImageIsRegularRegistration <Boolean?>]: Specifies how to register Package in feed.
-  [ImageLastUpdated <DateTime?>]: Date Package was last updated, found in the appxmanifest.xml. 
+  [ImageLastUpdated <DateTime?>]: Date Package was last updated, found in the appxmanifest.xml.
   [ImagePackageAlias <String>]: Alias of App Attach Package. Assigned at import time
-  [ImagePackageApplication <List<IMsixPackageApplications>>]: List of package applications. 
+  [ImagePackageApplication <List<IMsixPackageApplications>>]: List of package applications.
     [AppId <String>]: Package Application Id, found in appxmanifest.xml.
     [AppUserModelId <String>]: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
     [Description <String>]: Description of Package Application.
@@ -84,22 +86,24 @@ APPATTACHPACKAGE <AppAttachPackage>:
     [IconImageName <String>]: User friendly name.
     [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
     [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
-  [ImagePackageDependency <List<IMsixPackageDependencies>>]: List of package dependencies. 
+  [ImagePackageDependency <List<IMsixPackageDependencies>>]: List of package dependencies.
     [DependencyName <String>]: Name of package dependency.
     [MinVersion <String>]: Dependency version required.
     [Publisher <String>]: Name of dependency publisher.
-  [ImagePackageFamilyName <String>]: Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
-  [ImagePackageFullName <String>]: Package Full Name from appxmanifest.xml. 
-  [ImagePackageName <String>]: Package Name from appxmanifest.xml. 
-  [ImagePackageRelativePath <String>]: Relative Path to the package inside the image. 
+  [ImagePackageFamilyName <String>]: Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
+  [ImagePackageFullName <String>]: Package Full Name from appxmanifest.xml.
+  [ImagePackageName <String>]: Package Name from appxmanifest.xml.
+  [ImagePackageRelativePath <String>]: Relative Path to the package inside the image.
   [ImagePath <String>]: VHD/CIM image path on Network Share.
-  [ImageVersion <String>]: Package version found in the appxmanifest.xml. 
+  [ImageVersion <String>]: Package version found in the appxmanifest.xml.
   [KeyVaultUrl <String>]: URL path to certificate name located in keyVault
+  [PackageLookbackUrl <String>]: Lookback url to third party control plane, is null for native app attach packages
+  [PackageOwnerName <String>]: Specific name of package owner, is "AppAttach" for native app attach packages
   [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 
-IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications. 
+IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications.
   [AppId <String>]: Package Application Id, found in appxmanifest.xml.
   [AppUserModelId <String>]: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
   [Description <String>]: Description of Package Application.
@@ -108,7 +112,7 @@ IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applicatio
   [RawIcon <Byte[]>]: the icon a 64 bit string as a byte array.
   [RawPng <Byte[]>]: the icon a 64 bit string as a byte array.
 
-IMAGEPACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
+IMAGEPACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies.
   [DependencyName <String>]: Name of package dependency.
   [MinVersion <String>]: Dependency version required.
   [Publisher <String>]: Name of dependency publisher.
@@ -121,7 +125,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -172,6 +176,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Field that can be populated with custom data and filtered on in list GET calls
+    ${CustomData},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -321,6 +332,21 @@ param(
     [System.String]
     # URL path to certificate name located in keyVault
     ${KeyVaultUrl},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Lookback url to third party control plane, is null for native app attach packages
+    ${PackageLookbackUrl},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags]))]
+    [System.Collections.Hashtable]
+    # tags to be updated
+    ${Tag},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]

@@ -5,3 +5,4 @@ Remove-AzWvdAppAttachPackage -ResourceGroupName ResourceGroupName -Name HostPool
 ```
 
 This command deletes an Azure Virtual Desktop App Attach Package in a Resource Group.
+

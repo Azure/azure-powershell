@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="CustomData" /> property.</summary>
+        private string _customData;
+
+        /// <summary>Field that can be populated with custom data and filtered on in list GET calls</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string CustomData { get => this._customData; set => this._customData = value; }
+
         /// <summary>Backing field for <see cref="FailHealthCheckOnStagingFailure" /> property.</summary>
         private string _failHealthCheckOnStagingFailure;
 
@@ -112,6 +119,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Internal Acessors for Image</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInfoProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchPropertiesInternal.Image { get => (this._image = this._image ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackageInfoProperties()); set { {_image = value;} } }
 
+        /// <summary>Backing field for <see cref="PackageLookbackUrl" /> property.</summary>
+        private string _packageLookbackUrl;
+
+        /// <summary>
+        /// Lookback url to third party control plane, is null for native app attach packages
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string PackageLookbackUrl { get => this._packageLookbackUrl; set => this._packageLookbackUrl = value; }
+
         /// <summary>Creates an new <see cref="AppAttachPackagePatchProperties" /> instance.</summary>
         public AppAttachPackagePatchProperties()
         {
@@ -122,6 +138,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     public partial interface IAppAttachPackagePatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
+        /// <summary>Field that can be populated with custom data and filtered on in list GET calls</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Field that can be populated with custom data and filtered on in list GET calls",
+        SerializedName = @"customData",
+        PossibleTypes = new [] { typeof(string) })]
+        string CustomData { get; set; }
         /// <summary>
         /// Parameter indicating how the health check should behave if this package fails staging
         /// </summary>
@@ -154,7 +181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Date certificate expires, found in the appxmanifest.xml. ",
+        Description = @"Date certificate expires, found in the appxmanifest.xml.",
         SerializedName = @"certificateExpiry",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? ImageCertificateExpiry { get; set; }
@@ -165,7 +192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Certificate name found in the appxmanifest.xml. ",
+        Description = @"Certificate name found in the appxmanifest.xml.",
         SerializedName = @"certificateName",
         PossibleTypes = new [] { typeof(string) })]
         string ImageCertificateName { get; set; }
@@ -176,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"User friendly Name to be displayed in the portal. ",
+        Description = @"User friendly Name to be displayed in the portal.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string ImageDisplayName { get; set; }
@@ -187,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Make this version of the package the active one across the hostpool. ",
+        Description = @"Make this version of the package the active one across the hostpool.",
         SerializedName = @"isActive",
         PossibleTypes = new [] { typeof(bool) })]
         bool? ImageIsActive { get; set; }
@@ -221,7 +248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Date Package was last updated, found in the appxmanifest.xml. ",
+        Description = @"Date Package was last updated, found in the appxmanifest.xml.",
         SerializedName = @"lastUpdated",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? ImageLastUpdated { get; set; }
@@ -243,7 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of package applications. ",
+        Description = @"List of package applications.",
         SerializedName = @"packageApplications",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications> ImagePackageApplication { get; set; }
@@ -254,7 +281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of package dependencies. ",
+        Description = @"List of package dependencies.",
         SerializedName = @"packageDependencies",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies> ImagePackageDependency { get; set; }
@@ -267,7 +294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. ",
+        Description = @"Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.",
         SerializedName = @"packageFamilyName",
         PossibleTypes = new [] { typeof(string) })]
         string ImagePackageFamilyName { get; set; }
@@ -278,7 +305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package Full Name from appxmanifest.xml. ",
+        Description = @"Package Full Name from appxmanifest.xml.",
         SerializedName = @"packageFullName",
         PossibleTypes = new [] { typeof(string) })]
         string ImagePackageFullName { get; set; }
@@ -289,7 +316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package Name from appxmanifest.xml. ",
+        Description = @"Package Name from appxmanifest.xml.",
         SerializedName = @"packageName",
         PossibleTypes = new [] { typeof(string) })]
         string ImagePackageName { get; set; }
@@ -300,7 +327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Relative Path to the package inside the image. ",
+        Description = @"Relative Path to the package inside the image.",
         SerializedName = @"packageRelativePath",
         PossibleTypes = new [] { typeof(string) })]
         string ImagePackageRelativePath { get; set; }
@@ -322,7 +349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Package version found in the appxmanifest.xml. ",
+        Description = @"Package version found in the appxmanifest.xml.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
         string ImageVersion { get; set; }
@@ -337,12 +364,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"keyVaultURL",
         PossibleTypes = new [] { typeof(string) })]
         string KeyVaultUrl { get; set; }
+        /// <summary>
+        /// Lookback url to third party control plane, is null for native app attach packages
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Lookback url to third party control plane, is null for native app attach packages",
+        SerializedName = @"packageLookbackUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        string PackageLookbackUrl { get; set; }
 
     }
     /// Schema for patchable fields on an App Attach Package.
     internal partial interface IAppAttachPackagePatchPropertiesInternal
 
     {
+        /// <summary>Field that can be populated with custom data and filtered on in list GET calls</summary>
+        string CustomData { get; set; }
         /// <summary>
         /// Parameter indicating how the health check should behave if this package fails staging
         /// </summary>
@@ -389,6 +431,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ImageVersion { get; set; }
         /// <summary>URL path to certificate name located in keyVault</summary>
         string KeyVaultUrl { get; set; }
+        /// <summary>
+        /// Lookback url to third party control plane, is null for native app attach packages
+        /// </summary>
+        string PackageLookbackUrl { get; set; }
 
     }
 }

@@ -15,8 +15,9 @@ Create a workspace.
 ### CreateExpanded (Default)
 ```
 New-AzWvdWorkspace -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-ApplicationGroupReference <String[]>] [-Description <String>] [-FriendlyName <String>]
- [-IdentityType <String>] [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-ApplicationGroupReference <String[]>] [-DeploymentScope <String>] [-Description <String>]
+ [-FriendlyName <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-Kind <String>] [-ManagedBy <String>] [-OboTenantId <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
  [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -40,7 +41,7 @@ Create a workspace.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop Workspace by name
+### Example 1: Create a Azure Virtual Desktop Workspace by name
 ```powershell
 New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -56,9 +57,9 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command creates a Windows Virtual Desktop Workspace in a Resource Group.
+This command creates a Azure Virtual Desktop Workspace in a Resource Group.
 
-### Example 2: Create a Windows Virtual Desktop Workspace by name
+### Example 2: Create a Azure Virtual Desktop Workspace by name
 ```powershell
 New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
                         -Name WorkspaceName `
@@ -74,7 +75,7 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command creates a Windows Virtual Desktop Workspace in a Resource Group.
+This command creates a Azure Virtual Desktop Workspace in a Resource Group.
 
 ## PARAMETERS
 
@@ -101,6 +102,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentScope
+DeploymentScope type for Workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -140,10 +156,27 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of managed service identity (either system assigned, or none).
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -242,6 +275,21 @@ Parameter Sets: (All)
 Aliases: WorkspaceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OboTenantId
+Tenant that the resource is being requested on behalf of.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

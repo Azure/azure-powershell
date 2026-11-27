@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ApplicationPatchPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ShortcutsExtension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ShortcutsExtension = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtension) content.GetValueForProperty("ShortcutsExtension",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ShortcutsExtension, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ShortcutsExtensionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).Description, global::System.Convert.ToString);
@@ -123,6 +127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("ApplicationType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ApplicationType = (string) content.GetValueForProperty("ApplicationType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ApplicationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShortcutExtensionPutShortcutOnDesktop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ShortcutExtensionPutShortcutOnDesktop = (bool?) content.GetValueForProperty("ShortcutExtensionPutShortcutOnDesktop",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ShortcutExtensionPutShortcutOnDesktop, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -145,6 +153,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ApplicationPatchPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ShortcutsExtension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ShortcutsExtension = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtension) content.GetValueForProperty("ShortcutsExtension",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ShortcutsExtension, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ShortcutsExtensionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).Description, global::System.Convert.ToString);
@@ -188,6 +200,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("ApplicationType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ApplicationType = (string) content.GetValueForProperty("ApplicationType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ApplicationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShortcutExtensionPutShortcutOnDesktop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ShortcutExtensionPutShortcutOnDesktop = (bool?) content.GetValueForProperty("ShortcutExtensionPutShortcutOnDesktop",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchInternal)this).ShortcutExtensionPutShortcutOnDesktop, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

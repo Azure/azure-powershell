@@ -12,7 +12,7 @@ Get an app attach package.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzWvdAppAttachPackage [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -30,7 +30,7 @@ Get-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity> [-Defaul
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzWvdAppAttachPackage -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -66,6 +66,34 @@ eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
 eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
 ```
 
+This command lists Azure Virtual Desktop App Attach Packages in a resource group.
+
+### Example 3: List all Azure Virtual Desktop App Attach Packages in a specified subscription
+```powershell
+Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId
+```
+
+```output
+Location   Name          Type
+--------   ----          ----
+eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
+eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
+```
+
+This command lists Azure Virtual Desktop App Attach Packages in a subscription.
+
+### Example 4: List all Azure Virtual Desktop App Attach Packages in the current subscription
+```powershell
+Get-AzWvdAppAttachPackage
+```
+
+```output
+Location   Name          Type
+--------   ----          ----
+eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
+eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
+```
+
 This command lists Azure Virtual Desktop App Attach Packages in a subscription.
 
 ## PARAMETERS
@@ -88,7 +116,7 @@ Accept wildcard characters: False
 
 ### -Filter
 OData filter expression.
-Valid properties for filtering are package name and host pool.
+Valid properties for filtering are package name, host pool, and resource group.
 
 ```yaml
 Type: System.String
@@ -138,7 +166,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

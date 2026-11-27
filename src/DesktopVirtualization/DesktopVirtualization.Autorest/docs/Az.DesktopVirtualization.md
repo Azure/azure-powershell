@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DesktopVirtualization
-Module Guid: b1f0edaf-f79f-43bf-be5a-eb96fed3d9ae
+Module Guid: 349ed94d-0237-41af-84b4-d2937982eeb7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.desktopvirtualization
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,10 @@ Microsoft Azure PowerShell: DesktopVirtualization cmdlets
 Disconnect a userSession.
 
 ### [Expand-AzWvdMsixImage](Expand-AzWvdMsixImage.md)
-Expands and Lists MSIX packages in an Image, given the Image Path.
+Expands and Lists MSIX packages in an Image, given the Image Path.\nThis action uses incorrect Msix casing intentionally to match the previous APIs.
+
+### [Get-AzWvdActiveSessionHostConfiguration](Get-AzWvdActiveSessionHostConfiguration.md)
+Get a ActiveSessionHostConfiguration.
 
 ### [Get-AzWvdAppAttachPackage](Get-AzWvdAppAttachPackage.md)
 Get an app attach package.
@@ -33,19 +36,19 @@ Get a desktop.
 Get a host pool.
 
 ### [Get-AzWvdHostPoolRegistrationToken](Get-AzWvdHostPoolRegistrationToken.md)
-Operation to list the RegistrationTokens associated with the HostPool
+Operation to list the RegistrationTokens associated with the HostPool.
 
 ### [Get-AzWvdMsixPackage](Get-AzWvdMsixPackage.md)
 Get a msixpackage.
 
 ### [Get-AzWvdPrivateEndpointConnection](Get-AzWvdPrivateEndpointConnection.md)
-Get a private endpoint connection.
+Get a PrivateEndpointConnectionWithSystemData
 
 ### [Get-AzWvdPrivateLinkResource](Get-AzWvdPrivateLinkResource.md)
-List the private link resources available for this workspace.
+List the private link resources available for this hostpool.
 
 ### [Get-AzWvdRegistrationInfo](Get-AzWvdRegistrationInfo.md)
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 
 ### [Get-AzWvdScalingPlan](Get-AzWvdScalingPlan.md)
 Get a scaling plan.
@@ -59,6 +62,21 @@ Get a ScalingPlanPooledSchedule.
 ### [Get-AzWvdSessionHost](Get-AzWvdSessionHost.md)
 Get a session host.
 
+### [Get-AzWvdSessionHostConfiguration](Get-AzWvdSessionHostConfiguration.md)
+Get a SessionHostConfiguration.
+
+### [Get-AzWvdSessionHostManagement](Get-AzWvdSessionHostManagement.md)
+Get a SessionHostManagement.
+
+### [Get-AzWvdSessionHostManagementsUpdateStatus](Get-AzWvdSessionHostManagementsUpdateStatus.md)
+Get a SessionHostManagementUpdateStatus.
+
+### [Get-AzWvdSessionHostProvisioningStatus](Get-AzWvdSessionHostProvisioningStatus.md)
+Get the session host provisioning status for a given hostpool.
+
+### [Get-AzWvdSessionHostSingleRegistrationToken](Get-AzWvdSessionHostSingleRegistrationToken.md)
+Operation to list the scoped RegistrationTokens associated with the SessionHost.
+
 ### [Get-AzWvdStartMenuItem](Get-AzWvdStartMenuItem.md)
 List start menu items in the given application group.
 
@@ -70,6 +88,18 @@ Get a workspace.
 
 ### [Import-AzWvdAppAttachPackageInfo](Import-AzWvdAppAttachPackageInfo.md)
 Gets information from a package given the path to the package.
+
+### [Invoke-AzWvdCancelSessionHostProvisioning](Invoke-AzWvdCancelSessionHostProvisioning.md)
+Control provisioning of a hostpool.
+
+### [Invoke-AzWvdControlSessionHostUpdate](Invoke-AzWvdControlSessionHostUpdate.md)
+Control actions on a session host post
+
+### [Invoke-AzWvdInitiateSessionHostUpdate](Invoke-AzWvdInitiateSessionHostUpdate.md)
+Initiates a hostpool post or schedule an post for the future.
+
+### [Invoke-AzWvdRetrySessionHostProvisioning](Invoke-AzWvdRetrySessionHostProvisioning.md)
+Retry provisioning on a SessionHost.
 
 ### [New-AzWvdAppAttachPackage](New-AzWvdAppAttachPackage.md)
 Create an App Attach package.
@@ -87,7 +117,7 @@ Create a host pool.
 Create a MSIX package.
 
 ### [New-AzWvdRegistrationInfo](New-AzWvdRegistrationInfo.md)
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 
 ### [New-AzWvdScalingPlan](New-AzWvdScalingPlan.md)
 Create a scaling plan.
@@ -98,11 +128,20 @@ Create a ScalingPlanPersonalSchedule.
 ### [New-AzWvdScalingPlanPooledSchedule](New-AzWvdScalingPlanPooledSchedule.md)
 Create a ScalingPlanPooledSchedule.
 
+### [New-AzWvdSessionHost](New-AzWvdSessionHost.md)
+Create a sessionHost.
+
+### [New-AzWvdSessionHostConfiguration](New-AzWvdSessionHostConfiguration.md)
+Create a SessionHostConfiguration.
+
+### [New-AzWvdSessionHostManagement](New-AzWvdSessionHostManagement.md)
+Create a SessionHostManagement.
+
 ### [New-AzWvdWorkspace](New-AzWvdWorkspace.md)
 Create a workspace.
 
 ### [Register-AzWvdApplicationGroup](Register-AzWvdApplicationGroup.md)
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 
 ### [Remove-AzWvdAppAttachPackage](Remove-AzWvdAppAttachPackage.md)
 Remove an App Attach Package.
@@ -120,10 +159,10 @@ Remove a host pool.
 Remove an MSIX Package.
 
 ### [Remove-AzWvdPrivateEndpointConnection](Remove-AzWvdPrivateEndpointConnection.md)
-Remove a connection.
+Delete a PrivateEndpointConnectionWithSystemData
 
 ### [Remove-AzWvdRegistrationInfo](Remove-AzWvdRegistrationInfo.md)
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 
 ### [Remove-AzWvdScalingPlan](Remove-AzWvdScalingPlan.md)
 Remove a scaling plan.
@@ -147,7 +186,7 @@ Remove a workspace.
 Send a message to a user.
 
 ### [Unregister-AzWvdApplicationGroup](Unregister-AzWvdApplicationGroup.md)
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 
 ### [Update-AzWvdAppAttachPackage](Update-AzWvdAppAttachPackage.md)
 Update an App Attach Package
@@ -178,6 +217,12 @@ Update a ScalingPlanPooledSchedule.
 
 ### [Update-AzWvdSessionHost](Update-AzWvdSessionHost.md)
 Update a session host.
+
+### [Update-AzWvdSessionHostConfiguration](Update-AzWvdSessionHostConfiguration.md)
+Update a SessionHostConfiguration.
+
+### [Update-AzWvdSessionHostManagement](Update-AzWvdSessionHostManagement.md)
+Update a SessionHostManagement.
 
 ### [Update-AzWvdWorkspace](Update-AzWvdWorkspace.md)
 Update a workspace.

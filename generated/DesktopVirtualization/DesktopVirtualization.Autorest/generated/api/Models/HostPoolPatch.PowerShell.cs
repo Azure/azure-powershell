@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {
@@ -160,6 +160,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("DirectUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).DirectUdp = (string) content.GetValueForProperty("DirectUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).DirectUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).PublicUdp = (string) content.GetValueForProperty("PublicUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).PublicUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("RelayUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).RelayUdp = (string) content.GetValueForProperty("RelayUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).RelayUdp, global::System.Convert.ToString);
             }
             if (content.Contains("RegistrationInfo"))
             {
@@ -233,6 +245,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
+            if (content.Contains("ManagedPrivateUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ManagedPrivateUdp = (string) content.GetValueForProperty("ManagedPrivateUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ManagedPrivateUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowRdpShortPathWithPrivateLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).AllowRdpShortPathWithPrivateLink = (string) content.GetValueForProperty("AllowRdpShortPathWithPrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).AllowRdpShortPathWithPrivateLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConditionalRdpProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ConditionalRdpProperty = (string) content.GetValueForProperty("ConditionalRdpProperty",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ConditionalRdpProperty, global::System.Convert.ToString);
+            }
             if (content.Contains("IdentityPrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
@@ -244,6 +268,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("IdentityType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("RegistrationInfoExpirationTime"))
             {
@@ -292,7 +320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {
@@ -337,6 +365,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("DirectUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).DirectUdp = (string) content.GetValueForProperty("DirectUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).DirectUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).PublicUdp = (string) content.GetValueForProperty("PublicUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).PublicUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("RelayUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).RelayUdp = (string) content.GetValueForProperty("RelayUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).RelayUdp, global::System.Convert.ToString);
             }
             if (content.Contains("RegistrationInfo"))
             {
@@ -410,6 +450,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
+            if (content.Contains("ManagedPrivateUdp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ManagedPrivateUdp = (string) content.GetValueForProperty("ManagedPrivateUdp",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ManagedPrivateUdp, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowRdpShortPathWithPrivateLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).AllowRdpShortPathWithPrivateLink = (string) content.GetValueForProperty("AllowRdpShortPathWithPrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).AllowRdpShortPathWithPrivateLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConditionalRdpProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ConditionalRdpProperty = (string) content.GetValueForProperty("ConditionalRdpProperty",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ConditionalRdpProperty, global::System.Convert.ToString);
+            }
             if (content.Contains("IdentityPrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
@@ -421,6 +473,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("IdentityType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("RegistrationInfoExpirationTime"))
             {

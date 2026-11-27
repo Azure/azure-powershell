@@ -64,7 +64,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -81,7 +81,7 @@ SCALINGPLANINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [PrivateEndpointConnectionName <String>]: The name parameter for private endpoint
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -91,6 +91,10 @@ SCALINGPLANINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [WorkspaceName <String>]: The name of the workspace
 
 SCALINGPLANSCHEDULE <IScalingPlanPooledSchedulePatch>: ScalingPlanPooledSchedule properties that can be patched.
+  [CreateDeleteRampDownMaximumHostPoolSize <Int32?>]: Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have a session host config property.
+  [CreateDeleteRampDownMinimumHostPoolSize <Int32?>]: Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when this limit is met. This requires the assigned hostpool to have a session host config property.
+  [CreateDeleteRampUpMaximumHostPoolSize <Int32?>]: Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have a session host config property.
+  [CreateDeleteRampUpMinimumHostPoolSize <Int32?>]: Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when this limit is met. This requires the assigned hostpool to have a session host config property.
   [DaysOfWeek <List<String>>]: Set of days of the week on which this schedule is active.
   [OffPeakLoadBalancingAlgorithm <String>]: Load balancing algorithm for off-peak period.
   [OffPeakStartTimeHour <Int32?>]: The hour.
@@ -112,6 +116,7 @@ SCALINGPLANSCHEDULE <IScalingPlanPooledSchedulePatch>: ScalingPlanPooledSchedule
   [RampUpMinimumHostsPct <Int32?>]: Minimum host percentage for ramp up period.
   [RampUpStartTimeHour <Int32?>]: The hour.
   [RampUpStartTimeMinute <Int32?>]: The minute.
+  [ScalingMethod <String>]: The desired scaling method to be used to scale the hosts in the assigned host pool.
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplanpooledschedule
 #>
@@ -168,6 +173,44 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
     ${ScalingPlanInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Int32]
+    # Maximum number of session hosts that may be created by the Scaling Service.
+    # This requires the assigned hostpool to have a session host config property.
+    ${CreateDeleteRampDownMaximumHostPoolSize},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Int32]
+    # Minimum number of session hosts that will be be created by the Scaling Service.
+    # Scaling will not delete any hosts when this limit is met.
+    # This requires the assigned hostpool to have a session host config property.
+    ${CreateDeleteRampDownMinimumHostPoolSize},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Int32]
+    # Maximum number of session hosts that may be created by the Scaling Service.
+    # This requires the assigned hostpool to have a session host config property.
+    ${CreateDeleteRampUpMaximumHostPoolSize},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Int32]
+    # Minimum number of session hosts that will be be created by the Scaling Service.
+    # Scaling will not delete any hosts when this limit is met.
+    # This requires the assigned hostpool to have a session host config property.
+    ${CreateDeleteRampUpMinimumHostPoolSize},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -343,6 +386,15 @@ param(
     [System.Int32]
     # The minute.
     ${RampUpStartTimeMinute},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityScalingPlanExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("PowerManage", "CreateDeletePowerManage")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # The desired scaling method to be used to scale the hosts in the assigned host pool.
+    ${ScalingMethod},
 
     [Parameter(ParameterSetName='UpdateViaIdentityScalingPlan', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]

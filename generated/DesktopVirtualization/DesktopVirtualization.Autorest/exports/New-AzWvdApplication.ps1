@@ -147,6 +147,12 @@ param(
     # Specifies the package family name for MSIX applications
     ${MsixPackageFamilyName},
 
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether to create a desktop shortcut for the remote application.
+    ${ShortcutExtensionPutShortcutOnDesktop},
+
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]

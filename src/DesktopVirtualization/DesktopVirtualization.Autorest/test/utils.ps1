@@ -55,6 +55,7 @@ function setupEnv() {
     # Todo: Remove and combine duplicated/useless parameters. And we should remove the presistent resources as much as we can. In most cases, we only need one automated hostpool with two active session hosts to finish all tests.
     # The following resources are manually created and removed by the operator.
     $null = $env.Add("ResourceGroupPersistent", $env.ResourceGroup)
+    $null = $env.Add("StandardHostPoolPersistent", "zhongjie-personal")
     # Using this HostPool to run test depending on the existed session host/user sessions, so you need to create a session host manually and connect to the VM manually.
     $null = $env.Add("HostPoolPersistent", "zhongjie-automated")
     $null = $env.Add("AutomatedHostpoolPersistent", "zhongjie-automated")
@@ -67,7 +68,7 @@ function setupEnv() {
     $null = $env.Add("VnetSubnetId", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.Network/virtualNetworks/" + $env.VnetName + "/subnets/default" )
     # Using this HostPool to run the test related to the SHC/SHM/Session Host repovisioning, this doesn't require connect to the VM, but you still might need to create a session host manually in it.
     $null = $env.Add("SHMHostPoolPersistent", "zhongjie-automated2")
-    $null = $env.Add("SHMSessionHostReprovisioning", "auto2-0")
+    $null = $env.Add("SHMSessionHostReprovisioning", "auto2-1")
     $null = $env.Add("SHMSessionHostNameRemove", "auto2-2")
     $null = $env.Add("SHMSessionHostNamePrefix", "auto2")
     # Key vault is used in the SHC creating: New-AzWvdSessionHostConfiguration. Todo: Create this Key vault in the SHC creating test process
@@ -77,7 +78,7 @@ function setupEnv() {
     $null = $env.Add("VMAdminCredentialsUserNameKeyvaultSecretUri", "https://" +$env.KeyVaultPersistentResourceName + ".vault.azure.net/secrets/username")
     # VM information for SHC
     $null = $env.Add("MarketplaceInfoPublisher", "microsoftwindowsdesktop")
-    $null = $env.Add("MarketplaceInfoSku", "win11-24h2-avd")
+    $null = $env.Add("MarketplaceInfoSku", "win11-25h2-avd")
     $null = $env.Add("MarketplaceInfoOffer", "windows-11")
     
     # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
@@ -143,7 +144,8 @@ function setupEnv() {
             -Ring $null `
             -ValidationEnvironment:$false `
             -PreferredAppGroupType 'Desktop' `
-            -StartVMOnConnect:$false 
+            -StartVMOnConnect:$false `
+            -ManagementType 'Standard'
 
         $privateLinkServiceConnectionHP = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameHP `
                                             -PrivateLinkServiceId $hostpool.ID `

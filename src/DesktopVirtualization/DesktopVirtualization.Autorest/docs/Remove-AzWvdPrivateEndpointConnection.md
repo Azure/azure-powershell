@@ -8,19 +8,19 @@ schema: 2.0.0
 # Remove-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Remove a connection.
+Delete a PrivateEndpointConnectionWithSystemData
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+Remove-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
-Remove-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
+Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -49,11 +49,11 @@ Remove-AzWvdPrivateEndpointConnection -Name <String> -WorkspaceInputObject <IDes
 ```
 
 ## DESCRIPTION
-Remove a connection.
+Delete a PrivateEndpointConnectionWithSystemData
 
 ## EXAMPLES
 
-### Example 1: Remove the Private Endpoint Connection between the Private Endpoint and Windows Virtual Desktop HostPool by WVD Private Endpoint Connection Name and HostPoolName
+### Example 1: Remove the Private Endpoint Connection between the Private Endpoint and Azure Virtual Desktop HostPool by WVD Private Endpoint Connection Name and HostPoolName
 ```powershell
 Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name WvdPrivateEndpointConnectionName -HostpoolName HostPoolName
 ```
@@ -62,11 +62,11 @@ Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name
 <none>
 ```
 
-This command removes the Private Endpoint Connection to the Windows Virtual Desktop HostPool in a Resource Group.
+This command removes the Private Endpoint Connection to the Azure Virtual Desktop HostPool in a Resource Group.
 It does not delete the Private Endpoint.
 Customers will need to separately delete the Private Endpoint.
 
-### Example 2: Remove the Private Endpoint Connection between the Private Endpoint and Windows Virtual Desktop Workspace by WVD Private Endpoint Connection Name and WorkspaceName
+### Example 2: Remove the Private Endpoint Connection between the Private Endpoint and Azure Virtual Desktop Workspace by WVD Private Endpoint Connection Name and WorkspaceName
 ```powershell
 Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name WvdPrivateEndpointConnectionName -WorkspaceName WorkspaceName
 ```
@@ -75,7 +75,7 @@ Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name
 <none>
 ```
 
-This command removes the Private Endpoint Connection to the Windows Virtual Desktop Workspace in a Resource Group.
+This command removes the Private Endpoint Connection to the Azure Virtual Desktop Workspace in a Resource Group.
 It does not delete the Private Endpoint.
 Customers will need to separately delete the Private Endpoint.
 
@@ -119,7 +119,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete1
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the private endpoint connection associated with the Azure resource.
+The name parameter for private endpoint
 
 ```yaml
 Type: System.String
@@ -226,7 +226,7 @@ The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete1
 Aliases:
 
 Required: True

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 .Description
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 .Example
 New-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName -ExpirationTime "2050-02-14 12:00"
 

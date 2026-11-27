@@ -43,12 +43,12 @@ Remove a userSession.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop UserSession by name
+### Example 1: Delete a Azure Virtual Desktop UserSession by name
 ```powershell
 Remove-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName -Id 2
 ```
 
-This command deletes a Windows Virtual Desktop UserSession in a Session Host.
+This command deletes a Azure Virtual Desktop UserSession in a Session Host.
 
 ## PARAMETERS
 

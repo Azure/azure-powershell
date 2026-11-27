@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 .Description
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 #>
 function New-AzWvdRegistrationInfo {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo')]

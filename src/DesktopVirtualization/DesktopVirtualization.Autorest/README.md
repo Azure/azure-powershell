@@ -44,13 +44,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 7910c370daefac65d619a7cc0c0c5575b5665060
+commit: 68175b2c1a4eb91e3ca626a44e1608586fffbf4d
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/DesktopVirtualization/stable/2025-10-10/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/DesktopVirtualization/preview/2026-04-01-preview/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
@@ -125,8 +125,40 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
-  # remove Update-AzWvdPrivateEndpointConnection, Finally, we need to remove all private endpoint connection related cmdlets and implement them in Az.Network. Please see https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/examples/private-link-resource-example.md for details.
+  - where:
+      parameter-name: ProgressSessionHostsInProgress
+    set:
+      parameter-name: SessionHostsInProgress
+  - where:
+      verb: New
+      subject: HostPool
+    set:
+      preview-announcement:
+        preview-message: The IdentityType property is not currently supported and will be enabled in a future update.
+  - where:
+      verb: Update
+      subject: HostPool
+    set:
+      preview-announcement:
+        preview-message: The IdentityType property is not currently supported and will be enabled in a future update.
+  - where:
+      verb: Get
+      subject: SessionHostProvisioningStatuses
+    set:
+      subject: SessionHostProvisioningStatus
+  - where:
+      verb: Invoke
+      subject: ControlSessionHostProvisioning
+    set:
+      subject: CancelSessionHostProvisioning
+  - where:
+      verb: Invoke
+      subject: CancelSessionHostProvisioning
+      variant: ^Post$|^PostViaIdentity$
+    remove: true
+# remove Update-AzWvdPrivateEndpointConnection, Finally, we need to remove all private endpoint connection related cmdlets and implement them in Az.Network. Please see https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/examples/private-link-resource-example.md for details.  
   - where:
       verb: Update
       subject: PrivateEndpointConnection
     remove: true
+```

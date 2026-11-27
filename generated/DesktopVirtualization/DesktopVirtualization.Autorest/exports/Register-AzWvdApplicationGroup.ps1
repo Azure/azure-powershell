@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 .Description
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 .Example
 Register-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `

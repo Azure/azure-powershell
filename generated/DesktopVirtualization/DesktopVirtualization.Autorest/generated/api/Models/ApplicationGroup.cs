@@ -27,6 +27,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public bool? CloudPcResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).CloudPcResource; }
 
+        /// <summary>DeploymentScope type for ApplicationGroup.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string DeploymentScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).DeploymentScope; }
+
         /// <summary>Description of ApplicationGroup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).Description = value ?? null; }
@@ -35,10 +39,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         private string _etag;
 
         /// <summary>
-        /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the
-        /// normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1
-        /// uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section
-        /// 14.27) header fields.
+        /// If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags
+        /// are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section
+        /// 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string Etag { get => this._etag; }
@@ -58,27 +61,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__trackedResource).Id; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity _identity;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity _identity;
 
         /// <summary>The managed service identities assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity()); set => this._identity = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity()); set => this._identity = value; }
 
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId; }
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; }
 
         /// <summary>
         /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId; }
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).TenantId; }
 
-        /// <summary>Type of managed service identity (either system assigned, or none).</summary>
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).Type = value ?? null; }
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).Type = value ?? null; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Kind" /> property.</summary>
         private string _kind;
@@ -108,17 +121,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Internal Acessors for CloudPcResource</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.CloudPcResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).CloudPcResource; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).CloudPcResource = value ?? default(bool); }
 
+        /// <summary>Internal Acessors for DeploymentScope</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.DeploymentScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).DeploymentScope; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).DeploymentScope = value ?? null; }
+
         /// <summary>Internal Acessors for Etag</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.Etag { get => this._etag; set { {_etag = value;} } }
 
         /// <summary>Internal Acessors for Identity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity()); set { {_identity = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for ObjectId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.ObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).ObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).ObjectId = value ?? null; }
@@ -173,10 +189,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).ObjectId; }
 
+        /// <summary>Tenant that the resource is being requested on behalf of.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string OboTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).OboTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).OboTenantId = value ?? null; }
+
         /// <summary>Backing field for <see cref="Plan" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlan _plan;
 
-        /// <summary>Plan for the resource.</summary>
+        /// <summary>Details of the resource plan.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlan Plan { get => (this._plan = this._plan ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Plan()); set => this._plan = value; }
 
@@ -223,7 +243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku _sku;
 
-        /// <summary>The resource model definition representing SKU</summary>
+        /// <summary>The SKU (Stock Keeping Unit) assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Sku()); set => this._sku = value; }
 
@@ -347,6 +367,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"cloudPcResource",
         PossibleTypes = new [] { typeof(bool) })]
         bool? CloudPcResource { get;  }
+        /// <summary>DeploymentScope type for ApplicationGroup.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"DeploymentScope type for ApplicationGroup.",
+        SerializedName = @"deploymentScope",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get;  }
         /// <summary>Description of ApplicationGroup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -359,10 +391,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         PossibleTypes = new [] { typeof(string) })]
         string Description { get; set; }
         /// <summary>
-        /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the
-        /// normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1
-        /// uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section
-        /// 14.27) header fields.
+        /// If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags
+        /// are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section
+        /// 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -370,7 +401,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. ",
+        Description = @"If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.",
         SerializedName = @"etag",
         PossibleTypes = new [] { typeof(string) })]
         string Etag { get;  }
@@ -422,18 +453,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
         string IdentityTenantId { get;  }
-        /// <summary>Type of managed service identity (either system assigned, or none).</summary>
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Type of managed service identity (either system assigned, or none).",
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>
         /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are
         /// a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value.
@@ -474,6 +522,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"objectId",
         PossibleTypes = new [] { typeof(string) })]
         string ObjectId { get;  }
+        /// <summary>Tenant that the resource is being requested on behalf of.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Tenant that the resource is being requested on behalf of.",
+        SerializedName = @"oboTenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OboTenantId { get; set; }
         /// <summary>A user defined name of the 3rd Party Artifact that is being procured.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -633,13 +692,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ApplicationGroupType { get; set; }
         /// <summary>Is cloud pc resource.</summary>
         bool? CloudPcResource { get; set; }
+        /// <summary>DeploymentScope type for ApplicationGroup.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get; set; }
         /// <summary>Description of ApplicationGroup.</summary>
         string Description { get; set; }
         /// <summary>
-        /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the
-        /// normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1
-        /// uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section
-        /// 14.27) header fields.
+        /// If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags
+        /// are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section
+        /// 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
         /// </summary>
         string Etag { get; set; }
         /// <summary>Friendly name of ApplicationGroup.</summary>
@@ -647,7 +708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>HostPool arm path of ApplicationGroup.</summary>
         string HostPoolArmPath { get; set; }
         /// <summary>The managed service identities assigned to this resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity Identity { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity Identity { get; set; }
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
@@ -656,9 +717,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         string IdentityTenantId { get; set; }
-        /// <summary>Type of managed service identity (either system assigned, or none).</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned")]
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>
         /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are
         /// a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value.
@@ -672,7 +741,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ManagedBy { get; set; }
         /// <summary>ObjectId of ApplicationGroup. (internal use)</summary>
         string ObjectId { get; set; }
-        /// <summary>Plan for the resource.</summary>
+        /// <summary>Tenant that the resource is being requested on behalf of.</summary>
+        string OboTenantId { get; set; }
+        /// <summary>Details of the resource plan.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlan Plan { get; set; }
         /// <summary>A user defined name of the 3rd Party Artifact that is being procured.</summary>
         string PlanName { get; set; }
@@ -693,7 +764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupProperties Property { get; set; }
         /// <summary>Boolean representing whether the applicationGroup is show in the feed.</summary>
         bool? ShowInFeed { get; set; }
-        /// <summary>The resource model definition representing SKU</summary>
+        /// <summary>The SKU (Stock Keeping Unit) assigned to this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku Sku { get; set; }
         /// <summary>
         /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the

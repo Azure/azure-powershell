@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 .Description
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 .Example
 Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `

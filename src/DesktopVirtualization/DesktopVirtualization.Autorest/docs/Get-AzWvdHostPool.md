@@ -12,7 +12,7 @@ Get a host pool.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzWvdHostPool [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -30,7 +30,7 @@ Get-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzWvdHostPool -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
  [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -41,7 +41,7 @@ Get a host pool.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop HostPool by name
+### Example 1: Get a Azure Virtual Desktop HostPool by name
 ```powershell
 Get-AzWvdHostPool -ResourceGroupName ResourceGroupName -Name HostPoolName
 ```
@@ -52,9 +52,9 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command gets a Windows Virtual Desktop HostPool in a Resource Group.
+This command gets a Azure Virtual Desktop HostPool in a Resource Group.
 
-### Example 2: List Windows Virtual Desktop HostPools
+### Example 2: List Azure Virtual Desktop HostPools
 ```powershell
 Get-AzWvdHostPool -ResourceGroupName ResourceGroupName
 ```
@@ -66,7 +66,7 @@ eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools
 eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command lists a Windows Virtual Desktop HostPools in a Resource Group.
+This command lists a Azure Virtual Desktop HostPools in a Resource Group.
 
 ## PARAMETERS
 
@@ -167,7 +167,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

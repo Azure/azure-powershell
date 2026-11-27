@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Set a version of the package to be active across hostpool. ",
+        Description = @"Set a version of the package to be active across hostpool.",
         SerializedName = @"isActive",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsActive { get; set; }

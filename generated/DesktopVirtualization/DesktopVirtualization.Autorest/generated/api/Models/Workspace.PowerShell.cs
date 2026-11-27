@@ -126,33 +126,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.WorkspacePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SkuTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
             if (content.Contains("Plan"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Plan = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlan) content.GetValueForProperty("Plan",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Plan, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.PlanTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Property"))
+            if (content.Contains("Sku"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.WorkspacePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SkuTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ManagedBy"))
+            if (content.Contains("Etag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).ManagedBy = (string) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).ManagedBy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Etag, global::System.Convert.ToString);
             }
             if (content.Contains("Kind"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Kind, global::System.Convert.ToString);
             }
-            if (content.Contains("Etag"))
+            if (content.Contains("ManagedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Etag, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).ManagedBy = (string) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).ManagedBy, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -202,25 +202,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("SkuName"))
+            if (content.Contains("DeploymentScope"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuTier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuTier, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuSize"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuSize, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuFamily"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuFamily, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).DeploymentScope, global::System.Convert.ToString);
             }
             if (content.Contains("PlanName"))
             {
@@ -242,17 +226,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PlanVersion = (string) content.GetValueForProperty("PlanVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PlanVersion, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityPrincipalId"))
+            if (content.Contains("SkuName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuName, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityTenantId"))
+            if (content.Contains("SkuTier"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuTier, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityType"))
+            if (content.Contains("SkuSize"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ObjectId"))
             {
@@ -281,6 +273,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("PrivateEndpointConnection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("OboTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).OboTenantId = (string) content.GetValueForProperty("OboTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).OboTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -299,33 +311,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.WorkspacePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SkuTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
             if (content.Contains("Plan"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Plan = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPlan) content.GetValueForProperty("Plan",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Plan, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.PlanTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Property"))
+            if (content.Contains("Sku"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.WorkspacePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SkuTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ManagedBy"))
+            if (content.Contains("Etag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).ManagedBy = (string) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).ManagedBy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Etag, global::System.Convert.ToString);
             }
             if (content.Contains("Kind"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Kind, global::System.Convert.ToString);
             }
-            if (content.Contains("Etag"))
+            if (content.Contains("ManagedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).Etag, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).ManagedBy = (string) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).ManagedBy, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -375,25 +387,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("SkuName"))
+            if (content.Contains("DeploymentScope"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuTier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuTier, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuSize"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuSize, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuFamily"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuFamily, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).DeploymentScope, global::System.Convert.ToString);
             }
             if (content.Contains("PlanName"))
             {
@@ -415,17 +411,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PlanVersion = (string) content.GetValueForProperty("PlanVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PlanVersion, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityPrincipalId"))
+            if (content.Contains("SkuName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuName, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityTenantId"))
+            if (content.Contains("SkuTier"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuTier, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityType"))
+            if (content.Contains("SkuSize"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ObjectId"))
             {
@@ -454,6 +458,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("PrivateEndpointConnection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("OboTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).OboTenantId = (string) content.GetValueForProperty("OboTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).OboTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }
