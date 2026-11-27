@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return;
             }
-            __resource = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Resource(json);
+            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ProxyResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledScheduleProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return container;
             }
-            __resource?.ToJson(container, serializationMode);
+            __proxyResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;

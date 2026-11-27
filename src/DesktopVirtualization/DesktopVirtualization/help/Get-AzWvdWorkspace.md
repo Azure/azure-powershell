@@ -12,7 +12,7 @@ Get a workspace.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzWvdWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -24,7 +24,7 @@ Get-AzWvdWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzWvdWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
  [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
@@ -42,7 +42,7 @@ Get a workspace.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Workspace by name
+### Example 1: Get a Azure Virtual Desktop Workspace by name
 ```powershell
 Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName -Name WorkspaceName
 ```
@@ -53,9 +53,9 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command gets a Windows Virtual Desktop Workspace in a Resource Group.
+This command gets a Azure Virtual Desktop Workspace in a Resource Group.
 
-### Example 2: List Windows Virtual Desktop Workspaces
+### Example 2: List Azure Virtual Desktop Workspaces
 ```powershell
 Get-AzWvdWorkspace -ResourceGroupName ResourceGroupName
 ```
@@ -67,7 +67,7 @@ eastus     WorkspaceName1 Microsoft.DesktopVirtualization/workspaces
 eastus     WorkspaceName2 Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command lists a Windows Virtual Desktop Workspaces in a Resource Group.
+This command lists a Azure Virtual Desktop Workspaces in a Resource Group.
 
 ## PARAMETERS
 
@@ -92,7 +92,7 @@ Initial number of items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -122,7 +122,7 @@ Indicates whether the collection is descending.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -152,7 +152,7 @@ Number of items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -168,7 +168,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -184,7 +184,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False

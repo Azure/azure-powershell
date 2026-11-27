@@ -16,11 +16,12 @@ Create an applicationGroup.
 ```
 New-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ApplicationGroupType <String> -HostPoolArmPath <String> -Location <String> [-Description <String>]
- [-FriendlyName <String>] [-IdentityType <String>] [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>]
- [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-ShowInFeed] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>]
- [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-FriendlyName <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
+ [-ManagedBy <String>] [-OboTenantId <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-ShowInFeed]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -42,7 +43,7 @@ Create an applicationGroup.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop ApplicationGroup by name
+### Example 1: Create a Azure Virtual Desktop ApplicationGroup by name
 ```powershell
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Name ApplicationGroupName `
@@ -60,9 +61,9 @@ Location   Name                 Type
 eastus     ApplicationGroupName Microsoft.DesktopVirtualization/applicationgroups
 ```
 
-This command creates a Windows Virtual Desktop ApplicationGroup in a Resource Group.
+This command creates a Azure Virtual Desktop ApplicationGroup in a Resource Group.
 
-### Example 2: Create a Windows Virtual Desktop ApplicationGroup by name
+### Example 2: Create a Azure Virtual Desktop ApplicationGroup by name
 ```powershell
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Name ApplicationGroupName `
@@ -80,7 +81,7 @@ Location   Name                 Type
 eastus     ApplicationGroupName Microsoft.DesktopVirtualization/applicationgroups
 ```
 
-This command creates a Windows Virtual Desktop ApplicationGroup in a Resource Group.
+This command creates a Azure Virtual Desktop ApplicationGroup in a Resource Group.
 
 ## PARAMETERS
 
@@ -161,10 +162,27 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of managed service identity (either system assigned, or none).
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -263,6 +281,21 @@ Parameter Sets: (All)
 Aliases: ApplicationGroupName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OboTenantId
+Tenant that the resource is being requested on behalf of.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

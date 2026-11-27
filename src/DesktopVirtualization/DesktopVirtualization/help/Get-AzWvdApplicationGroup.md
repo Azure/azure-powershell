@@ -12,7 +12,7 @@ Get an application group.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzWvdApplicationGroup [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -24,7 +24,7 @@ Get-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String> [-Subscript
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzWvdApplicationGroup -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
@@ -42,7 +42,7 @@ Get an application group.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop ApplicationGroup by name
+### Example 1: Get a Azure Virtual Desktop ApplicationGroup by name
 ```powershell
 Get-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName -Name ApplicationGroupName
 ```
@@ -53,9 +53,9 @@ Location   Name                 Type
 eastus     ApplicationGroupName Microsoft.DesktopVirtualization/applicationgroups
 ```
 
-This command gets a Windows Virtual Desktop ApplicationGroup in a Resource Group.
+This command gets a Azure Virtual Desktop ApplicationGroup in a Resource Group.
 
-### Example 2: List Windows Virtual Desktop ApplicationGroups
+### Example 2: List Azure Virtual Desktop ApplicationGroups
 ```powershell
 Get-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName
 ```
@@ -67,7 +67,7 @@ eastus     ApplicationGroupName1 Microsoft.DesktopVirtualization/applicationgrou
 eastus     ApplicationGroupName2 Microsoft.DesktopVirtualization/applicationgroups
 ```
 
-This command lists a Windows Virtual Desktop ApplicationGroups in a Resource Group.
+This command lists a Azure Virtual Desktop ApplicationGroups in a Resource Group.
 
 ## PARAMETERS
 
@@ -93,7 +93,7 @@ Valid properties for filtering are applicationGroupType.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -108,7 +108,7 @@ Initial number of items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -138,7 +138,7 @@ Indicates whether the collection is descending.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -168,7 +168,7 @@ Number of items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -184,7 +184,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -200,7 +200,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False

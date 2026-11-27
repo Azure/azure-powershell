@@ -21,13 +21,14 @@ Describe 'New-AzWvdHostPool' {
                                 -HostPoolType 'Pooled' `
                                 -LoadBalancerType 'DepthFirst' `
                                 -PreferredAppGroupType 'Desktop' `
-                                -DesktopAppGroupName 'FullScenarioCreateAG' `
-                                -WorkspaceName 'FullScenarioCreateWS' 
+                                -DesktopAppGroupName 'FullSenerioCreateAG' `
+                                -WorkspaceName 'FullSenerioCreateWS' `
+                                -ManagementType 'Standard'
         }
         finally{
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -Name 'FullScenarioCreateAG'
+                                -Name 'FullSenerioCreateAG'
 
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -35,7 +36,7 @@ Describe 'New-AzWvdHostPool' {
 
             $workspace = Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -Name 'FullScenarioCreateWS'
+                                -Name 'FullSenerioCreateWS'
         }
     }
 
@@ -54,10 +55,15 @@ Describe 'New-AzWvdHostPool' {
                                 -MaxSessionLimit 5 `
                                 -VMTemplate '{option1}' `
                                 -CustomRdpProperty $null `
+                                -ConditionalRdpProperty 'redirectclipboard:i:1:authcontext:c5' `
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard' `
+                                -AllowRdpShortPathWithPrivateLink 'Enabled' `
+                                -PublicUdp 'Disabled' `
+                                -RelayUdp 'Disabled'
 
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
@@ -70,11 +76,15 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not correct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
+                $hostPool.ConditionalRdpProperty | Should -Be 'redirectclipboard:i:1:authcontext:c5'
                 $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
+                $hostPool.AllowRdpShortPathWithPrivateLink | Should -Be 'Enabled'
+                $hostPool.PublicUdp | Should -Be 'Disabled'
+                $hostPool.RelayUdp | Should -Be 'Disabled'
 
             $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -90,11 +100,15 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not correct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
+                $hostPool.ConditionalRdpProperty | Should -Be 'redirectclipboard:i:1:authcontext:c5'
                 $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
+                $hostPool.AllowRdpShortPathWithPrivateLink | Should -Be 'Enabled'
+                $hostPool.PublicUdp | Should -Be 'Disabled'
+                $hostPool.RelayUdp | Should -Be 'Disabled'
         }
         finally{
                 $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `

@@ -111,13 +111,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
-            if (content.Contains("WorkspaceName"))
+            if (content.Contains("AppAttachPackageName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).AppAttachPackageName = (string) content.GetValueForProperty("AppAttachPackageName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).AppAttachPackageName, global::System.Convert.ToString);
             }
-            if (content.Contains("PrivateEndpointConnectionName"))
+            if (content.Contains("ApplicationGroupName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ApplicationGroupName = (string) content.GetValueForProperty("ApplicationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ApplicationGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("HostPoolName"))
             {
@@ -127,13 +127,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanName = (string) content.GetValueForProperty("ScalingPlanName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanName, global::System.Convert.ToString);
             }
-            if (content.Contains("ScalingPlanScheduleName"))
+            if (content.Contains("WorkspaceName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanScheduleName = (string) content.GetValueForProperty("ScalingPlanScheduleName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanScheduleName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ApplicationGroupName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ApplicationGroupName = (string) content.GetValueForProperty("ApplicationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ApplicationGroupName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
             }
             if (content.Contains("ApplicationName"))
             {
@@ -143,6 +139,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).DesktopName = (string) content.GetValueForProperty("DesktopName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).DesktopName, global::System.Convert.ToString);
             }
+            if (content.Contains("MsixPackageFullName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).MsixPackageFullName = (string) content.GetValueForProperty("MsixPackageFullName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).MsixPackageFullName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("SessionHostName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).SessionHostName = (string) content.GetValueForProperty("SessionHostName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).SessionHostName, global::System.Convert.ToString);
@@ -151,13 +155,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).UserSessionId = (string) content.GetValueForProperty("UserSessionId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).UserSessionId, global::System.Convert.ToString);
             }
-            if (content.Contains("MsixPackageFullName"))
+            if (content.Contains("ScalingPlanScheduleName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).MsixPackageFullName = (string) content.GetValueForProperty("MsixPackageFullName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).MsixPackageFullName, global::System.Convert.ToString);
-            }
-            if (content.Contains("AppAttachPackageName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).AppAttachPackageName = (string) content.GetValueForProperty("AppAttachPackageName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).AppAttachPackageName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanScheduleName = (string) content.GetValueForProperty("ScalingPlanScheduleName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanScheduleName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -188,13 +188,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
-            if (content.Contains("WorkspaceName"))
+            if (content.Contains("AppAttachPackageName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).AppAttachPackageName = (string) content.GetValueForProperty("AppAttachPackageName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).AppAttachPackageName, global::System.Convert.ToString);
             }
-            if (content.Contains("PrivateEndpointConnectionName"))
+            if (content.Contains("ApplicationGroupName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ApplicationGroupName = (string) content.GetValueForProperty("ApplicationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ApplicationGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("HostPoolName"))
             {
@@ -204,13 +204,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanName = (string) content.GetValueForProperty("ScalingPlanName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanName, global::System.Convert.ToString);
             }
-            if (content.Contains("ScalingPlanScheduleName"))
+            if (content.Contains("WorkspaceName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanScheduleName = (string) content.GetValueForProperty("ScalingPlanScheduleName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanScheduleName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ApplicationGroupName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ApplicationGroupName = (string) content.GetValueForProperty("ApplicationGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ApplicationGroupName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
             }
             if (content.Contains("ApplicationName"))
             {
@@ -220,6 +216,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).DesktopName = (string) content.GetValueForProperty("DesktopName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).DesktopName, global::System.Convert.ToString);
             }
+            if (content.Contains("MsixPackageFullName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).MsixPackageFullName = (string) content.GetValueForProperty("MsixPackageFullName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).MsixPackageFullName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("SessionHostName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).SessionHostName = (string) content.GetValueForProperty("SessionHostName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).SessionHostName, global::System.Convert.ToString);
@@ -228,13 +232,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).UserSessionId = (string) content.GetValueForProperty("UserSessionId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).UserSessionId, global::System.Convert.ToString);
             }
-            if (content.Contains("MsixPackageFullName"))
+            if (content.Contains("ScalingPlanScheduleName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).MsixPackageFullName = (string) content.GetValueForProperty("MsixPackageFullName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).MsixPackageFullName, global::System.Convert.ToString);
-            }
-            if (content.Contains("AppAttachPackageName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).AppAttachPackageName = (string) content.GetValueForProperty("AppAttachPackageName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).AppAttachPackageName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanScheduleName = (string) content.GetValueForProperty("ScalingPlanScheduleName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal)this).ScalingPlanScheduleName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

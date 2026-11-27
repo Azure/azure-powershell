@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
         private string _privateEndpointConnectionName;
 
-        /// <summary>The name of the private endpoint connection associated with the Azure resource.</summary>
+        /// <summary>The name parameter for private endpoint</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
@@ -207,14 +207,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"msixPackageFullName",
         PossibleTypes = new [] { typeof(string) })]
         string MsixPackageFullName { get; set; }
-        /// <summary>The name of the private endpoint connection associated with the Azure resource.</summary>
+        /// <summary>The name parameter for private endpoint</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the private endpoint connection associated with the Azure resource.",
+        Description = @"The name parameter for private endpoint",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// The version specific package full name of the MSIX package within specified hostpool
         /// </summary>
         string MsixPackageFullName { get; set; }
-        /// <summary>The name of the private endpoint connection associated with the Azure resource.</summary>
+        /// <summary>The name parameter for private endpoint</summary>
         string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }

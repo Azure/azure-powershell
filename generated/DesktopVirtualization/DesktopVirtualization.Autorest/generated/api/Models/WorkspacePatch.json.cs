@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Workspace properties that can be patched.</summary>
+    /// <summary>Workspace properties that can be patched.A patch model</summary>
     public partial class WorkspacePatch
     {
 
