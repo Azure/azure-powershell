@@ -37,6 +37,7 @@ input-file:
 title: Aks
 module-version: 0.1.0
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 directive:
   - where:

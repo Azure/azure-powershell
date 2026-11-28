@@ -42,6 +42,7 @@ input-file:
 module-version: 2.0.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
+enable-change-safety: true
 
 directive:
   # Require the access policy assignment properties envelope expected by the service.

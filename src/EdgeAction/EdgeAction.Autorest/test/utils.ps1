@@ -31,6 +31,26 @@ function Start-TestSleep {
 }
 
 $env = @{}
+function New-EdgeActionTestPolicyTokenObserver {
+    param([hashtable]$Observation)
+    {
+        param($request, $eventListener, $next)
+        if ($request.Method.Method -in 'POST', 'PUT', 'PATCH', 'DELETE') {
+            $header = 'x-ms-policy-external-evaluations'
+            if (-not $request.Headers.Contains($header)) {
+                throw 'The tested write has no Change Safety policy header.'
+            }
+            foreach ($value in $request.Headers.GetValues($header)) {
+                if ([string]::IsNullOrWhiteSpace($value) -or $value -eq '[Filtered]') {
+                    throw 'The tested write has an empty or filtered Change Safety policy header.'
+                }
+            }
+            $Observation.Writes++
+        }
+        $next.SendAsync($request, $eventListener)
+    }.GetNewClosure()
+}
+
 function Get-EdgeActionTestFixturePrefixes {
     @{
     'Deploy-AzEdgeActionVersionCode' = 'eadeploy'

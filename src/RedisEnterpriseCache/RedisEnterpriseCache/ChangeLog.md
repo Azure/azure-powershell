@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support.
 
 ## Version 2.1.0
 * Upgraded code generator. See [here](https://go.microsoft.com/fwlink/?linkid=2340249).

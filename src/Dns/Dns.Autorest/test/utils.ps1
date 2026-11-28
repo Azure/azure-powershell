@@ -31,6 +31,26 @@ function Start-TestSleep {
 }
 
 $env = @{}
+function New-DnsTestPolicyTokenObserver {
+    param([hashtable]$Observation)
+    {
+        param($request, $eventListener, $next)
+        if ($request.Method.Method -in 'POST', 'PUT', 'PATCH', 'DELETE') {
+            $header = 'x-ms-policy-external-evaluations'
+            if (-not $request.Headers.Contains($header)) {
+                throw 'The tested write has no Change Safety policy header.'
+            }
+            foreach ($value in $request.Headers.GetValues($header)) {
+                if ([string]::IsNullOrWhiteSpace($value) -or $value -eq '[Filtered]') {
+                    throw 'The tested write has an empty or filtered Change Safety policy header.'
+                }
+            }
+            $Observation.Writes++
+        }
+        $next.SendAsync($request, $eventListener)
+    }.GetNewClosure()
+}
+
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
     $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
@@ -70,4 +90,3 @@ function cleanupEnv() {
     Remove-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName2 -Confirm:$false
     Remove-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName3 -Confirm:$false
 }
-

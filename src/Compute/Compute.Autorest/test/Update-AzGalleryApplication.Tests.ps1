@@ -12,13 +12,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzGalleryApplication')
       $currentPath = Split-Path -Path $currentPath -Parent
   }
   . ($mockingPath | Select-Object -First 1).FullName
+  $null = [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock]::Blacklist.Add('x-ms-policy-external-evaluations')
 }
 
-Describe 'Update-AzGalleryApplication' -Tag 'LiveOnly'{
+Describe 'Update-AzGalleryApplication' {
     BeforeAll { 
         $galleryName = "testgallery" + $env.RandomString
         $galleryApplicationName = "testgalapp" + $env.RandomString
-        New-AzGallery -ResourceGroupName $env.ResourceGroupName -Name $galleryName -Location $env.Location
+        if ($TestMode -ne 'playback') {
+            New-AzGallery -ResourceGroupName $env.ResourceGroupName -Name $galleryName -Location $env.Location
+        }
         New-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName -Location $env.Location -SupportedOSType Windows
     }
 
@@ -35,5 +38,20 @@ Describe 'Update-AzGalleryApplication' -Tag 'LiveOnly'{
         Update-AzGalleryApplication -InputObject $galApp.Id -Description $description
         $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName
         $galApp.Description | Should Be $description
+    }
+
+    It 'UpdateExpanded-AcquirePolicyToken' {
+        $description = 'testDescriptionPolicyToken'
+        $observation = @{ Writes = 0 }
+        $observer = New-ComputeTestPolicyTokenObserver $observation
+        Update-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName `
+            -GalleryName $galleryName -Name $galleryApplicationName -Description $description `
+            -AcquirePolicyToken -HttpPipelineAppend $observer
+        $actual = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName `
+            -GalleryName $galleryName -Name $galleryApplicationName
+        $actual.Description | Should -Be $description
+        if ($TestMode -ne 'playback') {
+            $observation.Writes | Should -BeGreaterThan 0
+        }
     }
 }

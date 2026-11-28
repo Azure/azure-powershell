@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support for additional cmdlets.
 
 ## Version 9.8.0
 * Updated Storage management operations to API version 2026-09-01.

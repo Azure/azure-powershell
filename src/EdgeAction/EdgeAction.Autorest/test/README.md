@@ -14,4 +14,10 @@ We allow three testing modes: *live*, *record*, and *playback*. These can be sel
 Custom cmdlets generally encompass additional functionality not described in the REST specification, or combines functionality generated from the REST spec. To validate this functionality continues to operate as intended, creating tests that can be ran and re-ran against custom cmdlets is part of the framework.
 
 ## Usage
+The deployment and default-version suites include explicit `-AcquirePolicyToken`
+cases. In Record/Live they assert a nonempty policy header on outgoing writes;
+the existing recorder blacklist filters its value. Playback replays the resource
+responses without acquiring a token or running the transport assertion. These
+cases do not assert GET-header isolation.
+
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.

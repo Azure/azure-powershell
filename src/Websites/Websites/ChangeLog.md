@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support for additional cmdlets.
 * CodeQL scan rules ignored.
 
 ## Version 4.3.0

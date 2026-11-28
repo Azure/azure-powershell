@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added Change Safety support.
 
 ## Version 11.12.0
 * Removed unused MD5 calculations from disk and blob uploads and switched disk and blob upload lock names and deterministic Azure Enhanced Monitoring test IDs to SHA-256.

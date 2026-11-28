@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support.
 
 ## Version 0.2.2
 * Upgraded nuget package to signed package.

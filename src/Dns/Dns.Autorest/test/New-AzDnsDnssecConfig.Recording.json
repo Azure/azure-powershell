@@ -1,17 +1,17 @@
 {
-  "New-AzDnsDnssecConfig+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview+1": {
+  "New-AzDnsDnssecConfig+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "1a109e18-8a07-4bda-8a8b-1389e28d42ba" ],
+        "x-ms-client-request-id": [ "f41588ea-c792-43a0-8230-351fa604a7aa" ],
         "CommandName": [ "New-AzDnsDnssecConfig" ],
         "FullCommandName": [ "New-AzDnsDnssecConfig_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Dns/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.Dns/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -21,41 +21,42 @@
       "StatusCode": 201,
       "Headers": {
         "Cache-Control": [ "private" ],
-        "ETag": [ "806af903-a9ea-4943-8082-d019a06a1de3" ],
+        "ETag": [ "c9063f45-7c74-4ae4-bd14-90f3ceec14c8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1a109e18-8a07-4bda-8a8b-1389e28d42ba" ],
+        "x-ms-request-id": [ "f41588ea-c792-43a0-8230-351fa604a7aa" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/southeastasia/282d7b44-62c2-4141-8a13-e689a125e173" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-correlation-request-id": [ "1021edc4-db32-4823-8ab8-2e16f47aa22d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T063835Z:1021edc4-db32-4823-8ab8-2e16f47aa22d" ],
+        "x-ms-operation-identifier": [ "tenantId=72031ed9-9b48-4bb7-804a-0d1a2a44e7be,objectId=f5e2c515-c3cc-42da-9a1b-eff1cf38c9fd/eastus/c2e37cc4-e49e-41a6-8650-ba764b065860" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-correlation-request-id": [ "a2a89c5c-62a7-4485-802b-d65316d50900" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261104T032312Z:a2a89c5c-62a7-4485-802b-d65316d50900" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A732810B206946299743EFC0C6F710DF Ref B: MAA201060514025 Ref C: 2025-09-11T06:38:31Z" ],
-        "Date": [ "Thu, 11 Sep 2025 06:38:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 84D53C3C918949DFBC2D1742CDCC65DA Ref B: SYD281080706040 Ref C: 2026-11-04T03:23:11Z" ],
+        "Date": [ "Wed, 04 Nov 2026 03:23:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "357" ],
         "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"\\/subscriptions\\/0e745469-49f8-48c9-873b-24ca87143db1\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk2.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"806af903-a9ea-4943-8082-d019a06a1de3\",\"properties\":{\"provisioningState\":\"Creating\",\"signingKeys\":[]}}",
+      "Content": "{\"id\":\"\\/subscriptions\\/2e4d10de-8014-45bd-b341-de3ba295cade\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk2.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"c9063f45-7c74-4ae4-bd14-90f3ceec14c8\",\"properties\":{\"provisioningState\":\"Creating\",\"signingKeys\":[]}}",
       "isContentBase64": false
     }
   },
-  "New-AzDnsDnssecConfig+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview+2": {
+  "New-AzDnsDnssecConfig+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "1a109e18-8a07-4bda-8a8b-1389e28d42ba" ],
+        "x-ms-client-request-id": [ "f41588ea-c792-43a0-8230-351fa604a7aa" ],
         "CommandName": [ "New-AzDnsDnssecConfig" ],
         "FullCommandName": [ "New-AzDnsDnssecConfig_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Dns/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.Dns/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -64,41 +65,42 @@
       "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "private" ],
-        "ETag": [ "c3a2cebf-7f09-49e0-b9f2-24a670726a3a" ],
+        "ETag": [ "334a59e5-fc09-4d19-86b8-48cc09d6025c" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1a109e18-8a07-4bda-8a8b-1389e28d42ba" ],
+        "x-ms-request-id": [ "f41588ea-c792-43a0-8230-351fa604a7aa" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/southeastasia/ef96cfc0-62ee-45f6-b710-ecdb382c01ef" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-correlation-request-id": [ "1fefd373-e63a-485a-8182-25b97df63c0f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T063906Z:1fefd373-e63a-485a-8182-25b97df63c0f" ],
+        "x-ms-operation-identifier": [ "tenantId=72031ed9-9b48-4bb7-804a-0d1a2a44e7be,objectId=f5e2c515-c3cc-42da-9a1b-eff1cf38c9fd/eastus/78836307-8ee0-4811-aa18-e0dad3cd6aac" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "734f5915-8d3d-4e35-8b02-1b5a985e341e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261104T032343Z:734f5915-8d3d-4e35-8b02-1b5a985e341e" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D9ACA285A9544FA2AC72BC4AF2EA140B Ref B: MAA201060514025 Ref C: 2025-09-11T06:39:05Z" ],
-        "Date": [ "Thu, 11 Sep 2025 06:39:06 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5E3547AD3B3A493AB15E5C45D4872DF6 Ref B: SYD281080706040 Ref C: 2026-11-04T03:23:43Z" ],
+        "Date": [ "Wed, 04 Nov 2026 03:23:43 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "948" ],
+        "Content-Length": [ "945" ],
         "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"\\/subscriptions\\/0e745469-49f8-48c9-873b-24ca87143db1\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk2.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"c3a2cebf-7f09-49e0-b9f2-24a670726a3a\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":55812,\"protocol\":3,\"publicKey\":\"DJF5z\\/O0vSY62MRDfaK6aIiRyqZYbJlTHi+kt3WjrpGVYRdj1Xcc0iuyzJmRdvoJclmPv34BuhDc3FD3yBXojw==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"AFDC6A2F62CC88D7B360DFD4576E6CACF606FA9AD74C489E50407D13B6A62749\",\"record\":\"59825 13 2 AFDC6A2F62CC88D7B360DFD4576E6CACF606FA9AD74C489E50407D13B6A62749\"}],\"flags\":257,\"keyTag\":59825,\"protocol\":3,\"publicKey\":\"XplCt4KCYFPIDB94nTq13E+Skym1\\/AAzfSE9kqaVM9RJ5TihaqSBHM6nbsFFLpE1Eqxde3VXbjGE21rM0fRxdg==\",\"securityAlgorithmType\":13}]}}",
+      "Content": "{\"id\":\"\\/subscriptions\\/2e4d10de-8014-45bd-b341-de3ba295cade\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk2.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"334a59e5-fc09-4d19-86b8-48cc09d6025c\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":49569,\"protocol\":3,\"publicKey\":\"26SbYSxl4rqMS4doTuW38i9mn4\\/1T2dSjKIYj\\/S631xN4xf4JVxwAnlGioO3xeckqwhlKwFzjELtAQ+Qf4LAEw==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"54A16E401F44BEFEA93431487FFC96FE499235E2CB27F07884F26669AC8816F4\",\"record\":\"292 13 2 54A16E401F44BEFEA93431487FFC96FE499235E2CB27F07884F26669AC8816F4\"}],\"flags\":257,\"keyTag\":292,\"protocol\":3,\"publicKey\":\"JQhGjP07EdbNILuvSZt1ET25lOm79vERHr9cvYFBJuHASh\\/dfoLHQ8YXSg87PByTGXR0ch+qJq2IIICb1n5WSg==\",\"securityAlgorithmType\":13}]}}",
       "isContentBase64": false
     }
   },
-  "New-AzDnsDnssecConfig+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview+3": {
+  "New-AzDnsDnssecConfig+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/2e4d10de-8014-45bd-b341-de3ba295cade/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestpowershellsdk2.com/dnssecConfigs/default?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "1a109e18-8a07-4bda-8a8b-1389e28d42ba" ],
+        "x-ms-client-request-id": [ "f41588ea-c792-43a0-8230-351fa604a7aa" ],
         "CommandName": [ "New-AzDnsDnssecConfig" ],
         "FullCommandName": [ "New-AzDnsDnssecConfig_Create" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Dns/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.Dns/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -107,24 +109,25 @@
       "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "private" ],
-        "ETag": [ "c3a2cebf-7f09-49e0-b9f2-24a670726a3a" ],
+        "ETag": [ "334a59e5-fc09-4d19-86b8-48cc09d6025c" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1a109e18-8a07-4bda-8a8b-1389e28d42ba" ],
+        "x-ms-request-id": [ "f41588ea-c792-43a0-8230-351fa604a7aa" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=6f20525e-bd2b-4c30-bd2a-c1b766142389/southeastasia/15617cfd-c522-497a-8ff9-e71cc8aba7b7" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-correlation-request-id": [ "4edb0a73-07bd-4895-a9eb-0f40c82e96f3" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250911T063906Z:4edb0a73-07bd-4895-a9eb-0f40c82e96f3" ],
+        "x-ms-operation-identifier": [ "tenantId=72031ed9-9b48-4bb7-804a-0d1a2a44e7be,objectId=f5e2c515-c3cc-42da-9a1b-eff1cf38c9fd/eastus/6a8c6085-b3bf-4c02-ab57-849183a9c5e9" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "0f933e8e-924d-427d-bde1-311d0011b4ac" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261104T032343Z:0f933e8e-924d-427d-bde1-311d0011b4ac" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5B848D9E05C5427B86E8D8E29D6377A8 Ref B: MAA201060514025 Ref C: 2025-09-11T06:39:06Z" ],
-        "Date": [ "Thu, 11 Sep 2025 06:39:06 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7D3091A5545240D99CC82E2E28E2FEDA Ref B: SYD281080706040 Ref C: 2026-11-04T03:23:43Z" ],
+        "Date": [ "Wed, 04 Nov 2026 03:23:43 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "948" ],
+        "Content-Length": [ "945" ],
         "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"\\/subscriptions\\/0e745469-49f8-48c9-873b-24ca87143db1\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk2.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"c3a2cebf-7f09-49e0-b9f2-24a670726a3a\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":55812,\"protocol\":3,\"publicKey\":\"DJF5z\\/O0vSY62MRDfaK6aIiRyqZYbJlTHi+kt3WjrpGVYRdj1Xcc0iuyzJmRdvoJclmPv34BuhDc3FD3yBXojw==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"AFDC6A2F62CC88D7B360DFD4576E6CACF606FA9AD74C489E50407D13B6A62749\",\"record\":\"59825 13 2 AFDC6A2F62CC88D7B360DFD4576E6CACF606FA9AD74C489E50407D13B6A62749\"}],\"flags\":257,\"keyTag\":59825,\"protocol\":3,\"publicKey\":\"XplCt4KCYFPIDB94nTq13E+Skym1\\/AAzfSE9kqaVM9RJ5TihaqSBHM6nbsFFLpE1Eqxde3VXbjGE21rM0fRxdg==\",\"securityAlgorithmType\":13}]}}",
+      "Content": "{\"id\":\"\\/subscriptions\\/2e4d10de-8014-45bd-b341-de3ba295cade\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestpowershellsdk2.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"334a59e5-fc09-4d19-86b8-48cc09d6025c\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":49569,\"protocol\":3,\"publicKey\":\"26SbYSxl4rqMS4doTuW38i9mn4\\/1T2dSjKIYj\\/S631xN4xf4JVxwAnlGioO3xeckqwhlKwFzjELtAQ+Qf4LAEw==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"54A16E401F44BEFEA93431487FFC96FE499235E2CB27F07884F26669AC8816F4\",\"record\":\"292 13 2 54A16E401F44BEFEA93431487FFC96FE499235E2CB27F07884F26669AC8816F4\"}],\"flags\":257,\"keyTag\":292,\"protocol\":3,\"publicKey\":\"JQhGjP07EdbNILuvSZt1ET25lOm79vERHr9cvYFBJuHASh\\/dfoLHQ8YXSg87PByTGXR0ch+qJq2IIICb1n5WSg==\",\"securityAlgorithmType\":13}]}}",
       "isContentBase64": false
     }
   }
