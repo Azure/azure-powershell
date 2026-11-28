@@ -31,6 +31,18 @@ Get-AzDevCenterAdminCustomizationTask -InputObject <IDevCenterIdentity> [-Defaul
  [<CommonParameters>]
 ```
 
+### GetViaIdentityCatalog
+```
+Get-AzDevCenterAdminCustomizationTask -CatalogInputObject <IDevCenterIdentity> -TaskName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityDevcenter
+```
+Get-AzDevCenterAdminCustomizationTask -CatalogName <String> -DevcenterInputObject <IDevCenterIdentity>
+ -TaskName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a Task from the catalog
 
@@ -60,12 +72,27 @@ This command gets the customization task "SampleTask" in the catalog named "Cent
 
 ## PARAMETERS
 
+### -CatalogInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityCatalog
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityDevcenter, List
 Aliases:
 
 Required: True
@@ -91,6 +118,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevcenterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityDevcenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DevCenterName
 The name of the devcenter.
 
@@ -108,7 +150,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -158,7 +199,7 @@ The name of the Task.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCatalog, GetViaIdentityDevcenter
 Aliases:
 
 Required: True
@@ -177,7 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICustomizationTask
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICustomizationTask
 
 ## NOTES
 

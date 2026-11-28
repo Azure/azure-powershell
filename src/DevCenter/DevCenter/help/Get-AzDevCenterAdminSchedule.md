@@ -149,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ISchedule
 
 ## NOTES
 

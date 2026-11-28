@@ -16,14 +16,14 @@ Creates or updates a project catalog.
 ```
 New-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -AdoGitSecretIdentifier <String> -AdoGitUri <String> [-AdoGitBranch <String>]
- [-AdoGitPath <String>] [-SyncType <CatalogSyncType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AdoGitPath <String>] [-SyncType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedGitHub
 ```
 New-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-SyncType <CatalogSyncType>] [-Tag <Hashtable>] -GitHubSecretIdentifier <String>
+ [-SubscriptionId <String>] [-SyncType <String>] [-Tag <Hashtable>] -GitHubSecretIdentifier <String>
  -GitHubUri <String> [-GitHubBranch <String>] [-GitHubPath <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -31,17 +31,17 @@ New-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectName <String> -
 ### CreateViaIdentityExpandedAdo
 ```
 New-AzDevCenterAdminProjectCatalog -InputObject <IDevCenterIdentity> -AdoGitSecretIdentifier <String>
- -AdoGitUri <String> [-AdoGitBranch <String>] [-AdoGitPath <String>] [-SyncType <CatalogSyncType>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AdoGitUri <String> [-AdoGitBranch <String>] [-AdoGitPath <String>] [-SyncType <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedGitHub
 ```
-New-AzDevCenterAdminProjectCatalog -InputObject <IDevCenterIdentity> [-SyncType <CatalogSyncType>]
- [-Tag <Hashtable>] -GitHubSecretIdentifier <String> -GitHubUri <String> [-GitHubBranch <String>]
- [-GitHubPath <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDevCenterAdminProjectCatalog -InputObject <IDevCenterIdentity> [-SyncType <String>] [-Tag <Hashtable>]
+ -GitHubSecretIdentifier <String> -GitHubUri <String> [-GitHubBranch <String>] [-GitHubPath <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -328,7 +328,7 @@ Accept wildcard characters: False
 Indicates the type of sync that is configured for the catalog.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -394,7 +394,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalog
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICatalog
 
 ## NOTES
 

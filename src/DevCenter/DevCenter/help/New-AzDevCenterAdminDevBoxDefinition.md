@@ -16,16 +16,16 @@ Creates or updates a Dev Box definition.
 ```
 New-AzDevCenterAdminDevBoxDefinition -DevCenterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Location <String> -ImageReferenceId <String> -OSStorageType <String>
- -SkuName <String> [-HibernateSupport <HibernateSupport>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -SkuName <String> [-HibernateSupport <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminDevBoxDefinition -InputObject <IDevCenterIdentity> -Location <String>
- -ImageReferenceId <String> -OSStorageType <String> -SkuName <String> [-HibernateSupport <HibernateSupport>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
+ -ImageReferenceId <String> -OSStorageType <String> -SkuName <String> [-HibernateSupport <String>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -104,7 +104,7 @@ Not all images are capable of supporting hibernation.
 To find out more see https://aka.ms/devbox/hibernate
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HibernateSupport
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +292,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -373,7 +373,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevBoxDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevBoxDefinition
 
 ## NOTES
 

@@ -27,7 +27,7 @@ Creates or updates a catalog.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,7 +61,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmincatalog
 #>
 function New-AzDevCenterAdminCatalog {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalog])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICatalog])]
   [CmdletBinding(DefaultParameterSetName = 'CreateExpandedAdo', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'CreateExpandedAdo', Mandatory)]
@@ -160,15 +160,15 @@ function New-AzDevCenterAdminCatalog {
     ${GitHubUri},
       
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Manual", "Scheduled")]
+    [System.String]
     # Indicates the type of sync that is configured for the catalog.
     ${SyncType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalogUpdatePropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICatalogUpdatePropertiesTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDevCenterAdminProjectCatalog
 
 ## SYNOPSIS
-Partially updates a project catalog.
+Partially patch a project catalog.
 
 ## SYNTAX
 
@@ -17,8 +17,8 @@ Partially updates a project catalog.
 Update-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AdoGitBranch <String>] [-AdoGitPath <String>] [-AdoGitSecretIdentifier <String>]
  [-AdoGitUri <String>] [-GitHubBranch <String>] [-GitHubPath <String>] [-GitHubSecretIdentifier <String>]
- [-GitHubUri <String>] [-SyncType <CatalogSyncType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GitHubUri <String>] [-SyncType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Patch
@@ -38,12 +38,42 @@ Update-AzDevCenterAdminProjectCatalog -InputObject <IDevCenterIdentity> -Body <I
 ```
 Update-AzDevCenterAdminProjectCatalog -InputObject <IDevCenterIdentity> [-AdoGitBranch <String>]
  [-AdoGitPath <String>] [-AdoGitSecretIdentifier <String>] [-AdoGitUri <String>] [-GitHubBranch <String>]
- [-GitHubPath <String>] [-GitHubSecretIdentifier <String>] [-GitHubUri <String>] [-SyncType <CatalogSyncType>]
+ [-GitHubPath <String>] [-GitHubSecretIdentifier <String>] [-GitHubUri <String>] [-SyncType <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### PatchViaIdentityProject
+```
+Update-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectInputObject <IDevCenterIdentity>
+ -Body <ICatalogUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### PatchViaIdentityProjectExpanded
+```
+Update-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectInputObject <IDevCenterIdentity>
+ [-AdoGitBranch <String>] [-AdoGitPath <String>] [-AdoGitSecretIdentifier <String>] [-AdoGitUri <String>]
+ [-GitHubBranch <String>] [-GitHubPath <String>] [-GitHubSecretIdentifier <String>] [-GitHubUri <String>]
+ [-SyncType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### PatchViaJsonFilePath
+```
+Update-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaJsonString
+```
+Update-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Partially updates a project catalog.
+Partially patch a project catalog.
 
 ## EXAMPLES
 
@@ -70,7 +100,7 @@ Git branch.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -85,7 +115,7 @@ The folder where the catalog items can be found inside the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -100,7 +130,7 @@ A reference to the Key Vault secret containing a security token to authenticate 
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -115,7 +145,7 @@ Git URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -143,11 +173,10 @@ Accept wildcard characters: False
 ### -Body
 The catalog's properties for partial update.
 Properties not provided in the update request will not be changed.
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalogUpdate
-Parameter Sets: Patch, PatchViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICatalogUpdate
+Parameter Sets: Patch, PatchViaIdentity, PatchViaIdentityProject
 Aliases:
 
 Required: True
@@ -162,7 +191,7 @@ The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: Patch, PatchExpanded, PatchViaIdentityProject, PatchViaIdentityProjectExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: True
@@ -193,7 +222,7 @@ Git branch.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -208,7 +237,7 @@ The folder where the catalog items can be found inside the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -223,7 +252,7 @@ A reference to the Key Vault secret containing a security token to authenticate 
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -238,7 +267,7 @@ Git URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -250,7 +279,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -261,6 +289,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Patch operation
+
+```yaml
+Type: System.String
+Parameter Sets: PatchViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Patch operation
+
+```yaml
+Type: System.String
+Parameter Sets: PatchViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -279,12 +337,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: PatchViaIdentityProject, PatchViaIdentityProjectExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the project.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: True
@@ -300,7 +373,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: True
@@ -315,7 +388,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: False
@@ -329,8 +402,8 @@ Accept wildcard characters: False
 Indicates the type of sync that is configured for the catalog.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Type: System.String
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -345,7 +418,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -391,13 +464,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalogUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICatalogUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalog
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICatalog
 
 ## NOTES
 
