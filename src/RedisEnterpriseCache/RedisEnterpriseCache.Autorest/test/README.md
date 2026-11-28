@@ -18,6 +18,8 @@ Custom cmdlets generally encompass additional functionality not described in the
 cases with their own `ChangeSafety.Recording.json` and `ChangeSafety.env.json`.
 They use a dedicated resource group owned by the module's scenario-based
 setup/cleanup. Selecting this suite does not provision the migration fixtures.
+The dedicated cache uses the generally available `eastus` location, independently
+of the shared upstream scenarios' location.
 Record/Live assert a nonempty policy header on outgoing writes; the existing
 recorder blacklist filters its value. Playback does not acquire a token or run
 that transport assertion. GET-header isolation is not asserted.
@@ -35,9 +37,9 @@ PowerShell Core and Windows PowerShell.
 The existing harness can initialize recording files even for unselected scenarios,
 so preserve unselected recordings before a focused Record run.
 
-The existing Change Safety recording was captured against API `2025-07-01`.
-It must be regenerated with the original Record workflow for the module's current
-`2026-09-01` API before relying on its Playback results; do not rewrite API versions
+The Change Safety recording was regenerated with the original Record workflow
+against the module's current `2026-09-01` API. When the API changes, regenerate
+the recording and matching fixture metadata rather than rewriting API versions
 in the recording.
 
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.

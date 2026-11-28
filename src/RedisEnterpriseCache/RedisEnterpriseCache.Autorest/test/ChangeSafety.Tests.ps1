@@ -23,7 +23,7 @@ Describe 'RedisEnterpriseCache-ChangeSafety' {
             $script:policyFixture = @{
                 SubscriptionId = $env.SubscriptionId
                 ResourceGroupName = $env.ResourceGroupName
-                Location = $env.Location
+                Location = 'eastus'
                 Name = $env.ClusterName + 'policy'
             }
             if ($TestMode -eq 'record') {
