@@ -27,7 +27,7 @@ Restores a Dev Box to a specified snapshot.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/restore-azdevcenteruserdevboxsnapshot
 #>
 function Restore-AzDevCenterUserDevBoxSnapshot {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IOperationStatus])]
     [CmdletBinding(DefaultParameterSetName = 'Restore', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'Restore', Mandatory)]
